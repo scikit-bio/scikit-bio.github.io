@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>skbio.alignment.StripedSmithWaterman &#8212; scikit-bio 0.5.8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skbio.alignment.StripedSmithWaterman.__call__" href="skbio.alignment.StripedSmithWaterman.__call__.html" />
+    <link rel="prev" title="skbio.alignment.TabularMSA.write" href="skbio.alignment.TabularMSA.write.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+  
+  <a href="https://github.com/biocore/scikit-bio"
+     class="visible-desktop hidden-xs"><img
+    id="gh-banner"
+    style="position: absolute; top: 50px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+    alt="Fork me on GitHub"></a>
+  <script>
+    // Adjust banner height.
+    $(function () {
+      var navHeight = $(".navbar .container").css("height");
+      $("#gh-banner").css("top", navHeight);
+    });
+  </script>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          scikit-bio docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.8</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../io.html">File I/O (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sequence.html">Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../alignment.html">Alignments (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.alignment</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tree.html">Tree representations (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Constructing workflows (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.workflow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diversity.html">Diversity calculations (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stats.html">Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata.html">Metadata (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.metadata</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">Utility functionality (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/api_stability.html">API Stability</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/coding_guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/new_module.html">Adding a new module to skbio</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">skbio.alignment.StripedSmithWaterman</a><ul>
+<li><a class="reference internal" href="#skbio.alignment.StripedSmithWaterman"><code class="docutils literal notranslate"><span class="pre">StripedSmithWaterman</span></code></a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="skbio-alignment-stripedsmithwaterman">
+<h1>skbio.alignment.StripedSmithWaterman<a class="headerlink" href="#skbio-alignment-stripedsmithwaterman" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="skbio.alignment.StripedSmithWaterman">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">StripedSmithWaterman</span></span><a class="headerlink" href="#skbio.alignment.StripedSmithWaterman" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a striped (banded) Smith Waterman Alignment.</p>
+<p>First a StripedSmithWaterman object must be instantiated with a query
+sequence. The resulting object is then callable with a target sequence and
+may be reused on a large collection of target sequences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query_sequence</strong> (<em>string</em>) – The query sequence, this may be upper or lowercase from the set of
+{A, C, G, T, N} (nucleotide) or from the set of
+{A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V, B, Z, X, *
+} (protein)</p></li>
+<li><p><strong>gap_open_penalty</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – The penalty applied to creating a gap in the alignment. This CANNOT
+be 0.
+Default is 5.</p></li>
+<li><p><strong>gap_extend_penalty</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – The penalty applied to extending a gap in the alignment. This CANNOT
+be 0.
+Default is 2.</p></li>
+<li><p><strong>score_size</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – If your estimated best alignment score is &lt; 255 this should be 0.
+If your estimated best alignment score is &gt;= 255, this should be 1.
+If you don’t know, this should be 2.
+Default is 2.</p></li>
+<li><p><strong>mask_length</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – The distance between the optimal and suboptimal alignment ending
+position &gt;= mask_length. We suggest to use len(query_sequence)/2, if
+you don’t have special concerns.
+Detailed description of mask_length: After locating the optimal
+alignment ending position, the suboptimal alignment score can be
+heuristically found by checking the second largest score in the array
+that contains the maximal score of each column of the SW matrix. In
+order to avoid picking the scores that belong to the alignments
+sharing the partial best alignment, SSW C library masks the reference
+loci nearby (mask length = mask_length) the best alignment ending
+position and locates the second largest score from the unmasked
+elements.
+Default is 15.</p></li>
+<li><p><strong>mask_auto</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – This will automatically set the used mask length to be
+max(int(len(<cite>query_sequence</cite>)/2), <cite>mask_length</cite>).
+Default is True.</p></li>
+<li><p><strong>score_only</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – This will prevent the best alignment beginning positions (BABP) and the
+cigar from being returned as a result. This overrides any setting on
+<cite>score_filter</cite>, <cite>distance_filter</cite>, and <cite>override_skip_babp</cite>. It has the
+highest precedence.
+Default is False.</p></li>
+<li><p><strong>score_filter</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – If set, this will prevent the cigar and best alignment beginning
+positions (BABP) from being returned if the optimal alignment score is
+less than <cite>score_filter</cite> saving some time computationally. This filter
+may be overridden by <cite>score_only</cite> (prevents BABP and cigar, regardless
+of other arguments), <cite>distance_filter</cite> (may prevent cigar, but will
+cause BABP to be calculated), and <cite>override_skip_babp</cite> (will ensure
+BABP) returned.
+Default is None.</p></li>
+<li><p><strong>distance_filter</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – If set, this will prevent the cigar from being returned if the length
+of the <cite>query_sequence</cite> or the <cite>target_sequence</cite> is less than
+<cite>distance_filter</cite> saving some time computationally. The results of
+this filter may be overridden by <cite>score_only</cite> (prevents BABP and cigar,
+regardless of other arguments), and <cite>score_filter</cite> (may prevent cigar).
+<cite>override_skip_babp</cite> has no effect with this filter applied, as BABP
+must be calculated to perform the filter.
+Default is None.</p></li>
+<li><p><strong>override_skip_babp</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – When True, the best alignment beginning positions (BABP) will always be
+returned unless <cite>score_only</cite> is set to True.
+Default is False.</p></li>
+<li><p><strong>protein</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – When True, the <cite>query_sequence</cite> and <cite>target_sequence</cite> will be read as
+protein sequence. When False, the <cite>query_sequence</cite> and
+<cite>target_sequence</cite> will be read as nucleotide sequence. If True, a
+<cite>substitution_matrix</cite> must be supplied.
+Default is False.</p></li>
+<li><p><strong>match_score</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – When using a nucleotide sequence, the match_score is the score added
+when a match occurs. This is ignored if <cite>substitution_matrix</cite> is
+provided.
+Default is 2.</p></li>
+<li><p><strong>mismatch_score</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – When using a nucleotide sequence, the mismatch is the score subtracted
+when a mismatch occurs. This should be a negative integer.
+This is ignored if <cite>substitution_matrix</cite> is provided.
+Default is -3.</p></li>
+<li><p><strong>substitution_matrix</strong> (<em>2D dict</em><em>, </em><em>optional</em>) – Provides the score for each possible substitution of sequence
+characters. This may be used for protein or nucleotide sequences. The
+entire set of possible combinations for the relevant sequence type MUST
+be enumerated in the dict of dicts. This will override <cite>match_score</cite>
+and <cite>mismatch_score</cite>. Required when <cite>protein</cite> is True.
+Default is None.</p></li>
+<li><p><strong>suppress_sequences</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, the query and target sequences will not be returned for
+convenience.
+Default is False.</p></li>
+<li><p><strong>zero_index</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, all inidices will start at 0. If False, all inidices will
+start at 1.
+Default is True.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This is a wrapper for the SSW package <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p><cite>mask_length</cite> has to be &gt;= 15, otherwise the suboptimal alignment
+information will NOT be returned.</p>
+<p><cite>match_score</cite> is a positive integer and <cite>mismatch_score</cite> is a negative
+integer.</p>
+<p><cite>match_score</cite> and <cite>mismatch_score</cite> are only meaningful in the context of
+nucleotide sequences.</p>
+<p>A substitution matrix must be provided when working with protein sequences.</p>
+<p class="rubric">References</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Zhao, Mengyao, Wan-Ping Lee, Erik P. Garrison, &amp; Gabor T.
+Marth. “SSW Library: An SIMD Smith-Waterman C/C++ Library for
+Applications”. PLOS ONE (2013). Web. 11 July 2014.
+<a class="reference external" href="http://www.plosone.org/article/info:doi/10.1371/journal.pone.0082138">http://www.plosone.org/article/info:doi/10.1371/journal.pone.0082138</a></p>
+</aside>
+</aside>
+<p class="rubric">Built-ins</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__call__.html#skbio.alignment.StripedSmithWaterman.__call__" title="skbio.alignment.StripedSmithWaterman.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a></p></td>
+<td><p>Align <cite>target_sequence</cite> to <cite>query_sequence</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__eq__.html#skbio.alignment.StripedSmithWaterman.__eq__" title="skbio.alignment.StripedSmithWaterman.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(value, /)</p></td>
+<td><p>Return self==value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__ge__.html#skbio.alignment.StripedSmithWaterman.__ge__" title="skbio.alignment.StripedSmithWaterman.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__getstate__.html#skbio.alignment.StripedSmithWaterman.__getstate__" title="skbio.alignment.StripedSmithWaterman.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>()</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__gt__.html#skbio.alignment.StripedSmithWaterman.__gt__" title="skbio.alignment.StripedSmithWaterman.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__hash__.html#skbio.alignment.StripedSmithWaterman.__hash__" title="skbio.alignment.StripedSmithWaterman.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a>()</p></td>
+<td><p>Return hash(self).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__le__.html#skbio.alignment.StripedSmithWaterman.__le__" title="skbio.alignment.StripedSmithWaterman.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__lt__.html#skbio.alignment.StripedSmithWaterman.__lt__" title="skbio.alignment.StripedSmithWaterman.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__ne__.html#skbio.alignment.StripedSmithWaterman.__ne__" title="skbio.alignment.StripedSmithWaterman.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(value, /)</p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__setstate__.html#skbio.alignment.StripedSmithWaterman.__setstate__" title="skbio.alignment.StripedSmithWaterman.__setstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__setstate__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.__str__.html#skbio.alignment.StripedSmithWaterman.__str__" title="skbio.alignment.StripedSmithWaterman.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014--, scikit-bio development team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br/>
+    </p>
+  </div>
+</footer>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-6636235-9', 'scikit-bio.org');
+    ga('send', 'pageview');
+  </script>
+
+  </body>
+</html>

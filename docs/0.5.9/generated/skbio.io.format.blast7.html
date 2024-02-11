@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>BLAST+7 format (skbio.io.format.blast7) &#8212; scikit-bio 0.5.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=0bf093e7" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=3923f442" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b8460c5c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/copybutton.js?v=26522df0"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clustal format (skbio.io.format.clustal)" href="skbio.io.format.clustal.html" />
+    <link rel="prev" title="BLAST+6 format (skbio.io.format.blast6)" href="skbio.io.format.blast6.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+  
+  <a href="https://github.com/biocore/scikit-bio"
+     class="visible-desktop hidden-xs"><img
+    id="gh-banner"
+    style="position: absolute; top: 50px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+    alt="Fork me on GitHub"></a>
+  <script>
+    // Adjust banner height.
+    $(function () {
+      var navHeight = $(".navbar .container").css("height");
+      $("#gh-banner").css("top", navHeight);
+    });
+  </script>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          scikit-bio docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.9</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../io.html">File I/O (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sequence.html">Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../alignment.html">Alignments (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.alignment</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tree.html">Tree representations (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Constructing workflows (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.workflow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diversity.html">Diversity calculations (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stats.html">Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata.html">Metadata (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.metadata</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">Utility functionality (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/api_stability.html">API Stability</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/coding_guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/new_module.html">Adding a new module to skbio</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">BLAST+7 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast7</span></code>)</a></li>
+<li><a class="reference internal" href="#format-support">Format Support</a></li>
+<li><a class="reference internal" href="#format-specification">Format Specification</a><ul>
+<li><a class="reference internal" href="#blast-column-types">BLAST Column Types</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <span class="target" id="module-skbio.io.format.blast7"></span><section id="blast-7-format-skbio-io-format-blast7">
+<h1>BLAST+7 format (<a class="reference internal" href="#module-skbio.io.format.blast7" title="skbio.io.format.blast7"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast7</span></code></a>)<a class="headerlink" href="#blast-7-format-skbio-io-format-blast7" title="Permalink to this heading">¶</a></h1>
+<p>The BLAST+7 format (<code class="docutils literal notranslate"><span class="pre">blast+7</span></code>) stores the results of a BLAST <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> database
+search. This format is produced by both BLAST+ output
+format 7 and legacy BLAST output format 9. The results
+are stored in a simple tabular format with headers. Values are separated by the
+tab character.</p>
+<p>An example BLAST+7-formatted file comparing two nucleotide sequences, taken
+from <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (tab characters represented by <code class="docutils literal notranslate"><span class="pre">&lt;tab&gt;</span></code>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># BLASTN 2.2.18+
+# Query: gi|1786181|gb|AE000111.1|AE000111
+# Subject: ecoli
+# Fields: query acc., subject acc., evalue, q. start, q. end, s. start, s. end
+# 5 hits found
+AE000111&lt;tab&gt;AE000111&lt;tab&gt;0.0&lt;tab&gt;1&lt;tab&gt;10596&lt;tab&gt;1&lt;tab&gt;10596
+AE000111&lt;tab&gt;AE000174&lt;tab&gt;8e-30&lt;tab&gt;5565&lt;tab&gt;5671&lt;tab&gt;6928&lt;tab&gt;6821
+AE000111&lt;tab&gt;AE000394&lt;tab&gt;1e-27&lt;tab&gt;5587&lt;tab&gt;5671&lt;tab&gt;135&lt;tab&gt;219
+AE000111&lt;tab&gt;AE000425&lt;tab&gt;6e-26&lt;tab&gt;5587&lt;tab&gt;5671&lt;tab&gt;8552&lt;tab&gt;8468
+AE000111&lt;tab&gt;AE000171&lt;tab&gt;3e-24&lt;tab&gt;5587&lt;tab&gt;5671&lt;tab&gt;2214&lt;tab&gt;2130
+</pre></div>
+</div>
+</section>
+<section id="format-support">
+<h1>Format Support<a class="headerlink" href="#format-support" title="Permalink to this heading">¶</a></h1>
+<p><strong>Has Sniffer: Yes</strong></p>
+<p><strong>State: Experimental as of 0.4.1.</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reader</p></th>
+<th class="head"><p>Writer</p></th>
+<th class="head"><p>Object Class</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="format-specification">
+<h1>Format Specification<a class="headerlink" href="#format-specification" title="Permalink to this heading">¶</a></h1>
+<p>There are two BLAST+7 file formats supported by scikit-bio: BLAST+ output
+format 7 (<code class="docutils literal notranslate"><span class="pre">-outfmt</span> <span class="pre">7</span></code>) and legacy BLAST output format 9 (<code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">9</span></code>). Both file
+formats are structurally similar, with minor differences.</p>
+<p>Example BLAST+ output format 7 file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># BLASTP 2.2.31+</span>
+<span class="c1"># Query: query1</span>
+<span class="c1"># Subject: subject2</span>
+<span class="c1"># Fields: q. start, q. end, s. start, s. end, identical, mismatches, sbjctframe, query acc.ver, subject acc.ver</span>
+<span class="c1"># 2 hits found</span>
+<span class="mi">1</span>   <span class="mi">8</span>       <span class="mi">3</span>       <span class="mi">10</span>      <span class="mi">8</span>       <span class="mi">0</span>       <span class="mi">1</span>       <span class="n">query1</span>  <span class="n">subject2</span>
+<span class="mi">2</span>   <span class="mi">5</span>       <span class="mi">2</span>       <span class="mi">15</span>      <span class="mi">8</span>       <span class="mi">0</span>       <span class="mi">2</span>       <span class="n">query1</span>  <span class="n">subject2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Database searches without hits may occur in BLAST+ output format 7
+files. scikit-bio ignores these “empty” records:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># BLASTP 2.2.31+
+# Query: query1
+# Subject: subject1
+# 0 hits found
+</pre></div>
+</div>
+</div>
+<p>Example legacy BLAST output format 9 file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># BLASTN 2.2.3 [May-13-2002]
+# Database: other_vertebrate
+# Query: AF178033
+# Fields:
+Query id,Subject id,% identity,alignment length,mismatches,gap openings,q. start,q. end,s. start,s. end,e-value,bit score
+AF178033    EMORG:AF178033  100.00  811 0   0   1   811 1   811 0.0 1566.6
+AF178033    EMORG:AF031394  99.63   811 3   0   1   811 99  909 0.0 1542.8
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>scikit-bio requires fields to be consistent within a file.</p>
+</div>
+<section id="blast-column-types">
+<h2>BLAST Column Types<a class="headerlink" href="#blast-column-types" title="Permalink to this heading">¶</a></h2>
+<p>The following column types are output by BLAST and supported by scikit-bio.
+For more information on these column types, see <a class="reference internal" href="skbio.io.format.blast6.html#module-skbio.io.format.blast6" title="skbio.io.format.blast6"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast6</span></code></a>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Name</p></th>
+<th class="head"><p>DataFrame Column Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>query id</p></td>
+<td><p>qseqid</p></td>
+</tr>
+<tr class="row-odd"><td><p>query gi</p></td>
+<td><p>qgi</p></td>
+</tr>
+<tr class="row-even"><td><p>query acc.</p></td>
+<td><p>qacc</p></td>
+</tr>
+<tr class="row-odd"><td><p>query acc.ver</p></td>
+<td><p>qaccver</p></td>
+</tr>
+<tr class="row-even"><td><p>query length</p></td>
+<td><p>qlen</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject id</p></td>
+<td><p>sseqid</p></td>
+</tr>
+<tr class="row-even"><td><p>subject ids</p></td>
+<td><p>sallseqid</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject gi</p></td>
+<td><p>sgi</p></td>
+</tr>
+<tr class="row-even"><td><p>subject gis</p></td>
+<td><p>sallgi</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject acc.</p></td>
+<td><p>sacc</p></td>
+</tr>
+<tr class="row-even"><td><p>subject acc.ver</p></td>
+<td><p>saccver</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject accs</p></td>
+<td><p>sallacc</p></td>
+</tr>
+<tr class="row-even"><td><p>subject length</p></td>
+<td><p>slen</p></td>
+</tr>
+<tr class="row-odd"><td><p>q. start</p></td>
+<td><p>qstart</p></td>
+</tr>
+<tr class="row-even"><td><p>q. end</p></td>
+<td><p>qend</p></td>
+</tr>
+<tr class="row-odd"><td><p>s. start</p></td>
+<td><p>sstart</p></td>
+</tr>
+<tr class="row-even"><td><p>s. end</p></td>
+<td><p>send</p></td>
+</tr>
+<tr class="row-odd"><td><p>query seq</p></td>
+<td><p>qseq</p></td>
+</tr>
+<tr class="row-even"><td><p>subject seq</p></td>
+<td><p>sseq</p></td>
+</tr>
+<tr class="row-odd"><td><p>evalue</p></td>
+<td><p>evalue</p></td>
+</tr>
+<tr class="row-even"><td><p>bit score</p></td>
+<td><p>bitscore</p></td>
+</tr>
+<tr class="row-odd"><td><p>score</p></td>
+<td><p>score</p></td>
+</tr>
+<tr class="row-even"><td><p>alignment length</p></td>
+<td><p>length</p></td>
+</tr>
+<tr class="row-odd"><td><p>% identity</p></td>
+<td><p>pident</p></td>
+</tr>
+<tr class="row-even"><td><p>identical</p></td>
+<td><p>nident</p></td>
+</tr>
+<tr class="row-odd"><td><p>mismatches</p></td>
+<td><p>mismatch</p></td>
+</tr>
+<tr class="row-even"><td><p>positives</p></td>
+<td><p>positive</p></td>
+</tr>
+<tr class="row-odd"><td><p>gap opens</p></td>
+<td><p>gapopen</p></td>
+</tr>
+<tr class="row-even"><td><p>gaps</p></td>
+<td><p>gaps</p></td>
+</tr>
+<tr class="row-odd"><td><p>% positives</p></td>
+<td><p>ppos</p></td>
+</tr>
+<tr class="row-even"><td><p>query/sbjct frames</p></td>
+<td><p>frames</p></td>
+</tr>
+<tr class="row-odd"><td><p>query frame</p></td>
+<td><p>qframe</p></td>
+</tr>
+<tr class="row-even"><td><p>sbjct frame</p></td>
+<td><p>sframe</p></td>
+</tr>
+<tr class="row-odd"><td><p>BTOP</p></td>
+<td><p>btop</p></td>
+</tr>
+<tr class="row-even"><td><p>subject tax ids</p></td>
+<td><p>staxids</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject sci names</p></td>
+<td><p>sscinames</p></td>
+</tr>
+<tr class="row-even"><td><p>subject com names</p></td>
+<td><p>scomnames</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject blast names</p></td>
+<td><p>sblastnames</p></td>
+</tr>
+<tr class="row-even"><td><p>subject super
+kingdoms</p></td>
+<td><p>sskingdoms</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject title</p></td>
+<td><p>stitle</p></td>
+</tr>
+<tr class="row-even"><td><p>subject strand</p></td>
+<td><p>sstrand</p></td>
+</tr>
+<tr class="row-odd"><td><p>subject titles</p></td>
+<td><p>salltitles</p></td>
+</tr>
+<tr class="row-even"><td><p>% query coverage
+per subject</p></td>
+<td><p>qcovs</p></td>
+</tr>
+<tr class="row-odd"><td><p>% query coverage
+per hsp</p></td>
+<td><p>qcovhsp</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Suppose we have a BLAST+7 file:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio.io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s1">&#39;# BLASTN 2.2.18+&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;# Query: gi|1786181|gb|AE000111.1|AE000111&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;# Database: ecoli&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;# Fields: query acc., subject acc., evalue, q. start, q. end, s. start, s. end&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;# 5 hits found&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;AE000111</span><span class="se">\t</span><span class="s1">AE000111</span><span class="se">\t</span><span class="s1">0.0</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">10596</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">10596&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;AE000111</span><span class="se">\t</span><span class="s1">AE000174</span><span class="se">\t</span><span class="s1">8e-30</span><span class="se">\t</span><span class="s1">5565</span><span class="se">\t</span><span class="s1">5671</span><span class="se">\t</span><span class="s1">6928</span><span class="se">\t</span><span class="s1">6821&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;AE000111</span><span class="se">\t</span><span class="s1">AE000171</span><span class="se">\t</span><span class="s1">3e-24</span><span class="se">\t</span><span class="s1">5587</span><span class="se">\t</span><span class="s1">5671</span><span class="se">\t</span><span class="s1">2214</span><span class="se">\t</span><span class="s1">2130&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;AE000111</span><span class="se">\t</span><span class="s1">AE000425</span><span class="se">\t</span><span class="s1">6e-26</span><span class="se">\t</span><span class="s1">5587</span><span class="se">\t</span><span class="s1">5671</span><span class="se">\t</span><span class="s1">8552</span><span class="se">\t</span><span class="s1">8468&#39;</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read the file into a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> 
+<span class="go">       qacc      sacc        evalue  qstart     qend  sstart     send</span>
+<span class="go">0  AE000111  AE000111  0.000000e+00     1.0  10596.0     1.0  10596.0</span>
+<span class="go">1  AE000111  AE000174  8.000000e-30  5565.0   5671.0  6928.0   6821.0</span>
+<span class="go">2  AE000111  AE000171  3.000000e-24  5587.0   5671.0  2214.0   2130.0</span>
+<span class="go">3  AE000111  AE000425  6.000000e-26  5587.0   5671.0  8552.0   8468.0</span>
+</pre></div>
+</div>
+<p>Suppose we have a legacy BLAST 9 file:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio.io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s1">&#39;# BLASTN 2.2.3 [May-13-2002]&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;# Database: other_vertebrate&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;# Query: AF178033&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;# Fields: &#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;Query id,Subject id,</span><span class="si">% i</span><span class="s1">dentity,alignment length,mismatches,gap openings,q. start,q. end,s. start,s. end,e-value,bit score&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;AF178033</span><span class="se">\t</span><span class="s1">EMORG:AF178033</span><span class="se">\t</span><span class="s1">100.00</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">0.0</span><span class="se">\t</span><span class="s1">1566.6&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;AF178033</span><span class="se">\t</span><span class="s1">EMORG:AF178032</span><span class="se">\t</span><span class="s1">94.57</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">44</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">0.0</span><span class="se">\t</span><span class="s1">1217.7&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;AF178033</span><span class="se">\t</span><span class="s1">EMORG:AF178031</span><span class="se">\t</span><span class="s1">94.82</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">42</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">811</span><span class="se">\t</span><span class="s1">0.0</span><span class="se">\t</span><span class="s1">1233.5&#39;</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read the file into a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;qseqid&#39;</span><span class="p">,</span> <span class="s1">&#39;sseqid&#39;</span><span class="p">,</span> <span class="s1">&#39;pident&#39;</span><span class="p">]]</span> 
+<span class="go">     qseqid          sseqid  pident</span>
+<span class="go">0  AF178033  EMORG:AF178033  100.00</span>
+<span class="go">1  AF178033  EMORG:AF178032   94.57</span>
+<span class="go">2  AF178033  EMORG:AF178031   94.82</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Altschul, S.F., Gish, W., Miller, W., Myers, E.W. &amp; Lipman, D.J. (1990)
+“Basic local alignment search tool.” J. Mol. Biol. 215:403-410.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://www.ncbi.nlm.nih.gov/books/NBK279682/">http://www.ncbi.nlm.nih.gov/books/NBK279682/</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014--, scikit-bio development team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-6636235-9', 'scikit-bio.org');
+    ga('send', 'pageview');
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>skbio.stats.distance.permdisp &#8212; scikit-bio 0.5.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=0bf093e7" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=3923f442" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b8460c5c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/copybutton.js?v=26522df0"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skbio.stats.distance.bioenv" href="skbio.stats.distance.bioenv.html" />
+    <link rel="prev" title="skbio.stats.distance.permanova" href="skbio.stats.distance.permanova.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+  
+  <a href="https://github.com/biocore/scikit-bio"
+     class="visible-desktop hidden-xs"><img
+    id="gh-banner"
+    style="position: absolute; top: 50px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+    alt="Fork me on GitHub"></a>
+  <script>
+    // Adjust banner height.
+    $(function () {
+      var navHeight = $(".navbar .container").css("height");
+      $("#gh-banner").css("top", navHeight);
+    });
+  </script>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          scikit-bio docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.9</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../io.html">File I/O (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sequence.html">Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../alignment.html">Alignments (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.alignment</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tree.html">Tree representations (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workflow.html">Constructing workflows (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.workflow</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diversity.html">Diversity calculations (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../stats.html">Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata.html">Metadata (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.metadata</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">Utility functionality (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/api_stability.html">API Stability</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/coding_guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/new_module.html">Adding a new module to skbio</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">skbio.stats.distance.permdisp</a><ul>
+<li><a class="reference internal" href="#skbio.stats.distance.permdisp"><code class="docutils literal notranslate"><span class="pre">permdisp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="skbio-stats-distance-permdisp">
+<h1>skbio.stats.distance.permdisp<a class="headerlink" href="#skbio-stats-distance-permdisp" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="skbio.stats.distance.permdisp">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/biocore/scikit-bio/blob/0.5.9/skbio/stats/distance/_permdisp.py#L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test for Homogeneity of Multivariate Groups Disperisons using Marti</p>
+<p>State: Experimental as of 0.5.2.
+Anderson’s PERMDISP2 procedure.</p>
+<p>PERMDISP is a multivariate analogue of Levene’s test for homogeneity of
+multivariate variances. Distances are handled by reducing the
+original distances to principal coordinates. PERMDISP calculates an
+F-statistic to assess whether the dispersions between groups is significant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_matrix</strong> (<a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><em>DistanceMatrix</em></a><em> or </em><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html#skbio.stats.ordination.OrdinationResults" title="skbio.stats.ordination.OrdinationResults"><em>OrdinationResults</em></a>) – Distance matrix containing distances between objects (e.g., distances
+between samples of microbial communities) or
+result of pcoa on such a matrix.</p></li>
+<li><p><strong>grouping</strong> (<em>1-D array_like</em><em> or </em><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><em>pandas.DataFrame</em></a>) – Vector indicating the assignment of objects to groups. For example,
+these could be strings or integers denoting which group an object
+belongs to. If <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>, it must be the same
+length and in the same order as the objects in <cite>distance_matrix</cite>. If
+<cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, the column specified by <cite>column</cite> will be
+used as the grouping vector. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> must be indexed by the
+IDs in <cite>distance_matrix</cite> (i.e., the row labels must be distance matrix
+IDs), but the order of IDs between <cite>distance_matrix</cite> and the
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> need not be the same. All IDs in the distance matrix must
+be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Extra IDs in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> are
+allowed (they are ignored in the calculations).</p></li>
+<li><p><strong>column</strong> (<a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – Column name to use as the grouping vector if <cite>grouping</cite> is a
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Must be provided if <cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.
+Cannot be provided if <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>.</p></li>
+<li><p><strong>test</strong> (<em>{'centroid'</em><em>, </em><em>'median'}</em>) – determines whether the analysis is done using centroid or spaitial
+median.</p></li>
+<li><p><strong>permutations</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – Number of permutations to use when assessing statistical
+significance. Must be greater than or equal to zero. If zero,
+statistical significance calculations will be skipped and the p-value
+will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p></li>
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – Eigendecomposition method to use in performing PCoA.
+By default, uses SciPy’s <cite>eigh</cite>, which computes exact
+eigenvectors and eigenvalues for all dimensions. The alternate
+method, <cite>fsvd</cite>, uses faster heuristic eigendecomposition but loses
+accuracy. The magnitude of accuracy lost is dependent on dataset.
+Note that using <cite>fsvd</cite> is still considered experimental and
+should be used with care.
+Not used if distance_matrix is a OrdinationResults object.</p></li>
+<li><p><strong>number_of_dimensions</strong> (<a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – Dimensions to reduce the distance matrix to if using the <cite>fsvd</cite> method.
+Not used if the <cite>eigh</cite> method is being selected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Results of the statistical test, including <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">statistic</span></code> and
+<code class="docutils literal notranslate"><span class="pre">p-value</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.0.3)">pandas.Series</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – If, when using the spatial median test, the pcoa ordination is not of
+    type np.float32 or np.float64, the spatial median function will fail
+    and the centroid test should be used instead</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – If the test is not centroid or median,
+    or if method is not eigh or fsvd</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – If the distance matrix is not an instance of a
+    <code class="docutils literal notranslate"><span class="pre">skbio.DistanceMatrix</span></code>.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – If there is only one group</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – If a list and a column name are both provided</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – If a list is provided for <cite>grouping</cite> and it’s length does not match
+    the number of ids in distance_matrix</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – If all of the values in the grouping vector are unique</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#KeyError" title="(in Python v3.13)"><strong>KeyError</strong></a> – If there are ids in grouping that are not in distance_matrix</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="skbio.stats.distance.permanova.html#skbio.stats.distance.permanova" title="skbio.stats.distance.permanova"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permanova</span></code></a>, <a class="reference internal" href="skbio.stats.distance.anosim.html#skbio.stats.distance.anosim" title="skbio.stats.distance.anosim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anosim</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The significance of the results from this function will be the same as the
+results found in vegan’s betadisper, however due to floating point
+variability the F-statistic results may vary slightly.</p>
+<p>See <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for the original method reference, as well as
+<code class="docutils literal notranslate"><span class="pre">vegan::betadisper</span></code>, available in R’s vegan package <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<p class="rubric">References</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Anderson, Marti J. “Distance-Based Tests for Homogeneity of
+Multivariate Dispersions.” Biometrics 62 (2006):245-253</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://cran.r-project.org/web/packages/vegan/index.html">http://cran.r-project.org/web/packages/vegan/index.html</a></p>
+</aside>
+</aside>
+<p class="rubric">Examples</p>
+<p>Load a 6x6 distance matrix and grouping vector denoting 2 groups of
+objects:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span>    <span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>    <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">1</span><span class="p">,</span>    <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Run PERMDISP using 99 permutations to caluculate the p-value:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">permdisp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#make output deterministic, should not be included during normal use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic     ... 1.03...</span>
+<span class="go">p-value            ...</span>
+<span class="go">number of permutations          99</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>The return value is a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> object containing the results of
+the statistical test.</p>
+<p>To suppress calculation of the p-value and only obtain the F statistic,
+specify zero permutations:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic      ... 1.03...</span>
+<span class="go">p-value                        NaN</span>
+<span class="go">number of permutations           0</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>PERMDISP computes variances based on two types of tests, using either
+centroids or spatial medians, also commonly referred to as a geometric
+median. The spatial median is thought to yield a more robust test
+statistic, and this test is used by default. Spatial medians are computed
+using an iterative algorithm to find the optimally minimum point from all
+other points in a group while centroids are computed using a deterministic
+formula. As such the two different tests yeild slightly different F
+statistics.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;centroid&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic     ... 3.67...</span>
+<span class="go">p-value            ... 0.42...</span>
+<span class="go">number of permutations           6</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>You can also provide a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> and a column denoting the
+grouping instead of a grouping vector. The following DataFrame’s
+Grouping column specifies the same grouping as the vector we used in the
+previous examples.:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+<span class="gp">... </span>     <span class="p">{</span><span class="s1">&#39;Grouping&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;s1&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s1">&#39;s5&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">}})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Grouping&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;centroid&#39;</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic      ... 3.67...</span>
+<span class="go">p-value             ... 0.42...</span>
+<span class="go">number of permutations           6</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>Note that when providing a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, the ordering of rows and/or
+columns does not affect the grouping vector that is extracted. The
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> must be indexed by the distance matrix IDs (i.e., the row
+labels must be distance matrix IDs).</p>
+<p>If IDs (rows) are present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> but not in the distance
+matrix, they are ignored. The previous example’s <code class="docutils literal notranslate"><span class="pre">s7</span></code> ID illustrates this
+behavior: note that even though the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> had 7 objects, only 6
+were used in the test (see the “Sample size” row in the results above to
+confirm this). Thus, the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> can be a superset of the distance
+matrix IDs. Note that the reverse is not true: IDs in the distance matrix
+<em>must</em> be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> or an error will be raised.</p>
+<p>PERMDISP should be used to determine whether the dispersions between the
+groups in your distance matrix are significantly separated.
+A non-significant test result indicates that group dispersions are similar
+to each other. PERMANOVA or ANOSIM should then be used in conjunction to
+determine whether clustering within groups is significant.</p>
+</dd></dl>
+
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014--, scikit-bio development team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-6636235-9', 'scikit-bio.org');
+    ga('send', 'pageview');
+  </script>
+
+  </body>
+</html>
