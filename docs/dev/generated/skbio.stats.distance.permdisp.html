@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>skbio.stats.distance.permdisp &#8212; scikit-bio 0.5.10-dev documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.permdisp';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="canonical" href="scikit.bio/generated/skbio.stats.distance.permdisp.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skbio.stats.distance.bioenv" href="skbio.stats.distance.bioenv.html" />
+    <link rel="prev" title="skbio.stats.distance.permanova" href="skbio.stats.distance.permanova.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">scikit-bio is back in active development! Check out our <a href='https://github.com/scikit-bio/scikit-bio/discussions/1935'>announcement of revitalization</a>.</div>
+  </div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../io.html">
+                        File I/O (skbio.io)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
+                        Sequences (skbio.sequence)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
+                        Alignments (skbio.alignment)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tree.html">
+                        Tree representations (skbio.tree)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Constructing workflows (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
+                        Diversity calculations (skbio.diversity)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="../stats.html">
+                        Statistics (skbio.stats)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
+                        Metadata (skbio.metadata)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../util.html">
+                        Utility functionality (skbio.util)
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../io.html">
+                        File I/O (skbio.io)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
+                        Sequences (skbio.sequence)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
+                        Alignments (skbio.alignment)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tree.html">
+                        Tree representations (skbio.tree)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Constructing workflows (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
+                        Diversity calculations (skbio.diversity)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="../stats.html">
+                        Statistics (skbio.stats)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
+                        Metadata (skbio.metadata)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../util.html">
+                        Utility functionality (skbio.util)
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.distance.html">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html">skbio.stats.distance.DissimilarityMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html">skbio.stats.distance.DistanceMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.randdm.html">skbio.stats.distance.randdm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrixError.html">skbio.stats.distance.DissimilarityMatrixError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DistanceMatrixError.html">skbio.stats.distance.DistanceMatrixError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.MissingIDError.html">skbio.stats.distance.MissingIDError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.anosim.html">skbio.stats.distance.anosim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.permanova.html">skbio.stats.distance.permanova</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.distance.permdisp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.bioenv.html">skbio.stats.distance.bioenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.mantel.html">skbio.stats.distance.mantel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.pwmantel.html">skbio.stats.distance.pwmantel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.ordination.html">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.subsample_counts.html">skbio.stats.subsample_counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.isubsample.html">skbio.stats.isubsample</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../stats.html" class="nav-link">Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="skbio.stats.distance.html" class="nav-link">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">skbio.stats....</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="skbio-stats-distance-permdisp">
+<h1>skbio.stats.distance.permdisp<a class="headerlink" href="#skbio-stats-distance-permdisp" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="skbio.stats.distance.permdisp">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/stats/distance/_permdisp.py#L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
+<dd><p>Test for Homogeneity of Multivariate Groups Disperisons using Marti</p>
+<p>State: Experimental as of 0.5.2.
+Anderson’s PERMDISP2 procedure.</p>
+<p>PERMDISP is a multivariate analogue of Levene’s test for homogeneity of
+multivariate variances. Distances are handled by reducing the
+original distances to principal coordinates. PERMDISP calculates an
+F-statistic to assess whether the dispersions between groups is significant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>distance_matrix</strong><span class="classifier">DistanceMatrix or OrdinationResults</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
+between samples of microbial communities) or
+result of pcoa on such a matrix.</p>
+</dd>
+<dt><strong>grouping</strong><span class="classifier">1-D array_like or pandas.DataFrame</span></dt><dd><p>Vector indicating the assignment of objects to groups. For example,
+these could be strings or integers denoting which group an object
+belongs to. If <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>, it must be the same
+length and in the same order as the objects in <cite>distance_matrix</cite>. If
+<cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, the column specified by <cite>column</cite> will be
+used as the grouping vector. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> must be indexed by the
+IDs in <cite>distance_matrix</cite> (i.e., the row labels must be distance matrix
+IDs), but the order of IDs between <cite>distance_matrix</cite> and the
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> need not be the same. All IDs in the distance matrix must
+be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Extra IDs in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> are
+allowed (they are ignored in the calculations).</p>
+</dd>
+<dt><strong>column</strong><span class="classifier">str, optional</span></dt><dd><p>Column name to use as the grouping vector if <cite>grouping</cite> is a
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Must be provided if <cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.
+Cannot be provided if <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>.</p>
+</dd>
+<dt><strong>test</strong><span class="classifier">{‘centroid’, ‘median’}</span></dt><dd><p>determines whether the analysis is done using centroid or spaitial
+median.</p>
+</dd>
+<dt><strong>permutations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of permutations to use when assessing statistical
+significance. Must be greater than or equal to zero. If zero,
+statistical significance calculations will be skipped and the p-value
+will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>Eigendecomposition method to use in performing PCoA.
+By default, uses SciPy’s <cite>eigh</cite>, which computes exact
+eigenvectors and eigenvalues for all dimensions. The alternate
+method, <cite>fsvd</cite>, uses faster heuristic eigendecomposition but loses
+accuracy. The magnitude of accuracy lost is dependent on dataset.
+Note that using <cite>fsvd</cite> is still considered experimental and
+should be used with care.
+Not used if distance_matrix is a OrdinationResults object.</p>
+</dd>
+<dt><strong>number_of_dimensions</strong><span class="classifier">int, optional</span></dt><dd><p>Dimensions to reduce the distance matrix to if using the <cite>fsvd</cite> method.
+Not used if the <cite>eigh</cite> method is being selected.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>pandas.Series</dt><dd><p>Results of the statistical test, including <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">statistic</span></code> and
+<code class="docutils literal notranslate"><span class="pre">p-value</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TypeError</dt><dd><p>If, when using the spatial median test, the pcoa ordination is not of
+type np.float32 or np.float64, the spatial median function will fail
+and the centroid test should be used instead</p>
+</dd>
+<dt>ValueError</dt><dd><p>If the test is not centroid or median,
+or if method is not eigh or fsvd</p>
+</dd>
+<dt>TypeError</dt><dd><p>If the distance matrix is not an instance of a
+<code class="docutils literal notranslate"><span class="pre">skbio.DistanceMatrix</span></code>.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If there is only one group</p>
+</dd>
+<dt>ValueError</dt><dd><p>If a list and a column name are both provided</p>
+</dd>
+<dt>ValueError</dt><dd><p>If a list is provided for <cite>grouping</cite> and it’s length does not match
+the number of ids in distance_matrix</p>
+</dd>
+<dt>ValueError</dt><dd><p>If all of the values in the grouping vector are unique</p>
+</dd>
+<dt>KeyError</dt><dd><p>If there are ids in grouping that are not in distance_matrix</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.stats.distance.permanova.html#skbio.stats.distance.permanova" title="skbio.stats.distance.permanova"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permanova</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.anosim.html#skbio.stats.distance.anosim" title="skbio.stats.distance.anosim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anosim</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The significance of the results from this function will be the same as the
+results found in vegan’s betadisper, however due to floating point
+variability the F-statistic results may vary slightly.</p>
+<p>See <a class="reference internal" href="#r3b1907d8ea2e-1" id="id1">[1]</a> for the original method reference, as well as
+<code class="docutils literal notranslate"><span class="pre">vegan::betadisper</span></code>, available in R’s vegan package <a class="reference internal" href="#r3b1907d8ea2e-2" id="id2">[2]</a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r3b1907d8ea2e-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Anderson, Marti J. “Distance-Based Tests for Homogeneity of
+Multivariate Dispersions.” Biometrics 62 (2006):245-253</p>
+</div>
+<div class="citation" id="r3b1907d8ea2e-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://cran.r-project.org/web/packages/vegan/index.html">http://cran.r-project.org/web/packages/vegan/index.html</a></p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<p>Load a 6x6 distance matrix and grouping vector denoting 2 groups of
+objects:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span>    <span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>    <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">1</span><span class="p">,</span>    <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Run PERMDISP using 99 permutations to caluculate the p-value:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">permdisp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#make output deterministic, should not be included during normal use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic     ... 1.03...</span>
+<span class="go">p-value            ...</span>
+<span class="go">number of permutations          99</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>The return value is a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> object containing the results of
+the statistical test.</p>
+<p>To suppress calculation of the p-value and only obtain the F statistic,
+specify zero permutations:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic      ... 1.03...</span>
+<span class="go">p-value                        NaN</span>
+<span class="go">number of permutations           0</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>PERMDISP computes variances based on two types of tests, using either
+centroids or spatial medians, also commonly referred to as a geometric
+median. The spatial median is thought to yield a more robust test
+statistic, and this test is used by default. Spatial medians are computed
+using an iterative algorithm to find the optimally minimum point from all
+other points in a group while centroids are computed using a deterministic
+formula. As such the two different tests yeild slightly different F
+statistics.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;centroid&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic     ... 3.67...</span>
+<span class="go">p-value            ... 0.42...</span>
+<span class="go">number of permutations           6</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>You can also provide a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> and a column denoting the
+grouping instead of a grouping vector. The following DataFrame’s
+Grouping column specifies the same grouping as the vector we used in the
+previous examples.:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+<span class="gp">... </span>     <span class="p">{</span><span class="s1">&#39;Grouping&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;s1&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s1">&#39;s5&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">}})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Grouping&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;centroid&#39;</span><span class="p">)</span>
+<span class="go">method name               PERMDISP</span>
+<span class="go">test statistic name        F-value</span>
+<span class="go">sample size                      6</span>
+<span class="go">number of groups                 2</span>
+<span class="go">test statistic      ... 3.67...</span>
+<span class="go">p-value             ... 0.42...</span>
+<span class="go">number of permutations           6</span>
+<span class="go">Name: PERMDISP results, dtype: object</span>
+</pre></div>
+</div>
+<p>Note that when providing a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, the ordering of rows and/or
+columns does not affect the grouping vector that is extracted. The
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> must be indexed by the distance matrix IDs (i.e., the row
+labels must be distance matrix IDs).</p>
+<p>If IDs (rows) are present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> but not in the distance
+matrix, they are ignored. The previous example’s <code class="docutils literal notranslate"><span class="pre">s7</span></code> ID illustrates this
+behavior: note that even though the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> had 7 objects, only 6
+were used in the test (see the “Sample size” row in the results above to
+confirm this). Thus, the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> can be a superset of the distance
+matrix IDs. Note that the reverse is not true: IDs in the distance matrix
+<em>must</em> be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> or an error will be raised.</p>
+<p>PERMDISP should be used to determine whether the dispersions between the
+groups in your distance matrix are significantly separated.
+A non-significant test result indicates that group dispersions are similar
+to each other. PERMANOVA or ANOSIM should then be used in conjunction to
+determine whether clustering within groups is significant.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="skbio.stats.distance.permanova.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">skbio.stats.distance.permanova</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skbio.stats.distance.bioenv.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">skbio.stats.distance.bioenv</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.distance.permdisp"><code class="docutils literal notranslate"><span class="pre">permdisp()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

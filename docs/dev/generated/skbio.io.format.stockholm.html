@@ -1,0 +1,1251 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Stockholm format (skbio.io.format.stockholm) &#8212; scikit-bio 0.5.10-dev documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.stockholm';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="canonical" href="scikit.bio/generated/skbio.io.format.stockholm.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Taxdump format (skbio.io.format.taxdump)" href="skbio.io.format.taxdump.html" />
+    <link rel="prev" title="QSeq format (skbio.io.format.qseq)" href="skbio.io.format.qseq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">scikit-bio is back in active development! Check out our <a href='https://github.com/scikit-bio/scikit-bio/discussions/1935'>announcement of revitalization</a>.</div>
+  </div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="../io.html">
+                        File I/O (skbio.io)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
+                        Sequences (skbio.sequence)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
+                        Alignments (skbio.alignment)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tree.html">
+                        Tree representations (skbio.tree)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Constructing workflows (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
+                        Diversity calculations (skbio.diversity)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../stats.html">
+                        Statistics (skbio.stats)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
+                        Metadata (skbio.metadata)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../util.html">
+                        Utility functionality (skbio.util)
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="../io.html">
+                        File I/O (skbio.io)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
+                        Sequences (skbio.sequence)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
+                        Alignments (skbio.alignment)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tree.html">
+                        Tree representations (skbio.tree)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Constructing workflows (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
+                        Diversity calculations (skbio.diversity)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../stats.html">
+                        Statistics (skbio.stats)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
+                        Metadata (skbio.metadata)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../util.html">
+                        Utility functionality (skbio.util)
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.binary_dm.html">Simple binary dissimilarity matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.binary_dm</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.blast6.html">BLAST+6 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast6</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.blast7.html">BLAST+7 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast7</span></code>)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.clustal.html">Clustal format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.clustal</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.embl.html">EMBL format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.embl</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.fasta.html">FASTA/QUAL format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.fasta</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.fastq.html">FASTQ format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.fastq</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.genbank.html">GenBank format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.genbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.gff3.html">GFF3 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.gff3</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.lsmat.html">Labeled square matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.lsmat</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.newick.html">Newick format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.newick</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.ordination.html">Ordination results format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.ordination</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.phylip.html">PHYLIP multiple sequence alignment format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.qseq.html">QSeq format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.qseq</span></code>)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.taxdump.html">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.registry.write.html">skbio.io.registry.write</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.registry.read.html">skbio.io.registry.read</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.registry.sniff.html">skbio.io.registry.sniff</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.FormatIdentificationWarning.html">skbio.io.FormatIdentificationWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.ArgumentOverrideWarning.html">skbio.io.ArgumentOverrideWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.UnrecognizedFormatError.html">skbio.io.UnrecognizedFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.IOSourceError.html">skbio.io.IOSourceError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.FileFormatError.html">skbio.io.FileFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.BLAST7FormatError.html">skbio.io.BLAST7FormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.ClustalFormatError.html">skbio.io.ClustalFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.EMBLFormatError.html">skbio.io.EMBLFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.FASTAFormatError.html">skbio.io.FASTAFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.FASTQFormatError.html">skbio.io.FASTQFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.GenBankFormatError.html">skbio.io.GenBankFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.GFF3FormatError.html">skbio.io.GFF3FormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.LSMatFormatError.html">skbio.io.LSMatFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.NewickFormatError.html">skbio.io.NewickFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.OrdinationFormatError.html">skbio.io.OrdinationFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.PhylipFormatError.html">skbio.io.PhylipFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.QSeqFormatError.html">skbio.io.QSeqFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.QUALFormatError.html">skbio.io.QUALFormatError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.StockholmFormatError.html">skbio.io.StockholmFormatError</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.registry.html">I/O Registry (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.registry</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.util.html">I/O utils (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.util</span></code>)</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../io.html" class="nav-link">File I/O (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code>)</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Stockholm...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="stockholm-format-skbio-io-format-stockholm">
+<span id="module-skbio.io.format.stockholm"></span><h1>Stockholm format (<a class="reference internal" href="#module-skbio.io.format.stockholm" title="skbio.io.format.stockholm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code></a>)<a class="headerlink" href="#stockholm-format-skbio-io-format-stockholm" title="Link to this heading">#</a></h1>
+<p>The Stockholm format is a multiple sequence alignment format (MSA) that
+optionally supports storing arbitrary alignment features (metadata). Features
+can be placed into four different categories: GF, GS, GR, and GC (described in
+more detail below).</p>
+<p>An example Stockholm file, taken from <a class="reference internal" href="#r583799db7b1d-1" id="id1">[1]</a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># STOCKHOLM 1.0
+#=GF ID    UPSK
+#=GF SE    Predicted; Infernal
+#=GF SS    Published; PMID 9223489
+#=GF RN    [1]
+#=GF RM    9223489
+#=GF RT    The role of the pseudoknot at the 3&#39; end of turnip yellow mosaic
+#=GF RT    virus RNA in minus-strand synthesis by the viral RNA-dependent RNA
+#=GF RT    polymerase.
+#=GF RA    Deiman BA, Kortlever RM, Pleij CW;
+#=GF RL    J Virol 1997;71:5990-5996.
+AF035635.1/619-641             UGAGUUCUCGAUCUCUAAAAUCG
+M24804.1/82-104                UGAGUUCUCUAUCUCUAAAAUCG
+J04373.1/6212-6234             UAAGUUCUCGAUCUUUAAAAUCG
+M24803.1/1-23                  UAAGUUCUCGAUCUCUAAAAUCG
+#=GC SS_cons                   .AAA....&lt;&lt;&lt;&lt;aaa....&gt;&gt;&gt;&gt;
+//
+</pre></div>
+</div>
+<section id="format-support">
+<h2>Format Support<a class="headerlink" href="#format-support" title="Link to this heading">#</a></h2>
+<p><strong>Has Sniffer: Yes</strong></p>
+<p><strong>State: Experimental as of 0.4.2.</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reader</p></th>
+<th class="head"><p>Writer</p></th>
+<th class="head"><p>Object Class</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.alignment.TabularMSA</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="format-specification">
+<h2>Format Specification<a class="headerlink" href="#format-specification" title="Link to this heading">#</a></h2>
+<p>The Stockholm format consists of a header, a multiple sequence alignment,
+associated metadata (features), and a footer.</p>
+<section id="header">
+<h3>Header<a class="headerlink" href="#header" title="Link to this heading">#</a></h3>
+<p>The first line of a Stockholm file must be the following header:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># STOCKHOLM 1.0
+</pre></div>
+</div>
+</section>
+<section id="multiple-sequence-alignment">
+<h3>Multiple Sequence Alignment<a class="headerlink" href="#multiple-sequence-alignment" title="Link to this heading">#</a></h3>
+<p>Sequence lines consist of a sequence name, followed by whitespace, followed by
+the aligned sequence. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq1</span> <span class="n">ACG</span><span class="o">-</span><span class="n">T</span><span class="o">-</span><span class="n">GGT</span>
+<span class="n">seq2</span> <span class="n">ACCGTTCG</span><span class="o">-</span>
+</pre></div>
+</div>
+<p>Sequence names (<code class="docutils literal notranslate"><span class="pre">seq1</span></code>, <code class="docutils literal notranslate"><span class="pre">seq2</span></code>) are stored in the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code>
+<code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>scikit-bio currently supports reading Stockholm files where each
+sequence is contained on a single line. Interleaved/wrap-around Stockholm
+files are not supported. When writing, each sequence will be placed on its
+own line.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Sequence names must be unique in the Stockholm file. Likewise,
+when writing from a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code> must be unique.</p>
+</div>
+</section>
+<section id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h3>
+<p>Stockholm files support storing arbitrary metadata (features) about the MSA.
+All metadata described in the following sections are optional and may appear in
+any order. Metadata “mark-up” lines begin with either <code class="docutils literal notranslate"><span class="pre">#=GF</span></code>, <code class="docutils literal notranslate"><span class="pre">#=GS</span></code>,
+<code class="docutils literal notranslate"><span class="pre">#=GR</span></code>, or <code class="docutils literal notranslate"><span class="pre">#=GC</span></code>, and each line describes a single feature of the
+alignment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stockholm format supports generic features. <a class="reference internal" href="#r583799db7b1d-1" id="id2">[1]</a> and <a class="reference internal" href="#r583799db7b1d-2" id="id3">[2]</a> provide a
+list of common features output by Pfam/Rfam. scikit-bio does not
+require that these features are present. These features are processed in the
+same way as any arbitrary feature would be, as a simple key-value pair of
+strings. When writing, feature names, feature data, and sequence names are
+converted to type <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When writing a Stockholm file, scikit-bio will place the metadata in
+the format’s recommended order:</p>
+<ul class="simple">
+<li><p>GF: Above the alignment</p></li>
+<li><p>GS: Above the alignment (after GF)</p></li>
+<li><p>GR: Below corresponding sequence</p></li>
+<li><p>GC: Below the alignment</p></li>
+</ul>
+</div>
+<section id="gf-metadata">
+<h4>GF metadata<a class="headerlink" href="#gf-metadata" title="Link to this heading">#</a></h4>
+<p>Data relating to the multiple sequence alignment as a whole, such as authors or
+number of sequences in the alignment. Starts with <code class="docutils literal notranslate"><span class="pre">#=GF</span></code> followed by a
+feature name and data relating to the feature. Typically comes first in a
+Stockholm file.</p>
+<p>For example (taken from <a class="reference internal" href="#r583799db7b1d-2" id="id4">[2]</a>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#=GF DE CBS domain
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">DE</span></code> is the feature name and <code class="docutils literal notranslate"><span class="pre">CBS</span> <span class="pre">Domain</span></code> is the feature data.</p>
+<p>GF metadata is stored in the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> <code class="docutils literal notranslate"><span class="pre">metadata</span></code> dictionary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When reading, duplicate GF feature names will have their values
+concatenated in the order they appear in the file. Concatenation will
+also add a space between lines if one isn’t already there in order to avoid
+joining words together. When writing, each GF feature will be placed on its
+own line, regardless of length.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Trees labelled with <code class="docutils literal notranslate"><span class="pre">NH</span></code>/<code class="docutils literal notranslate"><span class="pre">TN</span></code> are handled differently than other
+GF features. When reading a Stockholm file with these features, the reader
+follows the rules described in <a class="reference internal" href="#r583799db7b1d-2" id="id5">[2]</a>. Trees split over multiple lines will
+have their values concatenated. Unlike other GF features, trees will never
+have a space added when they are concatenated.</p>
+<p>A single tree without an identifier will be stored as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;NH&#39;</span><span class="p">:</span> <span class="s1">&#39;tree in NHX format&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A single tree with an identifier will be stored as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;NH&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;tree-id&#39;</span><span class="p">:</span> <span class="s1">&#39;tree in NHX format&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Multiple trees (which must have identifiers) will be stored as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;NH&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;tree-id-1&#39;</span><span class="p">:</span> <span class="s1">&#39;tree in NHX format&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tree-id-2&#39;</span><span class="p">:</span> <span class="s1">&#39;tree in NHX format&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>References labelled with <code class="docutils literal notranslate"><span class="pre">RN</span></code>/<code class="docutils literal notranslate"><span class="pre">RM</span></code>/<code class="docutils literal notranslate"><span class="pre">RT</span></code>/<code class="docutils literal notranslate"><span class="pre">RA</span></code>/<code class="docutils literal notranslate"><span class="pre">RL</span></code>/<code class="docutils literal notranslate"><span class="pre">RC</span></code>
+are handled differently than other GF features. When reading a Stockholm
+file with these features, the reader populates a list of dictionaries,
+where each dictionary represents a single reference. The list contains
+references in the order they appear in the file, regardless of the value
+provided for <code class="docutils literal notranslate"><span class="pre">RN</span></code>. If a reference does not include all possible reference
+tags (e.g. <code class="docutils literal notranslate"><span class="pre">RC</span></code> is missing), the dictionary will only contain the
+reference tags present for that reference. When writing, the writer adds a
+reference number (<code class="docutils literal notranslate"><span class="pre">RN</span></code>) line before writing each reference, for example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#=GF RN [1]
+#=GF RA Kestrel Gorlick
+...
+#=GF RN [2]
+...
+</pre></div>
+</div>
+<p>References will be stored as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;RN&#39;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s1">&#39;RM&#39;</span><span class="p">:</span> <span class="s1">&#39;reference medline&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;RT&#39;</span><span class="p">:</span> <span class="s1">&#39;reference title&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;RA&#39;</span><span class="p">:</span> <span class="s1">&#39;reference author&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;RL&#39;</span><span class="p">:</span> <span class="s1">&#39;reference location&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;RC&#39;</span><span class="p">:</span> <span class="s1">&#39;reference comment&#39;</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s1">&#39;RM&#39;</span><span class="p">:</span> <span class="s1">&#39;reference medline&#39;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="gs-metadata">
+<h4>GS metadata<a class="headerlink" href="#gs-metadata" title="Link to this heading">#</a></h4>
+<p>Data relating to a specific sequence in the multiple sequence alignment.
+Starts with <code class="docutils literal notranslate"><span class="pre">#=GS</span></code> followed by the sequence name followed by a feature name
+and data relating to the feature. Typically comes after GF metadata in a
+Stockholm file.</p>
+<p>For example (taken from <a class="reference internal" href="#r583799db7b1d-2" id="id6">[2]</a>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#=GS O83071/259-312 AC O83071
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">O83071/259-312</span></code> is the sequence name, <code class="docutils literal notranslate"><span class="pre">AC</span></code> is the feature name, and
+<code class="docutils literal notranslate"><span class="pre">083071</span></code> is the feature data.</p>
+<p>GS metadata is stored in the sequence-specific <code class="docutils literal notranslate"><span class="pre">metadata</span></code> dictionary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When reading, duplicate GS feature names will have their values
+concatenated in the order they appear in the file. Concatenation will
+also add a space between lines if one isn’t already there in order to avoid
+joining words together. When writing, each GS feature will be placed on its
+own line, regardless of length.</p>
+</div>
+</section>
+<section id="gr-metadata">
+<h4>GR metadata<a class="headerlink" href="#gr-metadata" title="Link to this heading">#</a></h4>
+<p>Data relating to the columns of a specific sequence in a multiple sequence
+alignment. Starts with <code class="docutils literal notranslate"><span class="pre">#=GR</span></code> followed by the sequence name followed by a
+feature name and data relating to the feature, one character per column.
+Typically comes after the sequence line it relates to.</p>
+<p>For example (taken from <a class="reference internal" href="#r583799db7b1d-2" id="id7">[2]</a>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#=GR O31698/18-71 SS    CCCHHHHHHHHHHHHHHH..EEEEEEEE....EEEEEEEEHHH
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">O31698/18-71</span></code> is the sequence name, <code class="docutils literal notranslate"><span class="pre">SS</span></code> is the feature name, and
+<code class="docutils literal notranslate"><span class="pre">CCCHHHHHHHHHHHHHHH..EEEEEEEE....EEEEEEEEHHH</span></code> is the feature data.</p>
+<p>GR metadata is stored in sequence-specific <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Duplicate GR feature names attributed to a single sequence are
+disallowed.</p>
+</div>
+</section>
+<section id="gc-metadata">
+<h4>GC metadata<a class="headerlink" href="#gc-metadata" title="Link to this heading">#</a></h4>
+<p>Data relating to the columns of the multiple sequence alignment as a whole.
+Starts with <code class="docutils literal notranslate"><span class="pre">#=GC</span></code> followed by a feature name and data relating to the
+feature, one character per column. Typically comes at the end of the multiple
+sequence alignment.</p>
+<p>For example (taken from <a class="reference internal" href="#r583799db7b1d-2" id="id8">[2]</a>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#=GC SS_cons            CCCCCHHHHHHHHHHHHH..EEEEEEEE....EEEEEEEEEEH
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">SS_cons</span></code> is the feature name and
+<code class="docutils literal notranslate"><span class="pre">CCCCCHHHHHHHHHHHHH..EEEEEEEE....EEEEEEEEEEH</span></code> is the feature data.</p>
+<p>GC metadata is stored in <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Duplicate GC feature names are disallowed.</p>
+</div>
+</section>
+</section>
+<section id="footer">
+<h3>Footer<a class="headerlink" href="#footer" title="Link to this heading">#</a></h3>
+<p>The final line of a Stockholm file must be the following footer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>scikit-bio currently supports reading a Stockholm file containing a
+single MSA. If the file contains more than one MSA, only the first MSA will
+be read into a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="format-parameters">
+<h2>Format Parameters<a class="headerlink" href="#format-parameters" title="Link to this heading">#</a></h2>
+<p>The only supported format parameter is <code class="docutils literal notranslate"><span class="pre">constructor</span></code>, which specifies the
+type of in-memory sequence object to read each aligned sequence into. This must
+be a subclass of <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">DNA</span></code>, <code class="docutils literal notranslate"><span class="pre">RNA</span></code>, <code class="docutils literal notranslate"><span class="pre">Protein</span></code>)
+and is a required format parameter. For example, if you know that the Stockholm
+file you’re reading contains DNA sequences, you would pass <code class="docutils literal notranslate"><span class="pre">constructor=DNA</span></code>
+to the reader call.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<p>Suppose we have a Stockholm file containing an MSA of protein sequences
+(modified from <a class="reference internal" href="#r583799db7b1d-2" id="id9">[2]</a>):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio.io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">Protein</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+<span class="gp">... </span>        <span class="s1">&#39;# STOCKHOLM 1.0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GF CC CBS domains are small intracellular modules mostly&#39;</span>
+<span class="gp">... </span>        <span class="s1">&#39; found&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GF CC in 2 or four copies within a protein.&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GS O83071/192-246 AC O83071&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GS O31698/88-139 OS Bacillus subtilis&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;O83071/192-246          MTCRAQLIAVPRASSLAE..AIACAQKM....RVSRV&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GR O83071/192-246 SA  999887756453524252..55152525....36463&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;O83071/259-312          MQHVSAPVFVFECTRLAY..VQHKLRAH....SRAVA&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;O31698/18-71            MIEADKVAHVQVGNNLEH..ALLVLTKT....GYTAI&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;O31698/88-139           EVMLTDIPRLHINDPIMK..GFGMVINN......GFV&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;O31699/88-139           EVMLTDIPRLHINDPIMK..GFGMVINN......GFV&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GR O31699/88-139 AS   ________________*____________________&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GR O31699/88-139 IN   ____________1______________2_________&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;#=GC SS_cons            CCCCCHHHHHHHHHHHHH..EEEEEEEE....EEEEE&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;//&#39;</span>
+<span class="gp">... </span>    <span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">Protein</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> 
+<span class="go">TabularMSA[Protein]</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;CC&#39;: &#39;CBS domains are small intracellular modules mostly found in</span>
+<span class="go">           2 or four copies within a protein.&#39;</span>
+<span class="go">Positional metadata:</span>
+<span class="go">    &#39;SS_cons&#39;: &lt;dtype: object&gt;</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 5</span>
+<span class="go">    position count: 37</span>
+<span class="go">----------------------------------------------------------------------</span>
+<span class="go">MTCRAQLIAVPRASSLAE..AIACAQKM....RVSRV</span>
+<span class="go">MQHVSAPVFVFECTRLAY..VQHKLRAH....SRAVA</span>
+<span class="go">MIEADKVAHVQVGNNLEH..ALLVLTKT....GYTAI</span>
+<span class="go">EVMLTDIPRLHINDPIMK..GFGMVINN......GFV</span>
+<span class="go">EVMLTDIPRLHINDPIMK..GFGMVINN......GFV</span>
+</pre></div>
+</div>
+<p>The sequence names are stored in the <code class="docutils literal notranslate"><span class="pre">index</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
+<span class="go">Index([&#39;O83071/192-246&#39;, &#39;O83071/259-312&#39;, &#39;O31698/18-71&#39;, &#39;O31698/88-139&#39;,</span>
+<span class="go">       &#39;O31699/88-139&#39;],</span>
+<span class="go">      dtype=&#39;object&#39;)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> has GF metadata stored in its <code class="docutils literal notranslate"><span class="pre">metadata</span></code> dictionary:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">metadata</span>
+<span class="go">OrderedDict([(&#39;CC&#39;, &#39;CBS domains are small intracellular modules mostly found in 2 or four copies within a protein.&#39;)])</span>
+</pre></div>
+</div>
+<p>GC metadata is stored in the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">positional_metadata</span>  
+<span class="go">   SS_cons</span>
+<span class="go">0        C</span>
+<span class="go">1        C</span>
+<span class="go">2        C</span>
+<span class="go">3        C</span>
+<span class="go">4        C</span>
+<span class="go">5        H</span>
+<span class="go">6        H</span>
+<span class="go">7        H</span>
+<span class="go">8        H</span>
+<span class="go">9        H</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>GS metadata is stored in the sequence-specific <code class="docutils literal notranslate"><span class="pre">metadata</span></code> dictionary:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span>
+<span class="go">OrderedDict([(&#39;AC&#39;, &#39;O83071&#39;)])</span>
+</pre></div>
+</div>
+<p>GR metadata is stored in sequence-specific <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">positional_metadata</span>  
+<span class="go">   AS IN</span>
+<span class="go">0   _  _</span>
+<span class="go">1   _  _</span>
+<span class="go">2   _  _</span>
+<span class="go">3   _  _</span>
+<span class="go">4   _  _</span>
+<span class="go">5   _  _</span>
+<span class="go">6   _  _</span>
+<span class="go">7   _  _</span>
+<span class="go">8   _  _</span>
+<span class="go">9   _  _</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Let’s write this <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> in Stockholm format:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;stockholm&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fh</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+<span class="go"># STOCKHOLM 1.0</span>
+<span class="go">#=GF CC CBS domains are small intracellular modules mostly found in 2 or four copies within a protein.</span>
+<span class="go">#=GS O83071/192-246 AC O83071</span>
+<span class="go">#=GS O31698/88-139 OS Bacillus subtilis</span>
+<span class="go">O83071/192-246         MTCRAQLIAVPRASSLAE..AIACAQKM....RVSRV</span>
+<span class="go">#=GR O83071/192-246 SA 999887756453524252..55152525....36463</span>
+<span class="go">O83071/259-312         MQHVSAPVFVFECTRLAY..VQHKLRAH....SRAVA</span>
+<span class="go">O31698/18-71           MIEADKVAHVQVGNNLEH..ALLVLTKT....GYTAI</span>
+<span class="go">O31698/88-139          EVMLTDIPRLHINDPIMK..GFGMVINN......GFV</span>
+<span class="go">O31699/88-139          EVMLTDIPRLHINDPIMK..GFGMVINN......GFV</span>
+<span class="go">#=GR O31699/88-139 AS  ________________*____________________</span>
+<span class="go">#=GR O31699/88-139 IN  ____________1______________2_________</span>
+<span class="go">#=GC SS_cons           CCCCCHHHHHHHHHHHHH..EEEEEEEE....EEEEE</span>
+<span class="go">//</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<div role="list" class="citation-list">
+<div class="citation" id="r583799db7b1d-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Stockholm_format">https://en.wikipedia.org/wiki/Stockholm_format</a></p>
+</div>
+<div class="citation" id="r583799db7b1d-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id5">3</a>,<a role="doc-backlink" href="#id6">4</a>,<a role="doc-backlink" href="#id7">5</a>,<a role="doc-backlink" href="#id8">6</a>,<a role="doc-backlink" href="#id9">7</a>)</span>
+<p><a class="reference external" href="http://sonnhammer.sbc.su.se/Stockholm.html">http://sonnhammer.sbc.su.se/Stockholm.html</a></p>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="skbio.io.format.qseq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">QSeq format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.qseq</span></code>)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skbio.io.format.taxdump.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-support">Format Support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-specification">Format Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#header">Header</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-sequence-alignment">Multiple Sequence Alignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gf-metadata">GF metadata</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gs-metadata">GS metadata</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gr-metadata">GR metadata</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gc-metadata">GC metadata</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#footer">Footer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-parameters">Format Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

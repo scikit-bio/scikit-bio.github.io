@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documentation guidelines &#8212; scikit-bio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=76225de9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devdoc/doc_guide';</script>
+    <link rel="canonical" href="scikit.bio/devdoc/doc_guide.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Adding a new module" href="new_module.html" />
+    <link rel="prev" title="Coding guidelines" href="code_guide.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">scikit-bio is back in active development! Check out our <a href='https://github.com/scikit-bio/scikit-bio/discussions/1935'>announcement of revitalization</a>.</div>
+  </div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio"/>
+    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../contribute.html" class="nav-link">Contribute to scikit-bio</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Documentatio...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="documentation-guidelines">
+<h1>Documentation guidelines<a class="headerlink" href="#documentation-guidelines" title="Link to this heading">#</a></h1>
+<p>This guide contains instructions for building the scikit-bio documentation, as well as guidelines for contributing to the documentation. If you would like to contribute to the documentation, whether by adding something entirely new or by modifying existing documentation, please first review <a class="reference internal" href="../contribute.html"><span class="doc">Contribute to scikit-bio</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you’re only interested in viewing the scikit-bio documentation, please visit the <a class="reference external" href="../docs/dev/index.html">documentation site</a>.</p>
+</div>
+<section id="build-the-documentation">
+<h2>Build the documentation<a class="headerlink" href="#build-the-documentation" title="Link to this heading">#</a></h2>
+<p>To build the documentation, you’ll need a scikit-bio development environment set up. See <a class="reference internal" href="../contribute.html"><span class="doc">Contribute to scikit-bio</span></a> for instructions. In addition, you will also need to install <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> and relevant extensions within the same environment for the documentation, you can do that with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The documentation will be built for whatever version of scikit-bio is <em>currently installed</em> on your system (i.e., the version imported by <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">skbio</span></code>). This may not match the code located in this repository. You will need to either install this version of scikit-bio somewhere (e.g., in a virtualenv) or point your <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> environment variable to this code, <em>before</em> building the documentation.</p>
+</div>
+<p>To build the documentation, assuming you are at the top-level scikit-bio directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">C</span> <span class="n">doc</span> <span class="n">clean</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>The built HTML documentation will be at <code class="docutils literal notranslate"><span class="pre">doc/build/html/index.html</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before submitting your changes, ensure that the documentation builds without errors or warnings.</p>
+</div>
+</section>
+<section id="docstring-style">
+<h2>Docstring style<a class="headerlink" href="#docstring-style" title="Link to this heading">#</a></h2>
+<p>Most of scikit-bio’s API documentation is automatically generated from <a class="reference external" href="https://legacy.python.org/dev/peps/pep-0257/#what-is-a-docstring">docstrings</a>.
+The advantage to this approach is that users can access the documentation in an interactive Python session or from our website as HTML. Other output formats are also possible, such as PDF.</p>
+<p>scikit-bio docstrings follow the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc style guide</a>. This ensures that the docstrings are easily readable both from the interpreter and HTML, PDF, etc. Please read the numpydoc guidelines before continuing.</p>
+</section>
+<section id="documenting-a-module">
+<h2>Documenting a module<a class="headerlink" href="#documenting-a-module" title="Link to this heading">#</a></h2>
+<p>In addition to following the numpydoc conventions for docstrings, we have a few more conventions that will ensure your documentation is correctly built and
+linked within our website, and that it maintains consistency with the rest of the scikit-bio docs.</p>
+<p>The easiest way to get started with documenting your code is to look at the docstrings in existing scikit-bio modules. A couple of modules to start with are <code class="docutils literal notranslate"><span class="pre">skbio.sequence</span></code> and <code class="docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>. Go ahead and look through those now. We’ve structured our docs in a similar way to <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">SciPy’s documentation</a>, so that may be another good place to look for examples.</p>
+<p>We’ll take a top-down approach by discussing how to document a new module that you’d like to add to scikit-bio (let’s call it <code class="docutils literal notranslate"><span class="pre">skbio/example.py</span></code>).</p>
+<section id="module-docstring">
+<h3>Module docstring<a class="headerlink" href="#module-docstring" title="Link to this heading">#</a></h3>
+<p>The first thing you’ll need to add is a docstring for the module. The docstring must start at the first line of the file. It should start with a title for the module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Documentation examples (:mod:`skbio.example`)</span>
+<span class="s2">=============================================</span>
+</pre></div>
+</div>
+<p>It is important to include the <code class="docutils literal notranslate"><span class="pre">:mod:</span></code> Sphinx directive in the title, as this title will be included in the table of contents. Also make sure that the title underline is the same length as the title.</p>
+<p>We also need to include another Sphinx directive below this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">currentmodule</span><span class="p">::</span> <span class="n">skbio</span><span class="o">.</span><span class="n">example</span>
+</pre></div>
+</div>
+<p>This directive tells Sphinx that other classes, functions, etc. that we will reference are located in the <code class="docutils literal notranslate"><span class="pre">skbio.example</span></code> module.</p>
+<p>Next, include a more detailed description of the module. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">module</span> <span class="n">consists</span> <span class="n">of</span> <span class="n">several</span> <span class="n">example</span> <span class="n">classes</span> <span class="ow">and</span> <span class="n">functions</span> <span class="n">to</span> <span class="n">illustrate</span>
+<span class="n">the</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span> <span class="n">documentation</span> <span class="n">system</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Following that, list any classes, functions, and exceptions that you’d like documentation generated for. Note that you do <em>not</em> need to include every single class, function, or exception that is defined in the module. Also, you do not need to list class methods, as those will be automatically included in the generated class documentation. Only include objects that should be exposed as part of the public API.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Classes</span>
+<span class="o">-------</span>
+
+<span class="o">..</span> <span class="n">autosummary</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">toctree</span><span class="p">:</span> <span class="n">generated</span><span class="o">/</span>
+
+   <span class="n">ExampleClass1</span>
+   <span class="n">ExampleClass2</span>
+
+<span class="n">Functions</span>
+<span class="o">---------</span>
+
+<span class="o">..</span> <span class="n">autosummary</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">toctree</span><span class="p">:</span> <span class="n">generated</span><span class="o">/</span>
+
+   <span class="n">example_function1</span>
+   <span class="n">example_function2</span>
+
+<span class="n">Exceptions</span>
+<span class="o">----------</span>
+
+<span class="o">..</span> <span class="n">autosummary</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">toctree</span><span class="p">:</span> <span class="n">generated</span><span class="o">/</span>
+
+   <span class="n">ExampleError</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">autosummary</span></code> directives are important as they generate RST files in the <code class="docutils literal notranslate"><span class="pre">generated/</span></code> directory for each object. A single-line summary and link to each object is inserted into the page for you.</p>
+<p>After listing public module members, we encourage a usage example section showing how to use some of the module’s functionality. Examples should be written in <a class="reference external" href="https://docs.python.org/3/library/doctest.html">doctest</a> format so that they can be automatically tested (e.g., using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> or <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">skbio.test</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Examples
+--------
+
+Run the ``example_function1`` function:
+
+&gt;&gt;&gt; from skbio.example import example_function1
+&gt;&gt;&gt; example_function1(&quot;hello&quot;, &quot;world&quot;)
+hello world!
+</pre></div>
+</div>
+<p>You can also embed the plots that an example generates into the built documentation with the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">plot::</span></code> directive. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">plot</span><span class="p">::</span>
+
+   <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+   <span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]})</span>
+   <span class="o">&gt;&gt;&gt;</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will include the plot, a link to the source code used to generate the plot, and links to different image formats (e.g., PNG and PDF) so that users can easily download the plot.</p>
+<p>You’re now ready to document the members of your module.</p>
+</section>
+<section id="documenting-module-members">
+<h3>Documenting module members<a class="headerlink" href="#documenting-module-members" title="Link to this heading">#</a></h3>
+<p>When documenting the members of a module (e.g., classes, methods, attributes, functions, and exceptions), follow the numpydoc conventions. In addition to these conventions, there are a few things to keep in mind:</p>
+<ul class="simple">
+<li><p>When documenting a class, only public methods and attributes are included in the built documentation. If a method or attribute starts with an underscore, it is assumed to be private.</p></li>
+<li><p>When documenting a class, include the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> section in the class docstring, instead of in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> docstring. While numpydoc technically supports either form, <code class="docutils literal notranslate"><span class="pre">__init__</span></code> is not included in the list of methods by default and thus should have its documentation included in the class docstring.</p></li>
+</ul>
+</section>
+<section id="including-the-module-in-the-docs">
+<h3>Including the module in the docs<a class="headerlink" href="#including-the-module-in-the-docs" title="Link to this heading">#</a></h3>
+<p>Until now, we’ve only been editing docstrings, which are attached to Python code. The final step is to hook up this new module’s docstrings to the documentation build system:</p>
+<ol class="arabic">
+<li><p>Make sure you’re within the <code class="docutils literal notranslate"><span class="pre">scikit-bio/doc</span></code> directory.</p></li>
+<li><p>Create a new file with the same name as your module under the <code class="docutils literal notranslate"><span class="pre">source</span></code> directory. Do not include <code class="docutils literal notranslate"><span class="pre">skbio</span></code> as part of the name, and use <code class="docutils literal notranslate"><span class="pre">.rst</span></code> as the suffix. For example, <code class="docutils literal notranslate"><span class="pre">source/example.rst</span></code>.</p></li>
+<li><p>Add the following line to <code class="docutils literal notranslate"><span class="pre">source/example.rst</span></code> to have your module’s docstring pulled into the document:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>``
+.. automodule:: skbio.example
+``
+</pre></div>
+</div>
+</li>
+<li><p>Add the following line to <code class="docutils literal notranslate"><span class="pre">source/index.rst</span></code> to add the new page to the top-level table of contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>``
+example
+``
+</pre></div>
+</div>
+</li>
+</ol>
+<p>That’s it! You can now try building the documentation, which should include the documentation for your new module!</p>
+</section>
+</section>
+<section id="documenting-a-subpackage">
+<h2>Documenting a subpackage<a class="headerlink" href="#documenting-a-subpackage" title="Link to this heading">#</a></h2>
+<p>The process of documenting a subpackage is very similar to documenting a module in scikit-bio. The only difference is that the module docstring goes in the subpackage’s <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<p>If things aren’t working correctly, try running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> and then rebuild the docs. If things still aren’t working, try building the docs <em>without</em> your changes, and see if there are any Sphinx errors or warnings. Make note of these, and then see what new errors or warnings are generated when you add your changes again.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-documentation">Build the documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstring-style">Docstring style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documenting-a-module">Documenting a module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-docstring">Module docstring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documenting-module-members">Documenting module members</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-the-module-in-the-docs">Including the module in the docs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documenting-a-subpackage">Documenting a subpackage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
