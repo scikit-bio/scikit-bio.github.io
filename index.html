@@ -1,138 +1,762 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>scikit-bio</title>
-        <link rel="stylesheet" type="text/css" href="assets/style.css">
-        <link rel="icon" type="image/ico" href="assets/favicon.ico">
-    </head>
-    <body>
-        <div id="nav">
-            <ul>
-                <li id="navlogo"><a href=""><img id="skbio" src="assets/logo_inverted.png" alt="scikit-bio" /></a></li>
-                <li class="dropdown">
-                    <a href="#">Docs <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="docs/latest/index.html">Latest</a></li>
-                        <li class="divider"></li>
-                        <li><a href="docs/0.5.9/index.html">0.5.9</a></li>
-                        <li><a href="docs/0.5.8/index.html">0.5.8</a></li>
-                        <li><a href="docs/0.5.7/index.html">0.5.7</a></li>
-                        <li><a href="docs/0.5.6/index.html">0.5.6</a></li>
-                        <li><a href="docs/0.5.5/index.html">0.5.5</a></li>
-                        <li><a href="docs/0.5.4/index.html">0.5.4</a></li>
-                        <li><a href="docs/0.5.3/index.html">0.5.3</a></li>
-                        <li><a href="docs/0.5.2/index.html">0.5.2</a></li>
-                        <li><a href="docs/0.5.1/index.html">0.5.1</a></li>
-                        <li><a href="docs/0.5.0/index.html">0.5.0</a></li>
-                        <li><a href="docs/0.4.2/index.html">0.4.2</a></li>
-                        <li><a href="docs/0.4.1/index.html">0.4.1</a></li>
-                        <li><a href="docs/0.4.0/index.html">0.4.0</a></li>
-                        <li><a href="docs/0.2.3/index.html">0.2.3</a></li>
-                        <li><a href="docs/0.2.2/index.html">0.2.2</a></li>
-                        <li><a href="docs/0.2.1/index.html">0.2.1</a></li>
-                        <li><a href="docs/0.2.0/index.html">0.2.0</a></li>
-                        <li><a href="docs/0.1.4/index.html">0.1.4</a></li>
-                        <li><a href="docs/0.1.3/index.html">0.1.3</a></li>
-                        <li><a href="docs/0.1.1/index.html">0.1.1</a></li>
-                        <li></li>
-                    </ul>
 
-                </li>
-                <li><a href="http://nbviewer.ipython.org/github/biocore/scikit-bio-cookbook/blob/master/Index.ipynb">Cookbook</a></li>
-                <li class="dropdown">
-                    <a href="#">Presentations <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://www.youtube.com/watch?v=ZpgkRQooGqo" target="_blank">SciPy 2015</a></li>
-                        <li><a href="https://www.youtube.com/watch?v=hgBx_DBiPxA" target="_blank">SciPy 2014</a></li>
-                    </ul>
 
-                </li>
-                <li><a href="https://github.com/biocore/scikit-bio">Github</a></li>
-            </ul>
-        </div>
-        <div id="decorationWrapper">
-                <div id="contentWrapper">
-                    <div id="heading">
-                        <img id="logo" src="assets/logo.svg" width="60%">
-                            <div id="pitch">
-                                scikit-bio&trade; is an open-source, BSD-licensed, python package providing data structures, algorithms, and educational resources for bioinformatics.
-                            </div>
-                    </div>
-                    <div id="content">
-                        <article class="markdown-body entry-content" itemprop="text">
-   </a>
+<html lang="en" data-content_root="./" >
 
-<a name="user-content-installing"></a>
-<h2>Installing</h2>
-<p>The recommended way to install scikit-bio is via the <code>conda</code> package manager available in <a href="http://continuum.io/downloads">Anaconda</a> or <a href="http://conda.pydata.org/miniconda.html">miniconda</a>.</p>
-<p>To install the latest release of scikit-bio:</p>
-<pre>conda install -c conda-forge scikit-bio
-</pre>
-<p>Alternatively, you can install scikit-bio using <code>pip</code>:</p>
-<pre>
-pip install scikit-bio
-</pre>
-<p>You can verify your installation by running the scikit-bio unit tests:</p>
-<pre>python -m skbio.test
-</pre>
-<p>For users of Debian, <code>skbio</code> is in the Debian software distribution and may
-be installed using:</p>
-<pre>sudo apt-get install python3-skbio python-skbio-doc
-</pre>
-<a name="user-content-getting-help"></a>
-<h2>Getting help</h2>
-<p>To get help with scikit-bio, you should use the <a href="http://stackoverflow.com/questions/tagged/skbio">skbio</a> tag on StackOverflow (SO). Before posting a question, check out SO's guide on how to <a href="http://stackoverflow.com/questions/how-to-ask">ask a question</a>. The scikit-bio developers regularly monitor the <code>skbio</code> SO tag.</p>
-<a name="user-content-projects-using-scikit-bio"></a>
-<h2>Projects using scikit-bio</h2>
-<p>Some of the projects that we know of that are using scikit-bio are:</p>
-<ul>
-<li><a href="http://qiime.org/">QIIME</a></li>
-<li><a href="http://biocore.github.io/emperor/">Emperor</a></li>
-<li><a href="https://biocore.github.io/gneiss/">Gneiss</a></li>
-<li><a href="http://readIAB.org">An Introduction to Applied
-Bioinformatics</a></li>
-<li><a href="https://github.com/biocore/tax2tree">tax2tree</a></li>
-<li><a href="http://qiita.microbio.me">Qiita</a></li>
-<li><a href="https://github.com/JTFouquier/ghost-tree">ghost-tree</a></li>
-<li><a href="https://github.com/biocore/Platypus-Conquistador">Platypus-Conquistador</a></li>
-</ul>
-<p>If you're using scikit-bio in your own projects, feel free to issue a pull request to add them to this list.</p>
-<a name="user-content-scikit-bio-development"></a>
-<h2>scikit-bio development</h2>
-<p>If you're interested in getting involved in scikit-bio development, see <a href="https://github.com/biocore/scikit-bio/blob/master/.github/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
-<p>See the list of <a href="https://github.com/biocore/scikit-bio/graphs/contributors">scikit-bio's contributors</a>.</p>
-<a name="user-content-licensing"></a>
-<h2>Licensing</h2>
-<p>scikit-bio is available under the new BSD license. See
-<a href="https://github.com/biocore/scikit-bio/blob/master/LICENSE.txt">LICENSE.txt</a> for scikit-bio's license, and the
-<a href="https://github.com/biocore/scikit-bio/tree/master/licenses">licenses directory</a> for the licenses of third-party software that is
-(either partially or entirely) distributed with scikit-bio.</p>
-<a name="user-content-the-pre-history-of-scikit-bio"></a>
-<h2>The pre-history of scikit-bio</h2>
-<p>scikit-bio began from code derived from <a href="http://www.pycogent.org">PyCogent</a> and <a href="http://www.qiime.org">QIIME</a>, and
-the contributors and/or copyright holders have agreed to make the code
-they wrote for PyCogent and/or QIIME available under the BSD
-license. The contributors to PyCogent and/or QIIME modules that have
-been ported to scikit-bio are: Rob Knight (<a href="https://github.com/rob-knight">@rob-knight</a>), Gavin Huttley (<a href="https://github.com/gavin-huttley">@gavin-huttley</a>), Daniel McDonald (<a href="https://github.com/wasade">@wasade</a>), Micah Hamady, Antonio Gonzalez
-(<a href="https://github.com/antgonza">@antgonza</a>), Sandra Smit, Greg
-Caporaso (<a href="https://github.com/gregcaporaso">@gregcaporaso</a>), Jai
-Ram Rideout (<a href="https://github.com/jairideout">@jairideout</a>),
-Cathy Lozupone (<a href="https://github.com/clozupone">@clozupone</a>), Mike Robeson
-(<a href="https://github.com/mikerobeson">@mikerobeson</a>), Marcin Cieslik,
-Peter Maxwell, Jeremy Widmann, Zongzhi Liu, Michael Dwan, Logan Knecht
-(<a href="https://github.com/loganknecht">@loganknecht</a>), Andrew Cochran,
-Jose Carlos Clemente (<a href="https://github.com/cleme">@cleme</a>), Damien
-Coy, Levi McCracken, Andrew Butterfield, Will Van Treuren (<a href="https://github.com/wdwvt1">@wdwvt1</a>), Justin Kuczynski (<a href="https://github.com/justin212k">@justin212k</a>), Jose Antonio Navas Molina
-(<a href="https://github.com/josenavas">@josenavas</a>), Matthew Wakefield
-(<a href="https://github.com/genomematt">@genomematt</a>) and Jens Reeder
-(<a href="https://github.com/jensreeder">@jensreeder</a>).</p>
-<a name="user-content-logo"></a>
-<h2>Logo</h2>
-<p>scikit-bio's logo was created by <a href="http://cargocollective.com/alinaprassas">Alina Prassas</a>.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-</article>
-                    </div>
+    <title>scikit-bio &#8212; scikit-bio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=76225de9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="canonical" href="scikit.bio/index.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Install scikit-bio" href="install.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">scikit-bio is back in active development! Check out our <a href='https://github.com/scikit-bio/scikit-bio/discussions/1935'>announcement of revitalization</a>.</div>
+  </div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="scikit-bio"/>
+    <script>document.write(`<img src="_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <style>
+
+  .bd-main .bd-content .bd-article-container {
+    max-width: 100%;
+  }
+
+  details > summary {
+    font-weight: bold;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 20px;
+  }
+
+  .heading {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 900;
+  }
+
+  .no-top-pardding {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+</style><a class="only-light reference internal image-reference" href="_images/logo.png"><img alt="_images/logo.png" class="only-light align-center" src="_images/logo.png" style="width: 600px;" /></a>
+<a class="only-dark reference internal image-reference" href="_images/logo_inv.png"><img alt="_images/logo_inv.png" class="only-dark align-center" src="_images/logo_inv.png" style="width: 600px;" /></a>
+<p class="subtitle">A community-driven Python library for bioinformatics, providing versatile data structures, algorithms and educational resources.</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header centered docutils">
+<p class="sd-card-text"><strong>For Researchers</strong> <svg version="1.1" width="1.2em" height="1.2em" class="sd-octicon sd-octicon-beaker sd-text-danger" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M5 5.782V2.5h-.25a.75.75 0 010-1.5h6.5a.75.75 0 010 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458L5 5.782zM9.5 2.5h-3V6a.75.75 0 01-.117.403L4.73 9h6.54L9.617 6.403A.75.75 0 019.5 6V2.5zm-6.9 9.847L3.775 10.5h8.45l1.175 1.847a.75.75 0 01-.633 1.153H3.233a.75.75 0 01-.633-1.153z"></path></svg></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Robust, performant and scalable algorithms tailored for the vast landscape of biological data analysis spanning genomics, microbiomics, ecology, evolutionary biology and more. Built to unveil the insights hidden in complex, multi-omic data.</p>
+</div>
+<div class="sd-card-footer docutils">
+<details>
+<summary>Example</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skbio.tree</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="kn">from</span> <span class="nn">skbio.diversity</span> <span class="kn">import</span> <span class="n">beta_diversity</span>
+<span class="kn">from</span> <span class="nn">skbio.stats.ordination</span> <span class="kn">import</span> <span class="n">pcoa</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data.tsv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;metadata.tsv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;tree.nwk&#39;</span><span class="p">)</span>
+
+<span class="n">bdiv</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span>
+    <span class="s1">&#39;weighted_unifrac&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">otu_ids</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span>
+<span class="p">)</span>
+
+<span class="n">ordi</span> <span class="o">=</span> <span class="n">pcoa</span><span class="p">(</span><span class="n">bdiv</span><span class="p">,</span> <span class="n">number_of_dimensions</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ordi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;bodysite&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="PCoA plot" src="_images/hmp1_pcoa.png" />
+</details></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header centered docutils">
+<p class="sd-card-text"><strong>For Educators</strong> <svg version="1.1" width="1.2em" height="1.2em" class="sd-octicon sd-octicon-mortar-board sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M7.693 1.066a.75.75 0 01.614 0l7.25 3.25a.75.75 0 010 1.368L13 6.831v2.794c0 1.024-.81 1.749-1.66 2.173-.893.447-2.075.702-3.34.702-.278 0-.55-.012-.816-.036a.75.75 0 01.133-1.494c.22.02.45.03.683.03 1.082 0 2.025-.221 2.67-.543.69-.345.83-.682.83-.832V7.503L8.307 8.934a.75.75 0 01-.614 0L4 7.28v1.663c.296.105.575.275.812.512.438.438.688 1.059.688 1.796v3a.75.75 0 01-.75.75h-3a.75.75 0 01-.75-.75v-3c0-.737.25-1.358.688-1.796.237-.237.516-.407.812-.512V6.606L.443 5.684a.75.75 0 010-1.368l7.25-3.25zM2.583 5L8 7.428 13.416 5 8 2.572 2.583 5zM2.5 11.25c0-.388.125-.611.25-.735a.704.704 0 01.5-.203c.19 0 .37.071.5.203.125.124.25.347.25.735v2.25H2.5v-2.25z"></path></svg></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Fundamental bioinformatics algorithms enriched by comprehensive documentation, examples and references, offering a rich resource for classroom and laboratory education (with proven <a class="reference external" href="https://readiab.org/">success</a>). Designed to spark curiosity and foster innovation.</p>
+</div>
+<div class="sd-card-footer docutils">
+<details>
+<summary>Example</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skbio.alignment</span> <span class="kn">import</span> <span class="n">global_pairwise_align_protein</span>
+<span class="kn">from</span> <span class="nn">skbio.sequence.distance</span> <span class="kn">import</span> <span class="n">hamming</span>
+<span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<span class="kn">from</span> <span class="nn">skbio.tree</span> <span class="kn">import</span> <span class="n">nj</span>
+
+<span class="k">def</span> <span class="nf">align_dist</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">):</span>
+    <span class="n">aln</span> <span class="o">=</span> <span class="n">global_pairwise_align_protein</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">hamming</span><span class="p">(</span><span class="n">aln</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">aln</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+   <span class="n">seqs</span><span class="p">,</span> <span class="n">align_dist</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">tree</span> <span class="o">=</span> <span class="n">nj</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span><span class="o">.</span><span class="n">root_at_midpoint</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>          <span class="o">/-</span><span class="n">chicken</span>
+         <span class="o">|</span>
+<span class="o">-</span><span class="n">root</span><span class="o">----|</span>                    <span class="o">/-</span><span class="n">rat</span>
+         <span class="o">|</span>          <span class="o">/--------|</span>
+         <span class="o">|</span>         <span class="o">|</span>          \<span class="o">-</span><span class="n">mouse</span>
+          \<span class="o">--------|</span>
+                   <span class="o">|</span>          <span class="o">/-</span><span class="n">pig</span>
+                   <span class="o">|</span>         <span class="o">|</span>
+                    \<span class="o">--------|</span>                    <span class="o">/-</span><span class="n">chimp</span>
+                             <span class="o">|</span>          <span class="o">/--------|</span>
+                              \<span class="o">--------|</span>          \<span class="o">-</span><span class="n">human</span>
+                                       <span class="o">|</span>
+                                        \<span class="o">-</span><span class="n">monkey</span>
+</pre></div>
+</div>
+</details></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header centered docutils">
+<p class="sd-card-text"><strong>For Developers</strong> <svg version="1.1" width="1.2em" height="1.2em" class="sd-octicon sd-octicon-git-merge sd-text-warning" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M5 3.254V3.25v.005a.75.75 0 110-.005v.004zm.45 1.9a2.25 2.25 0 10-1.95.218v5.256a2.25 2.25 0 101.5 0V7.123A5.735 5.735 0 009.25 9h1.378a2.251 2.251 0 100-1.5H9.25a4.25 4.25 0 01-3.8-2.346zM12.75 9a.75.75 0 100-1.5.75.75 0 000 1.5zm-8.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5z"></path></svg></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Industry-standard, production-ready Python codebase featuring a stable, unit-tested API that streamlines development and integration. Licensed under the <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/LICENSE.txt">3-Clause BSD</a>, it provides an expansive platform for both academic research and commercial ventures.</p>
+</div>
+<div class="sd-card-footer docutils">
+<details>
+<summary>Example</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">centralize</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Center data around its geometric average.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mat : array_like, float</span>
+<span class="sd">        a matrix of proportions where</span>
+<span class="sd">        rows = compositions and</span>
+<span class="sd">        columns = components</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        centered composition matrix</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from skbio.stats.composition import centralize</span>
+<span class="sd">    &gt;&gt;&gt; X = np.array([[.1,.3,.4, .2],[.2,.2,.2,.4]])</span>
+<span class="sd">    &gt;&gt;&gt; centralize(X)</span>
+<span class="sd">    array([[ 0.17445763,  0.30216948,  0.34891526,  0.17445763],</span>
+<span class="sd">           [ 0.32495488,  0.18761279,  0.16247744,  0.32495488]])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">closure</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="n">cen</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gmean</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">perturb_inv</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">cen</span><span class="p">)</span>
+</pre></div>
+</div>
+</details></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-5 sd-col-lg-5 sd-pt-0 sd-pb-0 sd-pl-4 sd-pr-4 docutils">
+<p class="heading">Install</p>
+<div class="sd-tab-set no-top-pardding docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Conda</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-bio
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+PyPI</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>scikit-bio
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Dev</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/scikit-bio/scikit-bio.git
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+More</label><div class="sd-tab-content docutils">
+<p>See detailed <a class="reference internal" href="install.html"><span class="doc">instructions</span></a> on installing scikit-bio on various platforms.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-7 sd-col-lg-7 sd-pt-0 sd-pb-0 sd-pl-4 sd-pr-4 docutils">
+<p class="heading">News</p>
+<div class="sd-sphinx-override sd-cards-carousel sd-card-cols-3 docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Latest release (<a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md#version-059">changelog</a>):</p>
+<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-success sd-shadow-sm reference external" href="https://github.com/scikit-bio/scikit-bio/releases/tag/0.5.9"><span>scikit-bio 0.5.9</span></a></p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">New <a class="reference external" href="https://genomicscience.energy.gov/compbioawards2023/#Expanding">DOE award</a> for scikit-bio development in multi-omics and complex modeling.</p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Upcoming scikit-bio <a class="reference external" href="https://www.iscb.org/ismb2024/programme-schedule/tutorials#ip3">workshop at ISMB 2024</a>, July 11, Montreal, Canada. Welcome to join!</p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">New website: <a class="reference external" href="https://scikit.bio">scikit.bio</a> and organization: <a class="github reference external" href="https://github.com/scikit-bio">scikit-bio</a> are online.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p class="heading">Feature Highlights</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 sd-pt-0 sd-pb-0 sd-pl-4 sd-pr-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><span class="fa fa-dna fa-2x sd-text-success"></span></p>
+<p class="sd-card-text"><strong>Biological sequences</strong>: Efficient data structure with a <a class="reference external" href="docs/dev/generated/skbio.sequence.GrammaredSequence.html">flexible grammar</a> for easy manipulation, <a class="reference external" href="docs/dev/generated/skbio.sequence.GrammaredSequence.has_positional_metadata.html">annotation</a>, <a class="reference external" href="docs/dev/generated/skbio.alignment.html">alignment</a>, and conversion into <a class="reference external" href="docs/dev/generated/skbio.sequence.GrammaredSequence.find_motifs.html">motifs</a>, <a class="reference external" href="docs/dev/generated/skbio.sequence.GrammaredSequence.iter_kmers.html">k-mers</a> or tokens for in-depth analysis.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><span class="fa fa-tree fa-2x sd-text-success"></span></p>
+<p class="sd-card-text"><strong>Phylogenetic trees</strong>: Scalable <a class="reference external" href="docs/dev/generated/skbio.tree.TreeNode.html">tree structure</a> tailored for evolutionary biology, supporting diverse operations in <a class="reference external" href="docs/dev/generated/skbio.tree.TreeNode.lca.html">navigation</a>, <a class="reference external" href="docs/dev/generated/skbio.tree.TreeNode.root_at_midpoint.html">manipulation</a>, <a class="reference external" href="docs/dev/generated/skbio.tree.TreeNode.compare_rfd.html">comparison</a>, and <a class="reference external" href="docs/dev/generated/skbio.tree.nj.html">construction</a>.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><span class="fa fa-chart-column fa-2x sd-text-success"></span></p>
+<p class="sd-card-text"><strong>Community diversity</strong> analysis for ecological studies, with an extensive suite of metrics such as <a class="reference external" href="docs/dev/generated/skbio.diversity.beta.weighted_unifrac.html">UniFrac</a> and <a class="reference external" href="docs/dev/generated/skbio.diversity.alpha.faith_pd.html">PD</a>, optimized to handle large-scale community datasets.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><span class="fa fa-compass-drafting fa-2x sd-text-success"></span></p>
+<p class="sd-card-text"><strong>Ordination methods</strong>, such as <a class="reference external" href="docs/dev/generated/skbio.stats.ordination.pcoa.html">PCoA</a>, <a class="reference external" href="docs/dev/generated/skbio.stats.ordination.ca.html">CA</a>, and <a class="reference external" href="docs/dev/generated/skbio.stats.ordination.rda.html">RDA</a>, to uncover patterns underlying high-dimensional data, facilitating insightful visualization.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><span class="fa fa-arrow-up-right-dots fa-2x sd-text-success"></span></p>
+<p class="sd-card-text"><strong>Multivariate statistical tests</strong>, such as <a class="reference external" href="docs/dev/generated/skbio.stats.distance.permanova.html">PERMANOVA</a>, <a class="reference external" href="docs/dev/generated/skbio.stats.distance.bioenv.html">BIOENV</a>, and <a class="reference external" href="docs/dev/generated/skbio.stats.distance.mantel.html">Mantel</a>, to decode complex relationships across data matrices and sample properties.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><span class="fa fa-chart-pie fa-2x sd-text-success"></span></p>
+<p class="sd-card-text"><strong>Compositional data</strong> processing and analysis, such as <a class="reference external" href="docs/dev/generated/skbio.stats.composition.clr.html">CLR</a> transform and <a class="reference external" href="docs/dev/generated/skbio.stats.composition.ancom.html">ANCOM</a>, built for various omic data types from high-throughput experiments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+                </article>
+              
+              
+              
+              
+              
             </div>
-        </div>
-    </body>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>

@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reviewing pull requests &#8212; scikit-bio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=76225de9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devdoc/review';</script>
+    <link rel="canonical" href="scikit.bio/devdoc/review.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Releasing a new version" href="release.html" />
+    <link rel="prev" title="Adding a new module" href="new_module.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">scikit-bio is back in active development! Check out our <a href='https://github.com/scikit-bio/scikit-bio/discussions/1935'>announcement of revitalization</a>.</div>
+  </div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio"/>
+    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../contribute.html" class="nav-link">Contribute to scikit-bio</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Reviewing...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="reviewing-pull-requests">
+<h1>Reviewing pull requests<a class="headerlink" href="#reviewing-pull-requests" title="Link to this heading">#</a></h1>
+<p>This document provides a high-level, general, and <strong>incomplete</strong> checklist of things that pull request reviewers should be aware of when performing code review. These are guidelines which generally make sense to follow, but they are not intended to be rigid. The checklist mainly consists of things that are specific to the scikit-bio project and that generally apply to incoming pull requests. The checklist is incomplete because it is not possible to describe all things to verify during code review (that depends on what is being reviewed). This document also doesn’t attempt to describe <em>how</em> to perform code review (there are many online resources for that).</p>
+<p>Reviewers are encouraged to keep this document up-to-date as the project evolves and to add anything that’s missing.</p>
+<p>The checklist is not in any particular order.</p>
+<section id="licensing-and-attribution">
+<h2>Licensing and attribution<a class="headerlink" href="#licensing-and-attribution" title="Link to this heading">#</a></h2>
+<p>Verify that code being included from external sources has a compatible license and is properly attributed:</p>
+<ul class="simple">
+<li><p>Include the code’s license in the top-level <cite>licenses</cite> directory.</p></li>
+<li><p>Include a comment with the external code giving attribution and noting the license in the <cite>licenses</cite> directory.</p></li>
+<li><p>Any other requirements set by the code’s license and/or author.</p></li>
+</ul>
+</section>
+<section id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">#</a></h2>
+<p>This is one of the most important points to remember as users will review the changelog to identify changes relevant to them. This is one of the easiest parts to forget in a pull request.</p>
+<ul class="simple">
+<li><p>Note all public (i.e. user-facing) changes in <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> under the latest development version section at the top of the file. This includes things like bug fixes, API additions/changes/removal, performance enhancements, etc. The changelog has several subsections for organizing these changes.</p></li>
+<li><p>If a corresponding issue exists, it should be linked to from the changelog.</p></li>
+<li><p>Use public imports (<code class="docutils literal notranslate"><span class="pre">skbio.sequence.Sequence</span></code> instead of <code class="docutils literal notranslate"><span class="pre">skbio.sequence._sequence.Sequence</span></code>) when documenting import paths in the changelog.</p></li>
+<li><p>Internal changes not visible/applicable to users (e.g. refactoring, private methods, etc.) are better suited for commit messages than the changelog.</p></li>
+</ul>
+</section>
+<section id="public-vs-private-api">
+<h2>Public vs. private API<a class="headerlink" href="#public-vs-private-api" title="Link to this heading">#</a></h2>
+<p>Be aware of what type of API changes are being made. scikit-bio uses the following conventions to distinguish public vs. private API:</p>
+<p><strong>Public API:</strong> API with an import path that doesn’t contain leading underscores in any submodule/subpackage/object names. Users and scikit-bio devs can use public API. Examples: <code class="docutils literal notranslate"><span class="pre">skbio.sequence.Sequence</span></code>, <code class="docutils literal notranslate"><span class="pre">skbio.stats.subsample</span></code>.</p>
+<p><strong>Package-private API:</strong> API with an import path containing a leading underscore in at least one submodule/subpackage. Users should not import package-private API. Package-private API can be imported anywhere <em>within</em> the scikit-bio package. Examples: <code class="docutils literal notranslate"><span class="pre">skbio.util._misc.chunk_str</span></code>, <code class="docutils literal notranslate"><span class="pre">skbio.util._testing.ReallyEqualMixin</span></code>.</p>
+<p><strong>Private API:</strong> API with object name starting with an underscore. Users should not import private API. Private API should only be imported and used in the module where it is defined. It should not be imported in other parts of the scikit-bio package. Examples: <code class="docutils literal notranslate"><span class="pre">skbio.util._testing._normalize_signs</span></code>, <code class="docutils literal notranslate"><span class="pre">skbio.stats.composition._gram_schmidt_basis</span></code>.</p>
+<ul class="simple">
+<li><p>Prefer defining private APIs and only promote things to the public API that users need access to.</p></li>
+<li><p>Private/package-private API does not need to be decorated with <code class="docutils literal notranslate"><span class="pre">&#64;experimental</span></code>/<code class="docutils literal notranslate"><span class="pre">&#64;stable</span></code>/<code class="docutils literal notranslate"><span class="pre">&#64;deprecated</span></code>, only public API.</p></li>
+<li><p>Within scikit-bio, prefer <em>using</em> public APIs defined in the package even if private APIs offer the same functionality.</p></li>
+</ul>
+</section>
+<section id="api-stability">
+<h2>API stability<a class="headerlink" href="#api-stability" title="Link to this heading">#</a></h2>
+<p>Refer to scikit-bio’s <a class="reference external" href="api_stability">API stability document</a> for the current API lifecycle.</p>
+<ul class="simple">
+<li><p>Prefer making new APIs experimental. This allows for changes to the API without needing to deprecate it first.</p></li>
+<li><p>Try to avoid changing stable API if at all possible. If a change is necessary, deprecate the API and remove after 2+ minor releases.</p></li>
+<li><p>Under extreme circumstances, a stable API can be changed without deprecation warning to users. This has happened in the past to fix bugs that required an API change. If this happens, discuss with other devs before committing to the change and document this change extensively in the changelog.</p></li>
+<li><p>Always document stable/experimental API changes and any deprecated APIs in the changelog.</p></li>
+</ul>
+</section>
+<section id="integration-consistency-with-existing-api">
+<h2>Integration/consistency with existing API<a class="headerlink" href="#integration-consistency-with-existing-api" title="Link to this heading">#</a></h2>
+<p>When reviewing API changes/additions, look at them in the context of the rest of the codebase and its existing APIs. For example, are there existing parameter names that could be reused for consistency/predictability? Does the new API (or changed API) compose with other relevant APIs? Example: <code class="docutils literal notranslate"><span class="pre">skbio.stats.distance.anosim</span></code> uses a <code class="docutils literal notranslate"><span class="pre">permutations</span></code> parameter, so a new nonparametric function would want to use this name over something like <code class="docutils literal notranslate"><span class="pre">n</span></code> or <code class="docutils literal notranslate"><span class="pre">num_permutations</span></code>.</p>
+</section>
+<section id="commit-messages-and-merging-pull-requests">
+<h2>Commit messages and merging pull requests<a class="headerlink" href="#commit-messages-and-merging-pull-requests" title="Link to this heading">#</a></h2>
+<p>When merging pull requests, use GitHub’s “Squash and merge” option to merge a single commit. See <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/commit/f3d736aabd717971332781b98d8fde861f354dc3">this commit message</a> for an example.</p>
+<ul class="simple">
+<li><p>Rewrite commit message to describe all changes being merged. This usually involves deleting individual commit messages that GitHub includes in the text box.</p></li>
+<li><p>Include “fixes #n” text if there’s an associated issue to be closed.</p></li>
+<li><p>Use <a class="reference external" href="https://numpy.org/doc/stable/dev/development_workflow.html#writing-the-commit-message">NumPy-style commit tags</a> (ENH, BUG, PERF, etc.).</p></li>
+<li><p>Include contributors’ and reviewers’ GitHub usernames in commit message (attribution will be lost on squash).</p></li>
+</ul>
+</section>
+<section id="test-changes-locally">
+<h2>Test changes locally<a class="headerlink" href="#test-changes-locally" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>This step is extremely important.</strong> Pull down the PR changes locally and try out the API as a user would. Try to break it, make sure the docs are complete, etc. Build the docs locally and verify that they render correctly (this is a common pitfall).</p>
+</div>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Verify the docs follow the instructions in the scikit-bio <a class="reference internal" href="doc_guide.html"><span class="doc">Documentation guidelines</span></a>.</p></li>
+<li><p>Verify the docs follow <a class="reference internal" href="new_module.html"><span class="doc">Adding a new module</span></a> when adding a new module or subpackage to scikit-bio.</p></li>
+<li><p>Public API should have docstrings conforming to <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc style guide</a>. Manual and careful verification of the numpydoc docstrings is currently necessary; they are easy to get wrong and building the docs won’t always flag issues. Building the docs and inspecting the rendered output can help with this process.</p></li>
+<li><p>Package-private and private APIs do not need to be extensively documented; numpydoc docstrings are not required. Document these APIs as appropriate to help other devs understand the code (code comments are usually better for this anyways).</p></li>
+</ul>
+</section>
+<section id="continuous-integration-ci">
+<h2>Continuous integration (CI)<a class="headerlink" href="#continuous-integration-ci" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Make sure GitHub Actions CI is passing before merging a pull request.</p></li>
+<li><p>Make sure coverage doesn’t drop. Strive to have 100% coverage for new code being merged.</p></li>
+</ul>
+</section>
+<section id="unit-testing">
+<h2>Unit testing<a class="headerlink" href="#unit-testing" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Make sure the tests are as complete as possible.</p></li>
+<li><p>Check that border cases are tested (e.g. zeros, ‘’, [], None, etc.).</p></li>
+<li><p>Check that the base case is tested (<code class="docutils literal notranslate"><span class="pre">n</span></code>), along with the inductive step (<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">+</span> <span class="pre">1</span></code>).</p></li>
+<li><p>Verify that tests cover more than one input data set.</p></li>
+<li><p>Make each test case simple, ideally only testing a single thing (follow <a class="reference external" href="https://wiki.c2.com/?ArrangeActAssert">Arrange Act Assert</a>).</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing-and-attribution">Licensing and attribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#public-vs-private-api">Public vs. private API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-stability">API stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-consistency-with-existing-api">Integration/consistency with existing API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-messages-and-merging-pull-requests">Commit messages and merging pull requests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-changes-locally">Test changes locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-ci">Continuous integration (CI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing">Unit testing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

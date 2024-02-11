@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding guidelines &#8212; scikit-bio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=76225de9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devdoc/code_guide';</script>
+    <link rel="canonical" href="scikit.bio/devdoc/code_guide.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documentation guidelines" href="doc_guide.html" />
+    <link rel="prev" title="Contribute to scikit-bio" href="../contribute.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">scikit-bio is back in active development! Check out our <a href='https://github.com/scikit-bio/scikit-bio/discussions/1935'>announcement of revitalization</a>.</div>
+  </div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio"/>
+    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../docs/dev/index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../contribute.html" class="nav-link">Contribute to scikit-bio</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Coding guidelines</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="coding-guidelines">
+<h1>Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h1>
+<p>As project size increases, consistency of the code base and documentation becomes more important. We therefore provide guidelines for code and documentation that is contributed to scikit-bio. Our goal is to create a consistent code base where:</p>
+<ul class="simple">
+<li><p>It is easy to find relevant functionality (and to determine when functionality that you’re looking for doesn’t exist),</p></li>
+<li><p>You can trust that the code that you’re working with is sufficiently tested, and</p></li>
+<li><p>Names and interfaces are intuitive.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As scikit-bio is in beta, our coding guidelines are presented here as a working draft. These guidelines are requirements for all code submitted to scikit-bio, but at this stage the guidelines themselves are malleable. If you disagree with something, or have a suggestion for something new to include, you should <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues">create an issue</a> to initiate a discussion.</p>
+</div>
+<section id="what-are-the-naming-conventions-and-how-should-i-format-my-code">
+<h2>What are the naming conventions? and How should I format my code?<a class="headerlink" href="#what-are-the-naming-conventions-and-how-should-i-format-my-code" title="Link to this heading">#</a></h2>
+<p>We adhere to the <a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8</a> python coding guidelines for code and documentation standards. Before submitting any code to scikit-bio, you should read these carefully and apply the guidelines in your code.</p>
+</section>
+<section id="what-should-i-call-my-variables">
+<h2>What should I call my variables?<a class="headerlink" href="#what-should-i-call-my-variables" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>Choose the name that people will most likely guess.</em> Make it descriptive, but not too long: <code class="docutils literal notranslate"><span class="pre">curr_record</span></code> is better than <code class="docutils literal notranslate"><span class="pre">c</span></code>, or <code class="docutils literal notranslate"><span class="pre">curr</span></code>, or <code class="docutils literal notranslate"><span class="pre">current_genbank_record_from_database</span></code>.</p></li>
+<li><p><em>Good names are hard to find.</em> Don’t be afraid to change names except when they are part of interfaces that other people are also using. It may take some time working with the code to come up with reasonable names for everything: if you have unit tests, it’s easy to change them, especially with global search and replace.</p></li>
+<li><p><em>Use singular names for individual things, plural names for collections.</em> For example, you’d expect <code class="docutils literal notranslate"><span class="pre">self.name</span></code> to hold something like a single string, but <code class="docutils literal notranslate"><span class="pre">self.names</span></code> to hold something that you could loop through like a list or dictionary. Sometimes the decision can be tricky: is <code class="docutils literal notranslate"><span class="pre">self.index</span></code> an integer holding a positon, or a dictionary holding records keyed by name for easy lookup? If you find yourself wondering these things, the name should probably be changed to avoid the problem: try <code class="docutils literal notranslate"><span class="pre">self.position</span></code> or <code class="docutils literal notranslate"><span class="pre">self.look_up</span></code>.</p></li>
+<li><p><em>Don’t make the type part of the name.</em> You might want to change the implementation later. Use <code class="docutils literal notranslate"><span class="pre">Records</span></code> rather than <code class="docutils literal notranslate"><span class="pre">RecordDict</span></code> or <code class="docutils literal notranslate"><span class="pre">RecordList</span></code>, etc. Don’t use Hungarian Notation either (i.e. where you prefix the name with the type).</p></li>
+<li><p><em>Make the name as precise as possible.</em> If the variable is the path of the input file, call it <code class="docutils literal notranslate"><span class="pre">input_fp</span></code>, not <code class="docutils literal notranslate"><span class="pre">input</span></code> or <code class="docutils literal notranslate"><span class="pre">file</span></code> (which you shouldn’t use anyway, since they’re keywords), and not <code class="docutils literal notranslate"><span class="pre">infile</span></code> (because that looks like it should be a file object, not just its name).</p></li>
+<li><p><em>Use</em> <code class="docutils literal notranslate"><span class="pre">result</span></code> <em>to store the value that will be returned from a method or function.</em> Use <code class="docutils literal notranslate"><span class="pre">data</span></code> for input in cases where the function or method acts on arbitrary data (e.g. sequence data, or a list of numbers, etc.) unless a more descriptive name is appropriate.</p></li>
+<li><p><em>One-letter variable names should only occur in math functions or as loop iterators with limited scope.</em> Limited scope covers things like <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">keys:</span> <span class="pre">print</span> <span class="pre">k</span></code>, where <code class="docutils literal notranslate"><span class="pre">k</span></code> survives only a line or two. Loop iterators should refer to the variable that they’re looping through: <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">keys,</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">items</span></code>, or <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">key</span> <span class="pre">in</span> <span class="pre">keys,</span> <span class="pre">item</span> <span class="pre">in</span> <span class="pre">items</span></code>. If the loop is long or there are several 1-letter variables active in the same scope, rename them.</p></li>
+<li><p><em>Limit your use of abbreviations.</em> A few well-known abbreviations are OK, but you don’t want to come back to your code in 6 months and have to figure out what <code class="docutils literal notranslate"><span class="pre">sptxck2</span></code> is. It’s worth it to spend the extra time typing <code class="docutils literal notranslate"><span class="pre">species_taxon_check_2</span></code>, but that’s still a horrible name: what’s check number 1? Far better to go with something like <code class="docutils literal notranslate"><span class="pre">taxon_is_species_rank</span></code> that needs no explanation, especially if the variable is only used once or twice.</p></li>
+</ul>
+<section id="acceptable-abbreviations">
+<h3>Acceptable abbreviations<a class="headerlink" href="#acceptable-abbreviations" title="Link to this heading">#</a></h3>
+<p>The following list of abbreviations can be considered well-known and used with impunity within mixed name variables, but some should not be used by themselves as they would conflict with common functions, python built-in’s, or raise an exception. Do not use the following by themselves as variable names: <code class="docutils literal notranslate"><span class="pre">dir</span></code>,  <code class="docutils literal notranslate"><span class="pre">exp</span></code> (a common <code class="docutils literal notranslate"><span class="pre">math</span></code> module function), <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, and <code class="docutils literal notranslate"><span class="pre">min</span></code>. They can, however, be used as part of a name, e.g. <code class="docutils literal notranslate"><span class="pre">matrix_exp</span></code>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-kebab-horizontal" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6 12a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0zm6 2a2 2 0 100-4 2 2 0 000 4z"></path></svg><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Full</p></th>
+<th class="head"><p class="sd-card-text">Abbreviated</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">alignment</p></td>
+<td><p class="sd-card-text">aln</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">archaeal</p></td>
+<td><p class="sd-card-text">arch</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">auxiliary</p></td>
+<td><p class="sd-card-text">aux</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">bacterial</p></td>
+<td><p class="sd-card-text">bact</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">citation</p></td>
+<td><p class="sd-card-text">cite</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">current</p></td>
+<td><p class="sd-card-text">curr</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">database</p></td>
+<td><p class="sd-card-text">db</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">dictionary</p></td>
+<td><p class="sd-card-text">dict</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">directory</p></td>
+<td><p class="sd-card-text">dir</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">distance matrix</p></td>
+<td><p class="sd-card-text">dm</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">end of file</p></td>
+<td><p class="sd-card-text">eof</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">eukaryotic</p></td>
+<td><p class="sd-card-text">euk</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">filepath</p></td>
+<td><p class="sd-card-text">fp</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">frequency</p></td>
+<td><p class="sd-card-text">freq</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">expected</p></td>
+<td><p class="sd-card-text">exp</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">index</p></td>
+<td><p class="sd-card-text">idx</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">input</p></td>
+<td><p class="sd-card-text">in</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">maximum</p></td>
+<td><p class="sd-card-text">max</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">minimum</p></td>
+<td><p class="sd-card-text">min</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">mitochondrial</p></td>
+<td><p class="sd-card-text">mt</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">number</p></td>
+<td><p class="sd-card-text">num</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">observation</p></td>
+<td><p class="sd-card-text">obs</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">observed</p></td>
+<td><p class="sd-card-text">obs</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">original</p></td>
+<td><p class="sd-card-text">orig</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">output</p></td>
+<td><p class="sd-card-text">out</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">parameter</p></td>
+<td><p class="sd-card-text">param</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">phylogeny</p></td>
+<td><p class="sd-card-text">phylo</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">previous</p></td>
+<td><p class="sd-card-text">prev</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">probability</p></td>
+<td><p class="sd-card-text">prob</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">protein</p></td>
+<td><p class="sd-card-text">prot</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">record</p></td>
+<td><p class="sd-card-text">rec</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">reference</p></td>
+<td><p class="sd-card-text">ref</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">sequence</p></td>
+<td><p class="sd-card-text">seq</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">standard deviation</p></td>
+<td><p class="sd-card-text">stdev</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">statistics</p></td>
+<td><p class="sd-card-text">stats</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">string</p></td>
+<td><p class="sd-card-text">str</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">structure</p></td>
+<td><p class="sd-card-text">struct</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">temporary</p></td>
+<td><p class="sd-card-text">temp</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">taxa</p></td>
+<td><p class="sd-card-text">tax</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">taxon</p></td>
+<td><p class="sd-card-text">tax</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">taxonomic</p></td>
+<td><p class="sd-card-text">tax</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">taxonomy</p></td>
+<td><p class="sd-card-text">tax</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">variance</p></td>
+<td><p class="sd-card-text">var</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></section>
+</section>
+<section id="how-do-i-organize-my-modules-source-files">
+<h2>How do I organize my modules (source files)?<a class="headerlink" href="#how-do-i-organize-my-modules-source-files" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>Have a docstring with a description of the module’s functions</em>. If the description is long, the first line should be a short summary that makes sense on its own, separated from the rest by a newline.</p></li>
+<li><p><em>All code, including import statements, should follow the docstring.</em> Otherwise, the docstring will not be recognized by the interpreter, and you will not have access to it in interactive sessions (i.e. through <code class="docutils literal notranslate"><span class="pre">obj.__doc__</span></code>) or when generating documentation with automated tools.</p></li>
+<li><p><em>Import built-in modules first, followed by third-party modules, followed by any changes to the path and your own modules.</em> Especially, additions to the path and names of your modules are likely to change rapidly: keeping them in one place makes them easier to find.</p></li>
+<li><p><em>Don’t use</em> <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></code>, <em>instead use</em> <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">Name,</span> <span class="pre">Name2,</span> <span class="pre">Name3...</span></code> <em>or possibly</em> <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">module</span></code>. This makes it <em>much</em> easier to see name collisions and to replace implementations.</p></li>
+<li><p>If you are importing <a class="reference external" href="https://numpy.org/">NumPy</a>, <a class="reference external" href="https://matplotlib.org/">Matplotlib</a>, or another package that encourages a standard style for their import statements use them as needed for example:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.testing</span> <span class="k">as</span> <span class="nn">npt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+<section id="example-of-module-structure">
+<h3>Example of module structure<a class="headerlink" href="#example-of-module-structure" title="Link to this heading">#</a></h3>
+<p>The structure of your module should be similar to the example below. scikit-bio follows the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc style guide</a> for documentation. Our <a class="reference internal" href="doc_guide.html"><span class="doc">Documentation guidelines</span></a> explains how to write your docstrings using the numpydoc standards for scikit-bio:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Numbers (:mod:`skbio.numbers`)</span>
+<span class="sd">==============================</span>
+
+<span class="sd">.. currentmodule:: skbio.numbers</span>
+
+<span class="sd">Numbers holds a sequence of numbers, and defines several statistical</span>
+<span class="sd">operations (mean, stdev, etc.) FrequencyDistribution holds a mapping from</span>
+<span class="sd">items (not necessarily numbers) to counts, and defines operations such as</span>
+<span class="sd">Shannon entropy and frequency normalization.</span>
+
+
+<span class="sd">Classes</span>
+<span class="sd">-------</span>
+
+<span class="sd">.. autosummary::</span>
+<span class="sd">    :toctree: generated/</span>
+
+<span class="sd">    Numbers</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># Copyright (c) 2013--, scikit-bio development team.</span>
+<span class="c1">#</span>
+<span class="c1"># Distributed under the terms of the Modified BSD License.</span>
+<span class="c1">#</span>
+<span class="c1"># The full license is in the file LICENSE.txt, distributed with this software.</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span><span class="p">,</span> <span class="n">random</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">indices</span>
+
+
+<span class="k">class</span> <span class="nc">Numbers</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">FrequencyDistribution</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="how-should-i-write-comments">
+<h2>How should I write comments?<a class="headerlink" href="#how-should-i-write-comments" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>Always update the comments when the code changes.</em> Incorrect comments are far worse than no comments, since they are actively misleading.</p></li>
+<li><p><em>Comments should say more than the code itself.</em> Examine your comments carefully: they may indicate that you’d be better off rewriting your code (especially if <em>renaming your variables</em> would allow you to get rid of the comment.) In particular, don’t scatter magic numbers and other constants that have to be explained through your code. It’s far better to use variables whose names are self-documenting, especially if you use the same constant more than once. Also, think about making constants into class or instance data, since it’s all too common for ‘constants’ to need to change or to be needed in several methods.</p></li>
+</ul>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Wrong</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">win_size</span> <span class="o">-=</span> <span class="mi">20</span>        <span class="c1"># decrement win_size b</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+OK</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">win_size</span> <span class="o">-=</span> <span class="mi">20</span>        <span class="c1"># leave space for the scroll bar</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Right</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_scroll_bar_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">win_size</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scroll_bar_size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><em>Use comments starting with #, not strings, inside blocks of code.</em></p></li>
+<li><p><em>Start each method, class and function with a docstring using triple double quotes (“””).</em> Make sure the docstring follows the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc style guide</a>.</p></li>
+<li><p><em>Always update the docstring when the code changes.</em> Like outdated comments, outdated docstrings can waste a lot of time. “Correct examples are priceless, but incorrect examples are worse than worthless.” <a class="reference external" href="https://svn.python.org/www/branches/rest2web/pydotorg/pycon/dc2004/papers/4/PyCon2004DocTestUnit.pdf">Jim Fulton</a>.</p></li>
+</ul>
+</section>
+<section id="how-should-i-test-my-code">
+<h2>How should I test my code ?<a class="headerlink" href="#how-should-i-test-my-code" title="Link to this heading">#</a></h2>
+<p>There are several different approaches for testing code in python: <code class="docutils literal notranslate"><span class="pre">nose</span></code>, <code class="docutils literal notranslate"><span class="pre">unittest</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.testing</span></code>. Their purpose is the same, to check that execution of code given some input produces a specified output. The cases to which the approaches lend themselves are different.</p>
+<p>Whatever approach is employed, the general principle is every line of code should be tested. It is critical that your code be fully tested before you draw conclusions from results it produces. For scientific work, bugs don’t just mean unhappy users who you’ll never actually meet: <strong>they may mean retracted publications</strong>.</p>
+<p>Tests are an opportunity to invent the interface(s) you want. Write the test for a method before you write the method: often, this helps you figure out what you would want to call it and what parameters it should take. It’s OK to write the tests a few methods at a time, and to change them as your ideas about the interface change. However, you shouldn’t change them once you’ve told other people what the interface is. In the spirit of this, your tests should also import the functionality that they test from the shortest alias possible. This way any change to the API will cause your tests to break, and rightly so!</p>
+<p>Never treat prototypes as production code. It’s fine to write prototype code without tests to try things out, but when you’ve figured out the algorithm and interfaces you must rewrite it <em>with tests</em> to consider it finished. Often, this helps you decide what interfaces and functionality you actually need and what you can get rid of.</p>
+<p>“Code a little test a little”. For production code, write a couple of tests, then a couple of methods, then a couple more tests, then a couple more methods, then maybe change some of the names or generalize some of the functionality. If you have a huge amount of code where all you have to do is write the tests’, you’re probably closer to 30% done than 90%. Testing vastly reduces the time spent debugging, since whatever went wrong has to be in the code you wrote since the last test suite. And remember to use python’s interactive interpreter for quick checks of syntax and ideas.</p>
+<p>Run the test suite when you change <cite>anything</cite>. Even if a change seems trivial, it will only take a couple of seconds to run the tests and then you’ll be sure. This can eliminate long and frustrating debugging sessions where the change turned out to have been made long ago, but didn’t seem significant at the time. <strong>Note that tests are executed using GitHub Actions</strong>, see <a class="reference internal" href="../contribute.html"><span class="doc">Contribute to scikit-bio</span></a> for further discussion.</p>
+<section id="some-pointers">
+<h3>Some pointers<a class="headerlink" href="#some-pointers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><em>Use the</em> <code class="docutils literal notranslate"><span class="pre">unittest</span></code> <em>or the</em> <code class="docutils literal notranslate"><span class="pre">nose</span></code> <em>framework with tests in a separate file for each module.</em> Name the test file <code class="docutils literal notranslate"><span class="pre">test_module_name.py</span></code> and include it inside the tests folder of the module. Keeping the tests separate from the code reduces the temptation to change the tests when the code doesn’t work, and makes it easy to verify that a completely new implementation presents the same interface (behaves the same) as the old.</p></li>
+<li><p><em>Always include an</em> <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> <em>file in your tests directory</em>. This is required for the module to be included when the package is built and installed via <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</p></li>
+<li><p><em>Always import from a minimally deep API target</em>. That means you would use <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">skbio</span> <span class="pre">import</span> <span class="pre">DistanceMatrix</span></code> instead of <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">skbio.stats.distance</span> <span class="pre">import</span> <span class="pre">DistanceMatrix</span></code>. This allows us prevent most cases of accidental regression in our API.</p></li>
+<li><p><em>Use</em> <code class="docutils literal notranslate"><span class="pre">numpy.testing</span></code> <em>if you are doing anything with floating point numbers, arrays or permutations</em> (use <code class="docutils literal notranslate"><span class="pre">numpy.testing.assert_almost_equal</span></code>). Do <em>not</em> try to compare floating point numbers using <code class="docutils literal notranslate"><span class="pre">assertEqual</span></code> if you value your sanity.</p></li>
+<li><p><em>Test the interface of each class in your code by defining at least one</em> <code class="docutils literal notranslate"><span class="pre">TestCase</span></code> <em>with the name</em> <code class="docutils literal notranslate"><span class="pre">ClassNameTests</span></code>. This should contain tests for everything in the public interface.</p></li>
+<li><p><em>If the class is complicated, you may want to define additional tests with names</em> <code class="docutils literal notranslate"><span class="pre">ClassNameTests_test_type</span></code>. These might subclass <code class="docutils literal notranslate"><span class="pre">ClassNameTests</span></code> in order to share <code class="docutils literal notranslate"><span class="pre">setUp</span></code> methods, etc.</p></li>
+<li><p><em>Tests of private methods should be in a separate</em> <code class="docutils literal notranslate"><span class="pre">TestCase</span></code> <em>called</em> <code class="docutils literal notranslate"><span class="pre">ClassNameTests_private</span></code>. Private methods may change if you change the implementation. It is not required that test cases for private methods pass when you change things (that’s why they’re private, after all), though it is often useful to have these tests for debugging.</p></li>
+<li><p><em>Test `all` the methods in your class.</em> You should assume that any method you haven’t tested has bugs. The convention for naming tests is <code class="docutils literal notranslate"><span class="pre">test_method_name</span></code>. Any leading and trailing underscores on the method name can be ignored for the purposes of the test; however, <em>all tests must start with the literal substring</em> <code class="docutils literal notranslate"><span class="pre">test</span></code> <em>for</em> <code class="docutils literal notranslate"><span class="pre">unittest</span></code> and <code class="docutils literal notranslate"><span class="pre">nose</span></code> <em>to find them.</em> If the method is particularly complex, or has several discretely different cases you need to check, use <code class="docutils literal notranslate"><span class="pre">test_method_name_suffix</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">test_init_empty</span></code>, <code class="docutils literal notranslate"><span class="pre">test_init_single</span></code>, <code class="docutils literal notranslate"><span class="pre">test_init_wrong_type</span></code>, etc. for testing <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p></li>
+<li><p><em>Docstrings for testing methods should be considered optional</em>, instead the description of what the method does should be included in the name itself, therefore the name should be descriptive enough such that when running the tests in verbose mode you can immediately see the file and test method that’s failing.</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -c &quot;import skbio; skbio.test(verbose=True)&quot;
+skbio.maths.diversity.alpha.tests.test_ace.test_ace ... ok
+test_berger_parker_d (skbio.maths.diversity.alpha.tests.test_base.BaseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.1234s
+
+OK
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>Module-level functions should be tested in their own</em> <code class="docutils literal notranslate"><span class="pre">TestCase</span></code><em>, called</em> <code class="docutils literal notranslate"><span class="pre">modulenameTests</span></code>. Even if these functions are simple, it’s important to check that they work as advertised.</p></li>
+<li><p><em>It is much more important to test several small cases that you can check by hand than a single large case that requires a calculator.</em> Don’t trust spreadsheets for numerical calculations – use R instead!</p></li>
+<li><p><em>Make sure you test all the edge cases: what happens when the input is None, or ‘’, or 0, or negative?</em> What happens at values that cause a conditional to go one way or the other? Does incorrect input raise the right exceptions? Can your code accept subclasses or superclasses of the types it expects? What happens with very large input?</p></li>
+<li><p><em>To test permutations, check that the original and shuffled version are different, but that the sorted original and sorted shuffled version are the same.</em> Make sure that you get <em>different</em> permutations on repeated runs and when starting from different points.</p></li>
+<li><p><em>To test random choices, figure out how many of each choice you expect in a large sample (say, 1000 or a million) using the binomial distribution or its normal approximation.</em> Run the test several times and check that you’re within, say, 3 standard deviations of the mean.</p></li>
+<li><p>All tests that depend on a random value should be seeded, for example if using NumPy, <cite>numpy.random.seed(0)</cite> should be used, in any other case the appropriate API should be used to create consistent outputs between runs. It is preferable that you do this for each test case instead of doing it in the <cite>setUp</cite> function/method (if any exists).</p></li>
+<li><p>Stochastic failures should occur less than 1/10,1000 times, otherwise you risk adding a significant amount of time to the total running time of the test suite.</p></li>
+</ul>
+</section>
+<section id="example-test-module">
+<h3>Example test module<a class="headerlink" href="#example-test-module" title="Link to this heading">#</a></h3>
+<p>Here is an example of a <code class="docutils literal notranslate"><span class="pre">nose</span></code> test module structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># Copyright (c) 2013--, scikit-bio development team.</span>
+<span class="c1">#</span>
+<span class="c1"># Distributed under the terms of the Modified BSD License.</span>
+<span class="c1">#</span>
+<span class="c1"># The full license is in the file LICENSE.txt, distributed with this software.</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">nose.tools</span> <span class="kn">import</span> <span class="n">assert_almost_equal</span><span class="p">,</span> <span class="n">assert_raises</span>
+
+<span class="kn">from</span> <span class="nn">skbio.math.diversity.alpha.ace</span> <span class="kn">import</span> <span class="n">ace</span>
+
+
+<span class="k">def</span> <span class="nf">test_ace</span><span class="p">():</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])),</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">])),</span> <span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">])),</span> <span class="mf">3.0</span><span class="p">)</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])),</span> <span class="mf">4.0</span><span class="p">)</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])),</span> <span class="mf">7.0</span><span class="p">)</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])),</span> <span class="mf">4.6</span><span class="p">)</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])),</span> <span class="mf">5.62749672</span><span class="p">)</span>
+
+    <span class="c1"># Just returns the number of OTUs when all are abundant.</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">])),</span> <span class="mf">4.0</span><span class="p">)</span>
+
+    <span class="c1"># Border case: only singletons and 10-tons, no abundant OTUs.</span>
+    <span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="mf">9.35681818182</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_ace_only_rare_singletons</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">ace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">43</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">nose</span>
+    <span class="n">nose</span><span class="o">.</span><span class="n">runmodule</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="git-pointers">
+<h2>Git pointers<a class="headerlink" href="#git-pointers" title="Link to this heading">#</a></h2>
+<p>Commit messages are a useful way to document the changes being made to a project, it additionally documents who is making these changes and when are these changes being made, all of which are relevant when tracing back problems.</p>
+<section id="authoring-a-commit-message">
+<h3>Authoring a commit message<a class="headerlink" href="#authoring-a-commit-message" title="Link to this heading">#</a></h3>
+<p>The most important metadata in a commit message is (arguably) the author’s name and the author’s e-mail. GitHub uses this information to attribute your contributions to a project, see for example the <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/graphs/contributors">list of scikit-bio contributors</a>.</p>
+<p>Follow <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">this guide</a> to set up your system and <strong>make sure the e-mail you use in this step is the same e-mail associated to your GitHub account</strong>.</p>
+<p>After doing this you should see your name and e-mail when you run the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global user.name
+Yoshiki Vázquez Baeza
+$ git config --global user.email
+yoshiki89@gmail.com
+</pre></div>
+</div>
+</section>
+<section id="writing-a-commit-message">
+<h3>Writing a commit message<a class="headerlink" href="#writing-a-commit-message" title="Link to this heading">#</a></h3>
+<p>In general the writing of a commit message should adhere to <a class="reference external" href="https://numpy.org/doc/stable/dev/development_workflow.html#writing-the-commit-message">NumPy’s guidelines</a> which if followed correctly will help you structure your changes better i. e. bug fixes will be in a commit followed by a commit updating the test suite and with one last commit that update the documentation as needed.</p>
+<p>GitHub provides a set of handy features that will link together a commit message to a ticket in the issue tracker, this is specially helpful because you can <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/closing-an-issue">close an issue automatically</a> when the change is merged into the main repository, this reduces the amount of work that has to be done making sure outdated issues are not open.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-naming-conventions-and-how-should-i-format-my-code">What are the naming conventions? and How should I format my code?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-should-i-call-my-variables">What should I call my variables?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptable-abbreviations">Acceptable abbreviations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-organize-my-modules-source-files">How do I organize my modules (source files)?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-module-structure">Example of module structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-should-i-write-comments">How should I write comments?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-should-i-test-my-code">How should I test my code ?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-pointers">Some pointers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-test-module">Example test module</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-pointers">Git pointers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authoring-a-commit-message">Authoring a commit message</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-commit-message">Writing a commit message</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
