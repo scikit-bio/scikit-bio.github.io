@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.sequence.SubstitutionMatrix &#8212; scikit-bio 0.5.10-dev documentation</title>
+    <title>skbio.sequence.SubstitutionMatrix &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -61,11 +61,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.sequence.SubstitutionMatrix';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="scikit.bio/generated/skbio.sequence.SubstitutionMatrix.html" />
+    <link rel="canonical" href="../../../generated/skbio.sequence.SubstitutionMatrix.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
   
   
 </a></div>
@@ -717,9 +717,9 @@ document.write(`
 <h1>skbio.sequence.SubstitutionMatrix<a class="headerlink" href="#skbio-sequence-substitutionmatrix" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.SubstitutionMatrix">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">SubstitutionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_substitution.py#L15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">SubstitutionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_substitution.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix" title="Link to this definition">#</a></dt>
 <dd><p>Scoring matrix between characters in biological sequences.</p>
-<p>State: Experimental as of 0.5.10.</p>
+<p>State: Experimental as of 0.6.0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -754,9 +754,9 @@ amino acids, but it can be generalized to any iterable of scalars (numbers,
 strings, etc.). Therefore, you may use this class to construct substitution
 matrices of complicated biological units (such as codons or non-canonical
 amino acids). The score matrix may be symmetric, as many existing matrices
-are, or assymetric, where the score of one character substituted by another
-is unequal to the the other way around. Only square matrices (i.e., numbers
-of rows and columns are equal) are supported.</p>
+are, or asymmetric, where the score of one character substituted by another
+is unequal to the other way around. Only square matrices (i.e., numbers of
+rows and columns are equal) are supported.</p>
 <p>Multiple commonly used nucleotide and amino acid substitution matrices are
 pre-defined and can be referred to by name. Examples include NUC.4.4 for
 nucleotides, and variants of BLOSUM and PAM matrices for amino acids.</p>
@@ -796,6 +796,8 @@ all attributes and methods of the latter also apply to the former.</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></dt><dd><p>Tuple of object IDs.</p>
 </dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ascii</span></code></dt><dd><p>Whether alphabet consists of single ASCII characters.</p>
+</dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">png</span></code></dt><dd><p>Get figure data in PNG format.</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scores</span></code></dt><dd><p>Matrix of substitution scores.</p>
@@ -813,7 +815,7 @@ all attributes and methods of the latter also apply to the former.</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.between.html#skbio.sequence.SubstitutionMatrix.between" title="skbio.sequence.SubstitutionMatrix.between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">between</span></code></a>(from_, to_[, allow_overlap])</p></td>
-<td><p>Obtain the distances between the two groups of IDs</p></td>
+<td><p>Obtain the distances between the two groups of IDs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.by_name.html#skbio.sequence.SubstitutionMatrix.by_name" title="skbio.sequence.SubstitutionMatrix.by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">by_name</span></code></a>(name)</p></td>
 <td><p>Load a pre-defined substitution matrix by its name.</p></td>
@@ -840,7 +842,7 @@ all attributes and methods of the latter also apply to the former.</p>
 <td><p>Return the index of the specified ID.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.plot.html#skbio.sequence.SubstitutionMatrix.plot" title="skbio.sequence.SubstitutionMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
-<td><p>Creates a heatmap of the dissimilarity matrix</p></td>
+<td><p>Create a heatmap of the dissimilarity matrix.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.read.html#skbio.sequence.SubstitutionMatrix.read" title="skbio.sequence.SubstitutionMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(file[, format])</p></td>
 <td><p>Create a new <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> instance from a file.</p></td>
@@ -858,7 +860,7 @@ all attributes and methods of the latter also apply to the former.</p>
 <td><p>Return the transpose of the dissimilarity matrix.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.within.html#skbio.sequence.SubstitutionMatrix.within" title="skbio.sequence.SubstitutionMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
-<td><p>Obtain all the distances among the set of IDs</p></td>
+<td><p>Obtain all the distances among the set of IDs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.write.html#skbio.sequence.SubstitutionMatrix.write" title="skbio.sequence.SubstitutionMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> to a file.</p></td>
@@ -886,19 +888,22 @@ all attributes and methods of the latter also apply to the former.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></p></td>
 <td><p>Tuple of object IDs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">png</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ascii</span></code></p></td>
+<td><p>Whether alphabet consists of single ASCII characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">png</span></code></p></td>
 <td><p>Get figure data in PNG format.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">scores</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">scores</span></code></p></td>
 <td><p>Matrix of substitution scores.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></p></td>
 <td><p>Two-element tuple containing the dissimilarity matrix dimensions.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></p></td>
 <td><p>Total number of elements in the dissimilarity matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">svg</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">svg</span></code></p></td>
 <td><p>Get figure data in SVG format.</p></td>
 </tr>
 </tbody>
@@ -942,7 +947,7 @@ all attributes and methods of the latter also apply to the former.</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.between.html#skbio.sequence.SubstitutionMatrix.between" title="skbio.sequence.SubstitutionMatrix.between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">between</span></code></a>(from_, to_[, allow_overlap])</p></td>
-<td><p>Obtain the distances between the two groups of IDs</p></td>
+<td><p>Obtain the distances between the two groups of IDs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.by_name.html#skbio.sequence.SubstitutionMatrix.by_name" title="skbio.sequence.SubstitutionMatrix.by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">by_name</span></code></a>(name)</p></td>
 <td><p>Load a pre-defined substitution matrix by its name.</p></td>
@@ -969,7 +974,7 @@ all attributes and methods of the latter also apply to the former.</p>
 <td><p>Return the index of the specified ID.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.plot.html#skbio.sequence.SubstitutionMatrix.plot" title="skbio.sequence.SubstitutionMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
-<td><p>Creates a heatmap of the dissimilarity matrix</p></td>
+<td><p>Create a heatmap of the dissimilarity matrix.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.read.html#skbio.sequence.SubstitutionMatrix.read" title="skbio.sequence.SubstitutionMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(file[, format])</p></td>
 <td><p>Create a new <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> instance from a file.</p></td>
@@ -987,7 +992,7 @@ all attributes and methods of the latter also apply to the former.</p>
 <td><p>Return the transpose of the dissimilarity matrix.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.within.html#skbio.sequence.SubstitutionMatrix.within" title="skbio.sequence.SubstitutionMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
-<td><p>Obtain all the distances among the set of IDs</p></td>
+<td><p>Obtain all the distances among the set of IDs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.write.html#skbio.sequence.SubstitutionMatrix.write" title="skbio.sequence.SubstitutionMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> to a file.</p></td>

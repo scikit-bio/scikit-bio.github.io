@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Stockholm format (skbio.io.format.stockholm) &#8212; scikit-bio 0.5.10-dev documentation</title>
+    <title>Stockholm format (skbio.io.format.stockholm) &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -61,11 +61,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.stockholm';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="scikit.bio/generated/skbio.io.format.stockholm.html" />
+    <link rel="canonical" href="../../../generated/skbio.io.format.stockholm.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
   
   
 </a></div>
@@ -605,8 +605,6 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.blast7.html">BLAST+7 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast7</span></code>)</a></li>
 
 
-
-
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.clustal.html">Clustal format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.clustal</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.embl.html">EMBL format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.embl</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.fasta.html">FASTA/QUAL format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.fasta</span></code>)</a></li>
@@ -619,7 +617,6 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.phylip.html">PHYLIP multiple sequence alignment format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.qseq.html">QSeq format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.qseq</span></code>)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.taxdump.html">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
@@ -1037,8 +1034,8 @@ to the reader call.</p>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> has GF metadata stored in its <code class="docutils literal notranslate"><span class="pre">metadata</span></code> dictionary:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">metadata</span>
-<span class="go">OrderedDict([(&#39;CC&#39;, &#39;CBS domains are small intracellular modules mostly found in 2 or four copies within a protein.&#39;)])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">msa</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="go">[(&#39;CC&#39;, &#39;CBS domains are small intracellular modules mostly found in 2 or four copies within a protein.&#39;)]</span>
 </pre></div>
 </div>
 <p>GC metadata is stored in the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code>:</p>
@@ -1058,8 +1055,8 @@ to the reader call.</p>
 </pre></div>
 </div>
 <p>GS metadata is stored in the sequence-specific <code class="docutils literal notranslate"><span class="pre">metadata</span></code> dictionary:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span>
-<span class="go">OrderedDict([(&#39;AC&#39;, &#39;O83071&#39;)])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">msa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="go">[(&#39;AC&#39;, &#39;O83071&#39;)]</span>
 </pre></div>
 </div>
 <p>GR metadata is stored in sequence-specific <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code>:</p>
@@ -1101,9 +1098,8 @@ to the reader call.</p>
 </pre></div>
 </div>
 </section>
-</section>
 <section id="references">
-<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div role="list" class="citation-list">
 <div class="citation" id="r583799db7b1d-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
@@ -1116,6 +1112,7 @@ to the reader call.</p>
 <p><a class="reference external" href="http://sonnhammer.sbc.su.se/Stockholm.html">http://sonnhammer.sbc.su.se/Stockholm.html</a></p>
 </div>
 </div>
+</section>
 </section>
 
 
@@ -1164,7 +1161,6 @@ to the reader call.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-support">Format Support</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-specification">Format Specification</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#header">Header</a></li>
@@ -1181,11 +1177,8 @@ to the reader call.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-parameters">Format Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

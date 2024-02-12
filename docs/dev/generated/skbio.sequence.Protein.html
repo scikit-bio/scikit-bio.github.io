@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.sequence.Protein &#8212; scikit-bio 0.5.10-dev documentation</title>
+    <title>skbio.sequence.Protein &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -61,11 +61,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.sequence.Protein';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="scikit.bio/generated/skbio.sequence.Protein.html" />
+    <link rel="canonical" href="../../../generated/skbio.sequence.Protein.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
   
   
 </a></div>
@@ -637,6 +637,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.read.html">skbio.sequence.Protein.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.replace.html">skbio.sequence.Protein.replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.stops.html">skbio.sequence.Protein.stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_indices.html">skbio.sequence.Protein.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_regex.html">skbio.sequence.Protein.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.write.html">skbio.sequence.Protein.write</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.__bool__.html">skbio.sequence.Protein.__bool__</a></li>
@@ -687,6 +688,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.read.html">skbio.sequence.Protein.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.replace.html">skbio.sequence.Protein.replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.stops.html">skbio.sequence.Protein.stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_indices.html">skbio.sequence.Protein.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_regex.html">skbio.sequence.Protein.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.write.html">skbio.sequence.Protein.write</a></li>
 </ul>
@@ -757,7 +759,7 @@ document.write(`
 <h1>skbio.sequence.Protein<a class="headerlink" href="#skbio-sequence-protein" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.Protein">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Protein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_protein.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Protein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_protein.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein" title="Link to this definition">#</a></dt>
 <dd><p>Store protein sequence data and optional associated metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -998,6 +1000,8 @@ A Cornish-Bowden</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></dt><dd><p>Array containing underlying sequence characters.</p>
 </dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></dt><dd><p>Return wildcard character.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1038,7 +1042,7 @@ A Cornish-Bowden</p>
 <td><p>Find positions containing gaps in the biological sequence.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_definites.html#skbio.sequence.Protein.has_definites" title="skbio.sequence.Protein.has_definites"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_definites</span></code></a>()</p></td>
-<td><p>Determine if sequence contains one or more definite characters</p></td>
+<td><p>Determine if sequence contains one or more definite characters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_degenerates.html#skbio.sequence.Protein.has_degenerates" title="skbio.sequence.Protein.has_degenerates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_degenerates</span></code></a>()</p></td>
 <td><p>Determine if sequence contains one or more degenerate characters.</p></td>
@@ -1053,7 +1057,7 @@ A Cornish-Bowden</p>
 <td><p>Determine if the object has metadata.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_nondegenerates.html#skbio.sequence.Protein.has_nondegenerates" title="skbio.sequence.Protein.has_nondegenerates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_nondegenerates</span></code></a>()</p></td>
-<td><p>Determine if sequence contains one or more non-degenerate characters</p></td>
+<td><p>Determine if sequence contains one or more non-degenerate characters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_positional_metadata.html#skbio.sequence.Protein.has_positional_metadata" title="skbio.sequence.Protein.has_positional_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_positional_metadata</span></code></a>()</p></td>
 <td><p>Determine if the object has positional metadata.</p></td>
@@ -1100,10 +1104,13 @@ A Cornish-Bowden</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.stops.html#skbio.sequence.Protein.stops" title="skbio.sequence.Protein.stops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stops</span></code></a>()</p></td>
 <td><p>Find positions containing stop characters in the protein sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_indices.html#skbio.sequence.Protein.to_indices" title="skbio.sequence.Protein.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<td><p>Convert the sequence into indices of characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
 <td><p>Return regular expression object that accounts for degenerate chars.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Protein</span></code> to a file.</p></td>
 </tr>
 </tbody>
@@ -1153,13 +1160,16 @@ A Cornish-Bowden</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></p></td>
 <td><p>Array containing underlying sequence characters.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></p></td>
+<td><p>Return wildcard character.</p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Built-ins</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.__bool__.html#skbio.sequence.Protein.__bool__" title="skbio.sequence.Protein.__bool__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__bool__</span></code></a>()</p></td>
-<td><p>Returns truth value (truthiness) of sequence.</p></td>
+<td><p>Return truth value (truthiness) of sequence.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.__contains__.html#skbio.sequence.Protein.__contains__" title="skbio.sequence.Protein.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a>(subsequence)</p></td>
 <td><p>Determine if a subsequence is contained in this sequence.</p></td>
@@ -1245,7 +1255,7 @@ A Cornish-Bowden</p>
 <td><p>Find positions containing gaps in the biological sequence.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_definites.html#skbio.sequence.Protein.has_definites" title="skbio.sequence.Protein.has_definites"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_definites</span></code></a>()</p></td>
-<td><p>Determine if sequence contains one or more definite characters</p></td>
+<td><p>Determine if sequence contains one or more definite characters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_degenerates.html#skbio.sequence.Protein.has_degenerates" title="skbio.sequence.Protein.has_degenerates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_degenerates</span></code></a>()</p></td>
 <td><p>Determine if sequence contains one or more degenerate characters.</p></td>
@@ -1260,7 +1270,7 @@ A Cornish-Bowden</p>
 <td><p>Determine if the object has metadata.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_nondegenerates.html#skbio.sequence.Protein.has_nondegenerates" title="skbio.sequence.Protein.has_nondegenerates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_nondegenerates</span></code></a>()</p></td>
-<td><p>Determine if sequence contains one or more non-degenerate characters</p></td>
+<td><p>Determine if sequence contains one or more non-degenerate characters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.has_positional_metadata.html#skbio.sequence.Protein.has_positional_metadata" title="skbio.sequence.Protein.has_positional_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_positional_metadata</span></code></a>()</p></td>
 <td><p>Determine if the object has positional metadata.</p></td>
@@ -1307,10 +1317,13 @@ A Cornish-Bowden</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.stops.html#skbio.sequence.Protein.stops" title="skbio.sequence.Protein.stops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stops</span></code></a>()</p></td>
 <td><p>Find positions containing stop characters in the protein sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_indices.html#skbio.sequence.Protein.to_indices" title="skbio.sequence.Protein.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<td><p>Convert the sequence into indices of characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
 <td><p>Return regular expression object that accounts for degenerate chars.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Protein</span></code> to a file.</p></td>
 </tr>
 </tbody>

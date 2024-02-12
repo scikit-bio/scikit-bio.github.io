@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.pairwise_vlr &#8212; scikit-bio 0.5.10-dev documentation</title>
+    <title>skbio.stats.composition.pairwise_vlr &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -61,11 +61,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.pairwise_vlr';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="scikit.bio/generated/skbio.stats.composition.pairwise_vlr.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.composition.pairwise_vlr.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
   
   
 </a></div>
@@ -694,8 +694,8 @@ document.write(`
 <h1>skbio.stats.composition.pairwise_vlr<a class="headerlink" href="#skbio-stats-composition-pairwise-vlr" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.pairwise_vlr">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">pairwise_vlr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ddof</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/stats/composition.py#L990"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.pairwise_vlr" title="Link to this definition">#</a></dt>
-<dd><p>Perform pairwise variance log ratio transformation <a class="reference internal" href="#ra03608920942-1" id="id1">[1]</a> <a class="reference internal" href="#ra03608920942-2" id="id2">[2]</a>.</p>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">pairwise_vlr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ddof</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://https://github.com/scikit-bio/scikit-bio/blob/master/skbio/stats/composition.py#L969"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.pairwise_vlr" title="Link to this definition">#</a></dt>
+<dd><p>Perform pairwise variance log ratio transformation.</p>
 <p>State: Experimental as of 0.5.7.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -723,6 +723,8 @@ columns = components</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Pairwise variance log ratio transformation was described in <a class="reference internal" href="#ra03608920942-1" id="id1">[1]</a> and <a class="reference internal" href="#ra03608920942-2" id="id2">[2]</a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="ra03608920942-1" role="doc-biblioentry">
@@ -736,7 +738,7 @@ Correlation for Relative Data. PLoS Comput Biol 11(3): e1004075.
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>Erb, I., Notredame, C.
 How should we measure proportionality on relative gene
-expression data?. Theory Biosci. 135, 21–36 (2016).
+expression data?. Theory Biosci. 135, 21-36 (2016).
 <a class="reference external" href="https://doi.org/10.1007/s12064-015-0220-8">https://doi.org/10.1007/s12064-015-0220-8</a></p>
 </div>
 </div>
@@ -748,7 +750,9 @@ expression data?. Theory Biosci. 135, 21–36 (2016).
 <span class="gp">... </span>                <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">])])</span><span class="o">.</span><span class="n">T</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dism</span> <span class="o">=</span> <span class="n">pairwise_vlr</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dism</span><span class="o">.</span><span class="n">redundant_form</span><span class="p">()</span>
-<span class="go">array([[ 0.,  3., 27.], [ 3.,  0., 12.], [27., 12.,  0.]])</span>
+<span class="go">array([[  0.,   3.,  27.],</span>
+<span class="go">       [  3.,   0.,  12.],</span>
+<span class="go">       [ 27.,  12.,   0.]])</span>
 </pre></div>
 </div>
 </dd></dl>

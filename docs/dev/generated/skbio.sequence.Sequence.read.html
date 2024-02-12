@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.sequence.Sequence.read &#8212; scikit-bio 0.5.10-dev documentation</title>
+    <title>skbio.sequence.Sequence.read &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -61,11 +61,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.sequence.Sequence.read';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="scikit.bio/generated/skbio.sequence.Sequence.read.html" />
+    <link rel="canonical" href="../../../generated/skbio.sequence.Sequence.read.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
   
   
 </a></div>
@@ -620,6 +620,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.mismatches.html">skbio.sequence.Sequence.mismatches</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.Sequence.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.replace.html">skbio.sequence.Sequence.replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.to_indices.html">skbio.sequence.Sequence.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.write.html">skbio.sequence.Sequence.write</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__bool__.html">skbio.sequence.Sequence.__bool__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__contains__.html">skbio.sequence.Sequence.__contains__</a></li>
@@ -656,6 +657,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.mismatches.html">skbio.sequence.Sequence.mismatches</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.Sequence.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.replace.html">skbio.sequence.Sequence.replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.to_indices.html">skbio.sequence.Sequence.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.write.html">skbio.sequence.Sequence.write</a></li>
 </ul>
 </li>
@@ -732,7 +734,7 @@ document.write(`
 <h1>skbio.sequence.Sequence.read<a class="headerlink" href="#skbio-sequence-sequence-read" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.read">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Sequence.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/io/registry.py#L650"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.read" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Sequence.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://https://github.com/scikit-bio/scikit-bio/blob/master/skbio/io/registry.py#L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.read" title="Link to this definition">#</a></dt>
 <dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> instance from a file.</p>
 <p>This is a convenience method for <a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read()</span></code></a>. For
 more information about the I/O system in scikit-bio, please see

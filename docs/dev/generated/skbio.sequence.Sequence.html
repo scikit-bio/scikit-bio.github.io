@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.sequence.Sequence &#8212; scikit-bio 0.5.10-dev documentation</title>
+    <title>skbio.sequence.Sequence &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=72d85a2c"></script>
+    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -61,11 +61,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.sequence.Sequence';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://qiyunlab.github.io/assets/files/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="scikit.bio/generated/skbio.sequence.Sequence.html" />
+    <link rel="canonical" href="../../../generated/skbio.sequence.Sequence.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="scikit-bio 0.5.10-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio 0.5.10-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
   
   
 </a></div>
@@ -620,6 +620,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.mismatches.html">skbio.sequence.Sequence.mismatches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.read.html">skbio.sequence.Sequence.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.replace.html">skbio.sequence.Sequence.replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.to_indices.html">skbio.sequence.Sequence.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.write.html">skbio.sequence.Sequence.write</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__bool__.html">skbio.sequence.Sequence.__bool__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__contains__.html">skbio.sequence.Sequence.__contains__</a></li>
@@ -656,6 +657,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.mismatches.html">skbio.sequence.Sequence.mismatches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.read.html">skbio.sequence.Sequence.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.replace.html">skbio.sequence.Sequence.replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.to_indices.html">skbio.sequence.Sequence.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.write.html">skbio.sequence.Sequence.write</a></li>
 </ul>
 </li>
@@ -729,7 +731,7 @@ document.write(`
 <h1>skbio.sequence.Sequence<a class="headerlink" href="#skbio-sequence-sequence" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_sequence.py#L27"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_sequence.py#L35"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence" title="Link to this definition">#</a></dt>
 <dd><p>Store generic sequence data and optional associated metadata.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects do not enforce an alphabet or grammar and are thus the
 most generic objects for storing sequence data. <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects do not
@@ -787,8 +789,7 @@ A Cornish-Bowden</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">Sequence</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">Sequence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.metadata</span> <span class="kn">import</span> <span class="n">IntervalMetadata</span>
 </pre></div>
 </div>
@@ -854,7 +855,7 @@ A Cornish-Bowden</p>
 </div>
 <p><strong>Retrieving sequence metadata:</strong></p>
 <p>Retrieve metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span> <span class="c1"># using pprint to display dict in sorted order</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span>
 <span class="go">{&#39;authors&#39;: [&#39;Alice&#39;], &#39;desc&#39;: &#39;seq desc&#39;, &#39;id&#39;: &#39;seq-id&#39;}</span>
 </pre></div>
 </div>
@@ -885,18 +886,18 @@ shares a reference to the object. The following examples illustrate this
 behavior.</p>
 </div>
 <p>First, let’s create a sequence and update its metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;seq-id&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">:</span><span class="s1">&#39;seq desc&#39;</span><span class="p">,</span> <span class="s1">&#39;authors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;seq-id&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="s1">&#39;seq desc&#39;</span><span class="p">,</span> <span class="s1">&#39;authors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new-id&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;pubmed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12345</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-<span class="go">{&#39;authors&#39;: [&#39;Alice&#39;], &#39;desc&#39;: &#39;seq desc&#39;, &#39;id&#39;: &#39;new-id&#39;, &#39;pubmed&#39;: 12345}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span>
+<span class="go">{&#39;id&#39;: &#39;new-id&#39;, &#39;desc&#39;: &#39;seq desc&#39;, &#39;authors&#39;: [&#39;Alice&#39;], &#39;pubmed&#39;: 12345}</span>
 </pre></div>
 </div>
 <p>Note that the original metadata dictionary (stored in variable
 <code class="docutils literal notranslate"><span class="pre">metadata</span></code>) hasn’t changed because a shallow copy was made:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-<span class="go">{&#39;authors&#39;: [&#39;Alice&#39;], &#39;desc&#39;: &#39;seq desc&#39;, &#39;id&#39;: &#39;seq-id&#39;}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span>
+<span class="go">{&#39;id&#39;: &#39;seq-id&#39;, &#39;desc&#39;: &#39;seq desc&#39;, &#39;authors&#39;: [&#39;Alice&#39;]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span> <span class="o">==</span> <span class="n">metadata</span>
 <span class="go">False</span>
 </pre></div>
@@ -925,11 +926,8 @@ derived from another sequence:</p>
 <span class="go">    length: 2</span>
 <span class="go">-----------------------------</span>
 <span class="go">0 CG</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">subseq</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-<span class="go">{&#39;authors&#39;: [&#39;Alice&#39;, &#39;Bob&#39;],</span>
-<span class="go"> &#39;desc&#39;: &#39;seq desc&#39;,</span>
-<span class="go"> &#39;id&#39;: &#39;new-id&#39;,</span>
-<span class="go"> &#39;pubmed&#39;: 12345}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">metadata</span>
+<span class="go">{&#39;id&#39;: &#39;new-id&#39;, &#39;desc&#39;: &#39;seq desc&#39;, &#39;authors&#39;: [&#39;Alice&#39;, &#39;Bob&#39;], &#39;pubmed&#39;: 12345}</span>
 </pre></div>
 </div>
 <p>The subsequence has inherited the metadata of its parent sequence. If we
@@ -1133,7 +1131,10 @@ interested and then modify them:</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.replace.html#skbio.sequence.Sequence.replace" title="skbio.sequence.Sequence.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a>(where, character)</p></td>
 <td><p>Replace values in this sequence with a different character.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.write.html#skbio.sequence.Sequence.write" title="skbio.sequence.Sequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.to_indices.html#skbio.sequence.Sequence.to_indices" title="skbio.sequence.Sequence.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<td><p>Convert the sequence into indices of characters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.write.html#skbio.sequence.Sequence.write" title="skbio.sequence.Sequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> to a file.</p></td>
 </tr>
 </tbody>
@@ -1165,7 +1166,7 @@ interested and then modify them:</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.__bool__.html#skbio.sequence.Sequence.__bool__" title="skbio.sequence.Sequence.__bool__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__bool__</span></code></a>()</p></td>
-<td><p>Returns truth value (truthiness) of sequence.</p></td>
+<td><p>Return truth value (truthiness) of sequence.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.__contains__.html#skbio.sequence.Sequence.__contains__" title="skbio.sequence.Sequence.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a>(subsequence)</p></td>
 <td><p>Determine if a subsequence is contained in this sequence.</p></td>
@@ -1274,7 +1275,10 @@ interested and then modify them:</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.replace.html#skbio.sequence.Sequence.replace" title="skbio.sequence.Sequence.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a>(where, character)</p></td>
 <td><p>Replace values in this sequence with a different character.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.write.html#skbio.sequence.Sequence.write" title="skbio.sequence.Sequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.to_indices.html#skbio.sequence.Sequence.to_indices" title="skbio.sequence.Sequence.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<td><p>Convert the sequence into indices of characters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.write.html#skbio.sequence.Sequence.write" title="skbio.sequence.Sequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> to a file.</p></td>
 </tr>
 </tbody>
