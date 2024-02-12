@@ -58,7 +58,7 @@
                 gtag('config', 'UA-6636235-9');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute';</script>
-    <link rel="canonical" href="scikit.bio/contribute.html" />
+    <link rel="canonical" href="https://scikit.bio/contribute.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -147,8 +147,8 @@
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="scikit-bio"/>
-    <script>document.write(`<img src="_static/logo_inv.png" class="logo__image only-dark" alt="scikit-bio"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio"/>
+    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio"/>`);</script>
   
   
 </a></div>
@@ -628,6 +628,34 @@ document.write(`
 <h2>Getting help with git<a class="headerlink" href="#getting-help-with-git" title="Link to this heading">#</a></h2>
 <p>If you’re new to GitHub, you’ll probably find the <a class="reference external" href="https://docs.github.com/">GitHub Docs</a> helpful.</p>
 </section>
+<section id="automating-code-quality">
+<h2>Automating code quality<a class="headerlink" href="#automating-code-quality" title="Link to this heading">#</a></h2>
+<p><strong>Integrating Ruff’s autoformatter and linter with pre-commit hooks</strong></p>
+<p><a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> is a valuable autoformatter and linter tool that ensures code consistency and quality. Integrating Ruff with pre-commit hooks empowers developers to automatically format and lint their code before each commit, promoting adherence to project standards and best practices.</p>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<p>In your development environment, install Ruff and pre-commit using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Alternatively, install both packages individually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ruff</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-pre-commit-hooks">
+<h3>Initialize pre-commit hooks<a class="headerlink" href="#initialize-pre-commit-hooks" title="Link to this heading">#</a></h3>
+<p>Scikit-bio streamlines the installation process by including Ruff’s linter and formatter via Astral’s <a class="reference external" href="https://github.com/astral-sh/ruff-pre-commit">ruff-pre-commit</a>, referenced in the <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file. Activate the pre-commit hooks with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Once installed, the pre-commit hooks will automatically execute every time you commit changes. By default, they enforce Ruff’s formatter and linter rules, ensuring code consistency and adherence to standards.</p>
+</section>
+<section id="make-necessary-changes-and-commit">
+<h3>Make necessary changes and commit<a class="headerlink" href="#make-necessary-changes-and-commit" title="Link to this heading">#</a></h3>
+<p>After the hooks have executed, address any errors flagged by Ruff. Once resolved, you can proceed to commit and push your changes to your branch as usual.</p>
+</section>
+</section>
 </section>
 
 
@@ -665,6 +693,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-guidelines">Testing guidelines</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-guidelines">Documentation guidelines</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help-with-git">Getting help with git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-code-quality">Automating code quality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-pre-commit-hooks">Initialize pre-commit hooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-necessary-changes-and-commit">Make necessary changes and commit</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
