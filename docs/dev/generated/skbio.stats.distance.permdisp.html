@@ -689,9 +689,8 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.permdisp">
 <span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/stats/distance/_permdisp.py#L29"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
-<dd><p>Test for Homogeneity of Multivariate Groups Disperisons using Marti</p>
-<p>State: Experimental as of 0.5.2.
-Anderson’s PERMDISP2 procedure.</p>
+<dd><p>Test for Homogeneity of Multivariate Groups Disperisons.</p>
+<p>State: Experimental as of 0.5.2.</p>
 <p>PERMDISP is a multivariate analogue of Levene’s test for homogeneity of
 multivariate variances. Distances are handled by reducing the
 original distances to principal coordinates. PERMDISP calculates an
@@ -782,6 +781,7 @@ the number of ids in distance_matrix</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
+<p>This function uses Marti Anderson’s PERMDISP2 procedure.</p>
 <p>The significance of the results from this function will be the same as the
 results found in vegan’s betadisper, however due to floating point
 variability the F-statistic results may vary slightly.</p>
@@ -791,8 +791,8 @@ variability the F-statistic results may vary slightly.</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r3b1907d8ea2e-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Anderson, Marti J. “Distance-Based Tests for Homogeneity of
-Multivariate Dispersions.” Biometrics 62 (2006):245-253</p>
+<p>Anderson, M. J. (2006). Distance-based tests for homogeneity of multivariate
+dispersions. Biometrics, 62(1), 245-253.</p>
 </div>
 <div class="citation" id="r3b1907d8ea2e-2" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
