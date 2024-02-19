@@ -684,7 +684,7 @@ document.write(`
 <h1>skbio.workflow.Workflow.__call__<a class="headerlink" href="#skbio-workflow-workflow-call" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.workflow.Workflow.__call__">
-<span class="sig-prename descclassname"><span class="pre">Workflow.</span></span><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fail_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/workflow.py#L389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.workflow.Workflow.__call__" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Workflow.</span></span><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fail_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/workflow.py#L390"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.workflow.Workflow.__call__" title="Link to this definition">#</a></dt>
 <dd><p>Operate on all the data.</p>
 <p>State: Experimental as of 0.4.0.</p>
 <p>This is the processing engine of the workflow. Callbacks are executed
@@ -695,10 +695,13 @@ which allows them to examine any aspect of the workflow.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>it</strong><span class="classifier">an iterator</span></dt><dd></dd>
-<dt><strong>success_callback</strong><span class="classifier">method to call on a successful item prior to</span></dt><dd><p>yielding. By default, <code class="docutils literal notranslate"><span class="pre">self.state</span></code> is yielded.</p>
+<dt><strong>iter_</strong><span class="classifier">iterator</span></dt><dd><p>The iterator containing the data to be processed.</p>
 </dd>
-<dt><strong>fail_callback</strong><span class="classifier">method to call on a failed item prior to yielding. By</span></dt><dd><p>default, failures are ignored.</p>
+<dt><strong>success_callback</strong><span class="classifier">method, optional</span></dt><dd><p>Method to call on a successful item prior to yielding. By default,
+<code class="docutils literal notranslate"><span class="pre">self.state</span></code> is yielded.</p>
+</dd>
+<dt><strong>fail_callback</strong><span class="classifier">method, optional</span></dt><dd><p>Method to call on a failed item prior to yielding. By default, failures
+are ignored.</p>
 </dd>
 </dl>
 </dd>

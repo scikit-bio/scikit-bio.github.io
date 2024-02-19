@@ -787,20 +787,20 @@ the annotation belong to.</p>
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <p>Let’s create a file stream with following data in GFF3 format:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">DNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gff_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="gp">... </span><span class="s2">##gff-version 3</span>
-<span class="gp">... </span><span class="s2">seq_1</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">gene</span><span class="se">\t</span><span class="s2">10</span><span class="se">\t</span><span class="s2">90</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">+</span><span class="se">\t</span><span class="s2">0</span><span class="se">\t</span><span class="s2">ID=gen1</span>
-<span class="gp">... </span><span class="s2">seq_1</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">exon</span><span class="se">\t</span><span class="s2">10</span><span class="se">\t</span><span class="s2">30</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">+</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">Parent=gen1</span>
-<span class="gp">... </span><span class="s2">seq_1</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">exon</span><span class="se">\t</span><span class="s2">50</span><span class="se">\t</span><span class="s2">90</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">+</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">Parent=gen1</span>
-<span class="gp">... </span><span class="s2">seq_2</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">gene</span><span class="se">\t</span><span class="s2">80</span><span class="se">\t</span><span class="s2">96</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">-</span><span class="se">\t</span><span class="s2">.</span><span class="se">\t</span><span class="s2">ID=gen2</span>
-<span class="gp">... </span><span class="s2">##FASTA</span>
-<span class="gp">... </span><span class="s2">&gt;seq_1</span>
-<span class="gp">... </span><span class="s2">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
-<span class="gp">... </span><span class="s2">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
-<span class="gp">... </span><span class="s2">&gt;seq_2</span>
-<span class="gp">... </span><span class="s2">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
-<span class="gp">... </span><span class="s2">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
-<span class="gp">... </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gff_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">##gff-version 3</span>
+<span class="gp">... </span><span class="s1">seq_1</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">gene</span><span class="se">\t</span><span class="s1">10</span><span class="se">\t</span><span class="s1">90</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">+</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">ID=gen1</span>
+<span class="gp">... </span><span class="s1">seq_1</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">exon</span><span class="se">\t</span><span class="s1">10</span><span class="se">\t</span><span class="s1">30</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">+</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">Parent=gen1</span>
+<span class="gp">... </span><span class="s1">seq_1</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">exon</span><span class="se">\t</span><span class="s1">50</span><span class="se">\t</span><span class="s1">90</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">+</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">Parent=gen1</span>
+<span class="gp">... </span><span class="s1">seq_2</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">gene</span><span class="se">\t</span><span class="s1">80</span><span class="se">\t</span><span class="s1">96</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">-</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">ID=gen2</span>
+<span class="gp">... </span><span class="s1">##FASTA</span>
+<span class="gp">... </span><span class="s1">&gt;seq_1</span>
+<span class="gp">... </span><span class="s1">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
+<span class="gp">... </span><span class="s1">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
+<span class="gp">... </span><span class="s1">&gt;seq_2</span>
+<span class="gp">... </span><span class="s1">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
+<span class="gp">... </span><span class="s1">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.metadata</span> <span class="kn">import</span> <span class="n">IntervalMetadata</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.io</span> <span class="kn">import</span> <span class="n">read</span>
