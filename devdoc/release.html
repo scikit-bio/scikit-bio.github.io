@@ -199,7 +199,7 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -330,7 +330,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -460,7 +460,7 @@ document.write(`
 <section id="prep-the-release">
 <h2>Prep the release<a class="headerlink" href="#prep-the-release" title="Link to this heading">#</a></h2>
 <ol class="arabic">
-<li><p>Ensure the GitHub Actions CI build is passing against master.</p></li>
+<li><p>Ensure the GitHub Actions CI build is passing against main.</p></li>
 <li><p>Update the version strings (x.y.y-dev) to the new version (x.y.z). This will include <code class="docutils literal notranslate"><span class="pre">__version__</span></code> defined in <code class="docutils literal notranslate"><span class="pre">skbio/__init__.py</span></code>, as well as any <code class="docutils literal notranslate"><span class="pre">&#64;experimental/&#64;stable/&#64;deprecated</span></code> (see <a class="reference external" href="api_stability">API stability decorators</a>) with <code class="docutils literal notranslate"><span class="pre">as_of='x.y.y-dev'</span></code>. <code class="docutils literal notranslate"><span class="pre">grep</span></code> for the current version string to find all occurrences:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">r</span> <span class="s1">&#39;x\.y\.y-dev&#39;</span> <span class="o">.</span>
 </pre></div>
@@ -483,7 +483,7 @@ document.write(`
 </section>
 <section id="build-website-docs">
 <h2>Build website docs<a class="headerlink" href="#build-website-docs" title="Link to this heading">#</a></h2>
-<p>You will need to <strong>fully install</strong> the latest master branch of scikit-bio (including built extensions) and build the docs from this version. <strong>Make sure the version of scikit-bio that is imported by ``import skbio`` is the correct one before building the docs.</strong></p>
+<p>You will need to <strong>fully install</strong> the latest main branch of scikit-bio (including built extensions) and build the docs from this version. <strong>Make sure the version of scikit-bio that is imported by ``import skbio`` is the correct one before building the docs.</strong></p>
 <ol class="arabic">
 <li><p>Build the documentation locally:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">C</span> <span class="n">doc</span> <span class="n">clean</span> <span class="n">html</span>
@@ -511,7 +511,7 @@ document.write(`
 </section>
 <section id="tag-the-release">
 <h2>Tag the release<a class="headerlink" href="#tag-the-release" title="Link to this heading">#</a></h2>
-<p>From <a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/scikit-bio GitHub repo">scikit-bio/scikit-bio</a>, click on the releases tab and draft a new release. Use the version number for the tag name (x.y.z) and create the tag against master. Fill in a release title that is consistent with previous release titles and add a summary of the release (linking to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> is a good idea). This release summary will be the primary information that we point users to when we announce the release.</p>
+<p>From <a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/scikit-bio GitHub repo">scikit-bio/scikit-bio</a>, click on the releases tab and draft a new release. Use the version number for the tag name (x.y.z) and create the tag against main. Fill in a release title that is consistent with previous release titles and add a summary of the release (linking to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> is a good idea). This release summary will be the primary information that we point users to when we announce the release.</p>
 <p>Once the release is created on GitHub, it’s a good idea to test out the release tarball before publishing to PyPI:</p>
 <ol class="arabic">
 <li><p>Create a new <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment for testing (fill in a name for <code class="docutils literal notranslate"><span class="pre">&lt;environment&gt;</span></code>):</p>

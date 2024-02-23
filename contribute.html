@@ -199,7 +199,7 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -330,7 +330,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -509,8 +509,8 @@ document.write(`
 <li><p>Clone your forked repository to the system where you’ll be developing with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>. <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the <code class="docutils literal notranslate"><span class="pre">scikit-bio</span></code> directory that was created by <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>.</p></li>
 <li><p>Ensure that you have the latest version of all files. This is especially important if you cloned a long time ago, but you’ll need to do this before submitting changes regardless. You should do this by adding scikit-bio as a remote repository and then pulling from that repository. You’ll only need to run the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span></code> command the first time you do this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">.</span><span class="n">git</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
-<span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span>
 </pre></div>
 </div>
 </li>
@@ -525,12 +525,12 @@ document.write(`
 <ol class="arabic" start="3">
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> to confirm that the tests pass before you make any changes.</p></li>
 <li><p>Make your changes, add them (with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>), and commit them (with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>). Don’t forget to update associated tests and documentation as necessary. Write descriptive commit messages to accompany each commit. We recommend following <a class="reference external" href="https://numpy.org/doc/stable/dev/development_workflow.html#writing-the-commit-message">NumPy’s commit message guidelines</a>, including the usage of commit tags (i.e., starting commit messages with acronyms such <code class="docutils literal notranslate"><span class="pre">ENH</span></code>, <code class="docutils literal notranslate"><span class="pre">BUG</span></code>, etc.).</p></li>
-<li><p>Please mention your changes in <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">CHANGELOG.md</a>. This file informs scikit-bio <em>users</em> of changes made in each release, so be sure to describe your changes with this audience in mind. It is especially important to note API additions and changes, particularly if they are backward-incompatible, as well as bug fixes. Be sure to make your updates under the section designated for the latest development version of scikit-bio (this will be at the top of the file). Describe your changes in detail under the most appropriate section heading(s). For example, if your pull request fixes a bug, describe the bug fix under the “Bug fixes” section of <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">CHANGELOG.md</a>. Please also include a link to the issue(s) addressed by your changes. See <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">CHANGELOG.md</a> for examples of how we recommend formatting these descriptions.</p></li>
-<li><p>When you’re ready to submit your code, ensure that you have the latest version of all files in case some changed while you were working on your edits. You can do this by merging master into your topic branch:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
-<span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">master</span>
+<li><p>Please mention your changes in <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">CHANGELOG.md</a>. This file informs scikit-bio <em>users</em> of changes made in each release, so be sure to describe your changes with this audience in mind. It is especially important to note API additions and changes, particularly if they are backward-incompatible, as well as bug fixes. Be sure to make your updates under the section designated for the latest development version of scikit-bio (this will be at the top of the file). Describe your changes in detail under the most appropriate section heading(s). For example, if your pull request fixes a bug, describe the bug fix under the “Bug fixes” section of <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">CHANGELOG.md</a>. Please also include a link to the issue(s) addressed by your changes. See <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">CHANGELOG.md</a> for examples of how we recommend formatting these descriptions.</p></li>
+<li><p>When you’re ready to submit your code, ensure that you have the latest version of all files in case some changed while you were working on your edits. You can do this by merging main into your topic branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span>
 <span class="n">git</span> <span class="n">checkout</span> <span class="n">my</span><span class="o">-</span><span class="n">topic</span><span class="o">-</span><span class="n">branch</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">main</span>
 </pre></div>
 </div>
 </li>
@@ -540,7 +540,7 @@ document.write(`
 </pre></div>
 </div>
 </li>
-<li><p>Issue a <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a> on the GitHub website to request that we merge your branch’s changes into scikit-bio’s master branch. Be sure to include a description of your changes in the pull request, as well as any other information that will help the scikit-bio developers involved in reviewing your code. Please include <code class="docutils literal notranslate"><span class="pre">fixes</span> <span class="pre">#&lt;issue-number&gt;</span></code> in your pull request description or in one of your commit messages so that the corresponding issue will be closed when the pull request is merged (see <a class="reference external" href="https://help.github.com/articles/closing-issues-via-commit-messages/">here</a>) for more details). One of the scikit-bio developers will review your code at this stage. If we request changes (which is very common), <em>don’t issue a new pull request</em>. You should make changes on your topic branch, and commit and push them to GitHub. Your pull request will update automatically.</p></li>
+<li><p>Issue a <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a> on the GitHub website to request that we merge your branch’s changes into scikit-bio’s main branch. Be sure to include a description of your changes in the pull request, as well as any other information that will help the scikit-bio developers involved in reviewing your code. Please include <code class="docutils literal notranslate"><span class="pre">fixes</span> <span class="pre">#&lt;issue-number&gt;</span></code> in your pull request description or in one of your commit messages so that the corresponding issue will be closed when the pull request is merged (see <a class="reference external" href="https://help.github.com/articles/closing-issues-via-commit-messages/">here</a>) for more details). One of the scikit-bio developers will review your code at this stage. If we request changes (which is very common), <em>don’t issue a new pull request</em>. You should make changes on your topic branch, and commit and push them to GitHub. Your pull request will update automatically.</p></li>
 </ol>
 </section>
 <section id="setting-up-a-development-environment">
@@ -601,7 +601,7 @@ document.write(`
 </section>
 <section id="testing-guidelines">
 <h2>Testing guidelines<a class="headerlink" href="#testing-guidelines" title="Link to this heading">#</a></h2>
-<p>All code that is added to scikit-bio must be unit tested, and the unit test code must be submitted in the same pull request as the library code that you are submitting. We will only merge code that is unit tested and that passes the <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/.github/workflows/ci.yml">continuous integration build</a>. This build includes, but is not limited to, the following checks:</p>
+<p>All code that is added to scikit-bio must be unit tested, and the unit test code must be submitted in the same pull request as the library code that you are submitting. We will only merge code that is unit tested and that passes the <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/.github/workflows/ci.yml">continuous integration build</a>. This build includes, but is not limited to, the following checks:</p>
 <ul class="simple">
 <li><p>Full unit test suite and doctests execute without errors in supported versions of Python 3.</p></li>
 <li><p>C code can be correctly compiled.</p></li>
