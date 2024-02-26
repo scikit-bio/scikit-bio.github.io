@@ -964,9 +964,12 @@ let’s define some before we visualize these results.</p>
 </div>
 <p>Now let’s plot our PCoA results, coloring each sample by the subject it
 was taken from:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">wu_pc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_md</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                 <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 3&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by subject&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">wu_pc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sample_md</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 3&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by subject&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
+<span class="gp">... </span><span class="p">)</span>  
 </pre></div>
 </div>
 <figure class="align-default">
@@ -977,15 +980,19 @@ the samples by the body site they were taken from, we see that the samples
 from the same body site (those that are colored the same) appear to be
 closer to one another in the 3-D space then they are to samples from
 other body sites.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># not necessary for normal use</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">wu_pc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_md</span><span class="p">,</span> <span class="s1">&#39;body_site&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                 <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 3&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by body site&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">wu_pc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sample_md</span><span class="p">,</span> <span class="s1">&#39;body_site&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 3&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by body site&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
+<span class="gp">... </span><span class="p">)</span>  
 </pre></div>
 </div>
 <figure class="align-default">
-<img alt="_images/diversity-2.png" class="plot-directive" src="_images/diversity-2.png" />
+<img alt="_images/diversity-2_00.png" class="plot-directive" src="_images/diversity-2_00.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/diversity-2_01.png" class="plot-directive" src="_images/diversity-2_01.png" />
 </figure>
 <p>Ordination techniques, such as PCoA, are useful for exploratory analysis.
 The next step is to quantify the strength of the grouping/clustering that we
@@ -1034,13 +1041,17 @@ metadata in a Pandas <code class="docutils literal notranslate"><span class="pre
 <p>We can investigate these alpha diversity data in the context of our metadata
 categories. For example, we can generate boxplots showing Faith PD by body
 site.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># not necessary for normal use</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">sample_md</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;Faith PD&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;body_site&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">sample_md</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;Faith PD&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;body_site&#39;</span><span class="p">)</span>  
 </pre></div>
 </div>
 <figure class="align-default">
-<img alt="_images/diversity-3.png" class="plot-directive" src="_images/diversity-3.png" />
+<img alt="_images/diversity-3_00.png" class="plot-directive" src="_images/diversity-3_00.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/diversity-3_01.png" class="plot-directive" src="_images/diversity-3_01.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/diversity-3_02.png" class="plot-directive" src="_images/diversity-3_02.png" />
 </figure>
 <p>We can also compute Spearman correlations between all pairs of columns in
 this <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Since our alpha diversity metrics are the only two
