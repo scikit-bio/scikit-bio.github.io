@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.tree_basis &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>skbio.stats.composition.dirmult_ttest &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -58,19 +58,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.tree_basis';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.dirmult_ttest';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.composition.tree_basis.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.composition.dirmult_ttest.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.ancom" href="skbio.stats.composition.ancom.html" />
-    <link rel="prev" title="skbio.stats.composition.pairwise_vlr" href="skbio.stats.composition.pairwise_vlr.html" />
+    <link rel="next" title="skbio.stats.subsample_counts" href="skbio.stats.subsample_counts.html" />
+    <link rel="prev" title="skbio.stats.composition.sbp_basis" href="skbio.stats.composition.sbp_basis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -621,10 +621,10 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.vlr.html">skbio.stats.composition.vlr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html">skbio.stats.composition.pairwise_vlr</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.tree_basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.tree_basis.html">skbio.stats.composition.tree_basis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.sbp_basis.html">skbio.stats.composition.sbp_basis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.dirmult_ttest</a></li>
 </ul>
 </li>
 </ul>
@@ -691,48 +691,148 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-composition-tree-basis">
-<h1>skbio.stats.composition.tree_basis<a class="headerlink" href="#skbio-stats-composition-tree-basis" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-composition-dirmult-ttest">
+<h1>skbio.stats.composition.dirmult_ttest<a class="headerlink" href="#skbio-stats-composition-dirmult-ttest" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.composition.tree_basis">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">tree_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1055"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.tree_basis" title="Link to this definition">#</a></dt>
-<dd><p>Calculate sparse representation of an ilr basis from a tree.</p>
-<p>State: Experimental as of 0.5.8.</p>
-<p>This computes an orthonormal basis specified from a bifurcating tree.</p>
-<dl class="field-list simple">
+<dt class="sig sig-object py" id="skbio.stats.composition.dirmult_ttest">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.1)"><span class="pre">DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1740"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
+<dd><p>T-test using Dirichilet Mulitnomial Distribution.</p>
+<p>State: Experimental as of 0.5.9.</p>
+<p>The Dirichlet-multinomial distribution is a compound distribution that
+combines a Dirichlet distribution over the probabilities of a multinomial
+distribution. This distribution is used to model the distribution of
+species abundances in a community.</p>
+<p>To perform the t-test, we first fit a Dirichlet-multinomial distribution
+for each sample, and then we compute the fold change and p-value for each
+feature. The fold change is computed as the difference between the
+samples of the two groups. T-tests are then performed on the posterior
+samples, drawn from each Dirichlet-multinomial distribution. The
+log-fold changes as well as their credible intervals, the pvalues a
+FDR corrected pvalues using Holm-Bonferroni <a class="reference internal" href="#r70d1167c12d8-1" id="id1">[1]</a> are reported.
+This process mirrors the approach performed by ALDEx2.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Input bifurcating tree.  Must be strictly bifurcating
-(i.e. every internal node needs to have exactly 2 children).
-This is used to specify the ilr basis.</p>
+<dt><strong>table</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Contingency table of counts where rows are features and columns are samples.</p>
+</dd>
+<dt><strong>grouping</strong><span class="classifier">pd.Series</span></dt><dd><p>Vector indicating the assignment of samples to groups.  For example,
+these could be strings or integers denoting which group a sample
+belongs to.  It must be the same length as the samples in <cite>table</cite>.
+The index must be the same on <cite>table</cite> and <cite>grouping</cite> but need not be
+in the same order.  The t-test is computed between the <cite>treatment</cite>
+group and the <cite>reference</cite> group specified in the <cite>grouping</cite> vector.</p>
+</dd>
+<dt><strong>treatment</strong><span class="classifier">str</span></dt><dd><p>Name of the treatment group.</p>
+</dd>
+<dt><strong>reference</strong><span class="classifier">str</span></dt><dd><p>Name of the reference group.</p>
+</dd>
+<dt><strong>pseudocount</strong><span class="classifier">float, optional</span></dt><dd><p>A non-zero value added to the input counts to ensure that all of the
+estimated abundances are strictly greater than zero.</p>
+</dd>
+<dt><strong>draws</strong><span class="classifier">int, optional</span></dt><dd><p>The number of draws from the Dirichilet-Multinomial posterior distribution
+More draws provide higher uncertainty surrounding the estimated
+log-fold changes and pvalues.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>scipy.sparse.coo_matrix</dt><dd><p>The ilr basis required to perform the ilr_inv transform.
-This is also known as the sequential binary partition.
-Note that this matrix is represented in clr coordinates.</p>
-</dd>
-<dt><strong>nodes</strong><span class="classifier">list, str</span></dt><dd><p>List of tree nodes indicating the ordering in the basis.</p>
+<dd class="field-even"><dl>
+<dt>pd.DataFrame</dt><dd><p>A table of features, their log-fold changes and other relevant statistics.</p>
+<p><cite>“T statistic”</cite> is the t-statistic outputted from the t-test. T-statistics
+are generated from each posterior draw.  The reported <cite>T statistic</cite> is the
+average across all of the posterior draws.</p>
+<p><cite>“df”</cite> is the degrees of freedom from the t-test.</p>
+<p><cite>“Log2(FC)”</cite> is the expected log2-fold change. Within each posterior draw
+the log2 fold-change is computed as the difference between the mean
+log-abundance the <cite>treatment</cite> group and the <cite>reference</cite> group. All log2
+fold changes are expressed in clr coordinates. The reported <cite>Log2(FC)</cite>
+is the average of all of the log2-fold changes computed from each of the
+posterior draws.</p>
+<p><cite>“CI(2.5)”</cite> is the 2.5% quantile of the log2-fold change. The reported
+<cite>CI(2.5)</cite> is the 2.5% quantile of all of the log2-fold changes computed
+from each of the posterior draws.</p>
+<p><cite>“CI(97.5)”</cite> is the 97.5% quantile of the log2-fold change. The
+reported <cite>CI(97.5)</cite> is the 97.5% quantile of all of the log2-fold
+changes computed from each of the posterior draws.</p>
+<p><cite>“pvalue</cite>” is the pvalue of the t-test. The reported <cite>pvalue</cite> is the
+average of all of the pvalues computed from the t-tests calculated
+across all of the posterior draws.</p>
+<p><cite>qvalue</cite> is the pvalue of the t-test after performing multiple
+hypothesis correction. The reported <cite>qvalue</cite> is computed after
+performing holm-bonferroni multiple hypothesis correction on the
+reported <cite>pvalue</cite>.</p>
+<p><cite>“Reject null hypothesis”</cite> indicates if feature is differentially
+abundant across groups (<cite>True</cite>) or not (<cite>False</cite>). In order for a
+feature to be differentially abundant, the qvalue needs to be significant
+(i.e. &lt;0.05) and the confidence intervals reported by <cite>CI(2.5)</cite> and
+<cite>CI(97.5)</cite> must not overlap with zero.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>The tree doesn’t contain two branches.</p>
-</dd>
 </dl>
-</dd>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind" title="(in SciPy v1.12.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.stats.ttest_ind</span></code></a></dt><dd></dd>
 </dl>
+</div>
+<p class="rubric">Notes</p>
+<p>FDR-corrected pvalues use Benjamini-Hochberg for pvalue adjustment for
+multiple corrections. The confidence intervals are computed using the
+mininum 2.5% and maximum 95% bounds computed across all of the posterior draws.</p>
+<p>The reference frame here is the geometric mean. Extracting absolute log
+fold changes from this test assumes that the average feature abundance
+between the <cite>treatment</cite> and the <cite>reference</cite> groups are the same. If this
+assumption is violated, then the log-fold changes will be biased, and the
+pvalues will not be reliable. However, the bias is the same across each
+feature, as a result the ordering of the log-fold changes can still be useful.</p>
+<p>One benefit of using the Dirichlet Multinomial distribution is that the
+statistical power increases with regards to the abundance magnitude. More counts
+per sample will shrink the size of the confidence intervals, and can result in
+lower pvalues.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r70d1167c12d8-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Holm, S. “A simple sequentially rejective multiple test procedure”.
+Scandinavian Journal of Statistics (1979), 6.</p>
+</div>
+<div class="citation" id="r70d1167c12d8-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Fernandes et al. “Unifying the analysis of
+high-throughput sequencing datasets: characterizing RNA-seq,
+16S rRNA gene sequencing and selective growth experiments by
+compositional data analysis.” Microbiome (2014).</p>
+</div>
+</div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;((b,c)a, d)root;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">tree</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span><span class="p">,</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">tree_basis</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-<span class="go">array([[-0.40824829, -0.40824829,  0.81649658],</span>
-<span class="go">       [-0.70710678,  0.70710678,  0.        ]])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.composition</span> <span class="kn">import</span> <span class="n">dirmult_ttest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">110</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">104</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">33</span><span class="p">,</span>  <span class="mi">110</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">102</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">12</span><span class="p">,</span>  <span class="mi">110</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span>  <span class="mi">90</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">202</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">202</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">203</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span>
+<span class="gp">... </span>                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b1&#39;</span><span class="p">,</span> <span class="s1">&#39;b2&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span> <span class="s1">&#39;b4&#39;</span><span class="p">,</span> <span class="s1">&#39;b5&#39;</span><span class="p">,</span> <span class="s1">&#39;b6&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                              <span class="s1">&#39;b7&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lfc_result</span> <span class="o">=</span> <span class="n">dirmult_ttest</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                           <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lfc_result</span><span class="p">[[</span><span class="s2">&quot;Log2(FC)&quot;</span><span class="p">,</span> <span class="s2">&quot;CI(2.5)&quot;</span><span class="p">,</span> <span class="s2">&quot;CI(97.5)&quot;</span><span class="p">,</span> <span class="s2">&quot;qvalue&quot;</span><span class="p">]]</span>
+<span class="go">    Log2(FC)   CI(2.5)  CI(97.5)    qvalue</span>
+<span class="go">b1 -4.991987 -7.884498 -2.293463  0.020131</span>
+<span class="go">b2 -2.533729 -3.594590 -1.462339  0.007446</span>
+<span class="go">b3  1.627677 -1.048219  4.750792  0.068310</span>
+<span class="go">b4  1.707221 -0.467481  4.164998  0.065613</span>
+<span class="go">b5  1.528243 -1.036910  3.978387  0.068310</span>
+<span class="go">b6  1.182343 -0.702656  3.556061  0.068310</span>
+<span class="go">b7  1.480232 -0.601277  4.043888  0.068310</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -750,20 +850,20 @@ Note that this matrix is represented in clr coordinates.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.pairwise_vlr.html"
+       href="skbio.stats.composition.sbp_basis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.pairwise_vlr</p>
+        <p class="prev-next-title">skbio.stats.composition.sbp_basis</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.ancom.html"
+       href="skbio.stats.subsample_counts.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.ancom</p>
+        <p class="prev-next-title">skbio.stats.subsample_counts</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -785,7 +885,7 @@ Note that this matrix is represented in clr coordinates.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.tree_basis"><code class="docutils literal notranslate"><span class="pre">tree_basis()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.dirmult_ttest"><code class="docutils literal notranslate"><span class="pre">dirmult_ttest()</span></code></a></li>
 </ul>
   </nav></div>
 
