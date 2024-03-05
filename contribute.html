@@ -446,10 +446,20 @@ document.write(`
                   
   <section id="contribute-to-scikit-bio">
 <h1>Contribute to scikit-bio<a class="headerlink" href="#contribute-to-scikit-bio" title="Link to this heading">#</a></h1>
-<p><strong>scikit-bio</strong> is an open source software package and we welcome community contributions. You can find the scikit-bio source code on <a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/GitHub repo">scikit-bio/scikit-bio</a>.</p>
-<p>This document covers what you should do to get started with contributing to scikit-bio. You should read the entire document before contributing code to scikit-bio. This will save time for both you and the scikit-bio developers.</p>
+<p><strong>Scikit-bio</strong> is a community-driven open-source software project, and we warmly welcome your contributions!</p>
+<p>We are interested in many types of contributions, including feature additions, bug fixes, continuous integration improvements, and documentation/website updates, additions, and fixes. Whether you are a researcher, educator, or developer; whether your interest lies in biology, mathematics, statistics, or computer science; your input is invaluable. You can help making scikit-bio a better software package for our entire community.</p>
+<p>This document covers the information you may need to get started with contributing to scikit-bio. In addition, for a broader perspective, we recommend the inspiring guide: <a class="reference external" href="https://opensource.guide/how-to-contribute/">How to Contribute to Open Source</a>.</p>
+<p>Visit our GitHub repository: <a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/GitHub repo">scikit-bio/scikit-bio</a> for the source code of scikit-bio. You will need a GitHub account to interact with the scikit-bio codebase and community.</p>
+<p>Valuable contributions can be made without or with minimum amount of coding. We detail various ways you can contribute below:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ask-a-question">Ask a question</a> | <a class="reference internal" href="#report-an-error">Report an error</a> | <a class="reference internal" href="#suggest-a-new-feature">Suggest a new feature</a> | <a class="reference internal" href="#fix-a-typo">Fix a typo</a></p></li>
+</ul>
+<p>Contributing code to scikit-bio is a rigorous and rewarding process. We have prepared the following step-by-step guidelines:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#before-coding">Before coding</a> | <a class="reference internal" href="#set-up-a-workspace">Set up a workspace</a> | <a class="reference internal" href="#write-code">Write code</a> | <a class="reference internal" href="#test-code">Test code</a> | <a class="reference internal" href="#document-code">Document code</a> | <a class="reference internal" href="#style-code">Style code</a> | <a class="reference internal" href="#submit-code">Submit code</a> | <a class="reference internal" href="#review-code">Review code</a></p></li>
+</ul>
+<p>In addition, there are separate documents covering advanced topics:</p>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="devdoc/code_guide.html">Coding guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devdoc/doc_guide.html">Documentation guidelines</a></li>
@@ -459,206 +469,393 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="devdoc/api_stability.html">API Stability</a></li>
 </ul>
 </div>
-<section id="types-of-contributions">
-<h2>Types of contributions<a class="headerlink" href="#types-of-contributions" title="Link to this heading">#</a></h2>
-<p>We’re interested in many different types of contributions, including feature additions, bug fixes, continuous integration improvements, and documentation/website updates, additions, and fixes.</p>
-<p>When considering contributing to scikit-bio, you should begin by posting an issue to the <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues">scikit-bio issue tracker</a>. The information that you include in that post will differ based on the type of contribution. Your contribution will also need to be fully tested where applicable (discussed further below).</p>
-<ul class="simple">
-<li><p>For feature additions, please describe why the functionality that you are proposing to add is relevant. For it to be relevant, it should be demonstrably useful to scikit-bio users and it should also fit within the biology/bioinformatics domain. This typically means that a new analytic method is implemented (you should describe why it’s useful, ideally including a link to a paper that uses this method), or an existing method is enhanced (e.g., improved performance). We will request benchmark results comparing your method to the pre-existing methods (which would also be required for publication of your method) so pointing to a paper or other document containing benchmark results, or including benchmark results in your issue, will speed up the process. Before contributing a new feature, it’s also a good idea to check whether the functionality exists in other Python packages, or if the feature would fit better in another Python package. For example, low-level statistical methods/tests may fit better in a project that is focused on statistics (e.g., <a class="reference external" href="https://scipy.org/">SciPy</a> or <a class="reference external" href="https://www.statsmodels.org/">statsmodels</a>).</p></li>
-<li><p>For bug fixes, please provide a detailed description of the bug so other developers can reproduce it. We take bugs in scikit-bio very seriously. Bugs can be related to errors in code, documentation, or tests. Errors in documentation or tests are usually updated in the next scheduled release of scikit-bio. Errors in code that could result in incorrect results or inability to access certain functionality may result in a bug fix release of scikit-bio that is released ahead of schedule.</p></li>
-</ul>
-<p>You should include the following information in your bug report:</p>
+<section id="ask-a-question">
+<h2>Ask a question<a class="headerlink" href="#ask-a-question" title="Link to this heading">#</a></h2>
+<p>Your inquiry matters! By asking questions in the scikit-bio <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues">issue tracker</a> or <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/discussions">discussion board</a>, you are not only giving us (and the community) the chance to help, but also let us assess the needs of users like you. Before asking a question, take a moment to search existing threads to see if there are any relevant ones. We also keep an eye on broader community forums such as Stack Overflow and BioStars for questions related to our scope.</p>
+</section>
+<section id="report-an-error">
+<h2>Report an error<a class="headerlink" href="#report-an-error" title="Link to this heading">#</a></h2>
+<p>The scikit-bio team is proud of our high-quality, well-tested codebase. That being said, no software is immune to errors, which may arise from bugs, overlooked edge cases, or confusions in documentation. In any situation, we would appreciate it if you can report the error you encountered to us.</p>
+<p>You may <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues/new/choose">open an issue</a> to report the error. Please provide a detailed description of the error such that the developers can reproduce it. Specifically, you may include the following information in the report:</p>
 <ol class="arabic simple">
-<li><p>The exact command(s) necessary to reproduce the bug.</p></li>
-<li><p>A link to all necessary input files for reproducing the bug. These files should only be as large as necessary to create the bug. For example, if you have an input file with 10,000 FASTA-formatted sequences but the error only arises due to one of the sequences, create a new FASTA file with only that sequence, run the command that was giving you problems, and verify that you still get an error. Then post that command and link to the trimmed FASTA file. This is <em>extremely</em> useful to other developers and it is likely that if you don’t provide this information you’ll get a response asking for it. Often this process helps you to better understand the bug as well.</p></li>
-</ol>
-<ul class="simple">
-<li><p>For documentation additions, you should first post an issue describing what you propose to add, where you’d like to add it in the documentation, and a description of why you think it’s an important addition. For documentation improvements and fixes, you should post an issue describing what is currently wrong or missing and how you propose to address it. For more information about building and contributing to scikit-bio’s documentation, see our <a class="reference internal" href="devdoc/doc_guide.html"><span class="doc">Documentation guidelines</span></a>.</p></li>
-</ul>
-<p>When you post your issue, the scikit-bio developers will respond to let you know if we agree with the addition or change. It’s very important that you go through this step to avoid wasting time working on a feature that we are not interested in including in scikit-bio. <strong>This initial discussion with the developers is important because scikit-bio is rapidly changing, including complete re-writes of some of the core objects. If you don’t get in touch first you could easily waste time by working on an object or interface that is deprecated.</strong></p>
-</section>
-<section id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<section id="quick-fixes">
-<h3>“Quick fixes”<a class="headerlink" href="#quick-fixes" title="Link to this heading">#</a></h3>
-<p>Some of our issues are labeled as <code class="docutils literal notranslate"><span class="pre">quick</span> <span class="pre">fix</span></code>. Working on <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues?q=is%3Aopen+is%3Aissue+label%3A%22quick+fix%22">these issues</a> is a good way to get started with contributing to scikit-bio. These are usually small bugs or documentation errors that will only require one or a few lines of code to fix. Getting started by working on one of these issues will allow you to familiarize yourself with our development process before committing to a large amount of work (e.g., adding a new feature to scikit-bio). Please post a comment on the issue if you’re interested in working on one of these “quick fixes”.</p>
-</section>
-<section id="joining-development">
-<h3>Joining development<a class="headerlink" href="#joining-development" title="Link to this heading">#</a></h3>
-<p>Once you are more comfortable with our development process, you can check out the <code class="docutils literal notranslate"><span class="pre">`on</span> <span class="pre">deck</span></code> <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/labels/on%20deck">label</a> on our issue tracker. These issues represent what our current focus is in the project. As such, they are probably the best place to start if you are looking to join the conversation and contribute code.</p>
-</section>
-</section>
-<section id="code-review">
-<h2>Code review<a class="headerlink" href="#code-review" title="Link to this heading">#</a></h2>
-<p>When you submit code to scikit-bio, it will be reviewed by one or more scikit-bio developers. These reviews are intended to confirm a few points:</p>
-<ul class="simple">
-<li><p>Your code provides relevant changes or additions to scikit-bio (<a class="reference internal" href="#types-of-contributions">Types of contributions</a>).</p></li>
-<li><p>Your code adheres to our <a class="reference internal" href="devdoc/code_guide.html"><span class="doc">coding guidelines</span></a>.</p></li>
-<li><p>Your code is sufficiently well-tested (<a class="reference internal" href="#testing-guidelines">Testing guidelines</a>).</p></li>
-<li><p>Your code is sufficiently well-documented (<a class="reference internal" href="#documentation-guidelines">Documentation guidelines</a>).</p></li>
-</ul>
-<p>This process is designed to ensure the quality of scikit-bio and can be a very useful experience for new developers.</p>
-<p>Particularly for big changes, if you’d like feedback on your code in the form of a code review as you work, you should request help in the issue that you created and one of the scikit-bio developers will work with you to perform regular code reviews. This can greatly reduce development time (and frustration) so we highly recommend that new developers take advantage of this rather than submitting a pull request with a massive amount of code. That can lead to frustration when the developer thinks they are done but the reviewer requests large amounts of changes, and it also makes it harder to review.</p>
-</section>
-<section id="submitting-code-to-scikit-bio">
-<h2>Submitting code to scikit-bio<a class="headerlink" href="#submitting-code-to-scikit-bio" title="Link to this heading">#</a></h2>
-<p>scikit-bio is hosted on <a class="reference external" href="https://github.com/">GitHub</a>, and we use GitHub’s <a class="reference external" href="https://help.github.com/articles/using-pull-requests">Pull Request</a> mechanism for reviewing and accepting submissions. You should work through the following steps to submit code to scikit-bio.</p>
-<ol class="arabic">
-<li><p>Begin by <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues">creating an issue</a> describing your proposed change (see <a class="reference internal" href="#types-of-contributions">Types of contributions</a> for details).</p></li>
-<li><p><a class="reference external" href="https://help.github.com/articles/fork-a-repo">Fork</a> the scikit-bio repository on the GitHub website.</p></li>
-<li><p>Clone your forked repository to the system where you’ll be developing with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>. <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the <code class="docutils literal notranslate"><span class="pre">scikit-bio</span></code> directory that was created by <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>.</p></li>
-<li><p>Ensure that you have the latest version of all files. This is especially important if you cloned a long time ago, but you’ll need to do this before submitting changes regardless. You should do this by adding scikit-bio as a remote repository and then pulling from that repository. You’ll only need to run the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span></code> command the first time you do this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">.</span><span class="n">git</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
-<span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span>
-</pre></div>
-</div>
-</li>
-<li><p>Install scikit-bio for development. See <a class="reference internal" href="#setting-up-a-development-environment">Setting up a development environment</a>.</p></li>
-<li><p>Create a new topic branch that you will make your changes in with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">my</span><span class="o">-</span><span class="n">topic</span><span class="o">-</span><span class="n">branch</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>What you name your topic branch is up to you, though we recommend including the issue number in the topic branch, since there is usually already an issue associated with the changes being made in the pull request. For example, if you were addressing issue number 42, you might name your topic branch <code class="docutils literal notranslate"><span class="pre">issue-42</span></code>.</p>
-<ol class="arabic" start="3">
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> to confirm that the tests pass before you make any changes.</p></li>
-<li><p>Make your changes, add them (with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>), and commit them (with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>). Don’t forget to update associated tests and documentation as necessary. Write descriptive commit messages to accompany each commit. We recommend following <a class="reference external" href="https://numpy.org/doc/stable/dev/development_workflow.html#writing-the-commit-message">NumPy’s commit message guidelines</a>, including the usage of commit tags (i.e., starting commit messages with acronyms such <code class="docutils literal notranslate"><span class="pre">ENH</span></code>, <code class="docutils literal notranslate"><span class="pre">BUG</span></code>, etc.).</p></li>
-<li><p>Please mention your changes in <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">CHANGELOG.md</a>. This file informs scikit-bio <em>users</em> of changes made in each release, so be sure to describe your changes with this audience in mind. It is especially important to note API additions and changes, particularly if they are backward-incompatible, as well as bug fixes. Be sure to make your updates under the section designated for the latest development version of scikit-bio (this will be at the top of the file). Describe your changes in detail under the most appropriate section heading(s). For example, if your pull request fixes a bug, describe the bug fix under the “Bug fixes” section of <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">CHANGELOG.md</a>. Please also include a link to the issue(s) addressed by your changes. See <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">CHANGELOG.md</a> for examples of how we recommend formatting these descriptions.</p></li>
-<li><p>When you’re ready to submit your code, ensure that you have the latest version of all files in case some changed while you were working on your edits. You can do this by merging main into your topic branch:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
-<span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span>
-<span class="n">git</span> <span class="n">checkout</span> <span class="n">my</span><span class="o">-</span><span class="n">topic</span><span class="o">-</span><span class="n">branch</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="n">main</span>
-</pre></div>
-</div>
-</li>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> to ensure that your changes did not cause anything expected to break.</p></li>
-<li><p>Once the tests pass, you should push your changes to your forked repository on GitHub using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">my</span><span class="o">-</span><span class="n">topic</span><span class="o">-</span><span class="n">branch</span>
-</pre></div>
-</div>
-</li>
-<li><p>Issue a <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a> on the GitHub website to request that we merge your branch’s changes into scikit-bio’s main branch. Be sure to include a description of your changes in the pull request, as well as any other information that will help the scikit-bio developers involved in reviewing your code. Please include <code class="docutils literal notranslate"><span class="pre">fixes</span> <span class="pre">#&lt;issue-number&gt;</span></code> in your pull request description or in one of your commit messages so that the corresponding issue will be closed when the pull request is merged (see <a class="reference external" href="https://help.github.com/articles/closing-issues-via-commit-messages/">here</a>) for more details). One of the scikit-bio developers will review your code at this stage. If we request changes (which is very common), <em>don’t issue a new pull request</em>. You should make changes on your topic branch, and commit and push them to GitHub. Your pull request will update automatically.</p></li>
-</ol>
-</section>
-<section id="setting-up-a-development-environment">
-<h2>Setting up a development environment<a class="headerlink" href="#setting-up-a-development-environment" title="Link to this heading">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>scikit-bio must be developed in a Python 3.8 or later environment.</p>
-</div>
-<p>The recommended way to set up a development environment for contributing to scikit-bio is using <a class="reference external" href="https://conda.io/">Conda</a>. The primary benefit of <code class="docutils literal notranslate"><span class="pre">conda</span></code> over <code class="docutils literal notranslate"><span class="pre">pip</span></code> is that on some operating systems (i.e., Linux), <code class="docutils literal notranslate"><span class="pre">pip</span></code> installs packages from source. This can take a very long time to install Numpy, scipy, matplotlib, etc. <code class="docutils literal notranslate"><span class="pre">conda</span></code> installs these packages using pre-built binaries, so the installation is much faster. Another benefit of <cite>conda</cite> is that it provides both package and environment management, which removes the necessity of using <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> separately. Not all packages are available using <code class="docutils literal notranslate"><span class="pre">conda</span></code>, therefore our strategy is to install as many packages as possible using <code class="docutils literal notranslate"><span class="pre">conda</span></code>, then install any remaining packages using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
-<ol class="arabic">
-<li><p>Install Conda</p>
-<blockquote>
-<div><p>See <a class="reference external" href="https://docs.conda.io/en/latest/">Conda’s website</a> for instructions. <a class="reference external" href="https://conda.io/miniconda.html">Miniconda</a> provides a fast way to get conda up and running.</p>
-</div></blockquote>
-</li>
-<li><p>Navigate to the scikit-bio directory (see <a class="reference internal" href="#submitting-code-to-scikit-bio">Submitting code to scikit-bio</a>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
-</pre></div>
-</div>
-</li>
-<li><p>Create a new conda environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skbio</span><span class="o">-</span><span class="n">dev</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">conda_requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-</li>
+<li><p>The exact <strong>command(s)</strong> necessary to reproduce the error.</p></li>
+<li><p>The input <strong>file(s)</strong> necessary for reproducing the error. You may either attach the file in the issue (by dragging &amp; dropping) if it is small, or provide a link to it otherwise. The file should only be as large as necessary to reproduce the error.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">skbio-dev</span></code> can be any name desired.</p>
+<p>For example, if you have a FASTA file with 10,000 sequences but the error only arises due to one of the sequences, create a new FASTA file with only that sequence, run the command that was giving you problems, and verify that you still get an error. Then post that command and link to the trimmed FASTA file.</p>
 </div>
-<ol class="arabic" start="4">
-<li><p>Activate the environment:</p>
+<p>This is <em>extremely</em> useful to the developers, and it is likely that if you don’t provide this information you’ll get a response asking for it. Often this process helps you to better understand the error as well.</p>
+<p>We take error reports very seriously. Once confirmed that they should be fixed, we will update the code to fix them as soon as we can, and ship the update in the next scheduled release of scikit-bio. If the error could result in incorrect results or inability to access certain functionality, we may release a bug-fix version of scikit-bio ahead of the schedule.</p>
+</section>
+<section id="suggest-a-new-feature">
+<h2>Suggest a new feature<a class="headerlink" href="#suggest-a-new-feature" title="Link to this heading">#</a></h2>
+<p>We are always looking for new ideas to enhance scikit-bio’s capabilities, especially from users with unique research interests. If you believe there is an analysis or feature that could extend scikit-bio’s current offerings, we warmly invite you to share your suggestions with us.</p>
+<p>Please describe why the functionality that you are suggesting is relevant. For it to be relevant, it should be demonstrably useful to scikit-bio users and it should also fit within the biology/bioinformatics domain. This typically means that a new analytic method is implemented (you should describe why it’s useful, ideally including a link to a paper that uses this method), or an existing method is enhanced (e.g., improved performance).</p>
+<p>If the scope of the suggested method overlaps with any pre-existing methods in scikit-bio, we may request benchmark results comparing your method to the pre-existing ones (which would also be required for publication of your method) so pointing to a paper or other document containing benchmark results, or including benchmark results in your issue, will help.</p>
+<p>Before suggesting a new feature, it is also a good idea to check whether the functionality exists in other Python packages, or if the feature would fit better in another Python package. For example, low-level statistical methods/tests may fit better in a project that is focused on statistics (e.g., <a class="reference external" href="https://scipy.org/">SciPy</a> or <a class="reference external" href="https://www.statsmodels.org/">statsmodels</a>).</p>
+<p>If your proposal represents a significant research direction or requires a substantial suite of methods, we encourage you to consider establishing a formal academic or industrial collaboration with the scikit-bio team. For more details on this process, please refer to the <a class="reference internal" href="about.html#collaboration"><span class="std std-ref">Collaboration</span></a> section.</p>
+</section>
+<section id="fix-a-typo">
+<h2>Fix a typo<a class="headerlink" href="#fix-a-typo" title="Link to this heading">#</a></h2>
+<p>If you spot small errors such as typos, redundant spaces, broken links, missing citations etc. in the scikit-bio code or documentation, and want to give it a quick fix, you may follow the procedures detailed below. All procedures will take place in the web browser, and don’t involve creating anything in your local computer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This approach should not be applied to anything larger than small errors. For the latter, please read <a class="reference internal" href="#before-coding">Before coding</a>.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Locate the specific code file that needs to be fixed in the GitHub repository. If you are reading the documentation, you can click the <a class="reference external" href="about:blank">[source]</a> link next to the header to locate the corresponding code file.</p></li>
+<li><p>In the top-right corner of the code viewer there is an Edit (<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-pencil" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z"></path></svg>) button, with a prompt “Fork this repository and edit the file”. Click it. Then click the button <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Fork this repository</span>. This will open GitHub’s <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files">online file editor</a>.</p></li>
+<li><p><strong>Edit the code</strong>.</p></li>
+<li><p>When done, click <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Commit changes…</span>. Then enter a commit message to describe what you did, like “Fixed a typo in the documentation of skbio.module.function”. Then click <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Propose changes</span>.</p></li>
+<li><p>You will be able to review the changes you made and compare with the original code <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-git-compare" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M9.573.677L7.177 3.073a.25.25 0 000 .354l2.396 2.396A.25.25 0 0010 5.646V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5h-1V.854a.25.25 0 00-.427-.177zM6 12v-1.646a.25.25 0 01.427-.177l2.396 2.396a.25.25 0 010 .354l-2.396 2.396A.25.25 0 016 15.146V13.5H5A2.5 2.5 0 012.5 11V5.372a2.25 2.25 0 111.5 0V11a1 1 0 001 1h1zm6.75 0a.75.75 0 100 1.5.75.75 0 000-1.5zM4 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path></svg>. If everything looks good to you, click <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Create pull request</span>. Then enter a title and description that you think are informative to the scikit-bio maintainers. The <strong>title</strong> may or may not be the same as the commit message. In the <strong>description</strong>, you will need to answer a few questions by typing an <code class="docutils literal notranslate"><span class="pre">x</span></code> in the relevant checkboxes. You may also explain why the original code should be replaced by yours. Finally, click <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Create pull request</span>.</p></li>
+<li><p>This will create a <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull request</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-git-pull-request" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg>, i.e., the changes you made to the scikit-bio repository. A scikit-bio maintainer will review your pull request, and run necessary tests to make sure it is sound. You may be asked to clarify or to make modifications to your code. Please work with the maintainer by replying in the pull request.</p></li>
+<li><p>If the maintainer believes that your code is good to go, they will <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merge</a> it into the scikit-bio codebase. Once merged, the pull request webpage will have a purple notice <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-git-merge" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M5 3.254V3.25v.005a.75.75 0 110-.005v.004zm.45 1.9a2.25 2.25 0 10-1.95.218v5.256a2.25 2.25 0 101.5 0V7.123A5.735 5.735 0 009.25 9h1.378a2.251 2.251 0 100-1.5H9.25a4.25 4.25 0 01-3.8-2.346zM12.75 9a.75.75 0 100-1.5.75.75 0 000 1.5zm-8.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5z"></path></svg>, saying: “Pull request successfully merged and closed”.</p></li>
+<li><p>At this point, your contribution is completed 🎉. You may optionally click <span class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light">Delete branch</span> to clean up your workspace. Then, you can move on, and enjoy the improved scikit-bio!</p></li>
+</ol>
+</section>
+<section id="before-coding">
+<h2>Before coding<a class="headerlink" href="#before-coding" title="Link to this heading">#</a></h2>
+<p>We sincerely value your willingness to contribute code to scikit-bio (beyond reporting issues or correcting typos). This process can be intensive, particularly for those new to software engineering. The following sections detail the steps for contributing code to scikit-bio. Please review them carefully.</p>
+<section id="discuss-your-plan">
+<h3>Discuss your plan<a class="headerlink" href="#discuss-your-plan" title="Link to this heading">#</a></h3>
+<p>When considering contributing code to scikit-bio, you should begin by posting an issue to the <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues">scikit-bio issue tracker</a>. The information that you include in that post will differ based on the type of contribution. The two types of issues discussed in <a class="reference internal" href="#report-an-error">Report an error</a> and <a class="reference internal" href="#suggest-a-new-feature">Suggest a new feature</a> can be a good start of the discussion.</p>
+<p>The scikit-bio developers will respond to let you know if we agree with the addition or change. It’s very important that you go through this step to avoid spending time working on a feature that we are not interested in including in scikit-bio.</p>
+</section>
+<section id="take-existing-tasks">
+<h3>Take existing tasks<a class="headerlink" href="#take-existing-tasks" title="Link to this heading">#</a></h3>
+<p>Alternatively, if you’re looking to contribute where help is needed, you can explore the following types of issues:</p>
+<ul class="simple">
+<li><p><strong>Quick fix</strong>: Some of our issues are labeled as <code class="docutils literal notranslate"><span class="pre">quick</span> <span class="pre">fix</span></code>. Working on <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/issues?q=is%3Aopen+is%3Aissue+label%3A%22quick+fix%22">these issues</a> is a good way to get started with contributing to scikit-bio. These are usually small bugs or documentation errors that will only require one or a few lines of code to fix. Getting started by working on one of these issues will allow you to familiarize yourself with our development process before committing to a large amount of work (e.g., adding a new feature to scikit-bio). Please post a comment on the issue if you’re interested in working on one of these “quick fixes”.</p></li>
+<li><p><strong>On deck</strong>: Once you are more comfortable with our development process, you can check out the <code class="docutils literal notranslate"><span class="pre">on</span> <span class="pre">deck</span></code> <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/labels/on%20deck">label</a> on our issue tracker. These issues represent what our current focus is in the project. As such, they are probably the best place to start if you are looking to join the conversation and contribute code.</p></li>
+</ul>
+</section>
+</section>
+<section id="set-up-a-workspace">
+<h2>Set up a workspace<a class="headerlink" href="#set-up-a-workspace" title="Link to this heading">#</a></h2>
+<p>To start contributing code to scikit-bio, you’ll need to prepare a local development environment. This section guides you through the process step-by-step.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://help.github.com/articles/fork-a-repo">Fork</a> the scikit-bio repository on the GitHub website. This will create a copy of the repository under your account, and you can access it using the URL: <code class="docutils literal notranslate"><span class="pre">https://github.com/urname/scikit-bio/</span></code> (<code class="docutils literal notranslate"><span class="pre">urname</span></code> is your GitHub account).</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">Clone</a> the forked repository to your local computer. Specifically, in your forked repository, you may click the <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">&lt;&gt; Code</span> button, make sure that you are under the “Local” - “SSH” tab, and copy the URL to the clipboard. It should typically be: <code class="docutils literal notranslate"><span class="pre">git&#64;github.com:urname/scikit-bio.git</span></code>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the “SSH” tab is not available, it could mean that you have not set up an SSH key for your GitHub account. You may follow the instructions on <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">Connecting to GitHub with SSH</a> to set it up.</p>
+</div>
+<p>Then, open “Terminal” <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-terminal" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0114.25 15H1.75A1.75 1.75 0 010 13.25V2.75zm1.75-.25a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V2.75a.25.25 0 00-.25-.25H1.75zM7.25 8a.75.75 0 01-.22.53l-2.25 2.25a.75.75 0 11-1.06-1.06L5.44 8 3.72 6.28a.75.75 0 111.06-1.06l2.25 2.25c.141.14.22.331.22.53zm1.5 1.5a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"></path></svg> (or anything similar) in your local computer and navigate to a directory where you want to place the workspace, and execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">urname</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If this is the first time you use <code class="docutils literal notranslate"><span class="pre">git</span></code>, you may follow the <a class="reference external" href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git">Set up Git</a> guidelines to install Git and set your user name and email address.</p>
+<p>This tutorial assumes that you will use the classical <code class="docutils literal notranslate"><span class="pre">git</span></code> to create a local development environment. If you prefer other methods such as <a class="reference external" href="https://cli.github.com/">GitHub CLI</a> or <a class="reference external" href="https://github.com/features/codespaces">Codespace</a>, please follow corresponding instructions.</p>
+</div>
+<p>This will create a directory <code class="docutils literal notranslate"><span class="pre">scikit-bio</span></code> containing all files in the repository. Enter the directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
+</pre></div>
+</div>
+<p>Add the official scikit-bio repo as the <strong>upstream</strong> of your fork:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Create a development environment with necessary dependencies. This is typically done using <a class="reference external" href="https://conda.io/">Conda</a> (or <a class="reference external" href="https://mamba.readthedocs.io/en/latest/index.html">Mamba</a>, in which case the command <code class="docutils literal notranslate"><span class="pre">conda</span></code> in the following code should be replaced with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you do not have Conda (or Mamba) in your computer, you may install one of the distributions such as <a class="reference external" href="https://conda.io/miniconda.html">Miniconda</a>, <a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a> or <a class="reference external" href="https://www.anaconda.com/download/">Anaconda</a>.</p>
+<p>We recommend Conda over other approaches such as <code class="docutils literal notranslate"><span class="pre">pip</span></code>, <code class="docutils literal notranslate"><span class="pre">pyenv</span></code>, and <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>. However, you are not blocked from using them in necessary situations.</p>
+</div>
+<p>Execute the following command (<code class="docutils literal notranslate"><span class="pre">skbio-dev</span></code> can be any name you like):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skbio</span><span class="o">-</span><span class="n">dev</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">conda_requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>When done, activate the environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">skbio</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
-</li>
-</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This may be slightly different depending on the operating system. Refer to the Conda site to find instructions for your OS.</p>
+<p>This may be slightly different depending on the operating system. Refer to the <a class="reference external" href="https://docs.conda.io/">Conda documentation</a> to find instructions for your OS.</p>
 </div>
-<ol class="arabic" start="5">
-<li><p>Install scikit-bio:</p>
+<ol class="arabic" start="4">
+<li><p>Install scikit-bio from source code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 </pre></div>
 </div>
 </li>
+</ol>
+<p>This will install scikit-bio to the current conda environment. After this, you can use scikit-bio like a normal user (e.g., you can do <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">skbio</span></code> in Python code). When you edit the code in the this directory, the changes will be immediately reflected as you use the software.</p>
+<ol class="arabic" start="5">
 <li><p>Test the installation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
 </pre></div>
 </div>
 </li>
 </ol>
-</section>
-<section id="coding-guidelines">
-<h2>Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h2>
-<p>We adhere to the <a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8</a> Python style guidelines. Please see scikit-bio’s <a class="reference internal" href="devdoc/code_guide.html"><span class="doc">coding guidelines</span></a> for more details. Before submitting code to scikit-bio, you should read this document carefully and apply the guidelines in your code.</p>
-</section>
-<section id="testing-guidelines">
-<h2>Testing guidelines<a class="headerlink" href="#testing-guidelines" title="Link to this heading">#</a></h2>
-<p>All code that is added to scikit-bio must be unit tested, and the unit test code must be submitted in the same pull request as the library code that you are submitting. We will only merge code that is unit tested and that passes the <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/.github/workflows/ci.yml">continuous integration build</a>. This build includes, but is not limited to, the following checks:</p>
-<ul class="simple">
-<li><p>Full unit test suite and doctests execute without errors in supported versions of Python 3.</p></li>
-<li><p>C code can be correctly compiled.</p></li>
-<li><p>Cython code is correctly generated.</p></li>
-<li><p>All tests import functionality from the appropriate minimally deep API.</p></li>
-<li><p>Documentation can be built.</p></li>
-<li><p>Current code coverage is maintained or improved.</p></li>
-<li><p>Code passes <code class="docutils literal notranslate"><span class="pre">flake8</span></code> checks.</p></li>
-</ul>
-<p>Running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> locally during development will include a subset of the full checks performed by Travis-CI.</p>
-<p>The scikit-bio coding guidelines describe our <a class="reference internal" href="devdoc/code_guide.html"><span class="doc">expectations for unit tests</span></a>. You should review the unit test section before working on your test code.</p>
-<p>Tests can be executed by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> from the base directory of the project or from within a Python or IPython session:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.test</span> <span class="kn">import</span> <span class="n">pytestrunner</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pytestrunner</span><span class="p">()</span>
-<span class="go"># full test suite is executed</span>
-</pre></div>
-</div>
-</section>
-<section id="documentation-guidelines">
-<h2>Documentation guidelines<a class="headerlink" href="#documentation-guidelines" title="Link to this heading">#</a></h2>
-<p>We strive to keep scikit-bio well-documented, particularly its public-facing API. See our <a class="reference internal" href="devdoc/doc_guide.html"><span class="doc">Documentation guidelines</span></a> for more details.</p>
-</section>
-<section id="getting-help-with-git">
-<h2>Getting help with git<a class="headerlink" href="#getting-help-with-git" title="Link to this heading">#</a></h2>
-<p>If you’re new to GitHub, you’ll probably find the <a class="reference external" href="https://docs.github.com/">GitHub Docs</a> helpful.</p>
-</section>
-<section id="automating-code-quality">
-<h2>Automating code quality<a class="headerlink" href="#automating-code-quality" title="Link to this heading">#</a></h2>
-<p><strong>Integrating Ruff’s autoformatter and linter with pre-commit hooks</strong></p>
-<p><a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> is a valuable autoformatter and linter tool that ensures code consistency and quality. Integrating Ruff with pre-commit hooks empowers developers to automatically format and lint their code before each commit, promoting adherence to project standards and best practices.</p>
-<section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
-<p>In your development environment, install Ruff and pre-commit using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>Alternatively, install both packages individually:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ruff</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
-</pre></div>
-</div>
-</section>
-<section id="initialize-pre-commit-hooks">
-<h3>Initialize pre-commit hooks<a class="headerlink" href="#initialize-pre-commit-hooks" title="Link to this heading">#</a></h3>
-<p>Scikit-bio streamlines the installation process by including Ruff’s linter and formatter via Astral’s <a class="reference external" href="https://github.com/astral-sh/ruff-pre-commit">ruff-pre-commit</a>, referenced in the <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file. Activate the pre-commit hooks with the following command:</p>
+<p>This will run all unit tests implemented in the scikit-bio codebase to check if the corresponding functionality works correctly. The output should only indicate passes and warnings, but no failures.</p>
+<ol class="arabic" start="6">
+<li><p>Activate pre-commit hooks:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>Once installed, the pre-commit hooks will automatically execute every time you commit changes. By default, they enforce Ruff’s formatter and linter rules, ensuring code consistency and adherence to standards.</p>
-<p>If you have made commits prior to the installation of Ruff and pre-commit, you will need to run the pre-commit hook on all files as illustrated <a class="reference external" href="https://pre-commit.com/#4-optional-run-against-all-the-files">here</a>. To run the pre-commit hook on all files run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">files</span>
+</li>
+</ol>
+<p>This will enable a set of tools that will automatically execute every time you commit changes to ensure code quality.</p>
+</section>
+<section id="write-code">
+<h2>Write code<a class="headerlink" href="#write-code" title="Link to this heading">#</a></h2>
+<p>Before you start writing code, you may discuss with the scikit-bio team to make sure that your intended contribution is relevant (see <a class="reference internal" href="#before-coding">Before coding</a> above). Next, you may work through the following steps to start coding.</p>
+<ol class="arabic">
+<li><p>Update your main branch such that it has the latest version of all files. This is especially important if you cloned a long time ago:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Optionally, you may do the following to keep your forked repository’s main branch up-to-date as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Create a new <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches">branch</a> that you will make changes in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">mywork</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">mywork</span></code> is the name of the branch. What you name the branch is up to you, though we recommend including the issue number, if there is a relevant one (see above). For example, if you were addressing issue #42, you might name your branch <code class="docutils literal notranslate"><span class="pre">issue-42</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is not recommended that you directly code in your <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> to confirm that the tests pass before you make any changes.</p></li>
+<li><p><strong>Edit the code</strong> using any code editor of your favor. Now it is the time to bring your creativity to scikit-bio!</p></li>
+</ol>
+<p>Scikit-bio’s <a class="reference internal" href="devdoc/code_guide.html"><span class="doc">coding guidelines</span></a> provide more details on how to write high-quality code. It is recommended that you read this document carefully and apply the guidelines in your code.</p>
+</section>
+<section id="test-code">
+<h2>Test code<a class="headerlink" href="#test-code" title="Link to this heading">#</a></h2>
+<p>Testing your code is an essential step to ensure its quality and functionality. For scikit-bio, we emphasize the importance of comprehensive testing to guarantee that your contribution works as expected. You might find testing tedious (it often costs more time than implementing the algorithm!), but it is a valuable step that will significantly enhance the robustness of your code, and will help fostering a culture of reliability and trust within our community. This section is to guide you through the testing process, providing you with the tools and knowledge to perform effective tests for scikit-bio.</p>
+<section id="functional-test">
+<h3>Functional test<a class="headerlink" href="#functional-test" title="Link to this heading">#</a></h3>
+<p>You will want to test your code like a <em>user</em> would do: import the function, execute it on some input data, and examine whether the results are correct. You may install additional software such as <a class="reference external" href="https://jupyter.org/">Jupyter</a> in the same conda environment to make the testing process convenient and pleasant. There is no need to reinstall the modified scikit-bio package in a separate environment in order to test. As soon as you edit the code, the changes will immediately reflect when you use the code.</p>
+<p>For example, you wrote a function <code class="docutils literal notranslate"><span class="pre">gc_content</span></code>, which calculates the fraction of <code class="docutils literal notranslate"><span class="pre">G</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> in a nucleotide sequence:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;GC&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You added this function to the code file <code class="docutils literal notranslate"><span class="pre">skbio/sequence/nucl.py</span></code>. It will be available for use in any Python code launched in the same conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.sequence.nucl</span> <span class="kn">import</span> <span class="n">gc_content</span>
+</pre></div>
+</div>
+<p>Now test the function on some data. For example, you would expect that <code class="docutils literal notranslate"><span class="pre">gc_content(&quot;ACGT&quot;)</span></code> and <code class="docutils literal notranslate"><span class="pre">gc_content(&quot;GGATCCGC&quot;)</span></code> return 0.5 and 0.75, respectively. Is that the case?</p>
+<p>We highly recommend that you use real-world biological data in addition to small, dummy data for testing. This will let you evaluate the robustness and scalability of your code in real-world applications. For example, DNA sequences retrieved from public databases may contain lowercase letters, and you will find that the <code class="docutils literal notranslate"><span class="pre">gc_content</span></code> function cannot handle them properly. For another instance, a FASTQ file with ten million sequences (which is common) may cost a function forever to process, in which case you should consider optimization.</p>
+</section>
+<section id="unit-test">
+<h3>Unit test<a class="headerlink" href="#unit-test" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Unit_testing">Unit testing</a> involves testing the smallest units of your code, such as classes, functions, and methods, to ensure they function correctly in isolation. It is a fundamental best practice in software engineering, but is often overlooked by beginners. Unit testing is made easier by writing test code alongside the algorithm code. Both types of code are integrated into the scikit-bio codebase. This test code is then regularly executed whenever changes are made to ensure that the intended behavior remains consistent over time.</p>
+<p>For example, the test code for the <code class="docutils literal notranslate"><span class="pre">gc_content</span></code> may live in <code class="docutils literal notranslate"><span class="pre">skbio/sequence/tests/test_nucl.py</span></code>, under class <code class="docutils literal notranslate"><span class="pre">TestNucl</span></code>, as a method <code class="docutils literal notranslate"><span class="pre">test_gc_content</span></code>. It may read like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_gc_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">gc_content</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">gc_content</span><span class="p">(</span><span class="s2">&quot;GGATCCGC&quot;</span><span class="p">),</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>You can run this test with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">skbio</span><span class="o">/</span><span class="n">sequence</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_nucl</span><span class="o">.</span><span class="n">py</span> <span class="n">TestNucl</span><span class="o">.</span><span class="n">test_gc_content</span>
+</pre></div>
+</div>
+<p>The screen output will tell you whether the test passed, and if not, what went wrong. This information will help you debug your code.</p>
+<p>Ideally, every line of the code should be covered by unit test(s). For example, if your function has an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, both <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> situations should be tested.</p>
+<p>It is a good practice to test all types of cases you can think of, including normal cases and <a class="reference external" href="https://en.wikipedia.org/wiki/Edge_case">edge cases</a>. For example, an empty sequence (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>) will cause the <code class="docutils literal notranslate"><span class="pre">gc_content</span></code> function to crash, because zero cannot serve as a denominator in an equation. Having edge cases like this will help you to identify limitations of your code and think whether you should implement special handling to avoid problems.</p>
+<p>You should also test whether the changed code fits into scikit-bio without causing problems in the other parts of the codebase. There is a convenient command to run all unit tests implemented in scikit-bio:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>Alternatively, you may run all unit tests in a Python session (including Jupyter):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.test</span> <span class="kn">import</span> <span class="n">pytestrunner</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pytestrunner</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
-<section id="make-necessary-changes-and-commit">
-<h3>Make necessary changes and commit<a class="headerlink" href="#make-necessary-changes-and-commit" title="Link to this heading">#</a></h3>
-<p>After the hooks have executed, address any errors flagged by Ruff. Once resolved, you can proceed to commit and push your changes to your branch as usual.</p>
+<section id="code-coverage">
+<h3>Code coverage<a class="headerlink" href="#code-coverage" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Code_coverage">Code coverage</a> refers to the percentage of source code lines covered by unit tests. It is an assessment of the quality of a software project. In scikit-bio, code coverage can be calculated using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">coverage</span> <span class="n">run</span> <span class="o">-</span><span class="n">m</span> <span class="n">skbio</span><span class="o">.</span><span class="n">test</span> <span class="o">&amp;&amp;</span> <span class="n">coverage</span> <span class="n">report</span>
+</pre></div>
+</div>
+<p>This will report the coverage of each code file and the entire codebase. If the coverage decreased for the file you edited, you may have missed some anticipated unit tests. You can create a detailed HTML report with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">coverage</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>Then open <code class="docutils literal notranslate"><span class="pre">htmlcov/index.html</span></code> in a web browser, navigate to the page for the relevant code file, and check which lines of your code are not covered by unit tests. Work on them to bring back coverage.</p>
+<p>Please read the <a class="reference internal" href="devdoc/code_guide.html#how-should-i-test-my-code"><span class="std std-ref">How should I test my code?</span></a> section of the coding guidelines to learn more about unit testing.</p>
 </section>
+</section>
+<section id="document-code">
+<h2>Document code<a class="headerlink" href="#document-code" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Software_documentation">Documentation</a> is a vital part of software engineering, especially for projects like scikit-bio, which involve many contributors and are designed to endure over time. Documentation helps everyone – users and developers – get on the same page. It also helps you, as even seasoned developers can lose track of their own coding logic over time. Also remember that scikit-bio brings together people from various fields, and nobody is expected to have the same level of understanding across all disciplines. Therefore, documenting your code with the broader audience in mind is important. This section will cover the basics of documenting your code in a manner that benefits the scikit-bio community at large.</p>
+<p>Scikit-bio’s <a class="reference internal" href="devdoc/doc_guide.html"><span class="doc">documentation guidelines</span></a> provide more details on how to write effective documentation.</p>
+<section id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Comment_(computer_programming)">Comments</a> in the source code explain the rationale to fellow developers. Please make comments frequently in your code, especially where the code itself is not that intuitive. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform eigendecomposition on the covariance matrix of data.</span>
+<span class="c1"># w and v are eigenvalues and eigenvectors, respectively.</span>
+<span class="c1"># eigh is used in favor of eig to avoid returning complex numbers due to</span>
+<span class="c1"># matrix asymmetry caused by floating point errors.</span>
+<span class="c1"># Discussed in: https://stackoverflow.com/questions/12345678/</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Please read the <a class="reference internal" href="devdoc/code_guide.html#how-should-i-write-comments"><span class="std std-ref">How should I write comments?</span></a> section of the coding guidelines to learn more about writing comments.</p>
+</section>
+<section id="docstrings">
+<h3>Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Docstring">Docstrings</a> are structured text blocks associated with each unit of the code that detail the usage of the code. Docstrings will be rendered to the software documentation. That is, <em>users</em> (not just developers) will read them. Therefore, docstrings are critical if you want your code to be used, and in the correct way.</p>
+<p>Below is a very simple example for the <code class="docutils literal notranslate"><span class="pre">gc_content</span></code>. The lines between the triple double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>) are the docstring:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the GC content of a nucleotide sequence.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    seq : str</span>
+<span class="sd">        Input sequence.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Fraction of G and C.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;GC&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As shown, the docstring explains the purpose, the parameter(s), and the return value(s) of the function. In more complicated cases, the docstring should also include example usage, potential errors, related functions, mathematics behind the algorithm, references to webpages or literature, etc. Every public-facing component should have a docstring.</p>
+<p>Please read the <a class="reference internal" href="devdoc/doc_guide.html#docstring-style"><span class="std std-ref">Docstring style</span></a> section of the documentation guidelines to learn more about writing docstrings.</p>
+</section>
+<section id="doctests">
+<h3>Doctests<a class="headerlink" href="#doctests" title="Link to this heading">#</a></h3>
+<p>You may consider adding <strong>example usages</strong> of your code to its docstring. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the GC content of a nucleotide sequence.</span>
+<span class="sd">    ...</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from skbio.sequence.nucl import gc_content</span>
+<span class="sd">    &gt;&gt;&gt; gc_content(&quot;ACGT&quot;)</span>
+<span class="sd">    0.5</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>The example code and its output must match. This is ensured by <a class="reference external" href="https://docs.python.org/3/library/doctest.html">doctest</a>. When you run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> (see above), doctests are automatically executed as part of the test suite. You may fix any issues according to the screen output.</p>
+</section>
+<section id="html-rendering">
+<h3>HTML rendering<a class="headerlink" href="#html-rendering" title="Link to this heading">#</a></h3>
+<p>After completing docstrings, you will want to check how they look like when rendered to the documentation webpages. You may build the entire HTML documentation package locally with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">doc</span>
+</pre></div>
+</div>
+<p>The built documentation will be at <code class="docutils literal notranslate"><span class="pre">doc/build/html/index.html</span></code>, and can be examined using your web browser. If errors arise during the building process, or the rendered webpages don’t look as anticipated, you should address the issues accordingly.</p>
+</section>
+<section id="changelog">
+<h3>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">#</a></h3>
+<p>Please mention your changes in <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">CHANGELOG.md</a>. This file informs scikit-bio <em>users</em> of changes made in each release, so be sure to describe your changes with this audience in mind. It is especially important to note API additions and changes, particularly if they are backward-incompatible, as well as bug fixes. Be sure to make your updates under the section designated for the latest development version of scikit-bio (this will be at the top of the file). Describe your changes in detail under the most appropriate section heading(s). For example, if your pull request fixes a bug, describe the bug fix under the “Bug fixes” section of the changelog. Please also include a link to the issue(s) addressed by your changes.</p>
+</section>
+</section>
+<section id="style-code">
+<h2>Style code<a class="headerlink" href="#style-code" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Programming_style">Code style</a> is a set of rules for formatting and structuring code in a particular software project. Although violating these rules won’t cause errors in executing the code, adhering to them ensures that the codebase remains uniform and professional, and facilitates team collaboration.</p>
+<p>Scikit-bio utilizes the <a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> program for autoformatting and linting to ensure code consistency and quality. The rules are specified in <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/pyproject.toml">pyproject.toml</a>. Basically, we largely adopted the <a class="reference external" href="https://black.readthedocs.io/">Black</a> code style.</p>
+<p>When you <a class="reference external" href="#set-up-a-workspace">set up the development environment</a>, Ruff was already installed and integrated into a <a class="reference external" href="https://github.com/astral-sh/ruff-pre-commit">pre-commit hook</a>. This means that Ruff will automatically format and lint your code every time you commit changes (see <a class="reference internal" href="#submit-code">Submit code</a> below). Therefore <em>you are not required to take any explicit action</em>. However, you can still manually run Ruff to check and fix issues in specific code files you have worked on:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ruff</span> <span class="n">check</span> <span class="o">--</span><span class="n">fix</span> <span class="n">mycode</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If Ruff identifies any errors that cannot be automatically fixed, you will need to manually fix them based on Ruff’s feedback. When done, let Ruff reformat your code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ruff</span> <span class="nb">format</span> <span class="n">mycode</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You will notice the improvement in your code’s appearance before and after using Ruff. While it is always beneficial to strive for professional-looking code from the start, the necessity for perfection has lessened with the advent of tools like Ruff.</p>
+</section>
+<section id="submit-code">
+<h2>Submit code<a class="headerlink" href="#submit-code" title="Link to this heading">#</a></h2>
+<p>Having completed, tested, and documented your code, you may now believe it deserves a place in scikit-bio to benefit the community. This section outlines the steps to submit your code to the official scikit-bio repository.</p>
+<ol class="arabic">
+<li><p>Add any new code file(s) you created to the git repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mycode</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Alternatively, if you have multiple new files, you can add them all at once:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p><a class="reference external" href="https://github.com/git-guides/git-commit">Commit</a> the changes (this is like “saving” your code in the current branch):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;describe what I did&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Here, “describe what I did” is the placeholder of a <em>commit message</em>. You should write a meaningful commit message to describe what you did. We recommend following <a class="reference external" href="https://numpy.org/doc/stable/dev/development_workflow.html#writing-the-commit-message">NumPy’s commit message guidelines</a>, including the usage of commit tags (i.e., starting commit messages with acronyms such <code class="docutils literal notranslate"><span class="pre">ENH</span></code>, <code class="docutils literal notranslate"><span class="pre">BUG</span></code>, etc.).</p>
+<p>The <cite>commit</cite> command will trigger the <a class="reference external" href="https://pre-commit.com/">pre-commit hook</a>, which automatically runs Ruff to check and fix any code style problems (see <a class="reference internal" href="#style-code">Style code</a> above). If there are any errors flagged by Ruff, you will need to resolve them and commit again.</p>
+<ol class="arabic" start="3">
+<li><p>Merge the latest code from the official scikit-bio repository to your local branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This step is important as it ensures that your code doesn’t conflict with any recent updates in the official repository. This could happen as there are other developers simultaneously working on the project.</p>
+<p>If there are conflicts, you will need to <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github">resolve the conflicts</a> by editing the affected files. When done, run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> on those files, then run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> with a relevant commit message (such as “resolved merge conflicts”).</p>
+<ol class="arabic" start="4">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> for the last time to ensure that your changes don’t cause anything to break.</p></li>
+<li><p>Once the tests pass, you should push your changes to your forked repository on GitHub using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">mywork</span>
+</pre></div>
+</div>
+</li>
+<li><p>Navigate to the GitHub website, and create a <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a> from your <code class="docutils literal notranslate"><span class="pre">mywork</span></code> branch to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of the official scikit-bio repository. Usually, GitHub will prompt you to do so, and you may click the <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Compare &amp; pull request</span> button to initiate this process. If not, you can invoke a <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">New pull request</span> under the “<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-git-pull-request" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg> pull request” tab.</p></li>
+<li><p>Enter a meaningful title and a description of your code in the pull request. You may mention the issue you attempt to address in the description, such as “Resolves #42”. This will <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue">link your pull request to the issue</a>. You will also need to answer a few questions by either typing an <code class="docutils literal notranslate"><span class="pre">x</span></code> in the checkboxes that apply to your code or leaving them empty otherwise. These questions can be found in <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/.github/PULL_REQUEST_TEMPLATE.md">PULL_REQUEST_TEMPLATE.md</a>. When done, click <span class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success">Create pull request</span>.</p></li>
+</ol>
+</section>
+<section id="review-code">
+<h2>Review code<a class="headerlink" href="#review-code" title="Link to this heading">#</a></h2>
+<p>Your <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews">pull request will be reviewed</a> by one or more maintainers of scikit-bio. These reviews are intended to confirm a few points:</p>
+<ul class="simple">
+<li><p>Your code provides relevant changes or additions to scikit-bio.</p></li>
+<li><p>Your code adheres to our coding guidelines.</p></li>
+<li><p>Your code is sufficiently well-tested.</p></li>
+<li><p>Your code is sufficiently well-documented.</p></li>
+</ul>
+<p>This process is designed to ensure the quality of scikit-bio and can be a very useful experience for new developers.</p>
+<p>Typically, the reviewer will launch some automatic checks on your code. These checks are defined in <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/.github/workflows/ci.yml">ci.yml</a>. They involve:</p>
+<ul class="simple">
+<li><p>Full unit test suite and doctests execute without errors in all supported software and hardware environments.</p></li>
+<li><p>C code can be correctly compiled.</p></li>
+<li><p>Cython code is correctly generated.</p></li>
+<li><p>Documentation can be built.</p></li>
+<li><p>Code coverage is maintained or improved.</p></li>
+<li><p>Code passes linting.</p></li>
+</ul>
+<p>The checks may take several to a few dozen minutes. If some check(s) fail, you may click “Details” in these checks to view the error messages, and fix the issues accordingly.</p>
+<p>Meanwhile, the reviewer will comment on your code inline and/or below. They may request changes (which is very common). Please work with the reviewer to improve your code.</p>
+<p>You should revise your code in your local branch. When completed, commit and push your code again (steps 1-5 of <a class="reference internal" href="#submit-code">Submit code</a>). This will automatically update your pull request and restart the checks. <em>Don’t issue a new pull request</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Particularly for big changes, if you’d like feedback on your code in the form of a code review as you work, you should request help in the issue that you created and one of the scikit-bio maintainers will work with you to perform regular code reviews. This can greatly reduce development time. We highly recommend that new developers take advantage of this rather than submitting a pull request with a massive amount of code. That can lead to frustration when the developer thinks they are done but the reviewer requests large amounts of changes, and it also makes it harder to review.</p>
+</div>
+<p>Please read <a class="reference internal" href="devdoc/review.html"><span class="doc">Reviewing pull requests</span></a> for more details on how pull requests should be reviewed in the scikit-bio project.</p>
+<p>After your code has been improved and the reviewer has approved it, they will <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merge your pull request</a> into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of the official scikit-bio repository. This will be indicated by a note: <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-git-merge" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M5 3.254V3.25v.005a.75.75 0 110-.005v.004zm.45 1.9a2.25 2.25 0 10-1.95.218v5.256a2.25 2.25 0 101.5 0V7.123A5.735 5.735 0 009.25 9h1.378a2.251 2.251 0 100-1.5H9.25a4.25 4.25 0 01-3.8-2.346zM12.75 9a.75.75 0 100-1.5.75.75 0 000 1.5zm-8.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5z"></path></svg> “Pull request successfully merged and closed”.</p>
+<p>Congratulations! Your code is now an integral part of scikit-bio, and will benefit the broader community. You have successfully completed your contribution, and we extend our appreciation to you! 🎉🎉🎉”</p>
 </section>
 </section>
 
@@ -684,25 +881,34 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-contributions">Types of contributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-fixes">“Quick fixes”</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-development">Joining development</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-a-question">Ask a question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#report-an-error">Report an error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-a-new-feature">Suggest a new feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-a-typo">Fix a typo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-coding">Before coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-your-plan">Discuss your plan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#take-existing-tasks">Take existing tasks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review">Code review</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-code-to-scikit-bio">Submitting code to scikit-bio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-development-environment">Setting up a development environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-guidelines">Coding guidelines</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-guidelines">Testing guidelines</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-guidelines">Documentation guidelines</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help-with-git">Getting help with git</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-code-quality">Automating code quality</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-pre-commit-hooks">Initialize pre-commit hooks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-necessary-changes-and-commit">Make necessary changes and commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-workspace">Set up a workspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-code">Write code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-code">Test code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-test">Functional test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-test">Unit test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-coverage">Code coverage</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-code">Document code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doctests">Doctests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-rendering">HTML rendering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-code">Style code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-code">Submit code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-code">Review code</a></li>
 </ul>
   </nav></div>
 
