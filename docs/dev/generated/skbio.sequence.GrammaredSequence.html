@@ -632,6 +632,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.nondegenerates.html">skbio.sequence.GrammaredSequence.nondegenerates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.read.html">skbio.sequence.GrammaredSequence.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.replace.html">skbio.sequence.GrammaredSequence.replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_definites.html">skbio.sequence.GrammaredSequence.to_definites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_indices.html">skbio.sequence.GrammaredSequence.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_regex.html">skbio.sequence.GrammaredSequence.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.write.html">skbio.sequence.GrammaredSequence.write</a></li>
@@ -681,6 +682,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.nondegenerates.html">skbio.sequence.GrammaredSequence.nondegenerates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.read.html">skbio.sequence.GrammaredSequence.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.replace.html">skbio.sequence.GrammaredSequence.replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_definites.html">skbio.sequence.GrammaredSequence.to_definites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_indices.html">skbio.sequence.GrammaredSequence.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_regex.html">skbio.sequence.GrammaredSequence.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GrammaredSequence.write.html">skbio.sequence.GrammaredSequence.write</a></li>
@@ -855,6 +857,8 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> containing metadata which applies to the entire object.</p>
 </dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">noncanonical_chars</span></code></dt><dd><p>Return non-canonical characters.</p>
+</dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></dt><dd><p>Return non-degenerate characters.</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_chars</span></code></dt><dd><p>Set of observed characters in the sequence.</p>
@@ -961,13 +965,16 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.replace.html#skbio.sequence.GrammaredSequence.replace" title="skbio.sequence.GrammaredSequence.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a>(where, character)</p></td>
 <td><p>Replace values in this sequence with a different character.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_indices.html#skbio.sequence.GrammaredSequence.to_indices" title="skbio.sequence.GrammaredSequence.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_definites.html#skbio.sequence.GrammaredSequence.to_definites" title="skbio.sequence.GrammaredSequence.to_definites"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_definites</span></code></a>([degenerate, noncanonical])</p></td>
+<td><p>Convert degenerate and or non-canonical characters to alternative characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_indices.html#skbio.sequence.GrammaredSequence.to_indices" title="skbio.sequence.GrammaredSequence.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
 <td><p>Convert the sequence into indices of characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_regex.html#skbio.sequence.GrammaredSequence.to_regex" title="skbio.sequence.GrammaredSequence.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_regex.html#skbio.sequence.GrammaredSequence.to_regex" title="skbio.sequence.GrammaredSequence.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
 <td><p>Return regular expression object that accounts for degenerate chars.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.write.html#skbio.sequence.GrammaredSequence.write" title="skbio.sequence.GrammaredSequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.write.html#skbio.sequence.GrammaredSequence.write" title="skbio.sequence.GrammaredSequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> to a file.</p></td>
 </tr>
 </tbody>
@@ -1002,19 +1009,22 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> containing metadata which applies to the entire object.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">noncanonical_chars</span></code></p></td>
+<td><p>Return non-canonical characters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></p></td>
 <td><p>Return non-degenerate characters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_chars</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_chars</span></code></p></td>
 <td><p>Set of observed characters in the sequence.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> containing metadata along an axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></p></td>
 <td><p>Array containing underlying sequence characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></p></td>
 <td><p>Return wildcard character.</p></td>
 </tr>
 </tbody>
@@ -1165,13 +1175,16 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.replace.html#skbio.sequence.GrammaredSequence.replace" title="skbio.sequence.GrammaredSequence.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a>(where, character)</p></td>
 <td><p>Replace values in this sequence with a different character.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_indices.html#skbio.sequence.GrammaredSequence.to_indices" title="skbio.sequence.GrammaredSequence.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_definites.html#skbio.sequence.GrammaredSequence.to_definites" title="skbio.sequence.GrammaredSequence.to_definites"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_definites</span></code></a>([degenerate, noncanonical])</p></td>
+<td><p>Convert degenerate and or non-canonical characters to alternative characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_indices.html#skbio.sequence.GrammaredSequence.to_indices" title="skbio.sequence.GrammaredSequence.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
 <td><p>Convert the sequence into indices of characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_regex.html#skbio.sequence.GrammaredSequence.to_regex" title="skbio.sequence.GrammaredSequence.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.to_regex.html#skbio.sequence.GrammaredSequence.to_regex" title="skbio.sequence.GrammaredSequence.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
 <td><p>Return regular expression object that accounts for degenerate chars.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.write.html#skbio.sequence.GrammaredSequence.write" title="skbio.sequence.GrammaredSequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.write.html#skbio.sequence.GrammaredSequence.write" title="skbio.sequence.GrammaredSequence.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> to a file.</p></td>
 </tr>
 </tbody>
