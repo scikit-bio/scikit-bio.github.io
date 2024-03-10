@@ -712,8 +712,8 @@ overridden by passing <cite>result_constructor</cite>.</p>
 <p class="rubric">Notes</p>
 <p>Neighbor joining was initially described in Saitou and Nei (1987) <a class="reference internal" href="#r7def033fcc8e-1" id="id1">[1]</a>. The
 example presented here is derived from the Wikipedia page on neighbor
-joining <a class="reference internal" href="#r7def033fcc8e-2" id="id2">[2]</a>. The Phylip manual also describes the method <a class="reference internal" href="#r7def033fcc8e-3" id="id3">[3]</a> and Phylip
-itself provides an implementation which is useful for comparison.</p>
+joining <a class="reference internal" href="#r7def033fcc8e-2" id="id2">[2]</a>. Gascuel and Steel (2006) provide a detailed overview of
+Neighbor joining in terms of its biological relevance and limitations <a class="reference internal" href="#r7def033fcc8e-3" id="id3">[3]</a>.</p>
 <p>Neighbor joining, by definition, creates unrooted trees. One strategy for
 rooting the resulting trees is midpoint rooting, which is accessible as
 <code class="docutils literal notranslate"><span class="pre">TreeNode.root_at_midpoint</span></code>.</p>
@@ -731,7 +731,9 @@ Evolution. PMID: 3447015.</p>
 </div>
 <div class="citation" id="r7def033fcc8e-3" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://evolution.genetics.washington.edu/phylip/doc/neighbor.html">http://evolution.genetics.washington.edu/phylip/doc/neighbor.html</a></p>
+<p>Gascuel O, and Steel M. (2006) “Neighbor-Joining Revealed” Molecular
+Biology and Evolution, Volume 23, Issue 11, November 2006,
+Pages 1997–2000, <a class="reference external" href="https://doi.org/10.1093/molbev/msl072">https://doi.org/10.1093/molbev/msl072</a></p>
 </div>
 </div>
 <p class="rubric">Examples</p>
@@ -750,7 +752,7 @@ OTUs: a, b, c, d, and e.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Contstruct the neighbor joining tree representing the relationship between
+<p>Construct the neighbor joining tree representing the relationship between
 those OTUs. This is returned as a TreeNode object.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">nj</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
