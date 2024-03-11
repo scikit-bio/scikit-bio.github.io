@@ -58,6 +58,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'diversity';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
@@ -679,29 +680,44 @@ should be the first document you read before working with the module.</p>
 <code class="docutils literal notranslate"><span class="pre">skbio.diversity.beta_diversity</span></code>, are designed to compute alpha diversity for
 one or more samples, or beta diversity for one or more pairs of samples. The
 diversity driver functions accept a matrix containing vectors of frequencies of
-OTUs within each sample.</p>
-<p>We use the term “OTU” here very loosely, as these can in practice represent
-diverse feature types including bacterial species, genes, and metabolites. The
-term “sample” is also loosely defined for these purposes. These are intended to
-represent a single unit of sampling, and as such what a single sample
-represents can vary widely. For example, in a microbiome survey, these could
-represent all 16S rRNA gene sequences from a single oral swab. In a comparative
-genomics study on the other hand, a sample could represent an individual
-organism’s genome.</p>
+taxa within each sample.</p>
+<p>The term “taxon” (plural: “taxa”) describes a group of biologically related
+organisms that constitute a unit in the community. Taxa are usually defined at
+a uniform taxonomic rank, such as species, genus or family. In community
+ecology, taxon is usually referred to as “species” (singular = plural), but its
+definition is not limited to species as a taxonomic rank. The term “taxonomic
+group” is a synonym of taxon in many situations.</p>
+<p>In scikit-bio, the term “taxon/taxa” is used very loosely, as these can in
+practice represent diverse feature types including organisms, genes, and
+metabolites. The term “sample” is also loosely defined for these purposes.
+These are intended to represent a single unit of sampling, and as such what a
+single sample represents can vary widely. For example, in a microbiome survey,
+these could represent all 16S rRNA gene sequences from a single oral swab. In
+a comparative genomics study on the other hand, a sample could represent an
+individual organism’s genome.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Previous versions of scikit-bio referred to taxon as operational taxonomic
+unit (OTU), a historically important term in microbiome research. However,
+as the field advances and the research targets diverge (e.g., amplicon
+sequence variant, or ASV), a more generic term such as “taxon” becomes more
+appropriate. Therefore, the term OTU was replaced by taxon in scikit-bio
+0.6.0.</p>
+</div>
 <p>Each frequency in a given vector represents the number of individuals observed
-for a particular OTU. We will refer to the frequencies associated with a single
-sample as a <em>counts vector</em> or <code class="docutils literal notranslate"><span class="pre">counts</span></code> throughout the documentation. Counts
-vectors are <cite>array_like</cite>: anything that can be converted into a 1-D numpy array
-is acceptable input. For example, you can provide a numpy array or a native
-Python list and the results will be identical. As mentioned above, the driver
-functions accept one or more of these vectors (representing one or more
+for a particular taxon. We will refer to the frequencies associated with a
+single sample as a <em>counts vector</em> or <code class="docutils literal notranslate"><span class="pre">counts</span></code> throughout the documentation.
+Counts vectors are <cite>array_like</cite>: anything that can be converted into a 1-D
+numpy array is acceptable input. For example, you can provide a numpy array or
+a native Python list and the results will be identical. As mentioned above, the
+driver functions accept one or more of these vectors (representing one or more
 samples) in a matrix which is also <cite>array_like</cite>. Each row in the matrix
 represents a single sample’s count vector, so that rows represent samples and
-columns represent OTUs.</p>
-<p>Some diversity metrics incorporate relationships between the OTUs in their
+columns represent taxa.</p>
+<p>Some diversity metrics incorporate relationships between the taxa in their
 computation through reference to a phylogenetic tree. These metrics
-additionally take a <code class="docutils literal notranslate"><span class="pre">skbio.TreeNode</span></code> object and a list of OTU identifiers
-mapping the values in the counts vector to tips in the tree.</p>
+additionally take a <code class="docutils literal notranslate"><span class="pre">skbio.TreeNode</span></code> object and a list of taxa mapping the
+values in the counts vector to tips in the tree.</p>
 <p>The driver functions are optimized so that computing a diversity metric more
 than one time (i.e., for more than one sample for alpha diversity metrics, or
 more than one pair of samples for beta diversity metrics) is often much faster
@@ -732,13 +748,13 @@ validation, users should be confident that these conditions are met.</p>
 <p>Additionally, if a phylogenetic diversity metric is being computed, the
 following conditions are also confirmed:</p>
 <ul class="simple">
-<li><p>the provided OTU identifiers are all unique</p></li>
-<li><p>the length of each counts vector is equal to the number of OTU identifiers</p></li>
+<li><p>the provided taxa are all unique</p></li>
+<li><p>the length of each counts vector is equal to the number of taxa</p></li>
 <li><p>the provided tree is rooted</p></li>
 <li><p>the tree has more than one node</p></li>
 <li><p>all nodes in the provided tree except for the root node have branch lengths</p></li>
 <li><p>all tip names in the provided tree are unique</p></li>
-<li><p>all provided OTU identifiers correspond to tip names in the provided tree</p></li>
+<li><p>all provided taxa correspond to tip names in the provided tree</p></li>
 </ul>
 </section>
 <section id="count-vectors">
@@ -746,23 +762,23 @@ following conditions are also confirmed:</p>
 <p>There are different ways that count vectors are represented in the ecological
 literature and in related software. The diversity measures provided here
 <em>always</em> assume that the input contains abundance data: each count represents
-the number of individuals observed for a particular OTU in the sample. For
-example, if you have two OTUs, where three individuals were observed from the
-first OTU and only a single individual was observed from the second OTU, you
-could represent this data in the following forms (among others).</p>
+the number of individuals observed for a particular taxon in the sample. For
+example, if you have two taxa, where three individuals were observed from the
+first taxon and only a single individual was observed from the second taxon,
+you could represent this data in the following forms (among others).</p>
 <p>As a vector of counts. This is the expected type of input for the diversity
-measures in this module. There are 3 individuals from the OTU at index 0, and 1
-individual from the OTU at index 1:</p>
+measures in this module. There are 3 individuals from the taxon at index 0,
+and 1 individual from the taxon at index 1:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>As a vector of indices. The OTU at index 0 is observed 3 times, while the
-OTU at index 1 is observed 1 time:</p>
+<p>As a vector of indices. The taxon at index 0 is observed 3 times, while the
+taxon at index 1 is observed 1 time:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>As a vector of frequencies. We have 1 OTU that is a singleton and 1 OTU that
-is a tripleton. We do not have any 0-tons or doubletons:</p>
+<p>As a vector of frequencies. We have 1 taxon that is a singleton and 1 taxon
+that is a tripleton. We do not have any 0-tons or doubletons:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -836,7 +852,7 @@ passed as strings which won’t be listed here, such as those implemented in
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<p>Create a matrix containing 6 samples (rows) and 7 OTUs (columns):</p>
+<p>Create a matrix containing 6 samples (rows) and 7 taxa (columns):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -846,7 +862,7 @@ passed as strings which won’t be listed here, such as those implemented in
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCDEF&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>First, we’ll compute observed OTUs, an alpha diversity metric, for each
+<p>First, we’ll compute <span class="math notranslate nohighlight">\(S_{obs}\)</span>, an alpha diversity metric, for each
 sample using the <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code> driver function:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.diversity</span> <span class="kn">import</span> <span class="n">alpha_diversity</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_sobs</span> <span class="o">=</span> <span class="n">alpha_diversity</span><span class="p">(</span><span class="s1">&#39;sobs&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
@@ -862,16 +878,16 @@ sample using the <code class="docutils literal notranslate"><span class="pre">al
 </div>
 <p>Next we’ll compute Faith’s PD on the same samples. Since this is a
 phylogenetic diversity metric, we’ll first create a tree and an ordered
-list of OTU identifiers.</p>
+list of taxa.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(((((OTU1:0.5,OTU2:0.5):0.5,OTU3:1.0):1.0):0.0,&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(OTU4:0.75,(OTU5:0.5,(OTU6:0.5,OTU7:0.5):0.5):&#39;</span>
+<span class="gp">... </span>                     <span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
+<span class="gp">... </span>                     <span class="s1">&#39;(U4:0.75,(U5:0.5,(U6:0.5,U7:0.5):0.5):&#39;</span>
 <span class="gp">... </span>                     <span class="s1">&#39;0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">otu_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OTU1&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU2&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU3&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU4&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU5&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU6&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU7&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;U2&#39;</span><span class="p">,</span> <span class="s1">&#39;U3&#39;</span><span class="p">,</span> <span class="s1">&#39;U4&#39;</span><span class="p">,</span> <span class="s1">&#39;U5&#39;</span><span class="p">,</span> <span class="s1">&#39;U6&#39;</span><span class="p">,</span> <span class="s1">&#39;U7&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_faith_pd</span> <span class="o">=</span> <span class="n">alpha_diversity</span><span class="p">(</span><span class="s1">&#39;faith_pd&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
-<span class="gp">... </span>                                <span class="n">otu_ids</span><span class="o">=</span><span class="n">otu_ids</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">)</span>
+<span class="gp">... </span>                                <span class="n">taxa</span><span class="o">=</span><span class="n">taxa</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_faith_pd</span>
 <span class="go">A    6.75</span>
 <span class="go">B    7.00</span>
@@ -903,10 +919,10 @@ provided to <code class="docutils literal notranslate"><span class="pre">beta_di
 </div>
 <p>Next, we’ll compute weighted UniFrac distances between all pairs of samples.
 Because weighted UniFrac is a phylogenetic beta diversity metric, we’ll need
-to pass the <code class="docutils literal notranslate"><span class="pre">skbio.TreeNode</span></code> and list of OTU ids that we created above.
+to pass the <code class="docutils literal notranslate"><span class="pre">skbio.TreeNode</span></code> and list of taxa that we created above.
 Again, these are the same values that were provided to <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wu_dm</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s2">&quot;weighted_unifrac&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">,</span>
-<span class="gp">... </span>                       <span class="n">otu_ids</span><span class="o">=</span><span class="n">otu_ids</span><span class="p">)</span>
+<span class="gp">... </span>                       <span class="n">taxa</span><span class="o">=</span><span class="n">taxa</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">)</span>
 <span class="go">6x6 distance matrix</span>
 <span class="go">IDs:</span>

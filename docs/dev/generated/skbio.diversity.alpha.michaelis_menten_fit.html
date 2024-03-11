@@ -712,17 +712,17 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.alpha.michaelis_menten_fit">
 <span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">michaelis_menten_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_base.py#L661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.michaelis_menten_fit" title="Link to this definition">#</a></dt>
-<dd><p>Calculate Michaelis-Menten fit to rarefaction curve of observed OTUs.</p>
+<dd><p>Calculate Michaelis-Menten fit to rarefaction curve of observed taxa.</p>
 <p>State: Experimental as of 0.4.0.</p>
 <p>The Michaelis-Menten equation is defined as:</p>
 <div class="math notranslate nohighlight">
 \[S=\frac{nS_{max}}{n+B}\]</div>
 <p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of individuals and <span class="math notranslate nohighlight">\(S\)</span> is the number of
-OTUs. This function estimates the <span class="math notranslate nohighlight">\(S_{max}\)</span> parameter.</p>
+taxa. This function estimates the <span class="math notranslate nohighlight">\(S_{max}\)</span> parameter.</p>
 <p>The fit is made to datapoints for <span class="math notranslate nohighlight">\(n=1,2,...,N\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is
-the total number of individuals (sum of abundances for all OTUs).
-<span class="math notranslate nohighlight">\(S\)</span> is the number of OTUs represented in a random sample of <span class="math notranslate nohighlight">\(n\)</span>
-individuals.</p>
+the total number of individuals (sum of abundances for all taxa).
+<span class="math notranslate nohighlight">\(S\)</span> is the number of taxa represented in a random sample of
+<span class="math notranslate nohighlight">\(n\)</span> individuals.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">

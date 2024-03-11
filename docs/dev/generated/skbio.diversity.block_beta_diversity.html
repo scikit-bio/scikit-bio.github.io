@@ -671,7 +671,7 @@ document.write(`
 <h1>skbio.diversity.block_beta_diversity<a class="headerlink" href="#skbio-diversity-block-beta-diversity" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.block_beta_diversity">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">block_beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_block.py#L253"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.block_beta_diversity" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">block_beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_block.py#L254"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.block_beta_diversity" title="Link to this definition">#</a></dt>
 <dd><p>Perform a block-decomposition beta diversity calculation.</p>
 <p>State: Experimental as of 0.5.1.</p>
 <dl class="field-list">
@@ -682,7 +682,7 @@ must be resolvable by scikit-bio (e.g., UniFrac methods), or must be
 callable.</p>
 </dd>
 <dt><strong>counts</strong><span class="classifier">2D array_like of ints or floats</span></dt><dd><p>Matrix containing count/abundance data where each row contains counts
-of OTUs in a given sample.</p>
+of taxa in a given sample.</p>
 </dd>
 <dt><strong>ids</strong><span class="classifier">iterable of strs</span></dt><dd><p>Identifiers for each sample in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</p>
 </dd>
@@ -729,7 +729,7 @@ In general, if you are processing a few hundred samples or less, then it is
 likely the case that <cite>skbio.diversity.beta_diversity</cite> will be faster. The
 original need which motivated the development of this method was processing
 the Earth Microbiome Project <a class="reference internal" href="#r75dc7551f9cc-1" id="id1">[1]</a> dataset which at the time spanned over
-25,000 samples and 7.5 million open reference OTUs.</p>
+25,000 samples and 7.5 million open reference taxa.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r75dc7551f9cc-1" role="doc-biblioentry">

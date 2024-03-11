@@ -711,7 +711,7 @@ document.write(`
 <h1>skbio.diversity.alpha.faith_pd<a class="headerlink" href="#skbio-diversity-alpha-faith-pd" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.alpha.faith_pd">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">faith_pd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_pd.py#L41"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.faith_pd" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">faith_pd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_pd.py#L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.faith_pd" title="Link to this definition">#</a></dt>
 <dd><p>Calculate Faith’s phylogenetic diversity (Faith’s PD) metric.</p>
 <p>State: Experimental as of 0.4.1.</p>
 <p>The Faith’s PD metric is defined as:</p>
@@ -724,21 +724,24 @@ the lowest common ancestor (LCA) of the taxa to the root of the tree.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vectors of counts/abundances of OTUs for one sample.</p>
+<dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vectors of counts/abundances of taxa for one sample.</p>
 </dd>
-<dt><strong>otu_ids</strong><span class="classifier">list, np.array</span></dt><dd><p>Vector of OTU ids corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the
-same length as <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</p>
+<dt><strong>taxa</strong><span class="classifier">list, np.array</span></dt><dd><p>Vector of taxon IDs corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the
+same length as <code class="docutils literal notranslate"><span class="pre">counts</span></code>. Required.</p>
 </dd>
-<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Tree relating the OTUs in otu_ids. The set of tip names in the tree can
-be a superset of <code class="docutils literal notranslate"><span class="pre">otu_ids</span></code>, but not a subset.</p>
+<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Tree relating taxa. The set of tip names in the tree can be a superset
+of <code class="docutils literal notranslate"><span class="pre">taxa</span></code>, but not a subset. Required.</p>
 </dd>
-<dt><strong>validate: bool, optional</strong></dt><dd><p>If <cite>False</cite>, validation of the input won’t be performed. This step can
+<dt><strong>validate: bool, optional</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">False</span></code>, validation of the input won’t be performed. This step can
 be slow, so if validation is run elsewhere it can be disabled here.
 However, invalid input data can lead to invalid results or error
 messages that are hard to interpret, so this step should not be
 bypassed if you’re not certain that your input data are valid. See
 <a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a> for the description of what validation entails
 so you can determine if you can safely disable validation.</p>
+</dd>
+<dt><strong>otu_ids</strong><span class="classifier">list, np.array</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">taxa</span></code> for backward compatibility. Deprecated and to be
+removed in a future release.</p>
 </dd>
 </dl>
 </dd>
@@ -786,11 +789,10 @@ versions less than 2.0.0) by imposing a few additional restrictions on the
 inputs. First, the input tree must be rooted. In PyCogent, if an unrooted
 tree was provided that had a single trifurcating node (a newick convention
 for unrooted trees) that node was considered the root of the tree. Next,
-all OTU IDs must be tips in the tree. PyCogent would silently ignore OTU
-IDs that were not present the tree. To reproduce Faith PD results from
-PyCogent with scikit-bio, ensure that your PyCogent Faith PD calculations
-are performed on a rooted tree and that all OTU IDs are present in the
-tree.</p>
+all taxa must be tips in the tree. PyCogent would silently ignore taxa that
+were not present the tree. To reproduce Faith PD results from PyCogent with
+scikit-bio, ensure that your PyCogent Faith PD calculations are performed
+on a rooted tree and that all taxa are present in the tree.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="rb88c9668d555-1" role="doc-biblioentry">
@@ -823,31 +825,29 @@ analysis of pyrosequencing and PhyloChip data. ISME J. 4(1):17-27
 </div>
 </div>
 <p class="rubric">Examples</p>
-<p>Assume we have the following abundance data for a sample <code class="docutils literal notranslate"><span class="pre">u</span></code>,
-represented as a counts vector. These counts represent the
-number of times specific Operational Taxonomic Units, or OTUs, were
-observed in the sample.</p>
+<p>Assume we have the following abundance data for a sample <code class="docutils literal notranslate"><span class="pre">u</span></code>, represented
+as a counts vector. These counts represent the number of times specific
+taxa were observed in the sample.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u_counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Because Faith PD is a phylogenetic diversity metric, we need to know which
-OTU each count corresponds to, which we’ll provide as <code class="docutils literal notranslate"><span class="pre">otu_ids</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">otu_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OTU1&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU2&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU3&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU4&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU5&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU6&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU7&#39;</span><span class="p">,</span>
-<span class="gp">... </span>           <span class="s1">&#39;OTU8&#39;</span><span class="p">]</span>
+taxon each count corresponds to, which we’ll provide as <code class="docutils literal notranslate"><span class="pre">taxa</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;U2&#39;</span><span class="p">,</span> <span class="s1">&#39;U3&#39;</span><span class="p">,</span> <span class="s1">&#39;U4&#39;</span><span class="p">,</span> <span class="s1">&#39;U5&#39;</span><span class="p">,</span> <span class="s1">&#39;U6&#39;</span><span class="p">,</span> <span class="s1">&#39;U7&#39;</span><span class="p">,</span> <span class="s1">&#39;U8&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>We also need a phylogenetic tree that relates the OTUs to one another.</p>
+<p>We also need a phylogenetic tree that relates the taxa to one another.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(((((OTU1:0.5,OTU2:0.5):0.5,OTU3:1.0):1.0):0.0,&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(OTU4:0.75,(OTU5:0.5,((OTU6:0.33,OTU7:0.62):0.5&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;,OTU8:0.5):0.5):0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
+<span class="gp">... </span>                     <span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
+<span class="gp">... </span>                     <span class="s1">&#39;(U4:0.75,(U5:0.5,((U6:0.33,U7:0.62):0.5&#39;</span>
+<span class="gp">... </span>                     <span class="s1">&#39;,U8:0.5):0.5):0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>We can then compute the Faith PD of the sample.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.diversity.alpha</span> <span class="kn">import</span> <span class="n">faith_pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span> <span class="o">=</span> <span class="n">faith_pd</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">otu_ids</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span> <span class="o">=</span> <span class="n">faith_pd</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">taxa</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">6.95</span>
 </pre></div>

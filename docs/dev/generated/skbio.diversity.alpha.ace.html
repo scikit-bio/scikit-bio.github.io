@@ -718,13 +718,13 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[S_{ace}=S_{abund}+\frac{S_{rare}}{C_{ace}}+
 \frac{F_1}{C_{ace}}\gamma^2_{ace}\]</div>
-<p>where <span class="math notranslate nohighlight">\(S_{abund}\)</span> is the number of abundant OTUs (with more than
+<p>where <span class="math notranslate nohighlight">\(S_{abund}\)</span> is the number of abundant taxa (with more than
 <cite>rare_threshold</cite>  individuals) when all samples are pooled,
-<span class="math notranslate nohighlight">\(S_{rare}\)</span> is the number of rare OTUs (with less than or equal to
+<span class="math notranslate nohighlight">\(S_{rare}\)</span> is the number of rare taxa (with less than or equal to
 <cite>rare_threshold</cite> individuals) when all samples are pooled, <span class="math notranslate nohighlight">\(C_{ace}\)</span>
 is the sample abundance coverage estimator, <span class="math notranslate nohighlight">\(F_1\)</span> is the frequency of
 singletons, and <span class="math notranslate nohighlight">\(\gamma^2_{ace}\)</span> is the estimated coefficient of
-variation for rare OTUs.</p>
+variation for rare taxa.</p>
 <p>The estimated coefficient of variation is defined as (assuming
 <cite>rare_threshold</cite> is 10, the default):</p>
 <div class="math notranslate nohighlight">
@@ -736,7 +736,7 @@ variation for rare OTUs.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vector of counts.</p>
 </dd>
-<dt><strong>rare_threshold</strong><span class="classifier">int, optional</span></dt><dd><p>Threshold at which an OTU containing as many or fewer individuals will
+<dt><strong>rare_threshold</strong><span class="classifier">int, optional</span></dt><dd><p>Threshold at which a taxon containing as many or fewer individuals will
 be considered rare.</p>
 </dd>
 </dl>
@@ -749,7 +749,7 @@ be considered rare.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If every rare OTU is a singleton.</p>
+<dt>ValueError</dt><dd><p>If every rare taxon is a singleton.</p>
 </dd>
 </dl>
 </dd>
@@ -757,11 +757,11 @@ be considered rare.</p>
 <p class="rubric">Notes</p>
 <p>ACE was first introduced in <a class="reference internal" href="#r34b5d5ddea45-1" id="id1">[1]</a> and <a class="reference internal" href="#r34b5d5ddea45-2" id="id2">[2]</a>. The implementation here is based
 on the description given in the EstimateS manual <a class="reference internal" href="#r34b5d5ddea45-3" id="id3">[3]</a>.</p>
-<p>If no rare OTUs exist, returns the number of abundant OTUs. The default
+<p>If no rare taxa exist, returns the number of abundant taxa. The default
 value of 10 for <cite>rare_threshold</cite> is based on <a class="reference internal" href="#r34b5d5ddea45-4" id="id4">[4]</a>.</p>
-<p>If <cite>counts</cite> contains zeros, indicating OTUs which are known to exist in the
+<p>If <cite>counts</cite> contains zeros, indicating taxa which are known to exist in the
 environment but did not appear in the sample, they will be ignored for the
-purpose of calculating the number of rare OTUs.</p>
+purpose of calculating the number of rare taxa.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r34b5d5ddea45-1" role="doc-biblioentry">

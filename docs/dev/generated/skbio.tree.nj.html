@@ -681,7 +681,7 @@ document.write(`
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing distances between OTUs.</p>
+<dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing distances between taxa.</p>
 </dd>
 <dt><strong>disallow_negative_branch_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Neighbor joining can result in negative branch lengths, which don’t
 make sense in an evolutionary context. If <cite>True</cite>, negative branch
@@ -738,7 +738,7 @@ Pages 1997–2000, <a class="reference external" href="https://doi.org/10.1093/m
 </div>
 <p class="rubric">Examples</p>
 <p>Define a new distance matrix object describing the distances between five
-OTUs: a, b, c, d, and e.</p>
+taxa: a, b, c, d, and e.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DistanceMatrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.tree</span> <span class="kn">import</span> <span class="n">nj</span>
 </pre></div>
@@ -753,7 +753,7 @@ OTUs: a, b, c, d, and e.</p>
 </pre></div>
 </div>
 <p>Construct the neighbor joining tree representing the relationship between
-those OTUs. This is returned as a TreeNode object.</p>
+those taxa. This is returned as a TreeNode object.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">nj</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">          /-d</span>
