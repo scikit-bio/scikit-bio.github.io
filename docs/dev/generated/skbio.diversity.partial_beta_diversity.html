@@ -671,15 +671,8 @@ document.write(`
 <h1>skbio.diversity.partial_beta_diversity<a class="headerlink" href="#skbio-diversity-partial-beta-diversity" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.partial_beta_diversity">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">partial_beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/../decorator.py#L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.partial_beta_diversity" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">partial_beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_driver.py#L204"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.partial_beta_diversity" title="Link to this definition">#</a></dt>
 <dd><p>Compute distances only between specified ID pairs.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Deprecated as of 0.5.0 for removal in 0.6.0. The return type is
-unstable. Developer caution is advised. The resulting
-DistanceMatrix object will include zeros when distance has not
-been calculated, and therefore can be misleading.</p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -721,6 +714,13 @@ If duplicates are observed in <code class="docutils literal notranslate"><span c
 </dl>
 </dd>
 </dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">partial_beta_diversity</span></code> is deprecated as of <code class="docutils literal notranslate"><span class="pre">0.5.0</span></code>. The return type is
+unstable. Developer caution is advised. The resulting DistanceMatrix object will
+include zeros when distance has not been calculated, and therefore can be
+misleading.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
