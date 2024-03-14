@@ -63,7 +63,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="API Stability" href="api_stability.html" />
+    <link rel="next" title="About scikit-bio" href="../about.html" />
     <link rel="prev" title="Reviewing pull requests" href="review.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -461,12 +461,12 @@ document.write(`
 <h2>Prep the release<a class="headerlink" href="#prep-the-release" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Ensure the GitHub Actions CI build is passing against main.</p></li>
-<li><p>Update the version strings (x.y.y-dev) to the new version (x.y.z). This will include <code class="docutils literal notranslate"><span class="pre">__version__</span></code> defined in <code class="docutils literal notranslate"><span class="pre">skbio/__init__.py</span></code>, as well as any <code class="docutils literal notranslate"><span class="pre">&#64;experimental/&#64;stable/&#64;deprecated</span></code> (see <a class="reference external" href="api_stability">API stability decorators</a>) with <code class="docutils literal notranslate"><span class="pre">as_of='x.y.y-dev'</span></code>. <code class="docutils literal notranslate"><span class="pre">grep</span></code> for the current version string to find all occurrences:</p>
+<li><p>Update the version strings (x.y.y-dev) to the new version (x.y.z). This will include <code class="docutils literal notranslate"><span class="pre">__version__</span></code> defined in <code class="docutils literal notranslate"><span class="pre">skbio/__init__.py</span></code>. <code class="docutils literal notranslate"><span class="pre">grep</span></code> for the current version string to find all occurrences:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">r</span> <span class="s1">&#39;x\.y\.y-dev&#39;</span> <span class="o">.</span>
 </pre></div>
 </div>
 </li>
-<li><p>Remove any deprecated functionality that was scheduled for removal on or before this release. When removing deprecated functionality, make sure the functionality has been in a deprecated state for the appropriate number of releases described in the <a class="reference external" href="api_stability">API stability document</a>. If there is functionality that shouldn’t be removed yet, bump the <cite>until</cite> version to a future version. To find all deprecated functionality, search for <cite>&#64;deprecated</cite> decorators:</p>
+<li><p>Remove any deprecated functionality that was scheduled for removal on or before this release. To find all deprecated functionality, search for <cite>&#64;deprecated</cite> decorators:</p>
 <blockquote>
 <div><p>grep -r <a class="reference external" href="mailto:'&#37;&#52;&#48;deprecated">‘<span>&#64;</span>deprecated</a>’ .</p>
 </div></blockquote>

@@ -479,18 +479,7 @@ document.write(`
 <p><strong>Private API:</strong> API with object name starting with an underscore. Users should not import private API. Private API should only be imported and used in the module where it is defined. It should not be imported in other parts of the scikit-bio package. Examples: <code class="docutils literal notranslate"><span class="pre">skbio.util._testing._normalize_signs</span></code>, <code class="docutils literal notranslate"><span class="pre">skbio.stats.composition._gram_schmidt_basis</span></code>.</p>
 <ul class="simple">
 <li><p>Prefer defining private APIs and only promote things to the public API that users need access to.</p></li>
-<li><p>Private/package-private API does not need to be decorated with <code class="docutils literal notranslate"><span class="pre">&#64;experimental</span></code>/<code class="docutils literal notranslate"><span class="pre">&#64;stable</span></code>/<code class="docutils literal notranslate"><span class="pre">&#64;deprecated</span></code>, only public API.</p></li>
 <li><p>Within scikit-bio, prefer <em>using</em> public APIs defined in the package even if private APIs offer the same functionality.</p></li>
-</ul>
-</section>
-<section id="api-stability">
-<h2>API stability<a class="headerlink" href="#api-stability" title="Link to this heading">#</a></h2>
-<p>Refer to scikit-bio’s <a class="reference external" href="api_stability">API stability document</a> for the current API lifecycle.</p>
-<ul class="simple">
-<li><p>Prefer making new APIs experimental. This allows for changes to the API without needing to deprecate it first.</p></li>
-<li><p>Try to avoid changing stable API if at all possible. If a change is necessary, deprecate the API and remove after 2+ minor releases.</p></li>
-<li><p>Under extreme circumstances, a stable API can be changed without deprecation warning to users. This has happened in the past to fix bugs that required an API change. If this happens, discuss with other devs before committing to the change and document this change extensively in the changelog.</p></li>
-<li><p>Always document stable/experimental API changes and any deprecated APIs in the changelog.</p></li>
 </ul>
 </section>
 <section id="integration-consistency-with-existing-api">
@@ -567,7 +556,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing-and-attribution">Licensing and attribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">Changelog</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#public-vs-private-api">Public vs. private API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-stability">API stability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-consistency-with-existing-api">Integration/consistency with existing API</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-messages-and-merging-pull-requests">Commit messages and merging pull requests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-changes-locally">Test changes locally</a></li>
