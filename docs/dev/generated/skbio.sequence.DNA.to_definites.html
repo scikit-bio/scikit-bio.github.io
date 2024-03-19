@@ -776,15 +776,15 @@ document.write(`
 <h1>skbio.sequence.DNA.to_definites<a class="headerlink" href="#skbio-sequence-dna-to-definites" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.DNA.to_definites">
-<span class="sig-prename descclassname"><span class="pre">DNA.</span></span><span class="sig-name descname"><span class="pre">to_definites</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wild'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noncanonical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_grammared_sequence.py#L770"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.DNA.to_definites" title="Link to this definition">#</a></dt>
-<dd><p>Convert degenerate and or non-canonical characters to alternative characters.</p>
+<span class="sig-prename descclassname"><span class="pre">DNA.</span></span><span class="sig-name descname"><span class="pre">to_definites</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wild'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noncanonical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_grammared_sequence.py#L810"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.DNA.to_definites" title="Link to this definition">#</a></dt>
+<dd><p>Convert degenerate and noncanonical characters to alternative characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>degenerate</strong><span class="classifier">{“wild”, “gap”, “trim”, str of length 1}, optional</span></dt><dd><p>How degenerate/non-canonical characters should be treated: Replace them
+<dt><strong>degenerate</strong><span class="classifier">{“wild”, “gap”, “del”, str of length 1}, optional</span></dt><dd><p>How degenerate/non-canonical characters should be treated: Replace them
 with the wildcard character (“wild”, default), or the default gap character
 (“gap”), or a user-defined character (str of length 1), or remove them
-(“trim”).</p>
+(“del”).</p>
 </dd>
 <dt><strong>noncanonical</strong><span class="classifier">bool, optional</span></dt><dd><p>Treat non-canonical characters in the same way as degenerate
 characters (<code class="docutils literal notranslate"><span class="pre">True</span></code>, default), or leave them as-is (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
