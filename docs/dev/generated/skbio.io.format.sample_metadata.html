@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Taxdump format (skbio.io.format.taxdump) &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>Format Support &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -58,19 +58,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.taxdump';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.sample_metadata';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.io.format.taxdump.html" />
+    <link rel="canonical" href="../../../generated/skbio.io.format.sample_metadata.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Format Support" href="skbio.io.format.sample_metadata.html" />
-    <link rel="prev" title="Stockholm format (skbio.io.format.stockholm)" href="skbio.io.format.stockholm.html" />
+    <link rel="next" title="skbio.io.registry.write" href="skbio.io.registry.write.html" />
+    <link rel="prev" title="Taxdump format (skbio.io.format.taxdump)" href="skbio.io.format.taxdump.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -617,8 +617,8 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.phylip.html">PHYLIP multiple sequence alignment format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.qseq.html">QSeq format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.qseq</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.stockholm.html">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.sample_metadata.html">Format Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.taxdump.html">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Format Support</a></li>
 
 </ul>
 <ul class="nav bd-sidenav">
@@ -690,7 +690,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../io.html" class="nav-link">File I/O (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Taxdump...</li>
+    <li class="breadcrumb-item active" aria-current="page">Format Support</li>
   </ul>
 </nav>
 </div>
@@ -707,15 +707,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="taxdump-format-skbio-io-format-taxdump">
-<span id="module-skbio.io.format.taxdump"></span><h1>Taxdump format (<a class="reference internal" href="#module-skbio.io.format.taxdump" title="skbio.io.format.taxdump"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code></a>)<a class="headerlink" href="#taxdump-format-skbio-io-format-taxdump" title="Link to this heading">#</a></h1>
-<p>The NCBI Taxonomy database dump (<code class="docutils literal notranslate"><span class="pre">taxdump</span></code>) format stores information of
-organism names, classifications and other properties. It is a tabular format
-with a delimiter: <code class="docutils literal notranslate"><span class="pre">&lt;tab&gt;&lt;pipe&gt;&lt;tab&gt;</span></code> between columns, and a line end
-<code class="docutils literal notranslate"><span class="pre">&lt;tab&gt;&lt;pipe&gt;</span></code> after all columns. The file name usually ends with .dmp.</p>
+  <p id="module-skbio.io.format.sample_metadata">Sample Metadata object ported over from qiime2.</p>
+<hr class="docutils" />
+<p>This implements the Sample_Metadata format which is identical to the
+Metadata format implemented in qiime2.
+(see: <a class="reference external" href="https://docs.qiime2.org/2024.2/tutorials/metadata/">https://docs.qiime2.org/2024.2/tutorials/metadata/</a>)</p>
+<p>An example sample_metadata file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id  col1    col2    col3
+#q2:types   categorical     categorical     categorical
+id1 1       a       foo
+id2 2       b       bar
+id3 3       c       42
+</pre></div>
+</div>
 <section id="format-support">
-<h2>Format Support<a class="headerlink" href="#format-support" title="Link to this heading">#</a></h2>
-<p><strong>Has Sniffer: No</strong></p>
+<h1>Format Support<a class="headerlink" href="#format-support" title="Link to this heading">#</a></h1>
+<p><strong>Has Sniffer: Yes</strong></p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Reader</p></th>
@@ -725,312 +732,217 @@ with a delimiter: <code class="docutils literal notranslate"><span class="pre">&
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Yes</p></td>
-<td><p>No</p></td>
-<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.metadata.SampleMetadata</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="format-specification">
-<h2>Format Specification<a class="headerlink" href="#format-specification" title="Link to this heading">#</a></h2>
-<p>The NCBI taxonomy database <a class="reference internal" href="#r4fe05681c6d6-1" id="id1">[1]</a> <a class="reference internal" href="#r4fe05681c6d6-2" id="id2">[2]</a> hosts organism names and classifications.
-It has a web portal <a class="reference internal" href="#r4fe05681c6d6-3" id="id3">[3]</a> and an FTP download server <a class="reference internal" href="#r4fe05681c6d6-4" id="id4">[4]</a>. It is also accessible
-using E-utilities <a class="reference internal" href="#r4fe05681c6d6-5" id="id5">[5]</a>. The database is being updated daily, and an archive is
-generated every month. The data release has the file name <code class="docutils literal notranslate"><span class="pre">taxdump</span></code>. It
-consists of multiple .dmp files. These files serve different purposes, but they
-follow a common format pattern:</p>
+<h1>Format Specification<a class="headerlink" href="#format-specification" title="Link to this heading">#</a></h1>
+<section id="metadata-formatting-requirements">
+<h2>Metadata Formatting Requirements<a class="headerlink" href="#metadata-formatting-requirements" title="Link to this heading">#</a></h2>
+<p>QIIME 2 metadata is most commonly stored in a TSV (i.e. tab-separated values)
+file. These files typically have a .tsv or .txt file extension, though it
+doesn’t matter to QIIME 2 what file extension is used. TSV files are simple
+text files used to store tabular data, and the format is supported by many
+types of software, such as editing, importing, and exporting from spreadsheet
+programs and databases. Thus, it’s usually straightforward to manipulate
+QIIME 2 metadata using the software of your choosing. If in doubt, we recommend
+using a spreadsheet program such as Microsoft Excel or Google Sheets to edit
+and export your metadata files.</p>
+<p>The following sections describe formatting requirements for QIIME 2 metadata
+files, and how to validate your metadata files. Since there is no universal
+standard for TSV files, it is important to adhere to these requirements and
+understand how QIIME 2 will interpret the file’s contents to get the most out
+of your (meta)data!</p>
+</section>
+<section id="metadata-validation">
+<h2>Metadata Validation<a class="headerlink" href="#metadata-validation" title="Link to this heading">#</a></h2>
+<p>Sample and feature metadata files stored in Google Sheets can be validated
+using Keemei. Select Add-ons &gt; Keemei &gt; Validate QIIME 2 metadata file to
+validate metadata stored in Google Sheets.</p>
+<p>QIIME 2 will also automatically validate a metadata file anytime it is used by
+the software. However, using Keemei to validate your metadata is recommended
+because a report of all validation errors and warnings will be presented each
+time Keemei is run. Loading your metadata in QIIME 2 will typically present
+only a single error at a time, which can make identifying and resolving
+validation issues cumbersome, especially if there are many issues with the
+metadata.</p>
+</section>
+<section id="leading-and-trailing-whitespace-characters">
+<h2>Leading and trailing whitespace characters<a class="headerlink" href="#leading-and-trailing-whitespace-characters" title="Link to this heading">#</a></h2>
+<p>If any cell in the metadata contains leading or trailing whitespace characters
+(e.g. spaces, tabs), those characters will be ignored when the file is loaded.
+Thus, leading and trailing whitespace characters are not significant, so cells
+containing the values ‘gut’ and ‘  gut  ‘ are equivalent. This rule is applied
+before any other rules described below.</p>
+</section>
+<section id="comments-and-empty-rows">
+<h2>Comments and Empty Rows<a class="headerlink" href="#comments-and-empty-rows" title="Link to this heading">#</a></h2>
+<p>Rows whose first cell begins with the pound sign (#) are interpreted as
+comments and may appear anywhere in the file. Comment rows are ignored by
+QIIME 2 and are for informational purposes only. Inline comments are not
+supported.</p>
+<p>Empty rows (e.g. blank lines or rows consisting solely of empty cells) may
+appear anywhere in the file and are ignored.</p>
+</section>
+<section id="identifier-column">
+<h2>Identifier Column<a class="headerlink" href="#identifier-column" title="Link to this heading">#</a></h2>
+<p>The first column in the metadata file is the identifier (ID) column. This
+column defines the sample or feature IDs associated with your study. It is not
+recommended to mix sample and feature IDs in a single metadata file; keep
+sample and feature metadata stored in separate files.</p>
+<p>The ID column name (i.e. ID header) must be one of the following values. The
+values listed below may not be used to name other IDs or columns in the file.</p>
+<p>Case-insensitive:
+- id</p>
 <ul class="simple">
-<li><p>It is a tabular format.</p></li>
-<li><p>Column delimiter is <code class="docutils literal notranslate"><span class="pre">&lt;tab&gt;&lt;pipe&gt;&lt;tab&gt;</span></code>.</p></li>
-<li><p>Line end is <code class="docutils literal notranslate"><span class="pre">&lt;tab&gt;&lt;pipe&gt;</span></code>.</p></li>
-<li><p>The first column is a numeric identifier, which usually represent taxa (i.e.,
-“TaxID”), but can also be genetic codes, citations or other entries.</p></li>
+<li><p>sampleid</p></li>
+<li><p>sample id</p></li>
+<li><p>sample-id</p></li>
+<li><p>fetureid</p></li>
+<li><p>feature id</p></li>
+<li><p>feature-id</p></li>
 </ul>
-<p>The two most important files of the data release are <code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code> and
-<code class="docutils literal notranslate"><span class="pre">names.dmp</span></code>. They store the hierarchical structure of the classification
-system (i.e., taxonomy) and the names of organisms, respectively. They can be
-used to construct the taxonomy tree of organisms.</p>
-<p>The definition of columns of each .dmp file type are taken from <a class="reference internal" href="#r4fe05681c6d6-6" id="id6">[6]</a> and <a class="reference internal" href="#r4fe05681c6d6-7" id="id7">[7]</a>.</p>
-<section id="nodes-dmp">
-<h3><code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code><a class="headerlink" href="#nodes-dmp" title="Link to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>tax_id</p></td>
-<td><p>node id in GenBank taxonomy database</p></td>
-</tr>
-<tr class="row-odd"><td><p>parent tax_id</p></td>
-<td><p>parent node id in GenBank taxonomy
-database</p></td>
-</tr>
-<tr class="row-even"><td><p>rank</p></td>
-<td><p>rank of this node (superkingdom,
-kingdom, …)</p></td>
-</tr>
-<tr class="row-odd"><td><p>embl code</p></td>
-<td><p>locus-name prefix; not unique</p></td>
-</tr>
-<tr class="row-even"><td><p>division id</p></td>
-<td><p>see division.dmp file</p></td>
-</tr>
-<tr class="row-odd"><td><p>inherited div
-flag (1 or 0)</p></td>
-<td><p>1 if node inherits division from
-parent</p></td>
-</tr>
-<tr class="row-even"><td><p>genetic code id</p></td>
-<td><p>see gencode.dmp file</p></td>
-</tr>
-<tr class="row-odd"><td><p>inherited GC
-flag (1 or 0)</p></td>
-<td><p>1 if node inherits genetic code from
-parent</p></td>
-</tr>
-<tr class="row-even"><td><p>mitochondrial
-genetic code id</p></td>
-<td><p>see gencode.dmp file</p></td>
-</tr>
-<tr class="row-odd"><td><p>inherited MGC
-flag (1 or 0)</p></td>
-<td><p>1 if node inherits mitochondrial
-gencode from parent</p></td>
-</tr>
-<tr class="row-even"><td><p>GenBank hidden
-flag (1 or 0)</p></td>
-<td><p>1 if name is suppressed in GenBank
-entry lineage</p></td>
-</tr>
-<tr class="row-odd"><td><p>hidden subtree
-root flag
-(1 or 0)</p></td>
-<td><p>1 if this subtree has no sequence
-data yet</p></td>
-</tr>
-<tr class="row-even"><td><p>comments</p></td>
-<td><p>free-text comments and citations</p></td>
-</tr>
-</tbody>
-</table>
-<p>Since 2018, NCBI releases “new taxonomy files” <a class="reference internal" href="#r4fe05681c6d6-8" id="id8">[8]</a> (<code class="docutils literal notranslate"><span class="pre">new_taxdump</span></code>). The new
-<code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code> format is compatible with the classical format, plus five extra
-columns after all aforementioned columns.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>plastid genetic
-code id</p></td>
-<td><p>see gencode.dmp file</p></td>
-</tr>
-<tr class="row-odd"><td><p>inherited PGC
-flag (1 or 0)</p></td>
-<td><p>1 if node inherits plastid gencode
-from parent</p></td>
-</tr>
-<tr class="row-even"><td><p>specified
-species</p></td>
-<td><p>1 if species in the node’s lineage
-has formal name</p></td>
-</tr>
-<tr class="row-odd"><td><p>hydrogenosome
-genetic code id</p></td>
-<td><p>see gencode.dmp file</p></td>
-</tr>
-<tr class="row-even"><td><p>inherited HGC
-flag (1 or 0)</p></td>
-<td><p>1 if node inherits hydrogenosome
-gencode from parent</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="names-dmp">
-<h3><code class="docutils literal notranslate"><span class="pre">names.dmp</span></code><a class="headerlink" href="#names-dmp" title="Link to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>tax_id</p></td>
-<td><p>the id of node associated with this
-name</p></td>
-</tr>
-<tr class="row-odd"><td><p>name_txt</p></td>
-<td><p>name itself</p></td>
-</tr>
-<tr class="row-even"><td><p>unique name</p></td>
-<td><p>the unique variant of this name if
-name not unique</p></td>
-</tr>
-<tr class="row-odd"><td><p>name class</p></td>
-<td><p>(synonym, common name, …)</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="division-dmp">
-<h3><code class="docutils literal notranslate"><span class="pre">division.dmp</span></code><a class="headerlink" href="#division-dmp" title="Link to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>division id</p></td>
-<td><p>taxonomy database division id</p></td>
-</tr>
-<tr class="row-odd"><td><p>division cde</p></td>
-<td><p>GenBank division code (three
-characters)</p></td>
-</tr>
-<tr class="row-even"><td><p>division name</p></td>
-<td><p>e.g. BCT, PLN, VRT, MAM, PRI…</p></td>
-</tr>
-<tr class="row-odd"><td><p>comments</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="gencode-dmp">
-<h3><code class="docutils literal notranslate"><span class="pre">gencode.dmp</span></code><a class="headerlink" href="#gencode-dmp" title="Link to this heading">#</a></h3>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>genetic code id</p></td>
-<td><p>GenBank genetic code id</p></td>
-</tr>
-<tr class="row-odd"><td><p>abbreviation</p></td>
-<td><p>genetic code name abbreviation</p></td>
-</tr>
-<tr class="row-even"><td><p>name</p></td>
-<td><p>genetic code name</p></td>
-</tr>
-<tr class="row-odd"><td><p>cde</p></td>
-<td><p>translation table for this genetic
-code</p></td>
-</tr>
-<tr class="row-even"><td><p>starts</p></td>
-<td><p>start codons for this genetic code</p></td>
-</tr>
-</tbody>
-</table>
-<p>Other types of .dmp files are currently not supported by scikit-bio. However,
-the user may customize column definitions in using this utility. See below for
-details.</p>
-</section>
-</section>
-<section id="format-parameters">
-<h2>Format Parameters<a class="headerlink" href="#format-parameters" title="Link to this heading">#</a></h2>
-<p>The following format parameters are available in <code class="docutils literal notranslate"><span class="pre">taxdump</span></code> format:</p>
+<p>Case-sensitive (these are mostly for backwards-compatibility with QIIME 1,
+biom-format, and Qiita files):
+- #SampleID</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scheme</span></code>: The column definition scheme name of the input .dmp file.
-Available options are listed below. Alternatively, one can provide a custom
-scheme as defined in a name-to-data type dictionary.</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nodes</span></code>: The classical <code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code> scheme. It is also compatible with
-new <code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code> format, in which case only the columns defined by the
-classical format will be read.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodes_new</span></code>: The new <code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code> scheme.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodes_slim</span></code>: Only the first three columns: tax_id, parent_tax_id and
-rank, which are the minimum required information for constructing the
-taxonomy tree. It can be applied to both classical and new <code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code>
-files. It can also handle custom files which only contains these three
-columns.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">names</span></code>: The <code class="docutils literal notranslate"><span class="pre">names.dmp</span></code> scheme.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">division</span></code>: The <code class="docutils literal notranslate"><span class="pre">division.dmp</span></code> scheme.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gencode</span></code>: The <code class="docutils literal notranslate"><span class="pre">gencode.dmp</span></code> scheme.</p></li>
-</ol>
+<li><p>#Sample ID</p></li>
+<li><p>#OTUID</p></li>
+<li><p>#OTU ID</p></li>
+<li><p>sample_name</p></li>
+</ul>
+<p>The following rules apply to IDs:</p>
+<ul class="simple">
+<li><p>IDs may consist of any Unicode characters, with the exception that IDs must
+notstart with the pound sign (#), as those rows would be interpreted as comments
+and ignored. See the section Recommendations for Identifiers for
+recommendations on choosing identifiers in your study.</p></li>
+<li><p>IDs cannot be empty (i.e. they must consist of at least one character).</p></li>
+<li><p>IDs must be unique (exact string matching is performed to detect duplicates).</p></li>
+<li><p>At least one ID must be present in the file.</p></li>
+<li><p>IDs cannot use any of the reserved ID column names listed above.</p></li>
+</ul>
+</section>
+<section id="recommendations-for-identifiers">
+<h2>Recommendations for Identifiers<a class="headerlink" href="#recommendations-for-identifiers" title="Link to this heading">#</a></h2>
+<p>Our goal with QIIME 2 is to support arbitrary Unicode characters in all cells
+of metadata files. However, given that QIIME 2 plugins and interfaces can be
+developed by anyone, we can’t make a guarantee that arbitrary Unicode
+characters will work with all plugins and interfaces. We can therefore make
+recommendations to users about characters that should be safe to use in
+identifiers, and we are preparing resources for plugin and interface developers
+to help them make their software as robust as possible. As developer resources
+become available, we will announce them in the Developer Discussion category
+on the QIIME 2 Forum.</p>
+<p>Sample and feature identifiers with problematic characters tend to cause the
+most issues for our users. Based on our experiences with QIIME 1, QIIME 2, and
+other bioinformatics and command line tools, we can recommend the following
+attributes for identifiers:</p>
+<ul class="simple">
+<li><p>Identifiers should be 36 characters long or less.</p></li>
+<li><p>Identifiers should contain only ASCII alphanumeric characters
+(i.e. in the range of [a-z], [A-Z], or [0-9]), the period (.) character, or
+the dash (-) character.</p></li>
+</ul>
+<p>An important point to remember is that sometimes values in your sample metadata
+can become identifiers. For example, taxonomy annotations can become feature
+identifiers following qiime taxa collapse, and sample or feature metadata
+values can become identifiers after applying qiime feature-table group.
+If you plan to apply these or similar methods where metadata values can become
+identifiers, you will be less likely to encounter problems if the values adhere
+to these identifier recommendations as well.</p>
+<p>To help users become aware of these recommendations, the Keemei metadata
+validator will warn users about identifiers that don’t meet the above
+recommendations.</p>
+<p>Users may be interested in the cual-id software for assistance with creating
+sample identifiers. The cual-id paper also provides some discussion on how to
+design identifiers.</p>
+</section>
+<section id="metadata-columns">
+<h2>Metadata Columns<a class="headerlink" href="#metadata-columns" title="Link to this heading">#</a></h2>
+<p>The ID column is the first column in the metadata file, and can optionally be
+followed by additional columns defining metadata associated with each sample or
+feature ID. Metadata files are not required to have additional metadata
+columns, so a file containing only an ID column is a valid QIIME 2 metadata
+file.</p>
+<p>The following rules apply to column names:</p>
+<ul class="simple">
+<li><p>May consist of any Unicode characters.</p></li>
+<li><p>Cannot be empty (i.e. column names must consist of at least one character).</p></li>
+<li><p>Must be unique (exact string matching is performed to detect duplicates).</p></li>
+<li><p>Column names cannot use any of the reserved ID column names described in the
+section Identifier Column.</p></li>
+</ul>
+<p>The following rules apply to column values:</p>
+<ul class="simple">
+<li><p>May consist of any Unicode characters.</p></li>
+<li><p>Empty cells represent missing data. Other values such as NA are not
+interpreted as missing data; only the empty cell is recognized as “missing”.
+Note that cells consisting solely of whitespace characters are also
+interpreted as missing data because leading and trailing whitespace
+characters are always ignored, effectively making the cell empty.</p></li>
+</ul>
+</section>
+<section id="column-types">
+<h2>Column Types<a class="headerlink" href="#column-types" title="Link to this heading">#</a></h2>
+<p>QIIME 2 currently supports categorical and numeric metadata columns. By
+default, QIIME 2 will attempt to infer the type of each metadata column: if the
+column consists only of numbers or missing data, the column is inferred to be
+numeric. Otherwise, if the column contains any non-numeric values, the column
+is inferred to be categorical. Missing data (i.e. empty cells) are supported in
+categorical columns as well as numeric columns.</p>
+<p>QIIME 2 supports an optional comment directive to allow users to explicitly
+state a column’s type, avoiding the column type inference described above.
+This can be useful if there is a column that appears to be numeric, but should
+actually be treated as categorical metadata (e.g. a Subject column where
+subjects are labeled 1, 2, 3, etc). Explicitly declaring a column’s type also
+makes your metadata file more descriptive because the intended column type is
+included with the metadata, instead of relying on software to infer the type
+(which isn’t always transparent).</p>
+<p>You can use an optional comment directive to declare column types in your
+metadata file, either manually or through the q2cli developer tools.</p>
+<p>For manual specifications within your metadata file(s), the comment directive
+must appear directly below the header. The row’s first cell must be #q2:types
+or #sk:types to indicate the row is a comment directive. Subsequent cells may
+contain the values categorical or numeric (both case-insensitive).
+The empty cell is also supported if you do not wish to assign a type to a
+column (the type will be inferred in that case). Thus, it is easy to include
+this comment directive without having to declare types for every column in
+your metadata.</p>
+</section>
+<section id="number-formatting">
+<h2>Number Formatting<a class="headerlink" href="#number-formatting" title="Link to this heading">#</a></h2>
+<p>If a column is to be interpreted as a numeric metadata column (either through
+column type inference or by using the #q2:types comment directive), numbers in
+the column must be formatted following these rules:</p>
+<ul>
+<li><p>Use the decimal number system: ASCII characters [0-9], . for an optional
+decimal point, and + and - for positive and negative signs, respectively.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Examples: 123, 123.45, 0123.40, -0.000123, +1.23</p></li>
+</ul>
+</div></blockquote>
 </li>
+<li><p>Scientific notation may be used with E-notation; both e and E are supported.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Examples: 1e9, 1.23E-4, -1.2e-08, +4.5E+6</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>scikit-bio will read columns from leftmost till the number of columns
-defined in the scheme. Extra columns will be cropped.</p>
-</div>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio.io</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-<span class="gp">... </span>    <span class="s1">&#39;1</span><span class="se">\t</span><span class="s1">|</span><span class="se">\t</span><span class="s1">1</span><span class="se">\t</span><span class="s1">|</span><span class="se">\t</span><span class="s1">no rank</span><span class="se">\t</span><span class="s1">|&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s1">&#39;2</span><span class="se">\t</span><span class="s1">|</span><span class="se">\t</span><span class="s1">131567</span><span class="se">\t</span><span class="s1">|</span><span class="se">\t</span><span class="s1">superkingdom</span><span class="se">\t</span><span class="s1">|&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s1">&#39;6</span><span class="se">\t</span><span class="s1">|</span><span class="se">\t</span><span class="s1">335928</span><span class="se">\t</span><span class="s1">|</span><span class="se">\t</span><span class="s1">genus</span><span class="se">\t</span><span class="s1">|&#39;</span>
-<span class="gp">... </span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Read the file into a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> and specify that the “nodes_slim” scheme
-should be used:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;taxdump&quot;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-<span class="gp">... </span>                   <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;nodes_slim&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> 
-<span class="go">        parent_tax_id          rank</span>
-<span class="go">tax_id</span>
-<span class="go">1                   1       no rank</span>
-<span class="go">2              131567  superkingdom</span>
-<span class="go">6              335928         genus</span>
-</pre></div>
-</div>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div role="list" class="citation-list">
-<div class="citation" id="r4fe05681c6d6-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Federhen, S. (2012). The NCBI taxonomy database. Nucleic acids
-research, 40(D1), D136-D143.</p>
-</div>
-<div class="citation" id="r4fe05681c6d6-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>Schoch, C. L., Ciufo, S., Domrachev, M., Hotton, C. L., Kannan, S.,
-Khovanskaya, R., … &amp; Karsch-Mizrachi, I. (2020). NCBI Taxonomy: a
-comprehensive update on curation, resources and tools. Database, 2020.</p>
-</div>
-<div class="citation" id="r4fe05681c6d6-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/taxonomy">https://www.ncbi.nlm.nih.gov/taxonomy</a></p>
-</div>
-<div class="citation" id="r4fe05681c6d6-4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/">https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/</a></p>
-</div>
-<div class="citation" id="r4fe05681c6d6-5" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
-<p>Kans, J. (2022). Entrez direct: E-utilities on the UNIX command line.
-In Entrez Programming Utilities Help [Internet]. National Center for
-Biotechnology Information (US).</p>
-</div>
-<div class="citation" id="r4fe05681c6d6-6" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt">https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump_readme.txt</a></p>
-</div>
-<div class="citation" id="r4fe05681c6d6-7" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/taxdump_readme.txt">https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/taxdump_readme.txt</a></p>
-</div>
-<div class="citation" id="r4fe05681c6d6-8" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://ncbiinsights.ncbi.nlm.nih.gov/2018/02/22/new-taxonomy-files">https://ncbiinsights.ncbi.nlm.nih.gov/2018/02/22/new-taxonomy-files</a>-
-available-with-lineage-type-and-host-information/</p>
-</div>
-</div>
+</div></blockquote>
+</li>
+<li><p>Only up to 15 digits total (including before and after the decimal point) are
+supported to stay within the 64-bit floating point specification. Numbers
+exceeding 15 total digits are unsupported and will result in undefined
+behavior.</p></li>
+<li><p>Common representations of not a number (e.g. NaN, nan) or infinity
+(e.g. inf, -Infinity) are not supported. Use an empty cell for missing data
+(e.g. instead of NaN). Infinity is not supported at this time in QIIME 2
+metadata files.</p></li>
+</ul>
 </section>
 </section>
 
@@ -1045,20 +957,20 @@ available-with-lineage-type-and-host-information/</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.io.format.stockholm.html"
+       href="skbio.io.format.taxdump.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</p>
+        <p class="prev-next-title">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.io.format.sample_metadata.html"
+       href="skbio.io.registry.write.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Format Support</p>
+        <p class="prev-next-title">skbio.io.registry.write</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1080,18 +992,21 @@ available-with-lineage-type-and-host-information/</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-support">Format Support</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-specification">Format Specification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes-dmp"><code class="docutils literal notranslate"><span class="pre">nodes.dmp</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#names-dmp"><code class="docutils literal notranslate"><span class="pre">names.dmp</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#division-dmp"><code class="docutils literal notranslate"><span class="pre">division.dmp</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gencode-dmp"><code class="docutils literal notranslate"><span class="pre">gencode.dmp</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Format Support</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#format-specification">Format Specification</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-formatting-requirements">Metadata Formatting Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-validation">Metadata Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leading-and-trailing-whitespace-characters">Leading and trailing whitespace characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-empty-rows">Comments and Empty Rows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-column">Identifier Column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations-for-identifiers">Recommendations for Identifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-columns">Metadata Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#column-types">Column Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-formatting">Number Formatting</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-parameters">Format Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
