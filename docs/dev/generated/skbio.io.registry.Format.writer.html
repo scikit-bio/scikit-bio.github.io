@@ -229,7 +229,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -458,7 +458,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -618,8 +618,6 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.qseq.html">QSeq format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.qseq</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.stockholm.html">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.taxdump.html">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.sample_metadata.html">Format Support</a></li>
-
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.registry.write.html">skbio.io.registry.write</a></li>
@@ -726,9 +724,8 @@ document.write(`
 <h1>skbio.io.registry.Format.writer<a class="headerlink" href="#skbio-io-registry-format-writer" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.io.registry.Format.writer">
-<span class="sig-prename descclassname"><span class="pre">Format.</span></span><span class="sig-name descname"><span class="pre">writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkey_patch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/io/registry.py#L1050"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.io.registry.Format.writer" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Format.</span></span><span class="sig-name descname"><span class="pre">writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkey_patch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L1029"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.io.registry.Format.writer" title="Link to this definition">#</a></dt>
 <dd><p>Decorate a function to act as the writer for a class in this format.</p>
-<p>State: Stable as of 0.4.0.</p>
 <p>The function should take an instance of <cite>cls</cite> as its first argument
 and the second argument is a filehandle which will be an implementation
 of either <a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.TextIOBase</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedWriter" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BufferedWriter</span></code></a>

@@ -70,7 +70,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.sequence.Protein.to_regex" href="skbio.sequence.Protein.to_regex.html" />
-    <link rel="prev" title="skbio.sequence.Protein.stops" href="skbio.sequence.Protein.stops.html" />
+    <link rel="prev" title="skbio.sequence.Protein.to_definites" href="skbio.sequence.Protein.to_definites.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -229,7 +229,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -458,7 +458,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -637,6 +637,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.read.html">skbio.sequence.Protein.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.replace.html">skbio.sequence.Protein.replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.stops.html">skbio.sequence.Protein.stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_definites.html">skbio.sequence.Protein.to_definites</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.Protein.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_regex.html">skbio.sequence.Protein.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.write.html">skbio.sequence.Protein.write</a></li>
@@ -688,6 +689,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.read.html">skbio.sequence.Protein.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.replace.html">skbio.sequence.Protein.replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.stops.html">skbio.sequence.Protein.stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_definites.html">skbio.sequence.Protein.to_definites</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.Protein.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_regex.html">skbio.sequence.Protein.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.write.html">skbio.sequence.Protein.write</a></li>
@@ -762,9 +764,8 @@ document.write(`
 <h1>skbio.sequence.Protein.to_indices<a class="headerlink" href="#skbio-sequence-protein-to-indices" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Protein.to_indices">
-<span class="sig-prename descclassname"><span class="pre">Protein.</span></span><span class="sig-name descname"><span class="pre">to_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_gaps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wildcard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_codes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_sequence.py#L2131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.to_indices" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Protein.</span></span><span class="sig-name descname"><span class="pre">to_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_gaps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wildcard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_codes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L2101"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.to_indices" title="Link to this definition">#</a></dt>
 <dd><p>Convert the sequence into indices of characters.</p>
-<p>State: Experimental as of 0.6.0.</p>
 <p>The result will be indices of characters in an alphabet, if provided,
 otherwise indices of unique characters observed in the sequence, in
 which case the unique characters in sorted order will also be returned.</p>
@@ -873,12 +874,12 @@ acids (<cite>wildcard=’auto’</cite> is the default behavior).</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.sequence.Protein.stops.html"
+       href="skbio.sequence.Protein.to_definites.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.sequence.Protein.stops</p>
+        <p class="prev-next-title">skbio.sequence.Protein.to_definites</p>
       </div>
     </a>
     <a class="right-next"

@@ -229,7 +229,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -458,7 +458,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -637,6 +637,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.read.html">skbio.sequence.Protein.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.replace.html">skbio.sequence.Protein.replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.stops.html">skbio.sequence.Protein.stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_definites.html">skbio.sequence.Protein.to_definites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_indices.html">skbio.sequence.Protein.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_regex.html">skbio.sequence.Protein.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.write.html">skbio.sequence.Protein.write</a></li>
@@ -688,6 +689,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.read.html">skbio.sequence.Protein.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.replace.html">skbio.sequence.Protein.replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.stops.html">skbio.sequence.Protein.stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_definites.html">skbio.sequence.Protein.to_definites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_indices.html">skbio.sequence.Protein.to_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.to_regex.html">skbio.sequence.Protein.to_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Protein.write.html">skbio.sequence.Protein.write</a></li>
@@ -759,7 +761,7 @@ document.write(`
 <h1>skbio.sequence.Protein<a class="headerlink" href="#skbio-sequence-protein" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.Protein">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Protein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/sequence/_protein.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Protein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_protein.py#L15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein" title="Link to this definition">#</a></dt>
 <dd><p>Store protein sequence data and optional associated metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -812,83 +814,83 @@ following 20 definite characters (canonical amino acids):</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><cite>A</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
 <td><p>Ala</p></td>
 <td><p>Alanine</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>C</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
 <td><p>Cys</p></td>
 <td><p>Cysteine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>D</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
 <td><p>Asp</p></td>
 <td><p>Aspartic acid</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>E</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">E</span></code></p></td>
 <td><p>Glu</p></td>
 <td><p>Glutamic acid</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>F</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">F</span></code></p></td>
 <td><p>Phe</p></td>
 <td><p>Phenylalanine</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>G</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
 <td><p>Gly</p></td>
 <td><p>Glycine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>H</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
 <td><p>His</p></td>
 <td><p>Histidine</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>I</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
 <td><p>Ile</p></td>
 <td><p>Isoleucine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>K</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">K</span></code></p></td>
 <td><p>Lys</p></td>
 <td><p>Lysine</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>L</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">L</span></code></p></td>
 <td><p>Leu</p></td>
 <td><p>Leucine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>M</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M</span></code></p></td>
 <td><p>Met</p></td>
 <td><p>Methionine</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>N</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
 <td><p>Asn</p></td>
 <td><p>Asparagine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>P</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">P</span></code></p></td>
 <td><p>Pro</p></td>
 <td><p>Proline</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>Q</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Q</span></code></p></td>
 <td><p>Gln</p></td>
 <td><p>Glutamine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>R</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
 <td><p>Arg</p></td>
 <td><p>Arginine</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>S</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
 <td><p>Ser</p></td>
 <td><p>Serine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>T</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
 <td><p>Thr</p></td>
 <td><p>Threonine</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>V</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
 <td><p>Val</p></td>
 <td><p>Valine</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>W</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">W</span></code></p></td>
 <td><p>Trp</p></td>
 <td><p>Tryptophan</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>Y</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
 <td><p>Tyr</p></td>
 <td><p>Tyrosine</p></td>
 </tr>
@@ -904,34 +906,34 @@ two or more amino acids:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><cite>B</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
 <td><p>Asx</p></td>
 <td><p>D or N</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>Z</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Z</span></code></p></td>
 <td><p>Glx</p></td>
 <td><p>E or Q</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>J</cite></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">J</span></code></p></td>
 <td><p>Xle</p></td>
 <td><p>I or L</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>X</cite></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
 <td><p>Xaa</p></td>
 <td><p>All 20</p></td>
 </tr>
 </tbody>
 </table>
-<p>Plus one stop character: <cite>*</cite> (Ter), and two gap characters: <cite>-</cite> and <cite>.</cite>.</p>
+<p>Plus one stop character: <code class="docutils literal notranslate"><span class="pre">*</span></code> (Ter), and two gap characters: <code class="docutils literal notranslate"><span class="pre">-</span></code> and <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p>
 <p>Characters other than the above 27 are not allowed. If you intend to use
-additional characters to represent non-canonical amino acids, such as <cite>U</cite>
-(Sec, Selenocysteine) and <cite>O</cite> (Pyl, Pyrrolysine), you may create a custom
+additional characters to represent non-canonical amino acids, such as <code class="docutils literal notranslate"><span class="pre">U</span></code>
+(Sec, Selenocysteine) and <code class="docutils literal notranslate"><span class="pre">O</span></code> (Pyl, Pyrrolysine), you may create a custom
 alphabet using <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code>. Directly modifying the alphabet of
 <code class="docutils literal notranslate"><span class="pre">Protein</span></code> may break functions that rely on the IUPAC alphabet.</p>
 <p>It should be noted that some functions do not support certain characters.
-For example, the BLOSUM and PAM substitution matrices do not support <cite>J</cite>
+For example, the BLOSUM and PAM substitution matrices do not support <code class="docutils literal notranslate"><span class="pre">J</span></code>
 (Xle). In such circumstances, unsupported characters will be replaced with
-<cite>X</cite> to represent any of the canonical amino acids.</p>
+<code class="docutils literal notranslate"><span class="pre">X</span></code> to represent any of the canonical amino acids.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r079cf422404d-1" role="doc-biblioentry">
@@ -989,6 +991,8 @@ A Cornish-Bowden</p>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_metadata</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object containing info about interval features.</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> containing metadata which applies to the entire object.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">noncanonical_chars</span></code></dt><dd><p>Return non-canonical characters.</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></dt><dd><p>Return non-degenerate characters.</p>
 </dd>
@@ -1104,13 +1108,16 @@ A Cornish-Bowden</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.stops.html#skbio.sequence.Protein.stops" title="skbio.sequence.Protein.stops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stops</span></code></a>()</p></td>
 <td><p>Find positions containing stop characters in the protein sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_indices.html#skbio.sequence.Protein.to_indices" title="skbio.sequence.Protein.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_definites.html#skbio.sequence.Protein.to_definites" title="skbio.sequence.Protein.to_definites"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_definites</span></code></a>([degenerate, noncanonical])</p></td>
+<td><p>Convert degenerate and or non-canonical characters to alternative characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_indices.html#skbio.sequence.Protein.to_indices" title="skbio.sequence.Protein.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
 <td><p>Convert the sequence into indices of characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
 <td><p>Return regular expression object that accounts for degenerate chars.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Protein</span></code> to a file.</p></td>
 </tr>
 </tbody>
@@ -1145,22 +1152,25 @@ A Cornish-Bowden</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> containing metadata which applies to the entire object.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">noncanonical_chars</span></code></p></td>
+<td><p>Return non-canonical characters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></p></td>
 <td><p>Return non-degenerate characters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_chars</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_chars</span></code></p></td>
 <td><p>Set of observed characters in the sequence.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> containing metadata along an axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop_chars</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop_chars</span></code></p></td>
 <td><p>Return characters representing translation stop codons.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></p></td>
 <td><p>Array containing underlying sequence characters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></p></td>
 <td><p>Return wildcard character.</p></td>
 </tr>
 </tbody>
@@ -1317,13 +1327,16 @@ A Cornish-Bowden</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.stops.html#skbio.sequence.Protein.stops" title="skbio.sequence.Protein.stops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stops</span></code></a>()</p></td>
 <td><p>Find positions containing stop characters in the protein sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_indices.html#skbio.sequence.Protein.to_indices" title="skbio.sequence.Protein.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_definites.html#skbio.sequence.Protein.to_definites" title="skbio.sequence.Protein.to_definites"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_definites</span></code></a>([degenerate, noncanonical])</p></td>
+<td><p>Convert degenerate and or non-canonical characters to alternative characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_indices.html#skbio.sequence.Protein.to_indices" title="skbio.sequence.Protein.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([alphabet, mask_gaps, wildcard, ...])</p></td>
 <td><p>Convert the sequence into indices of characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.to_regex.html#skbio.sequence.Protein.to_regex" title="skbio.sequence.Protein.to_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_regex</span></code></a>([within_capture])</p></td>
 <td><p>Return regular expression object that accounts for degenerate chars.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Protein.write.html#skbio.sequence.Protein.write" title="skbio.sequence.Protein.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Protein</span></code> to a file.</p></td>
 </tr>
 </tbody>
