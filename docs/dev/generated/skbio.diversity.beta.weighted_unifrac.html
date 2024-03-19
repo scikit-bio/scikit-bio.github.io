@@ -229,7 +229,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -458,7 +458,7 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/master/CHANGELOG.md">
                         Releases
                       </a>
                     </li>
@@ -678,33 +678,31 @@ document.write(`
 <h1>skbio.diversity.beta.weighted_unifrac<a class="headerlink" href="#skbio-diversity-beta-weighted-unifrac" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.beta.weighted_unifrac">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.beta.</span></span><span class="sig-name descname"><span class="pre">weighted_unifrac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/beta/_unifrac.py#L161"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.beta.weighted_unifrac" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.beta.</span></span><span class="sig-name descname"><span class="pre">weighted_unifrac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/master/skbio/diversity/beta/_unifrac.py#L158"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.beta.weighted_unifrac" title="Link to this definition">#</a></dt>
 <dd><p>Compute weighted UniFrac with or without branch length normalization.</p>
+<p>State: Experimental as of 0.4.1.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>u_counts, v_counts: list, np.array</strong></dt><dd><p>Vectors of counts/abundances of taxa for two samples. Must be equal
+<dt><strong>u_counts, v_counts: list, np.array</strong></dt><dd><p>Vectors of counts/abundances of OTUs for two samples. Must be equal
 length.</p>
 </dd>
-<dt><strong>taxa</strong><span class="classifier">list, np.array</span></dt><dd><p>Vector of taxon IDs corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the
-same length as <code class="docutils literal notranslate"><span class="pre">u_counts</span></code> and <code class="docutils literal notranslate"><span class="pre">v_counts</span></code>. Required.</p>
+<dt><strong>otu_ids: list, np.array</strong></dt><dd><p>Vector of OTU ids corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the
+same length as <code class="docutils literal notranslate"><span class="pre">u_counts</span></code> and <code class="docutils literal notranslate"><span class="pre">v_counts</span></code>.</p>
 </dd>
-<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Tree relating taxa. The set of tip names in the tree can be a superset
-of <code class="docutils literal notranslate"><span class="pre">taxa</span></code>, but not a subset. Required.</p>
+<dt><strong>tree: skbio.TreeNode</strong></dt><dd><p>Tree relating the OTUs in otu_ids. The set of tip names in the tree can
+be a superset of <code class="docutils literal notranslate"><span class="pre">otu_ids</span></code>, but not a subset.</p>
 </dd>
 <dt><strong>normalized: boolean, optional</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, apply branch length normalization, which is described in
 <a class="reference internal" href="#rfd4bc41118c0-1" id="id1">[1]</a>. Resulting distances will then be in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>.</p>
 </dd>
-<dt><strong>validate: bool, optional</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">False</span></code>, validation of the input won’t be performed. This step can
+<dt><strong>validate: bool, optional</strong></dt><dd><p>If <cite>False</cite>, validation of the input won’t be performed. This step can
 be slow, so if validation is run elsewhere it can be disabled here.
 However, invalid input data can lead to invalid results or error
 messages that are hard to interpret, so this step should not be
 bypassed if you’re not certain that your input data are valid. See
 <a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a> for the description of what validation entails
 so you can determine if you can safely disable validation.</p>
-</dd>
-<dt><strong>otu_ids</strong><span class="classifier">list, np.array</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">taxa</span></code> for backward compatibility. Deprecated and to be
-removed in a future release.</p>
 </dd>
 </dl>
 </dd>
@@ -742,10 +740,11 @@ versions less than 2.0.0) by imposing a few additional restrictions on the
 inputs. First, the input tree must be rooted. In PyCogent, if an unrooted
 tree was provided that had a single trifurcating node (a newick convention
 for unrooted trees) that node was considered the root of the tree. Next,
-all taxa must be tips in the tree. PyCogent would silently ignore taxa that
-were not present the tree. To reproduce UniFrac results from PyCogent with
-scikit-bio, ensure that your PyCogent UniFrac calculations are performed on
-a rooted tree and that all taxa are present in the tree.</p>
+all OTU IDs must be tips in the tree. PyCogent would silently ignore OTU
+IDs that were not present the tree. To reproduce UniFrac results from
+PyCogent with scikit-bio, ensure that your PyCogent UniFrac calculations
+are performed on a rooted tree and that all OTU IDs are present in the
+tree.</p>
 <p>This implementation of weighted UniFrac is the array-based implementation
 described in <a class="reference internal" href="#rfd4bc41118c0-3" id="id4">[3]</a>.</p>
 <p>If using large number of samples or a large tree, we advise using the
@@ -781,35 +780,38 @@ analysis of pyrosequencing and PhyloChip data.  ISME J. 4(1):17-27
 <p class="rubric">Examples</p>
 <p>Assume we have the following abundance data for two samples, <code class="docutils literal notranslate"><span class="pre">u</span></code> and
 <code class="docutils literal notranslate"><span class="pre">v</span></code>, represented as a pair of counts vectors. These counts represent the
-number of times specific taxa were observed in each of the samples.</p>
+number of times specific Operational Taxonomic Units, or OTUs, were
+observed in each of the samples.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u_counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v_counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Because UniFrac is a phylogenetic diversity metric, we need to know which
-taxon each count corresponds to, which we’ll provide as <code class="docutils literal notranslate"><span class="pre">taxa</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;U2&#39;</span><span class="p">,</span> <span class="s1">&#39;U3&#39;</span><span class="p">,</span> <span class="s1">&#39;U4&#39;</span><span class="p">,</span> <span class="s1">&#39;U5&#39;</span><span class="p">,</span> <span class="s1">&#39;U6&#39;</span><span class="p">,</span> <span class="s1">&#39;U7&#39;</span><span class="p">,</span> <span class="s1">&#39;U8&#39;</span><span class="p">]</span>
+OTU each count corresponds to, which we’ll provide as <code class="docutils literal notranslate"><span class="pre">otu_ids</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">otu_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OTU1&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU2&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU3&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU4&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU5&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU6&#39;</span><span class="p">,</span> <span class="s1">&#39;OTU7&#39;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s1">&#39;OTU8&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>We also need a phylogenetic tree that relates the taxa to one another.</p>
+<p>We also need a phylogenetic tree that relates the OTUs to one another.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(U4:0.75,(U5:0.5,((U6:0.33,U7:0.62):0.5&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;,U8:0.5):0.5):0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
+<span class="gp">... </span>                     <span class="s1">&#39;(((((OTU1:0.5,OTU2:0.5):0.5,OTU3:1.0):1.0):0.0,&#39;</span>
+<span class="gp">... </span>                     <span class="s1">&#39;(OTU4:0.75,(OTU5:0.5,((OTU6:0.33,OTU7:0.62):0.5&#39;</span>
+<span class="gp">... </span>                     <span class="s1">&#39;,OTU8:0.5):0.5):0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Compute the weighted UniFrac distance between the samples.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.diversity.beta</span> <span class="kn">import</span> <span class="n">weighted_unifrac</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wu</span> <span class="o">=</span> <span class="n">weighted_unifrac</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">v_counts</span><span class="p">,</span> <span class="n">taxa</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wu</span> <span class="o">=</span> <span class="n">weighted_unifrac</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">v_counts</span><span class="p">,</span> <span class="n">otu_ids</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">wu</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">1.54</span>
 </pre></div>
 </div>
 <p>Compute the weighted UniFrac distance between the samples including
 branch length normalization so the value falls in the range <code class="docutils literal notranslate"><span class="pre">[0.0,</span> <span class="pre">1.0]</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wu</span> <span class="o">=</span> <span class="n">weighted_unifrac</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">v_counts</span><span class="p">,</span> <span class="n">taxa</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wu</span> <span class="o">=</span> <span class="n">weighted_unifrac</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">v_counts</span><span class="p">,</span> <span class="n">otu_ids</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">wu</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">0.33</span>
 </pre></div>
