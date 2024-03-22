@@ -607,6 +607,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
@@ -695,8 +696,8 @@ document.write(`
 <h1>skbio.stats.composition.dirmult_ttest<a class="headerlink" href="#skbio-stats-composition-dirmult-ttest" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.dirmult_ttest">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1718"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
-<dd><p><em>T</em>-test using Dirichlet Multinomial Distribution.</p>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1826"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
+<dd><p><em>T</em>-test using Dirichlet-multinomial distribution.</p>
 <p>The Dirichlet-multinomial distribution is a compound distribution that
 combines a Dirichlet distribution over the probabilities of a multinomial
 distribution. This distribution is used to model the distribution of
@@ -706,9 +707,9 @@ for each sample, and then we compute the fold change and <em>p</em>-value for ea
 feature. The fold change is computed as the difference between the
 samples of the two groups. <em>t</em>-tests are then performed on the posterior
 samples, drawn from each Dirichlet-multinomial distribution. The
-log-fold changes as well as their credible intervals, the pvalues a
-FDR corrected pvalues using Holm-Bonferroni <a class="reference internal" href="#r70d1167c12d8-1" id="id1">[1]</a> are reported.
-This process mirrors the approach performed by ALDEx2.</p>
+log-fold changes as well as their credible intervals, the <em>p</em>-values and
+the multiple comparison corrected <em>p</em>-values are reported.</p>
+<p>This process mirrors the approach performed by the R package “ALDEx2” <a class="reference internal" href="#r70d1167c12d8-1" id="id1">[1]</a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -731,6 +732,11 @@ estimated abundances are strictly greater than zero.</p>
 <dt><strong>draws</strong><span class="classifier">int, optional</span></dt><dd><p>The number of draws from the Dirichilet-multinomial posterior distribution
 More draws provide higher uncertainty surrounding the estimated
 log-fold changes and <em>p</em>-values.</p>
+</dd>
+<dt><strong>p_adjust</strong><span class="classifier">str or None, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
+Boniferroni (“holm” or “holm-bonferroni”) (default) or Benjamini-
+Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”). Case-insensitive. If
+None, no correction will be performed.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance.</p>
 </dd>
@@ -755,13 +761,11 @@ from each of the posterior draws.</p>
 <p><code class="docutils literal notranslate"><span class="pre">CI(97.5)</span></code> is the 97.5% quantile of the log2-fold change. The
 reported <code class="docutils literal notranslate"><span class="pre">CI(97.5)</span></code> is the 97.5% quantile of all of the log2-fold
 changes computed from each of the posterior draws.</p>
-<p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code> is the pvalue of the <em>t</em>-test. The reported <code class="docutils literal notranslate"><span class="pre">*p*-value</span></code> is the
-average of all of the pvalues computed from the t-tests calculated
+<p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code> is the <em>p</em>-value of the <em>t</em>-test. The reported values are the
+average of all of the <em>p</em>-values computed from the <em>t</em>-tests calculated
 across all of the posterior draws.</p>
-<p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code> is the pvalue of the t-test after performing multiple
-hypothesis correction. The reported <code class="docutils literal notranslate"><span class="pre">*q*-value</span></code> is computed after
-performing holm-bonferroni multiple hypothesis correction on the
-reported <code class="docutils literal notranslate"><span class="pre">*p*-value</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code> is the <em>p</em>-value of the <em>t</em>-test after performing multiple
+comparison correction.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Reject</span> <span class="pre">null</span> <span class="pre">hypothesis</span></code> indicates if feature is differentially
 abundant across groups (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>). In order for a
 feature to be differentially abundant, the qvalue needs to be significant
@@ -778,14 +782,13 @@ feature to be differentially abundant, the qvalue needs to be significant
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>FDR-corrected pvalues use Benjamini-Hochberg for pvalue adjustment for
-multiple corrections. The confidence intervals are computed using the
-mininum 2.5% and maximum 97.5% bounds computed across all of the posterior draws.</p>
+<p>The confidence intervals are computed using the mininum 2.5% and maximum
+97.5% bounds computed across all of the posterior draws.</p>
 <p>The reference frame here is the geometric mean. Extracting absolute log
 fold changes from this test assumes that the average feature abundance
 between the <code class="docutils literal notranslate"><span class="pre">treatment</span></code> and the <code class="docutils literal notranslate"><span class="pre">reference</span></code> groups are the same. If this
 assumption is violated, then the log-fold changes will be biased, and the
-pvalues will not be reliable. However, the bias is the same across each
+<em>p</em>-values will not be reliable. However, the bias is the same across each
 feature, as a result the ordering of the log-fold changes can still be useful.</p>
 <p>One benefit of using the Dirichlet-multinomial distribution is that the
 statistical power increases with regards to the abundance magnitude. More counts
@@ -795,11 +798,6 @@ lower <em>p</em>-values.</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r70d1167c12d8-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Holm, S. “A simple sequentially rejective multiple test procedure”.
-Scandinavian Journal of Statistics (1979), 6.</p>
-</div>
-<div class="citation" id="r70d1167c12d8-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <p>Fernandes et al. “Unifying the analysis of
 high-throughput sequencing datasets: characterizing RNA-seq,
 16S rRNA gene sequencing and selective growth experiments by

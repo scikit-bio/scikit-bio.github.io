@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.inner &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>skbio.stats.composition.multi_replace &#8212; scikit-bio 0.6.0-dev documentation</title>
   
   
   
@@ -59,19 +59,19 @@
                 gtag('config', 'UA-6636235-9');
             </script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.inner';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.multi_replace';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.composition.inner.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.composition.multi_replace.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.clr" href="skbio.stats.composition.clr.html" />
-    <link rel="prev" title="skbio.stats.composition.power" href="skbio.stats.composition.power.html" />
+    <link rel="next" title="skbio.stats.composition.multiplicative_replacement" href="skbio.stats.composition.multiplicative_replacement.html" />
+    <link rel="prev" title="skbio.stats.composition.closure" href="skbio.stats.composition.closure.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -608,12 +608,12 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.power.html">skbio.stats.composition.power</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.inner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr.html">skbio.stats.composition.clr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr_inv.html">skbio.stats.composition.clr_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr.html">skbio.stats.composition.ilr</a></li>
@@ -693,40 +693,57 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-composition-inner">
-<h1>skbio.stats.composition.inner<a class="headerlink" href="#skbio-stats-composition-inner" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-composition-multi-replace">
+<h1>skbio.stats.composition.multi_replace<a class="headerlink" href="#skbio-stats-composition-multi-replace" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.composition.inner">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">inner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.inner" title="Link to this definition">#</a></dt>
-<dd><p>Calculate the Aitchson inner product.</p>
-<p>This inner product is defined as follows:</p>
-<div class="math notranslate nohighlight">
-\[\langle x, y \rangle_a =
-\frac{1}{2D} \sum\limits_{i=1}^{D} \sum\limits_{j=1}^{D}
-\ln\left(\frac{x_i}{x_j}\right) \ln\left(\frac{y_i}{y_j}\right)\]</div>
+<dt class="sig sig-object py" id="skbio.stats.composition.multi_replace">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">multi_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.multi_replace" title="Link to this definition">#</a></dt>
+<dd><p>Replace all zeros with small non-zero values.</p>
+<p>It uses the multiplicative replacement strategy <a class="reference internal" href="#rc94969b231ca-1" id="id1">[1]</a>, replacing zeros with
+a small positive <span class="math notranslate nohighlight">\(\delta\)</span> and ensuring that the compositions still
+add up to 1.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>x</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
+<dt><strong>mat</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
+<dt><strong>delta</strong><span class="classifier">float, optional</span></dt><dd><p>A small number to be used to replace zeros. If not specified, the
+default value is <span class="math notranslate nohighlight">\(\delta = \frac{1}{N^2}\)</span> where <span class="math notranslate nohighlight">\(N\)</span> is the
+number of components.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ndarray or scalar of shape (n_compositions, n_compositions)</dt><dd><p>Inner product result.</p>
+<dt>ndarray of shape (n_compositions, n_components)</dt><dd><p>The matrix where all of the values are non-zero and each composition
+(row) adds up to 1.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If negative proportions are created due to a large <code class="docutils literal notranslate"><span class="pre">delta</span></code>.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This method will result in negative proportions if a large delta is chosen.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rc94969b231ca-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>J. A. Martin-Fernandez. “Dealing With Zeros and Missing Values in
+Compositional Data Sets Using Nonparametric Imputation”</p>
+</div>
+</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.composition</span> <span class="kn">import</span> <span class="n">inner</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.3</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">.2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inner</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  
-<span class="go">0.2107852473...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.composition</span> <span class="kn">import</span> <span class="n">multi_replace</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multi_replace</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[ 0.1875,  0.375 ,  0.375 ,  0.0625],</span>
+<span class="go">       [ 0.0625,  0.4375,  0.4375,  0.0625]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -744,20 +761,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.power.html"
+       href="skbio.stats.composition.closure.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.power</p>
+        <p class="prev-next-title">skbio.stats.composition.closure</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.clr.html"
+       href="skbio.stats.composition.multiplicative_replacement.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.clr</p>
+        <p class="prev-next-title">skbio.stats.composition.multiplicative_replacement</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -779,7 +796,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.inner"><code class="docutils literal notranslate"><span class="pre">inner()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.multi_replace"><code class="docutils literal notranslate"><span class="pre">multi_replace()</span></code></a></li>
 </ul>
   </nav></div>
 

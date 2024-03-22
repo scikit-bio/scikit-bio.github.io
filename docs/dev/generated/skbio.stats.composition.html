@@ -608,6 +608,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
@@ -692,30 +693,28 @@ document.write(`
   <section id="composition-statistics-skbio-stats-composition">
 <span id="module-skbio.stats.composition"></span><h1>Composition Statistics (<a class="reference internal" href="#module-skbio.stats.composition" title="skbio.stats.composition"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code></a>)<a class="headerlink" href="#composition-statistics-skbio-stats-composition" title="Link to this heading">#</a></h1>
 <p>This module provides functions for compositional data analysis.</p>
-<p>Many ‘omics datasets are inherently compositional - meaning that they
-are best interpreted as proportions or percentages rather than
-absolute counts.</p>
-<p>Formally, <span class="math notranslate nohighlight">\(x\)</span> is a composition if <span class="math notranslate nohighlight">\(\sum_{i=0}^D x_{i} = c\)</span>
-and <span class="math notranslate nohighlight">\(x_{i} &gt; 0\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq D\)</span> and <span class="math notranslate nohighlight">\(c\)</span> is a real
-valued constant and there are <span class="math notranslate nohighlight">\(D\)</span> components for each
-composition. In this module <span class="math notranslate nohighlight">\(c=1\)</span>. Compositional data can be
-analyzed using Aitchison geometry. <a class="reference internal" href="#r7e00d6f0c137-1" id="id1">[1]</a></p>
-<p>However, in this framework, standard real Euclidean operations such as
-addition and multiplication no longer apply. Only operations such as
-perturbation and power can be used to manipulate this data.</p>
+<p>Many omics datasets are inherently compositional – meaning that they are best
+interpreted as proportions or percentages rather than absolute counts.</p>
+<p>Formally, sample <span class="math notranslate nohighlight">\(x\)</span> is a composition if <span class="math notranslate nohighlight">\(\sum_{i=0}^D x_{i} = c\)</span>
+and <span class="math notranslate nohighlight">\(x_{i} &gt; 0\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq D\)</span> and <span class="math notranslate nohighlight">\(c\)</span> is a real-valued
+constant and there are <span class="math notranslate nohighlight">\(D\)</span> components (features) for this composition.
+In this module <span class="math notranslate nohighlight">\(c=1\)</span>. Compositional data can be analyzed using
+<strong>Aitchison geometry</strong> <a class="reference internal" href="#r7e00d6f0c137-1" id="id1">[1]</a>.</p>
+<p>However, in this framework, standard real Euclidean operations such as addition
+and multiplication no longer apply. Only operations such as perturbation and
+power can be used to manipulate this data.</p>
 <p>This module allows two styles of manipulation of compositional data.
-Compositional data can be analyzed using perturbation and power
-operations, which can be useful for simulation studies. The
-alternative strategy is to transform compositional data into the real
-space.  Right now, the centre log ratio transform (clr) and
-the isometric log ratio transform (ilr) <a class="reference internal" href="#r7e00d6f0c137-2" id="id2">[2]</a> can be used to accomplish
-this. This transform can be useful for performing standard statistical
-tools such as parametric hypothesis testing, regressions and more.</p>
-<p>The major caveat of using this framework is dealing with zeros.  In
-the Aitchison geometry, only compositions with nonzero components can
-be considered. The multiplicative replacement technique <a class="reference internal" href="#r7e00d6f0c137-3" id="id3">[3]</a> can be
-used to substitute these zeros with small pseudocounts without
-introducing major distortions to the data.</p>
+Compositional data can be analyzed using perturbation and power operations,
+which can be useful for simulation studies. The alternative strategy is to
+transform compositional data into the real space. Right now, the centre log
+ratio transform (clr) and the isometric log ratio transform (ilr) <a class="reference internal" href="#r7e00d6f0c137-2" id="id2">[2]</a> can be
+used to accomplish this. This transform can be useful for performing standard
+statistical methods such as parametric hypothesis testing, regression and more.</p>
+<p>The major caveat of using this framework is dealing with zeros. In Aitchison
+geometry, only compositions with non-zero components can be considered.
+The multiplicative replacement technique <a class="reference internal" href="#r7e00d6f0c137-3" id="id3">[3]</a> can be used to substitute these
+zeros with small pseudocounts without introducing major distortions to the
+data.</p>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
@@ -723,59 +722,62 @@ introducing major distortions to the data.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closure</span></code></a>(mat)</p></td>
 <td><p>Perform closure to ensure that all elements add up to 1.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html#skbio.stats.composition.multiplicative_replacement" title="skbio.stats.composition.multiplicative_replacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiplicative_replacement</span></code></a>(mat[, delta])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a>(mat[, delta])</p></td>
 <td><p>Replace all zeros with small non-zero values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.perturb.html#skbio.stats.composition.perturb" title="skbio.stats.composition.perturb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb</span></code></a>(x, y)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html#skbio.stats.composition.multiplicative_replacement" title="skbio.stats.composition.multiplicative_replacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiplicative_replacement</span></code></a>(mat[, delta])</p></td>
+<td><p>Replace all zeros with small non-zero values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.perturb.html#skbio.stats.composition.perturb" title="skbio.stats.composition.perturb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb</span></code></a>(x, y)</p></td>
 <td><p>Perform the perturbation operation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.perturb_inv.html#skbio.stats.composition.perturb_inv" title="skbio.stats.composition.perturb_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb_inv</span></code></a>(x, y)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.perturb_inv.html#skbio.stats.composition.perturb_inv" title="skbio.stats.composition.perturb_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb_inv</span></code></a>(x, y)</p></td>
 <td><p>Perform the inverse perturbation operation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.power.html#skbio.stats.composition.power" title="skbio.stats.composition.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power</span></code></a>(x, a)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.power.html#skbio.stats.composition.power" title="skbio.stats.composition.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power</span></code></a>(x, a)</p></td>
 <td><p>Perform the power operation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.inner.html#skbio.stats.composition.inner" title="skbio.stats.composition.inner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner</span></code></a>(x, y)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.inner.html#skbio.stats.composition.inner" title="skbio.stats.composition.inner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner</span></code></a>(x, y)</p></td>
 <td><p>Calculate the Aitchson inner product.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a>(mat)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a>(mat)</p></td>
 <td><p>Perform centre log ratio transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.clr_inv.html#skbio.stats.composition.clr_inv" title="skbio.stats.composition.clr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr_inv</span></code></a>(mat)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.clr_inv.html#skbio.stats.composition.clr_inv" title="skbio.stats.composition.clr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr_inv</span></code></a>(mat)</p></td>
 <td><p>Perform inverse centre log ratio transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ilr.html#skbio.stats.composition.ilr" title="skbio.stats.composition.ilr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr</span></code></a>(mat[, basis, check])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ilr.html#skbio.stats.composition.ilr" title="skbio.stats.composition.ilr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr</span></code></a>(mat[, basis, check])</p></td>
 <td><p>Perform isometric log ratio transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ilr_inv.html#skbio.stats.composition.ilr_inv" title="skbio.stats.composition.ilr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr_inv</span></code></a>(mat[, basis, check])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ilr_inv.html#skbio.stats.composition.ilr_inv" title="skbio.stats.composition.ilr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr_inv</span></code></a>(mat[, basis, check])</p></td>
 <td><p>Perform inverse isometric log ratio transform.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.alr.html#skbio.stats.composition.alr" title="skbio.stats.composition.alr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr</span></code></a>(mat[, denominator_idx])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.alr.html#skbio.stats.composition.alr" title="skbio.stats.composition.alr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr</span></code></a>(mat[, denominator_idx])</p></td>
 <td><p>Perform additive log ratio transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.alr_inv.html#skbio.stats.composition.alr_inv" title="skbio.stats.composition.alr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr_inv</span></code></a>(mat[, denominator_idx])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.alr_inv.html#skbio.stats.composition.alr_inv" title="skbio.stats.composition.alr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr_inv</span></code></a>(mat[, denominator_idx])</p></td>
 <td><p>Perform inverse additive log ratio transform.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.centralize.html#skbio.stats.composition.centralize" title="skbio.stats.composition.centralize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centralize</span></code></a>(mat)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.centralize.html#skbio.stats.composition.centralize" title="skbio.stats.composition.centralize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centralize</span></code></a>(mat)</p></td>
 <td><p>Center data around its geometric average.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.vlr.html#skbio.stats.composition.vlr" title="skbio.stats.composition.vlr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vlr</span></code></a>(x, y[, ddof, robust])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.vlr.html#skbio.stats.composition.vlr" title="skbio.stats.composition.vlr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vlr</span></code></a>(x, y[, ddof, robust])</p></td>
 <td><p>Calculate variance log ratio.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html#skbio.stats.composition.pairwise_vlr" title="skbio.stats.composition.pairwise_vlr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pairwise_vlr</span></code></a>(mat[, ids, ddof, robust, validate])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html#skbio.stats.composition.pairwise_vlr" title="skbio.stats.composition.pairwise_vlr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pairwise_vlr</span></code></a>(mat[, ids, ddof, robust, validate])</p></td>
 <td><p>Perform pairwise variance log ratio transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.tree_basis.html#skbio.stats.composition.tree_basis" title="skbio.stats.composition.tree_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tree_basis</span></code></a>(tree)</p></td>
-<td><p>Calculate sparse representation of an ilr basis from a tree.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.tree_basis.html#skbio.stats.composition.tree_basis" title="skbio.stats.composition.tree_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tree_basis</span></code></a>(tree)</p></td>
+<td><p>Calculate the sparse representation of an ilr basis from a tree.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a>(table, grouping[, alpha, tau, theta, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a>(table, grouping[, alpha, tau, theta, ...])</p></td>
 <td><p>Perform a differential abundance test using ANCOM.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.sbp_basis.html#skbio.stats.composition.sbp_basis" title="skbio.stats.composition.sbp_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sbp_basis</span></code></a>(sbp)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.sbp_basis.html#skbio.stats.composition.sbp_basis" title="skbio.stats.composition.sbp_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sbp_basis</span></code></a>(sbp)</p></td>
 <td><p>Build an orthogonal basis from a sequential binary partition (SBP).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a>(table, grouping, treatment, ...)</p></td>
-<td><p><em>T</em>-test using Dirichlet Multinomial Distribution.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a>(table, grouping, treatment, ...)</p></td>
+<td><p><em>T</em>-test using Dirichlet-multinomial distribution.</p></td>
 </tr>
 </tbody>
 </table>
@@ -799,29 +801,6 @@ Compositional Data Analysis” Mathematical Geology, 35.3 (2003)</p>
 Compositional Data Sets Using Nonparametric Imputation”,
 Mathematical Geology, 35.3 (2003)</p>
 </div>
-</div>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-<p>Consider a very simple environment with only 3 species. The species
-in the environment are equally distributed and their proportions are
-equivalent:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>Suppose that an antibiotic kills off half of the population for the
-first two species, but doesn’t harm the third species. Then the
-perturbation vector would be as follows</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">antibiotic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>And the resulting perturbation would be</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">perturb</span><span class="p">(</span><span class="n">taxa</span><span class="p">,</span> <span class="n">antibiotic</span><span class="p">)</span>
-<span class="go">array([ 0.25,  0.25,  0.5 ])</span>
-</pre></div>
 </div>
 </section>
 </section>
@@ -874,7 +853,6 @@ perturbation vector would be as follows</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
   </nav></div>
 

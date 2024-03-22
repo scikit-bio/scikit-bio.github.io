@@ -607,6 +607,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
@@ -695,31 +696,31 @@ document.write(`
 <h1>skbio.stats.composition.tree_basis<a class="headerlink" href="#skbio-stats-composition-tree-basis" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.tree_basis">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">tree_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1036"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.tree_basis" title="Link to this definition">#</a></dt>
-<dd><p>Calculate sparse representation of an ilr basis from a tree.</p>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">tree_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1031"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.tree_basis" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the sparse representation of an ilr basis from a tree.</p>
 <p>This computes an orthonormal basis specified from a bifurcating tree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Input bifurcating tree.  Must be strictly bifurcating
-(i.e. every internal node needs to have exactly 2 children).
-This is used to specify the ilr basis.</p>
+<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Input bifurcating tree. Must be strictly bifurcating (i.e. every
+internal node needs to have exactly two children). This is used to
+specify the ilr basis.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>scipy.sparse.coo_matrix</dt><dd><p>The ilr basis required to perform the ilr_inv transform.
-This is also known as the sequential binary partition.
-Note that this matrix is represented in clr coordinates.</p>
+<dt>scipy.sparse.coo_matrix</dt><dd><p>The ilr basis required to perform the ilr_inv transform. This is also
+known as the sequential binary partition. Note that this matrix is
+represented in clr coordinates.</p>
 </dd>
-<dt><strong>nodes</strong><span class="classifier">list, str</span></dt><dd><p>List of tree nodes indicating the ordering in the basis.</p>
+<dt>list of str</dt><dd><p>List of tree node names indicating the ordering in the basis.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>The tree doesn’t contain two branches.</p>
+<dt>ValueError</dt><dd><p>If the tree doesn’t contain two branches.</p>
 </dd>
 </dl>
 </dd>

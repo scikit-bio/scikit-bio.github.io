@@ -608,6 +608,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
@@ -696,13 +697,14 @@ document.write(`
 <h1>skbio.stats.composition.ancom<a class="headerlink" href="#skbio-stats-composition-ancom" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.ancom">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiple_comparisons_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm-bonferroni'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significance_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">25.0,</span> <span class="pre">50.0,</span> <span class="pre">75.0,</span> <span class="pre">100.0)</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancom" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significance_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'f_oneway'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">25.0,</span> <span class="pre">50.0,</span> <span class="pre">75.0,</span> <span class="pre">100.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiple_comparisons_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm-bonferroni'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1227"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancom" title="Link to this definition">#</a></dt>
 <dd><p>Perform a differential abundance test using ANCOM.</p>
-<p>This is done by calculating pairwise log ratios between all features
-and performing a significance test to determine if there is a significant
-difference in feature ratios with respect to the variable of interest.</p>
+<p>Analysis of composition of microbiomes (ANCOM) is done by calculating
+pairwise log ratios between all features and performing a significance
+test to determine if there is a significant difference in feature ratios
+with respect to the variable of interest.</p>
 <p>In an experiment with only two treatments, this tests the following
-hypothesis for feature <span class="math notranslate nohighlight">\(i\)</span></p>
+hypothesis for feature <span class="math notranslate nohighlight">\(i\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[H_{0i}: \mathbb{E}[\ln(u_i^{(1)})] = \mathbb{E}[\ln(u_i^{(2)})]\]</div>
 <p>where <span class="math notranslate nohighlight">\(u_i^{(1)}\)</span> is the mean abundance for feature <span class="math notranslate nohighlight">\(i\)</span> in the
@@ -710,53 +712,63 @@ first group and <span class="math notranslate nohighlight">\(u_i^{(2)}\)</span> 
 <span class="math notranslate nohighlight">\(i\)</span> in the second group.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>table</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A 2D matrix of strictly positive values (i.e. counts or proportions)
+<dd class="field-odd"><dl>
+<dt><strong>table</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A 2-D matrix of strictly positive values (i.e. counts or proportions)
 where the rows correspond to samples and the columns correspond to
 features.</p>
 </dd>
-<dt><strong>grouping</strong><span class="classifier">pd.Series</span></dt><dd><p>Vector indicating the assignment of samples to groups.  For example,
+<dt><strong>grouping</strong><span class="classifier">pd.Series</span></dt><dd><p>Vector indicating the assignment of samples to groups. For example,
 these could be strings or integers denoting which group a sample
-belongs to.  It must be the same length as the samples in <cite>table</cite>.
+belongs to. It must be the same length as the samples in <cite>table</cite>.
 The index must be the same on <cite>table</cite> and <cite>grouping</cite> but need not be
 in the same order.</p>
 </dd>
-<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Significance level for each of the statistical tests.
-This can can be anywhere between 0 and 1 exclusive.</p>
+<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Significance level for each of the statistical tests. This can can be
+anywhere between 0 and 1 exclusive.</p>
 </dd>
-<dt><strong>tau</strong><span class="classifier">float, optional</span></dt><dd><p>A constant used to determine an appropriate cutoff.
-A value close to zero indicates a conservative cutoff.
-This can can be anywhere between 0 and 1 exclusive.</p>
+<dt><strong>tau</strong><span class="classifier">float, optional</span></dt><dd><p>A constant used to determine an appropriate cutoff. A value close to
+zero indicates a conservative cutoff. This can can be anywhere between
+0 and 1 exclusive.</p>
 </dd>
-<dt><strong>theta</strong><span class="classifier">float, optional</span></dt><dd><p>Lower bound for the proportion for the W-statistic.
-If all W-statistics are lower than theta, then no features
-will be detected to be differentially significant.
-This can can be anywhere between 0 and 1 exclusive.</p>
+<dt><strong>theta</strong><span class="classifier">float, optional</span></dt><dd><p>Lower bound for the proportion for the <em>W</em>-statistic. If all <em>W</em>-
+statistics are lower than theta, then no features will be detected to
+be significantly different. This can can be anywhere between 0 and 1
+exclusive.</p>
 </dd>
-<dt><strong>multiple_comparisons_correction</strong><span class="classifier">{None, ‘holm-bonferroni’}, optional</span></dt><dd><p>The multiple comparison correction procedure to run.  If None,
-then no multiple comparison correction procedure will be run.
-If ‘holm-boniferroni’ is specified, then the Holm-Boniferroni
-procedure <a class="reference internal" href="#r06049d232649-1" id="id1">[1]</a> will be run.</p>
+<dt><strong>p_adjust</strong><span class="classifier">str or None, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
+Boniferroni (“holm” or “holm-bonferroni”) (default) or Benjamini-
+Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”). Case-insensitive. If
+None, no correction will be performed.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.0: </span>Replaces <code class="docutils literal notranslate"><span class="pre">multiple_comparisons_correction</span></code> for conciseness.</p>
+</div>
 </dd>
-<dt><strong>significance_test</strong><span class="classifier">function, optional</span></dt><dd><p>A statistical significance function to test for significance between
-classes.  This function must be able to accept at least two 1D
-array_like arguments of floats and returns a test statistic and a
-p-value. By default <code class="docutils literal notranslate"><span class="pre">scipy.stats.f_oneway</span></code> is used.</p>
+<dt><strong>significance_test</strong><span class="classifier">str or callable, optional</span></dt><dd><p>A function to test for significance between classes. It must be able to
+accept at least two vectors of floats and returns a test statistic and
+a <em>p</em>-value. Functions under <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> can be directly specified
+by name. The default is one-way ANOVA (“f_oneway”).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.0: </span>Accepts test names in addition to functions.</p>
+</div>
 </dd>
 <dt><strong>percentiles</strong><span class="classifier">iterable of floats, optional</span></dt><dd><p>Percentile abundances to return for each feature in each group. By
 default, will return the minimum, 25th percentile, median, 75th
 percentile, and maximum abundances for each feature in each group.</p>
 </dd>
+<dt><strong>multiple_comparisons_correction</strong><span class="classifier">str or None, optional</span></dt><dd><p>Alias for <code class="docutils literal notranslate"><span class="pre">p_adjust</span></code>. For backward compatibility. Deprecated.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl>
-<dt>pd.DataFrame</dt><dd><p>A table of features, their W-statistics and whether the null hypothesis
-is rejected.</p>
-<p><cite>“W”</cite> is the W-statistic, or number of features that a single feature
-is tested to be significantly different against.</p>
-<p><cite>“Reject null hypothesis”</cite> indicates if feature is differentially
-abundant across groups (<cite>True</cite>) or not (<cite>False</cite>).</p>
+<dd class="field-even"><dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>A table of features, their <em>W</em>-statistics and whether the null
+hypothesis is rejected.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code>: <em>W</em>-statistic, or the number of features that the current
+feature is tested to be significantly different against.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Reject</span> <span class="pre">null</span> <span class="pre">hypothesis</span></code>: Whether the feature is differentially
+abundant across groups (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p></li>
+</ul>
 </dd>
 <dt>pd.DataFrame</dt><dd><p>A table of features and their percentile abundances in each group. If
 <code class="docutils literal notranslate"><span class="pre">percentiles</span></code> is empty, this will be an empty <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>. The
@@ -767,10 +779,17 @@ index is the group.</p>
 </dl>
 </dd>
 </dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">multiple_comparisons_correction</span></code> is deprecated as of <code class="docutils literal notranslate"><span class="pre">0.6.0</span></code>. It has
+been renamed to <code class="docutils literal notranslate"><span class="pre">p_adjust</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">significance_test=None</span></code> is deprecated as of <code class="docutils literal notranslate"><span class="pre">0.6.0</span></code>. The default value
+is now “f_oneway”.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html#skbio.stats.composition.multiplicative_replacement" title="skbio.stats.composition.multiplicative_replacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiplicative_replacement</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind" title="(in SciPy v1.12.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.stats.ttest_ind</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.f_oneway.html#scipy.stats.f_oneway" title="(in SciPy v1.12.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.stats.f_oneway</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html#scipy.stats.wilcoxon" title="(in SciPy v1.12.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.stats.wilcoxon</span></code></a></dt><dd></dd>
@@ -778,51 +797,47 @@ index is the group.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The developers of this method recommend the following significance tests
-(<a class="reference internal" href="#r06049d232649-2" id="id2">[2]</a>, Supplementary File 1, top of page 11): if there are 2 groups, use
-the standard parametric t-test (<code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_ind</span></code>) or
-non-parametric Mann-Whitney rank test (<code class="docutils literal notranslate"><span class="pre">scipy.stats.mannwhitneyu</span></code>).
-For paired samples, use the parametric paired t-test
-(<code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_rel</span></code>) or nonparametric Wilcoxon signed-rank test
-(<code class="docutils literal notranslate"><span class="pre">scipy.stats.wilcoxon</span></code>). If there are more than 2 groups, use
-parametric one-way ANOVA (<code class="docutils literal notranslate"><span class="pre">scipy.stats.f_oneway</span></code>) or nonparametric
-Kruskal-Wallis (<code class="docutils literal notranslate"><span class="pre">scipy.stats.kruskal</span></code>). If there are multiple
-measurements obtained from the individuals, use a Friedman test
-(<code class="docutils literal notranslate"><span class="pre">scipy.stats.friedmanchisquare</span></code>).  Because one-way ANOVA is
-equivalent to the standard t-test when the number of groups is two, we
-default to <code class="docutils literal notranslate"><span class="pre">scipy.stats.f_oneway</span></code> here, which can be used when there
-are two or more groups. Users should refer to the documentation of these
-tests in SciPy to understand the assumptions made by each test.</p>
+<p>The developers of ANCOM recommend the following significance tests (<a class="reference internal" href="#r06049d232649-1" id="id1">[1]</a>,
+Supplementary File 1, top of page 11):</p>
+<ul class="simple">
+<li><p>If there are two groups, use the standard parametric <em>t</em>-test
+(<code class="docutils literal notranslate"><span class="pre">ttest_ind</span></code>) or the non-parametric Mann-Whitney rank test
+(<code class="docutils literal notranslate"><span class="pre">mannwhitneyu</span></code>).</p></li>
+<li><p>For paired samples, use the parametric paired <em>t</em>-test (<code class="docutils literal notranslate"><span class="pre">ttest_rel</span></code>) or
+the non-parametric Wilcoxon signed-rank test (<code class="docutils literal notranslate"><span class="pre">wilcoxon</span></code>).</p></li>
+<li><p>If there are more than two groups, use the parametric one-way ANOVA
+(<code class="docutils literal notranslate"><span class="pre">f_oneway</span></code>) or the non-parametric Kruskal-Wallis test (<code class="docutils literal notranslate"><span class="pre">kruskal</span></code>).</p></li>
+<li><p>If there are multiple measurements obtained from the individuals, use a
+Friedman test (<code class="docutils literal notranslate"><span class="pre">friedmanchisquare</span></code>).</p></li>
+</ul>
+<p>Because one-way ANOVA is equivalent to the standard <em>t</em>-test when the
+number of groups is two, we default to <code class="docutils literal notranslate"><span class="pre">f_oneway</span></code> here, which can be used
+when there are two or more groups.</p>
+<p>Users should refer to the documentation of these tests in SciPy to
+understand the assumptions made by each test.</p>
 <p>This method cannot handle any zero counts as input, since the logarithm
 of zero cannot be computed.  While this is an unsolved problem, many
-studies, including <a class="reference internal" href="#r06049d232649-2" id="id3">[2]</a>, have shown promising results by adding
-pseudocounts to all values in the matrix. In <a class="reference internal" href="#r06049d232649-2" id="id4">[2]</a>, a pseudocount of 0.001
+studies, including <a class="reference internal" href="#r06049d232649-1" id="id2">[1]</a>, have shown promising results by adding
+pseudocounts to all values in the matrix. In <a class="reference internal" href="#r06049d232649-1" id="id3">[1]</a>, a pseudocount of 0.001
 was used, though the authors note that a pseudocount of 1.0 may also be
-useful. Zero counts can also be addressed using the
-<code class="docutils literal notranslate"><span class="pre">multiplicative_replacement</span></code> method.</p>
+useful. Zero counts can also be addressed using the <code class="docutils literal notranslate"><span class="pre">multi_replace</span></code> method.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r06049d232649-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Holm, S. “A simple sequentially rejective multiple test procedure”.
-Scandinavian Journal of Statistics (1979), 6.</p>
-</div>
-<div class="citation" id="r06049d232649-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id4">3</a>)</span>
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>)</span>
 <p>Mandal et al. “Analysis of composition of microbiomes: a novel
 method for studying microbial composition”, Microbial Ecology in Health
 &amp; Disease, (2015), 26.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<p>First import all of the necessary modules:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.composition</span> <span class="kn">import</span> <span class="n">ancom</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
-<p>Now let’s load in a DataFrame with 6 samples and 7 features (e.g.,
-these may be bacterial taxa):</p>
+<p>Let’s load in a DataFrame with six samples and seven features (e.g., these
+may be bacterial taxa):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
 <span class="gp">... </span>                      <span class="p">[</span><span class="mi">9</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
 <span class="gp">... </span>                      <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
@@ -858,14 +873,14 @@ feature in each group.</p>
 <span class="go">Name: W, dtype: int64</span>
 </pre></div>
 </div>
-<p>The W-statistic is the number of features that a single feature is tested
-to be significantly different against.  In this scenario, <cite>b2</cite> was detected
-to have significantly different abundances compared to four of the other
-features. To summarize the results from the W-statistic, let’s take a look
-at the results from the hypothesis test. The <cite>Reject null hypothesis</cite>
-column in the table indicates whether the null hypothesis was rejected,
-and that a feature was therefore observed to be differentially abundant
-across the groups.</p>
+<p>The <em>W</em>-statistic is the number of features that a single feature is tested
+to be significantly different against. In this scenario, <code class="docutils literal notranslate"><span class="pre">b2</span></code> was
+detected to have significantly different abundances compared to four of the
+other features. To summarize the results from the <em>W</em>-statistic, let’s take
+a look at the results from the hypothesis test. The <code class="docutils literal notranslate"><span class="pre">Reject</span> <span class="pre">null</span>
+<span class="pre">hypothesis</span></code> column in the table indicates whether the null hypothesis was
+rejected, and that a feature was therefore observed to be differentially
+abundant across the groups.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ancom_df</span><span class="p">[</span><span class="s1">&#39;Reject null hypothesis&#39;</span><span class="p">]</span>
 <span class="go">b1    False</span>
 <span class="go">b2     True</span>
@@ -877,13 +892,13 @@ across the groups.</p>
 <span class="go">Name: Reject null hypothesis, dtype: bool</span>
 </pre></div>
 </div>
-<p>From this we can conclude that only <cite>b2</cite> was significantly different in
+<p>From this we can conclude that only <code class="docutils literal notranslate"><span class="pre">b2</span></code> was significantly different in
 abundance between the treatment and the placebo. We still don’t know, for
-example, in which group <cite>b2</cite> was more abundant. We therefore may next be
-interested in comparing the abundance of <cite>b2</cite> across the two groups.
+example, in which group <code class="docutils literal notranslate"><span class="pre">b2</span></code> was more abundant. We therefore may next be
+interested in comparing the abundance of <code class="docutils literal notranslate"><span class="pre">b2</span></code> across the two groups.
 We can do that using the second DataFrame that was returned. Here we
-compare the median (50th percentile) abundance of <cite>b2</cite> in the treatment and
-placebo groups:</p>
+compare the median (50th percentile) abundance of <code class="docutils literal notranslate"><span class="pre">b2</span></code> in the treatment
+and placebo groups:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">percentile_df</span><span class="p">[</span><span class="mf">50.0</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;b2&#39;</span><span class="p">]</span>
 <span class="go">Group</span>
 <span class="go">placebo      21.0</span>
@@ -908,7 +923,7 @@ and placebo groups:</p>
 <span class="go">Name: b2, dtype: float64</span>
 </pre></div>
 </div>
-<p>Taken together, these data tell us that <cite>b2</cite> is present in significantly
+<p>Taken together, these data tell us that <code class="docutils literal notranslate"><span class="pre">b2</span></code> is present in significantly
 higher abundance in the placebo group samples than in the treatment group
 samples.</p>
 </dd></dl>

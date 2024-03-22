@@ -608,6 +608,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
@@ -696,41 +697,42 @@ document.write(`
 <h1>skbio.stats.composition.sbp_basis<a class="headerlink" href="#skbio-stats-composition-sbp-basis" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.sbp_basis">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">sbp_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbp</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.sbp_basis" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">sbp_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbp</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1685"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.sbp_basis" title="Link to this definition">#</a></dt>
 <dd><p>Build an orthogonal basis from a sequential binary partition (SBP).</p>
-<p>As explained in <a class="reference internal" href="#r3ab766b8ee56-1" id="id1">[1]</a>, the SBP is a hierarchical collection of binary
-divisions of compositional parts. The child groups are divided again until
-all groups contain a single part. The SBP can be encoded in a
-<span class="math notranslate nohighlight">\((D - 1) \times D\)</span> matrix where, for each row, parts can be grouped
-by -1 and +1 tags, and 0 for excluded parts. The <cite>sbp_basis</cite> method was
-originally derived from function <cite>gsi.buildilrBase()</cite> found in the R
-package <cite>compositions</cite> <a class="reference internal" href="#r3ab766b8ee56-2" id="id2">[2]</a>. The ith balance is computed as follows</p>
+<p>A SBP is a hierarchical collection of binary divisions of compositional
+parts (<a class="reference internal" href="#r3ab766b8ee56-1" id="id1">[1]</a>). The child groups are divided again until all groups contain a
+single part. The SBP can be encoded in a <span class="math notranslate nohighlight">\((D - 1) \times D\)</span> matrix
+where, for each row, parts can be grouped by -1 and +1 tags, and 0 for
+excluded parts. The <em>i</em>-th balance is computed as follows:</p>
 <div class="math notranslate nohighlight">
 \[b_i = \sqrt{ \frac{r_i s_i}{r_i+s_i} }
 \ln \left( \frac{g(x_{r_i})}{g(x_{s_i})} \right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(b_i\)</span> is the ith balance corresponding to the ith row in the
-SBP, <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(s_i\)</span> and the number of respectively <cite>+1</cite> and
-<cite>-1</cite> labels in the ith row of the SBP and where <span class="math notranslate nohighlight">\(g(x) =
+<p>where <span class="math notranslate nohighlight">\(b_i\)</span> is the <em>i</em>-th balance corresponding to the <em>i</em>-th row in
+the SBP, <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(s_i\)</span> and the number of respectively <code class="docutils literal notranslate"><span class="pre">+1</span></code>
+and <code class="docutils literal notranslate"><span class="pre">-1</span></code> labels in the <em>i</em>-th row of the SBP and where <span class="math notranslate nohighlight">\(g(x) =
 (\prod\limits_{i=1}^{D} x_i)^{1/D}\)</span> is the geometric mean of <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>sbp: np.array, int</strong></dt><dd><p>A contrast matrix, also known as a sequential binary partition, where
+<dt><strong>sbp</strong><span class="classifier">array_like of shape (n_partitions, n_features)</span></dt><dd><p>A contrast matrix, also known as a sequential binary partition, where
 every row represents a partition between two groups of features. A part
-labelled <cite>+1</cite> would correspond to that feature being in the numerator
-of the given row partition, a part labelled <cite>-1</cite> would correspond to
-features being in the denominator of that given row partition, and <cite>0</cite>
-would correspond to features excluded in the row partition.</p>
+labelled <code class="docutils literal notranslate"><span class="pre">+1</span></code> would correspond to that feature being in the numerator
+of the given row partition, a part labelled <code class="docutils literal notranslate"><span class="pre">-1</span></code> would correspond to
+features being in the denominator of that given row partition, and
+<code class="docutils literal notranslate"><span class="pre">0</span></code> would correspond to features excluded in the row partition.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>numpy.array</dt><dd><p>An orthonormal basis in the Aitchison simplex</p>
+<dt>ndarray of shape (n_partitions, n_features)</dt><dd><p>An orthonormal basis in the Aitchison simplex.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sbp_basis</span></code> method was derived from the <code class="docutils literal notranslate"><span class="pre">gsi.buildilrBase()</span></code>
+function implemented in the R package “compositions” <a class="reference internal" href="#r3ab766b8ee56-2" id="id2">[2]</a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r3ab766b8ee56-1" role="doc-biblioentry">
@@ -739,7 +741,7 @@ would correspond to features excluded in the row partition.</p>
 Hernandes, A., Lapointe, L., Hébert-Gentile, V., Naess, K.,
 Marchand, S., Lafond, J., Mattos, D., Barlow, P., Natale, W., 2013.
 The plant ionome revisited by the nutrient balance concept.
-Front. Plant Sci. 4, 39, <a class="reference external" href="http://dx.doi.org/10.3389/fpls.2013.00039">http://dx.doi.org/10.3389/fpls.2013.00039</a>.</p>
+Front. Plant Sci. 4, 39.</p>
 </div>
 <div class="citation" id="r3ab766b8ee56-2" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>

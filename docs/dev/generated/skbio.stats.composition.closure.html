@@ -69,7 +69,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.multiplicative_replacement" href="skbio.stats.composition.multiplicative_replacement.html" />
+    <link rel="next" title="skbio.stats.composition.multi_replace" href="skbio.stats.composition.multi_replace.html" />
     <link rel="prev" title="Composition Statistics (skbio.stats.composition)" href="skbio.stats.composition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -607,6 +607,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.closure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
@@ -695,31 +696,29 @@ document.write(`
 <h1>skbio.stats.composition.closure<a class="headerlink" href="#skbio-stats-composition-closure" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.closure">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">closure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.closure" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">closure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L98"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.closure" title="Link to this definition">#</a></dt>
 <dd><p>Perform closure to ensure that all elements add up to 1.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array_like</span></dt><dd><p>a matrix of proportions where
-rows = compositions
-columns = components</p>
+<dt><strong>mat</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>array_like, np.float64</dt><dd><p>A matrix of proportions where all of the values
-are nonzero and each composition (row) adds up to 1</p>
+<dt>ndarray of shape (n_compositions, n_components)</dt><dd><p>The matrix where all of the values are non-zero and each composition
+(row) adds up to 1.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>Raises an error if any values are negative.</p>
+<dt>ValueError</dt><dd><p>If any values are negative.</p>
 </dd>
-<dt>ValueError</dt><dd><p>Raises an error if the matrix has more than 2 dimension.</p>
+<dt>ValueError</dt><dd><p>If the matrix has more than two dimensions.</p>
 </dd>
-<dt>ValueError</dt><dd><p>Raises an error if there is a row that has all zeros.</p>
+<dt>ValueError</dt><dd><p>If there is a row that has all zeros.</p>
 </dd>
 </dl>
 </dd>
@@ -757,11 +756,11 @@ are nonzero and each composition (row) adds up to 1</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.multiplicative_replacement.html"
+       href="skbio.stats.composition.multi_replace.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.multiplicative_replacement</p>
+        <p class="prev-next-title">skbio.stats.composition.multi_replace</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
