@@ -297,6 +297,13 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../table.html">
+                        Feature Table (skbio.table)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
                         Metadata (skbio.metadata)
                       </a>
@@ -526,6 +533,13 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../table.html">
+                        Feature Table (skbio.table)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
                         Metadata (skbio.metadata)
                       </a>
@@ -733,7 +747,7 @@ term features.</p>
 <tbody>
 <tr class="row-even"><td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.feature_table.Table</span></code></p></td>
+<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table.Table</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -749,7 +763,7 @@ from <code class="docutils literal notranslate"><span class="pre">biom</span></c
 <code class="docutils literal notranslate"><span class="pre">ByteIO</span></code> object can be a file path in a regular use case.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">skbio</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skbio</span><span class="o">.</span><span class="n">feature_table</span><span class="o">.</span><span class="n">example_table</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skbio</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">example_table</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>  
 <span class="go">&lt;_io.BytesIO object at ...&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">roundtrip</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">skbio</span><span class="o">.</span><span class="n">Table</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">roundtrip</span>
