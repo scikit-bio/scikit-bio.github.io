@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>skbio.table.Table.__iter__ &#8212; scikit-bio 0.6.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=d0a8d76f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=8fa8b3e9"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.table.Table.__iter__';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="canonical" href="../../../generated/skbio.table.Table.__iter__.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skbio.table.Table.__le__" href="skbio.table.Table.__le__.html" />
+    <link rel="prev" title="skbio.table.Table.__gt__" href="skbio.table.Table.__gt__.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">scikit-bio is back in active development! Check out our <a href='https://github.com/scikit-bio/scikit-bio/discussions/1935'>announcement of revitalization</a>.</div>
+  </div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../io.html">
+                        Input and Output (skbio.io)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
+                        Biological Sequences (skbio.sequence)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
+                        Sequence Alignments (skbio.alignment)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tree.html">
+                        Trees and Phylogenetics (skbio.tree)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
+                        Community Diversity (skbio.diversity)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../stats.html">
+                        Multivariate Statistics (skbio.stats)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="../table.html">
+                        Data Table (skbio.table)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
+                        Metadata (skbio.metadata)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../util.html">
+                        Utilities for Developers (skbio.util)
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../learn.html">
+                        Learn
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../contribute.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+                        Releases
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="../../../about.html">
+                        About
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../io.html">
+                        Input and Output (skbio.io)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
+                        Biological Sequences (skbio.sequence)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
+                        Sequence Alignments (skbio.alignment)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../tree.html">
+                        Trees and Phylogenetics (skbio.tree)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
+                        Community Diversity (skbio.diversity)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../stats.html">
+                        Multivariate Statistics (skbio.stats)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="../table.html">
+                        Data Table (skbio.table)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
+                        Metadata (skbio.metadata)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../util.html">
+                        Utilities for Developers (skbio.util)
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.table.Table.html">skbio.table.Table</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__eq__.html">skbio.table.Table.__eq__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__ge__.html">skbio.table.Table.__ge__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__getitem__.html">skbio.table.Table.__getitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__getstate__.html">skbio.table.Table.__getstate__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__gt__.html">skbio.table.Table.__gt__</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.table.Table.__iter__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__le__.html">skbio.table.Table.__le__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__lt__.html">skbio.table.Table.__lt__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__ne__.html">skbio.table.Table.__ne__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__str__.html">skbio.table.Table.__str__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.add_group_metadata.html">skbio.table.Table.add_group_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.add_metadata.html">skbio.table.Table.add_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.align_to.html">skbio.table.Table.align_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.align_to_dataframe.html">skbio.table.Table.align_to_dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.align_tree.html">skbio.table.Table.align_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.collapse.html">skbio.table.Table.collapse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.concat.html">skbio.table.Table.concat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.copy.html">skbio.table.Table.copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.data.html">skbio.table.Table.data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.del_metadata.html">skbio.table.Table.del_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.delimited_self.html">skbio.table.Table.delimited_self</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.descriptive_equality.html">skbio.table.Table.descriptive_equality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.exists.html">skbio.table.Table.exists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.filter.html">skbio.table.Table.filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.from_adjacency.html">skbio.table.Table.from_adjacency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.from_hdf5.html">skbio.table.Table.from_hdf5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.from_json.html">skbio.table.Table.from_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.from_tsv.html">skbio.table.Table.from_tsv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.get_table_density.html">skbio.table.Table.get_table_density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.get_value_by_ids.html">skbio.table.Table.get_value_by_ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.group_metadata.html">skbio.table.Table.group_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.head.html">skbio.table.Table.head</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.ids.html">skbio.table.Table.ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.index.html">skbio.table.Table.index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.is_empty.html">skbio.table.Table.is_empty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.iter.html">skbio.table.Table.iter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.iter_data.html">skbio.table.Table.iter_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.iter_pairwise.html">skbio.table.Table.iter_pairwise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.length.html">skbio.table.Table.length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.max.html">skbio.table.Table.max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.merge.html">skbio.table.Table.merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.metadata.html">skbio.table.Table.metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.metadata_to_dataframe.html">skbio.table.Table.metadata_to_dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.min.html">skbio.table.Table.min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.nonzero.html">skbio.table.Table.nonzero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.nonzero_counts.html">skbio.table.Table.nonzero_counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.norm.html">skbio.table.Table.norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.pa.html">skbio.table.Table.pa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.partition.html">skbio.table.Table.partition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.rankdata.html">skbio.table.Table.rankdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.read.html">skbio.table.Table.read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.reduce.html">skbio.table.Table.reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.remove_empty.html">skbio.table.Table.remove_empty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.sort.html">skbio.table.Table.sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.sort_order.html">skbio.table.Table.sort_order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.subsample.html">skbio.table.Table.subsample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.sum.html">skbio.table.Table.sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.to_anndata.html">skbio.table.Table.to_anndata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.to_dataframe.html">skbio.table.Table.to_dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.to_hdf5.html">skbio.table.Table.to_hdf5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.to_json.html">skbio.table.Table.to_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.to_tsv.html">skbio.table.Table.to_tsv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.transform.html">skbio.table.Table.transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.transpose.html">skbio.table.Table.transpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.update_ids.html">skbio.table.Table.update_ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.write.html">skbio.table.Table.write</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.example_table.html">skbio.table.example_table</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../table.html" class="nav-link">Data Table (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code>)</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="skbio.table.Table.html" class="nav-link">skbio.table.Table</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">skbio.table....</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="skbio-table-table-iter">
+<h1>skbio.table.Table.__iter__<a class="headerlink" href="#skbio-table-table-iter" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.table.Table.__iter__">
+<span class="sig-prename descclassname"><span class="pre">Table.</span></span><span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/0.6.0/skbio/../biom/table.py#L1789"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.__iter__" title="Link to this definition">#</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">biom.table.Table.iter</span></code></p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="skbio.table.Table.__gt__.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">skbio.table.Table.__gt__</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skbio.table.Table.__le__.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">skbio.table.Table.__le__</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.__iter__"><code class="docutils literal notranslate"><span class="pre">Table.__iter__()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2024, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
