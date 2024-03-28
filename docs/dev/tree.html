@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tree representations (skbio.tree) &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>Trees and Phylogenetics (skbio.tree) &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,7 +62,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../tree.html" />
@@ -153,8 +153,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -485,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -547,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -622,13 +622,6 @@ document.write(`
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.tree.majority_rule.html">skbio.tree.majority_rule</a></li>
 </ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.tree.TreeError.html">skbio.tree.TreeError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.tree.NoLengthError.html">skbio.tree.NoLengthError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.tree.DuplicateNodeError.html">skbio.tree.DuplicateNodeError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.tree.MissingNodeError.html">skbio.tree.MissingNodeError</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.tree.NoParentError.html">skbio.tree.NoParentError</a></li>
-</ul>
 </div>
 </nav></div>
     </div>
@@ -665,7 +658,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Tree...</li>
+    <li class="breadcrumb-item active" aria-current="page">Trees and...</li>
   </ul>
 </nav>
 </div>
@@ -682,15 +675,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="tree-representations-skbio-tree">
-<span id="module-skbio.tree"></span><h1>Tree representations (<a class="reference internal" href="#module-skbio.tree" title="skbio.tree"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code></a>)<a class="headerlink" href="#tree-representations-skbio-tree" title="Link to this heading">#</a></h1>
+  <section id="trees-and-phylogenetics-skbio-tree">
+<span id="module-skbio.tree"></span><h1>Trees and Phylogenetics (<a class="reference internal" href="#module-skbio.tree" title="skbio.tree"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code></a>)<a class="headerlink" href="#trees-and-phylogenetics-skbio-tree" title="Link to this heading">#</a></h1>
 <p>This module provides functionality for working with trees, including
 phylogenetic trees and hierarchies. Functionality is provided for constructing
 trees, for traversing in multiple ways, comparisons, fetching subtrees, and
 more. This module supports trees that are multifurcating and nodes that have
 single descendants.</p>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<section id="tree-structure-and-operations">
+<h2>Tree structure and operations<a class="headerlink" href="#tree-structure-and-operations" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TreeNode</span></code></a>([name, length, support, parent, ...])</p></td>
@@ -700,7 +693,7 @@ single descendants.</p>
 </table>
 </section>
 <section id="phylogenetic-reconstruction">
-<h2>Phylogenetic Reconstruction<a class="headerlink" href="#phylogenetic-reconstruction" title="Link to this heading">#</a></h2>
+<h2>Phylogenetic reconstruction<a class="headerlink" href="#phylogenetic-reconstruction" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nj</span></code></a>(dm[, disallow_negative_branch_length, ...])</p></td>
@@ -709,8 +702,8 @@ single descendants.</p>
 </tbody>
 </table>
 </section>
-<section id="utility-functions">
-<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h2>
+<section id="tree-utilities">
+<h2>Tree utilities<a class="headerlink" href="#tree-utilities" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.majority_rule.html#skbio.tree.majority_rule" title="skbio.tree.majority_rule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">majority_rule</span></code></a>(trees[, weights, cutoff, ...])</p></td>
@@ -718,31 +711,31 @@ single descendants.</p>
 </tr>
 </tbody>
 </table>
-</section>
 <section id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<h3>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.TreeError.html#skbio.tree.TreeError" title="skbio.tree.TreeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TreeError</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TreeError</span></code></p></td>
 <td><p>General tree error.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.tree.NoLengthError.html#skbio.tree.NoLengthError" title="skbio.tree.NoLengthError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoLengthError</span></code></a></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoLengthError</span></code></p></td>
 <td><p>Missing length when expected.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.DuplicateNodeError.html#skbio.tree.DuplicateNodeError" title="skbio.tree.DuplicateNodeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DuplicateNodeError</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DuplicateNodeError</span></code></p></td>
 <td><p>Duplicate nodes with identical names.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.tree.MissingNodeError.html#skbio.tree.MissingNodeError" title="skbio.tree.MissingNodeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MissingNodeError</span></code></a></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MissingNodeError</span></code></p></td>
 <td><p>Expecting a node.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.NoParentError.html#skbio.tree.NoParentError" title="skbio.tree.NoParentError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoParentError</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoParentError</span></code></p></td>
 <td><p>Missing a parent.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+</section>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 </pre></div>
@@ -912,11 +905,13 @@ pairwise tip-to-tip distances between trees:</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phylogenetic-reconstruction">Phylogenetic Reconstruction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">Utility Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-structure-and-operations">Tree structure and operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phylogenetic-reconstruction">Phylogenetic reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-utilities">Tree utilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ordination methods (skbio.stats.ordination) &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>Ordination methods (skbio.stats.ordination) &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="../_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,15 +62,15 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../../generated/skbio.stats.ordination.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.ordination.ca" href="skbio.stats.ordination.ca.html" />
-    <link rel="prev" title="skbio.stats.evolve.hommola_cospeciation" href="skbio.stats.evolve.hommola_cospeciation.html" />
+    <link rel="next" title="skbio.stats.ordination.pcoa" href="skbio.stats.ordination.pcoa.html" />
+    <link rel="prev" title="skbio.stats.distance.pwmantel" href="skbio.stats.distance.pwmantel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="../stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -485,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="../stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -547,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -613,13 +613,14 @@ document.write(`
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.distance.html">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.distance.html">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.ca.html">skbio.stats.ordination.ca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.pcoa.html">skbio.stats.ordination.pcoa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.pcoa_biplot.html">skbio.stats.ordination.pcoa_biplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.ca.html">skbio.stats.ordination.ca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.cca.html">skbio.stats.ordination.cca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.rda.html">skbio.stats.ordination.rda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html">skbio.stats.ordination.OrdinationResults</a></li>
@@ -631,13 +632,18 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.f_matrix.html">skbio.stats.ordination.f_matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.subsample_counts.html">skbio.stats.subsample_counts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.isubsample.html">skbio.stats.isubsample</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 </ul>
 </div>
 </nav></div>
@@ -676,7 +682,7 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../stats.html" class="nav-link">Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="../stats.html" class="nav-link">Multivariate Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">Ordination...</li>
   </ul>
@@ -697,33 +703,55 @@ document.write(`
                   
   <section id="ordination-methods-skbio-stats-ordination">
 <span id="module-skbio.stats.ordination"></span><h1>Ordination methods (<a class="reference internal" href="#module-skbio.stats.ordination" title="skbio.stats.ordination"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code></a>)<a class="headerlink" href="#ordination-methods-skbio-stats-ordination" title="Link to this heading">#</a></h1>
-<p>This module contains several ordination methods, including Principal
-Coordinate Analysis, Correspondence Analysis, Redundancy Analysis and
-Canonical Correspondence Analysis.</p>
-<section id="ordination-functions">
-<h2>Ordination Functions<a class="headerlink" href="#ordination-functions" title="Link to this heading">#</a></h2>
+<p>This module provides functions for ordination – a category of methods that aim at
+arranging data so that similar data points are proximate to each other. Ordination can
+preserve and represent the structure of high-dimensional data within a low-dimensional
+space, thereby facilitating visual exploration and statistical analysis.</p>
+<p>Mathematically, ordination shares similarities with, and is in multiple respects
+equivalent to, embedding and dimensionality reduction. While all three aim to represent
+high-dimensional data in a lower-dimensional space, the term “ordination” is mainly
+used in the field of ecology to reveal patterns such as groups or gradients underlying
+community data. However, the ordination methods implemented in scikit-bio are
+versatile, serving not only ecological studies but also broader applications in
+scientific computing.</p>
+<section id="multidimensional-scaling">
+<h2>Multidimensional scaling<a class="headerlink" href="#multidimensional-scaling" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.pcoa.html#skbio.stats.ordination.pcoa" title="skbio.stats.ordination.pcoa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pcoa</span></code></a>(distance_matrix[, method, ...])</p></td>
+<td><p>Perform Principal Coordinate Analysis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.ordination.pcoa_biplot.html#skbio.stats.ordination.pcoa_biplot" title="skbio.stats.ordination.pcoa_biplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pcoa_biplot</span></code></a>(ordination, y)</p></td>
+<td><p>Compute the projection of descriptors into a PCoA matrix.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="correspondence-analysis">
+<h2>Correspondence analysis<a class="headerlink" href="#correspondence-analysis" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.ca.html#skbio.stats.ordination.ca" title="skbio.stats.ordination.ca"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ca</span></code></a>(X[, scaling])</p></td>
 <td><p>Compute correspondence analysis.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.ordination.pcoa.html#skbio.stats.ordination.pcoa" title="skbio.stats.ordination.pcoa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pcoa</span></code></a>(distance_matrix[, method, ...])</p></td>
-<td><p>Perform Principal Coordinate Analysis.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.pcoa_biplot.html#skbio.stats.ordination.pcoa_biplot" title="skbio.stats.ordination.pcoa_biplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pcoa_biplot</span></code></a>(ordination, y)</p></td>
-<td><p>Compute the projection of descriptors into a PCoA matrix.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.ordination.cca.html#skbio.stats.ordination.cca" title="skbio.stats.ordination.cca"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cca</span></code></a>(y, x[, scaling])</p></td>
+</tbody>
+</table>
+</section>
+<section id="canonical-analysis">
+<h2>Canonical analysis<a class="headerlink" href="#canonical-analysis" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.cca.html#skbio.stats.ordination.cca" title="skbio.stats.ordination.cca"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cca</span></code></a>(y, x[, scaling])</p></td>
 <td><p>Compute canonical (also known as constrained) correspondence analysis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.rda.html#skbio.stats.ordination.rda" title="skbio.stats.ordination.rda"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rda</span></code></a>(y, x[, scale_Y, scaling])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.ordination.rda.html#skbio.stats.ordination.rda" title="skbio.stats.ordination.rda"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rda</span></code></a>(y, x[, scale_Y, scaling])</p></td>
 <td><p>Compute redundancy analysis, a type of canonical analysis.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<section id="ordination-results">
+<h2>Ordination results<a class="headerlink" href="#ordination-results" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html#skbio.stats.ordination.OrdinationResults" title="skbio.stats.ordination.OrdinationResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrdinationResults</span></code></a>(short_method_name, ...[, ...])</p></td>
@@ -733,7 +761,7 @@ Canonical Correspondence Analysis.</p>
 </table>
 </section>
 <section id="utility-functions">
-<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h2>
+<h2>Utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.mean_and_std.html#skbio.stats.ordination.mean_and_std" title="skbio.stats.ordination.mean_and_std"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_and_std</span></code></a>(a[, axis, weights, with_mean, ...])</p></td>
@@ -852,20 +880,20 @@ Amsterdam.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.evolve.hommola_cospeciation.html"
+       href="skbio.stats.distance.pwmantel.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.evolve.hommola_cospeciation</p>
+        <p class="prev-next-title">skbio.stats.distance.pwmantel</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.ordination.ca.html"
+       href="skbio.stats.ordination.pcoa.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.ordination.ca</p>
+        <p class="prev-next-title">skbio.stats.ordination.pcoa</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -887,9 +915,11 @@ Amsterdam.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordination-functions">Ordination Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">Utility Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multidimensional-scaling">Multidimensional scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correspondence-analysis">Correspondence analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canonical-analysis">Canonical analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordination-results">Ordination results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">Utility functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>

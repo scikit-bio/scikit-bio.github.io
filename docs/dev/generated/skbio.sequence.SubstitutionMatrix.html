@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.sequence.SubstitutionMatrix &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>skbio.sequence.SubstitutionMatrix &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="../_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,15 +62,15 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../../generated/skbio.sequence.SubstitutionMatrix.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.sequence.SubstitutionMatrix.between" href="skbio.sequence.SubstitutionMatrix.between.html" />
-    <link rel="prev" title="skbio.sequence.GeneticCode.__str__" href="skbio.sequence.GeneticCode.__str__.html" />
+    <link rel="next" title="skbio.sequence.SubstitutionMatrix.__contains__" href="skbio.sequence.SubstitutionMatrix.__contains__.html" />
+    <link rel="prev" title="skbio.sequence.GeneticCode.translate_six_frames" href="skbio.sequence.GeneticCode.translate_six_frames.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -485,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -547,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -613,31 +613,16 @@ document.write(`
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.Sequence.html">skbio.sequence.Sequence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.GrammaredSequence.html">skbio.sequence.GrammaredSequence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.DNA.html">skbio.sequence.DNA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.RNA.html">skbio.sequence.RNA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.Protein.html">skbio.sequence.Protein</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.GeneticCode.html">skbio.sequence.GeneticCode</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.sequence.SubstitutionMatrix</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.between.html">skbio.sequence.SubstitutionMatrix.between</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.by_name.html">skbio.sequence.SubstitutionMatrix.by_name</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.copy.html">skbio.sequence.SubstitutionMatrix.copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.filter.html">skbio.sequence.SubstitutionMatrix.filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.from_dict.html">skbio.sequence.SubstitutionMatrix.from_dict</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.from_iterable.html">skbio.sequence.SubstitutionMatrix.from_iterable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.get_names.html">skbio.sequence.SubstitutionMatrix.get_names</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.identity.html">skbio.sequence.SubstitutionMatrix.identity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.index.html">skbio.sequence.SubstitutionMatrix.index</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.plot.html">skbio.sequence.SubstitutionMatrix.plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.read.html">skbio.sequence.SubstitutionMatrix.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.redundant_form.html">skbio.sequence.SubstitutionMatrix.redundant_form</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.to_data_frame.html">skbio.sequence.SubstitutionMatrix.to_data_frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.to_dict.html">skbio.sequence.SubstitutionMatrix.to_dict</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.transpose.html">skbio.sequence.SubstitutionMatrix.transpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.within.html">skbio.sequence.SubstitutionMatrix.within</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.write.html">skbio.sequence.SubstitutionMatrix.write</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.__contains__.html">skbio.sequence.SubstitutionMatrix.__contains__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.__eq__.html">skbio.sequence.SubstitutionMatrix.__eq__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.__ge__.html">skbio.sequence.SubstitutionMatrix.__ge__</a></li>
@@ -708,7 +693,7 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../sequence.html" class="nav-link">Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="../sequence.html" class="nav-link">Biological Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">skbio.sequen...</li>
   </ul>
@@ -731,7 +716,7 @@ document.write(`
 <h1>skbio.sequence.SubstitutionMatrix<a class="headerlink" href="#skbio-sequence-substitutionmatrix" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.SubstitutionMatrix">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">SubstitutionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_substitution.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">SubstitutionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/0.6.0/skbio/sequence/_substitution.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix" title="Link to this definition">#</a></dt>
 <dd><p>Scoring matrix between characters in biological sequences.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -749,7 +734,7 @@ character (column, or axis=1).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix" title="skbio.stats.distance.DissimilarityMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.stats.distance.DissimilarityMatrix</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -796,90 +781,6 @@ all attributes and methods of the latter also apply to the former.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">blosum62</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="o">.</span><span class="n">by_name</span><span class="p">(</span><span class="s1">&#39;BLOSUM62&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></dt><dd><p>Transpose of the dissimilarity matrix.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">alphabet</span></code></dt><dd><p>Alphabet of the substitution matrix.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></dt><dd><p>Array of dissimilarities.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></dt><dd><p>Data type of the dissimilarities.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></dt><dd><p>Tuple of object IDs.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_ascii</span></code></dt><dd><p>Whether alphabet consists of single ASCII characters.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">png</span></code></dt><dd><p>Get figure data in PNG format.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scores</span></code></dt><dd><p>Matrix of substitution scores.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></dt><dd><p>Two-element tuple containing the dissimilarity matrix dimensions.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></dt><dd><p>Total number of elements in the dissimilarity matrix.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">svg</span></code></dt><dd><p>Get figure data in SVG format.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.between.html#skbio.sequence.SubstitutionMatrix.between" title="skbio.sequence.SubstitutionMatrix.between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">between</span></code></a>(from_, to_[, allow_overlap])</p></td>
-<td><p>Obtain the distances between the two groups of IDs.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.by_name.html#skbio.sequence.SubstitutionMatrix.by_name" title="skbio.sequence.SubstitutionMatrix.by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">by_name</span></code></a>(name)</p></td>
-<td><p>Load a pre-defined substitution matrix by its name.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.copy.html#skbio.sequence.SubstitutionMatrix.copy" title="skbio.sequence.SubstitutionMatrix.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
-<td><p>Return a deep copy of the dissimilarity matrix.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.filter.html#skbio.sequence.SubstitutionMatrix.filter" title="skbio.sequence.SubstitutionMatrix.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(ids[, strict])</p></td>
-<td><p>Filter the dissimilarity matrix by IDs.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.from_dict.html#skbio.sequence.SubstitutionMatrix.from_dict" title="skbio.sequence.SubstitutionMatrix.from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_dict</span></code></a>(dictionary)</p></td>
-<td><p>Create a substitution matrix from a 2D dictionary.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.from_iterable.html#skbio.sequence.SubstitutionMatrix.from_iterable" title="skbio.sequence.SubstitutionMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys])</p></td>
-<td><p>Create DissimilarityMatrix from an iterable given a metric.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.get_names.html#skbio.sequence.SubstitutionMatrix.get_names" title="skbio.sequence.SubstitutionMatrix.get_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_names</span></code></a>()</p></td>
-<td><p>List names of pre-defined substitution matrices.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.identity.html#skbio.sequence.SubstitutionMatrix.identity" title="skbio.sequence.SubstitutionMatrix.identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identity</span></code></a>(alphabet, match, mismatch)</p></td>
-<td><p>Create an identity substitution matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.index.html#skbio.sequence.SubstitutionMatrix.index" title="skbio.sequence.SubstitutionMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
-<td><p>Return the index of the specified ID.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.plot.html#skbio.sequence.SubstitutionMatrix.plot" title="skbio.sequence.SubstitutionMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
-<td><p>Create a heatmap of the dissimilarity matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.read.html#skbio.sequence.SubstitutionMatrix.read" title="skbio.sequence.SubstitutionMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(file[, format])</p></td>
-<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> instance from a file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.redundant_form.html#skbio.sequence.SubstitutionMatrix.redundant_form" title="skbio.sequence.SubstitutionMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
-<td><p>Return an array of dissimilarities in redundant format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.to_data_frame.html#skbio.sequence.SubstitutionMatrix.to_data_frame" title="skbio.sequence.SubstitutionMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
-<td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> from this <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.to_dict.html#skbio.sequence.SubstitutionMatrix.to_dict" title="skbio.sequence.SubstitutionMatrix.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dict</span></code></a>()</p></td>
-<td><p>Create a 2D dictionary from the substitution matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.transpose.html#skbio.sequence.SubstitutionMatrix.transpose" title="skbio.sequence.SubstitutionMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
-<td><p>Return the transpose of the dissimilarity matrix.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.within.html#skbio.sequence.SubstitutionMatrix.within" title="skbio.sequence.SubstitutionMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
-<td><p>Obtain all the distances among the set of IDs.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.write.html#skbio.sequence.SubstitutionMatrix.write" title="skbio.sequence.SubstitutionMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
-<td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> to a file.</p></td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Attributes</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
@@ -1027,20 +928,20 @@ all attributes and methods of the latter also apply to the former.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.sequence.GeneticCode.__str__.html"
+       href="skbio.sequence.GeneticCode.translate_six_frames.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.sequence.GeneticCode.__str__</p>
+        <p class="prev-next-title">skbio.sequence.GeneticCode.translate_six_frames</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.sequence.SubstitutionMatrix.between.html"
+       href="skbio.sequence.SubstitutionMatrix.__contains__.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.sequence.SubstitutionMatrix.between</p>
+        <p class="prev-next-title">skbio.sequence.SubstitutionMatrix.__contains__</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

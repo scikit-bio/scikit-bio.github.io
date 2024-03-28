@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Feature Table (skbio.table) &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>Data Table (skbio.table) &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,15 +62,15 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../table.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Metadata (skbio.metadata)" href="metadata.html" />
-    <link rel="prev" title="skbio.stats.isubsample" href="generated/skbio.stats.isubsample.html" />
+    <link rel="next" title="skbio.table.Table" href="generated/skbio.table.Table.html" />
+    <link rel="prev" title="skbio.stats.power.paired_subsamples" href="generated/skbio.stats.power.paired_subsamples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -402,6 +402,10 @@ document.write(`
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
     </header>
@@ -481,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -543,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -609,7 +613,13 @@ document.write(`
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.Table.html">skbio.table.Table</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.example_table.html">skbio.table.example_table</a></li>
+</ul>
+</div>
 </nav></div>
     </div>
   
@@ -645,7 +655,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Feature...</li>
+    <li class="breadcrumb-item active" aria-current="page">Data Table...</li>
   </ul>
 </nav>
 </div>
@@ -662,9 +672,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="feature-table-skbio-table">
-<span id="module-skbio.table"></span><h1>Feature Table (<a class="reference internal" href="#module-skbio.table" title="skbio.table"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code></a>)<a class="headerlink" href="#feature-table-skbio-table" title="Link to this heading">#</a></h1>
-<p>This module provides support for interaction with BIOM Tables.</p>
+  <section id="data-table-skbio-table">
+<span id="module-skbio.table"></span><h1>Data Table (<a class="reference internal" href="#module-skbio.table" title="skbio.table"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code></a>)<a class="headerlink" href="#data-table-skbio-table" title="Link to this heading">#</a></h1>
+<p>This module provides support for interaction with data tables in the Biological
+Observation Matrix (BIOM) format.</p>
+<p>Please refer to the <a class="reference external" href="https://biom-format.org/">BIOM documentation</a> for the
+instructions on working with BIOM tables.</p>
+<section id="biom-table">
+<h2>BIOM table<a class="headerlink" href="#biom-table" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.Table.html#skbio.table.Table" title="skbio.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>(data, observation_ids, sample_ids[, ...])</p></td>
+<td><p>The (canonically pronounced 'teh') Table.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="example-data">
+<h3>Example data<a class="headerlink" href="#example-data" title="Link to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.example_table.html#skbio.table.example_table" title="skbio.table.example_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_table</span></code></a></p></td>
+<td><p>The (canonically pronounced 'teh') Table.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 </section>
 
 
@@ -678,20 +711,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/skbio.stats.isubsample.html"
+       href="generated/skbio.stats.power.paired_subsamples.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.isubsample</p>
+        <p class="prev-next-title">skbio.stats.power.paired_subsamples</p>
       </div>
     </a>
     <a class="right-next"
-       href="metadata.html"
+       href="generated/skbio.table.Table.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Metadata (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.metadata</span></code>)</p>
+        <p class="prev-next-title">skbio.table.Table</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -702,7 +735,25 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biom-table">BIOM table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-data">Example data</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

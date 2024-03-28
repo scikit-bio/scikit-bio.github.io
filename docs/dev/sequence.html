@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Sequences (skbio.sequence) &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>Biological Sequences (skbio.sequence) &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,7 +62,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../sequence.html" />
@@ -70,7 +70,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="skbio.sequence.Sequence" href="generated/skbio.sequence.Sequence.html" />
-    <link rel="prev" title="skbio.io.util.open_files" href="generated/skbio.io.util.open_files.html" />
+    <link rel="prev" title="skbio.io.registry.create_format" href="generated/skbio.io.registry.create_format.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -485,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -547,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -619,6 +619,8 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.sequence.DNA.html">skbio.sequence.DNA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.sequence.RNA.html">skbio.sequence.RNA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.sequence.Protein.html">skbio.sequence.Protein</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.sequence.GeneticCode.html">skbio.sequence.GeneticCode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.sequence.SubstitutionMatrix.html">skbio.sequence.SubstitutionMatrix</a></li>
 </ul>
@@ -661,7 +663,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Sequences...</li>
+    <li class="breadcrumb-item active" aria-current="page">Biological...</li>
   </ul>
 </nav>
 </div>
@@ -678,25 +680,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="sequences-skbio-sequence">
-<span id="module-skbio.sequence"></span><h1>Sequences (<a class="reference internal" href="#module-skbio.sequence" title="skbio.sequence"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code></a>)<a class="headerlink" href="#sequences-skbio-sequence" title="Link to this heading">#</a></h1>
-<p>This module provides classes for storing and working with sequences, including
-generic/nonbiological sequences which have no alphabet restrictions
-(<code class="docutils literal notranslate"><span class="pre">Sequence</span></code>) and sequences based on IUPAC-defined alphabets (<code class="docutils literal notranslate"><span class="pre">DNA</span></code>,
-<code class="docutils literal notranslate"><span class="pre">RNA</span></code>, <code class="docutils literal notranslate"><span class="pre">Protein</span></code>). Common operations are defined as methods, for example
-computing the reverse complement of a DNA sequence, or searching for
-N-glycosylation motifs in protein sequences. Class attributes provide valid
-character sets, complement maps for different sequence types, and degenerate
-character definitions. Additionally this module defines the <code class="docutils literal notranslate"><span class="pre">GeneticCode</span></code>
-class, which represents an immutable object that translates DNA or RNA
-sequences into protein sequences.</p>
-<p>The primary information stored for each different type of sequence object is
-the underlying sequence data itself. This is stored as an immutable numpy
-array. Additionally, each type of sequence may include optional metadata
-and positional metadata. Note that metadata and positional metadata are
-mutable.</p>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+  <section id="biological-sequences-skbio-sequence">
+<span id="module-skbio.sequence"></span><h1>Biological Sequences (<a class="reference internal" href="#module-skbio.sequence" title="skbio.sequence"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code></a>)<a class="headerlink" href="#biological-sequences-skbio-sequence" title="Link to this heading">#</a></h1>
+<p>This module provides functionality for storing and working with sequences, including
+molecular sequences based on IUPAC-defined alphabets (<a class="reference internal" href="generated/skbio.sequence.DNA.html#skbio.sequence.DNA" title="skbio.sequence.DNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNA</span></code></a>, <a class="reference internal" href="generated/skbio.sequence.RNA.html#skbio.sequence.RNA" title="skbio.sequence.RNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">RNA</span></code></a>,
+<a class="reference internal" href="generated/skbio.sequence.Protein.html#skbio.sequence.Protein" title="skbio.sequence.Protein"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protein</span></code></a>), sequences based on custom alphabets (<a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a>),
+and generic/non-biological sequences with no alphabet restrictions (<a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>).</p>
+<p>Additionally, this module defines the <a class="reference internal" href="generated/skbio.sequence.GeneticCode.html#skbio.sequence.GeneticCode" title="skbio.sequence.GeneticCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneticCode</span></code></a> class, which represents an
+immutable object that translates DNA or RNA sequences into protein sequences, and
+the <a class="reference internal" href="generated/skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a> class, which stores scores of substitutions between
+sequence characters.</p>
+<section id="sequence-types">
+<h2>Sequence types<a class="headerlink" href="#sequence-types" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>(sequence[, metadata, ...])</p></td>
@@ -714,17 +709,24 @@ mutable.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.sequence.Protein.html#skbio.sequence.Protein" title="skbio.sequence.Protein"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Protein</span></code></a>(sequence[, metadata, ...])</p></td>
 <td><p>Store protein sequence data and optional associated metadata.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.sequence.GeneticCode.html#skbio.sequence.GeneticCode" title="skbio.sequence.GeneticCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneticCode</span></code></a>(amino_acids, starts[, name])</p></td>
+</tbody>
+</table>
+</section>
+<section id="sequence-utilities">
+<h2>Sequence utilities<a class="headerlink" href="#sequence-utilities" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.sequence.GeneticCode.html#skbio.sequence.GeneticCode" title="skbio.sequence.GeneticCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneticCode</span></code></a>(amino_acids, starts[, name])</p></td>
 <td><p>Genetic code for translating codons to amino acids.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>(alphabet, scores, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>(alphabet, scores, **kwargs)</p></td>
 <td><p>Scoring matrix between characters in biological sequences.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<section id="distance-calculation">
+<h2>Distance calculation<a class="headerlink" href="#distance-calculation" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.sequence.distance.html#module-skbio.sequence.distance" title="skbio.sequence.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a></p></td>
@@ -733,8 +735,16 @@ mutable.</p>
 </tbody>
 </table>
 </section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<p>The primary information stored for each different type of sequence object is the
+underlying sequence data itself. This is stored as an immutable NumPy array.
+Additionally, each type of sequence may include optional metadata and positional
+metadata. Note that metadata and positional metadata are mutable.</p>
+<p>Common operations are defined as methods, for example computing the reverse complement
+of a DNA sequence, or searching for N-glycosylation motifs in protein sequences. Class
+attributes provide valid character sets, complement maps for different sequence types,
+and degenerate character definitions.</p>
 <p>New sequences are created with optional metadata and positional metadata.
 Metadata is stored as a Python <code class="docutils literal notranslate"><span class="pre">dict</span></code>, while positional metadata is stored as
 a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
@@ -997,12 +1007,12 @@ ID 1, the default genetic code in scikit-bio):</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/skbio.io.util.open_files.html"
+       href="generated/skbio.io.registry.create_format.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.io.util.open_files</p>
+        <p class="prev-next-title">skbio.io.registry.create_format</p>
       </div>
     </a>
     <a class="right-next"
@@ -1032,9 +1042,10 @@ ID 1, the default genetic code in scikit-bio):</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-types">Sequence types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-utilities">Sequence utilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-calculation">Distance calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
 </ul>
   </nav></div>
 

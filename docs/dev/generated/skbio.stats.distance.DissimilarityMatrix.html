@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.distance.DissimilarityMatrix &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>skbio.stats.distance.DissimilarityMatrix &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="../_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,15 +62,15 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../../generated/skbio.stats.distance.DissimilarityMatrix.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.distance.DissimilarityMatrix.between" href="skbio.stats.distance.DissimilarityMatrix.between.html" />
-    <link rel="prev" title="Distance matrices and distance-based statistics (skbio.stats.distance)" href="skbio.stats.distance.html" />
+    <link rel="next" title="skbio.stats.distance.DissimilarityMatrix.__contains__" href="skbio.stats.distance.DissimilarityMatrix.__contains__.html" />
+    <link rel="prev" title="Distance matrix-based statistics (skbio.stats.distance)" href="skbio.stats.distance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="../stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -485,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="../stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -547,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="../util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -614,13 +614,10 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.distance.html">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.distance.html">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.distance.DissimilarityMatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html">skbio.stats.distance.DistanceMatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.randdm.html">skbio.stats.distance.randdm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrixError.html">skbio.stats.distance.DissimilarityMatrixError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DistanceMatrixError.html">skbio.stats.distance.DistanceMatrixError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.MissingIDError.html">skbio.stats.distance.MissingIDError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.anosim.html">skbio.stats.distance.anosim</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.permanova.html">skbio.stats.distance.permanova</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.permdisp.html">skbio.stats.distance.permdisp</a></li>
@@ -629,15 +626,21 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.pwmantel.html">skbio.stats.distance.pwmantel</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.ordination.html">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.subsample_counts.html">skbio.stats.subsample_counts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.stats.isubsample.html">skbio.stats.isubsample</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 </ul>
 </div>
 </nav></div>
@@ -676,10 +679,10 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../stats.html" class="nav-link">Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="../stats.html" class="nav-link">Multivariate Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.stats.distance.html" class="nav-link">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="skbio.stats.distance.html" class="nav-link">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">skbio.stats....</li>
   </ul>
@@ -702,7 +705,7 @@ document.write(`
 <h1>skbio.stats.distance.DissimilarityMatrix<a class="headerlink" href="#skbio-stats-distance-dissimilaritymatrix" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.stats.distance.DissimilarityMatrix">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">DissimilarityMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L47"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DissimilarityMatrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">DissimilarityMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/0.6.0/skbio/stats/distance/_base.py#L47"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DissimilarityMatrix" title="Link to this definition">#</a></dt>
 <dd><p>Store dissimilarities between objects.</p>
 <p>A <cite>DissimilarityMatrix</cite> instance stores a square, hollow, two-dimensional
 matrix of dissimilarities between objects. Objects could be, for example,
@@ -752,69 +755,6 @@ symmetric.</p>
 <p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/spatial.distance.html">http://docs.scipy.org/doc/scipy/reference/spatial.distance.html</a></p>
 </div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></dt><dd><p>Transpose of the dissimilarity matrix.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></dt><dd><p>Array of dissimilarities.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></dt><dd><p>Data type of the dissimilarities.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></dt><dd><p>Tuple of object IDs.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">png</span></code></dt><dd><p>Get figure data in PNG format.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></dt><dd><p>Two-element tuple containing the dissimilarity matrix dimensions.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></dt><dd><p>Total number of elements in the dissimilarity matrix.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">svg</span></code></dt><dd><p>Get figure data in SVG format.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.between.html#skbio.stats.distance.DissimilarityMatrix.between" title="skbio.stats.distance.DissimilarityMatrix.between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">between</span></code></a>(from_, to_[, allow_overlap])</p></td>
-<td><p>Obtain the distances between the two groups of IDs.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.copy.html#skbio.stats.distance.DissimilarityMatrix.copy" title="skbio.stats.distance.DissimilarityMatrix.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
-<td><p>Return a deep copy of the dissimilarity matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.filter.html#skbio.stats.distance.DissimilarityMatrix.filter" title="skbio.stats.distance.DissimilarityMatrix.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(ids[, strict])</p></td>
-<td><p>Filter the dissimilarity matrix by IDs.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.from_iterable.html#skbio.stats.distance.DissimilarityMatrix.from_iterable" title="skbio.stats.distance.DissimilarityMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys])</p></td>
-<td><p>Create DissimilarityMatrix from an iterable given a metric.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.index.html#skbio.stats.distance.DissimilarityMatrix.index" title="skbio.stats.distance.DissimilarityMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
-<td><p>Return the index of the specified ID.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.plot.html#skbio.stats.distance.DissimilarityMatrix.plot" title="skbio.stats.distance.DissimilarityMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
-<td><p>Create a heatmap of the dissimilarity matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.read.html#skbio.stats.distance.DissimilarityMatrix.read" title="skbio.stats.distance.DissimilarityMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(file[, format])</p></td>
-<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> instance from a file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.redundant_form.html#skbio.stats.distance.DissimilarityMatrix.redundant_form" title="skbio.stats.distance.DissimilarityMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
-<td><p>Return an array of dissimilarities in redundant format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.to_data_frame.html#skbio.stats.distance.DissimilarityMatrix.to_data_frame" title="skbio.stats.distance.DissimilarityMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
-<td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> from this <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.transpose.html#skbio.stats.distance.DissimilarityMatrix.transpose" title="skbio.stats.distance.DissimilarityMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
-<td><p>Return the transpose of the dissimilarity matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.within.html#skbio.stats.distance.DissimilarityMatrix.within" title="skbio.stats.distance.DissimilarityMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
-<td><p>Obtain all the distances among the set of IDs.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.write.html#skbio.stats.distance.DissimilarityMatrix.write" title="skbio.stats.distance.DissimilarityMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
-<td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> to a file.</p></td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Attributes</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
@@ -943,15 +883,15 @@ symmetric.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</p>
+        <p class="prev-next-title">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.distance.DissimilarityMatrix.between.html"
+       href="skbio.stats.distance.DissimilarityMatrix.__contains__.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.distance.DissimilarityMatrix.between</p>
+        <p class="prev-next-title">skbio.stats.distance.DissimilarityMatrix.__contains__</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

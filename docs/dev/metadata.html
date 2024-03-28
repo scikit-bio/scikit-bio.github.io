@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Metadata (skbio.metadata) &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>Metadata (skbio.metadata) &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,15 +62,15 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../metadata.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="skbio.metadata.Interval" href="generated/skbio.metadata.Interval.html" />
-    <link rel="prev" title="Feature Table (skbio.table)" href="table.html" />
+    <link rel="next" title="skbio.metadata.SampleMetadata" href="generated/skbio.metadata.SampleMetadata.html" />
+    <link rel="prev" title="skbio.table.example_table" href="generated/skbio.table.example_table.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -485,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="stats.html">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -547,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -614,6 +614,14 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.metadata.SampleMetadata.html">skbio.metadata.SampleMetadata</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.metadata.MetadataColumn.html">skbio.metadata.MetadataColumn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.metadata.NumericMetadataColumn.html">skbio.metadata.NumericMetadataColumn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.metadata.CategoricalMetadataColumn.html">skbio.metadata.CategoricalMetadataColumn</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.metadata.Interval.html">skbio.metadata.Interval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.metadata.IntervalMetadata.html">skbio.metadata.IntervalMetadata</a></li>
 </ul>
@@ -672,9 +680,40 @@ document.write(`
                   
   <section id="metadata-skbio-metadata">
 <span id="module-skbio.metadata"></span><h1>Metadata (<a class="reference internal" href="#module-skbio.metadata" title="skbio.metadata"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.metadata</span></code></a>)<a class="headerlink" href="#metadata-skbio-metadata" title="Link to this heading">#</a></h1>
-<p>This module provides classes for storing and working with metadata.</p>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<p>This module provides functionality for storing and working with metadata – the data
+that describes other data. While a typical data table (see <a class="reference internal" href="table.html#module-skbio.table" title="skbio.table"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code></a>) stores
+the measurements of features in samples, metadata provides information about the
+samples or features themselves. Examples of metadata include experimental grouping,
+demographic and clinical properties of subjects, functional categories of genes and
+metabolites, etc.</p>
+<section id="sample-metadata">
+<h2>Sample metadata<a class="headerlink" href="#sample-metadata" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.metadata.SampleMetadata.html#skbio.metadata.SampleMetadata" title="skbio.metadata.SampleMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SampleMetadata</span></code></a>(dataframe[, ...])</p></td>
+<td><p>Store metadata associated with identifiers in a study.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-columns">
+<h2>Metadata columns<a class="headerlink" href="#metadata-columns" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.metadata.MetadataColumn.html#skbio.metadata.MetadataColumn" title="skbio.metadata.MetadataColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetadataColumn</span></code></a>(series[, missing_scheme])</p></td>
+<td><p>Abstract base class representing a single metadata column.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.metadata.NumericMetadataColumn.html#skbio.metadata.NumericMetadataColumn" title="skbio.metadata.NumericMetadataColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumericMetadataColumn</span></code></a>(series[, missing_scheme])</p></td>
+<td><p>A single metadata column containing numeric data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.metadata.CategoricalMetadataColumn.html#skbio.metadata.CategoricalMetadataColumn" title="skbio.metadata.CategoricalMetadataColumn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalMetadataColumn</span></code></a>(series[, ...])</p></td>
+<td><p>A single metadata column containing categorical data.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interval-metadata">
+<h2>Interval metadata<a class="headerlink" href="#interval-metadata" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.metadata.Interval.html#skbio.metadata.Interval" title="skbio.metadata.Interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Interval</span></code></a>(interval_metadata, bounds[, fuzzy, ...])</p></td>
@@ -699,20 +738,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="table.html"
+       href="generated/skbio.table.example_table.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Feature Table (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code>)</p>
+        <p class="prev-next-title">skbio.table.example_table</p>
       </div>
     </a>
     <a class="right-next"
-       href="generated/skbio.metadata.Interval.html"
+       href="generated/skbio.metadata.SampleMetadata.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.metadata.Interval</p>
+        <p class="prev-next-title">skbio.metadata.SampleMetadata</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -734,7 +773,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-metadata">Sample metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-columns">Metadata columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-metadata">Interval metadata</a></li>
 </ul>
   </nav></div>
 

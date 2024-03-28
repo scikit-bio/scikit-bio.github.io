@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Statistics (skbio.stats) &#8212; scikit-bio 0.6.0-dev documentation</title>
+    <title>Multivariate Statistics (skbio.stats) &#8212; scikit-bio 0.6.0 documentation</title>
   
   
   
@@ -32,14 +32,14 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=ad750166" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=d0a8d76f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9ff6a3c4"></script>
+    <script src="_static/documentation_options.js?v=8fa8b3e9"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,15 +62,15 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../stats.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Distance matrices and distance-based statistics (skbio.stats.distance)" href="generated/skbio.stats.distance.html" />
-    <link rel="prev" title="skbio.diversity.get_beta_diversity_metrics" href="generated/skbio.diversity.get_beta_diversity_metrics.html" />
+    <link rel="next" title="Distance matrix-based statistics (skbio.stats.distance)" href="generated/skbio.stats.distance.html" />
+    <link rel="prev" title="skbio.diversity.block_beta_diversity" href="generated/skbio.diversity.block_beta_diversity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0-dev documentation"/>
-    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0-dev documentation"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.0 documentation"/>
+    <script>document.write(`<img src="_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.0 documentation"/>`);</script>
   
   
 </a></div>
@@ -249,56 +249,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -311,8 +304,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -485,56 +485,49 @@ document.write(`
                     
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="io.html">
-                        File I/O (skbio.io)
+                        Input and Output (skbio.io)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="sequence.html">
-                        Sequences (skbio.sequence)
+                        Biological Sequences (skbio.sequence)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="alignment.html">
-                        Alignments (skbio.alignment)
+                        Sequence Alignments (skbio.alignment)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="tree.html">
-                        Tree representations (skbio.tree)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-                        Constructing workflows (skbio.workflow)
+                        Trees and Phylogenetics (skbio.tree)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="diversity.html">
-                        Diversity calculations (skbio.diversity)
+                        Community Diversity (skbio.diversity)
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
                       <a class="nav-link dropdown-item nav-internal" href="#">
-                        Statistics (skbio.stats)
+                        Multivariate Statistics (skbio.stats)
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="table.html">
-                        Feature Table (skbio.table)
+                        Data Table (skbio.table)
                       </a>
                     </li>
                 
@@ -547,8 +540,15 @@ document.write(`
                 
 
                     <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+                        Workflow construction (skbio.workflow)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link dropdown-item nav-internal" href="util.html">
-                        Utility functionality (skbio.util)
+                        Utilities for Developers (skbio.util)
                       </a>
                     </li>
                 
@@ -614,16 +614,22 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.distance.html">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.distance.html">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.ordination.html">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.subsample_counts.html">skbio.stats.subsample_counts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.isubsample.html">skbio.stats.isubsample</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
 </ul>
 </div>
 </nav></div>
@@ -661,7 +667,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Statistics...</li>
+    <li class="breadcrumb-item active" aria-current="page">Multivariate...</li>
   </ul>
 </nav>
 </div>
@@ -678,37 +684,44 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="statistics-skbio-stats">
-<span id="module-skbio.stats"></span><h1>Statistics (<a class="reference internal" href="#module-skbio.stats" title="skbio.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code></a>)<a class="headerlink" href="#statistics-skbio-stats" title="Link to this heading">#</a></h1>
-<p>This package contains various statistical methods, including ordination
-techniques and distance matrix-based statistics.</p>
-<section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+  <section id="multivariate-statistics-skbio-stats">
+<span id="module-skbio.stats"></span><h1>Multivariate Statistics (<a class="reference internal" href="#module-skbio.stats" title="skbio.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code></a>)<a class="headerlink" href="#multivariate-statistics-skbio-stats" title="Link to this heading">#</a></h1>
+<p>This module provides various statistical methods to support the analyses of
+high-dimensional biological data to uncover the relationships among samples,
+features and metadata. Examples include distance matrix-based statistics,
+ordination methods, composition statistics, and data subsampling techniques.</p>
+<section id="distance-matrix-statistics">
+<h2>Distance matrix statistics<a class="headerlink" href="#distance-matrix-statistics" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.stats.distance.html#module-skbio.stats.distance" title="skbio.stats.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a></p></td>
-<td><p>Distance matrices and distance-based statistics (skbio.stats.distance)</p></td>
+<td><p>Distance matrix-based statistics (skbio.stats.distance)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.stats.evolve.html#module-skbio.stats.evolve" title="skbio.stats.evolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evolve</span></code></a></p></td>
-<td><p>Evolutionary statistics (skbio.stats.evolve)</p></td>
-</tr>
+</tbody>
+</table>
+</section>
+<section id="ordination-methods">
+<h2>Ordination methods<a class="headerlink" href="#ordination-methods" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.stats.ordination.html#module-skbio.stats.ordination" title="skbio.stats.ordination"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ordination</span></code></a></p></td>
 <td><p>Ordination methods (skbio.stats.ordination)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.stats.gradient.html#module-skbio.stats.gradient" title="skbio.stats.gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gradient</span></code></a></p></td>
-<td><p>Gradient analyses (skbio.stats.gradient)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.stats.power.html#module-skbio.stats.power" title="skbio.stats.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power</span></code></a></p></td>
-<td><p>Empirical Power Estimation (skbio.stats.power)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.stats.composition.html#module-skbio.stats.composition" title="skbio.stats.composition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composition</span></code></a></p></td>
+</tbody>
+</table>
+</section>
+<section id="composition-statistics">
+<h2>Composition statistics<a class="headerlink" href="#composition-statistics" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.stats.composition.html#module-skbio.stats.composition" title="skbio.stats.composition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composition</span></code></a></p></td>
 <td><p>Composition Statistics (skbio.stats.composition)</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<section id="data-subsampling">
+<h2>Data subsampling<a class="headerlink" href="#data-subsampling" title="Link to this heading">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.stats.subsample_counts.html#skbio.stats.subsample_counts" title="skbio.stats.subsample_counts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsample_counts</span></code></a>(counts, n[, replace])</p></td>
@@ -716,6 +729,22 @@ techniques and distance matrix-based statistics.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.stats.isubsample.html#skbio.stats.isubsample" title="skbio.stats.isubsample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isubsample</span></code></a>(items, maximum[, minimum, ...])</p></td>
 <td><p>Randomly subsample items from bins, without replacement.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other-statistical-methods">
+<h2>Other statistical methods<a class="headerlink" href="#other-statistical-methods" title="Link to this heading">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.stats.evolve.html#module-skbio.stats.evolve" title="skbio.stats.evolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evolve</span></code></a></p></td>
+<td><p>Evolutionary statistics (skbio.stats.evolve)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.stats.gradient.html#module-skbio.stats.gradient" title="skbio.stats.gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gradient</span></code></a></p></td>
+<td><p>Gradient analyses (skbio.stats.gradient)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.stats.power.html#module-skbio.stats.power" title="skbio.stats.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power</span></code></a></p></td>
+<td><p>Empirical Power Estimation (skbio.stats.power)</p></td>
 </tr>
 </tbody>
 </table>
@@ -733,12 +762,12 @@ techniques and distance matrix-based statistics.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/skbio.diversity.get_beta_diversity_metrics.html"
+       href="generated/skbio.diversity.block_beta_diversity.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.diversity.get_beta_diversity_metrics</p>
+        <p class="prev-next-title">skbio.diversity.block_beta_diversity</p>
       </div>
     </a>
     <a class="right-next"
@@ -746,7 +775,7 @@ techniques and distance matrix-based statistics.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Distance matrices and distance-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</p>
+        <p class="prev-next-title">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -768,8 +797,11 @@ techniques and distance matrix-based statistics.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-matrix-statistics">Distance matrix statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordination-methods">Ordination methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-statistics">Composition statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-subsampling">Data subsampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-statistical-methods">Other statistical methods</a></li>
 </ul>
   </nav></div>
 
