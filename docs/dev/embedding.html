@@ -69,7 +69,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="skbio.embedding.ProteinEmbedding" href="generated/skbio.embedding.ProteinEmbedding.html" />
+    <link rel="next" title="skbio.embedding.Embedding" href="generated/skbio.embedding.Embedding.html" />
     <link rel="prev" title="skbio.table.example_table" href="generated/skbio.table.example_table.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -621,8 +621,19 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.Embedding.html">skbio.embedding.Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.SequenceEmbedding.html">skbio.embedding.SequenceEmbedding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.ProteinEmbedding.html">skbio.embedding.ProteinEmbedding</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.SequenceVector.html">skbio.embedding.SequenceVector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.ProteinVector.html">skbio.embedding.ProteinVector</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_numpy.html">skbio.embedding.embed_vec_to_numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_distances.html">skbio.embedding.embed_vec_to_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_ordination.html">skbio.embedding.embed_vec_to_ordination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_dataframe.html">skbio.embedding.embed_vec_to_dataframe</a></li>
 </ul>
 </div>
 </nav></div>
@@ -685,11 +696,48 @@ as protein embeddings outputted from protein language models (pLMs).</p>
 <h2>Embedding types<a class="headerlink" href="#embedding-types" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.embedding.Embedding.html#skbio.embedding.Embedding" title="skbio.embedding.Embedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Embedding</span></code></a>(embedding, ids, **kwargs)</p></td>
+<td><p>Embedding for a biological object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.embedding.SequenceEmbedding.html#skbio.embedding.SequenceEmbedding" title="skbio.embedding.SequenceEmbedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SequenceEmbedding</span></code></a>(embedding, sequence, **kwargs)</p></td>
+<td><p>Embedding for a biological sequence.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.embedding.ProteinEmbedding.html#skbio.embedding.ProteinEmbedding" title="skbio.embedding.ProteinEmbedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProteinEmbedding</span></code></a>(embedding, sequence[, ...])</p></td>
-<td><p>Stores the embeddings of the protein sequence.</p></td>
+<td><p>Embedding of a protein sequence.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="embedding-vector-types">
+<h2>Embedding vector types<a class="headerlink" href="#embedding-vector-types" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.embedding.SequenceVector.html#skbio.embedding.SequenceVector" title="skbio.embedding.SequenceVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SequenceVector</span></code></a>(vector, sequence, **kwargs)</p></td>
+<td><p>Vector representation for a biological sequence.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.embedding.ProteinVector.html#skbio.embedding.ProteinVector" title="skbio.embedding.ProteinVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProteinVector</span></code></a>(vector, sequence, **kwargs)</p></td>
-<td><p>A vector representation of the protein sequence.</p></td>
+<td><p>Vector representation for a protein sequence.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="embedding-vector-utilities">
+<h2>Embedding vector utilities<a class="headerlink" href="#embedding-vector-utilities" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_numpy.html#skbio.embedding.embed_vec_to_numpy" title="skbio.embedding.embed_vec_to_numpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embed_vec_to_numpy</span></code></a>(vectors[, validate])</p></td>
+<td><p>Convert an iterable of EmbeddingVector objects to a NumPy array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_distances.html#skbio.embedding.embed_vec_to_distances" title="skbio.embedding.embed_vec_to_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embed_vec_to_distances</span></code></a>(vectors[, metric, ...])</p></td>
+<td><p>Convert EmbeddingVector objects to a DistanceMatrix object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_ordination.html#skbio.embedding.embed_vec_to_ordination" title="skbio.embedding.embed_vec_to_ordination"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embed_vec_to_ordination</span></code></a>(vectors[, validate])</p></td>
+<td><p>Convert EmbeddingVector objects to an Ordination object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.embedding.embed_vec_to_dataframe.html#skbio.embedding.embed_vec_to_dataframe" title="skbio.embedding.embed_vec_to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embed_vec_to_dataframe</span></code></a>(vectors[, validate])</p></td>
+<td><p>Convert a list of SequenceVector objects to a pandas DataFrame.</p></td>
 </tr>
 </tbody>
 </table>
@@ -717,11 +765,11 @@ as protein embeddings outputted from protein language models (pLMs).</p>
       </div>
     </a>
     <a class="right-next"
-       href="generated/skbio.embedding.ProteinEmbedding.html"
+       href="generated/skbio.embedding.Embedding.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.embedding.ProteinEmbedding</p>
+        <p class="prev-next-title">skbio.embedding.Embedding</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -744,6 +792,8 @@ as protein embeddings outputted from protein language models (pLMs).</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-types">Embedding types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-vector-types">Embedding vector types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-vector-utilities">Embedding vector utilities</a></li>
 </ul>
   </nav></div>
 
