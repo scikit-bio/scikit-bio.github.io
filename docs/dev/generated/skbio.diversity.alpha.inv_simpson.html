@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.diversity.alpha.kempton_taylor_q &#8212; scikit-bio 0.6.1-dev documentation</title>
+    <title>skbio.diversity.alpha.inv_simpson &#8212; scikit-bio 0.6.1-dev documentation</title>
   
   
   
@@ -59,19 +59,19 @@
                 gtag('config', 'UA-6636235-9');
             </script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.diversity.alpha.kempton_taylor_q';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.diversity.alpha.inv_simpson';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.3';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.diversity.alpha.kempton_taylor_q.html" />
+    <link rel="canonical" href="../../../generated/skbio.diversity.alpha.inv_simpson.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.diversity.alpha.phydiv" href="skbio.diversity.alpha.phydiv.html" />
-    <link rel="prev" title="skbio.diversity.alpha.inv_simpson" href="skbio.diversity.alpha.inv_simpson.html" />
+    <link rel="next" title="skbio.diversity.alpha.kempton_taylor_q" href="skbio.diversity.alpha.kempton_taylor_q.html" />
+    <link rel="prev" title="skbio.diversity.alpha.fisher_alpha" href="skbio.diversity.alpha.fisher_alpha.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -639,8 +639,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.brillouin_d.html">skbio.diversity.alpha.brillouin_d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.enspie.html">skbio.diversity.alpha.enspie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.fisher_alpha.html">skbio.diversity.alpha.fisher_alpha</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.inv_simpson.html">skbio.diversity.alpha.inv_simpson</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.diversity.alpha.kempton_taylor_q</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.diversity.alpha.inv_simpson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.kempton_taylor_q.html">skbio.diversity.alpha.kempton_taylor_q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.phydiv.html">skbio.diversity.alpha.phydiv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.shannon.html">skbio.diversity.alpha.shannon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.simpson.html">skbio.diversity.alpha.simpson</a></li>
@@ -734,63 +734,50 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-diversity-alpha-kempton-taylor-q">
-<h1>skbio.diversity.alpha.kempton_taylor_q<a class="headerlink" href="#skbio-diversity-alpha-kempton-taylor-q" title="Link to this heading">#</a></h1>
+  <section id="skbio-diversity-alpha-inv-simpson">
+<h1>skbio.diversity.alpha.inv_simpson<a class="headerlink" href="#skbio-diversity-alpha-inv-simpson" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.diversity.alpha.kempton_taylor_q">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">kempton_taylor_q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_quantile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_quantile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_base.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.kempton_taylor_q" title="Link to this definition">#</a></dt>
-<dd><p>Calculate Kempton-Taylor Q index of alpha diversity.</p>
-<p>Kempton-Taylor Q index measures diversity based on the middle-ranking taxa
-in the abundance distribution. Specifically, it estimates the slope of the
-cumulative abundance curve in the interquantile range. It is defined as:</p>
+<dt class="sig sig-object py" id="skbio.diversity.alpha.inv_simpson">
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">inv_simpson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_base.py#L569"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.inv_simpson" title="Link to this definition">#</a></dt>
+<dd><p>Calculate inverse Simpson index.</p>
+<p>The inverse Simpson index (<span class="math notranslate nohighlight">\(1 / D\)</span>), a.k.a., Simpson’s reciprocal
+index, is defined as:</p>
 <div class="math notranslate nohighlight">
-\[Q = \frac{S_{lower..upper}}{\ln n_{lower} - \ln n_{upper}}\]</div>
-<p>where “lower” and “upper” are the taxa at the lower and upper quantiles of
-the abundance distribution, <span class="math notranslate nohighlight">\(S\)</span> is the number of taxa, and <span class="math notranslate nohighlight">\(n\)</span>
-is the number of individuals.</p>
-<p>By default, the lower and upper quartiles are used. Therefore:</p>
-<div class="math notranslate nohighlight">
-\[Q = \frac{S}{2(\ln n_{0.25} - \ln n_{0.75})}\]</div>
-<p>The quantiles are rounded inwards in this implementation.</p>
+\[1 / D = \frac{1}{\sum_{i=1}^S{p_i^2}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the number of taxa and <span class="math notranslate nohighlight">\(p_i\)</span> is the proportion
+of the sample represented by taxon <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vector of counts.</p>
 </dd>
-<dt><strong>lower_quantile</strong><span class="classifier">float, optional</span></dt><dd><p>Lower bound of the interquantile range. Defaults to lower quartile.</p>
-</dd>
-<dt><strong>upper_quantile</strong><span class="classifier">float, optional</span></dt><dd><p>Upper bound of the interquantile range. Defaults to upper quartile.</p>
+<dt><strong>finite</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, correct for finite sampling when calculating <span class="math notranslate nohighlight">\(D\)</span>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>Kempton-Taylor Q index of alpha diversity.</p>
+<dt>float</dt><dd><p>Inverse Simpson index.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.diversity.alpha.dominance.html#skbio.diversity.alpha.dominance" title="skbio.diversity.alpha.dominance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dominance</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
-<p>The index is defined in <a class="reference internal" href="#r6eb5b2f88398-1" id="id1">[1]</a>. The implementation here is based on the
-description given in the SDR-IV online manual <a class="reference internal" href="#r6eb5b2f88398-2" id="id2">[2]</a>.</p>
-<p>The implementation provided here differs slightly from the results given in
-Magurran 1998. Specifically, we have 14 in the numerator rather than 15.
-Magurran recommends counting half of the taxa with the same # counts as the
-point where the UQ falls and the point where the LQ falls, but the
-justification for this is unclear (e.g. if there were a very large # taxa
-that just overlapped one of the quantiles, the results would be
-considerably off). Leaving the calculation as-is for now, but consider
-changing.</p>
+<p><span class="math notranslate nohighlight">\(1 / D\)</span> is a measurement of the effective number of species (ENS).
+It is equivalent to Hill number with order 2 (<span class="math notranslate nohighlight">\(^2D\)</span>).</p>
+<p>Inverse Simpson index was originally described in <a class="reference internal" href="#rda80e47828a7-1" id="id1">[1]</a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="r6eb5b2f88398-1" role="doc-biblioentry">
+<div class="citation" id="rda80e47828a7-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Kempton, R. A. and Taylor, L. R. (1976) Models and statistics for
-species diversity. Nature, 262, 818-820.</p>
-</div>
-<div class="citation" id="r6eb5b2f88398-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://www.pisces-conservation.com/sdrhelp/index.html">http://www.pisces-conservation.com/sdrhelp/index.html</a></p>
+<p>Simpson, E. H. (1949). Measurement of diversity. Nature, 163(4148),
+688-688.</p>
 </div>
 </div>
 </dd></dl>
@@ -808,20 +795,20 @@ species diversity. Nature, 262, 818-820.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.diversity.alpha.inv_simpson.html"
+       href="skbio.diversity.alpha.fisher_alpha.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.diversity.alpha.inv_simpson</p>
+        <p class="prev-next-title">skbio.diversity.alpha.fisher_alpha</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.diversity.alpha.phydiv.html"
+       href="skbio.diversity.alpha.kempton_taylor_q.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.diversity.alpha.phydiv</p>
+        <p class="prev-next-title">skbio.diversity.alpha.kempton_taylor_q</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -843,7 +830,7 @@ species diversity. Nature, 262, 818-820.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.diversity.alpha.kempton_taylor_q"><code class="docutils literal notranslate"><span class="pre">kempton_taylor_q()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.diversity.alpha.inv_simpson"><code class="docutils literal notranslate"><span class="pre">inv_simpson()</span></code></a></li>
 </ul>
   </nav></div>
 
