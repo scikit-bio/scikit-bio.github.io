@@ -638,11 +638,14 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.brillouin_d.html">skbio.diversity.alpha.brillouin_d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.enspie.html">skbio.diversity.alpha.enspie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.fisher_alpha.html">skbio.diversity.alpha.fisher_alpha</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.hill.html">skbio.diversity.alpha.hill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.inv_simpson.html">skbio.diversity.alpha.inv_simpson</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.kempton_taylor_q.html">skbio.diversity.alpha.kempton_taylor_q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.phydiv.html">skbio.diversity.alpha.phydiv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.renyi.html">skbio.diversity.alpha.renyi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.shannon.html">skbio.diversity.alpha.shannon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.simpson.html">skbio.diversity.alpha.simpson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.tsallis.html">skbio.diversity.alpha.tsallis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.heip_e.html">skbio.diversity.alpha.heip_e</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.mcintosh_e.html">skbio.diversity.alpha.mcintosh_e</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.pielou_e.html">skbio.diversity.alpha.pielou_e</a></li>
@@ -806,20 +809,29 @@ diversity measurement.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.diversity.alpha.fisher_alpha.html#skbio.diversity.alpha.fisher_alpha" title="skbio.diversity.alpha.fisher_alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fisher_alpha</span></code></a>(counts)</p></td>
 <td><p>Calculate Fisher's alpha, a metric of diversity.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.diversity.alpha.inv_simpson.html#skbio.diversity.alpha.inv_simpson" title="skbio.diversity.alpha.inv_simpson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inv_simpson</span></code></a>(counts[, finite])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.diversity.alpha.hill.html#skbio.diversity.alpha.hill" title="skbio.diversity.alpha.hill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hill</span></code></a>(counts[, order])</p></td>
+<td><p>Calculate Hill number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.diversity.alpha.inv_simpson.html#skbio.diversity.alpha.inv_simpson" title="skbio.diversity.alpha.inv_simpson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inv_simpson</span></code></a>(counts[, finite])</p></td>
 <td><p>Calculate inverse Simpson index.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.diversity.alpha.kempton_taylor_q.html#skbio.diversity.alpha.kempton_taylor_q" title="skbio.diversity.alpha.kempton_taylor_q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kempton_taylor_q</span></code></a>(counts[, lower_quantile, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.diversity.alpha.kempton_taylor_q.html#skbio.diversity.alpha.kempton_taylor_q" title="skbio.diversity.alpha.kempton_taylor_q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kempton_taylor_q</span></code></a>(counts[, lower_quantile, ...])</p></td>
 <td><p>Calculate Kempton-Taylor Q index of alpha diversity.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.diversity.alpha.phydiv.html#skbio.diversity.alpha.phydiv" title="skbio.diversity.alpha.phydiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">phydiv</span></code></a>(counts[, taxa, tree, rooted, weight, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.diversity.alpha.phydiv.html#skbio.diversity.alpha.phydiv" title="skbio.diversity.alpha.phydiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">phydiv</span></code></a>(counts[, taxa, tree, rooted, weight, ...])</p></td>
 <td><p>Calculate generalized phylogenetic diversity (PD) metrics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.diversity.alpha.renyi.html#skbio.diversity.alpha.renyi" title="skbio.diversity.alpha.renyi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renyi</span></code></a>(counts[, order, base])</p></td>
+<td><p>Calculate Renyi entropy.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.diversity.alpha.shannon.html#skbio.diversity.alpha.shannon" title="skbio.diversity.alpha.shannon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shannon</span></code></a>(counts[, base, exp])</p></td>
 <td><p>Calculate Shannon's diversity index.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.diversity.alpha.simpson.html#skbio.diversity.alpha.simpson" title="skbio.diversity.alpha.simpson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simpson</span></code></a>(counts[, finite])</p></td>
 <td><p>Calculate Simpson's diversity index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.diversity.alpha.tsallis.html#skbio.diversity.alpha.tsallis" title="skbio.diversity.alpha.tsallis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tsallis</span></code></a>(counts[, order])</p></td>
+<td><p>Calculate Tsallis entropy.</p></td>
 </tr>
 </tbody>
 </table>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.diversity.alpha.ace &#8212; scikit-bio 0.6.2-dev documentation</title>
+    <title>skbio.diversity.alpha.renyi &#8212; scikit-bio 0.6.2-dev documentation</title>
   
   
   
@@ -59,19 +59,19 @@
                 gtag('config', 'UA-6636235-9');
             </script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.diversity.alpha.ace';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.diversity.alpha.renyi';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.diversity.alpha.ace.html" />
+    <link rel="canonical" href="../../../generated/skbio.diversity.alpha.renyi.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.diversity.alpha.chao1" href="skbio.diversity.alpha.chao1.html" />
-    <link rel="prev" title="Alpha diversity measures (skbio.diversity.alpha)" href="skbio.diversity.alpha.html" />
+    <link rel="next" title="skbio.diversity.alpha.shannon" href="skbio.diversity.alpha.shannon.html" />
+    <link rel="prev" title="skbio.diversity.alpha.phydiv" href="skbio.diversity.alpha.phydiv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -622,7 +622,7 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.diversity.alpha.html">Alpha diversity measures (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity.alpha</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.diversity.alpha.ace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.ace.html">skbio.diversity.alpha.ace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.chao1.html">skbio.diversity.alpha.chao1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.chao1_ci.html">skbio.diversity.alpha.chao1_ci</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.doubles.html">skbio.diversity.alpha.doubles</a></li>
@@ -642,7 +642,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.inv_simpson.html">skbio.diversity.alpha.inv_simpson</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.kempton_taylor_q.html">skbio.diversity.alpha.kempton_taylor_q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.phydiv.html">skbio.diversity.alpha.phydiv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.renyi.html">skbio.diversity.alpha.renyi</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.diversity.alpha.renyi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.shannon.html">skbio.diversity.alpha.shannon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.simpson.html">skbio.diversity.alpha.simpson</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.diversity.alpha.tsallis.html">skbio.diversity.alpha.tsallis</a></li>
@@ -736,83 +736,65 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-diversity-alpha-ace">
-<h1>skbio.diversity.alpha.ace<a class="headerlink" href="#skbio-diversity-alpha-ace" title="Link to this heading">#</a></h1>
+  <section id="skbio-diversity-alpha-renyi">
+<h1>skbio.diversity.alpha.renyi<a class="headerlink" href="#skbio-diversity-alpha-renyi" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.diversity.alpha.ace">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">ace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rare_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_ace.py#L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.ace" title="Link to this definition">#</a></dt>
-<dd><p>Calculate the ACE metric (Abundance-based Coverage Estimator).</p>
-<p>The ACE metric is defined as:</p>
+<dt class="sig sig-object py" id="skbio.diversity.alpha.renyi">
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">renyi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_base.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.renyi" title="Link to this definition">#</a></dt>
+<dd><p>Calculate Renyi entropy.</p>
+<p>Renyi entropy (<span class="math notranslate nohighlight">\(^qH\)</span>) is a generalization of Shannon index, with an
+exponent (order) <span class="math notranslate nohighlight">\(q\)</span> instead of 1. It is defined as:</p>
 <div class="math notranslate nohighlight">
-\[S_{ace}=S_{abund}+\frac{S_{rare}}{C_{ace}}+
-\frac{F_1}{C_{ace}}\gamma^2_{ace}\]</div>
-<p>where <span class="math notranslate nohighlight">\(S_{abund}\)</span> is the number of abundant taxa (with more than
-<code class="docutils literal notranslate"><span class="pre">rare_threshold</span></code> individuals) when all samples are pooled,
-<span class="math notranslate nohighlight">\(S_{rare}\)</span> is the number of rare taxa (with less than or equal to
-<code class="docutils literal notranslate"><span class="pre">rare_threshold</span></code> individuals) when all samples are pooled,
-<span class="math notranslate nohighlight">\(C_{ace}\)</span> is the sample abundance coverage estimator, <span class="math notranslate nohighlight">\(F_1\)</span> is
-the frequency of singletons, and <span class="math notranslate nohighlight">\(\gamma^2_{ace}\)</span> is the estimated
-coefficient of variation for rare taxa.</p>
-<p>The estimated coefficient of variation is defined as (assuming
-<code class="docutils literal notranslate"><span class="pre">rare_threshold</span></code> is 10, the default):</p>
-<div class="math notranslate nohighlight">
-\[\gamma^2_{ace}=max\left[\frac{S_{rare}}{C_{ace}}
-\frac{\sum^{10}_{i=1}{{i\left(i-1\right)}}F_i}
-{\left(N_{rare}\right)\left(N_{rare}-1\right)} -1,0\right]\]</div>
+\[^qH = \frac{1}{1-q}\log_b{(\sum_{i=1}^S p_i^q)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the number of taxa and <span class="math notranslate nohighlight">\(p_i\)</span> is the proportion
+of the sample represented by taxon <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vector of counts.</p>
 </dd>
-<dt><strong>rare_threshold</strong><span class="classifier">int, optional</span></dt><dd><p>Threshold at which a taxon containing as many or fewer individuals will
-be considered rare.</p>
+<dt><strong>order</strong><span class="classifier">int or float, optional</span></dt><dd><p>Order (<span class="math notranslate nohighlight">\(q\)</span>). Ranges between 0 and infinity. Default is 2.</p>
+</dd>
+<dt><strong>base</strong><span class="classifier">int or float, optional</span></dt><dd><p>Logarithm base to use in the calculation. Default is <code class="docutils literal notranslate"><span class="pre">e</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>double</dt><dd><p>Computed ACE metric.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If every rare taxon is a singleton.</p>
+<dt>float</dt><dd><p>Renyi entropy.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.diversity.alpha.hill.html#skbio.diversity.alpha.hill" title="skbio.diversity.alpha.hill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hill</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.diversity.alpha.inv_simpson.html#skbio.diversity.alpha.inv_simpson" title="skbio.diversity.alpha.inv_simpson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inv_simpson</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.diversity.alpha.renyi" title="skbio.diversity.alpha.renyi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renyi</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.diversity.alpha.shannon.html#skbio.diversity.alpha.shannon" title="skbio.diversity.alpha.shannon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shannon</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
-<p>ACE was first introduced in <a class="reference internal" href="#r34b5d5ddea45-1" id="id1">[1]</a> and <a class="reference internal" href="#r34b5d5ddea45-2" id="id2">[2]</a>. The implementation here is based
-on the description given in the EstimateS manual <a class="reference internal" href="#r34b5d5ddea45-3" id="id3">[3]</a>.</p>
-<p>If no rare taxa exist, returns the number of abundant taxa. The default
-value of 10 for <cite>rare_threshold</cite> is based on <a class="reference internal" href="#r34b5d5ddea45-4" id="id4">[4]</a>.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">counts</span></code> contains zeros, indicating taxa which are known to exist in
-the environment but did not appear in the sample, they will be ignored for
-the purpose of calculating the number of rare taxa.</p>
+<p>Renyi entropy was originally defined in <a class="reference internal" href="#r7985afba0318-1" id="id1">[1]</a>. It is a generalization of
+multiple entropy notions, as determined by the order (<span class="math notranslate nohighlight">\(q\)</span>). Special
+cases of Renyi entropy include:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q=0\)</span>: Max-entropy (<span class="math notranslate nohighlight">\(\log{S}\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(q \to 1\)</span>: Shannon entropy (index).</p></li>
+<li><p><span class="math notranslate nohighlight">\(q=2\)</span>: Collision entropy, a.k.a, Renyi’s quadratic entropy, or
+“Renyi entropy”. Equivalent to the logarithm of inverse Simpson index.</p></li>
+<li><p><span class="math notranslate nohighlight">\(q \to \infty\)</span>: Min-entropy (<span class="math notranslate nohighlight">\(-\log{\max{p}}\)</span>).</p></li>
+</ul>
+<p>Renyi entropy is equivalent to the logarithm of Hill number.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="r34b5d5ddea45-1" role="doc-biblioentry">
+<div class="citation" id="r7985afba0318-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Chao, A. &amp; S.-M Lee. 1992 Estimating the number of classes via
-sample coverage. Journal of the American Statistical Association 87,
-210-217.</p>
-</div>
-<div class="citation" id="r34b5d5ddea45-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>Chao, A., M.-C. Ma, &amp; M. C. K. Yang. 1993. Stopping rules and
-estimation for recapture debugging with unequal failure rates.
-Biometrika 80, 193-201.</p>
-</div>
-<div class="citation" id="r34b5d5ddea45-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://viceroy.eeb.uconn.edu/estimates/">http://viceroy.eeb.uconn.edu/estimates/</a></p>
-</div>
-<div class="citation" id="r34b5d5ddea45-4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
-<p>Chao, A., W.-H. Hwang, Y.-C. Chen, and C.-Y. Kuo. 2000. Estimating
-the number of shared species in two communities. Statistica Sinica
-10:227-246.</p>
+<p>Rényi, A. (1961, January). On measures of entropy and information.
+In Proceedings of the fourth Berkeley symposium on mathematical
+statistics and probability, volume 1: contributions to the theory of
+statistics (Vol. 4, pp. 547-562). University of California Press.</p>
 </div>
 </div>
 </dd></dl>
@@ -830,20 +812,20 @@ the number of shared species in two communities. Statistica Sinica
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.diversity.alpha.html"
+       href="skbio.diversity.alpha.phydiv.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Alpha diversity measures (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity.alpha</span></code>)</p>
+        <p class="prev-next-title">skbio.diversity.alpha.phydiv</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.diversity.alpha.chao1.html"
+       href="skbio.diversity.alpha.shannon.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.diversity.alpha.chao1</p>
+        <p class="prev-next-title">skbio.diversity.alpha.shannon</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -865,7 +847,7 @@ the number of shared species in two communities. Statistica Sinica
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.diversity.alpha.ace"><code class="docutils literal notranslate"><span class="pre">ace()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.diversity.alpha.renyi"><code class="docutils literal notranslate"><span class="pre">renyi()</span></code></a></li>
 </ul>
   </nav></div>
 
