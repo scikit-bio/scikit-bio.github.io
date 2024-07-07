@@ -70,7 +70,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.tree.TreeNode.unrooted_deepcopy" href="skbio.tree.TreeNode.unrooted_deepcopy.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.unpack_by_func" href="skbio.tree.TreeNode.unpack_by_func.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.unroot" href="skbio.tree.TreeNode.unroot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -663,6 +663,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.invalidate_caches.html">skbio.tree.TreeNode.invalidate_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_root.html">skbio.tree.TreeNode.is_root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_tip.html">skbio.tree.TreeNode.is_tip</a></li>
@@ -683,6 +684,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at_midpoint.html">skbio.tree.TreeNode.root_at_midpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html">skbio.tree.TreeNode.root_by_outgroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.shear.html">skbio.tree.TreeNode.shear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.shuffle.html">skbio.tree.TreeNode.shuffle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.siblings.html">skbio.tree.TreeNode.siblings</a></li>
@@ -696,8 +698,10 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unpack.html">skbio.tree.TreeNode.unpack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unpack_by_func.html">skbio.tree.TreeNode.unpack_by_func</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unroot.html">skbio.tree.TreeNode.unroot</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.unrooted_copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html">skbio.tree.TreeNode.unrooted_deepcopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html">skbio.tree.TreeNode.unrooted_move</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.write.html">skbio.tree.TreeNode.write</a></li>
 </ul>
 </details></li>
@@ -771,35 +775,74 @@ document.write(`
 <h1>skbio.tree.TreeNode.unrooted_copy<a class="headerlink" href="#skbio-tree-treenode-unrooted-copy" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.unrooted_copy">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L578"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_copy" title="Link to this definition">#</a></dt>
-<dd><p>Walk the tree unrooted-style and returns a copy.</p>
-<p>Perform a copy of self and return a new copy of the tree as an
-unrooted copy. This is useful for defining new roots of the tree as
-the <cite>TreeNode</cite>.</p>
-<p>This method is recursive.</p>
-<p>Warning, this is _NOT_ a deepcopy</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'length',</span> <span class="pre">'name',</span> <span class="pre">'support'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L693"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_copy" title="Link to this definition">#</a></dt>
+<dd><p>Walk the tree unrooted-style and return a copy.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>parent</strong><span class="classifier">TreeNode or None</span></dt><dd><p>Used to avoid infinite loops when performing the unrooted traverse</p>
+<dd class="field-odd"><dl>
+<dt><strong>parent</strong><span class="classifier">TreeNode or None</span></dt><dd><p>Direction of walking (from parent to self). If specified, walking
+to the parent will be prohibited.</p>
+</dd>
+<dt><strong>branch_attrs</strong><span class="classifier">set of str, optional</span></dt><dd><p>Attributes of <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> objects that should be considered as
+branch attributes during the operation.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.2.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> will be removed from the default in 0.7.0, as
+it is usually considered as an attribute of the node instead of
+the branch.</p>
+</div>
+</dd>
+<dt><strong>root_name</strong><span class="classifier">str or None, optional</span></dt><dd><p>Name for the new root node, if it doesn’t have one.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.2.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This parameter will be removed in 0.7.0, and the root
+node will not be renamed.</p>
+</div>
+</dd>
+<dt><strong>deep</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether perform a shallow (<code class="docutils literal notranslate"><span class="pre">False</span></code>, default) or deep (<code class="docutils literal notranslate"><span class="pre">True</span></code>)
+copy of node attributes.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.2.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>A new copy of the tree</p>
+<dd class="field-even"><dl>
+<dt>TreeNode</dt><dd><p>A new copy of the tree rooted at the given node.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.2: </span>Node attributes other than name and length will also be copied.</p>
+</div>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The default behavior of <code class="docutils literal notranslate"><span class="pre">unrooted_copy</span></code> is subject to change in
+0.7.0. The new default behavior can be achieved by specifying
+<code class="docutils literal notranslate"><span class="pre">branch_attrs={&quot;length&quot;,</span> <span class="pre">&quot;support&quot;},</span> <span class="pre">root_name=None</span></code>.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.copy.html#skbio.tree.TreeNode.copy" title="skbio.tree.TreeNode.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html#skbio.tree.TreeNode.unrooted_deepcopy" title="skbio.tree.TreeNode.unrooted_deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unrooted_deepcopy</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.root_at.html#skbio.tree.TreeNode.root_at" title="skbio.tree.TreeNode.root_at"><code class="xref py py-obj docutils literal notranslate"><span class="pre">root_at</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html#skbio.tree.TreeNode.unrooted_move" title="skbio.tree.TreeNode.unrooted_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unrooted_move</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This method recursively walks a tree from a given node in an unrooted
+style (i.e., directions of branches are not assumed), and copies each
+node it visits, such that the copy of the given node becomes the root
+node of a new tree and the copies of all other nodes are re-positioned
+accordingly, whereas the topology of the new tree will be identical to
+the existing one.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,(b,c)d)e,(f,g)h)i;&quot;</span><span class="p">])</span>
@@ -823,12 +866,12 @@ the <cite>TreeNode</cite>.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.unpack_by_func.html"
+       href="skbio.tree.TreeNode.unroot.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.unpack_by_func</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.unroot</p>
       </div>
     </a>
     <a class="right-next"

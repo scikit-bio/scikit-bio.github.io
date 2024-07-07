@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.observed_node_counts &#8212; scikit-bio 0.6.2-dev documentation</title>
+    <title>skbio.tree.TreeNode.insert &#8212; scikit-bio 0.6.2-dev documentation</title>
   
   
   
@@ -58,19 +58,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.observed_node_counts';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.insert';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.observed_node_counts.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.insert.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.pop" href="skbio.tree.TreeNode.pop.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.non_tips" href="skbio.tree.TreeNode.non_tips.html" />
+    <link rel="next" title="skbio.tree.TreeNode.invalidate_caches" href="skbio.tree.TreeNode.invalidate_caches.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.index_tree" href="skbio.tree.TreeNode.index_tree.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -663,7 +663,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.insert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.invalidate_caches.html">skbio.tree.TreeNode.invalidate_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_root.html">skbio.tree.TreeNode.is_root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_tip.html">skbio.tree.TreeNode.is_tip</a></li>
@@ -672,7 +672,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.lowest_common_ancestor.html">skbio.tree.TreeNode.lowest_common_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.neighbors.html">skbio.tree.TreeNode.neighbors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.non_tips.html">skbio.tree.TreeNode.non_tips</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.observed_node_counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.pop.html">skbio.tree.TreeNode.pop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.postorder.html">skbio.tree.TreeNode.postorder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.pre_and_postorder.html">skbio.tree.TreeNode.pre_and_postorder</a></li>
@@ -771,37 +771,71 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-observed-node-counts">
-<h1>skbio.tree.TreeNode.observed_node_counts<a class="headerlink" href="#skbio-tree-treenode-observed-node-counts" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-insert">
+<h1>skbio.tree.TreeNode.insert<a class="headerlink" href="#skbio-tree-treenode-insert" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.observed_node_counts">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">observed_node_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tip_counts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L965"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.observed_node_counts" title="Link to this definition">#</a></dt>
-<dd><p>Return counts of node observations from counts of tip observations.</p>
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.insert">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L239"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.insert" title="Link to this definition">#</a></dt>
+<dd><p>Insert a node into the branch connecting self and its parent.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.2.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>tip_counts</strong><span class="classifier">dict of ints</span></dt><dd><p>Counts of observations of tips. Keys correspond to tip names in
-<code class="docutils literal notranslate"><span class="pre">self</span></code>, and counts are unsigned ints.</p>
+<dt><strong>node</strong><span class="classifier">TreeNode</span></dt><dd><p>Node to insert.</p>
+</dd>
+<dt><strong>distance</strong><span class="classifier">float, int or None, optional</span></dt><dd><p>Distance between self and the insertion point. Must not exceed
+<code class="docutils literal notranslate"><span class="pre">self.length</span></code>. If <code class="docutils literal notranslate"><span class="pre">None</span></code> whereas <code class="docutils literal notranslate"><span class="pre">self.length</span></code> is not
+<code class="docutils literal notranslate"><span class="pre">None</span></code>, will insert at the midpoint of the branch.</p>
+</dd>
+<dt><strong>branch_attrs</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Attributes of self that should be transferred to the inserted node
+as they are considered as attributes of the branch. <code class="docutils literal notranslate"><span class="pre">support</span></code>
+will be automatically included as it is always a branch attribute.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>dict</dt><dd><p>Counts of observations of nodes. Keys correspond to node names
-(internal nodes or tips), and counts are unsigned ints.</p>
+<dt>NoParentError</dt><dd><p>If self has no parent.</p>
 </dd>
-</dl>
+<dt>ValueError</dt><dd><p>If distance is specified but branch has no length.</p>
 </dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If a count less than one is observed.</p>
-</dd>
-<dt>MissingNodeError</dt><dd><p>If a count is provided for a tip not in the tree, or for an
-internal node.</p>
+<dt>ValueError</dt><dd><p>If distance exceeds branch length.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.tree.TreeNode.append.html#skbio.tree.TreeNode.append" title="skbio.tree.TreeNode.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1,b:2)c:4,d:5)e;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-a</span>
+<span class="go">          /c-------|</span>
+<span class="go">-e-------|          \-b</span>
+<span class="go">         |</span>
+<span class="go">          \-d</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">TreeNode</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                              /-a</span>
+<span class="go">          /x------- /c-------|</span>
+<span class="go">-e-------|                    \-b</span>
+<span class="go">         |</span>
+<span class="go">          \-d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span>
+<span class="go">2.0</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -817,20 +851,20 @@ internal node.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.non_tips.html"
+       href="skbio.tree.TreeNode.index_tree.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.non_tips</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.index_tree</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.pop.html"
+       href="skbio.tree.TreeNode.invalidate_caches.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.pop</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.invalidate_caches</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -852,7 +886,7 @@ internal node.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.observed_node_counts"><code class="docutils literal notranslate"><span class="pre">TreeNode.observed_node_counts()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.insert"><code class="docutils literal notranslate"><span class="pre">TreeNode.insert()</span></code></a></li>
 </ul>
   </nav></div>
 

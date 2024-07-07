@@ -663,6 +663,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.invalidate_caches.html">skbio.tree.TreeNode.invalidate_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_root.html">skbio.tree.TreeNode.is_root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_tip.html">skbio.tree.TreeNode.is_tip</a></li>
@@ -683,6 +684,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at_midpoint.html">skbio.tree.TreeNode.root_at_midpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html">skbio.tree.TreeNode.root_by_outgroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.shear.html">skbio.tree.TreeNode.shear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.shuffle.html">skbio.tree.TreeNode.shuffle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.siblings.html">skbio.tree.TreeNode.siblings</a></li>
@@ -696,8 +698,10 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unpack.html">skbio.tree.TreeNode.unpack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unpack_by_func.html">skbio.tree.TreeNode.unpack_by_func</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unroot.html">skbio.tree.TreeNode.unroot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_copy.html">skbio.tree.TreeNode.unrooted_copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html">skbio.tree.TreeNode.unrooted_deepcopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html">skbio.tree.TreeNode.unrooted_move</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.write.html">skbio.tree.TreeNode.write</a></li>
 </ul>
 </details></li>
@@ -771,36 +775,29 @@ document.write(`
 <h1>skbio.tree.TreeNode.deepcopy<a class="headerlink" href="#skbio-tree-treenode-deepcopy" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.deepcopy">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L471"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.deepcopy" title="Link to this definition">#</a></dt>
-<dd><p>Return a copy of self using an iterative approach.</p>
-<p>Perform an iterative deepcopy of self. It is not assured that the copy
-of node attributes will be performed iteratively as that depends on
-the copy method of the types being copied</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L666"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.deepcopy" title="Link to this definition">#</a></dt>
+<dd><p>Return a deep copy of self using an iterative approach.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>TreeNode</dt><dd><p>A new copy of self</p>
+<dt>TreeNode</dt><dd><p>A new deep copy of self.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">deepcopy</span></code> is deprecated as of <code class="docutils literal notranslate"><span class="pre">0.6.2</span></code>. Use <code class="docutils literal notranslate"><span class="pre">copy</span></code> instead.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html#skbio.tree.TreeNode.unrooted_deepcopy" title="skbio.tree.TreeNode.unrooted_deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unrooted_deepcopy</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.unrooted_copy.html#skbio.tree.TreeNode.unrooted_copy" title="skbio.tree.TreeNode.unrooted_copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unrooted_copy</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.copy.html#skbio.tree.TreeNode.copy" title="skbio.tree.TreeNode.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></dt><dd></dd>
 </dl>
 </div>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)root;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree_copy</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">id</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">()])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree_copy_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">id</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tree_copy</span><span class="o">.</span><span class="n">traverse</span><span class="p">()])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tree_nodes</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">tree_copy_nodes</span><span class="p">)))</span>
-<span class="go">0</span>
-</pre></div>
-</div>
+<p class="rubric">Notes</p>
+<p><code class="docutils literal notranslate"><span class="pre">deepcopy</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">copy</span></code> with <code class="docutils literal notranslate"><span class="pre">deep=True</span></code>, which is
+currently the default behavior of the latter.</p>
 </dd></dl>
 
 </section>
