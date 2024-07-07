@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.distance.DissimilarityMatrix.__getitem__ &#8212; scikit-bio 0.6.2-dev documentation</title>
+    <title>skbio.stats.distance.DissimilarityMatrix.rename &#8212; scikit-bio 0.6.2-dev documentation</title>
   
   
   
@@ -58,19 +58,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.DissimilarityMatrix.__getitem__';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.DissimilarityMatrix.rename';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.distance.DissimilarityMatrix.__getitem__.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.distance.DissimilarityMatrix.rename.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.distance.DissimilarityMatrix.__getstate__" href="skbio.stats.distance.DissimilarityMatrix.__getstate__.html" />
-    <link rel="prev" title="skbio.stats.distance.DissimilarityMatrix.__ge__" href="skbio.stats.distance.DissimilarityMatrix.__ge__.html" />
+    <link rel="next" title="skbio.stats.distance.DissimilarityMatrix.to_data_frame" href="skbio.stats.distance.DissimilarityMatrix.to_data_frame.html" />
+    <link rel="prev" title="skbio.stats.distance.DissimilarityMatrix.redundant_form" href="skbio.stats.distance.DissimilarityMatrix.redundant_form.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -712,54 +712,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-distance-dissimilaritymatrix-getitem">
-<h1>skbio.stats.distance.DissimilarityMatrix.__getitem__<a class="headerlink" href="#skbio-stats-distance-dissimilaritymatrix-getitem" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-distance-dissimilaritymatrix-rename">
+<h1>skbio.stats.distance.DissimilarityMatrix.rename<a class="headerlink" href="#skbio-stats-distance-dissimilaritymatrix-rename" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.stats.distance.DissimilarityMatrix.__getitem__">
-<span class="sig-prename descclassname"><span class="pre">DissimilarityMatrix.</span></span><span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L841"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DissimilarityMatrix.__getitem__" title="Link to this definition">#</a></dt>
-<dd><p>Slice into dissimilarity data by object ID or numpy indexing.</p>
-<p>Extracts data from the dissimilarity matrix by object ID, a pair of
-IDs, or numpy indexing/slicing.</p>
-<dl class="field-list">
+<dt class="sig sig-object py" id="skbio.stats.distance.DissimilarityMatrix.rename">
+<span class="sig-prename descclassname"><span class="pre">DissimilarityMatrix.</span></span><span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L372"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DissimilarityMatrix.rename" title="Link to this definition">#</a></dt>
+<dd><p>Rename IDs in the dissimilarity matrix.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>index</strong><span class="classifier">str, two-tuple of str, or numpy index</span></dt><dd><p><cite>index</cite> can be one of the following forms: an ID, a pair of IDs, or
-a numpy index.</p>
-<p>If <cite>index</cite> is a string, it is assumed to be an ID and a
-<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> row vector is returned for the corresponding ID.
-Note that the ID’s row of dissimilarities is returned, <em>not</em> its
-column. If the matrix is symmetric, the two will be identical, but
-this makes a difference if the matrix is asymmetric.</p>
-<p>If <cite>index</cite> is a two-tuple of strings, each string is assumed to be
-an ID and the corresponding matrix element is returned that
-represents the dissimilarity between the two IDs. Note that the
-order of lookup by ID pair matters if the matrix is asymmetric: the
-first ID will be used to look up the row, and the second ID will be
-used to look up the column. Thus, <code class="docutils literal notranslate"><span class="pre">dm['a',</span> <span class="pre">'b']</span></code> may not be the
-same as <code class="docutils literal notranslate"><span class="pre">dm['b',</span> <span class="pre">'a']</span></code> if the matrix is asymmetric.</p>
-<p>Otherwise, <cite>index</cite> will be passed through to
-<code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix.data.__getitem__</span></code>, allowing for standard
-indexing of a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (e.g., slicing).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>ndarray or scalar</dt><dd><p>Indexed data, where return type depends on the form of <cite>index</cite> (see
-description of <cite>index</cite> for more details).</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>MissingIDError</dt><dd><p>If the ID(s) specified in <cite>index</cite> are not in the dissimilarity
-matrix.</p>
+<dt><strong>mapper</strong><span class="classifier">dict or callable</span></dt><dd><p>A dictionary or function that maps current IDs to new IDs.</p>
+</dd>
+<dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), every ID in the matrix must be included in
+<code class="docutils literal notranslate"><span class="pre">mapper</span></code>. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, only the specified IDs will be renamed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">mapper</span></code> does not contain all of the same IDs in the matrix
+whereas in strict mode.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The lookup based on ID(s) is quick.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;y&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">ids</span><span class="p">)</span>
+<span class="go">(&#39;x&#39;, &#39;y&#39;)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -775,20 +759,20 @@ matrix.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.distance.DissimilarityMatrix.__ge__.html"
+       href="skbio.stats.distance.DissimilarityMatrix.redundant_form.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.distance.DissimilarityMatrix.__ge__</p>
+        <p class="prev-next-title">skbio.stats.distance.DissimilarityMatrix.redundant_form</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.distance.DissimilarityMatrix.__getstate__.html"
+       href="skbio.stats.distance.DissimilarityMatrix.to_data_frame.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.distance.DissimilarityMatrix.__getstate__</p>
+        <p class="prev-next-title">skbio.stats.distance.DissimilarityMatrix.to_data_frame</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -810,7 +794,7 @@ matrix.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.distance.DissimilarityMatrix.__getitem__"><code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix.__getitem__()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.distance.DissimilarityMatrix.rename"><code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix.rename()</span></code></a></li>
 </ul>
   </nav></div>
 

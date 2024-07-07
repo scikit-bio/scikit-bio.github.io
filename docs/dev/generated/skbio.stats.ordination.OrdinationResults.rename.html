@@ -720,24 +720,28 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.ordination.OrdinationResults.rename">
 <span class="sig-prename descclassname"><span class="pre">OrdinationResults.</span></span><span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'samples'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L403"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults.rename" title="Link to this definition">#</a></dt>
-<dd><p>Renames IDs in OrdinationResults.</p>
-<dl class="field-list">
+<dd><p>Rename sample or feature IDs in the data matrix.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>mapper</strong><span class="classifier">dict or function</span></dt><dd><p>A dictionary or function that maps current IDs to new IDs.</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mapper</strong><span class="classifier">dict or callable</span></dt><dd><p>A dictionary or function that maps current IDs to new IDs.</p>
 </dd>
-<dt><strong>matrix</strong><span class="classifier">samples or features</span></dt><dd><p>Specifies which id type, either ‘samples’ or ‘features’, to rename.</p>
+<dt><strong>matrix</strong><span class="classifier">str, optional</span></dt><dd><p>Specifies which matrix contains the IDs to be renamed. Either
+“samples” (default) or “features”.</p>
 </dd>
-<dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, then every id in the OrdinationResults dataframe must be
-included in mapper and renamed.
-If False, then only the specified indices will be renamed.</p>
+<dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), every ID in the matrix must be included in
+<code class="docutils literal notranslate"><span class="pre">mapper</span></code>. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, only the specified IDs will be renamed.</p>
 </dd>
-<dt><strong>Raises</strong></dt><dd></dd>
-<dt><strong>______</strong></dt><dd></dd>
-<dt><strong>ValueError</strong></dt><dd><p>If strict is True and <cite>mapper</cite> does not contain all of the same
-IDs as <cite>OrdinationResults</cite>.</p>
-<p>If renaming <cite>features</cite> but <cite>self</cite> does not contain <cite>features</cite>.</p>
-<p>If <cite>matrix</cite> is neither <cite>samples</cite> nor <cite>features</cite>.</p>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">mapper</span></code> does not contain all of the same IDs in the matrix
+whereas in strict mode.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If renaming features but self does not contain features.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">matrix</span></code> is neither “samples” nor “features”.</p>
 </dd>
 </dl>
 </dd>
