@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.majority_rule &#8212; scikit-bio 0.6.2-dev documentation</title>
+    <title>skbio.tree.majority_rule &#8212; scikit-bio 0.6.2 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=be67db09"></script>
+    <script src="../_static/documentation_options.js?v=1c28bd9a"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,7 +62,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="canonical" href="../../../generated/skbio.tree.majority_rule.html" />
@@ -70,7 +70,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Community Diversity (skbio.diversity)" href="../diversity.html" />
-    <link rel="prev" title="skbio.tree.nj" href="skbio.tree.nj.html" />
+    <link rel="prev" title="skbio.tree.nni" href="skbio.tree.nni.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,8 +150,8 @@
       
     
     
-    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.2-dev documentation"/>
-    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.2-dev documentation"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.6.2 documentation"/>
+    <script>document.write(`<img src="../_static/logo_inv.svg" class="logo__image only-dark" alt="scikit-bio 0.6.2 documentation"/>`);</script>
   
   
 </a></div>
@@ -624,6 +624,7 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.nni.html">skbio.tree.nni</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.tree.majority_rule</a></li>
@@ -688,7 +689,7 @@ document.write(`
 <h1>skbio.tree.majority_rule<a class="headerlink" href="#skbio-tree-majority-rule" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.majority_rule">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">majority_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff=0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">support_attr='support'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_node_class=&lt;class</span> <span class="pre">'skbio.tree._tree.TreeNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_majority_rule.py#L182"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.majority_rule" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">majority_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff=0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">support_attr='support'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_node_class=&lt;class</span> <span class="pre">'skbio.tree._tree.TreeNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/0.6.2/skbio/tree/_majority_rule.py#L182"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.majority_rule" title="Link to this definition">#</a></dt>
 <dd><p>Determine consensus trees from a list of rooted trees.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -800,12 +801,12 @@ if not all tips are present across all trees.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.nj.html"
+       href="skbio.tree.nni.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.nj</p>
+        <p class="prev-next-title">skbio.tree.nni</p>
       </div>
     </a>
     <a class="right-next"
