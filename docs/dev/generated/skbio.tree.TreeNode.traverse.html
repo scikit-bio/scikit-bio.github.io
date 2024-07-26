@@ -780,28 +780,21 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.traverse">
 <span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self_before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1742"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.traverse" title="Link to this definition">#</a></dt>
-<dd><p>Return iterator over descendants.</p>
-<p>This is a depth-first traversal. Since the trees are not binary,
-preorder and postorder traversals are possible, but inorder traversals
-would depend on the data in the tree and are not handled here.</p>
+<dd><p>Traverse over tree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>self_before</strong><span class="classifier">bool</span></dt><dd><p>includes each node before its descendants if True</p>
+<dt><strong>self_before</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether include each node before its descendants (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
 </dd>
-<dt><strong>self_after</strong><span class="classifier">bool</span></dt><dd><p>includes each node after its descendants if True</p>
+<dt><strong>self_after</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether include each node after its descendants (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 </dd>
-<dt><strong>include_self</strong><span class="classifier">bool</span></dt><dd><p>include the initial node if True</p>
+<dt><strong>include_self</strong><span class="classifier">bool, optional</span></dt><dd><p>Include the initial node if <code class="docutils literal notranslate"><span class="pre">True</span></code> (default).</p>
 </dd>
-<dt><strong>`self_before` and `self_after` are independent. If neither is `True`,</strong></dt><dd></dd>
-<dt><strong>only terminal nodes will be returned.</strong></dt><dd></dd>
-<dt><strong>Note that if self is terminal, it will only be included once even if</strong></dt><dd></dd>
-<dt><strong>`self_before` and `self_after` are both `True`.</strong></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Yields<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>Traversed node.</p>
+<dt>TreeNode</dt><dd><p>Visited node.</p>
 </dd>
 </dl>
 </dd>
@@ -817,15 +810,38 @@ would depend on the data in the tree and are not handled here.</p>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.non_tips.html#skbio.tree.TreeNode.non_tips" title="skbio.tree.TreeNode.non_tips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_tips</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This is a depth-first search (DFS). <code class="docutils literal notranslate"><span class="pre">self_before</span></code> and <code class="docutils literal notranslate"><span class="pre">self_after</span></code>
+determine whether a node should be visited before and after traversing
+its children. They are independent. If both <code class="docutils literal notranslate"><span class="pre">True</span></code>, each internal
+node (and root) will be visited twice. If neither is <code class="docutils literal notranslate"><span class="pre">True</span></code>, only
+tips will be returned.</p>
+<p>This method is a generalization of <code class="docutils literal notranslate"><span class="pre">preorder</span></code>, <code class="docutils literal notranslate"><span class="pre">postorder</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pre_and_postorder</span></code> and <code class="docutils literal notranslate"><span class="pre">tips</span></code>. The default mode
+(<code class="docutils literal notranslate"><span class="pre">self_before=True,</span> <span class="pre">self_after=False</span></code>) is equivalent to preorder
+traversal.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)g;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-a</span>
+<span class="go">          /c-------|</span>
+<span class="go">         |          \-b</span>
+<span class="go">-g-------|</span>
+<span class="go">         |          /-d</span>
+<span class="go">          \f-------|</span>
+<span class="go">                    \-e</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="go">None</span>
+<span class="go">g</span>
 <span class="go">c</span>
 <span class="go">a</span>
 <span class="go">b</span>
+<span class="go">f</span>
+<span class="go">d</span>
+<span class="go">e</span>
 </pre></div>
 </div>
 </dd></dl>

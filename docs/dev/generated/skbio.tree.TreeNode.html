@@ -966,7 +966,7 @@ confidence or frequency of this branch.</p>
 <td><p>Find lowest common ancestor for a list of tips.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.levelorder.html#skbio.tree.TreeNode.levelorder" title="skbio.tree.TreeNode.levelorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">levelorder</span></code></a>([include_self])</p></td>
-<td><p>Perform levelorder iteration over tree.</p></td>
+<td><p>Perform level order traversal over tree.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.lowest_common_ancestor.html#skbio.tree.TreeNode.lowest_common_ancestor" title="skbio.tree.TreeNode.lowest_common_ancestor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowest_common_ancestor</span></code></a>(tipnames)</p></td>
 <td><p>Find lowest common ancestor for a list of tips.</p></td>
@@ -975,7 +975,7 @@ confidence or frequency of this branch.</p>
 <td><p>Return all nodes that are connected to self.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.non_tips.html#skbio.tree.TreeNode.non_tips" title="skbio.tree.TreeNode.non_tips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_tips</span></code></a>([include_self])</p></td>
-<td><p>Iterate over nontips descended from self.</p></td>
+<td><p>Iterate over non-tip nodes descended from the current node.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html#skbio.tree.TreeNode.observed_node_counts" title="skbio.tree.TreeNode.observed_node_counts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_node_counts</span></code></a>(tip_counts)</p></td>
 <td><p>Return counts of node observations from counts of tip observations.</p></td>
@@ -984,13 +984,13 @@ confidence or frequency of this branch.</p>
 <td><p>Remove and return a child node by its index position from self.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.postorder.html#skbio.tree.TreeNode.postorder" title="skbio.tree.TreeNode.postorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postorder</span></code></a>([include_self])</p></td>
-<td><p>Perform postorder iteration over tree.</p></td>
+<td><p>Perform postorder traversal over tree.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.pre_and_postorder.html#skbio.tree.TreeNode.pre_and_postorder" title="skbio.tree.TreeNode.pre_and_postorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_and_postorder</span></code></a>([include_self])</p></td>
-<td><p>Perform iteration over tree, visiting node before and after.</p></td>
+<td><p>Perform traversal over tree, visiting nodes before and after.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.preorder.html#skbio.tree.TreeNode.preorder" title="skbio.tree.TreeNode.preorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preorder</span></code></a>([include_self])</p></td>
-<td><p>Perform preorder iteration over tree.</p></td>
+<td><p>Perform preorder traversal over tree.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.prune.html#skbio.tree.TreeNode.prune" title="skbio.tree.TreeNode.prune"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prune</span></code></a>()</p></td>
 <td><p>Reconstruct correct topology after nodes have been removed.</p></td>
@@ -1038,7 +1038,7 @@ confidence or frequency of this branch.</p>
 <td><p>Return distance matrix between pairs of tips, and a tip order.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.tips.html#skbio.tree.TreeNode.tips" title="skbio.tree.TreeNode.tips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tips</span></code></a>([include_self])</p></td>
-<td><p>Iterate over tips descended from <cite>self</cite>.</p></td>
+<td><p>Iterate over tips descended from the current node.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.to_array.html#skbio.tree.TreeNode.to_array" title="skbio.tree.TreeNode.to_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_array</span></code></a>([attrs, nan_length_value])</p></td>
 <td><p>Return an array representation of self.</p></td>
@@ -1047,7 +1047,7 @@ confidence or frequency of this branch.</p>
 <td><p>Return a taxonomy representation of self.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.traverse.html#skbio.tree.TreeNode.traverse" title="skbio.tree.TreeNode.traverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">traverse</span></code></a>([self_before, self_after, include_self])</p></td>
-<td><p>Return iterator over descendants.</p></td>
+<td><p>Traverse over tree.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.unpack.html#skbio.tree.TreeNode.unpack" title="skbio.tree.TreeNode.unpack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unpack</span></code></a>()</p></td>
 <td><p>Unpack an internal node in place.</p></td>

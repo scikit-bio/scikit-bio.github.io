@@ -779,20 +779,18 @@ document.write(`
 <h1>skbio.tree.TreeNode.tips<a class="headerlink" href="#skbio-tree-treenode-tips" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.tips">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">tips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2034"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.tips" title="Link to this definition">#</a></dt>
-<dd><p>Iterate over tips descended from <cite>self</cite>.</p>
-<p>Node order is consistent between calls and is ordered by a
-postorder traversal of the tree.</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">tips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2116"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.tips" title="Link to this definition">#</a></dt>
+<dd><p>Iterate over tips descended from the current node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>include_self</strong><span class="classifier">bool</span></dt><dd><p>include the initial node if True</p>
+<dt><strong>include_self</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether include the initial node if a tip (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Yields<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>Traversed node.</p>
+<dt>TreeNode</dt><dd><p>Visited tip.</p>
 </dd>
 </dl>
 </dd>
@@ -800,18 +798,27 @@ postorder traversal of the tree.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.traverse.html#skbio.tree.TreeNode.traverse" title="skbio.tree.TreeNode.traverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">traverse</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.postorder.html#skbio.tree.TreeNode.postorder" title="skbio.tree.TreeNode.postorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postorder</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.preorder.html#skbio.tree.TreeNode.preorder" title="skbio.tree.TreeNode.preorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preorder</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.pre_and_postorder.html#skbio.tree.TreeNode.pre_and_postorder" title="skbio.tree.TreeNode.pre_and_postorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_and_postorder</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.levelorder.html#skbio.tree.TreeNode.levelorder" title="skbio.tree.TreeNode.levelorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">levelorder</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.non_tips.html#skbio.tree.TreeNode.non_tips" title="skbio.tree.TreeNode.non_tips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">non_tips</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.postorder.html#skbio.tree.TreeNode.postorder" title="skbio.tree.TreeNode.postorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">postorder</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>Nodes are ordered by a postorder traversal of the tree. The order is
+consistent between calls.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">tips</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-a</span>
+<span class="go">          /c-------|</span>
+<span class="go">         |          \-b</span>
+<span class="go">---------|</span>
+<span class="go">         |          /-d</span>
+<span class="go">          \f-------|</span>
+<span class="go">                    \-e</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">tips</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">a</span>
 <span class="go">b</span>
