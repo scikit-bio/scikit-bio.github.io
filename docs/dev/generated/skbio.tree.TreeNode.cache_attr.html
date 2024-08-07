@@ -69,7 +69,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.compare_rfd" href="skbio.tree.TreeNode.compare_rfd.html" />
+    <link rel="next" title="skbio.tree.TreeNode.clear_caches" href="skbio.tree.TreeNode.clear_caches.html" />
     <link rel="prev" title="skbio.tree.TreeNode.bifurcate" href="skbio.tree.TreeNode.bifurcate.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.cache_attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
@@ -779,52 +780,112 @@ document.write(`
 <h1>skbio.tree.TreeNode.cache_attr<a class="headerlink" href="#skbio-tree-treenode-cache-attr" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.cache_attr">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cache_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3788"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cache_attr" title="Link to this definition">#</a></dt>
-<dd><p>Cache attributes on internal nodes of the tree.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cache_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2289"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cache_attr" title="Link to this definition">#</a></dt>
+<dd><p>Cache attributes on nodes of the tree through a postorder traversal.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>func</strong><span class="classifier">function</span></dt><dd><p>func will be provided the node currently being evaluated and must
-return a list of item (or items) to cache from that node or an
-empty list.</p>
+<dd class="field-odd"><dl>
+<dt><strong>func</strong><span class="classifier">callable</span></dt><dd><p>Function to calculate the attribute of the current node. The result will be
+combined with the attributes of the previous nodes, if applicable.</p>
 </dd>
-<dt><strong>cache_attrname</strong><span class="classifier">str</span></dt><dd><p>Name of the attribute to decorate on containing the cached values</p>
+<dt><strong>cache_attrname</strong><span class="classifier">str</span></dt><dd><p>Name of the attribute to be attached to each node.</p>
 </dd>
-<dt><strong>cache_type</strong><span class="classifier">{set, frozenset, list}</span></dt><dd><p>The type of the cache</p>
+<dt><strong>cache_type</strong><span class="classifier">{list, tuple, set, frozenset}, callable, or None</span></dt><dd><p>The type of the cache. Can be any of the four iterable types: list
+(default), tuple, set, or frozenset. In these cases, combination of
+attributes of the node’s children and itself will be automated.</p>
+<p>Or a custom function that takes two arguments: list of attributes of its
+children, and attribute calculated from itself by <code class="docutils literal notranslate"><span class="pre">func</span></code>, and returns the
+combined attribute of the node.</p>
+<p>Or None, in which case combination of attributes of children and self
+will not take place, unless explicitly customized within <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Tuple, custom function and None were added to the options.</p>
+</div>
+</dd>
+<dt><strong>register</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether register the attribute name as a cache of the tree, such that the
+attributes will be deleted from all nodes when the tree is manipulated or
+the <code class="docutils literal notranslate"><span class="pre">clear_caches</span></code> method is explicitly invoked. Default is True.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TypeError</dt><dd><p>If an cache_type that is not a <cite>set</cite> or a <cite>list</cite> is specified.</p>
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">cache_type</span></code> is invalid.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>This method is particularly useful if you need to frequently look up
-attributes that would normally require a traversal of the tree.</p>
-<p>WARNING: any cache created by this method will be invalidated if the
-topology of the tree changes (e.g., if <cite>TreeNode.invalidate_caches</cite> is
-called).</p>
+<p>This method provides an efficient interface to assign a custom attribute to
+every node of a tree through one postorder travesal. It is particularly useful
+if one needs to frequently look up attributes that would normally require one
+traversal of the tree per lookup. The assigned attributes may be automatically
+deleted when the tree is manipulated.</p>
 <p class="rubric">Examples</p>
-<p>Cache the tip names of the tree on its internal nodes</p>
+<p>This method facilitates evaluation for various useful node properties. Some
+representative examples are provided below.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b,(c,d)e)f,(g,h)i)root;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()</span> <span class="k">else</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1.2,b:1.6)c:0.3,(d:0.8,e:1.0)f:0.6)g;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-a</span>
+<span class="go">          /c-------|</span>
+<span class="go">         |          \-b</span>
+<span class="go">-g-------|</span>
+<span class="go">         |          /-d</span>
+<span class="go">          \f-------|</span>
+<span class="go">                    \-e</span>
+</pre></div>
+</div>
+<p>Cache a list of all descending tip names on each node. This faciliates the
+assignment of taxon set under each clade in the tree. It resembles but is more
+efficient than calling <code class="docutils literal notranslate"><span class="pre">subset</span></code> multiple times.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()</span> <span class="k">else</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;tip_names&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">include_self</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Node name: </span><span class="si">%s</span><span class="s2">, cache: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">tip_names</span><span class="p">))</span>
-<span class="go">Node name: root, cache: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;g&#39;, &#39;h&#39;]</span>
-<span class="go">Node name: f, cache: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span>
-<span class="go">Node name: a, cache: [&#39;a&#39;]</span>
-<span class="go">Node name: b, cache: [&#39;b&#39;]</span>
-<span class="go">Node name: e, cache: [&#39;c&#39;, &#39;d&#39;]</span>
-<span class="go">Node name: c, cache: [&#39;c&#39;]</span>
-<span class="go">Node name: d, cache: [&#39;d&#39;]</span>
-<span class="go">Node name: i, cache: [&#39;g&#39;, &#39;h&#39;]</span>
-<span class="go">Node name: g, cache: [&#39;g&#39;]</span>
-<span class="go">Node name: h, cache: [&#39;h&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">include_self</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, tips: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tip_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">Node: g, tips: [&#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;]</span>
+<span class="go">Node: c, tips: [&#39;a&#39;, &#39;b&#39;]</span>
+<span class="go">Node: a, tips: [&#39;a&#39;]</span>
+<span class="go">Node: b, tips: [&#39;b&#39;]</span>
+<span class="go">Node: f, tips: [&#39;d&#39;, &#39;e&#39;]</span>
+<span class="go">Node: d, tips: [&#39;d&#39;]</span>
+<span class="go">Node: e, tips: [&#39;e&#39;]</span>
+</pre></div>
+</div>
+<p>Cache the number of nodes per clade. The function <code class="docutils literal notranslate"><span class="pre">sum</span></code> is used in place of
+cache type such that the count will be accumulated. This resembles but is more
+efficient than calling <code class="docutils literal notranslate"><span class="pre">count</span></code> multiple times.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;node_count&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">node_count</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>Cache the sum of branch lengths per clade. This resembles but is more efficient
+than calling <code class="docutils literal notranslate"><span class="pre">descending_branch_length</span></code> multiple times. Note: the result
+includes the stem branch of each clade. One needs to subtract <code class="docutils literal notranslate"><span class="pre">length</span></code> from
+each value in order to match the result of <code class="docutils literal notranslate"><span class="pre">descending_branch_length</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">.</span><span class="n">length</span> <span class="ow">or</span> <span class="mf">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;total_length&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">total_length</span>
+<span class="go">5.5</span>
+</pre></div>
+</div>
+<p>Cache the accumulative distances from all tips to the common ancestor of each
+clade. This allows one to measure the depth of a clade from the surface (tips)
+of a tree. One can further apply calculations like mean and standard deviation
+to the results. This is more efficient than calling <code class="docutils literal notranslate"><span class="pre">accumulate_to_ancestor</span></code>
+multiple times. Also note that the result includes the stem branch of each
+clade.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">length</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comb_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">prev</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span> <span class="o">+</span> <span class="n">curr</span> <span class="k">if</span> <span class="n">prev</span> <span class="k">else</span> <span class="n">curr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">dist_f</span><span class="p">,</span> <span class="s1">&#39;accu_dists&#39;</span><span class="p">,</span> <span class="n">comb_f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">accu_dists</span>
+<span class="go">array([ 1.5,  1.9,  1.4,  1.6])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -851,11 +912,11 @@ called).</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.compare_rfd.html"
+       href="skbio.tree.TreeNode.clear_caches.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.compare_rfd</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.clear_caches</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

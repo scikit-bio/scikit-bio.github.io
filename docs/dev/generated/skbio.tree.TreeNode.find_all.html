@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
@@ -779,27 +780,25 @@ document.write(`
 <h1>skbio.tree.TreeNode.find_all<a class="headerlink" href="#skbio-tree-treenode-find-all" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.find_all">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">find_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2294"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.find_all" title="Link to this definition">#</a></dt>
-<dd><p>Find all nodes that match <cite>name</cite>.</p>
-<p>The first call to <cite>find_all</cite> will cache all nodes in the tree on the
-assumption that additional calls to <cite>find_all</cite> will be made.</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">find_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2554"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.find_all" title="Link to this definition">#</a></dt>
+<dd><p>Find all nodes that match a given name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">TreeNode or str</span></dt><dd><p>The name or node to find. If <cite>name</cite> is <cite>TreeNode</cite> then all other
-nodes with the same name will be returned.</p>
+<dt><strong>name</strong><span class="classifier">TreeNode or str</span></dt><dd><p>The name or node to find. If a <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> object is provided, all nodes
+with the same name will be returned.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>list of TreeNode</dt><dd><p>The nodes found</p>
+<dt>list of TreeNode</dt><dd><p>The found nodes.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>MissingNodeError</dt><dd><p>Raises if the node to be searched for is not found</p>
+<dt>MissingNodeError</dt><dd><p>If the node to be searched for is not found.</p>
 </dd>
 </dl>
 </dd>
@@ -812,10 +811,29 @@ nodes with the same name will be returned.</p>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.find_by_func.html#skbio.tree.TreeNode.find_by_func" title="skbio.tree.TreeNode.find_by_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_func</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>All internal nodes (including root) and tips with the given name will be
+returned, with the former placed before the latter in the returned list.</p>
+<p>The first call to <code class="docutils literal notranslate"><span class="pre">find_all</span></code> will cache all nodes in the tree on the
+assumption that additional calls to <code class="docutils literal notranslate"><span class="pre">find_all</span></code> will be made.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.tree</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)d,(f,g)c);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-a</span>
+<span class="go">          /c-------|</span>
+<span class="go">         |          \-b</span>
+<span class="go">         |</span>
+<span class="go">         |          /-d</span>
+<span class="go">---------|-d-------|</span>
+<span class="go">         |          \-e</span>
+<span class="go">         |</span>
+<span class="go">         |          /-f</span>
+<span class="go">          \c-------|</span>
+<span class="go">                    \-g</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">c a b</span>
 <span class="go">c f g</span>

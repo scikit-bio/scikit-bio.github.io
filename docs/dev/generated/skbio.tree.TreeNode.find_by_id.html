@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
@@ -779,25 +780,25 @@ document.write(`
 <h1>skbio.tree.TreeNode.find_by_id<a class="headerlink" href="#skbio-tree-treenode-find-by-id" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.find_by_id">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">find_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2418"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.find_by_id" title="Link to this definition">#</a></dt>
-<dd><p>Find a node by <cite>id</cite>.</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">find_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2629"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.find_by_id" title="Link to this definition">#</a></dt>
+<dd><p>Find a node by ID.</p>
 <p>This search method is based from the root.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>node_id</strong><span class="classifier">int</span></dt><dd><p>The <cite>id</cite> of a node in the tree</p>
+<dt><strong>node_id</strong><span class="classifier">int</span></dt><dd><p>The ID of a node in the tree.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>The tree node with the matching id</p>
+<dt>TreeNode</dt><dd><p>The node with the matching ID.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>MissingNodeError</dt><dd><p>This method will raise if the <cite>id</cite> cannot be found</p>
+<dt>MissingNodeError</dt><dd><p>If the ID cannot be found.</p>
 </dd>
 </dl>
 </dd>
@@ -805,14 +806,13 @@ document.write(`
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="skbio.tree.TreeNode.assign_ids.html#skbio.tree.TreeNode.assign_ids" title="skbio.tree.TreeNode.assign_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_ids</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.find.html#skbio.tree.TreeNode.find" title="skbio.tree.TreeNode.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_all.html#skbio.tree.TreeNode.find_all" title="skbio.tree.TreeNode.find_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_all</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_by_func.html#skbio.tree.TreeNode.find_by_func" title="skbio.tree.TreeNode.find_by_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_func</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method does not cache id associations. A full traversal of the
-tree is performed to find a node by an id on every call.</p>
+<p>This method does not cache ID associations. A full traversal of the
+tree is performed to find a node by an ID on every call.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f);&quot;</span><span class="p">])</span>

@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
@@ -779,16 +780,16 @@ document.write(`
 <h1>skbio.tree.TreeNode.traverse<a class="headerlink" href="#skbio-tree-treenode-traverse" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.traverse">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self_before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1742"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.traverse" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self_before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1751"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.traverse" title="Link to this definition">#</a></dt>
 <dd><p>Traverse over tree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>self_before</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether include each node before its descendants (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
+<dt><strong>self_before</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether include each node before its descendants (default: True).</p>
 </dd>
-<dt><strong>self_after</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether include each node after its descendants (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<dt><strong>self_after</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether include each node after its descendants (default: False).</p>
 </dd>
-<dt><strong>include_self</strong><span class="classifier">bool, optional</span></dt><dd><p>Include the initial node if <code class="docutils literal notranslate"><span class="pre">True</span></code> (default).</p>
+<dt><strong>include_self</strong><span class="classifier">bool, optional</span></dt><dd><p>Include the initial node if True (default).</p>
 </dd>
 </dl>
 </dd>
@@ -812,10 +813,9 @@ document.write(`
 </div>
 <p class="rubric">Notes</p>
 <p>This is a depth-first search (DFS). <code class="docutils literal notranslate"><span class="pre">self_before</span></code> and <code class="docutils literal notranslate"><span class="pre">self_after</span></code>
-determine whether a node should be visited before and after traversing
-its children. They are independent. If both <code class="docutils literal notranslate"><span class="pre">True</span></code>, each internal
-node (and root) will be visited twice. If neither is <code class="docutils literal notranslate"><span class="pre">True</span></code>, only
-tips will be returned.</p>
+determine whether a node should be visited before and after traversing its
+children. They are independent. If both True, each internal node (and root)
+will be visited twice. If neither is True, only tips will be returned.</p>
 <p>This method is a generalization of <code class="docutils literal notranslate"><span class="pre">preorder</span></code>, <code class="docutils literal notranslate"><span class="pre">postorder</span></code>,
 <code class="docutils literal notranslate"><span class="pre">pre_and_postorder</span></code> and <code class="docutils literal notranslate"><span class="pre">tips</span></code>. The default mode
 (<code class="docutils literal notranslate"><span class="pre">self_before=True,</span> <span class="pre">self_after=False</span></code>) is equivalent to preorder

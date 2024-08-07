@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
@@ -779,24 +780,23 @@ document.write(`
 <h1>skbio.tree.TreeNode.unrooted_copy<a class="headerlink" href="#skbio-tree-treenode-unrooted-copy" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.unrooted_copy">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'length',</span> <span class="pre">'name',</span> <span class="pre">'support'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L693"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_copy" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'length',</span> <span class="pre">'name',</span> <span class="pre">'support'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L698"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_copy" title="Link to this definition">#</a></dt>
 <dd><p>Walk the tree unrooted-style and return a copy.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>parent</strong><span class="classifier">TreeNode or None</span></dt><dd><p>Direction of walking (from parent to self). If specified, walking
-to the parent will be prohibited.</p>
+<dt><strong>parent</strong><span class="classifier">TreeNode or None</span></dt><dd><p>Direction of walking (from parent to self). If specified, walking to the
+parent will be prohibited.</p>
 </dd>
-<dt><strong>branch_attrs</strong><span class="classifier">set of str, optional</span></dt><dd><p>Attributes of <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> objects that should be considered as
-branch attributes during the operation.</p>
+<dt><strong>branch_attrs</strong><span class="classifier">set of str, optional</span></dt><dd><p>Attributes of <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> objects that should be considered as branch
+attributes during the operation.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">name</span></code> will be removed from the default in 0.7.0, as
-it is usually considered as an attribute of the node instead of
-the branch.</p>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> will be removed from the default in 0.7.0, as it is
+usually considered as an attribute of the node instead of the branch.</p>
 </div>
 </dd>
 <dt><strong>root_name</strong><span class="classifier">str or None, optional</span></dt><dd><p>Name for the new root node, if it doesn’t have one.</p>
@@ -805,12 +805,12 @@ the branch.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This parameter will be removed in 0.7.0, and the root
-node will not be renamed.</p>
+<p>This parameter will be removed in 0.7.0, and the root node will
+not be renamed.</p>
 </div>
 </dd>
-<dt><strong>deep</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether perform a shallow (<code class="docutils literal notranslate"><span class="pre">False</span></code>, default) or deep (<code class="docutils literal notranslate"><span class="pre">True</span></code>)
-copy of node attributes.</p>
+<dt><strong>deep</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether perform a shallow (False, default) or deep (True) copy of node
+attributes.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
@@ -829,8 +829,8 @@ copy of node attributes.</p>
 </dl>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The default behavior of <code class="docutils literal notranslate"><span class="pre">unrooted_copy</span></code> is subject to change in
-0.7.0. The new default behavior can be achieved by specifying
+<p>The default behavior of <code class="docutils literal notranslate"><span class="pre">unrooted_copy</span></code> is subject to change in 0.7.0. The
+new default behavior can be achieved by specifying
 <code class="docutils literal notranslate"><span class="pre">branch_attrs={&quot;length&quot;,</span> <span class="pre">&quot;support&quot;},</span> <span class="pre">root_name=None</span></code>.</p>
 </div>
 <div class="admonition seealso">

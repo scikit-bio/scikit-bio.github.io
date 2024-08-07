@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.to_array &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.TreeNode.clear_caches &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -58,19 +58,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.to_array';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.clear_caches';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.to_array.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.clear_caches.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.to_taxonomy" href="skbio.tree.TreeNode.to_taxonomy.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.tips" href="skbio.tree.TreeNode.tips.html" />
+    <link rel="next" title="skbio.tree.TreeNode.compare_rfd" href="skbio.tree.TreeNode.compare_rfd.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.cache_attr" href="skbio.tree.TreeNode.cache_attr.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -643,7 +643,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
@@ -694,7 +694,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subtree.html">skbio.tree.TreeNode.subtree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tips.html">skbio.tree.TreeNode.tips</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.to_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.to_array.html">skbio.tree.TreeNode.to_array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.to_taxonomy.html">skbio.tree.TreeNode.to_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unpack.html">skbio.tree.TreeNode.unpack</a></li>
@@ -776,78 +776,45 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-to-array">
-<h1>skbio.tree.TreeNode.to_array<a class="headerlink" href="#skbio-tree-treenode-to-array" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-clear-caches">
+<h1>skbio.tree.TreeNode.clear_caches<a class="headerlink" href="#skbio-tree-treenode-clear-caches" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.to_array">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nan_length_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.to_array" title="Link to this definition">#</a></dt>
-<dd><p>Return an array representation of self.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>attrs</strong><span class="classifier">list of tuple or None</span></dt><dd><p>The attributes and types to return. The expected form is
-[(attribute_name, type)]. If <cite>None</cite>, then <cite>name</cite>, <cite>length</cite>, and
-<cite>id</cite> are returned.</p>
-</dd>
-<dt><strong>nan_length_value</strong><span class="classifier">float, optional</span></dt><dd><p>If provided, replaces any <cite>nan</cite> in the branch length vector
-(i.e., <code class="docutils literal notranslate"><span class="pre">result['length']</span></code>) with this value. <cite>nan</cite> branch lengths
-can arise from an edge not having a length (common for the root
-node parent edge), which can making summing problematic.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>dict of array</dt><dd><dl class="simple">
-<dt>{id_index: {id: TreeNode},</dt><dd><p>child_index: ((node_id, left_child_id, right_child_id)),
-attr_1: array(…),
-…
-attr_N: array(…)}</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Attribute arrays are in index order such that TreeNode.id can be used
-as a lookup into the array.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s1">&#39;(((a:1,b:2,c:3)x:4,(d:5)y:6)z:7);&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="go">[&#39;child_index&#39;, &#39;id&#39;, &#39;id_index&#39;, &#39;length&#39;, &#39;name&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;child_index&#39;</span><span class="p">]</span> 
-<span class="go">array([[4, 0, 2],</span>
-<span class="go">       [5, 3, 3],</span>
-<span class="go">       [6, 4, 5],</span>
-<span class="go">       [7, 6, 6]]...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;id_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="go">0 a:1.0;</span>
-
-<span class="go">1 b:2.0;</span>
-
-<span class="go">2 c:3.0;</span>
-
-<span class="go">3 d:5.0;</span>
-
-<span class="go">4 (a:1.0,b:2.0,c:3.0)x:4.0;</span>
-
-<span class="go">5 (d:5.0)y:6.0;</span>
-
-<span class="go">6 ((a:1.0,b:2.0,c:3.0)x:4.0,(d:5.0)y:6.0)z:7.0;</span>
-
-<span class="go">7 (((a:1.0,b:2.0,c:3.0)x:4.0,(d:5.0)y:6.0)z:7.0);</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
-<span class="go">array([0, 1, 2, 3, 4, 5, 6, 7])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-<span class="go">array([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;, None], dtype=object)</span>
-</pre></div>
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.clear_caches">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">clear_caches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.clear_caches" title="Link to this definition">#</a></dt>
+<dd><p>Delete node attribute and lookup caches of a tree.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">invalidate_caches</span></code>. The old name is preserved as an alias.
+But it may be removed in a future version.</p>
 </div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>attr</strong><span class="classifier">bool or str, optional</span></dt><dd><p>Whether delete attribute caches created by <code class="docutils literal notranslate"><span class="pre">cache_attr</span></code> (default: True).
+One may instead provide an attribute name such that only this attribute
+will be deleted.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Can provide a specific attribute name.</p>
+</div>
+</dd>
+<dt><strong>lookup</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether delete lookup caches created during name searching (default: True).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html#skbio.tree.TreeNode.cache_attr" title="skbio.tree.TreeNode.cache_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cache_attr</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.find.html#skbio.tree.TreeNode.find" title="skbio.tree.TreeNode.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This method may be called from any node within a tree. The caches, which were
+attached to the root node of the tree, will be deleted.</p>
+<p>This method will silently skip if the specified caches do not exist.</p>
 </dd></dl>
 
 </section>
@@ -863,20 +830,20 @@ as a lookup into the array.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.tips.html"
+       href="skbio.tree.TreeNode.cache_attr.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.tips</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.cache_attr</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.to_taxonomy.html"
+       href="skbio.tree.TreeNode.compare_rfd.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.to_taxonomy</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.compare_rfd</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -898,7 +865,7 @@ as a lookup into the array.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.to_array"><code class="docutils literal notranslate"><span class="pre">TreeNode.to_array()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.clear_caches"><code class="docutils literal notranslate"><span class="pre">TreeNode.clear_caches()</span></code></a></li>
 </ul>
   </nav></div>
 

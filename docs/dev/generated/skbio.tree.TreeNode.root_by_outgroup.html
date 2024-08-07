@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
@@ -779,7 +780,7 @@ document.write(`
 <h1>skbio.tree.TreeNode.root_by_outgroup<a class="headerlink" href="#skbio-tree-treenode-root-by-outgroup" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.root_by_outgroup">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">root_by_outgroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outgroup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">above</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1523"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.root_by_outgroup" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">root_by_outgroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outgroup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">above</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1527"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.root_by_outgroup" title="Link to this definition">#</a></dt>
 <dd><p>Reroot the tree with a given set of taxa as outgroup.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
@@ -787,24 +788,24 @@ document.write(`
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>outgroup</strong><span class="classifier">iterable of str</span></dt><dd><p>Taxon set to serve as outgroup. Must be a proper subset of taxa in
-the tree. The tree will be rooted at the lowest common ancestor
-(LCA) of the outgroup.</p>
+<dt><strong>outgroup</strong><span class="classifier">iterable of str</span></dt><dd><p>Taxon set to serve as outgroup. Must be a proper subset of taxa in the
+tree. The tree will be rooted at the lowest common ancestor (LCA) of the
+outgroup.</p>
 </dd>
-<dt><strong>above</strong><span class="classifier">bool, float, or int, optional</span></dt><dd><p>Whether and where to insert a new root node. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the
-LCA will serve as the root node. If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), a new root
-node will be created and inserted at the midpoint of the branch
-connecting the LCA and its parent (i.e., the midpoint between
-outgroup and ingroup). If a number between 0 and branch length, the
-new root will be inserted at this distance from the LCA.</p>
+<dt><strong>above</strong><span class="classifier">bool, float, or int, optional</span></dt><dd><p>Whether and where to insert a new root node. If False, the LCA will serve
+as the root node. If True (default), a new root node will be created and
+inserted at the midpoint of the branch connecting the LCA and its parent
+(i.e., the midpoint between outgroup and ingroup). If a number between 0
+and branch length, the new root will be inserted at this distance from the
+LCA.</p>
 </dd>
-<dt><strong>reset</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether remove the original root of a rooted tree before performing
-the rerooting operation. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dt><strong>reset</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether remove the original root of a rooted tree before performing the
+rerooting operation. Default is True.</p>
 </dd>
-<dt><strong>branch_attrs</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Attributes of each node that should be considered as attributes of
-the branch connecting the node to its parent. This is important for
-the correct rerooting operation. “length” and “support” will be
-automatically included as they are always branch attributes.</p>
+<dt><strong>branch_attrs</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Attributes of each node that should be considered as attributes of the
+branch connecting the node to its parent. This is important for the correct
+rerooting operation. “length” and “support” will be automatically included
+as they are always branch attributes.</p>
 </dd>
 <dt><strong>root_name</strong><span class="classifier">str or None, optional</span></dt><dd><p>Name for the root node, if it doesn’t already have one.</p>
 </dd>
