@@ -740,33 +740,31 @@ document.write(`
 <h1>skbio.diversity.alpha.phydiv<a class="headerlink" href="#skbio-diversity-alpha-phydiv" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.alpha.phydiv">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">phydiv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rooted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_pd.py#L250"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.phydiv" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">phydiv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rooted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_pd.py#L248"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.phydiv" title="Link to this definition">#</a></dt>
 <dd><p>Calculate generalized phylogenetic diversity (PD) metrics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vectors of counts/abundances of taxa for one sample.</p>
 </dd>
-<dt><strong>taxa</strong><span class="classifier">list, np.array</span></dt><dd><p>Vector of taxon IDs corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the
-same length as <code class="docutils literal notranslate"><span class="pre">counts</span></code>. Required.</p>
+<dt><strong>taxa</strong><span class="classifier">list, np.array</span></dt><dd><p>Vector of taxon IDs corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the same
+length as <code class="docutils literal notranslate"><span class="pre">counts</span></code>. Required.</p>
 </dd>
-<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Tree relating taxa. The set of tip names in the tree can be a superset
-of <code class="docutils literal notranslate"><span class="pre">taxa</span></code>, but not a subset. Required.</p>
+<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Tree relating taxa. The set of tip names in the tree can be a superset of
+<code class="docutils literal notranslate"><span class="pre">taxa</span></code>, but not a subset. Required.</p>
 </dd>
-<dt><strong>rooted</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the metric is calculated considering the root of the tree. By
-default, this will be determined based on whether the input tree is
-rooted. However, one can override it by explicitly specifying <code class="docutils literal notranslate"><span class="pre">True</span></code>
-(rooted) or <code class="docutils literal notranslate"><span class="pre">False</span></code> (unrooted).</p>
+<dt><strong>rooted</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the metric is calculated considering the root of the tree. By default,
+this will be determined based on whether the input tree is rooted. However, one
+can override it by explicitly specifying True (rooted) or False (unrooted).</p>
 </dd>
-<dt><strong>weight</strong><span class="classifier">bool or float, optional</span></dt><dd><p>Whether branch lengths should be weighted by the relative abundance of
-taxa descending from the branch (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>). A float within
-[0, 1] indicates the degree of partial-weighting (0: unweighted, 1:
-fully-weighted).</p>
+<dt><strong>weight</strong><span class="classifier">bool or float, optional</span></dt><dd><p>Whether branch lengths should be weighted by the relative abundance of taxa
+descending from the branch (default: False). A float within [0, 1] indicates
+the degree of partial-weighting (0: unweighted, 1: fully-weighted).</p>
 </dd>
-<dt><strong>validate: bool, optional</strong></dt><dd><p>Whether validate the input data. See <code class="docutils literal notranslate"><span class="pre">faith_pd</span></code> for details.</p>
+<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether validate the input data. See <a class="reference internal" href="skbio.diversity.alpha.faith_pd.html#skbio.diversity.alpha.faith_pd" title="skbio.diversity.alpha.faith_pd"><code class="xref py py-func docutils literal notranslate"><span class="pre">faith_pd()</span></code></a> for details.</p>
 </dd>
-<dt><strong>otu_ids</strong><span class="classifier">list, np.array</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">taxa</span></code> for backward compatibility. Deprecated and to be
-removed in a future release.</p>
+<dt><strong>otu_ids</strong><span class="classifier">list, np.array</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">taxa</span></code> for backward compatibility. Deprecated and to be removed in a
+future release.</p>
 </dd>
 </dl>
 </dd>
@@ -792,88 +790,88 @@ removed in a future release.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Phylogenetic diversity (PD) metrics measure the diversity of a community
-with consideration of the phylogenetic relationships among taxa. In
-general, PD is the sum of branch lengths spanning across taxa, optionally
-weighted by their abundance.</p>
+<p>Phylogenetic diversity (PD) metrics measure the diversity of a community with
+consideration of the phylogenetic relationships among taxa. In general, PD is the
+sum of branch lengths spanning across taxa, optionally weighted by their relative
+abundances in the community.</p>
 <p>The most widely-adopted PD metric, Faith’s PD <a class="reference internal" href="#r2ba9a132a4b9-1" id="id1">[1]</a>, is defined as:</p>
 <div class="math notranslate nohighlight">
 \[PD = \sum_{b \in T \sqcup R} l(b)\]</div>
-<p>where <span class="math notranslate nohighlight">\(T\)</span> is a minimum set of branches (<span class="math notranslate nohighlight">\(b\)</span>) in a rooted tree
-that connect all taxa in a community. <span class="math notranslate nohighlight">\(R\)</span> is a set of branches from
-the lowest common ancestor (LCA) of the taxa to the root of the tree.
-<span class="math notranslate nohighlight">\(PD\)</span> is the sum of lengths (<span class="math notranslate nohighlight">\(l\)</span>) of branches in both sets.</p>
-<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">pd(...,</span> <span class="pre">rooted=True,</span> <span class="pre">weight=False)</span></code>.</p>
-<p>A variant of PD, which does not include the root in the calculation, was
-referred to by some authors as unrooted phylogenetic diversity (uPD) <a class="reference internal" href="#r2ba9a132a4b9-2" id="id2">[2]</a>,
-as in contrast to rooted phylogenetic diversity (rPD, i.e., Faith’s PD).
-uPD is defined as:</p>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is a minimum set of branches (<span class="math notranslate nohighlight">\(b\)</span>) in a rooted tree that
+connect all taxa in a community. <span class="math notranslate nohighlight">\(R\)</span> is a set of branches from the lowest
+common ancestor (LCA) of the taxa to the root of the tree. <span class="math notranslate nohighlight">\(PD\)</span> is the sum of
+lengths (<span class="math notranslate nohighlight">\(l\)</span>) of branches in both sets.</p>
+<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">phydiv(...,</span> <span class="pre">rooted=True,</span> <span class="pre">weight=False)</span></code>.</p>
+<p>—</p>
+<p>A variant of PD, which does not include the root in the calculation, was referred
+to by some authors as unrooted phylogenetic diversity (uPD) <a class="reference internal" href="#r2ba9a132a4b9-2" id="id2">[2]</a>, as in contrast to
+rooted phylogenetic diversity (rPD, i.e., Faith’s PD). uPD is defined as:</p>
 <div class="math notranslate nohighlight">
 \[PD = \sum_{b \in T} l(b)\]</div>
-<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">pd(...,</span> <span class="pre">rooted=False,</span> <span class="pre">weight=False)</span></code>.</p>
-<p>See <code class="docutils literal notranslate"><span class="pre">faith_pd</span></code> for a discussion of the root.</p>
-<p>PD (rooted or unrooted) considers only the presence of taxa. Therefore, it
-can be considered as the phylogenetic generalization of species richness.
-However, there are advantages of incorporating abundance information in the
-measurement <a class="reference internal" href="#r2ba9a132a4b9-3" id="id3">[3]</a>. A generalized framework of abundance-weighted PD is
-provided in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id4">[4]</a>.</p>
-<p>Abundance-weighted rooted PD (equivalent to <span class="math notranslate nohighlight">\(RBWPD_{1}\)</span> described in
-<a class="reference internal" href="#r2ba9a132a4b9-4" id="id5">[4]</a>) is analogous to the <span class="math notranslate nohighlight">\(PD_{aw}\)</span> metric originally described in
-<a class="reference internal" href="#r2ba9a132a4b9-5" id="id6">[5]</a> with a multiplier. It is defined as:</p>
+<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">phydiv(...,</span> <span class="pre">rooted=False,</span> <span class="pre">weight=False)</span></code>.</p>
+<p>See <a class="reference internal" href="skbio.diversity.alpha.faith_pd.html#skbio.diversity.alpha.faith_pd" title="skbio.diversity.alpha.faith_pd"><code class="xref py py-func docutils literal notranslate"><span class="pre">faith_pd()</span></code></a> for a discussion of the root.</p>
+<p>—</p>
+<p>PD (rooted or unrooted) considers only the presence of taxa. Therefore, it can be
+considered as the phylogenetic generalization of species richness. However, there
+are advantages of incorporating abundance information in the measurement <a class="reference internal" href="#r2ba9a132a4b9-3" id="id3">[3]</a>. A
+generalized framework of abundance-weighted PD is provided in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id4">[4]</a>.</p>
+<p>Abundance-weighted rooted PD (equivalent to <span class="math notranslate nohighlight">\(RBWPD_{1}\)</span> described in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id5">[4]</a>) is
+analogous to the <span class="math notranslate nohighlight">\(PD_{aw}\)</span> metric originally described in <a class="reference internal" href="#r2ba9a132a4b9-5" id="id6">[5]</a> with a
+multiplier. It is defined as:</p>
 <div class="math notranslate nohighlight">
 \[PD = \sum_{b \in T \sqcup R} l(b) p(b)\]</div>
-<p>where <span class="math notranslate nohighlight">\(p\)</span> is the sum of relative (proportional) abundances of taxa
-descending from branch (<span class="math notranslate nohighlight">\(b\)</span>).</p>
-<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">pd(...,</span> <span class="pre">rooted=True,</span> <span class="pre">weight=True)</span></code>.</p>
-<p>Abundance-weighted unrooted PD (equivalent to <span class="math notranslate nohighlight">\(BWPD_{1}\)</span> described in
-<a class="reference internal" href="#r2ba9a132a4b9-4" id="id7">[4]</a>) is analogous to the <span class="math notranslate nohighlight">\(\delta nPD\)</span> metric originally described in
-<a class="reference internal" href="#r2ba9a132a4b9-6" id="id8">[6]</a> with a multiplier. It is defined as:</p>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the sum of relative (proportional) abundances of taxa descending
+from branch (<span class="math notranslate nohighlight">\(b\)</span>).</p>
+<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">phydiv(...,</span> <span class="pre">rooted=True,</span> <span class="pre">weight=True)</span></code>.</p>
+<p>—</p>
+<p>Abundance-weighted unrooted PD (equivalent to <span class="math notranslate nohighlight">\(BWPD_{1}\)</span> described in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id7">[4]</a>)
+is analogous to the <span class="math notranslate nohighlight">\(\delta nPD\)</span> metric originally described in <a class="reference internal" href="#r2ba9a132a4b9-6" id="id8">[6]</a> with a
+multiplier. It is defined as:</p>
 <div class="math notranslate nohighlight">
 \[PD = 2 \sum_{b \in T} l(b) \min(p(b),1-p(b))\]</div>
 <p>In which the term <span class="math notranslate nohighlight">\(2\min(p(b),1-p(b))\)</span> is the lesser of the relative
-abundance of descending taxa on either side of a branch, multiplied by two.
-It is referred to as the “balance” of taxon abundance in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id9">[4]</a>.</p>
-<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">pd(...,</span> <span class="pre">rooted=False,</span> <span class="pre">weight=True)</span></code>.</p>
+abundance of descending taxa on either side of a branch, multiplied by two. It is
+referred to as the “balance” of taxon abundance in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id9">[4]</a>.</p>
+<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">phydiv(...,</span> <span class="pre">rooted=False,</span> <span class="pre">weight=True)</span></code>.</p>
+<p>—</p>
 <p>The contribution of taxon abundance to the metric can be adjusted using the
-<code class="docutils literal notranslate"><span class="pre">weighted</span></code> parameter when it is a float within [0, 1]. This factor was
-referred to as <span class="math notranslate nohighlight">\(\theta\)</span> in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id10">[4]</a>. The metric, <span class="math notranslate nohighlight">\(BWPD_{\theta}\)</span>,
-referred to as the balance-weighted phylogenetic diversity in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id11">[4]</a>, is
-defined as:</p>
+<code class="docutils literal notranslate"><span class="pre">weight</span></code> parameter when it is a float within [0, 1]. This factor was referred to
+as <span class="math notranslate nohighlight">\(\theta\)</span> in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id10">[4]</a>. The metric, <span class="math notranslate nohighlight">\(BWPD_{\theta}\)</span>, referred to as the
+balance-weighted phylogenetic diversity in <a class="reference internal" href="#r2ba9a132a4b9-4" id="id11">[4]</a>, is defined as:</p>
 <div class="math notranslate nohighlight">
 \[PD = \sum_{b \in T} l(b) (2\min(p(b),1-p(b)))^\theta\]</div>
-<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">pd(...,</span> <span class="pre">rooted=False,</span> <span class="pre">weight=theta)</span></code>.</p>
-<p>This metric falls back to unweighted PD when <span class="math notranslate nohighlight">\(\theta=0\)</span> or fully-
-weighted PD when <span class="math notranslate nohighlight">\(\theta=1\)</span>. The original publication tested
-<span class="math notranslate nohighlight">\(\theta=0.25\)</span> or <span class="math notranslate nohighlight">\(0.5\)</span> <a class="reference internal" href="#r2ba9a132a4b9-4" id="id12">[4]</a>.</p>
-<p>The parameter <span class="math notranslate nohighlight">\(\theta\)</span> is analogous to the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>
-in the generalized UniFrac metric <a class="reference internal" href="#r2ba9a132a4b9-7" id="id13">[7]</a>.</p>
+<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">phydiv(...,</span> <span class="pre">rooted=False,</span> <span class="pre">weight=theta)</span></code>.</p>
+<p>This metric falls back to unweighted PD when <span class="math notranslate nohighlight">\(\theta=0\)</span> or fully-weighted PD
+when <span class="math notranslate nohighlight">\(\theta=1\)</span>. The original publication tested <span class="math notranslate nohighlight">\(\theta=0.25\)</span> or
+<span class="math notranslate nohighlight">\(0.5\)</span> <a class="reference internal" href="#r2ba9a132a4b9-4" id="id12">[4]</a>.</p>
+<p>The parameter <span class="math notranslate nohighlight">\(\theta\)</span> is analogous to the parameter <span class="math notranslate nohighlight">\(\alpha\)</span> in the
+generalized UniFrac metric <a class="reference internal" href="#r2ba9a132a4b9-7" id="id13">[7]</a>.</p>
+<p>—</p>
 <p>Likewise, the rooted version of balance-weighted phylogenetic diversity,
-<span class="math notranslate nohighlight">\(RBWPD_{\theta}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-4" id="id14">[4]</a> (although “balance” is not involved), is
-defined as:</p>
+<span class="math notranslate nohighlight">\(RBWPD_{\theta}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-4" id="id14">[4]</a> (although “balance” is not involved), is defined as:</p>
 <div class="math notranslate nohighlight">
 \[PD = \sum_{b \in T \sqcup R} l(b) p(b)^\theta\]</div>
-<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">pd(...,</span> <span class="pre">rooted=True,</span> <span class="pre">weight=theta)</span></code>.</p>
-<p>It is important to report which metric is used. For practical perspective,
-we recommend the following denotions:</p>
+<p>It is equivalent to <code class="docutils literal notranslate"><span class="pre">phydiv(...,</span> <span class="pre">rooted=True,</span> <span class="pre">weight=theta)</span></code>.</p>
+<p>—</p>
+<p>It is important to report which metric is used. For practical perspective, we
+recommend the following denotions:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(rPD\)</span>: rooted, unweighted PD (Faith’s PD <a class="reference internal" href="#r2ba9a132a4b9-1" id="id15">[1]</a>).</p></li>
 <li><p><span class="math notranslate nohighlight">\(uPD\)</span>: unrooted, unweighted PD (uPD <a class="reference internal" href="#r2ba9a132a4b9-2" id="id16">[2]</a>).</p></li>
-<li><p><span class="math notranslate nohighlight">\(rPD_{w}\)</span>: rooted, weighted PD (analogous to
-<span class="math notranslate nohighlight">\(PD_{aw}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-3" id="id17">[3]</a>).</p></li>
-<li><p><span class="math notranslate nohighlight">\(uPD_{w}\)</span>: unrooted, weighted PD (analogous to
-<span class="math notranslate nohighlight">\(\delta nPD\)</span> <a class="reference internal" href="#r2ba9a132a4b9-4" id="id18">[4]</a>).</p></li>
-<li><p><span class="math notranslate nohighlight">\(rPD_{w\theta}\)</span>: rooted, weighted PD with parameter
-<span class="math notranslate nohighlight">\(\theta\)</span> (<span class="math notranslate nohighlight">\(RBWPD_{\theta}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-5" id="id19">[5]</a>).</p></li>
-<li><p><span class="math notranslate nohighlight">\(uPD_{w\theta}\)</span>: unrooted, weighted PD with parameter
-<span class="math notranslate nohighlight">\(\theta\)</span> (<span class="math notranslate nohighlight">\(BWPD_{\theta}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-5" id="id20">[5]</a>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(rPD_{w}\)</span>: rooted, weighted PD (analogous to <span class="math notranslate nohighlight">\(PD_{aw}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-3" id="id17">[3]</a>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(uPD_{w}\)</span>: unrooted, weighted PD (analogous to <span class="math notranslate nohighlight">\(\delta nPD\)</span> <a class="reference internal" href="#r2ba9a132a4b9-4" id="id18">[4]</a>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(rPD_{w\theta}\)</span>: rooted, weighted PD with parameter <span class="math notranslate nohighlight">\(\theta\)</span>
+(<span class="math notranslate nohighlight">\(RBWPD_{\theta}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-5" id="id19">[5]</a>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(uPD_{w\theta}\)</span>: unrooted, weighted PD with parameter <span class="math notranslate nohighlight">\(\theta\)</span>
+(<span class="math notranslate nohighlight">\(BWPD_{\theta}\)</span> <a class="reference internal" href="#r2ba9a132a4b9-5" id="id20">[5]</a>).</p></li>
 </ul>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r2ba9a132a4b9-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id15">2</a>)</span>
-<p>Faith, D. P. Conservation evaluation and phylogenetic diversity.
-Biol. Conserv. (1992).</p>
+<p>Faith, D. P. Conservation evaluation and phylogenetic diversity. Biol.
+Conserv. (1992).</p>
 </div>
 <div class="citation" id="r2ba9a132a4b9-2" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
@@ -884,36 +882,36 @@ maximizing phylogenetic diversity. Systematic biology, 56(3), 431-444.</p>
 <div class="citation" id="r2ba9a132a4b9-3" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id17">2</a>)</span>
-<p>Chao, A., Chiu, C. H., &amp; Jost, L. (2016). Phylogenetic diversity
-measures and their decomposition: a framework based on Hill numbers.
-Biodiversity Conservation and Phylogenetic Systematics, 14, 141-72.</p>
+<p>Chao, A., Chiu, C. H., &amp; Jost, L. (2016). Phylogenetic diversity measures
+and their decomposition: a framework based on Hill numbers. Biodiversity
+Conservation and Phylogenetic Systematics, 14, 141-72.</p>
 </div>
 <div class="citation" id="r2ba9a132a4b9-4" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id5">2</a>,<a role="doc-backlink" href="#id7">3</a>,<a role="doc-backlink" href="#id9">4</a>,<a role="doc-backlink" href="#id10">5</a>,<a role="doc-backlink" href="#id11">6</a>,<a role="doc-backlink" href="#id12">7</a>,<a role="doc-backlink" href="#id14">8</a>,<a role="doc-backlink" href="#id18">9</a>)</span>
-<p>McCoy, C. O., &amp; Matsen IV, F. A. (2013). Abundance-weighted
-phylogenetic diversity measures distinguish microbial community states
-and are robust to sampling depth. PeerJ, 1, e157.</p>
+<p>McCoy, C. O., &amp; Matsen IV, F. A. (2013). Abundance-weighted phylogenetic
+diversity measures distinguish microbial community states and are robust to
+sampling depth. PeerJ, 1, e157.</p>
 </div>
 <div class="citation" id="r2ba9a132a4b9-5" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id6">1</a>,<a role="doc-backlink" href="#id19">2</a>,<a role="doc-backlink" href="#id20">3</a>)</span>
-<p>Vellend, M., Cornwell, W. K., Magnuson-Ford, K., &amp; Mooers, A. Ø.
-(2011). Measuring phylogenetic biodiversity. Biological diversity:
-frontiers in measurement and assessment, 194-207.</p>
+<p>Vellend, M., Cornwell, W. K., Magnuson-Ford, K., &amp; Mooers, A. Ø. (2011).
+Measuring phylogenetic biodiversity. Biological diversity: frontiers in
+measurement and assessment, 194-207.</p>
 </div>
 <div class="citation" id="r2ba9a132a4b9-6" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">6</a><span class="fn-bracket">]</span></span>
-<p>Barker, G. M. (2002). Phylogenetic diversity: a quantitative
-framework for measurement of priority and achievement in biodiversity
-conservation. Biological Journal of the Linnean Society, 76(2), 165-194.</p>
+<p>Barker, G. M. (2002). Phylogenetic diversity: a quantitative framework for
+measurement of priority and achievement in biodiversity conservation. Biological
+Journal of the Linnean Society, 76(2), 165-194.</p>
 </div>
 <div class="citation" id="r2ba9a132a4b9-7" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">7</a><span class="fn-bracket">]</span></span>
-<p>Chen, J., Bittinger, K., Charlson, E. S., Hoffmann, C., Lewis, J.,
-Wu, G. D., … &amp; Li, H. (2012). Associating microbiome composition with
-environmental covariates using generalized UniFrac distances.
-Bioinformatics, 28(16), 2106-2113.</p>
+<p>Chen, J., Bittinger, K., Charlson, E. S., Hoffmann, C., Lewis, J., Wu, G.
+D., … &amp; Li, H. (2012). Associating microbiome composition with environmental
+covariates using generalized UniFrac distances. Bioinformatics, 28(16),
+2106-2113.</p>
 </div>
 </div>
 </dd></dl>
