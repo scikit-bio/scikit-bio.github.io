@@ -5,33 +5,8 @@ skbio.sequence.RNA
 
 
 
-   
-      
-   
 
-   
 
-   
-      
-   
-
-   
-      
-   
-
-   
-      
-   
-
-   
-
-   
-
-   
-      
-   
-
-   
 
    
       
@@ -60,6 +35,30 @@ skbio.sequence.RNA
    
 
    
+
+   
+      
+   
+
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+
+   
+
+   
       
    
 
@@ -76,6 +75,10 @@ skbio.sequence.RNA
    
 
    
+      
+   
+
+   
 
    
 
@@ -226,25 +229,437 @@ skbio.sequence.RNA
    
 
    
+
+
+
+
+
+
+
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+
+
+
+
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+
+
+
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+
+
 
 
 .. currentmodule:: skbio.sequence
 
 .. autoclass:: RNA
 
+
+
+
+   
    
    .. rubric:: Attributes
 
    .. autosummary::
    
-      ~RNA.alphabet
       ~RNA.complement_map
       ~RNA.default_gap_char
-      ~RNA.default_write_format
       ~RNA.definite_chars
-      ~RNA.degenerate_chars
       ~RNA.degenerate_map
       ~RNA.gap_chars
+      ~RNA.wildcard_char
+   
+
+   
+   .. rubric:: Attributes (inherited)
+
+   .. autoinherit::
+   
+      ~RNA.alphabet
+      ~RNA.default_write_format
+      ~RNA.degenerate_chars
       ~RNA.interval_metadata
       ~RNA.metadata
       ~RNA.noncanonical_chars
@@ -252,14 +667,80 @@ skbio.sequence.RNA
       ~RNA.observed_chars
       ~RNA.positional_metadata
       ~RNA.values
-      ~RNA.wildcard_char
+   
    
 
    
-   .. rubric:: Built-ins
+   
+   .. rubric:: Methods
 
    .. autosummary::
       :toctree:
+   
+      ~RNA.find_motifs
+   
+      ~RNA.read
+   
+      ~RNA.reverse_transcribe
+   
+      ~RNA.translate
+   
+      ~RNA.translate_six_frames
+   
+      ~RNA.write
+   
+   
+
+   
+   .. rubric:: Methods (inherited)
+
+   .. autoinherit::
+      ~RNA.complement
+      ~RNA.concat
+      ~RNA.count
+      ~RNA.definites
+      ~RNA.degap
+      ~RNA.degenerates
+      ~RNA.distance
+      ~RNA.expand_degenerates
+      ~RNA.find_with_regex
+      ~RNA.frequencies
+      ~RNA.gaps
+      ~RNA.gc_content
+      ~RNA.gc_frequency
+      ~RNA.has_definites
+      ~RNA.has_degenerates
+      ~RNA.has_gaps
+      ~RNA.has_interval_metadata
+      ~RNA.has_metadata
+      ~RNA.has_nondegenerates
+      ~RNA.has_positional_metadata
+      ~RNA.index
+      ~RNA.is_reverse_complement
+      ~RNA.iter_contiguous
+      ~RNA.iter_kmers
+      ~RNA.kmer_frequencies
+      ~RNA.lowercase
+      ~RNA.match_frequency
+      ~RNA.matches
+      ~RNA.mismatch_frequency
+      ~RNA.mismatches
+      ~RNA.nondegenerates
+      ~RNA.replace
+      ~RNA.reverse_complement
+      ~RNA.to_definites
+      ~RNA.to_indices
+      ~RNA.to_regex
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Special methods (inherited)
+
+   .. autoinherit::
    
       ~RNA.__bool__
       ~RNA.__contains__
@@ -278,138 +759,39 @@ skbio.sequence.RNA
       ~RNA.__reversed__
       ~RNA.__str__
    
+   
+
+
+
 
    
-   .. rubric:: Methods
+   .. rubric:: Details
 
-   .. autosummary::
-      :toctree:
    
-      
-      
-      ~RNA.complement
-      
-      
-      ~RNA.concat
-      
-      
-      ~RNA.count
-      
-      
-      ~RNA.definites
-      
-      
-      ~RNA.degap
-      
-      
-      ~RNA.degenerates
-      
-      
-      ~RNA.distance
-      
-      
-      ~RNA.expand_degenerates
-      
-      
-      ~RNA.find_motifs
-      
-      
-      ~RNA.find_with_regex
-      
-      
-      ~RNA.frequencies
-      
-      
-      ~RNA.gaps
-      
-      
-      ~RNA.gc_content
-      
-      
-      ~RNA.gc_frequency
-      
-      
-      ~RNA.has_definites
-      
-      
-      ~RNA.has_degenerates
-      
-      
-      ~RNA.has_gaps
-      
-      
-      ~RNA.has_interval_metadata
-      
-      
-      ~RNA.has_metadata
-      
-      
-      ~RNA.has_nondegenerates
-      
-      
-      ~RNA.has_positional_metadata
-      
-      
-      ~RNA.index
-      
-      
-      ~RNA.is_reverse_complement
-      
-      
-      ~RNA.iter_contiguous
-      
-      
-      ~RNA.iter_kmers
-      
-      
-      ~RNA.kmer_frequencies
-      
-      
-      ~RNA.lowercase
-      
-      
-      ~RNA.match_frequency
-      
-      
-      ~RNA.matches
-      
-      
-      ~RNA.mismatch_frequency
-      
-      
-      ~RNA.mismatches
-      
-      
-      ~RNA.nondegenerates
-      
-      
-      ~RNA.read
-      
-      
-      ~RNA.replace
-      
-      
-      ~RNA.reverse_complement
-      
-      
-      ~RNA.reverse_transcribe
-      
-      
-      ~RNA.to_definites
-      
-      
-      ~RNA.to_indices
-      
-      
-      ~RNA.to_regex
-      
-      
-      ~RNA.translate
-      
-      
-      ~RNA.translate_six_frames
-      
-      
-      ~RNA.write
-      
+   
+   .. autoattribute:: RNA.complement_map
+   
+   
+   
+   .. autoattribute:: RNA.default_gap_char
+   
+   
+   
+   .. autoattribute:: RNA.definite_chars
+   
+   
+   
+   .. autoattribute:: RNA.degenerate_map
+   
+   
+   
+   .. autoattribute:: RNA.gap_chars
+   
+   
+   
+   .. autoattribute:: RNA.wildcard_char
+   
+   
+
+   
    

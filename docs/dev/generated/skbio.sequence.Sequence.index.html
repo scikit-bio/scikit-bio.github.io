@@ -71,7 +71,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.sequence.Sequence.iter_contiguous" href="skbio.sequence.Sequence.iter_contiguous.html" />
-    <link rel="prev" title="skbio.sequence.Sequence.has_positional_metadata" href="skbio.sequence.Sequence.has_positional_metadata.html" />
+    <link rel="prev" title="skbio.sequence.Sequence.frequencies" href="skbio.sequence.Sequence.frequencies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -622,30 +622,11 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.Sequence.html">skbio.sequence.Sequence</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__bool__.html">skbio.sequence.Sequence.__bool__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__contains__.html">skbio.sequence.Sequence.__contains__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__copy__.html">skbio.sequence.Sequence.__copy__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__deepcopy__.html">skbio.sequence.Sequence.__deepcopy__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__eq__.html">skbio.sequence.Sequence.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__ge__.html">skbio.sequence.Sequence.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__getitem__.html">skbio.sequence.Sequence.__getitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__getstate__.html">skbio.sequence.Sequence.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__gt__.html">skbio.sequence.Sequence.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__iter__.html">skbio.sequence.Sequence.__iter__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__le__.html">skbio.sequence.Sequence.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__len__.html">skbio.sequence.Sequence.__len__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__lt__.html">skbio.sequence.Sequence.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__ne__.html">skbio.sequence.Sequence.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__reversed__.html">skbio.sequence.Sequence.__reversed__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.__str__.html">skbio.sequence.Sequence.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.concat.html">skbio.sequence.Sequence.concat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.count.html">skbio.sequence.Sequence.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.distance.html">skbio.sequence.Sequence.distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.find_with_regex.html">skbio.sequence.Sequence.find_with_regex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.frequencies.html">skbio.sequence.Sequence.frequencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.has_interval_metadata.html">skbio.sequence.Sequence.has_interval_metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.has_metadata.html">skbio.sequence.Sequence.has_metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.has_positional_metadata.html">skbio.sequence.Sequence.has_positional_metadata</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.Sequence.index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.iter_contiguous.html">skbio.sequence.Sequence.iter_contiguous</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.Sequence.iter_kmers.html">skbio.sequence.Sequence.iter_kmers</a></li>
@@ -672,6 +653,9 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.sequence.NucleotideMixin.html">skbio.sequence.NucleotideMixin</a></li>
 </ul>
 </div>
 </nav></div>
@@ -787,12 +771,12 @@ than this sequence.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.sequence.Sequence.has_positional_metadata.html"
+       href="skbio.sequence.Sequence.frequencies.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.sequence.Sequence.has_positional_metadata</p>
+        <p class="prev-next-title">skbio.sequence.Sequence.frequencies</p>
       </div>
     </a>
     <a class="right-next"

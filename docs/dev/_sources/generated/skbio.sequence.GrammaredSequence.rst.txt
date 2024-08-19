@@ -5,33 +5,8 @@ skbio.sequence.GrammaredSequence
 
 
 
-   
-      
-   
 
-   
 
-   
-      
-   
-
-   
-      
-   
-
-   
-      
-   
-
-   
-
-   
-
-   
-      
-   
-
-   
 
    
       
@@ -60,6 +35,30 @@ skbio.sequence.GrammaredSequence
    
 
    
+
+   
+      
+   
+
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+
+   
+
+   
       
    
 
@@ -76,6 +75,10 @@ skbio.sequence.GrammaredSequence
    
 
    
+      
+   
+
+   
 
    
 
@@ -210,12 +213,364 @@ skbio.sequence.GrammaredSequence
    
 
    
+
+
+
+
+
+
+
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+
+
+
+
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+
+
+
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+
+
 
 
 .. currentmodule:: skbio.sequence
 
 .. autoclass:: GrammaredSequence
 
+
+
+
+   
    
    .. rubric:: Attributes
 
@@ -223,26 +578,99 @@ skbio.sequence.GrammaredSequence
    
       ~GrammaredSequence.alphabet
       ~GrammaredSequence.default_gap_char
-      ~GrammaredSequence.default_write_format
       ~GrammaredSequence.definite_chars
       ~GrammaredSequence.degenerate_chars
       ~GrammaredSequence.degenerate_map
       ~GrammaredSequence.gap_chars
-      ~GrammaredSequence.interval_metadata
-      ~GrammaredSequence.metadata
       ~GrammaredSequence.noncanonical_chars
       ~GrammaredSequence.nondegenerate_chars
-      ~GrammaredSequence.observed_chars
-      ~GrammaredSequence.positional_metadata
-      ~GrammaredSequence.values
       ~GrammaredSequence.wildcard_char
    
 
    
-   .. rubric:: Built-ins
+   .. rubric:: Attributes (inherited)
+
+   .. autoinherit::
+   
+      ~GrammaredSequence.default_write_format
+      ~GrammaredSequence.interval_metadata
+      ~GrammaredSequence.metadata
+      ~GrammaredSequence.observed_chars
+      ~GrammaredSequence.positional_metadata
+      ~GrammaredSequence.values
+   
+   
+
+   
+   
+   .. rubric:: Methods
 
    .. autosummary::
       :toctree:
+   
+      ~GrammaredSequence.definites
+   
+      ~GrammaredSequence.degap
+   
+      ~GrammaredSequence.degenerates
+   
+      ~GrammaredSequence.expand_degenerates
+   
+      ~GrammaredSequence.find_motifs
+   
+      ~GrammaredSequence.gaps
+   
+      ~GrammaredSequence.has_definites
+   
+      ~GrammaredSequence.has_degenerates
+   
+      ~GrammaredSequence.has_gaps
+   
+      ~GrammaredSequence.has_nondegenerates
+   
+      ~GrammaredSequence.nondegenerates
+   
+      ~GrammaredSequence.to_definites
+   
+      ~GrammaredSequence.to_regex
+   
+   
+
+   
+   .. rubric:: Methods (inherited)
+
+   .. autoinherit::
+      ~GrammaredSequence.concat
+      ~GrammaredSequence.count
+      ~GrammaredSequence.distance
+      ~GrammaredSequence.find_with_regex
+      ~GrammaredSequence.frequencies
+      ~GrammaredSequence.has_interval_metadata
+      ~GrammaredSequence.has_metadata
+      ~GrammaredSequence.has_positional_metadata
+      ~GrammaredSequence.index
+      ~GrammaredSequence.iter_contiguous
+      ~GrammaredSequence.iter_kmers
+      ~GrammaredSequence.kmer_frequencies
+      ~GrammaredSequence.lowercase
+      ~GrammaredSequence.match_frequency
+      ~GrammaredSequence.matches
+      ~GrammaredSequence.mismatch_frequency
+      ~GrammaredSequence.mismatches
+      ~GrammaredSequence.read
+      ~GrammaredSequence.replace
+      ~GrammaredSequence.to_indices
+      ~GrammaredSequence.write
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Special methods (inherited)
+
+   .. autoinherit::
    
       ~GrammaredSequence.__bool__
       ~GrammaredSequence.__contains__
@@ -261,114 +689,51 @@ skbio.sequence.GrammaredSequence
       ~GrammaredSequence.__reversed__
       ~GrammaredSequence.__str__
    
+   
+
+
+
 
    
-   .. rubric:: Methods
+   .. rubric:: Details
 
-   .. autosummary::
-      :toctree:
    
-      
-      
-      ~GrammaredSequence.concat
-      
-      
-      ~GrammaredSequence.count
-      
-      
-      ~GrammaredSequence.definites
-      
-      
-      ~GrammaredSequence.degap
-      
-      
-      ~GrammaredSequence.degenerates
-      
-      
-      ~GrammaredSequence.distance
-      
-      
-      ~GrammaredSequence.expand_degenerates
-      
-      
-      ~GrammaredSequence.find_motifs
-      
-      
-      ~GrammaredSequence.find_with_regex
-      
-      
-      ~GrammaredSequence.frequencies
-      
-      
-      ~GrammaredSequence.gaps
-      
-      
-      ~GrammaredSequence.has_definites
-      
-      
-      ~GrammaredSequence.has_degenerates
-      
-      
-      ~GrammaredSequence.has_gaps
-      
-      
-      ~GrammaredSequence.has_interval_metadata
-      
-      
-      ~GrammaredSequence.has_metadata
-      
-      
-      ~GrammaredSequence.has_nondegenerates
-      
-      
-      ~GrammaredSequence.has_positional_metadata
-      
-      
-      ~GrammaredSequence.index
-      
-      
-      ~GrammaredSequence.iter_contiguous
-      
-      
-      ~GrammaredSequence.iter_kmers
-      
-      
-      ~GrammaredSequence.kmer_frequencies
-      
-      
-      ~GrammaredSequence.lowercase
-      
-      
-      ~GrammaredSequence.match_frequency
-      
-      
-      ~GrammaredSequence.matches
-      
-      
-      ~GrammaredSequence.mismatch_frequency
-      
-      
-      ~GrammaredSequence.mismatches
-      
-      
-      ~GrammaredSequence.nondegenerates
-      
-      
-      ~GrammaredSequence.read
-      
-      
-      ~GrammaredSequence.replace
-      
-      
-      ~GrammaredSequence.to_definites
-      
-      
-      ~GrammaredSequence.to_indices
-      
-      
-      ~GrammaredSequence.to_regex
-      
-      
-      ~GrammaredSequence.write
-      
+   
+   .. autoattribute:: GrammaredSequence.alphabet
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.default_gap_char
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.definite_chars
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.degenerate_chars
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.degenerate_map
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.gap_chars
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.noncanonical_chars
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.nondegenerate_chars
+   
+   
+   
+   .. autoattribute:: GrammaredSequence.wildcard_char
+   
+   
+
+   
    

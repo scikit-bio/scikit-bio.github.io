@@ -6,6 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
+    <meta name="description" content="Warn about potentially accidental use of inefficient code." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="General exception/warning definitions, utilities, and unit-testing functionality." name="description" />
 
@@ -71,7 +72,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="skbio.util.get_data_path" href="generated/skbio.util.get_data_path.html" />
-    <link rel="prev" title="skbio.workflow.method.__str__" href="generated/skbio.workflow.method.__str__.html" />
+    <link rel="prev" title="skbio.workflow.method" href="generated/skbio.workflow.method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -626,14 +627,13 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.assert_data_frame_almost_equal.html">skbio.util.assert_data_frame_almost_equal</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.PlottableMixin.html">skbio.util.PlottableMixin</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.cardinal_to_ordinal.html">skbio.util.cardinal_to_ordinal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.find_duplicates.html">skbio.util.find_duplicates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.safe_md5.html">skbio.util.safe_md5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.classproperty.html">skbio.util.classproperty</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.EfficiencyWarning.html">skbio.util.EfficiencyWarning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.RepresentationWarning.html">skbio.util.RepresentationWarning</a></li>
 </ul>
 </div>
 </nav></div>
@@ -693,8 +693,8 @@ document.write(`
 <p>This package provides general exception/warning definitions used throughout
 scikit-bio, as well as various utility functionality, including I/O and
 unit-testing convenience functions.</p>
-<section id="testing-functionality">
-<h2>Testing functionality<a class="headerlink" href="#testing-functionality" title="Link to this heading">#</a></h2>
+<section id="testing-utilities">
+<h2>Testing utilities<a class="headerlink" href="#testing-utilities" title="Link to this heading">#</a></h2>
 <p>Common functionality to support testing in skbio.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
@@ -711,8 +711,19 @@ unit-testing convenience functions.</p>
 </table>
 </div>
 </section>
-<section id="miscellaneous-functionality">
-<h2>Miscellaneous functionality<a class="headerlink" href="#miscellaneous-functionality" title="Link to this heading">#</a></h2>
+<section id="plotting-utilities">
+<h2>Plotting utilities<a class="headerlink" href="#plotting-utilities" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.PlottableMixin.html#skbio.util.PlottableMixin" title="skbio.util.PlottableMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlottableMixin</span></code></a>()</p></td>
+<td><p>A plottable object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="miscellaneous-utilities">
+<h2>Miscellaneous utilities<a class="headerlink" href="#miscellaneous-utilities" title="Link to this heading">#</a></h2>
 <p>Generally useful functionality that doesn’t fit in more specific locations.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
@@ -736,15 +747,39 @@ unit-testing convenience functions.</p>
 <h2>Developer warnings<a class="headerlink" href="#developer-warnings" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.EfficiencyWarning.html#skbio.util.EfficiencyWarning" title="skbio.util.EfficiencyWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EfficiencyWarning</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.util.EfficiencyWarning" title="skbio.util.EfficiencyWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EfficiencyWarning</span></code></a></p></td>
 <td><p>Warn about potentially accidental use of inefficient code.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.RepresentationWarning.html#skbio.util.RepresentationWarning" title="skbio.util.RepresentationWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RepresentationWarning</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.util.RepresentationWarning" title="skbio.util.RepresentationWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RepresentationWarning</span></code></a></p></td>
 <td><p>Warn about assumptions made for the successful completion of a process.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
+<section id="details">
+<h2>Details<a class="headerlink" href="#details" title="Link to this heading">#</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="skbio.util.EfficiencyWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">EfficiencyWarning</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_warning.py#L18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.EfficiencyWarning" title="Link to this definition">#</a></dt>
+<dd><p>Warn about potentially accidental use of inefficient code.</p>
+<p>For example, if a user doesn’t have an optimized version of a
+function/algorithm available in their scikit-bio installation, a slower,
+pure-Python implementation may be used instead. This warning can be used to
+let the user know they are using a version of the function that could be
+potentially orders of magnitude slower.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="skbio.util.RepresentationWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">RepresentationWarning</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_warning.py#L32"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.RepresentationWarning" title="Link to this definition">#</a></dt>
+<dd><p>Warn about assumptions made for the successful completion of a process.</p>
+<p>Warn about substitutions, assumptions, or particular alterations that were
+made for the successful completion of a process. For example, if a value
+that is required for a task is not present, a best guess or least
+deleterious value could be used, accompanied by this warning.</p>
+</dd></dl>
+
 </section>
 </section>
 
@@ -759,12 +794,12 @@ unit-testing convenience functions.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/skbio.workflow.method.__str__.html"
+       href="generated/skbio.workflow.method.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.workflow.method.__str__</p>
+        <p class="prev-next-title">skbio.workflow.method</p>
       </div>
     </a>
     <a class="right-next"
@@ -794,9 +829,15 @@ unit-testing convenience functions.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-functionality">Testing functionality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-functionality">Miscellaneous functionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-utilities">Testing utilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-utilities">Plotting utilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-utilities">Miscellaneous utilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-warnings">Developer warnings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.util.EfficiencyWarning"><code class="docutils literal notranslate"><span class="pre">EfficiencyWarning</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.util.RepresentationWarning"><code class="docutils literal notranslate"><span class="pre">RepresentationWarning</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

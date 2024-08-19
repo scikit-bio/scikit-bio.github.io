@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.sequence.GeneticCode.__eq__" href="skbio.sequence.GeneticCode.__eq__.html" />
+    <link rel="next" title="skbio.sequence.GeneticCode.from_ncbi" href="skbio.sequence.GeneticCode.from_ncbi.html" />
     <link rel="prev" title="skbio.sequence.Protein.write" href="skbio.sequence.Protein.write.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -629,14 +629,6 @@ document.write(`
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.sequence.GeneticCode</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__eq__.html">skbio.sequence.GeneticCode.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__ge__.html">skbio.sequence.GeneticCode.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__getstate__.html">skbio.sequence.GeneticCode.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__gt__.html">skbio.sequence.GeneticCode.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__le__.html">skbio.sequence.GeneticCode.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__lt__.html">skbio.sequence.GeneticCode.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__ne__.html">skbio.sequence.GeneticCode.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.__str__.html">skbio.sequence.GeneticCode.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.from_ncbi.html">skbio.sequence.GeneticCode.from_ncbi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.translate.html">skbio.sequence.GeneticCode.translate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.GeneticCode.translate_six_frames.html">skbio.sequence.GeneticCode.translate_six_frames</a></li>
@@ -646,6 +638,9 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.sequence.NucleotideMixin.html">skbio.sequence.NucleotideMixin</a></li>
 </ul>
 </div>
 </nav></div>
@@ -813,41 +808,11 @@ in scikit-bio):</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GeneticCode.name" title="skbio.sequence.GeneticCode.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p>Genetic code name.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reading_frames</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.GeneticCode.reading_frames" title="skbio.sequence.GeneticCode.reading_frames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reading_frames</span></code></a></p></td>
 <td><p>Six possible reading frames.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Built-ins</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__eq__.html#skbio.sequence.GeneticCode.__eq__" title="skbio.sequence.GeneticCode.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
-<td><p>Determine if the genetic code is equal to another.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__ge__.html#skbio.sequence.GeneticCode.__ge__" title="skbio.sequence.GeneticCode.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__getstate__.html#skbio.sequence.GeneticCode.__getstate__" title="skbio.sequence.GeneticCode.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__gt__.html#skbio.sequence.GeneticCode.__gt__" title="skbio.sequence.GeneticCode.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__le__.html#skbio.sequence.GeneticCode.__le__" title="skbio.sequence.GeneticCode.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__lt__.html#skbio.sequence.GeneticCode.__lt__" title="skbio.sequence.GeneticCode.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__ne__.html#skbio.sequence.GeneticCode.__ne__" title="skbio.sequence.GeneticCode.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
-<td><p>Determine if the genetic code is not equal to another.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GeneticCode.__str__.html#skbio.sequence.GeneticCode.__str__" title="skbio.sequence.GeneticCode.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
-<td><p>Return string representation of the genetic code.</p></td>
 </tr>
 </tbody>
 </table>
@@ -867,6 +832,171 @@ in scikit-bio):</p>
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GeneticCode.__eq__" title="skbio.sequence.GeneticCode.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
+<td><p>Determine if the genetic code is equal to another.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.GeneticCode.__ne__" title="skbio.sequence.GeneticCode.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
+<td><p>Determine if the genetic code is not equal to another.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GeneticCode.__str__" title="skbio.sequence.GeneticCode.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Return string representation of the genetic code.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.sequence.GeneticCode.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#skbio.sequence.GeneticCode.name" title="Link to this definition">#</a></dt>
+<dd><p>Genetic code name.</p>
+<p>This is simply metadata and does not affect the functionality of the
+genetic code itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>Genetic code name.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.sequence.GeneticCode.reading_frames">
+<span class="sig-name descname"><span class="pre">reading_frames</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.reading_frames" title="Link to this definition">#</a></dt>
+<dd><p>Six possible reading frames.</p>
+<p>Reading frames are ordered:</p>
+<ul class="simple">
+<li><p>1 (forward)</p></li>
+<li><p>2 (forward)</p></li>
+<li><p>3 (forward)</p></li>
+<li><p>-1 (reverse)</p></li>
+<li><p>-2 (reverse)</p></li>
+<li><p>-3 (reverse)</p></li>
+</ul>
+<p>This property can be passed into
+<code class="docutils literal notranslate"><span class="pre">GeneticCode.translate(reading_frame)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list (int)</dt><dd><p>Six possible reading frames.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.sequence.GeneticCode.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L330"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__eq__" title="Link to this definition">#</a></dt>
+<dd><p>Determine if the genetic code is equal to another.</p>
+<p>Genetic codes are equal if they are <em>exactly</em> the same type and
+defined by the same <cite>amino_acids</cite> and <cite>starts</cite>. A genetic code’s name
+(accessed via <code class="docutils literal notranslate"><span class="pre">name</span></code> property) does not affect equality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">GeneticCode</span></dt><dd><p>Genetic code to test for equality against.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates whether the genetic code is equal to <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>NCBI genetic codes 1 and 2 are not equal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">GeneticCode</span><span class="o">.</span><span class="n">from_ncbi</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">GeneticCode</span><span class="o">.</span><span class="n">from_ncbi</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Define a custom genetic code:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span> <span class="o">=</span> <span class="n">GeneticCode</span><span class="p">(</span><span class="s1">&#39;M&#39;</span> <span class="o">*</span> <span class="mi">64</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Define a second genetic code with the same <cite>amino_acids</cite> and <cite>starts</cite>.
+Note that the presence of a name does not make the genetic codes
+unequal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">named_gc</span> <span class="o">=</span> <span class="n">GeneticCode</span><span class="p">(</span><span class="s1">&#39;M&#39;</span> <span class="o">*</span> <span class="mi">64</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">64</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;example name&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gc</span> <span class="o">==</span> <span class="n">named_gc</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.sequence.GeneticCode.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L377"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__ne__" title="Link to this definition">#</a></dt>
+<dd><p>Determine if the genetic code is not equal to another.</p>
+<p>Genetic codes are not equal if their type, <cite>amino_acids</cite>, or <cite>starts</cite>
+differ. A genetic code’s name (accessed via <code class="docutils literal notranslate"><span class="pre">name</span></code> property) does not
+affect equality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">GeneticCode</span></dt><dd><p>Genetic code to test for inequality against.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates whether the genetic code is not equal to <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.sequence.GeneticCode.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return string representation of the genetic code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>Genetic code in NCBI genetic code format.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Representation uses NCBI genetic code format defined in <a class="reference internal" href="#r147245907496-1" id="id6">[1]</a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r147245907496-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi">http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi</a></p>
+</div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -891,11 +1021,11 @@ in scikit-bio):</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.sequence.GeneticCode.__eq__.html"
+       href="skbio.sequence.GeneticCode.from_ncbi.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.sequence.GeneticCode.__eq__</p>
+        <p class="prev-next-title">skbio.sequence.GeneticCode.from_ncbi</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -917,7 +1047,14 @@ in scikit-bio):</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.GeneticCode"><code class="docutils literal notranslate"><span class="pre">GeneticCode</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.GeneticCode"><code class="docutils literal notranslate"><span class="pre">GeneticCode</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.GeneticCode.name"><code class="docutils literal notranslate"><span class="pre">GeneticCode.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.GeneticCode.reading_frames"><code class="docutils literal notranslate"><span class="pre">GeneticCode.reading_frames</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.GeneticCode.__eq__"><code class="docutils literal notranslate"><span class="pre">GeneticCode.__eq__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.GeneticCode.__ne__"><code class="docutils literal notranslate"><span class="pre">GeneticCode.__ne__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.GeneticCode.__str__"><code class="docutils literal notranslate"><span class="pre">GeneticCode.__str__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

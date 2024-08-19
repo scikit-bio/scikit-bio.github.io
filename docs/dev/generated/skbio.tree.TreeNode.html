@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.__copy__" href="skbio.tree.TreeNode.__copy__.html" />
+    <link rel="next" title="skbio.tree.TreeNode.accumulate_to_ancestor" href="skbio.tree.TreeNode.accumulate_to_ancestor.html" />
     <link rel="prev" title="Trees and Phylogenetics (skbio.tree)" href="../tree.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -622,20 +622,6 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.tree.TreeNode</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__copy__.html">skbio.tree.TreeNode.__copy__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__deepcopy__.html">skbio.tree.TreeNode.__deepcopy__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__eq__.html">skbio.tree.TreeNode.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__ge__.html">skbio.tree.TreeNode.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__getitem__.html">skbio.tree.TreeNode.__getitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__getstate__.html">skbio.tree.TreeNode.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__gt__.html">skbio.tree.TreeNode.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__hash__.html">skbio.tree.TreeNode.__hash__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__iter__.html">skbio.tree.TreeNode.__iter__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__le__.html">skbio.tree.TreeNode.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__len__.html">skbio.tree.TreeNode.__len__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__lt__.html">skbio.tree.TreeNode.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__ne__.html">skbio.tree.TreeNode.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.__str__.html">skbio.tree.TreeNode.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ancestors.html">skbio.tree.TreeNode.ancestors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.append.html">skbio.tree.TreeNode.append</a></li>
@@ -811,56 +797,8 @@ confidence or frequency of this branch.</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.tree.TreeNode.default_write_format" title="skbio.tree.TreeNode.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Built-ins</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__copy__.html#skbio.tree.TreeNode.__copy__" title="skbio.tree.TreeNode.__copy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__copy__</span></code></a>()</p></td>
-<td><p>Return a shallow copy.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__deepcopy__.html#skbio.tree.TreeNode.__deepcopy__" title="skbio.tree.TreeNode.__deepcopy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__deepcopy__</span></code></a>(memo)</p></td>
-<td><p>Return a deep copy.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__eq__.html#skbio.tree.TreeNode.__eq__" title="skbio.tree.TreeNode.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(value, /)</p></td>
-<td><p>Return self==value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__ge__.html#skbio.tree.TreeNode.__ge__" title="skbio.tree.TreeNode.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__getitem__.html#skbio.tree.TreeNode.__getitem__" title="skbio.tree.TreeNode.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(i)</p></td>
-<td><p>Node delegates slicing to <code class="docutils literal notranslate"><span class="pre">children</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__getstate__.html#skbio.tree.TreeNode.__getstate__" title="skbio.tree.TreeNode.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__gt__.html#skbio.tree.TreeNode.__gt__" title="skbio.tree.TreeNode.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__hash__.html#skbio.tree.TreeNode.__hash__" title="skbio.tree.TreeNode.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a>(/)</p></td>
-<td><p>Return hash(self).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__iter__.html#skbio.tree.TreeNode.__iter__" title="skbio.tree.TreeNode.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a>()</p></td>
-<td><p>Node iter iterates over the <code class="docutils literal notranslate"><span class="pre">children</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__le__.html#skbio.tree.TreeNode.__le__" title="skbio.tree.TreeNode.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__len__.html#skbio.tree.TreeNode.__len__" title="skbio.tree.TreeNode.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__lt__.html#skbio.tree.TreeNode.__lt__" title="skbio.tree.TreeNode.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__ne__.html#skbio.tree.TreeNode.__ne__" title="skbio.tree.TreeNode.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(value, /)</p></td>
-<td><p>Return self!=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.__str__.html#skbio.tree.TreeNode.__str__" title="skbio.tree.TreeNode.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
-<td><p>Return string version of self, with names and distances.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1078,6 +1016,123 @@ confidence or frequency of this branch.</p>
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.tree.TreeNode.__copy__" title="skbio.tree.TreeNode.__copy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__copy__</span></code></a>()</p></td>
+<td><p>Return a shallow copy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.tree.TreeNode.__deepcopy__" title="skbio.tree.TreeNode.__deepcopy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__deepcopy__</span></code></a>(memo)</p></td>
+<td><p>Return a deep copy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.tree.TreeNode.__getitem__" title="skbio.tree.TreeNode.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(i)</p></td>
+<td><p>Node delegates slicing to <code class="docutils literal notranslate"><span class="pre">children</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.tree.TreeNode.__iter__" title="skbio.tree.TreeNode.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a>()</p></td>
+<td><p>Node iter iterates over the <code class="docutils literal notranslate"><span class="pre">children</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.tree.TreeNode.__len__" title="skbio.tree.TreeNode.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.tree.TreeNode.__str__" title="skbio.tree.TreeNode.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Return string version of self, with names and distances.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code>(value, /)</p></td>
+<td><p>Return self==value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code>(/)</p></td>
+<td><p>Return hash(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code>(value, /)</p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.default_write_format">
+<span class="sig-name descname"><span class="pre">default_write_format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newick'</span></em><a class="headerlink" href="#skbio.tree.TreeNode.default_write_format" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.__copy__">
+<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L618"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__copy__" title="Link to this definition">#</a></dt>
+<dd><p>Return a shallow copy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.__deepcopy__">
+<span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L622"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__deepcopy__" title="Link to this definition">#</a></dt>
+<dd><p>Return a deep copy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L168"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__getitem__" title="Link to this definition">#</a></dt>
+<dd><p>Node delegates slicing to <code class="docutils literal notranslate"><span class="pre">children</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L161"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__iter__" title="Link to this definition">#</a></dt>
+<dd><p>Node iter iterates over the <code class="docutils literal notranslate"><span class="pre">children</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__len__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L138"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return string version of self, with names and distances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>Returns a Newick representation of the tree</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.tree.TreeNode.read.html#skbio.tree.TreeNode.read" title="skbio.tree.TreeNode.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.write.html#skbio.tree.TreeNode.write" title="skbio.tree.TreeNode.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c);&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+<span class="go">&#39;((a,b)c);\n&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1102,11 +1157,11 @@ confidence or frequency of this branch.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.__copy__.html"
+       href="skbio.tree.TreeNode.accumulate_to_ancestor.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.__copy__</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.accumulate_to_ancestor</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1128,7 +1183,16 @@ confidence or frequency of this branch.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode"><code class="docutils literal notranslate"><span class="pre">TreeNode</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode"><code class="docutils literal notranslate"><span class="pre">TreeNode</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.default_write_format"><code class="docutils literal notranslate"><span class="pre">TreeNode.default_write_format</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.__copy__"><code class="docutils literal notranslate"><span class="pre">TreeNode.__copy__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.__deepcopy__"><code class="docutils literal notranslate"><span class="pre">TreeNode.__deepcopy__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.__getitem__"><code class="docutils literal notranslate"><span class="pre">TreeNode.__getitem__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.__iter__"><code class="docutils literal notranslate"><span class="pre">TreeNode.__iter__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.__len__"><code class="docutils literal notranslate"><span class="pre">TreeNode.__len__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.__str__"><code class="docutils literal notranslate"><span class="pre">TreeNode.__str__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

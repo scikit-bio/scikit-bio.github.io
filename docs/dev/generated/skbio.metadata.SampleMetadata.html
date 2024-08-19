@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.metadata.SampleMetadata.__eq__" href="skbio.metadata.SampleMetadata.__eq__.html" />
+    <link rel="next" title="skbio.metadata.SampleMetadata.filter_columns" href="skbio.metadata.SampleMetadata.filter_columns.html" />
     <link rel="prev" title="Metadata (skbio.metadata)" href="../metadata.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -622,14 +622,6 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.metadata.SampleMetadata</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__eq__.html">skbio.metadata.SampleMetadata.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__ge__.html">skbio.metadata.SampleMetadata.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__getstate__.html">skbio.metadata.SampleMetadata.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__gt__.html">skbio.metadata.SampleMetadata.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__le__.html">skbio.metadata.SampleMetadata.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__lt__.html">skbio.metadata.SampleMetadata.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__ne__.html">skbio.metadata.SampleMetadata.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.__str__.html">skbio.metadata.SampleMetadata.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.filter_columns.html">skbio.metadata.SampleMetadata.filter_columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.filter_ids.html">skbio.metadata.SampleMetadata.filter_ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.get_column.html">skbio.metadata.SampleMetadata.get_column</a></li>
@@ -637,7 +629,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.load.html">skbio.metadata.SampleMetadata.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.merge.html">skbio.metadata.SampleMetadata.merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.read.html">skbio.metadata.SampleMetadata.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.save.html">skbio.metadata.SampleMetadata.save</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.to_dataframe.html">skbio.metadata.SampleMetadata.to_dataframe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.write.html">skbio.metadata.SampleMetadata.write</a></li>
 </ul>
@@ -651,6 +642,11 @@ document.write(`
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.metadata.Interval.html">skbio.metadata.Interval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.metadata.IntervalMetadata.html">skbio.metadata.IntervalMetadata</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.metadata.MetadataMixin.html">skbio.metadata.MetadataMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.metadata.PositionalMetadataMixin.html">skbio.metadata.PositionalMetadataMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.metadata.IntervalMetadataMixin.html">skbio.metadata.IntervalMetadataMixin</a></li>
 </ul>
 </div>
 </nav></div>
@@ -794,53 +790,29 @@ or in <cite>column_missing_schemes</cite>.</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">column_count</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.SampleMetadata.column_count" title="skbio.metadata.SampleMetadata.column_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">column_count</span></code></a></p></td>
 <td><p>Number of metadata columns.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">columns</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.metadata.SampleMetadata.columns" title="skbio.metadata.SampleMetadata.columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">columns</span></code></a></p></td>
 <td><p>Ordered mapping of column names to ColumnProperties.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.SampleMetadata.default_write_format" title="skbio.metadata.SampleMetadata.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id_count</span></code></p></td>
-<td><p>Number of metadata IDs.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id_header</span></code></p></td>
-<td><p>Name identifying the IDs associated with the metadata.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></p></td>
-<td><p>IDs associated with the metadata.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p class="rubric">Built-ins</p>
+<p class="rubric">Attributes (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__eq__.html#skbio.metadata.SampleMetadata.__eq__" title="skbio.metadata.SampleMetadata.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
-<td><p>Determine if this metadata is equal to another.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id_count</span></code></p></td>
+<td><p>Number of metadata IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__ge__.html#skbio.metadata.SampleMetadata.__ge__" title="skbio.metadata.SampleMetadata.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id_header</span></code></p></td>
+<td><p>Name identifying the IDs associated with the metadata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__getstate__.html#skbio.metadata.SampleMetadata.__getstate__" title="skbio.metadata.SampleMetadata.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__gt__.html#skbio.metadata.SampleMetadata.__gt__" title="skbio.metadata.SampleMetadata.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__le__.html#skbio.metadata.SampleMetadata.__le__" title="skbio.metadata.SampleMetadata.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__lt__.html#skbio.metadata.SampleMetadata.__lt__" title="skbio.metadata.SampleMetadata.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__ne__.html#skbio.metadata.SampleMetadata.__ne__" title="skbio.metadata.SampleMetadata.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
-<td><p>Determine if this metadata is not equal to another.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.__str__.html#skbio.metadata.SampleMetadata.__str__" title="skbio.metadata.SampleMetadata.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>(/)</p></td>
-<td><p>Return str(self).</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></p></td>
+<td><p>IDs associated with the metadata.</p></td>
 </tr>
 </tbody>
 </table>
@@ -869,18 +841,162 @@ or in <cite>column_missing_schemes</cite>.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.read.html#skbio.metadata.SampleMetadata.read" title="skbio.metadata.SampleMetadata.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(file[, format])</p></td>
 <td><p>Create a new <code class="docutils literal notranslate"><span class="pre">SampleMetadata</span></code> instance from a file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.save.html#skbio.metadata.SampleMetadata.save" title="skbio.metadata.SampleMetadata.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(filepath[, ext])</p></td>
-<td><p>Save a TSV metadata file.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.to_dataframe.html#skbio.metadata.SampleMetadata.to_dataframe" title="skbio.metadata.SampleMetadata.to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dataframe</span></code></a>([encode_missing])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.to_dataframe.html#skbio.metadata.SampleMetadata.to_dataframe" title="skbio.metadata.SampleMetadata.to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dataframe</span></code></a>([encode_missing])</p></td>
 <td><p>Create a pandas dataframe from the metadata.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.write.html#skbio.metadata.SampleMetadata.write" title="skbio.metadata.SampleMetadata.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.SampleMetadata.write.html#skbio.metadata.SampleMetadata.write" title="skbio.metadata.SampleMetadata.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">SampleMetadata</span></code> to a file.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p class="rubric">Methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code>(filepath[, ext])</p></td>
+<td><p>Save a TSV metadata file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.SampleMetadata.__eq__" title="skbio.metadata.SampleMetadata.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
+<td><p>Determine if this metadata is equal to another.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.metadata.SampleMetadata.__ne__" title="skbio.metadata.SampleMetadata.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
+<td><p>Determine if this metadata is not equal to another.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code>(/)</p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.column_count">
+<span class="sig-name descname"><span class="pre">column_count</span></span><a class="headerlink" href="#skbio.metadata.SampleMetadata.column_count" title="Link to this definition">#</a></dt>
+<dd><p>Number of metadata columns.</p>
+<p>This property is read-only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>Number of metadata columns.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">id_count</span></code></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Zero metadata columns are allowed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.columns">
+<span class="sig-name descname"><span class="pre">columns</span></span><a class="headerlink" href="#skbio.metadata.SampleMetadata.columns" title="Link to this definition">#</a></dt>
+<dd><p>Ordered mapping of column names to ColumnProperties.</p>
+<p>The mapping that is returned is read-only. This property is also
+read-only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>types.MappingProxyType</dt><dd><p>Ordered mapping of column names to ColumnProperties.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.default_write_format">
+<span class="sig-name descname"><span class="pre">default_write_format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sample_metadata'</span></em><a class="headerlink" href="#skbio.metadata.SampleMetadata.default_write_format" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L522"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.__eq__" title="Link to this definition">#</a></dt>
+<dd><p>Determine if this metadata is equal to another.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Metadata</span></code> objects are equal if their IDs, columns (including column
+names, types, and ordering), ID headers, and metadata values are equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">Metadata</span></dt><dd><p>Metadata to test for equality.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates whether this <code class="docutils literal notranslate"><span class="pre">Metadata</span></code> object is equal to <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.metadata.SampleMetadata.__ne__" title="skbio.metadata.SampleMetadata.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.__ne__" title="Link to this definition">#</a></dt>
+<dd><p>Determine if this metadata is not equal to another.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Metadata</span></code> objects are not equal if their IDs, columns (including
+column names, types, or ordering), ID headers, or metadata values are
+not equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">Metadata</span></dt><dd><p>Metadata to test for inequality.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates whether this <code class="docutils literal notranslate"><span class="pre">Metadata</span></code> object is not equal to <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.metadata.SampleMetadata.__eq__" title="skbio.metadata.SampleMetadata.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -905,11 +1021,11 @@ or in <cite>column_missing_schemes</cite>.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.metadata.SampleMetadata.__eq__.html"
+       href="skbio.metadata.SampleMetadata.filter_columns.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.metadata.SampleMetadata.__eq__</p>
+        <p class="prev-next-title">skbio.metadata.SampleMetadata.filter_columns</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -931,7 +1047,14 @@ or in <cite>column_missing_schemes</cite>.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata"><code class="docutils literal notranslate"><span class="pre">SampleMetadata</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata"><code class="docutils literal notranslate"><span class="pre">SampleMetadata</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.column_count"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.column_count</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.columns"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.columns</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.default_write_format"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.default_write_format</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.__eq__"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.__eq__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.__ne__"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.__ne__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -70,8 +70,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.alignment.AlignmentStructure.__eq__" href="skbio.alignment.AlignmentStructure.__eq__.html" />
-    <link rel="prev" title="skbio.alignment.StripedSmithWaterman.__str__" href="skbio.alignment.StripedSmithWaterman.__str__.html" />
+    <link rel="next" title="skbio.alignment.AlignmentStructure.is_zero_based" href="skbio.alignment.AlignmentStructure.is_zero_based.html" />
+    <link rel="prev" title="skbio.alignment.StripedSmithWaterman" href="skbio.alignment.StripedSmithWaterman.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -628,17 +628,6 @@ document.write(`
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.html">skbio.alignment.StripedSmithWaterman</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.alignment.AlignmentStructure</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__eq__.html">skbio.alignment.AlignmentStructure.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__ge__.html">skbio.alignment.AlignmentStructure.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__getitem__.html">skbio.alignment.AlignmentStructure.__getitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__getstate__.html">skbio.alignment.AlignmentStructure.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__gt__.html">skbio.alignment.AlignmentStructure.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__hash__.html">skbio.alignment.AlignmentStructure.__hash__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__le__.html">skbio.alignment.AlignmentStructure.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__lt__.html">skbio.alignment.AlignmentStructure.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__ne__.html">skbio.alignment.AlignmentStructure.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__setstate__.html">skbio.alignment.AlignmentStructure.__setstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.__str__.html">skbio.alignment.AlignmentStructure.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.is_zero_based.html">skbio.alignment.AlignmentStructure.is_zero_based</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignmentStructure.set_zero_based.html">skbio.alignment.AlignmentStructure.set_zero_based</a></li>
 </ul>
@@ -726,80 +715,41 @@ ssw.c as is <cite>reference_sequence</cite> for <cite>target_sequence</cite></p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">aligned_query_sequence</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.aligned_query_sequence" title="skbio.alignment.AlignmentStructure.aligned_query_sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aligned_query_sequence</span></code></a></p></td>
 <td><p>Returns the query sequence aligned by the cigar</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">aligned_target_sequence</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.aligned_target_sequence" title="skbio.alignment.AlignmentStructure.aligned_target_sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aligned_target_sequence</span></code></a></p></td>
 <td><p>Returns the target sequence aligned by the cigar</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cigar</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.cigar" title="skbio.alignment.AlignmentStructure.cigar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cigar</span></code></a></p></td>
 <td><p>Cigar formatted string for the optimal alignment</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimal_alignment_score</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.optimal_alignment_score" title="skbio.alignment.AlignmentStructure.optimal_alignment_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimal_alignment_score</span></code></a></p></td>
 <td><p>Optimal alignment score</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_begin</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.query_begin" title="skbio.alignment.AlignmentStructure.query_begin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_begin</span></code></a></p></td>
 <td><p>Returns the character index at which the query sequence begins</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_end</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.query_end" title="skbio.alignment.AlignmentStructure.query_end"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_end</span></code></a></p></td>
 <td><p>Character index at where query sequence ends</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_sequence</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.query_sequence" title="skbio.alignment.AlignmentStructure.query_sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_sequence</span></code></a></p></td>
 <td><p>Query sequence</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">suboptimal_alignment_score</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.suboptimal_alignment_score" title="skbio.alignment.AlignmentStructure.suboptimal_alignment_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">suboptimal_alignment_score</span></code></a></p></td>
 <td><p>Suboptimal alignment score</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_begin</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.target_begin" title="skbio.alignment.AlignmentStructure.target_begin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_begin</span></code></a></p></td>
 <td><p>Character index where the target's alignment begins</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_end_optimal</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.target_end_optimal" title="skbio.alignment.AlignmentStructure.target_end_optimal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_end_optimal</span></code></a></p></td>
 <td><p>Character index where the target's optimal alignment ends</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_end_suboptimal</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.target_end_suboptimal" title="skbio.alignment.AlignmentStructure.target_end_suboptimal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_end_suboptimal</span></code></a></p></td>
 <td><p>Character index where the target's suboptimal alignment ends</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_sequence</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.target_sequence" title="skbio.alignment.AlignmentStructure.target_sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">target_sequence</span></code></a></p></td>
 <td><p>Target sequence</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Built-ins</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__eq__.html#skbio.alignment.AlignmentStructure.__eq__" title="skbio.alignment.AlignmentStructure.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(value, /)</p></td>
-<td><p>Return self==value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__ge__.html#skbio.alignment.AlignmentStructure.__ge__" title="skbio.alignment.AlignmentStructure.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__getitem__.html#skbio.alignment.AlignmentStructure.__getitem__" title="skbio.alignment.AlignmentStructure.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(key, /)</p></td>
-<td><p>Return self[key].</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__getstate__.html#skbio.alignment.AlignmentStructure.__getstate__" title="skbio.alignment.AlignmentStructure.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__gt__.html#skbio.alignment.AlignmentStructure.__gt__" title="skbio.alignment.AlignmentStructure.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__hash__.html#skbio.alignment.AlignmentStructure.__hash__" title="skbio.alignment.AlignmentStructure.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a>(/)</p></td>
-<td><p>Return hash(self).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__le__.html#skbio.alignment.AlignmentStructure.__le__" title="skbio.alignment.AlignmentStructure.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__lt__.html#skbio.alignment.AlignmentStructure.__lt__" title="skbio.alignment.AlignmentStructure.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__ne__.html#skbio.alignment.AlignmentStructure.__ne__" title="skbio.alignment.AlignmentStructure.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(value, /)</p></td>
-<td><p>Return self!=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__setstate__.html#skbio.alignment.AlignmentStructure.__setstate__" title="skbio.alignment.AlignmentStructure.__setstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__setstate__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignmentStructure.__str__.html#skbio.alignment.AlignmentStructure.__str__" title="skbio.alignment.AlignmentStructure.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>(/)</p></td>
-<td><p>Return str(self).</p></td>
 </tr>
 </tbody>
 </table>
@@ -816,6 +766,274 @@ ssw.c as is <cite>reference_sequence</cite> for <cite>target_sequence</cite></p>
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.__getitem__" title="skbio.alignment.AlignmentStructure.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(key, /)</p></td>
+<td><p>Return self[key].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.__setstate__" title="skbio.alignment.AlignmentStructure.__setstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__setstate__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignmentStructure.__str__" title="skbio.alignment.AlignmentStructure.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>(/)</p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code>(value, /)</p></td>
+<td><p>Return self==value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code>(/)</p></td>
+<td><p>Return hash(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code>(value, /)</p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.aligned_query_sequence">
+<span class="sig-name descname"><span class="pre">aligned_query_sequence</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.aligned_query_sequence" title="Link to this definition">#</a></dt>
+<dd><p>Returns the query sequence aligned by the cigar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>Aligned query sequence</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This will return <cite>None</cite> if <cite>suppress_sequences</cite> was True when this
+object was created</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.aligned_target_sequence">
+<span class="sig-name descname"><span class="pre">aligned_target_sequence</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.aligned_target_sequence" title="Link to this definition">#</a></dt>
+<dd><p>Returns the target sequence aligned by the cigar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>Aligned target sequence</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This will return <cite>None</cite> if <cite>suppress_sequences</cite> was True when this
+object was created</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.cigar">
+<span class="sig-name descname"><span class="pre">cigar</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.cigar" title="Link to this definition">#</a></dt>
+<dd><p>Cigar formatted string for the optimal alignment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>The cigar string of the optimal alignment</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The cigar string format is described in <a class="reference internal" href="#r26f078229f06-1" id="id1">[1]</a> and <a class="reference internal" href="#r26f078229f06-2" id="id2">[2]</a>.</p>
+<p>If there is no cigar or optimal alignment, this will return an empty
+string</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r26f078229f06-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://genome.sph.umich.edu/wiki/SAM">http://genome.sph.umich.edu/wiki/SAM</a></p>
+</div>
+<div class="citation" id="r26f078229f06-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://samtools.github.io/hts-specs/SAMv1.pdf">http://samtools.github.io/hts-specs/SAMv1.pdf</a></p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.optimal_alignment_score">
+<span class="sig-name descname"><span class="pre">optimal_alignment_score</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.optimal_alignment_score" title="Link to this definition">#</a></dt>
+<dd><p>Optimal alignment score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>The optimal alignment score</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.query_begin">
+<span class="sig-name descname"><span class="pre">query_begin</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.query_begin" title="Link to this definition">#</a></dt>
+<dd><p>Returns the character index at which the query sequence begins</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>The character index of the query sequence beginning</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The result is a 0-based index by default</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.query_end">
+<span class="sig-name descname"><span class="pre">query_end</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.query_end" title="Link to this definition">#</a></dt>
+<dd><p>Character index at where query sequence ends</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>The character index of the query sequence ending</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The result is a 0-based index by default</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.query_sequence">
+<span class="sig-name descname"><span class="pre">query_sequence</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.query_sequence" title="Link to this definition">#</a></dt>
+<dd><p>Query sequence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>The query sequence</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.suboptimal_alignment_score">
+<span class="sig-name descname"><span class="pre">suboptimal_alignment_score</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.suboptimal_alignment_score" title="Link to this definition">#</a></dt>
+<dd><p>Suboptimal alignment score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>The suboptimal alignment score</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.target_begin">
+<span class="sig-name descname"><span class="pre">target_begin</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.target_begin" title="Link to this definition">#</a></dt>
+<dd><p>Character index where the target’s alignment begins</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>The character index of the target sequence’s alignment’s beginning</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The result is a 0-based index by default</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.target_end_optimal">
+<span class="sig-name descname"><span class="pre">target_end_optimal</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.target_end_optimal" title="Link to this definition">#</a></dt>
+<dd><p>Character index where the target’s optimal alignment ends</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><dl class="simple">
+<dt>The character index of the target sequence’s optimal alignment’s</dt><dd><p>end</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The result is a 0-based index by default</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.target_end_suboptimal">
+<span class="sig-name descname"><span class="pre">target_end_suboptimal</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.target_end_suboptimal" title="Link to this definition">#</a></dt>
+<dd><p>Character index where the target’s suboptimal alignment ends</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><dl class="simple">
+<dt>The character index of the target sequence’s suboptimal alignment’s</dt><dd><p>end</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The result is a 0-based index by default</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.target_sequence">
+<span class="sig-name descname"><span class="pre">target_sequence</span></span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.target_sequence" title="Link to this definition">#</a></dt>
+<dd><p>Target sequence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str</dt><dd><p>The target sequence</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.__getitem__" title="Link to this definition">#</a></dt>
+<dd><p>Return self[key].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.__setstate__">
+<span class="sig-name descname"><span class="pre">__setstate__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.__setstate__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.AlignmentStructure.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skbio.alignment.AlignmentStructure.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -831,20 +1049,20 @@ ssw.c as is <cite>reference_sequence</cite> for <cite>target_sequence</cite></p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.alignment.StripedSmithWaterman.__str__.html"
+       href="skbio.alignment.StripedSmithWaterman.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.alignment.StripedSmithWaterman.__str__</p>
+        <p class="prev-next-title">skbio.alignment.StripedSmithWaterman</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.alignment.AlignmentStructure.__eq__.html"
+       href="skbio.alignment.AlignmentStructure.is_zero_based.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.alignment.AlignmentStructure.__eq__</p>
+        <p class="prev-next-title">skbio.alignment.AlignmentStructure.is_zero_based</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -866,7 +1084,24 @@ ssw.c as is <cite>reference_sequence</cite> for <cite>target_sequence</cite></p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.aligned_query_sequence"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.aligned_query_sequence</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.aligned_target_sequence"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.aligned_target_sequence</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.cigar"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.cigar</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.optimal_alignment_score"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.optimal_alignment_score</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.query_begin"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.query_begin</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.query_end"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.query_end</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.query_sequence"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.query_sequence</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.suboptimal_alignment_score"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.suboptimal_alignment_score</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.target_begin"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.target_begin</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.target_end_optimal"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.target_end_optimal</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.target_end_suboptimal"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.target_end_suboptimal</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.target_sequence"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.target_sequence</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.__getitem__"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.__getitem__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.__setstate__"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.__setstate__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignmentStructure.__str__"><code class="docutils literal notranslate"><span class="pre">AlignmentStructure.__str__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

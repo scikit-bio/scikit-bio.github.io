@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.alignment.PairAlignPath.__eq__" href="skbio.alignment.PairAlignPath.__eq__.html" />
+    <link rel="next" title="skbio.alignment.PairAlignPath.from_bits" href="skbio.alignment.PairAlignPath.from_bits.html" />
     <link rel="prev" title="skbio.alignment.AlignPath.to_indices" href="skbio.alignment.AlignPath.to_indices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -624,24 +624,10 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.TabularMSA.html">skbio.alignment.TabularMSA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.AlignPath.html">skbio.alignment.AlignPath</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.alignment.PairAlignPath</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__eq__.html">skbio.alignment.PairAlignPath.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__ge__.html">skbio.alignment.PairAlignPath.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__getstate__.html">skbio.alignment.PairAlignPath.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__gt__.html">skbio.alignment.PairAlignPath.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__hash__.html">skbio.alignment.PairAlignPath.__hash__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__le__.html">skbio.alignment.PairAlignPath.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__lt__.html">skbio.alignment.PairAlignPath.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__ne__.html">skbio.alignment.PairAlignPath.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.__str__.html">skbio.alignment.PairAlignPath.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.from_bits.html">skbio.alignment.PairAlignPath.from_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.from_cigar.html">skbio.alignment.PairAlignPath.from_cigar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.from_coordinates.html">skbio.alignment.PairAlignPath.from_coordinates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.from_indices.html">skbio.alignment.PairAlignPath.from_indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.from_tabular.html">skbio.alignment.PairAlignPath.from_tabular</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.to_bits.html">skbio.alignment.PairAlignPath.to_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.to_cigar.html">skbio.alignment.PairAlignPath.to_cigar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.to_coordinates.html">skbio.alignment.PairAlignPath.to_coordinates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.PairAlignPath.to_indices.html">skbio.alignment.PairAlignPath.to_indices</a></li>
 </ul>
 </details></li>
 </ul>
@@ -743,53 +729,20 @@ the alignment.</p>
 <dt><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.alignment.TabularMSA</span></code></a></dt><dd></dd>
 </dl>
 </div>
-<p class="rubric">Attributes</p>
+<p class="rubric">Attributes (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lengths</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath.lengths" title="skbio.alignment.AlignPath.lengths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lengths</span></code></a></p></td>
 <td><p>Array of lengths of segments in alignment path.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath.shape" title="skbio.alignment.AlignPath.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
 <td><p>Number of sequences (rows) and positions (columns).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath.starts" title="skbio.alignment.AlignPath.starts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts</span></code></a></p></td>
 <td><p>Array of start positions of sequences in the alignment.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">states</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath.states" title="skbio.alignment.AlignPath.states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">states</span></code></a></p></td>
 <td><p>Array of gap status of segments in alignment path.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Built-ins</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__eq__.html#skbio.alignment.PairAlignPath.__eq__" title="skbio.alignment.PairAlignPath.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(value, /)</p></td>
-<td><p>Return self==value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__ge__.html#skbio.alignment.PairAlignPath.__ge__" title="skbio.alignment.PairAlignPath.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__getstate__.html#skbio.alignment.PairAlignPath.__getstate__" title="skbio.alignment.PairAlignPath.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__gt__.html#skbio.alignment.PairAlignPath.__gt__" title="skbio.alignment.PairAlignPath.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__hash__.html#skbio.alignment.PairAlignPath.__hash__" title="skbio.alignment.PairAlignPath.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a>(/)</p></td>
-<td><p>Return hash(self).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__le__.html#skbio.alignment.PairAlignPath.__le__" title="skbio.alignment.PairAlignPath.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__lt__.html#skbio.alignment.PairAlignPath.__lt__" title="skbio.alignment.PairAlignPath.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__ne__.html#skbio.alignment.PairAlignPath.__ne__" title="skbio.alignment.PairAlignPath.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(value, /)</p></td>
-<td><p>Return self!=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.__str__.html#skbio.alignment.PairAlignPath.__str__" title="skbio.alignment.PairAlignPath.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
-<td><p>Return string representation of this AlignPath.</p></td>
 </tr>
 </tbody>
 </table>
@@ -803,30 +756,82 @@ the alignment.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.from_cigar.html#skbio.alignment.PairAlignPath.from_cigar" title="skbio.alignment.PairAlignPath.from_cigar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_cigar</span></code></a>(cigar[, starts])</p></td>
 <td><p>Create a pairwise alignment path from a CIGAR string.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.from_coordinates.html#skbio.alignment.PairAlignPath.from_coordinates" title="skbio.alignment.PairAlignPath.from_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_coordinates</span></code></a>(coords)</p></td>
-<td><p>Generate an alignment path from an array of segment coordinates.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.from_indices.html#skbio.alignment.PairAlignPath.from_indices" title="skbio.alignment.PairAlignPath.from_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_indices</span></code></a>(indices[, gap])</p></td>
-<td><p>Create an alignment path from character indices in the original sequences.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.from_tabular.html#skbio.alignment.PairAlignPath.from_tabular" title="skbio.alignment.PairAlignPath.from_tabular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_tabular</span></code></a>(msa)</p></td>
-<td><p>Create an alignment path from a <cite>TabularMSA</cite> object.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.to_bits.html#skbio.alignment.PairAlignPath.to_bits" title="skbio.alignment.PairAlignPath.to_bits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_bits</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.to_bits.html#skbio.alignment.PairAlignPath.to_bits" title="skbio.alignment.PairAlignPath.to_bits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_bits</span></code></a>()</p></td>
 <td><p>Unpack states into an array of bits.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.to_cigar.html#skbio.alignment.PairAlignPath.to_cigar" title="skbio.alignment.PairAlignPath.to_cigar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_cigar</span></code></a>([seqs])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.to_cigar.html#skbio.alignment.PairAlignPath.to_cigar" title="skbio.alignment.PairAlignPath.to_cigar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_cigar</span></code></a>([seqs])</p></td>
 <td><p>Generate a CIGAR string representing the pairwise alignment path.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.to_coordinates.html#skbio.alignment.PairAlignPath.to_coordinates" title="skbio.alignment.PairAlignPath.to_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_coordinates</span></code></a>()</p></td>
+</tbody>
+</table>
+</div>
+<p class="rubric">Methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_coordinates.html#skbio.alignment.AlignPath.from_coordinates" title="skbio.alignment.AlignPath.from_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_coordinates</span></code></a>(coords)</p></td>
+<td><p>Generate an alignment path from an array of segment coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_indices.html#skbio.alignment.AlignPath.from_indices" title="skbio.alignment.AlignPath.from_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_indices</span></code></a>(indices[, gap])</p></td>
+<td><p>Create an alignment path from character indices in the original sequences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html#skbio.alignment.AlignPath.from_tabular" title="skbio.alignment.AlignPath.from_tabular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_tabular</span></code></a>(msa)</p></td>
+<td><p>Create an alignment path from a <cite>TabularMSA</cite> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_coordinates.html#skbio.alignment.AlignPath.to_coordinates" title="skbio.alignment.AlignPath.to_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_coordinates</span></code></a>()</p></td>
 <td><p>Generate an array of segment coordinates in the original sequences.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.PairAlignPath.to_indices.html#skbio.alignment.PairAlignPath.to_indices" title="skbio.alignment.PairAlignPath.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([gap])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_indices.html#skbio.alignment.AlignPath.to_indices" title="skbio.alignment.AlignPath.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([gap])</p></td>
 <td><p>Generate an array of indices of characters in the original sequences.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.PairAlignPath.__str__" title="skbio.alignment.PairAlignPath.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Return string representation of this AlignPath.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code>(value, /)</p></td>
+<td><p>Return self==value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code>(/)</p></td>
+<td><p>Return hash(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code>(value, /)</p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.PairAlignPath.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L501"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.PairAlignPath.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return string representation of this AlignPath.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -851,11 +856,11 @@ the alignment.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.alignment.PairAlignPath.__eq__.html"
+       href="skbio.alignment.PairAlignPath.from_bits.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.alignment.PairAlignPath.__eq__</p>
+        <p class="prev-next-title">skbio.alignment.PairAlignPath.from_bits</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -877,7 +882,10 @@ the alignment.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.PairAlignPath"><code class="docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.PairAlignPath"><code class="docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.PairAlignPath.__str__"><code class="docutils literal notranslate"><span class="pre">PairAlignPath.__str__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

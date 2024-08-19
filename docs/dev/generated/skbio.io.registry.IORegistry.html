@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.io.registry.IORegistry.__eq__" href="skbio.io.registry.IORegistry.__eq__.html" />
+    <link rel="next" title="skbio.io.registry.IORegistry.add_format" href="skbio.io.registry.IORegistry.add_format.html" />
     <link rel="prev" title="I/O Registry (skbio.io.registry)" href="skbio.io.registry.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -725,39 +725,6 @@ document.write(`
 <dt class="sig sig-object py" id="skbio.io.registry.IORegistry">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.io.registry.</span></span><span class="sig-name descname"><span class="pre">IORegistry</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.io.registry.IORegistry" title="Link to this definition">#</a></dt>
 <dd><p>Create a registry of formats and implementations which map to classes.</p>
-<p class="rubric">Built-ins</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__eq__.html#skbio.io.registry.IORegistry.__eq__" title="skbio.io.registry.IORegistry.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(value, /)</p></td>
-<td><p>Return self==value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__ge__.html#skbio.io.registry.IORegistry.__ge__" title="skbio.io.registry.IORegistry.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__getstate__.html#skbio.io.registry.IORegistry.__getstate__" title="skbio.io.registry.IORegistry.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__gt__.html#skbio.io.registry.IORegistry.__gt__" title="skbio.io.registry.IORegistry.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__hash__.html#skbio.io.registry.IORegistry.__hash__" title="skbio.io.registry.IORegistry.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a>(/)</p></td>
-<td><p>Return hash(self).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__le__.html#skbio.io.registry.IORegistry.__le__" title="skbio.io.registry.IORegistry.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__lt__.html#skbio.io.registry.IORegistry.__lt__" title="skbio.io.registry.IORegistry.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__ne__.html#skbio.io.registry.IORegistry.__ne__" title="skbio.io.registry.IORegistry.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(value, /)</p></td>
-<td><p>Return self!=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.IORegistry.__str__.html#skbio.io.registry.IORegistry.__str__" title="skbio.io.registry.IORegistry.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>(/)</p></td>
-<td><p>Return str(self).</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
@@ -797,6 +764,40 @@ document.write(`
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code>(value, /)</p></td>
+<td><p>Return self==value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code>(/)</p></td>
+<td><p>Return hash(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code>(value, /)</p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code>(/)</p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
 </dd></dl>
 
 </section>
@@ -821,11 +822,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="skbio.io.registry.IORegistry.__eq__.html"
+       href="skbio.io.registry.IORegistry.add_format.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.io.registry.IORegistry.__eq__</p>
+        <p class="prev-next-title">skbio.io.registry.IORegistry.add_format</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

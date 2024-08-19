@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.embedding.SequenceEmbedding.__eq__" href="skbio.embedding.SequenceEmbedding.__eq__.html" />
+    <link rel="next" title="skbio.embedding.ProteinEmbedding" href="skbio.embedding.ProteinEmbedding.html" />
     <link rel="prev" title="skbio.embedding.Embedding.bytes" href="skbio.embedding.Embedding.bytes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -622,22 +622,11 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.Embedding.html">skbio.embedding.Embedding</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.embedding.SequenceEmbedding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__eq__.html">skbio.embedding.SequenceEmbedding.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__ge__.html">skbio.embedding.SequenceEmbedding.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__getstate__.html">skbio.embedding.SequenceEmbedding.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__gt__.html">skbio.embedding.SequenceEmbedding.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__hash__.html">skbio.embedding.SequenceEmbedding.__hash__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__le__.html">skbio.embedding.SequenceEmbedding.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__lt__.html">skbio.embedding.SequenceEmbedding.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__ne__.html">skbio.embedding.SequenceEmbedding.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__str__.html">skbio.embedding.SequenceEmbedding.__str__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.bytes.html">skbio.embedding.SequenceEmbedding.bytes</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.embedding.SequenceEmbedding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.ProteinEmbedding.html">skbio.embedding.ProteinEmbedding</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.embedding.EmbeddingVector.html">skbio.embedding.EmbeddingVector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.SequenceVector.html">skbio.embedding.SequenceVector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.ProteinVector.html">skbio.embedding.ProteinVector</a></li>
 </ul>
@@ -730,60 +719,85 @@ coordinates.</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">embedding</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.embedding.SequenceEmbedding.sequence" title="skbio.embedding.SequenceEmbedding.sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sequence</span></code></a></p></td>
+<td><p>String representation of the underlying sequence.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Attributes (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.Embedding.html#skbio.embedding.Embedding.embedding" title="skbio.embedding.Embedding.embedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embedding</span></code></a></p></td>
 <td><p>The embedding tensor.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.Embedding.html#skbio.embedding.Embedding.ids" title="skbio.embedding.Embedding.ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></a></p></td>
 <td><p>IDs corresponding to each row of the embedding.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sequence</span></code></p></td>
-<td><p>String representation of the underlying sequence.</p></td>
-</tr>
 </tbody>
 </table>
 </div>
-<p class="rubric">Built-ins</p>
+<p class="rubric">Methods (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__eq__.html#skbio.embedding.SequenceEmbedding.__eq__" title="skbio.embedding.SequenceEmbedding.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(value, /)</p></td>
-<td><p>Return self==value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__ge__.html#skbio.embedding.SequenceEmbedding.__ge__" title="skbio.embedding.SequenceEmbedding.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__getstate__.html#skbio.embedding.SequenceEmbedding.__getstate__" title="skbio.embedding.SequenceEmbedding.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__gt__.html#skbio.embedding.SequenceEmbedding.__gt__" title="skbio.embedding.SequenceEmbedding.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__hash__.html#skbio.embedding.SequenceEmbedding.__hash__" title="skbio.embedding.SequenceEmbedding.__hash__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></a>(/)</p></td>
-<td><p>Return hash(self).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__le__.html#skbio.embedding.SequenceEmbedding.__le__" title="skbio.embedding.SequenceEmbedding.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__lt__.html#skbio.embedding.SequenceEmbedding.__lt__" title="skbio.embedding.SequenceEmbedding.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__ne__.html#skbio.embedding.SequenceEmbedding.__ne__" title="skbio.embedding.SequenceEmbedding.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(value, /)</p></td>
-<td><p>Return self!=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.__str__.html#skbio.embedding.SequenceEmbedding.__str__" title="skbio.embedding.SequenceEmbedding.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
-<td><p>String representation of the underlying sequence.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.SequenceEmbedding.bytes.html#skbio.embedding.SequenceEmbedding.bytes" title="skbio.embedding.SequenceEmbedding.bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.Embedding.bytes.html#skbio.embedding.Embedding.bytes" title="skbio.embedding.Embedding.bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>()</p></td>
 <td><p>Bytes representation of string encoding.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.embedding.SequenceEmbedding.__str__" title="skbio.embedding.SequenceEmbedding.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>String representation of the underlying sequence.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code>(value, /)</p></td>
+<td><p>Return self==value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code>(/)</p></td>
+<td><p>Return hash(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code>(value, /)</p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.embedding.SequenceEmbedding.sequence">
+<span class="sig-name descname"><span class="pre">sequence</span></span><a class="headerlink" href="#skbio.embedding.SequenceEmbedding.sequence" title="Link to this definition">#</a></dt>
+<dd><p>String representation of the underlying sequence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.embedding.SequenceEmbedding.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/embedding/_embedding.py#L100"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.SequenceEmbedding.__str__" title="Link to this definition">#</a></dt>
+<dd><p>String representation of the underlying sequence.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -808,11 +822,11 @@ coordinates.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.embedding.SequenceEmbedding.__eq__.html"
+       href="skbio.embedding.ProteinEmbedding.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.embedding.SequenceEmbedding.__eq__</p>
+        <p class="prev-next-title">skbio.embedding.ProteinEmbedding</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -834,7 +848,11 @@ coordinates.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.embedding.SequenceEmbedding"><code class="docutils literal notranslate"><span class="pre">SequenceEmbedding</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.embedding.SequenceEmbedding"><code class="docutils literal notranslate"><span class="pre">SequenceEmbedding</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.embedding.SequenceEmbedding.sequence"><code class="docutils literal notranslate"><span class="pre">SequenceEmbedding.sequence</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.embedding.SequenceEmbedding.__str__"><code class="docutils literal notranslate"><span class="pre">SequenceEmbedding.__str__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

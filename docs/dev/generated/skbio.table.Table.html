@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.table.Table.__eq__" href="skbio.table.Table.__eq__.html" />
+    <link rel="next" title="skbio.table.Table.add_group_metadata" href="skbio.table.Table.add_group_metadata.html" />
     <link rel="prev" title="Data Table (skbio.table)" href="../table.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -622,16 +622,6 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.table.Table</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__eq__.html">skbio.table.Table.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__ge__.html">skbio.table.Table.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__getitem__.html">skbio.table.Table.__getitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__getstate__.html">skbio.table.Table.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__gt__.html">skbio.table.Table.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__iter__.html">skbio.table.Table.__iter__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__le__.html">skbio.table.Table.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__lt__.html">skbio.table.Table.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__ne__.html">skbio.table.Table.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.__str__.html">skbio.table.Table.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.add_group_metadata.html">skbio.table.Table.add_group_metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.add_metadata.html">skbio.table.Table.add_metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.table.Table.align_to.html">skbio.table.Table.align_to</a></li>
@@ -764,13 +754,13 @@ and <a class="reference internal" href="#racf742e36bf0-2" id="id2">[2]</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></dt><dd><p>The shape of the underlying contingency matrix</p>
+<dt><a class="reference internal" href="#skbio.table.Table.shape" title="skbio.table.Table.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></dt><dd><p>The shape of the underlying contingency matrix</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></dt><dd><p>The type of the objects in the underlying contingency matrix</p>
+<dt><a class="reference internal" href="#skbio.table.Table.dtype" title="skbio.table.Table.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></dt><dd><p>The type of the objects in the underlying contingency matrix</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">nnz</span></code></dt><dd><p>Number of non-zero elements of the underlying contingency matrix</p>
+<dt><a class="reference internal" href="#skbio.table.Table.nnz" title="skbio.table.Table.nnz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nnz</span></code></a></dt><dd><p>Number of non-zero elements of the underlying contingency matrix</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix_data</span></code></dt><dd><p>The sparse matrix object</p>
+<dt><a class="reference internal" href="#skbio.table.Table.matrix_data" title="skbio.table.Table.matrix_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix_data</span></code></a></dt><dd><p>The sparse matrix object</p>
 </dd>
 <dt><strong>type</strong></dt><dd></dd>
 <dt><strong>table_id</strong></dt><dd></dd>
@@ -805,56 +795,20 @@ GigaScience 2012 1:7</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.table.Table.default_write_format" title="skbio.table.Table.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.table.Table.dtype" title="skbio.table.Table.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
 <td><p>The type of the objects in the underlying contingency matrix</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix_data</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.table.Table.matrix_data" title="skbio.table.Table.matrix_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix_data</span></code></a></p></td>
 <td><p>The sparse matrix object</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nnz</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.table.Table.nnz" title="skbio.table.Table.nnz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nnz</span></code></a></p></td>
 <td><p>Number of non-zero elements of the underlying contingency matrix</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.table.Table.shape" title="skbio.table.Table.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
 <td><p>The shape of the underlying contingency matrix</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Built-ins</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.table.Table.__eq__.html#skbio.table.Table.__eq__" title="skbio.table.Table.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
-<td><p>Equality is determined by the data matrix, metadata, and IDs</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.table.Table.__ge__.html#skbio.table.Table.__ge__" title="skbio.table.Table.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.table.Table.__getitem__.html#skbio.table.Table.__getitem__" title="skbio.table.Table.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(args)</p></td>
-<td><p>Handles row or column slices</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.table.Table.__getstate__.html#skbio.table.Table.__getstate__" title="skbio.table.Table.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.table.Table.__gt__.html#skbio.table.Table.__gt__" title="skbio.table.Table.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.table.Table.__iter__.html#skbio.table.Table.__iter__" title="skbio.table.Table.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a>()</p></td>
-<td><p>See <code class="docutils literal notranslate"><span class="pre">biom.table.Table.iter</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.table.Table.__le__.html#skbio.table.Table.__le__" title="skbio.table.Table.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.table.Table.__lt__.html#skbio.table.Table.__lt__" title="skbio.table.Table.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.table.Table.__ne__.html#skbio.table.Table.__ne__" title="skbio.table.Table.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
-<td><p>Return self!=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.table.Table.__str__.html#skbio.table.Table.__str__" title="skbio.table.Table.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
-<td><p>Stringify self</p></td>
 </tr>
 </tbody>
 </table>
@@ -1033,6 +987,146 @@ GigaScience 2012 1:7</p>
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.table.Table.__eq__" title="skbio.table.Table.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
+<td><p>Equality is determined by the data matrix, metadata, and IDs</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.table.Table.__getitem__" title="skbio.table.Table.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(args)</p></td>
+<td><p>Handles row or column slices</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.table.Table.__iter__" title="skbio.table.Table.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a>()</p></td>
+<td><p>See <code class="docutils literal notranslate"><span class="pre">biom.table.Table.iter</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.table.Table.__ne__" title="skbio.table.Table.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.table.Table.__str__" title="skbio.table.Table.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Stringify self</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.table.Table.default_write_format">
+<span class="sig-name descname"><span class="pre">default_write_format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'biom'</span></em><a class="headerlink" href="#skbio.table.Table.default_write_format" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.table.Table.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#skbio.table.Table.dtype" title="Link to this definition">#</a></dt>
+<dd><p>The type of the objects in the underlying contingency matrix</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.table.Table.matrix_data">
+<span class="sig-name descname"><span class="pre">matrix_data</span></span><a class="headerlink" href="#skbio.table.Table.matrix_data" title="Link to this definition">#</a></dt>
+<dd><p>The sparse matrix object</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.table.Table.nnz">
+<span class="sig-name descname"><span class="pre">nnz</span></span><a class="headerlink" href="#skbio.table.Table.nnz" title="Link to this definition">#</a></dt>
+<dd><p>Number of non-zero elements of the underlying contingency matrix</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.table.Table.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#skbio.table.Table.shape" title="Link to this definition">#</a></dt>
+<dd><p>The shape of the underlying contingency matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.table.Table.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/../biom/table.py#L1847"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.__eq__" title="Link to this definition">#</a></dt>
+<dd><p>Equality is determined by the data matrix, metadata, and IDs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.table.Table.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/../biom/table.py#L869"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.__getitem__" title="Link to this definition">#</a></dt>
+<dd><p>Handles row or column slices</p>
+<p>Slicing over an individual axis is supported, but slicing over both
+axes at the same time is not supported. Partial slices, such as
+<cite>foo[0, 5:10]</cite> are not supported, however full slices are supported,
+such as <cite>foo[0, :]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>args</strong><span class="classifier">tuple or slice</span></dt><dd><p>The specific element (by index position) to return or an entire
+row or column of the data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>float or spmatrix</dt><dd><p>A float is return if a specific element is specified, otherwise a
+spmatrix object representing a vector of sparse data is returned.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>IndexError</dt><dd><ul class="simple">
+<li><p>If the matrix is empty</p></li>
+<li><p>If the arguments do not appear to be a tuple</p></li>
+<li><p>If a slice on row and column is specified</p></li>
+<li><p>If a partial slice is specified</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Switching between slicing rows and columns is inefficient.  Slicing of
+rows requires a CSR representation, while slicing of columns requires a
+CSC representation, and transforms are performed on the data if the
+data are not in the required representation. These transforms can be
+expensive if done frequently.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.table.Table.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/../biom/table.py#L1793"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.__iter__" title="Link to this definition">#</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">biom.table.Table.iter</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.table.Table.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/../biom/table.py#L1899"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.__ne__" title="Link to this definition">#</a></dt>
+<dd><p>Return self!=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.table.Table.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/../biom/table.py#L1630"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Stringify self</p>
+<p>Default str output for a Table is just row/col ids and data values</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1057,11 +1151,11 @@ GigaScience 2012 1:7</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.table.Table.__eq__.html"
+       href="skbio.table.Table.add_group_metadata.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.table.Table.__eq__</p>
+        <p class="prev-next-title">skbio.table.Table.add_group_metadata</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1083,7 +1177,19 @@ GigaScience 2012 1:7</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table"><code class="docutils literal notranslate"><span class="pre">Table</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table"><code class="docutils literal notranslate"><span class="pre">Table</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.default_write_format"><code class="docutils literal notranslate"><span class="pre">Table.default_write_format</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.dtype"><code class="docutils literal notranslate"><span class="pre">Table.dtype</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.matrix_data"><code class="docutils literal notranslate"><span class="pre">Table.matrix_data</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.nnz"><code class="docutils literal notranslate"><span class="pre">Table.nnz</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.shape"><code class="docutils literal notranslate"><span class="pre">Table.shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.__eq__"><code class="docutils literal notranslate"><span class="pre">Table.__eq__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.__getitem__"><code class="docutils literal notranslate"><span class="pre">Table.__getitem__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.__iter__"><code class="docutils literal notranslate"><span class="pre">Table.__iter__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.__ne__"><code class="docutils literal notranslate"><span class="pre">Table.__ne__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Table.__str__"><code class="docutils literal notranslate"><span class="pre">Table.__str__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

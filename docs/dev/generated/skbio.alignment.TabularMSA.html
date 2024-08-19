@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.alignment.TabularMSA.__bool__" href="skbio.alignment.TabularMSA.__bool__.html" />
+    <link rel="next" title="skbio.alignment.TabularMSA.append" href="skbio.alignment.TabularMSA.append.html" />
     <link rel="prev" title="Sequence Alignments (skbio.alignment)" href="../alignment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -622,22 +622,6 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.alignment.TabularMSA</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__bool__.html">skbio.alignment.TabularMSA.__bool__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__contains__.html">skbio.alignment.TabularMSA.__contains__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__copy__.html">skbio.alignment.TabularMSA.__copy__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__deepcopy__.html">skbio.alignment.TabularMSA.__deepcopy__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__eq__.html">skbio.alignment.TabularMSA.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__ge__.html">skbio.alignment.TabularMSA.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__getitem__.html">skbio.alignment.TabularMSA.__getitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__getstate__.html">skbio.alignment.TabularMSA.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__gt__.html">skbio.alignment.TabularMSA.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__iter__.html">skbio.alignment.TabularMSA.__iter__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__le__.html">skbio.alignment.TabularMSA.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__len__.html">skbio.alignment.TabularMSA.__len__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__lt__.html">skbio.alignment.TabularMSA.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__ne__.html">skbio.alignment.TabularMSA.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__reversed__.html">skbio.alignment.TabularMSA.__reversed__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.__str__.html">skbio.alignment.TabularMSA.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.append.html">skbio.alignment.TabularMSA.append</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.consensus.html">skbio.alignment.TabularMSA.consensus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.conservation.html">skbio.alignment.TabularMSA.conservation</a></li>
@@ -645,8 +629,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.from_dict.html">skbio.alignment.TabularMSA.from_dict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.from_path_seqs.html">skbio.alignment.TabularMSA.from_path_seqs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.gap_frequencies.html">skbio.alignment.TabularMSA.gap_frequencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.has_metadata.html">skbio.alignment.TabularMSA.has_metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.has_positional_metadata.html">skbio.alignment.TabularMSA.has_positional_metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.iter_positions.html">skbio.alignment.TabularMSA.iter_positions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.join.html">skbio.alignment.TabularMSA.join</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.TabularMSA.read.html">skbio.alignment.TabularMSA.read</a></li>
@@ -851,83 +833,35 @@ labels:</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.default_write_format" title="skbio.alignment.TabularMSA.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.dtype" title="skbio.alignment.TabularMSA.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
 <td><p>Data type of the stored sequences.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">iloc</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.iloc" title="skbio.alignment.TabularMSA.iloc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iloc</span></code></a></p></td>
 <td><p>Slice the MSA on either axis by index position.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.index" title="skbio.alignment.TabularMSA.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a></p></td>
 <td><p>Index containing labels along the sequence axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">loc</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.loc" title="skbio.alignment.TabularMSA.loc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loc</span></code></a></p></td>
 <td><p>Slice the MSA on first axis by index label, second axis by position.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> containing metadata which applies to the entire object.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> containing metadata along an axis.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.shape" title="skbio.alignment.TabularMSA.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
 <td><p>Number of sequences (rows) and positions (columns).</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p class="rubric">Built-ins</p>
+<p class="rubric">Attributes (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__bool__.html#skbio.alignment.TabularMSA.__bool__" title="skbio.alignment.TabularMSA.__bool__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__bool__</span></code></a>()</p></td>
-<td><p>Boolean indicating whether the MSA is empty or not.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.MetadataMixin.html#skbio.metadata.MetadataMixin.metadata" title="skbio.metadata.MetadataMixin.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> containing metadata which applies to the entire object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__contains__.html#skbio.alignment.TabularMSA.__contains__" title="skbio.alignment.TabularMSA.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a>(label)</p></td>
-<td><p>Determine if an index label is in this MSA.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__copy__.html#skbio.alignment.TabularMSA.__copy__" title="skbio.alignment.TabularMSA.__copy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__copy__</span></code></a>()</p></td>
-<td><p>Return a shallow copy of this MSA.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__deepcopy__.html#skbio.alignment.TabularMSA.__deepcopy__" title="skbio.alignment.TabularMSA.__deepcopy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__deepcopy__</span></code></a>(memo)</p></td>
-<td><p>Return a deep copy of this MSA.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__eq__.html#skbio.alignment.TabularMSA.__eq__" title="skbio.alignment.TabularMSA.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
-<td><p>Determine if this MSA is equal to another.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__ge__.html#skbio.alignment.TabularMSA.__ge__" title="skbio.alignment.TabularMSA.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__getitem__.html#skbio.alignment.TabularMSA.__getitem__" title="skbio.alignment.TabularMSA.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(indexable)</p></td>
-<td><p>Slice the MSA on either axis.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__getstate__.html#skbio.alignment.TabularMSA.__getstate__" title="skbio.alignment.TabularMSA.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__gt__.html#skbio.alignment.TabularMSA.__gt__" title="skbio.alignment.TabularMSA.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__iter__.html#skbio.alignment.TabularMSA.__iter__" title="skbio.alignment.TabularMSA.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a>()</p></td>
-<td><p>Iterate over sequences in the MSA.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__le__.html#skbio.alignment.TabularMSA.__le__" title="skbio.alignment.TabularMSA.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__len__.html#skbio.alignment.TabularMSA.__len__" title="skbio.alignment.TabularMSA.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a>()</p></td>
-<td><p>Return number of sequences in the MSA.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__lt__.html#skbio.alignment.TabularMSA.__lt__" title="skbio.alignment.TabularMSA.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__ne__.html#skbio.alignment.TabularMSA.__ne__" title="skbio.alignment.TabularMSA.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
-<td><p>Determine if this MSA is not equal to another.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__reversed__.html#skbio.alignment.TabularMSA.__reversed__" title="skbio.alignment.TabularMSA.__reversed__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__reversed__</span></code></a>()</p></td>
-<td><p>Iterate in reverse order over sequences in the MSA.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.__str__.html#skbio.alignment.TabularMSA.__str__" title="skbio.alignment.TabularMSA.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
-<td><p>Return string summary of this MSA.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.PositionalMetadataMixin.html#skbio.metadata.PositionalMetadataMixin.positional_metadata" title="skbio.metadata.PositionalMetadataMixin.positional_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> containing metadata along an axis.</p></td>
 </tr>
 </tbody>
 </table>
@@ -956,12 +890,6 @@ labels:</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.gap_frequencies.html#skbio.alignment.TabularMSA.gap_frequencies" title="skbio.alignment.TabularMSA.gap_frequencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_frequencies</span></code></a>([axis, relative])</p></td>
 <td><p>Compute frequency of gap characters across an axis.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.has_metadata.html#skbio.alignment.TabularMSA.has_metadata" title="skbio.alignment.TabularMSA.has_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_metadata</span></code></a>()</p></td>
-<td><p>Determine if the object has metadata.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.has_positional_metadata.html#skbio.alignment.TabularMSA.has_positional_metadata" title="skbio.alignment.TabularMSA.has_positional_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_positional_metadata</span></code></a>()</p></td>
-<td><p>Determine if the object has positional metadata.</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.TabularMSA.iter_positions.html#skbio.alignment.TabularMSA.iter_positions" title="skbio.alignment.TabularMSA.iter_positions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iter_positions</span></code></a>([reverse, ignore_metadata])</p></td>
 <td><p>Iterate over positions (columns) in the MSA.</p></td>
 </tr>
@@ -986,6 +914,935 @@ labels:</p>
 </tbody>
 </table>
 </div>
+<p class="rubric">Methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.MetadataMixin.has_metadata.html#skbio.metadata.MetadataMixin.has_metadata" title="skbio.metadata.MetadataMixin.has_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_metadata</span></code></a>()</p></td>
+<td><p>Determine if the object has metadata.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.PositionalMetadataMixin.has_positional_metadata.html#skbio.metadata.PositionalMetadataMixin.has_positional_metadata" title="skbio.metadata.PositionalMetadataMixin.has_positional_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_positional_metadata</span></code></a>()</p></td>
+<td><p>Determine if the object has positional metadata.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__bool__" title="skbio.alignment.TabularMSA.__bool__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__bool__</span></code></a>()</p></td>
+<td><p>Boolean indicating whether the MSA is empty or not.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__contains__" title="skbio.alignment.TabularMSA.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a>(label)</p></td>
+<td><p>Determine if an index label is in this MSA.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__copy__" title="skbio.alignment.TabularMSA.__copy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__copy__</span></code></a>()</p></td>
+<td><p>Return a shallow copy of this MSA.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__deepcopy__" title="skbio.alignment.TabularMSA.__deepcopy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__deepcopy__</span></code></a>(memo)</p></td>
+<td><p>Return a deep copy of this MSA.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__eq__" title="skbio.alignment.TabularMSA.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
+<td><p>Determine if this MSA is equal to another.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__getitem__" title="skbio.alignment.TabularMSA.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(indexable)</p></td>
+<td><p>Slice the MSA on either axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__iter__" title="skbio.alignment.TabularMSA.__iter__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__</span></code></a>()</p></td>
+<td><p>Iterate over sequences in the MSA.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__len__" title="skbio.alignment.TabularMSA.__len__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__len__</span></code></a>()</p></td>
+<td><p>Return number of sequences in the MSA.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__ne__" title="skbio.alignment.TabularMSA.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
+<td><p>Determine if this MSA is not equal to another.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__reversed__" title="skbio.alignment.TabularMSA.__reversed__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__reversed__</span></code></a>()</p></td>
+<td><p>Iterate in reverse order over sequences in the MSA.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.TabularMSA.__str__" title="skbio.alignment.TabularMSA.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Return string summary of this MSA.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.default_write_format">
+<span class="sig-name descname"><span class="pre">default_write_format</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fasta'</span></em><a class="headerlink" href="#skbio.alignment.TabularMSA.default_write_format" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#skbio.alignment.TabularMSA.dtype" title="Link to this definition">#</a></dt>
+<dd><p>Data type of the stored sequences.</p>
+<p class="rubric">Notes</p>
+<p>This property is not writeable.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">&lt;class &#39;skbio.sequence._dna.DNA&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="n">DNA</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.iloc">
+<span class="sig-name descname"><span class="pre">iloc</span></span><a class="headerlink" href="#skbio.alignment.TabularMSA.iloc" title="Link to this definition">#</a></dt>
+<dd><p>Slice the MSA on either axis by index position.</p>
+<p>This will return an object with the following interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">seq_idx</span><span class="p">]</span>
+<span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">seq_idx</span><span class="p">,</span> <span class="n">pos_idx</span><span class="p">]</span>
+<span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sequence&#39;</span><span class="p">)[</span><span class="n">seq_idx</span><span class="p">]</span>
+<span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;position&#39;</span><span class="p">)[</span><span class="n">pos_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>seq_idx</strong><span class="classifier">int, slice, iterable (int and slice), 1D array_like (bool)</span></dt><dd><p>Slice the first axis of the MSA. When this value is a scalar, a
+sequence of <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> will be returned. This may be further
+sliced by <cite>pos_idx</cite>.</p>
+</dd>
+<dt><strong>pos_idx</strong><span class="classifier">(same as seq_idx), optional</span></dt><dd><p>Slice the second axis of the MSA. When this value is a scalar, a
+sequence of type <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.sequence.Sequence</span></code></a> will be returned.
+This represents a column of the MSA and may have been additionally
+sliced by <cite>seq_idx</cite>.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">{‘sequence’, ‘position’, 0, 1, None}, optional</span></dt><dd><p>Limit the axis to slice on. When set, a tuple as the argument will
+no longer be split into <cite>seq_idx</cite> and <cite>pos_idx</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>TabularMSA, GrammaredSequence, Sequence</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> is returned when <cite>seq_idx</cite> and <cite>pos_idx</cite> are
+non-scalars. A <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code> of type <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> is
+returned when <cite>seq_idx</cite> is a scalar (this object will match the
+dtype of the MSA). A <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> is returned when <cite>seq_idx</cite> is
+non-scalar and <cite>pos_idx</cite> is scalar.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.__getitem__" title="skbio.alignment.TabularMSA.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.loc" title="skbio.alignment.TabularMSA.loc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loc</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>If the slice operation results in a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> without any
+sequences, the MSA’s <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code> will be unset.</p>
+<p class="rubric">Examples</p>
+<p>First we need to set up an MSA to slice:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TabularMSA</span><span class="p">,</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;A-GT&quot;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;AC-T&quot;</span><span class="p">),</span>
+<span class="gp">... </span>                  <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACGA&quot;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 4</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">ACGT</span>
+<span class="go">A-GT</span>
+<span class="go">AC-T</span>
+<span class="go">ACGA</span>
+</pre></div>
+</div>
+<p>When we slice by a scalar we get the original sequence back out of the
+MSA:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 4</span>
+<span class="go">    has gaps: True</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 33.33%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 A-GT</span>
+</pre></div>
+</div>
+<p>Similarly when we slice the second axis by a scalar we get a column of
+the MSA:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="go">Sequence</span>
+<span class="go">-------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 4</span>
+<span class="go">-------------</span>
+<span class="go">0 C-CC</span>
+</pre></div>
+</div>
+<p>Note: we return an <code class="docutils literal notranslate"><span class="pre">skbio.Sequence</span></code> object because the column of an
+alignment has no biological meaning and many operations defined for the
+MSA’s sequence <cite>dtype</cite> would be meaningless.</p>
+<p>When we slice both axes by a scalar, operations are applied left to
+right:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 1</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 0.00%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 A</span>
+</pre></div>
+</div>
+<p>In other words, it exactly matches slicing the resulting sequence
+object directly:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 1</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 0.00%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 A</span>
+</pre></div>
+</div>
+<p>When our slice is non-scalar we get back an MSA of the same <cite>dtype</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">ACGT</span>
+<span class="go">AC-T</span>
+</pre></div>
+</div>
+<p>We can similarly slice out a column of that:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">]</span>
+<span class="go">Sequence</span>
+<span class="go">-------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 2</span>
+<span class="go">-------------</span>
+<span class="go">0 G-</span>
+</pre></div>
+</div>
+<p>Slice syntax works as well:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 3</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">ACGT</span>
+<span class="go">A-GT</span>
+<span class="go">AC-T</span>
+</pre></div>
+</div>
+<p>We can also use boolean vectors:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 1</span>
+<span class="go">---------------------</span>
+<span class="go">G</span>
+<span class="go">G</span>
+</pre></div>
+</div>
+<p>Here we sliced the first axis by a boolean vector, but then restricted
+the columns to a single column. Because the second axis was given a
+nonscalar we still recieve an MSA even though only one column is
+present.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.index">
+<span class="sig-name descname"><span class="pre">index</span></span><a class="headerlink" href="#skbio.alignment.TabularMSA.index" title="Link to this definition">#</a></dt>
+<dd><p>Index containing labels along the sequence axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>pd.Index</dt><dd><p>Index containing sequence labels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.alignment.TabularMSA.reassign_index.html#skbio.alignment.TabularMSA.reassign_index" title="skbio.alignment.TabularMSA.reassign_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reassign_index</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This property can be set and deleted. Deleting the index will reset the
+index to the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> constructor’s default.</p>
+<p class="rubric">Examples</p>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object with sequences labeled by sequence
+identifier:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">}),</span>
+<span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">}),</span>
+<span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">minter</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Retrieve index:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
+<span class="go">Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], dtype=&#39;object&#39;)</span>
+</pre></div>
+</div>
+<p>Set index:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;seq1&#39;</span><span class="p">,</span> <span class="s1">&#39;seq2&#39;</span><span class="p">,</span> <span class="s1">&#39;seq3&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
+<span class="go">Index([&#39;seq1&#39;, &#39;seq2&#39;, &#39;seq3&#39;], dtype=&#39;object&#39;)</span>
+</pre></div>
+</div>
+<p>Deleting the index resets it to the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> constructor’s
+default:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">msa</span><span class="o">.</span><span class="n">index</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
+<span class="go">RangeIndex(start=0, stop=3, step=1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.loc">
+<span class="sig-name descname"><span class="pre">loc</span></span><a class="headerlink" href="#skbio.alignment.TabularMSA.loc" title="Link to this definition">#</a></dt>
+<dd><p>Slice the MSA on first axis by index label, second axis by position.</p>
+<p>This will return an object with the following interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">seq_idx</span><span class="p">]</span>
+<span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">seq_idx</span><span class="p">,</span> <span class="n">pos_idx</span><span class="p">]</span>
+<span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sequence&#39;</span><span class="p">)[</span><span class="n">seq_idx</span><span class="p">]</span>
+<span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;position&#39;</span><span class="p">)[</span><span class="n">pos_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>seq_idx</strong><span class="classifier">label, slice, 1D array_like (bool or label)</span></dt><dd><p>Slice the first axis of the MSA. When this value is a scalar, a
+sequence of <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> will be returned. This may be further
+sliced by <cite>pos_idx</cite>.</p>
+</dd>
+<dt><strong>pos_idx</strong><span class="classifier">(same as seq_idx), optional</span></dt><dd><p>Slice the second axis of the MSA. When this value is a scalar, a
+sequence of type <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.sequence.Sequence</span></code></a> will be returned.
+This represents a column of the MSA and may have been additionally
+sliced by <cite>seq_idx</cite>.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">{‘sequence’, ‘position’, 0, 1, None}, optional</span></dt><dd><p>Limit the axis to slice on. When set, a tuple as the argument will
+no longer be split into <cite>seq_idx</cite> and <cite>pos_idx</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>TabularMSA, GrammaredSequence, Sequence</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> is returned when <cite>seq_idx</cite> and <cite>pos_idx</cite> are
+non-scalars. A <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code> of type <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> is
+returned when <cite>seq_idx</cite> is a scalar (this object will match the
+dtype of the MSA). A <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> is returned when <cite>seq_idx</cite> is
+non-scalar and <cite>pos_idx</cite> is scalar.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.iloc" title="skbio.alignment.TabularMSA.iloc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iloc</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.__getitem__" title="skbio.alignment.TabularMSA.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>If the slice operation results in a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> without any
+sequences, the MSA’s <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code> will be unset.</p>
+<p>When the MSA’s index is a <code class="docutils literal notranslate"><span class="pre">pd.MultiIndex</span></code> a tuple may be given to
+<cite>seq_idx</cite> to indicate the slicing operations to perform on each
+component index.</p>
+<p class="rubric">Examples</p>
+<p>First we need to set up an MSA to slice:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TabularMSA</span><span class="p">,</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;A-GT&quot;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;AC-T&quot;</span><span class="p">),</span>
+<span class="gp">... </span>                  <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACGA&quot;</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 4</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">ACGT</span>
+<span class="go">A-GT</span>
+<span class="go">AC-T</span>
+<span class="go">ACGA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
+<span class="go">Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;], dtype=&#39;object&#39;)</span>
+</pre></div>
+</div>
+<p>When we slice by a scalar we get the original sequence back out of the
+MSA:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 4</span>
+<span class="go">    has gaps: True</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 33.33%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 A-GT</span>
+</pre></div>
+</div>
+<p>Similarly when we slice the second axis by a scalar we get a column of
+the MSA:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="go">Sequence</span>
+<span class="go">-------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 4</span>
+<span class="go">-------------</span>
+<span class="go">0 C-CC</span>
+</pre></div>
+</div>
+<p>Note: we return an <code class="docutils literal notranslate"><span class="pre">skbio.Sequence</span></code> object because the column of an
+alignment has no biological meaning and many operations defined for the
+MSA’s sequence <cite>dtype</cite> would be meaningless.</p>
+<p>When we slice both axes by a scalar, operations are applied left to
+right:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 1</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 0.00%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 A</span>
+</pre></div>
+</div>
+<p>In other words, it exactly matches slicing the resulting sequence
+object directly:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 1</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 0.00%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 A</span>
+</pre></div>
+</div>
+<p>When our slice is non-scalar we get back an MSA of the same <cite>dtype</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">ACGT</span>
+<span class="go">AC-T</span>
+</pre></div>
+</div>
+<p>We can similarly slice out a column of that:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">]</span>
+<span class="go">Sequence</span>
+<span class="go">-------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 2</span>
+<span class="go">-------------</span>
+<span class="go">0 G-</span>
+</pre></div>
+</div>
+<p>Slice syntax works as well:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 3</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">ACGT</span>
+<span class="go">A-GT</span>
+<span class="go">AC-T</span>
+</pre></div>
+</div>
+<p>Notice how the end label is included in the results. This is different
+from how positional slices behave:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 1</span>
+<span class="go">---------------------</span>
+<span class="go">G</span>
+<span class="go">G</span>
+</pre></div>
+</div>
+<p>Here we sliced the first axis by a boolean vector, but then restricted
+the columns to a single column. Because the second axis was given a
+nonscalar we still recieve an MSA even though only one column is
+present.</p>
+<p>Duplicate labels can be an unfortunate reality in the real world,
+however <cite>loc</cite> is capable of handling this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Notice how the label ‘a’ happens twice. If we were to access ‘a’ we get
+back an MSA with both sequences:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">ACGT</span>
+<span class="go">A-GT</span>
+</pre></div>
+</div>
+<p>Remember that <cite>iloc</cite> can always be used to differentiate sequences with
+duplicate labels.</p>
+<p>More advanced slicing patterns are possible with different index types.</p>
+<p>Let’s use a <cite>pd.MultiIndex</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Here we will explicitly set the axis that we are slicing by to make
+things easier to read:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sequence&#39;</span><span class="p">)[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 4</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 50.00%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 ACGT</span>
+</pre></div>
+</div>
+<p>This selected the first sequence because the complete label was
+provided. In other words <cite>(‘a’, 0)</cite> was treated as a scalar for this
+index.</p>
+<p>We can also slice along the component indices of the multi-index:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sequence&#39;</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">A-GT</span>
+<span class="go">ACGA</span>
+</pre></div>
+</div>
+<p>If we were to do that again without the <cite>axis</cite> argument, it would look
+like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="o">...</span><span class="p">]</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 4</span>
+<span class="go">---------------------</span>
+<span class="go">A-GT</span>
+<span class="go">ACGA</span>
+</pre></div>
+</div>
+<p>Notice how we needed to specify the second axis. If we had left that
+out we would have simply gotten the 2nd column back instead. We also
+lost the syntactic sugar for slice objects. These are a few of the
+reasons specifying the <cite>axis</cite> preemptively can be useful.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#skbio.alignment.TabularMSA.shape" title="Link to this definition">#</a></dt>
+<dd><p>Number of sequences (rows) and positions (columns).</p>
+<p class="rubric">Notes</p>
+<p>This property is not writeable.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+</pre></div>
+</div>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object with 2 sequences and 3 positions:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">Shape(sequence=2, position=3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Dimensions can be accessed by index or by name:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">sequence</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">position</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__bool__">
+<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L852"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__bool__" title="Link to this definition">#</a></dt>
+<dd><p>Boolean indicating whether the MSA is empty or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>bool</dt><dd><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if there are no sequences, OR if there are no positions
+(i.e., all sequences are empty). <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+</pre></div>
+</div>
+<p>MSA with sequences and positions:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>No sequences:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>No positions:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L888"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__contains__" title="Link to this definition">#</a></dt>
+<dd><p>Determine if an index label is in this MSA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>label</strong><span class="classifier">hashable</span></dt><dd><p>Label to search for in this MSA.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates whether <cite>label</cite> is in this MSA.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;l1&#39;</span> <span class="ow">in</span> <span class="n">msa</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;l2&#39;</span> <span class="ow">in</span> <span class="n">msa</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;l3&#39;</span> <span class="ow">in</span> <span class="n">msa</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__copy__">
+<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L1075"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__copy__" title="Link to this definition">#</a></dt>
+<dd><p>Return a shallow copy of this MSA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TabularMSA</dt><dd><p>Shallow copy of this MSA. Sequence objects will be shallow-copied.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.__deepcopy__" title="skbio.alignment.TabularMSA.__deepcopy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__deepcopy__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa_copy</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa_copy</span> <span class="o">==</span> <span class="n">msa</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa_copy</span> <span class="ow">is</span> <span class="n">msa</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__deepcopy__">
+<span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L1106"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__deepcopy__" title="Link to this definition">#</a></dt>
+<dd><p>Return a deep copy of this MSA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TabularMSA</dt><dd><p>Deep copy of this MSA. Sequence objects will be deep-copied.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.__copy__" title="skbio.alignment.TabularMSA.__copy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__copy__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa_copy</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa_copy</span> <span class="o">==</span> <span class="n">msa</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa_copy</span> <span class="ow">is</span> <span class="n">msa</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L984"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__eq__" title="Link to this definition">#</a></dt>
+<dd><p>Determine if this MSA is equal to another.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> objects are equal if their sequences, index, metadata,
+and positional metadata are equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">TabularMSA</span></dt><dd><p>MSA to test for equality against.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates whether this MSA is equal to <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">RNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">==</span> <span class="n">msa</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>MSAs with different sequence characters are not equal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">==</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;--G&#39;</span><span class="p">)])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>MSAs with different types of sequences (different <code class="docutils literal notranslate"><span class="pre">dtype</span></code>) are not
+equal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">==</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>MSAs with different sequence metadata are not equal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">==</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">}),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>MSAs with different index labels are not equal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">==</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)],</span> <span class="n">minter</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>MSAs with different metadata are not equal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">==</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)],</span>
+<span class="gp">... </span>                  <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;msa-id&#39;</span><span class="p">})</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>MSAs with different positional metadata are not equal:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">==</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)],</span>
+<span class="gp">... </span>                  <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;prob&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indexable</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L1138"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__getitem__" title="Link to this definition">#</a></dt>
+<dd><p>Slice the MSA on either axis.</p>
+<p>This is a pass-through for <a class="reference internal" href="#skbio.alignment.TabularMSA.iloc" title="skbio.alignment.TabularMSA.iloc"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.alignment.TabularMSA.iloc()</span></code></a>.
+Please refer to the associated documentation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.iloc" title="skbio.alignment.TabularMSA.iloc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iloc</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.loc" title="skbio.alignment.TabularMSA.loc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loc</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Axis restriction is not possible for this method.</p>
+<p>To slice by labels, use <code class="docutils literal notranslate"><span class="pre">loc</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L940"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__iter__" title="Link to this definition">#</a></dt>
+<dd><p>Iterate over sequences in the MSA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yields<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>GrammaredSequence</dt><dd><p>Each sequence in the order they are stored in the MSA.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">msa</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">&#39;ACG&#39;</span>
+<span class="go">&#39;AC-&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L915"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__len__" title="Link to this definition">#</a></dt>
+<dd><p>Return number of sequences in the MSA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>Number of sequences in the MSA (i.e., size of the 1st dimension).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">msa.shape[0]</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L1052"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__ne__" title="Link to this definition">#</a></dt>
+<dd><p>Determine if this MSA is not equal to another.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> objects are not equal if their sequences, index,
+metadata, or positional metadata are not equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">TabularMSA</span></dt><dd><p>MSA to test for inequality against.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates whether this MSA is not equal to <cite>other</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA.__eq__" title="skbio.alignment.TabularMSA.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__reversed__">
+<span class="sig-name descname"><span class="pre">__reversed__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L960"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__reversed__" title="Link to this definition">#</a></dt>
+<dd><p>Iterate in reverse order over sequences in the MSA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yields<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>GrammaredSequence</dt><dd><p>Each sequence in reverse order from how they are stored in the MSA.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">msa</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">&#39;AC-&#39;</span>
+<span class="go">&#39;ACG&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.alignment.TabularMSA.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L980"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return string summary of this MSA.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1010,11 +1867,11 @@ labels:</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.alignment.TabularMSA.__bool__.html"
+       href="skbio.alignment.TabularMSA.append.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.alignment.TabularMSA.__bool__</p>
+        <p class="prev-next-title">skbio.alignment.TabularMSA.append</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1036,7 +1893,26 @@ labels:</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA"><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA"><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.default_write_format"><code class="docutils literal notranslate"><span class="pre">TabularMSA.default_write_format</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.dtype"><code class="docutils literal notranslate"><span class="pre">TabularMSA.dtype</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.iloc"><code class="docutils literal notranslate"><span class="pre">TabularMSA.iloc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.index"><code class="docutils literal notranslate"><span class="pre">TabularMSA.index</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.loc"><code class="docutils literal notranslate"><span class="pre">TabularMSA.loc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.shape"><code class="docutils literal notranslate"><span class="pre">TabularMSA.shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__bool__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__bool__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__contains__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__contains__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__copy__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__copy__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__deepcopy__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__deepcopy__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__eq__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__eq__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__getitem__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__getitem__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__iter__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__iter__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__len__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__len__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__ne__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__ne__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__reversed__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__reversed__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.TabularMSA.__str__"><code class="docutils literal notranslate"><span class="pre">TabularMSA.__str__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

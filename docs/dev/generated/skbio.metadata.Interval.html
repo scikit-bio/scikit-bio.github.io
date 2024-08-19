@@ -70,8 +70,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.metadata.Interval.__eq__" href="skbio.metadata.Interval.__eq__.html" />
-    <link rel="prev" title="skbio.metadata.CategoricalMetadataColumn.to_series" href="skbio.metadata.CategoricalMetadataColumn.to_series.html" />
+    <link rel="next" title="skbio.metadata.Interval.drop" href="skbio.metadata.Interval.drop.html" />
+    <link rel="prev" title="skbio.metadata.CategoricalMetadataColumn" href="skbio.metadata.CategoricalMetadataColumn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -630,18 +630,15 @@ document.write(`
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.metadata.Interval</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__eq__.html">skbio.metadata.Interval.__eq__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__ge__.html">skbio.metadata.Interval.__ge__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__getstate__.html">skbio.metadata.Interval.__getstate__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__gt__.html">skbio.metadata.Interval.__gt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__le__.html">skbio.metadata.Interval.__le__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__lt__.html">skbio.metadata.Interval.__lt__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__ne__.html">skbio.metadata.Interval.__ne__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.__str__.html">skbio.metadata.Interval.__str__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.Interval.drop.html">skbio.metadata.Interval.drop</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.metadata.IntervalMetadata.html">skbio.metadata.IntervalMetadata</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.metadata.MetadataMixin.html">skbio.metadata.MetadataMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.metadata.PositionalMetadataMixin.html">skbio.metadata.PositionalMetadataMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.metadata.IntervalMetadataMixin.html">skbio.metadata.IntervalMetadataMixin</a></li>
 </ul>
 </div>
 </nav></div>
@@ -779,47 +776,17 @@ upper bound:</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounds</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.Interval.bounds" title="skbio.metadata.Interval.bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounds</span></code></a></p></td>
 <td><p>The coordinates of the interval feature.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropped</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.metadata.Interval.dropped" title="skbio.metadata.Interval.dropped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dropped</span></code></a></p></td>
 <td><p>Boolean value indicating if the <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is dropped.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fuzzy</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.Interval.fuzzy" title="skbio.metadata.Interval.fuzzy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fuzzy</span></code></a></p></td>
 <td><p>The openness of each coordinate.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.metadata.Interval.metadata" title="skbio.metadata.Interval.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
 <td><p>The metadata of the interval feature.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Built-ins</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.Interval.__eq__.html#skbio.metadata.Interval.__eq__" title="skbio.metadata.Interval.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
-<td><p>Test if this <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is equal to another.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.Interval.__ge__.html#skbio.metadata.Interval.__ge__" title="skbio.metadata.Interval.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.Interval.__getstate__.html#skbio.metadata.Interval.__getstate__" title="skbio.metadata.Interval.__getstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></a>(/)</p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.Interval.__gt__.html#skbio.metadata.Interval.__gt__" title="skbio.metadata.Interval.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.Interval.__le__.html#skbio.metadata.Interval.__le__" title="skbio.metadata.Interval.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.Interval.__lt__.html#skbio.metadata.Interval.__lt__" title="skbio.metadata.Interval.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></a>(value, /)</p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.Interval.__ne__.html#skbio.metadata.Interval.__ne__" title="skbio.metadata.Interval.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
-<td><p>Test if this <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is not equal to another.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.Interval.__str__.html#skbio.metadata.Interval.__str__" title="skbio.metadata.Interval.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>(/)</p></td>
-<td><p>Return str(self).</p></td>
 </tr>
 </tbody>
 </table>
@@ -833,6 +800,139 @@ upper bound:</p>
 </tbody>
 </table>
 </div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.Interval.__eq__" title="skbio.metadata.Interval.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
+<td><p>Test if this <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is equal to another.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.metadata.Interval.__ne__" title="skbio.metadata.Interval.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
+<td><p>Test if this <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is not equal to another.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code>(value, /)</p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code>(/)</p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.metadata.Interval.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><a class="headerlink" href="#skbio.metadata.Interval.bounds" title="Link to this definition">#</a></dt>
+<dd><p>The coordinates of the interval feature.</p>
+<p>It should be a list of tuples of int pair. Each tuple stores
+the start and end coordinates of a span of the interval
+feature. The coordinates are <em>zero-based</em>. They are inclusive on
+the start and exclusive on the end.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.metadata.Interval.dropped">
+<span class="sig-name descname"><span class="pre">dropped</span></span><a class="headerlink" href="#skbio.metadata.Interval.dropped" title="Link to this definition">#</a></dt>
+<dd><p>Boolean value indicating if the <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is dropped.</p>
+<p>If it is dropped, it means it is not associated with IntervalMetadata
+object any more.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.metadata.Interval.drop.html#skbio.metadata.Interval.drop" title="skbio.metadata.Interval.drop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.metadata.Interval.drop</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.metadata.IntervalMetadata.drop.html#skbio.metadata.IntervalMetadata.drop" title="skbio.metadata.IntervalMetadata.drop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.metadata.IntervalMetadata.drop</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This property is not writable.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.metadata.Interval.fuzzy">
+<span class="sig-name descname"><span class="pre">fuzzy</span></span><a class="headerlink" href="#skbio.metadata.Interval.fuzzy" title="Link to this definition">#</a></dt>
+<dd><p>The openness of each coordinate.</p>
+<p>This indicates that the exact bound of a interval feature
+is unknown. The bound may begin or end at some points outside
+the specified coordinates. This accommodates the bound format <a class="reference internal" href="#r1a186e4e1e7d-1" id="id3">[1]</a>
+of INSDC.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r1a186e4e1e7d-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="ftp://ftp.ebi.ac.uk/pub/databases/embl/doc/FT_current.html#3.4.3">ftp://ftp.ebi.ac.uk/pub/databases/embl/doc/FT_current.html#3.4.3</a></p>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.metadata.Interval.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#skbio.metadata.Interval.metadata" title="Link to this definition">#</a></dt>
+<dd><p>The metadata of the interval feature.</p>
+<p>It stores the metadata (eg. gene name, function, ID, etc.) of
+the interval feature as a <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.metadata.Interval.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_interval.py#L118"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.Interval.__eq__" title="Link to this definition">#</a></dt>
+<dd><p>Test if this <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is equal to another.</p>
+<p>The equality is performed by checking if the <code class="docutils literal notranslate"><span class="pre">metadata</span></code>,
+<code class="docutils literal notranslate"><span class="pre">bounds</span></code> and <code class="docutils literal notranslate"><span class="pre">fuzzy</span></code> are equal. Since the <code class="docutils literal notranslate"><span class="pre">bounds</span></code>
+and the <code class="docutils literal notranslate"><span class="pre">fuzzy</span></code> are sorted, the permutations of them during
+the <code class="docutils literal notranslate"><span class="pre">Interval</span></code> construction or assignment won’t matter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">Interval</span></dt><dd><p>Interval to test for equality against.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates if the two objects are equal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.metadata.Interval.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_interval.py#L143"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.Interval.__ne__" title="Link to this definition">#</a></dt>
+<dd><p>Test if this <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object is not equal to another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>other</strong><span class="classifier">Interval</span></dt><dd><p>Interval to test for inequality against.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>Indicates if the two objects are not equal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -848,20 +948,20 @@ upper bound:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.metadata.CategoricalMetadataColumn.to_series.html"
+       href="skbio.metadata.CategoricalMetadataColumn.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.metadata.CategoricalMetadataColumn.to_series</p>
+        <p class="prev-next-title">skbio.metadata.CategoricalMetadataColumn</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.metadata.Interval.__eq__.html"
+       href="skbio.metadata.Interval.drop.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.metadata.Interval.__eq__</p>
+        <p class="prev-next-title">skbio.metadata.Interval.drop</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -883,7 +983,15 @@ upper bound:</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval"><code class="docutils literal notranslate"><span class="pre">Interval</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval"><code class="docutils literal notranslate"><span class="pre">Interval</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval.bounds"><code class="docutils literal notranslate"><span class="pre">Interval.bounds</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval.dropped"><code class="docutils literal notranslate"><span class="pre">Interval.dropped</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval.fuzzy"><code class="docutils literal notranslate"><span class="pre">Interval.fuzzy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval.metadata"><code class="docutils literal notranslate"><span class="pre">Interval.metadata</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval.__eq__"><code class="docutils literal notranslate"><span class="pre">Interval.__eq__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.Interval.__ne__"><code class="docutils literal notranslate"><span class="pre">Interval.__ne__()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
