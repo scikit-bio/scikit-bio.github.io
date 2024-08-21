@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Reorder the tree into a bifurcating tree." />
+    <meta name="description" content="Convert the tree into a bifurcating tree." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.bifurcate &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -649,6 +649,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -668,6 +669,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
@@ -695,6 +697,7 @@ document.write(`
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -767,15 +770,20 @@ document.write(`
 <h1>skbio.tree.TreeNode.bifurcate<a class="headerlink" href="#skbio-tree-treenode-bifurcate" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.bifurcate">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">bifurcate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insert_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3801"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.bifurcate" title="Link to this definition">#</a></dt>
-<dd><p>Reorder the tree into a bifurcating tree.</p>
-<p>All nodes that have more than two children will have additional
-intermediate nodes inserted to ensure that every node has only two
-children.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">bifurcate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insert_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1783"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.bifurcate" title="Link to this definition">#</a></dt>
+<dd><p>Convert the tree into a bifurcating tree.</p>
+<p>All nodes that have more than two children will have additional intermediate
+nodes inserted to ensure that every node has only two children.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>insert_length</strong><span class="classifier">int, optional</span></dt><dd><p>The branch length assigned to all inserted nodes.</p>
+</dd>
+<dt><strong>uncache</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clear caches of the tree if present (default: True). See
+<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -787,8 +795,8 @@ children.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Any nodes that have a single child can be collapsed using the
-prune method to create strictly bifurcating trees.</p>
+<p>This method does not modify single-child nodes. These nodes can be collapsed
+using <a class="reference internal" href="skbio.tree.TreeNode.prune.html#skbio.tree.TreeNode.prune" title="skbio.tree.TreeNode.prune"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prune()</span></code></a> prior to this method to create a strictly bifurcating tree.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b,g,h)c,(d,e)f)root;&quot;</span><span class="p">])</span>
@@ -804,7 +812,9 @@ prune method to create strictly bifurcating trees.</p>
 <span class="go">         |          /-d</span>
 <span class="go">          \f-------|</span>
 <span class="go">                    \-e</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">bifurcate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">bifurcate</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                    /-h</span>
 <span class="go">          /c-------|</span>

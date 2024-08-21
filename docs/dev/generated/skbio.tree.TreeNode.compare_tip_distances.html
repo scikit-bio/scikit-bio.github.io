@@ -649,6 +649,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -668,6 +669,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
@@ -695,6 +697,7 @@ document.write(`
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -767,44 +770,36 @@ document.write(`
 <h1>skbio.tree.TreeNode.compare_tip_distances<a class="headerlink" href="#skbio-tree-treenode-compare-tip-distances" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.compare_tip_distances">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_f=&lt;function</span> <span class="pre">distance_from_r&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle_f=&lt;bound</span> <span class="pre">method</span> <span class="pre">RandomState.shuffle</span> <span class="pre">of</span> <span class="pre">RandomState(MT19937)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3720"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_tip_distances" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_f=&lt;function</span> <span class="pre">distance_from_r&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle_f=&lt;bound</span> <span class="pre">method</span> <span class="pre">RandomState.shuffle</span> <span class="pre">of</span> <span class="pre">RandomState(MT19937)&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3655"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_tip_distances" title="Link to this definition">#</a></dt>
 <dd><p>Compare self to other using tip-to-tip distance matrices.</p>
-<p>Value returned is <cite>dist_f(m1, m2)</cite> for the two matrices. Default is
-to use the Pearson correlation coefficient, with +1 giving a distance
-of 0 and -1 giving a distance of +1 (the maximum possible value).
-Depending on the application, you might instead want to use
-distance_from_r_squared, which counts correlations of both +1 and -1
-as identical (0 distance).</p>
-<p>Note: automatically strips out the names that don’t match (this is
-necessary for this method because the distance between non-matching
-names and matching names is undefined in the tree where they don’t
-match, and because we need to reorder the names in the two trees to
-match up the distance matrices).</p>
+<p>Value returned is <cite>dist_f(m1, m2)</cite> for the two matrices. Default is to use the
+Pearson correlation coefficient, with +1 giving a distance of 0 and -1 giving a
+distance of +1 (the maximum possible value). Depending on the application, you
+might instead want to use distance_from_r_squared, which counts correlations of
+both +1 and -1 as identical (0 distance).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>other</strong><span class="classifier">TreeNode</span></dt><dd><p>The tree to compare</p>
 </dd>
-<dt><strong>sample</strong><span class="classifier">int or None</span></dt><dd><p>Randomly subsample the tips in common between the trees to
+<dt><strong>sample</strong><span class="classifier">int, optional</span></dt><dd><p>Randomly subsample this number of tips in common between the trees to
 compare. This is useful when comparing very large trees.</p>
 </dd>
-<dt><strong>dist_f</strong><span class="classifier">function</span></dt><dd><p>The distance function used to compare two the tip-tip distance
-matrices</p>
+<dt><strong>dist_f</strong><span class="classifier">callable, optional</span></dt><dd><p>The distance function used to compare two the tip-tip distance matrices.</p>
 </dd>
-<dt><strong>shuffle_f</strong><span class="classifier">function</span></dt><dd><p>The shuffling function used if <cite>sample</cite> is not None</p>
+<dt><strong>shuffle_f</strong><span class="classifier">callable, optional</span></dt><dd><p>The shuffling function used if <code class="docutils literal notranslate"><span class="pre">sample</span></code> is not None.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>The distance between the trees</p>
+<dt>float</dt><dd><p>The distance between the trees.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>A ValueError is raised if there does not exist common tips
-between the trees</p>
+<dt>ValueError</dt><dd><p>If there does not exist common tips between the trees.</p>
 </dd>
 </dl>
 </dd>
@@ -814,8 +809,19 @@ between the trees</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html#skbio.tree.TreeNode.compare_subsets" title="skbio.tree.TreeNode.compare_subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_subsets</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.shuffle.html#numpy.random.shuffle" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.shuffle</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.Generator.shuffle</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This method automatically strips out the names that do not match. This is
+necessary for this method because the distance between non-matching names and
+matching names is undefined in the tree where they don’t match, and because
+one needs to reorder the names in the two trees to match up the distance
+matrices.</p>
+<p>The default shuffling function is stochastic. To ensure the reproducibility of
+the result, you should use a generator-based function, such as <code class="docutils literal notranslate"><span class="pre">rng.shuffle</span></code>
+where <code class="docutils literal notranslate"><span class="pre">rng</span></code> is a pre-constructed random generator.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># note, only three common taxa between the trees</span>

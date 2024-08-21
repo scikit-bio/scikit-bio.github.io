@@ -649,6 +649,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -668,6 +669,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
@@ -695,6 +697,7 @@ document.write(`
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -767,17 +770,23 @@ document.write(`
 <h1>skbio.tree.TreeNode.unroot<a class="headerlink" href="#skbio-tree-treenode-unroot" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.unroot">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unroot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1075"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unroot" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unroot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1962"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unroot" title="Link to this definition">#</a></dt>
 <dd><p>Convert a rooted tree into unrooted.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>side</strong><span class="classifier">int, optional</span></dt><dd><p>Which basal node (i.e., children of root) will be elevated to root.
-Must be 0 or 1. If not provided, will elevate the first basal node
-that is not a tip.</p>
+<dd class="field-odd"><dl>
+<dt><strong>side</strong><span class="classifier">int, optional</span></dt><dd><p>Which basal node (i.e., children of root) will be elevated to root. Must be
+0 or 1. If not provided, will elevate the first basal node that is not a
+tip.</p>
+</dd>
+<dt><strong>uncache</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clear caches of the tree if present (default: True). See
+<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -810,7 +819,7 @@ phylogenetic perspective, as it is considered as unrooted.</p>
 <p class="admonition-title">Note</p>
 <p>In the case where the basal node has just one child, the
 resulting tree will still appear rooted as it has two basal nodes.
-To avoid this scenario, call <code class="docutils literal notranslate"><span class="pre">prune</span></code> to remove all one-child
+To avoid this scenario, call <a class="reference internal" href="skbio.tree.TreeNode.prune.html#skbio.tree.TreeNode.prune" title="skbio.tree.TreeNode.prune"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prune()</span></code></a> to remove all one-child
 internal nodes.</p>
 </div>
 <p class="rubric">Examples</p>

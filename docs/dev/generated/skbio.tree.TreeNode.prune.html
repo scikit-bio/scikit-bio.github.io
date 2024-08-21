@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Reconstruct correct topology after nodes have been removed." />
+    <meta name="description" content="Collapse single-child nodes in the tree." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.prune &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -649,6 +649,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -668,6 +669,7 @@ document.write(`
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
@@ -695,6 +697,7 @@ document.write(`
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -767,35 +770,64 @@ document.write(`
 <h1>skbio.tree.TreeNode.prune<a class="headerlink" href="#skbio-tree-treenode-prune" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.prune">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L453"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.prune" title="Link to this definition">#</a></dt>
-<dd><p>Reconstruct correct topology after nodes have been removed.</p>
-<p>Internal nodes with only one child will be removed and new connections
-will be made to reflect change. This method is useful to call
-following node removals as it will clean up nodes with singular
-children.</p>
-<p>Names and properties of singular children will override the names and
-properties of their parents following the prune.</p>
-<p>Node lookup caches are invalidated.</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.prune" title="Link to this definition">#</a></dt>
+<dd><p>Collapse single-child nodes in the tree.</p>
+<p>Internal nodes with only one child will be removed, and direct connections will
+be made from the parent to the child. The branch length of the node will be
+added to the child. The name and properties of the child will override those of
+the parent following the operation.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>uncache</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clear caches of the tree if present (default: True). See
+<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.shear.html#skbio.tree.TreeNode.shear" title="skbio.tree.TreeNode.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.remove.html#skbio.tree.TreeNode.remove" title="skbio.tree.TreeNode.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.pop.html#skbio.tree.TreeNode.pop" title="skbio.tree.TreeNode.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html#skbio.tree.TreeNode.remove_deleted" title="skbio.tree.TreeNode.remove_deleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_deleted</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.remove.html#skbio.tree.TreeNode.remove" title="skbio.tree.TreeNode.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html#skbio.tree.TreeNode.remove_by_func" title="skbio.tree.TreeNode.remove_by_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_by_func</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This method is useful for cleaning up single-child nodes after some nodes were
+removed from a tree.</p>
+<p>If called from an internal node of the tree, only the clade below the node will
+be pruned.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)root;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">to_delete</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">remove_deleted</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="n">to_delete</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
-<span class="go">((a)c,(d,e)f)root;</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">prune</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
-<span class="go">((d,e)f,a)root;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(((a,b)c,(d)e)g,((h,i)j)k)root;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                              /-a</span>
+<span class="go">                    /c-------|</span>
+<span class="go">          /g-------|          \-b</span>
+<span class="go">         |         |</span>
+<span class="go">-root----|          \e------- /-d</span>
+<span class="go">         |</span>
+<span class="go">         |                    /-h</span>
+<span class="go">          \k------- /j-------|</span>
+<span class="go">                              \-i</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">prune</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                              /-a</span>
+<span class="go">                    /c-------|</span>
+<span class="go">          /g-------|          \-b</span>
+<span class="go">         |         |</span>
+<span class="go">-root----|          \-d</span>
+<span class="go">         |</span>
+<span class="go">         |          /-h</span>
+<span class="go">          \j-------|</span>
+<span class="go">                    \-i</span>
 </pre></div>
 </div>
 </dd></dl>

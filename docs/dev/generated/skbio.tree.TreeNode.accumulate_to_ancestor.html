@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Return the sum of the distance between self and ancestor." />
+    <meta name="description" content="Calculate the distance between self and an ancestor." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.accumulate_to_ancestor &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -649,6 +649,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -668,6 +669,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
@@ -695,6 +697,7 @@ document.write(`
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -767,28 +770,29 @@ document.write(`
 <h1>skbio.tree.TreeNode.accumulate_to_ancestor<a class="headerlink" href="#skbio-tree-treenode-accumulate-to-ancestor" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.accumulate_to_ancestor">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">accumulate_to_ancestor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestor</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3287"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.accumulate_to_ancestor" title="Link to this definition">#</a></dt>
-<dd><p>Return the sum of the distance between self and ancestor.</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">accumulate_to_ancestor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestor</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3157"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.accumulate_to_ancestor" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the distance between self and an ancestor.</p>
+<p>The distance is the sum of branch lengths connecting the current node and the
+given ancestral node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>ancestor</strong><span class="classifier">TreeNode</span></dt><dd><p>The node of the ancestor to accumulate distance too</p>
+<dt><strong>ancestor</strong><span class="classifier">TreeNode</span></dt><dd><p>The ancestral node to accumulate distance to.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>The sum of lengths between self and ancestor</p>
+<dt>float</dt><dd><p>The distance between self and ancestor.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>NoParentError</dt><dd><p>A NoParentError is raised if the ancestor is not an ancestor of
-self</p>
+<dt>NoParentError</dt><dd><p>If the given ancestral node is not an ancestor of self.</p>
 </dd>
-<dt>NoLengthError</dt><dd><p>A NoLengthError is raised if one of the nodes between self and
-ancestor (including self) lacks a <cite>length</cite> attribute</p>
+<dt>NoLengthError</dt><dd><p>If one of the nodes between self and ancestor (including self) does not
+have branch length.</p>
 </dd>
 </dl>
 </dd>

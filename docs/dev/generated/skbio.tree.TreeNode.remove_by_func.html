@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Find all nodes that match a given name." />
+    <meta name="description" content="Remove nodes of a tree that meet certain criteria." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.find_all &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.TreeNode.remove_by_func &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -59,19 +59,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.find_all';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.remove_by_func';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.find_all.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.remove_by_func.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.find_by_func" href="skbio.tree.TreeNode.find_by_func.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.find" href="skbio.tree.TreeNode.find.html" />
+    <link rel="next" title="skbio.tree.TreeNode.remove_deleted" href="skbio.tree.TreeNode.remove_deleted.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.remove" href="skbio.tree.TreeNode.remove.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -642,7 +642,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.extend.html">skbio.tree.TreeNode.extend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find.html">skbio.tree.TreeNode.find</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.find_all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_all.html">skbio.tree.TreeNode.find_all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_by_func.html">skbio.tree.TreeNode.find_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_by_id.html">skbio.tree.TreeNode.find_by_id</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -669,7 +669,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
@@ -766,29 +766,26 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-find-all">
-<h1>skbio.tree.TreeNode.find_all<a class="headerlink" href="#skbio-tree-treenode-find-all" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-remove-by-func">
+<h1>skbio.tree.TreeNode.remove_by_func<a class="headerlink" href="#skbio-tree-treenode-remove-by-func" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.find_all">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">find_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4205"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.find_all" title="Link to this definition">#</a></dt>
-<dd><p>Find all nodes that match a given name.</p>
-<dl class="field-list simple">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.remove_by_func">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">remove_by_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1409"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.remove_by_func" title="Link to this definition">#</a></dt>
+<dd><p>Remove nodes of a tree that meet certain criteria.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>This method was renamed from <code class="docutils literal notranslate"><span class="pre">remove_deleted</span></code>.</p>
+</div>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">TreeNode or str</span></dt><dd><p>The name or node to find. If a <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> object is provided, all nodes
-with the same name will be returned.</p>
+<dd class="field-odd"><dl>
+<dt><strong>func</strong><span class="classifier">callable</span></dt><dd><p>A function that accepts a <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> and returns True or False, where
+True indicates the node is to be deleted.</p>
 </dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>list of TreeNode</dt><dd><p>The found nodes.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>MissingNodeError</dt><dd><p>If the node to be searched for is not found.</p>
+<dt><strong>uncache</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clear caches of the tree if present (default: True). See
+<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -796,43 +793,22 @@ with the same name will be returned.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find.html#skbio.tree.TreeNode.find" title="skbio.tree.TreeNode.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_by_id.html#skbio.tree.TreeNode.find_by_id" title="skbio.tree.TreeNode.find_by_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_id</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_by_func.html#skbio.tree.TreeNode.find_by_func" title="skbio.tree.TreeNode.find_by_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_func</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.pop.html#skbio.tree.TreeNode.pop" title="skbio.tree.TreeNode.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.remove.html#skbio.tree.TreeNode.remove" title="skbio.tree.TreeNode.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>All internal nodes (including root) and tips with the given name will be
-returned, with the former placed before the latter in the returned list.</p>
-<p>The first call to <code class="docutils literal notranslate"><span class="pre">find_all</span></code> will cache a node lookup table in the tree on
-the assumption that additional calls to <code class="docutils literal notranslate"><span class="pre">find_all</span></code> will be made. See
-<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<p>This method has the potential to drop entire clades. That is, if an internal
+node is removed, all its descendants are no longer connected to the tree, even
+if they are not explicitly removed.</p>
+<p>This method has the potential to leave single-child internal nodes in the tree,
+which can be further collapsed by <a class="reference internal" href="skbio.tree.TreeNode.prune.html#skbio.tree.TreeNode.prune" title="skbio.tree.TreeNode.prune"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prune()</span></code></a>.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.tree</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)d,(f,g)c);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
-<span class="go">                    /-a</span>
-<span class="go">          /c-------|</span>
-<span class="go">         |          \-b</span>
-<span class="go">         |</span>
-<span class="go">         |          /-d</span>
-<span class="go">---------|-d-------|</span>
-<span class="go">         |          \-e</span>
-<span class="go">         |</span>
-<span class="go">         |          /-f</span>
-<span class="go">          \c-------|</span>
-<span class="go">                    \-g</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="go">c a b</span>
-<span class="go">c f g</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
-<span class="go">d (d,e)d;</span>
-
-<span class="go">d d;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(a,b)c;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">remove_by_func</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+<span class="go">(a)c;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -850,20 +826,20 @@ the assumption that additional calls to <code class="docutils literal notranslat
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.find.html"
+       href="skbio.tree.TreeNode.remove.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.find</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.remove</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.find_by_func.html"
+       href="skbio.tree.TreeNode.remove_deleted.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.find_by_func</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.remove_deleted</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -885,7 +861,7 @@ the assumption that additional calls to <code class="docutils literal notranslat
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.find_all"><code class="docutils literal notranslate"><span class="pre">TreeNode.find_all()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.remove_by_func"><code class="docutils literal notranslate"><span class="pre">TreeNode.remove_by_func()</span></code></a></li>
 </ul>
   </nav></div>
 

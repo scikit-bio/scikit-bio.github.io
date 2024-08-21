@@ -649,6 +649,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -668,6 +669,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.root_at</a></li>
@@ -695,6 +697,7 @@ document.write(`
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -767,16 +770,16 @@ document.write(`
 <h1>skbio.tree.TreeNode.root_at<a class="headerlink" href="#skbio-tree-treenode-root-at" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.root_at">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">root_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">above</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['name']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1193"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.root_at" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">root_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">above</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['name']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.root_at" title="Link to this definition">#</a></dt>
 <dd><p>Reroot the tree at the provided node.</p>
 <p>This is useful for positioning a tree with an orientation that reflects
 knowledge of the true root location.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>node</strong><span class="classifier">TreeNode or str, optional</span></dt><dd><p>The node to root at. Can either be a node object or the name of the
-node. If not provided, will root at self. If a root node provided,
-will return the original tree.</p>
+<dt><strong>node</strong><span class="classifier">TreeNode or str, optional</span></dt><dd><p>The node to root at. Can either be a node object or the name of the node.
+If not provided, will root at self. If a root node provided, will return
+the original tree.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.6.2: </span>Becomes optional.</p>
 </div>
@@ -790,8 +793,8 @@ from the target node. The number ranges between 0 and branch length.</p>
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
 </dd>
-<dt><strong>reset</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether remove the original root of a rooted tree before performing
-the rerooting operation. Default is False.</p>
+<dt><strong>reset</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to remove the original root of a rooted tree before performing the
+rerooting operation. Default is False.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
@@ -800,18 +803,17 @@ the rerooting operation. Default is False.</p>
 <p>The default value will be set as True in 0.7.0.</p>
 </div>
 </dd>
-<dt><strong>branch_attrs</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Attributes of each node that should be considered as attributes of
-the branch connecting the node to its parent. This is important for
-the correct rerooting operation. “length” and “support” will be
-automatically included as they are always branch attributes.</p>
+<dt><strong>branch_attrs</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Attributes of each node that should be considered as attributes of the
+branch connecting the node to its parent. This is important for the correct
+rerooting operation. “length” and “support” will be automatically included
+as they are always branch attributes.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">name</span></code> will be removed from the default in 0.7.0, as
-it is usually considered as an attribute of the node instead of
-the branch.</p>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> will be removed from the default in 0.7.0, as it is
+usually considered as an attribute of the node instead of the branch.</p>
 </div>
 </dd>
 <dt><strong>root_name</strong><span class="classifier">str or None, optional</span></dt><dd><p>Name for the root node, if it doesn’t already have one.</p>
@@ -823,11 +825,17 @@ the branch.</p>
 <p>The default value will be set as <code class="docutils literal notranslate"><span class="pre">None</span></code> in 0.7.0.</p>
 </div>
 </dd>
+<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to reroot the tree in place (True) or to create a rerooted copy of
+the tree (False, default).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>A new copy of the tree rooted at the give node.</p>
+<dt>TreeNode</dt><dd><p>A tree rooted at the give node.</p>
 </dd>
 </dl>
 </dd>
@@ -841,13 +849,16 @@ new default behavior can be achieved by specifying <code class="docutils literal
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.root_at_midpoint.html#skbio.tree.TreeNode.root_at_midpoint" title="skbio.tree.TreeNode.root_at_midpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">root_at_midpoint</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.unrooted_copy.html#skbio.tree.TreeNode.unrooted_copy" title="skbio.tree.TreeNode.unrooted_copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unrooted_copy</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html#skbio.tree.TreeNode.unrooted_move" title="skbio.tree.TreeNode.unrooted_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unrooted_move</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.unroot.html#skbio.tree.TreeNode.unroot" title="skbio.tree.TreeNode.unroot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unroot</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
 <p>The specified node will be come the root of the new tree.</p>
+<p>Tree caches (see <a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>) will not be retained in the
+returned tree. In in-place mode, they will be cleared prior to rerooting. In
+copying mode, they will not be copied to the new tree.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(((a,b)c,(d,e)f)g,h)i;&quot;</span><span class="p">])</span>

@@ -6,10 +6,11 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Find all nodes that match a given name." />
+    <meta name="description" content="Perform unweighted pair group method with arithmetic mean (UPGMA) or its
+weighted variant (WPGMA) for phylogenetic reconstruction." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.find_all &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.upgma &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -59,19 +60,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.find_all';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.upgma';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.find_all.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.upgma.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.find_by_func" href="skbio.tree.TreeNode.find_by_func.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.find" href="skbio.tree.TreeNode.find.html" />
+    <link rel="next" title="skbio.tree.nj" href="skbio.tree.nj.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.write" href="skbio.tree.TreeNode.write.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -620,84 +621,11 @@ document.write(`
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.tree.TreeNode.html">skbio.tree.TreeNode</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ancestors.html">skbio.tree.TreeNode.ancestors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.append.html">skbio.tree.TreeNode.append</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_ids.html">skbio.tree.TreeNode.assign_ids</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.copy.html">skbio.tree.TreeNode.copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.create_caches.html">skbio.tree.TreeNode.create_caches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.deepcopy.html">skbio.tree.TreeNode.deepcopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.extend.html">skbio.tree.TreeNode.extend</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find.html">skbio.tree.TreeNode.find</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.find_all</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_by_func.html">skbio.tree.TreeNode.find_by_func</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_by_id.html">skbio.tree.TreeNode.find_by_id</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.invalidate_caches.html">skbio.tree.TreeNode.invalidate_caches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_root.html">skbio.tree.TreeNode.is_root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_tip.html">skbio.tree.TreeNode.is_tip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.lca.html">skbio.tree.TreeNode.lca</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.levelorder.html">skbio.tree.TreeNode.levelorder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.lowest_common_ancestor.html">skbio.tree.TreeNode.lowest_common_ancestor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.neighbors.html">skbio.tree.TreeNode.neighbors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.non_tips.html">skbio.tree.TreeNode.non_tips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.pop.html">skbio.tree.TreeNode.pop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.postorder.html">skbio.tree.TreeNode.postorder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.pre_and_postorder.html">skbio.tree.TreeNode.pre_and_postorder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.preorder.html">skbio.tree.TreeNode.preorder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at_midpoint.html">skbio.tree.TreeNode.root_at_midpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html">skbio.tree.TreeNode.root_by_outgroup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.shear.html">skbio.tree.TreeNode.shear</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.shuffle.html">skbio.tree.TreeNode.shuffle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.siblings.html">skbio.tree.TreeNode.siblings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subtree.html">skbio.tree.TreeNode.subtree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tips.html">skbio.tree.TreeNode.tips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.to_array.html">skbio.tree.TreeNode.to_array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.to_taxonomy.html">skbio.tree.TreeNode.to_taxonomy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unpack.html">skbio.tree.TreeNode.unpack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unpack_by_func.html">skbio.tree.TreeNode.unpack_by_func</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unroot.html">skbio.tree.TreeNode.unroot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_copy.html">skbio.tree.TreeNode.unrooted_copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html">skbio.tree.TreeNode.unrooted_deepcopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html">skbio.tree.TreeNode.unrooted_move</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.write.html">skbio.tree.TreeNode.write</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.TreeNode.html">skbio.tree.TreeNode</a></li>
 </ul>
-</details></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -746,10 +674,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../tree.html" class="nav-link">Trees and Phylogenetics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code>)</a></li>
     
-    
-    <li class="breadcrumb-item"><a href="skbio.tree.TreeNode.html" class="nav-link">skbio.tree.TreeNode</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page">skbio.tree.T...</li>
+    <li class="breadcrumb-item active" aria-current="page">skbio.tree.upgma</li>
   </ul>
 </nav>
 </div>
@@ -766,29 +691,26 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-find-all">
-<h1>skbio.tree.TreeNode.find_all<a class="headerlink" href="#skbio-tree-treenode-find-all" title="Link to this heading">#</a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.find_all">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">find_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4205"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.find_all" title="Link to this definition">#</a></dt>
-<dd><p>Find all nodes that match a given name.</p>
+  <section id="skbio-tree-upgma">
+<h1>skbio.tree.upgma<a class="headerlink" href="#skbio-tree-upgma" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="skbio.tree.upgma">
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">upgma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_upgma.py#L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.upgma" title="Link to this definition">#</a></dt>
+<dd><p>Perform unweighted pair group method with arithmetic mean (UPGMA) or its
+weighted variant (WPGMA) for phylogenetic reconstruction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">TreeNode or str</span></dt><dd><p>The name or node to find. If a <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> object is provided, all nodes
-with the same name will be returned.</p>
+<dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>The input distance matrix.</p>
+</dd>
+<dt><strong>weighted</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, WPGMA is performed instead of UPGMA. WPGMA is a variant of UPGMA
+which is unbiased towards the size of subtrees computed.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>list of TreeNode</dt><dd><p>The found nodes.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>MissingNodeError</dt><dd><p>If the node to be searched for is not found.</p>
+<dt>TreeNode</dt><dd><p>A TreeNode object with estimated edge values.</p>
 </dd>
 </dl>
 </dd>
@@ -796,43 +718,48 @@ with the same name will be returned.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find.html#skbio.tree.TreeNode.find" title="skbio.tree.TreeNode.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_by_id.html#skbio.tree.TreeNode.find_by_id" title="skbio.tree.TreeNode.find_by_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_id</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_by_func.html#skbio.tree.TreeNode.find_by_func" title="skbio.tree.TreeNode.find_by_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_func</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nj</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>All internal nodes (including root) and tips with the given name will be
-returned, with the former placed before the latter in the returned list.</p>
-<p>The first call to <code class="docutils literal notranslate"><span class="pre">find_all</span></code> will cache a node lookup table in the tree on
-the assumption that additional calls to <code class="docutils literal notranslate"><span class="pre">find_all</span></code> will be made. See
-<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<p>UPGMA is a hierarchical clustering method appearing as the <cite>average</cite> function
+in the SciPy package, where the linkage matrix produced by <cite>average</cite> is used
+to construct a TreeNode object. A weighted variant is known as WPGMA, and both
+variants are due to Sokal and Michener <a class="reference internal" href="#r011823e66e05-1" id="id1">[1]</a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r011823e66e05-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Sokal, R.R., &amp; Michener, C.D. (1958). A statistical method for
+evaluating systematic relationships. University of Kansas science
+bulletin, 38, 1409-1438.</p>
+</div>
+</div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.tree</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)d,(f,g)c);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
-<span class="go">                    /-a</span>
-<span class="go">          /c-------|</span>
-<span class="go">         |          \-b</span>
-<span class="go">         |</span>
-<span class="go">         |          /-d</span>
-<span class="go">---------|-d-------|</span>
-<span class="go">         |          \-e</span>
-<span class="go">         |</span>
-<span class="go">         |          /-f</span>
-<span class="go">          \c-------|</span>
-<span class="go">                    \-g</span>
+<p>Define a distance matrix object for the taxa a, b, and c.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DistanceMatrix</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="go">c a b</span>
-<span class="go">c f g</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
-<span class="go">d (d,e)d;</span>
-
-<span class="go">d d;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Construct a tree using UPGMA.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">upgma</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">          /-c</span>
+<span class="go">---------|</span>
+<span class="go">         |          /-a</span>
+<span class="go">          \--------|</span>
+<span class="go">                    \-b</span>
+</pre></div>
+</div>
+<p>The tree also has estimated edge values assigned to each edge.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+<span class="go">(c:1.25,(a:0.5,b:0.5):0.75);</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -850,20 +777,20 @@ the assumption that additional calls to <code class="docutils literal notranslat
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.find.html"
+       href="skbio.tree.TreeNode.write.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.find</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.write</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.find_by_func.html"
+       href="skbio.tree.nj.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.find_by_func</p>
+        <p class="prev-next-title">skbio.tree.nj</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -885,7 +812,7 @@ the assumption that additional calls to <code class="docutils literal notranslat
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.find_all"><code class="docutils literal notranslate"><span class="pre">TreeNode.find_all()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.upgma"><code class="docutils literal notranslate"><span class="pre">upgma()</span></code></a></li>
 </ul>
   </nav></div>
 

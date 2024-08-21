@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Remove tips until the tree just has the desired tip names." />
+    <meta name="description" content="Refine a tree such that it just has the desired tip names." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.shear &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -649,6 +649,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -668,6 +669,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.prune.html">skbio.tree.TreeNode.prune</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.read.html">skbio.tree.TreeNode.read</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove.html">skbio.tree.TreeNode.remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html">skbio.tree.TreeNode.remove_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html">skbio.tree.TreeNode.remove_deleted</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_at.html">skbio.tree.TreeNode.root_at</a></li>
@@ -695,6 +697,7 @@ document.write(`
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
 </ul>
@@ -767,24 +770,48 @@ document.write(`
 <h1>skbio.tree.TreeNode.shear<a class="headerlink" href="#skbio-tree-treenode-shear" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.shear">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">shear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L522"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.shear" title="Link to this definition">#</a></dt>
-<dd><p>Remove tips until the tree just has the desired tip names.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">shear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.shear" title="Link to this definition">#</a></dt>
+<dd><p>Refine a tree such that it just has the desired tip names.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>names</strong><span class="classifier">Iterable of str</span></dt><dd><p>The tip names on the tree to keep</p>
+<dd class="field-odd"><dl>
+<dt><strong>names</strong><span class="classifier">iterable of str</span></dt><dd><p>The tip names on the tree to keep.</p>
+</dd>
+<dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>In case some names are not found in the tree, whether to raise an error
+(True, default) or to refine the tree to the found names only (False).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>prune</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to collapse single-child nodes after shearing by calling
+<a class="reference internal" href="skbio.tree.TreeNode.prune.html#skbio.tree.TreeNode.prune" title="skbio.tree.TreeNode.prune"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prune()</span></code></a> (default: True).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to modify the tree in place (True) or to create a modified copy of
+the tree (False, default).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>uncache</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clear caches of the tree if present (default: True). See
+<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>. Only applicable when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is True.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>The resulting tree</p>
+<dt>TreeNode, optional</dt><dd><p>The resulting tree (if <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is False).</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If the names do not exist in the tree</p>
+<dt>ValueError</dt><dd><p>If one or more names do not exist in the tree and <code class="docutils literal notranslate"><span class="pre">strict</span></code> is True.</p>
 </dd>
 </dl>
 </dd>
@@ -794,16 +821,38 @@ document.write(`
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.prune.html#skbio.tree.TreeNode.prune" title="skbio.tree.TreeNode.prune"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prune</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.remove.html#skbio.tree.TreeNode.remove" title="skbio.tree.TreeNode.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.pop.html#skbio.tree.TreeNode.pop" title="skbio.tree.TreeNode.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.remove_deleted.html#skbio.tree.TreeNode.remove_deleted" title="skbio.tree.TreeNode.remove_deleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_deleted</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.remove_by_func.html#skbio.tree.TreeNode.remove_by_func" title="skbio.tree.TreeNode.remove_by_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_by_func</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This method is useful for reducing a large tree to a relevant subset of taxa.</p>
+<p>If called from an internal node of the tree, only the clade below the node will
+be refined, and the copy of the tree (when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is False) will only
+include the clade.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s1">&#39;((H:1,G:1):2,(R:0.5,M:0.7):3);&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sheared</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">shear</span><span class="p">([</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sheared</span><span class="p">)</span>
-<span class="go">(G:3.0,M:3.7);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(((a,b)c,(d,e)f)g,(h,i)j)root;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                              /-a</span>
+<span class="go">                    /c-------|</span>
+<span class="go">                   |          \-b</span>
+<span class="go">          /g-------|</span>
+<span class="go">         |         |          /-d</span>
+<span class="go">         |          \f-------|</span>
+<span class="go">-root----|                    \-e</span>
+<span class="go">         |</span>
+<span class="go">         |          /-h</span>
+<span class="go">          \j-------|</span>
+<span class="go">                    \-i</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sheared</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">shear</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sheared</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-a</span>
+<span class="go">          /g-------|</span>
+<span class="go">-root----|          \-d</span>
+<span class="go">         |</span>
+<span class="go">          \-h</span>
 </pre></div>
 </div>
 </dd></dl>
