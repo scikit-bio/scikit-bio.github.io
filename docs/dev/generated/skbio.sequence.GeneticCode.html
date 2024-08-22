@@ -709,12 +709,12 @@ document.write(`
 <dd class="field-odd"><dl>
 <dt><strong>amino_acids</strong><span class="classifier">consumable by <code class="docutils literal notranslate"><span class="pre">skbio.Protein</span></code> constructor</span></dt><dd><p>64-character vector containing IUPAC amino acid characters. The order
 of the amino acids should correspond to NCBI’s codon order (see <em>Notes</em>
-section below). <cite>amino_acids</cite> is the “AAs” field in NCBI’s genetic
+section below). <code class="docutils literal notranslate"><span class="pre">amino_acids</span></code> is the “AAs” field in NCBI’s genetic
 code format <a class="reference internal" href="#r1f36dc05e6c2-1" id="id1">[1]</a>.</p>
 </dd>
 <dt><strong>starts</strong><span class="classifier">consumable by <code class="docutils literal notranslate"><span class="pre">skbio.Protein</span></code> constructor</span></dt><dd><p>64-character vector containing only M and - characters, with start
 codons indicated by M. The order of the amino acids should correspond
-to NCBI’s codon order (see <em>Notes</em> section below). <cite>starts</cite> is the
+to NCBI’s codon order (see <em>Notes</em> section below). <code class="docutils literal notranslate"><span class="pre">starts</span></code> is the
 “Starts” field in NCBI’s genetic code format <a class="reference internal" href="#r1f36dc05e6c2-1" id="id2">[1]</a>.</p>
 </dd>
 <dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Genetic code name. This is simply metadata and does not affect the
@@ -732,11 +732,11 @@ functionality of the genetic code itself.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The genetic codes available via <code class="docutils literal notranslate"><span class="pre">GeneticCode.from_ncbi</span></code> and used
+<p>The genetic codes available via <a class="reference internal" href="skbio.sequence.GeneticCode.from_ncbi.html#skbio.sequence.GeneticCode.from_ncbi" title="skbio.sequence.GeneticCode.from_ncbi"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_ncbi()</span></code></a> and used
 throughout the examples are defined in <a class="reference internal" href="#r1f36dc05e6c2-1" id="id3">[1]</a>. The genetic code strings
 defined there are directly compatible with the <code class="docutils literal notranslate"><span class="pre">GeneticCode</span></code> constructor.</p>
-<p>The order of <cite>amino_acids</cite> and <cite>starts</cite> should correspond to NCBI’s codon
-order, defined in <a class="reference internal" href="#r1f36dc05e6c2-1" id="id4">[1]</a>:</p>
+<p>The order of <code class="docutils literal notranslate"><span class="pre">amino_acids</span></code> and <code class="docutils literal notranslate"><span class="pre">starts</span></code> should correspond to NCBI’s
+codon order, defined in <a class="reference internal" href="#r1f36dc05e6c2-1" id="id4">[1]</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UUUUUUUUUUUUUUUUCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG</span>
 <span class="n">UUUUCCCCAAAAGGGGUUUUCCCCAAAAGGGGUUUUCCCCAAAAGGGGUUUUCCCCAAAAGGGG</span>
 <span class="n">UCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAGUCAG</span>
@@ -898,8 +898,7 @@ genetic code itself.</p>
 <li><p>-2 (reverse)</p></li>
 <li><p>-3 (reverse)</p></li>
 </ul>
-<p>This property can be passed into
-<code class="docutils literal notranslate"><span class="pre">GeneticCode.translate(reading_frame)</span></code>.</p>
+<p>This property can be passed into <code class="docutils literal notranslate"><span class="pre">GeneticCode.translate(reading_frame)</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -912,7 +911,7 @@ genetic code itself.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.GeneticCode.__eq__">
-<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L330"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__eq__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L329"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__eq__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if the genetic code is equal to another.</p>
 <p>Genetic codes are equal if they are <em>exactly</em> the same type and
 defined by the same <cite>amino_acids</cite> and <cite>starts</cite>. A genetic code’s name
@@ -953,7 +952,7 @@ unequal:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.GeneticCode.__ne__">
-<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L377"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__ne__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L376"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__ne__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if the genetic code is not equal to another.</p>
 <p>Genetic codes are not equal if their type, <cite>amino_acids</cite>, or <cite>starts</cite>
 differ. A genetic code’s name (accessed via <code class="docutils literal notranslate"><span class="pre">name</span></code> property) does not
@@ -976,7 +975,7 @@ affect equality.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.GeneticCode.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L268"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return string representation of the genetic code.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
