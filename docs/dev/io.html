@@ -983,6 +983,18 @@ if an empty file is provided as input and the format was omitted.</p>
 not know how you want to serialize an object. OO interfaces define a default
 <code class="docutils literal notranslate"><span class="pre">format</span></code>, so it may not be necessary to include it.</p>
 </section>
+<section id="streaming-files-with-read-and-write">
+<h3>Streaming files with read and write<a class="headerlink" href="#streaming-files-with-read-and-write" title="Link to this heading">#</a></h3>
+<p>If you are working with particularly large files, streaming them might be preferable.
+Scikit-bio’s <code class="docutils literal notranslate"><span class="pre">io</span></code> module offers the ability to contruct a streaming interface from
+the <code class="docutils literal notranslate"><span class="pre">read</span></code> and <code class="docutils literal notranslate"><span class="pre">write</span></code> functions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">skbio.io.read</span></code> returns a generator, which can then be passed to <code class="docutils literal notranslate"><span class="pre">skbio.io.write</span></code>
+to write only one chunk from the generator at a time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seq_gen</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">big_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">)</span>
+<span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_gen</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">write_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1042,6 +1054,7 @@ not know how you want to serialize an object. OO interfaces define a default
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-kinds-of-files-scikit-bio-can-use">What kinds of files scikit-bio can use</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-files-into-scikit-bio">Reading files into scikit-bio</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-files-from-scikit-bio">Writing files from scikit-bio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-files-with-read-and-write">Streaming files with read and write</a></li>
 </ul>
 </li>
 </ul>

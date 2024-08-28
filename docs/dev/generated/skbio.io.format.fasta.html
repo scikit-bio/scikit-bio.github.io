@@ -1310,6 +1310,65 @@ and QUAL files, respectively:</p>
 </pre></div>
 </div>
 </section>
+<section id="reading-multi-fasta-files">
+<h3>Reading multi-FASTA Files<a class="headerlink" href="#reading-multi-fasta-files" title="Link to this heading">#</a></h3>
+<p>Suppose you have a multi-FASTA file and want to read each sequence into a <code class="docutils literal notranslate"><span class="pre">DNA</span></code>
+object in a list. We’ll be using <code class="docutils literal notranslate"><span class="pre">io.StringIO</span></code> to make a mock FASTA file in
+memory.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.sequence</span> <span class="kn">import</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span> <span class="o">=</span> <span class="s2">&quot;&gt;seq1 Turkey</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;AAGCTNGGGCATTTCAGGGTGAGCCCGGGCAATACAGGGTAT</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;&gt;seq2 Salmo gair</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;AAGCCTTGGCAGTGCAGGGTGAGCCGTGG</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;CCGGGCACGGTAT</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;&gt;seq3 H. Sapiens</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;ACCGGTTGGCCGTTCAGGGTACAGGTTGGCCGTTCAGGGTAA</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;&gt;seq4 Chimp</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;AAACCCTTGCCG</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;TTACGCTTAAAC</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;CGAGGCCGGGAC</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;ACTCAT</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;&gt;seq5 Gorilla</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">&quot;AAACCCTTGCCGGTACGCTTAAACCATTGCCGGTACGCTTAA</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mock_fl</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following code will read the sequences into scikit-bio. In practice, <code class="docutils literal notranslate"><span class="pre">mock_fl</span></code>
+may be replaced with an opened file handle, or the path to the file.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mock_fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;fasta&quot;</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">------------------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;description&#39;: &#39;Turkey&#39;</span>
+<span class="go">    &#39;id&#39;: &#39;seq1&#39;</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 42</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: True</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 54.76%</span>
+<span class="go">------------------------------------------------</span>
+<span class="go">0 AAGCTNGGGC ATTTCAGGGT GAGCCCGGGC AATACAGGGT AT</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">------------------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;description&#39;: &#39;Salmo gair&#39;</span>
+<span class="go">    &#39;id&#39;: &#39;seq2&#39;</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 42</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 66.67%</span>
+<span class="go">------------------------------------------------</span>
+<span class="go">0 AAGCCTTGGC AGTGCAGGGT GAGCCGTGGC CGGGCACGGT AT</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
@@ -1418,6 +1477,7 @@ searches”. Science 227 (4693): 1435-41.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-fasta-files">Reading and Writing FASTA Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-fasta-qual-files">Reading and Writing FASTA/QUAL Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-multi-fasta-files">Reading multi-FASTA Files</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
