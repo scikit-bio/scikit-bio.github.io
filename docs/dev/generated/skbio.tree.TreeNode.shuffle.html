@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Yield trees with shuffled tip names." />
+    <meta name="description" content="Shuffled tip names of the tree." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.shuffle &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -769,20 +769,31 @@ document.write(`
 <h1>skbio.tree.TreeNode.shuffle<a class="headerlink" href="#skbio-tree-treenode-shuffle" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.shuffle">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">shuffle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle_f=&lt;bound</span> <span class="pre">method</span> <span class="pre">RandomState.shuffle</span> <span class="pre">of</span> <span class="pre">RandomState(MT19937)&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n=1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1859"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.shuffle" title="Link to this definition">#</a></dt>
-<dd><p>Yield trees with shuffled tip names.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">shuffle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1859"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.shuffle" title="Link to this definition">#</a></dt>
+<dd><p>Shuffled tip names of the tree.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>k</strong><span class="classifier">int, optional</span></dt><dd><p>The number of tips to shuffle. If not None, this number of tips are
-randomly selected, and only those names will be shuffled.</p>
+<dd class="field-odd"><dl>
+<dt><strong>k</strong><span class="classifier">int, optional</span></dt><dd><p>The number of tips to shuffle. If provided, this number of tips will be
+randomly selected by <code class="docutils literal notranslate"><span class="pre">shuffle_f</span></code>, and only those names will be shuffled.
+Conflicts with <code class="docutils literal notranslate"><span class="pre">names</span></code>.</p>
 </dd>
-<dt><strong>names</strong><span class="classifier">list, optional</span></dt><dd><p>The specific tip names to shuffle.</p>
+<dt><strong>names</strong><span class="classifier">list, optional</span></dt><dd><p>The specific tip names to shuffle. Conflicts with <code class="docutils literal notranslate"><span class="pre">k</span></code>.</p>
 </dd>
-<dt><strong>shuffle_f</strong><span class="classifier">callable, optional</span></dt><dd><p>Shuffling function, which must accept a list and modify inplace.</p>
+<dt><strong>shuffle_f</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>Shuffling function, which must accept a list and modify in place. Default
+is the <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle" title="(in NumPy v2.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shuffle</span></code></a> method of a NumPy
+random generator. If an integer is provided, a random generator will be
+constructed using this number as the seed.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Switched to NumPy’s new random generator. Can accept a random seed or
+random generator instance.</p>
+</div>
 </dd>
-<dt><strong>n</strong><span class="classifier">int, optional</span></dt><dd><p>The number of iterations to perform. Value must be &gt; 0 and <code class="docutils literal notranslate"><span class="pre">np.inf</span></code> can
-be specified for an infinite number of iterations.</p>
+<dt><strong>n</strong><span class="classifier">int, optional</span></dt><dd><p>The number of iterations to perform. Must be a positive integer. Default
+is 1. If None or <code class="docutils literal notranslate"><span class="pre">np.inf</span></code>, iterations will be infinite.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Can accept None.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -806,7 +817,6 @@ be specified for an infinite number of iterations.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.shuffle.html#numpy.random.shuffle" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.shuffle</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.Generator.shuffle</span></code></a></dt><dd></dd>
 </dl>
 </div>
@@ -814,28 +824,23 @@ be specified for an infinite number of iterations.</p>
 <p>This method does not create copies of the tree. Instead, tip names are shuffled
 in place in the original tree and the tree is yielded prior to the next round
 of shuffling. Tree caches will be cleared prior to shuffling.</p>
-<p><code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">names</span></code> cannot be specified at the same time, or an error will be
-raised. If neither <code class="docutils literal notranslate"><span class="pre">k</span></code> nor <code class="docutils literal notranslate"><span class="pre">names</span></code> are provided, all tips are shuffled.</p>
-<p>The default shuffling function is stochastic. To ensure the reproducibility of
-the result, you should use a generator-based function, such as <code class="docutils literal notranslate"><span class="pre">rng.shuffle</span></code>
-where <code class="docutils literal notranslate"><span class="pre">rng</span></code> is a pre-constructed random generator.</p>
+<p><code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">names</span></code> cannot be specified at the same time. If neither <code class="docutils literal notranslate"><span class="pre">k</span></code> nor
+<code class="docutils literal notranslate"><span class="pre">names</span></code> are provided, all tips will be shuffled.</p>
 <p class="rubric">Examples</p>
-<p>Alternate the names on two of the tips, ‘a’, and ‘b’, and do this 5 times:</p>
+<p>Shuffle the names of a 4-tip tree for 5 times:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b),(c,d));&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rev</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">items</span><span class="p">:</span> <span class="n">items</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">shuffler</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="n">shuffle_f</span><span class="o">=</span><span class="n">rev</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">shuffled_tree</span> <span class="ow">in</span> <span class="n">shuffler</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">shuffled_tree</span><span class="p">)</span>
-<span class="go">((b,a),(c,d));</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">shuffled</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">shuffle_f</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">shuffled</span><span class="p">)</span>
+<span class="go">((d,c),(b,a));</span>
 
-<span class="go">((a,b),(c,d));</span>
+<span class="go">((a,b),(d,c));</span>
 
-<span class="go">((b,a),(c,d));</span>
+<span class="go">((a,c),(d,b));</span>
 
-<span class="go">((a,b),(c,d));</span>
+<span class="go">((d,b),(a,c));</span>
 
-<span class="go">((b,a),(c,d));</span>
+<span class="go">((a,c),(d,b));</span>
 </pre></div>
 </div>
 </dd></dl>
