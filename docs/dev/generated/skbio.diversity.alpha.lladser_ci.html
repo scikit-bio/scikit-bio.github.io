@@ -740,11 +740,11 @@ document.write(`
 <h1>skbio.diversity.alpha.lladser_ci<a class="headerlink" href="#skbio-diversity-alpha-lladser-ci" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.alpha.lladser_ci">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">lladser_ci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ULCL'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_lladser.py#L60"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.lladser_ci" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">lladser_ci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ULCL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_lladser.py#L66"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.lladser_ci" title="Link to this definition">#</a></dt>
 <dd><p>Calculate single CI of the conditional uncovered probability.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vector of counts.</p>
 </dd>
 <dt><strong>r</strong><span class="classifier">int</span></dt><dd><p>Number of new colors that are required for the next prediction.</p>
@@ -757,6 +757,11 @@ document.write(`
 conservative lower bound. If <code class="docutils literal notranslate"><span class="pre">'ULCU'</span></code>, upper and lower bounds with
 conservative upper bound. If <code class="docutils literal notranslate"><span class="pre">'U'</span></code>, upper bound only, lower bound
 fixed to 0.0. If <code class="docutils literal notranslate"><span class="pre">'L'</span></code>, lower bound only, upper bound fixed to 1.0.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>

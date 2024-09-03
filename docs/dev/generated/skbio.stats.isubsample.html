@@ -698,15 +698,15 @@ document.write(`
 <h1>skbio.stats.isubsample<a class="headerlink" href="#skbio-stats-isubsample" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.isubsample">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.</span></span><span class="sig-name descname"><span class="pre">isubsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buf_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/_subsample.py#L21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.isubsample" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.</span></span><span class="sig-name descname"><span class="pre">isubsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buf_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/_subsample.py#L21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.isubsample" title="Link to this definition">#</a></dt>
 <dd><p>Randomly subsample items from bins, without replacement.</p>
 <p>Randomly subsample items without replacement from an unknown number of
 input items, that may fall into an unknown number of bins. This method is
 intended for data that either a) cannot fit into memory or b) subsampling
 collections of arbitrary datatypes.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>items</strong><span class="classifier">Iterable</span></dt><dd><p>The items to evaluate.</p>
 </dd>
 <dt><strong>maximum</strong><span class="classifier">unsigned int</span></dt><dd><p>The maximum number of items per bin.</p>
@@ -725,6 +725,11 @@ default), then all items are considered to be part of the same bin.
 This function will be provided with each entry in items, and must
 return a hashable value indicating the bin that that entry should be
 placed in.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -760,8 +765,6 @@ of bins.</p>
 <p>Randomly keep up to 2 sequences per sample from a set of demultiplexed
 sequences:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats</span> <span class="kn">import</span> <span class="n">isubsample</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;sampleA&#39;</span><span class="p">,</span> <span class="s1">&#39;AATTGG&#39;</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="p">(</span><span class="s1">&#39;sampleB&#39;</span><span class="p">,</span> <span class="s1">&#39;ATATATAT&#39;</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="p">(</span><span class="s1">&#39;sampleC&#39;</span><span class="p">,</span> <span class="s1">&#39;ATGGCC&#39;</span><span class="p">),</span>
@@ -769,23 +772,23 @@ sequences:</p>
 <span class="gp">... </span>        <span class="p">(</span><span class="s1">&#39;sampleB&#39;</span><span class="p">,</span> <span class="s1">&#39;ATGGCG&#39;</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="p">(</span><span class="s1">&#39;sampleA&#39;</span><span class="p">,</span> <span class="s1">&#39;ATGGCA&#39;</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bin_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">bin_</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">isubsample</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bin_f</span><span class="o">=</span><span class="n">bin_f</span><span class="p">)):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">bin_</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">isubsample</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bin_f</span><span class="o">=</span><span class="n">bin_f</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">bin_</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="go">sampleA AATTGG</span>
 <span class="go">sampleA ATGGCA</span>
-<span class="go">sampleB ATATATAT</span>
 <span class="go">sampleB ATGGCG</span>
+<span class="go">sampleB ATGGCT</span>
 <span class="go">sampleC ATGGCC</span>
 </pre></div>
 </div>
 <p>Now, let’s set the minimum to 2:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bin_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">bin_</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">isubsample</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bin_f</span><span class="o">=</span><span class="n">bin_f</span><span class="p">)):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">bin_</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">isubsample</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bin_f</span><span class="o">=</span><span class="n">bin_f</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">bin_</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="go">sampleA AATTGG</span>
 <span class="go">sampleA ATGGCA</span>
-<span class="go">sampleB ATATATAT</span>
 <span class="go">sampleB ATGGCG</span>
+<span class="go">sampleB ATGGCT</span>
 </pre></div>
 </div>
 </dd></dl>

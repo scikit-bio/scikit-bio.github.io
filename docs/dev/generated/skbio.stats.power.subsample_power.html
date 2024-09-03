@@ -708,11 +708,11 @@ document.write(`
 <h1>skbio.stats.power.subsample_power<a class="headerlink" href="#skbio-stats-power-subsample-power" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.power.subsample_power">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.power.</span></span><span class="sig-name descname"><span class="pre">subsample_power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_pwr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_counts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_counts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_runs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/power.py#L150"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.power.subsample_power" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.power.</span></span><span class="sig-name descname"><span class="pre">subsample_power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_pwr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_counts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_counts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_runs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/power.py#L134"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.power.subsample_power" title="Link to this definition">#</a></dt>
 <dd><p>Subsample data to iteratively calculate power.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>test</strong><span class="classifier">function</span></dt><dd><p>The statistical test which accepts a list of arrays of values
 (sample ids or numeric values) and returns a p value or one-dimensional
 array of p values.</p>
@@ -749,6 +749,11 @@ subsample. If this is None, the <cite>counts_interval</cite> will be used.</p>
 on the curve.</p>
 </dd>
 <dt><strong>num_runs</strong><span class="classifier">positive int, optional</span></dt><dd><p>The number of times to calculate each curve.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -798,66 +803,63 @@ presence or absence of <em>G. vaginalis</em> was confirmed with quantitative PCR
 <p>We can model the probability that detectable <em>G. vaginalis</em> was found in
 these samples using a binomial model. (<em>Note that this is a simulation.</em>)</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pre_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pre_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="go">45</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pos_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pos_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="go">21</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre_rate</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pre_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="go">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pos_rate</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pos_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="go">16</span>
 </pre></div>
 </div>
 <p>Let’s set up a test function, so we can test the probability of
 finding a difference in frequency between the two groups. We’ll use
-<cite>scipy.stats.chisquare</cite> to look for the difference in frequency between
-groups.</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy.stats.chisquare" title="(in SciPy v1.14.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.chisquare()</span></code></a> to look for the difference in frequency
+between groups.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chisquare</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">chisquare</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
-<span class="gp">... </span>    <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))]))[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))]))</span><span class="o">.</span><span class="n">pvalue</span>
 </pre></div>
 </div>
 <p>Let’s make sure that our two distributions are different.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">test</span><span class="p">([</span><span class="n">pre_rate</span><span class="p">,</span> <span class="n">pos_rate</span><span class="p">]),</span> <span class="mi">3</span><span class="p">))</span>
-<span class="go">0.003</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.5f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test</span><span class="p">([</span><span class="n">pre_rate</span><span class="p">,</span> <span class="n">pos_rate</span><span class="p">])))</span>
+<span class="go">0.00064</span>
 </pre></div>
 </div>
 <p>Since there are an even number of samples, and we don’t have enough
 information to try controlling the data, we’ll use
-<cite>skbio.stats.power.subsample_power</cite> to compare the two groups. If we had
+<a class="reference internal" href="#skbio.stats.power.subsample_power" title="skbio.stats.power.subsample_power"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsample_power()</span></code></a> to compare the two groups. If we had
 metadata about other risk factors, like a reproductive history, BMI,
-tobacco use, we might want to use
-<cite>skbio.stats.power.subsample_paired_power</cite>.
-We’ll also use “ind” <cite>draw_mode</cite>, since there is no linkage between the
+tobacco use, we might want to use <a class="reference internal" href="skbio.stats.power.subsample_paired_power.html#skbio.stats.power.subsample_paired_power" title="skbio.stats.power.subsample_paired_power"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsample_paired_power()</span></code></a>.
+We’ll also use “ind” <code class="docutils literal notranslate"><span class="pre">draw_mode</span></code>, since there is no linkage between the
 two groups of samples.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.power</span> <span class="kn">import</span> <span class="n">subsample_power</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pwr_est</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">subsample_power</span><span class="p">(</span><span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
-<span class="gp">... </span>                                  <span class="n">samples</span><span class="o">=</span><span class="p">[</span><span class="n">pre_rate</span><span class="p">,</span> <span class="n">pos_rate</span><span class="p">],</span>
-<span class="gp">... </span>                                  <span class="n">num_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="gp">... </span>                                  <span class="n">num_runs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>                                  <span class="n">counts_interval</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pwr_est</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">subsample_power</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="p">[</span><span class="n">pre_rate</span><span class="p">,</span> <span class="n">pos_rate</span><span class="p">],</span> <span class="n">num_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_runs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">counts_interval</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span>
 <span class="go">array([ 5, 10, 15, 20, 25, 30, 35, 40, 45])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">pwr_est</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
-<span class="go">array([ 0.056,  0.074,  0.226,  0.46 ,  0.61 ,  0.806,  0.952,  1.   ,</span>
+<span class="go">array([ 0.11 ,  0.19 ,  0.45 ,  0.684,  0.874,  0.964, 1.   ,  1.   ,</span>
 <span class="go">        1.   ])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">pwr_est</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="go">30</span>
+<span class="go">25</span>
 </pre></div>
 </div>
 <p>So, we can estimate that we will see a significant difference in the
 presence of <em>G. vaginalis</em> in the stool of pre and post women with UTIs if
-we have at least 30 samples per group.</p>
+we have at least 25 samples per group.</p>
 <p>If we wanted to test the relationship of a second candidate taxa which is
 more rare in the population, but may have a similar effect, based on
-available literature, we might also start by trying to identify 30
+available literature, we might also start by trying to identify 25
 samples per group where the second candidate taxa is present.</p>
 <p>Suppose, now, that we want to test that a secondary metabolite seen only in
 the presence of <em>G vaginalis</em> to see if it is also correlated with UTIs. We
 can model the abundance of the metabolite as a normal distribution.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">met_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">pre_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="n">pos_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">*</span> <span class="mi">2000</span> <span class="o">+</span>
-<span class="gp">... </span>    <span class="mi">2500</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">met_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">pre_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="n">pos_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">*</span>
+<span class="gp">... </span>    <span class="mi">2000</span> <span class="o">+</span> <span class="mi">2500</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">met_pos</span><span class="p">[</span><span class="n">met_pos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">met_neg</span> <span class="o">=</span> <span class="n">met_neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="p">(</span><span class="n">pre_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">met_neg</span> <span class="o">=</span> <span class="n">met_neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="p">(</span><span class="n">pre_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span>
 <span class="gp">... </span>    <span class="n">pos_rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span> <span class="o">*</span> <span class="mi">2000</span> <span class="o">+</span> <span class="mi">500</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">met_neg</span><span class="p">[</span><span class="n">met_neg</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
@@ -867,29 +869,25 @@ cannot be a negative concentration of a chemical, so we’ve set the lower
 bound at 0. This means that we can no longer assume our distribution is
 normal.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kruskal</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">metabolite_test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="n">kruskal</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">metabolite_test</span><span class="p">([</span><span class="n">met_pos</span><span class="p">,</span> <span class="n">met_neg</span><span class="p">]),</span> <span class="mi">3</span><span class="p">))</span>
-<span class="go">0.005</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">kruskal</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">pvalue</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.3e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test2</span><span class="p">([</span><span class="n">met_pos</span><span class="p">,</span> <span class="n">met_neg</span><span class="p">])))</span>
+<span class="go">9.783e-06</span>
 </pre></div>
 </div>
 <p>When we go to perform the statistical test on all the data, you might
 notice that there are twice as many samples from women with <em>G. vaginalis</em>
 than those without. It might make sense to account for this difference when
-we’re testing power. So, we’re going to set the <cite>ratio</cite> parameter, which
+we’re testing power. So, we’re going to set the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> parameter, which
 lets us draw twice as many samples from women with <em>G. vaginalis</em>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pwr_est2</span><span class="p">,</span> <span class="n">counts2</span> <span class="o">=</span> <span class="n">subsample_power</span><span class="p">(</span><span class="n">test</span><span class="o">=</span><span class="n">metabolite_test</span><span class="p">,</span>
-<span class="gp">... </span>                                    <span class="n">samples</span><span class="o">=</span><span class="p">[</span><span class="n">met_pos</span><span class="p">,</span> <span class="n">met_neg</span><span class="p">],</span>
-<span class="gp">... </span>                                    <span class="n">counts_interval</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>                                    <span class="n">num_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="gp">... </span>                                    <span class="n">num_runs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>                                    <span class="n">ratio</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pwr_est2</span><span class="p">,</span> <span class="n">counts2</span> <span class="o">=</span> <span class="n">subsample_power</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">test</span><span class="o">=</span><span class="n">test2</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="p">[</span><span class="n">met_pos</span><span class="p">,</span> <span class="n">met_neg</span><span class="p">],</span> <span class="n">counts_interval</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">num_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_runs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">seed</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">counts2</span>
-<span class="go">array([  5.,  10.,  15.,  20.,  25.,  30.])</span>
+<span class="go">array([  5.,  10.,  15.,  20.,  25.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">pwr_est2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">array([ 0.14 ,  0.272,  0.426,  0.646,  0.824,  0.996])</span>
+<span class="go">array([ 0.388,  0.688,  0.898,  0.986,  1.   ])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">counts2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">pwr_est2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="go">25.0</span>
+<span class="go">15.0</span>
 </pre></div>
 </div>
 <p>When we consider the number of samples per group needed in the power

@@ -707,14 +707,14 @@ document.write(`
 <h1>skbio.stats.power.paired_subsamples<a class="headerlink" href="#skbio-stats-power-paired-subsamples" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.power.paired_subsamples">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.power.</span></span><span class="sig-name descname"><span class="pre">paired_subsamples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_cats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict_match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/power.py#L640"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.power.paired_subsamples" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.power.</span></span><span class="sig-name descname"><span class="pre">paired_subsamples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_cats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict_match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/power.py#L626"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.power.paired_subsamples" title="Link to this definition">#</a></dt>
 <dd><p>Draw a list of samples varied by <cite>cat</cite> and matched for <cite>control_cats</cite>.</p>
 <p>This function is designed to provide controlled samples, based on a
 metadata category. For example, one could control for age, sex, education
 level, and diet type while measuring exercise frequency.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>meta</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>The metadata associated with the samples.</p>
 </dd>
 <dt><strong>cat</strong><span class="classifier">str, list</span></dt><dd><p>The metadata category (or a list of categories) for comparison.</p>
@@ -734,6 +734,11 @@ within <cite>meta</cite> has an undefined value (<cite>NaN</cite>) for any of th
 will be ignored when <cite>strict_match</cite> is True. If <cite>strict_match</cite> is
 False, missing values (NaN) in the <cite>control_cats</cite> can be considered
 matches.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
