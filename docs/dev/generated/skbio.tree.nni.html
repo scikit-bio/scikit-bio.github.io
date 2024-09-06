@@ -71,7 +71,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.tree.majority_rule" href="skbio.tree.majority_rule.html" />
-    <link rel="prev" title="skbio.tree.gme" href="skbio.tree.gme.html" />
+    <link rel="prev" title="skbio.tree.bme" href="skbio.tree.bme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -627,6 +627,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.bme.html">skbio.tree.bme</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.tree.nni</a></li>
@@ -694,7 +695,7 @@ document.write(`
 <h1>skbio.tree.nni<a class="headerlink" href="#skbio-tree-nni" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.nni">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_edge_estimation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_nni.py#L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nni" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_edge_estimation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_nni.py#L15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nni" title="Link to this definition">#</a></dt>
 <dd><p>Perform nearest neighbor interchange (NNI) on a phylogenetic tree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -709,6 +710,11 @@ or return a tree without edge values assigned (<code class="docutils literal not
 <dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether manipulate the tree in place (<code class="docutils literal notranslate"><span class="pre">True</span></code>, default) or return a
 copy of the tree (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 </dd>
+<dt><strong>balanced</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to use the minimum evolution framework or the balanced
+minimum evolution framework. The definition of average distance
+between subtrees either ignores subtree size (<code class="docutils literal notranslate"><span class="pre">True</span></code>, default)
+or calculates based on subtree size (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -721,13 +727,19 @@ copy of the tree (<code class="docutils literal notranslate"><span class="pre">F
 <p class="rubric">Notes</p>
 <p>NNI algorithm for minimum evolution problem on phylogenetic trees. It rearranges
 an initial tree topology by performing subtree exchanges such that the distance
-is minimized. This implementation is based on the FastNNI algorithm <a class="reference internal" href="#r2d0c0545a225-1" id="id1">[1]</a>.</p>
-<p>The input tree is required to be binary and rooted at a leaf node such that
-there is a unique descendant from the root.</p>
+is minimized. This implementation is based on the FastNNI algorithm and the
+BNNI algorithm (BNNI)[R2d0c0545a225-1]_.</p>
+<p>The two versions of NNI are due to the relationship with minimum evolution
+and the use of average distances between subtrees. FastNNI is based on the
+Minimum Evolution (ME) problem while BNNI is based on the Balanced Minimum
+Evolution (BME) problem. In BME the sizes of subtrees are ignored while ME
+considers the size of subtrees in the calculation of average distance.</p>
+<p>For both versions of NNI, the input tree is required to be binary and rooted
+at a leaf node such that there is a unique descendant from the root.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r2d0c0545a225-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>Desper R, Gascuel O. Fast and accurate phylogeny reconstruction
 algorithms based on the minimum-evolution principle. J Comput Biol.
 2002;9(5):687-705. doi: 10.1089/106652702761034136. PMID: 12487758.</p>
@@ -765,8 +777,8 @@ required to be a binary tree rooted at a leaf node.</p>
 <span class="go">                              \-monkey</span>
 </pre></div>
 </div>
-<p>Perform nearest neighbor interchange (NNI). By default, the tree is
-rearrangede in place.</p>
+<p>Perform nearest neighbor interchange (NNI), here the BNNI version is used.
+By default, the tree is rearrangede in place.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nni</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                              /-rat</span>
@@ -800,12 +812,12 @@ tree.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.gme.html"
+       href="skbio.tree.bme.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.gme</p>
+        <p class="prev-next-title">skbio.tree.bme</p>
       </div>
     </a>
     <a class="right-next"
