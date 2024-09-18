@@ -738,7 +738,7 @@ samples, drawn from each Dirichlet-multinomial distribution. The
 log-fold changes as well as their credible intervals, the <em>p</em>-values and
 the multiple comparison corrected <em>p</em>-values are reported.</p>
 <p>This function uses the
-<a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.html#statsmodels.regression.mixed_linear_model.MixedLM" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixedLM</span></code></a> class from
+<a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.html#statsmodels.regression.mixed_linear_model.MixedLM" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixedLM</span></code></a> class from
 statsmodels.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -769,17 +769,17 @@ Default is 128.</p>
 Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-
 Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported
 by statsmodels’
-<a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
+<a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
 Case-insensitive. If None, no correction will be performed.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance for drawing from the
 Dirichlet distribution.</p>
 </dd>
-<dt><strong>re_formula</strong><span class="classifier">str, optional</span></dt><dd><p>Random coefficient formula. See <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.from_formula.html#statsmodels.regression.mixed_linear_model.MixedLM.from_formula" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code></a>.</p>
+<dt><strong>re_formula</strong><span class="classifier">str, optional</span></dt><dd><p>Random coefficient formula. See <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.from_formula.html#statsmodels.regression.mixed_linear_model.MixedLM.from_formula" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code></a>.</p>
 </dd>
-<dt><strong>vc_formula</strong><span class="classifier">str, optional</span></dt><dd><p>Variance component formula. See <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.from_formula.html#statsmodels.regression.mixed_linear_model.MixedLM.from_formula" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code></a>.</p>
+<dt><strong>vc_formula</strong><span class="classifier">str, optional</span></dt><dd><p>Variance component formula. See <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.from_formula.html#statsmodels.regression.mixed_linear_model.MixedLM.from_formula" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code></a>.</p>
 </dd>
-<dt><strong>model_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to pass to <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.from_formula.html#statsmodels.regression.mixed_linear_model.MixedLM.from_formula" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code></a></p>
+<dt><strong>model_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to pass to <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.from_formula.html#statsmodels.regression.mixed_linear_model.MixedLM.from_formula" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code></a></p>
 </dd>
 <dt><strong>fit_method</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Optimization method for model fitting. Can be a single method name, or a list
 of method names to be tried sequentially. See <a class="reference external" href="https://www.statsmodels.org/stable/optimization.html">statsmodels.optimization</a>
@@ -789,7 +789,7 @@ for available methods. If None, a default list of methods will be tried.</p>
 Warnings are usually issued when the optimization methods do not converge,
 which is common in the analysis.</p>
 </dd>
-<dt><strong>fit_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to pass to <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.fit.html#statsmodels.regression.mixed_linear_model.MixedLM.fit" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.fit</span></code></a>.</p>
+<dt><strong>fit_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to pass to <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.fit.html#statsmodels.regression.mixed_linear_model.MixedLM.fit" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.fit</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -822,8 +822,8 @@ across all of the posterior draws.</p>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a></dt><dd></dd>
-<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.formula.api.mixedlm.html#statsmodels.formula.api.mixedlm" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.formula.api.mixedlm</span></code></a></dt><dd></dd>
-<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.html#statsmodels.regression.mixed_linear_model.MixedLM" title="(in statsmodels 0.14.1 v0.14.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.regression.mixed_linear_model.MixedLM</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.formula.api.mixedlm.html#statsmodels.formula.api.mixedlm" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.formula.api.mixedlm</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.html#statsmodels.regression.mixed_linear_model.MixedLM" title="(in statsmodels 0.14.3 v0.14.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.regression.mixed_linear_model.MixedLM</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Examples</p>
