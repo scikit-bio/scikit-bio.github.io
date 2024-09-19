@@ -704,7 +704,7 @@ document.write(`
 <h1>skbio.stats.evolve.hommola_cospeciation<a class="headerlink" href="#skbio-stats-evolve-hommola-cospeciation" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.evolve.hommola_cospeciation">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.evolve.</span></span><span class="sig-name descname"><span class="pre">hommola_cospeciation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/evolve/_hommola.py#L15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.evolve.hommola_cospeciation" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.evolve.</span></span><span class="sig-name descname"><span class="pre">hommola_cospeciation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">par_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/evolve/_hommola.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.evolve.hommola_cospeciation" title="Link to this definition">#</a></dt>
 <dd><p>Perform Hommola et al (2009) host/parasite cospeciation test.</p>
 <p>This test for host/parasite cospeciation is as described in <a class="reference internal" href="#r314a803811b1-1" id="id1">[1]</a>. This test
 is a modification of a Mantel test, expanded to accept the case where
@@ -743,9 +743,9 @@ number of columns as the host distance matrix, and the same number of rows
 as the symbiont distance matrix. Interactions between hosts and symbionts
 should be indicated by values of <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">True</span></code>, with non-interactions
 indicated by values of <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>host_dist</strong><span class="classifier">2-D array_like or DistanceMatrix</span></dt><dd><p>Symmetric matrix of m x m pairwise distances between hosts.</p>
 </dd>
 <dt><strong>par_dist</strong><span class="classifier">2-D array_like or DistanceMatrix</span></dt><dd><p>Symmetric matrix of n x n pairwise distances between parasites.</p>
@@ -758,6 +758,12 @@ should order of parasites (rows) be identical to order of parasites in
 <dt><strong>permutations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of permutations used to compute p-value. Must be greater than or
 equal to zero. If zero, statistical significance calculations will be
 skipped and the p-value will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int or np.random.Generator, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
+<code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -815,7 +821,7 @@ interactions (data taken from example in <a class="reference internal" href="#r3
 coefficient for the observed values counts against the final reported
 p-value:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">corr_coeff</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">perm_stats</span> <span class="o">=</span> <span class="n">hommola_cospeciation</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">hdist</span><span class="p">,</span> <span class="n">pdist</span><span class="p">,</span> <span class="n">interaction</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">hdist</span><span class="p">,</span> <span class="n">pdist</span><span class="p">,</span> <span class="n">interaction</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">corr_coeff</span><span class="p">)</span>
 <span class="go">0.832</span>
 </pre></div>

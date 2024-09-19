@@ -712,39 +712,44 @@ document.write(`
 <h1>skbio.stats.distance.randdm<a class="headerlink" href="#skbio-stats-distance-randdm" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.randdm">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">randdm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1216"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.randdm" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">randdm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1222"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.randdm" title="Link to this definition">#</a></dt>
 <dd><p>Generate a distance matrix populated with random distances.</p>
-<p>Using the default <cite>random_fn</cite>, distances are randomly drawn from a uniform
+<p>Using the default <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, distances are randomly drawn from a uniform
 distribution over <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1)</span></code>.</p>
-<p>Regardless of <cite>random_fn</cite>, the resulting distance matrix is guaranteed to
+<p>Regardless of <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, the resulting distance matrix is guaranteed to
 be symmetric and hollow.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>num_objects</strong><span class="classifier">int</span></dt><dd><p>The number of objects in the resulting distance matrix. For example, if
-<cite>num_objects</cite> is 3, a 3x3 distance matrix will be returned.</p>
+<code class="docutils literal notranslate"><span class="pre">num_objects</span></code> is 3, a 3x3 distance matrix will be returned.</p>
 </dd>
 <dt><strong>ids</strong><span class="classifier">sequence of str or None, optional</span></dt><dd><p>A sequence of strings to be used as IDs. <code class="docutils literal notranslate"><span class="pre">len(ids)</span></code> must be equal to
-<cite>num_objects</cite>. If not provided, IDs will be monotonically-increasing
+<code class="docutils literal notranslate"><span class="pre">num_objects</span></code>. If not provided, IDs will be monotonically-increasing
 integers cast as strings (numbering starts at 1). For example,
 <code class="docutils literal notranslate"><span class="pre">('1',</span> <span class="pre">'2',</span> <span class="pre">'3')</span></code>.</p>
 </dd>
 <dt><strong>constructor</strong><span class="classifier">type, optional</span></dt><dd><p><cite>DissimilarityMatrix</cite> or subclass constructor to use when creating the
 random distance matrix. The returned distance matrix will be of this
-type. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), a <cite>DistanceMatrix</cite> instance will be
-returned.</p>
+type. By default, a <cite>DistanceMatrix</cite> instance will be returned.</p>
 </dd>
-<dt><strong>random_fn</strong><span class="classifier">function, optional</span></dt><dd><p>Function to generate random values. <cite>random_fn</cite> must accept two
-arguments (number of rows and number of columns) and return a 2D
-<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of floats (or something that can be cast to float).
-If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), <code class="docutils literal notranslate"><span class="pre">numpy.random.rand</span></code> will be used.</p>
+<dt><strong>random_fn</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>Functionfor generating random values. It must accept (n_rows, n_columns) and
+return a 2D array of float-like. Default is the
+<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.random.html#numpy.random.Generator.random" title="(in NumPy v2.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random</span></code></a> method of a NumPy random
+generator. If an integer is provided, a random generator will be constructed
+using this number as the seed.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Switched to NumPy’s new random generator. Can accept a random seed or
+random generator instance. The function takes one tuple parameter instead
+of two separate parameters.</p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>DissimilarityMatrix</dt><dd><p><cite>DissimilarityMatrix</cite> (or subclass) instance of random distances. Type
-depends on <cite>constructor</cite>.</p>
+depends on <code class="docutils literal notranslate"><span class="pre">constructor</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -752,7 +757,7 @@ depends on <cite>constructor</cite>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.rand</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.random.html#numpy.random.Generator.random" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.Generator.random</span></code></a></dt><dd></dd>
 </dl>
 </div>
 </dd></dl>

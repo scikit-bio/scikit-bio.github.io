@@ -713,7 +713,7 @@ document.write(`
 <h1>skbio.stats.distance.mantel<a class="headerlink" href="#skbio-stats-distance-mantel" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.mantel">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">mantel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pearson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'two-sided'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_mantel.py#L24"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.mantel" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">mantel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pearson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'two-sided'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_mantel.py#L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.mantel" title="Link to this definition">#</a></dt>
 <dd><p>Compute correlation between distance matrices using the Mantel test.</p>
 <p>The Mantel test compares two distance matrices by computing the correlation
 between the distances in the lower (or upper) triangular portions of the
@@ -746,9 +746,9 @@ than the original (unpermuted) correlation coefficient. Whether a permuted
 correlation coefficient is “more extreme” than the original correlation
 coefficient depends on the alternative hypothesis (controlled via
 <cite>alternative</cite>).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>x, y</strong><span class="classifier">DistanceMatrix or array_like</span></dt><dd><p>Input distance matrices to compare. If <cite>x</cite> and <cite>y</cite> are both
 <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instances, they will be reordered based on matching
 IDs (see <cite>strict</cite> and <cite>lookup</cite> below for handling matching/mismatching
@@ -785,6 +785,12 @@ across distance matrices prior to running the Mantel test. If the IDs
 already match between the distance matrices, this parameter is not
 necessary. This parameter is disallowed if <cite>x</cite> and <cite>y</cite> are
 <code class="docutils literal notranslate"><span class="pre">array_like</span></code>.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
+<code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>

@@ -712,7 +712,7 @@ document.write(`
 <h1>skbio.stats.distance.anosim<a class="headerlink" href="#skbio-stats-distance-anosim" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.anosim">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">anosim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_anosim.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.anosim" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">anosim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_anosim.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.anosim" title="Link to this definition">#</a></dt>
 <dd><p>Test for significant differences between groups using ANOSIM.</p>
 <p>Analysis of Similarities (ANOSIM) is a non-parametric method that tests
 whether two or more groups of objects (e.g., samples) are significantly
@@ -725,9 +725,9 @@ of objects to groups (<cite>grouping</cite>) is randomly permuted a number of ti
 (controlled via <cite>permutations</cite>). An R statistic is computed for each
 permutation and the p-value is the proportion of permuted R statisics that
 are equal to or greater than the original (unpermuted) R statistic.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>distance_matrix</strong><span class="classifier">DistanceMatrix</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
 between samples of microbial communities).</p>
 </dd>
@@ -751,6 +751,12 @@ Cannot be provided if <cite>grouping</cite> is 1-D <code class="docutils literal
 significance. Must be greater than or equal to zero. If zero,
 statistical significance calculations will be skipped and the p-value
 will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
+<code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -798,18 +804,16 @@ objects:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Group1&#39;</span><span class="p">,</span> <span class="s1">&#39;Group1&#39;</span><span class="p">,</span> <span class="s1">&#39;Group2&#39;</span><span class="p">,</span> <span class="s1">&#39;Group2&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Run ANOSIM using 99 permutations to calculate the p-value:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># make output deterministic; not necessary for normal use</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">anosim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">anosim</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span>
+<p>Run ANOSIM using 99 permutations to calculate the p-value. The seed is to
+make the output deterministic. You may skip it if that’s not necessary.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">anosim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">anosim</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="go">method name               ANOSIM</span>
 <span class="go">test statistic name            R</span>
 <span class="go">sample size                    4</span>
 <span class="go">number of groups               2</span>
 <span class="go">test statistic              0.25</span>
-<span class="go">p-value                     0.67</span>
+<span class="go">p-value                     0.66</span>
 <span class="go">number of permutations        99</span>
 <span class="go">Name: ANOSIM results, dtype: object</span>
 </pre></div>
@@ -834,18 +838,17 @@ grouping instead of a grouping vector. The following <code class="docutils liter
 <code class="docutils literal notranslate"><span class="pre">Group</span></code> column specifies the same grouping as the vector we used in the
 previous examples:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># make output deterministic; not necessary for normal use</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;Group&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;s2&#39;</span><span class="p">:</span> <span class="s1">&#39;Group1&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">:</span> <span class="s1">&#39;Group2&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">:</span> <span class="s1">&#39;Group2&#39;</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="s1">&#39;s5&#39;</span><span class="p">:</span> <span class="s1">&#39;Group3&#39;</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">:</span> <span class="s1">&#39;Group1&#39;</span><span class="p">}})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">anosim</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">anosim</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="go">method name               ANOSIM</span>
 <span class="go">test statistic name            R</span>
 <span class="go">sample size                    4</span>
 <span class="go">number of groups               2</span>
 <span class="go">test statistic              0.25</span>
-<span class="go">p-value                     0.67</span>
+<span class="go">p-value                     0.66</span>
 <span class="go">number of permutations        99</span>
 <span class="go">Name: ANOSIM results, dtype: object</span>
 </pre></div>
