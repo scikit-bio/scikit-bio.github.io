@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Find the lowest common ancestor of a list of tips." />
+    <meta name="description" content="Find the lowest common ancestor of a list of nodes." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.lowest_common_ancestor &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -631,6 +631,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.neighbors.html">skbio.tree.TreeNode.neighbors</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.lowest_common_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.lca.html">skbio.tree.TreeNode.lca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.path.html">skbio.tree.TreeNode.path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.preorder.html">skbio.tree.TreeNode.preorder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.postorder.html">skbio.tree.TreeNode.postorder</a></li>
@@ -771,7 +772,7 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.lowest_common_ancestor">
 <span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">lowest_common_ancestor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipnames</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L552"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.lowest_common_ancestor" title="Link to this definition">#</a></dt>
-<dd><p>Find the lowest common ancestor of a list of tips.</p>
+<dd><p>Find the lowest common ancestor of a list of nodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -792,6 +793,9 @@ document.write(`
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Despite the parameter is named as <code class="docutils literal notranslate"><span class="pre">tipnames</span></code>, it can accept both tips and
+internal nodes.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)root;&quot;</span><span class="p">])</span>

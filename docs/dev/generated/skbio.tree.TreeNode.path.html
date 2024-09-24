@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Find all nodes in a tree that meet certain criteria." />
+    <meta name="description" content="Return the list of nodes in the path from one node to another." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.find_by_func &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.TreeNode.path &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -59,19 +59,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.find_by_func';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.path';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.find_by_func.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.path.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.count" href="skbio.tree.TreeNode.count.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.find_by_id" href="skbio.tree.TreeNode.find_by_id.html" />
+    <link rel="next" title="skbio.tree.TreeNode.traverse" href="skbio.tree.TreeNode.traverse.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.lca" href="skbio.tree.TreeNode.lca.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -631,7 +631,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.neighbors.html">skbio.tree.TreeNode.neighbors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.lowest_common_ancestor.html">skbio.tree.TreeNode.lowest_common_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.lca.html">skbio.tree.TreeNode.lca</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.path.html">skbio.tree.TreeNode.path</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.preorder.html">skbio.tree.TreeNode.preorder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.postorder.html">skbio.tree.TreeNode.postorder</a></li>
@@ -672,7 +672,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find.html">skbio.tree.TreeNode.find</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_all.html">skbio.tree.TreeNode.find_all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_by_id.html">skbio.tree.TreeNode.find_by_id</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.find_by_func</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.find_by_func.html">skbio.tree.TreeNode.find_by_func</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
@@ -767,44 +767,43 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-find-by-func">
-<h1>skbio.tree.TreeNode.find_by_func<a class="headerlink" href="#skbio-tree-treenode-find-by-func" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-path">
+<h1>skbio.tree.TreeNode.path<a class="headerlink" href="#skbio-tree-treenode-path" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.find_by_func">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">find_by_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4454"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.find_by_func" title="Link to this definition">#</a></dt>
-<dd><p>Find all nodes in a tree that meet certain criteria.</p>
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.path">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L626"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.path" title="Link to this definition">#</a></dt>
+<dd><p>Return the list of nodes in the path from one node to another.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>func</strong><span class="classifier">callable</span></dt><dd><p>A function that accepts a <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> and returns True or False, where
-True indicates the node is to be yielded.</p>
+<dt><strong>other</strong><span class="classifier">TreeNode</span></dt><dd><p>Final node of path.</p>
+</dd>
+<dt><strong>include_ends: bool, optional</strong></dt><dd><p>Whether to include the initial and final nodes in the list.
+Default is False.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>The found node.</p>
+<dt>list</dt><dd><p>List of TreeNode objects.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find.html#skbio.tree.TreeNode.find" title="skbio.tree.TreeNode.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_all.html#skbio.tree.TreeNode.find_all" title="skbio.tree.TreeNode.find_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_all</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.find_by_id.html#skbio.tree.TreeNode.find_by_id" title="skbio.tree.TreeNode.find_by_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_by_id</span></code></a></dt><dd></dd>
-</dl>
-</div>
-<p class="rubric">Notes</p>
-<p>This search method is based on the current subtree, not the root.</p>
-<p>This method does not cache search results.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">parent</span> <span class="o">==</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">find_by_func</span><span class="p">(</span><span class="n">func</span><span class="p">)]</span>
-<span class="go">[&#39;a&#39;, &#39;b&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)root;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node_1</span><span class="p">,</span> <span class="n">node_2</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">node_1</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="n">node_2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">path</span><span class="p">))</span>
+<span class="go">c-root-f</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path_2</span> <span class="o">=</span> <span class="n">node_1</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="n">node_2</span><span class="p">,</span> <span class="n">include_ends</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path_2</span><span class="p">))</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">path_2</span><span class="p">))</span>
+<span class="go">a-c-root-f-d</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -822,20 +821,20 @@ True indicates the node is to be yielded.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.find_by_id.html"
+       href="skbio.tree.TreeNode.lca.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.find_by_id</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.lca</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.count.html"
+       href="skbio.tree.TreeNode.traverse.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.count</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.traverse</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -857,7 +856,7 @@ True indicates the node is to be yielded.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.find_by_func"><code class="docutils literal notranslate"><span class="pre">TreeNode.find_by_func()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.path"><code class="docutils literal notranslate"><span class="pre">TreeNode.path()</span></code></a></li>
 </ul>
   </nav></div>
 
