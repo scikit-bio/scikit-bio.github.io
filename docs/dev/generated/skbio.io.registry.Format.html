@@ -41,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -723,7 +723,7 @@ document.write(`
 <h1>skbio.io.registry.Format<a class="headerlink" href="#skbio-io-registry-format" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.io.registry.Format">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.io.registry.</span></span><span class="sig-name descname"><span class="pre">Format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L781"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.io.registry.Format" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.io.registry.</span></span><span class="sig-name descname"><span class="pre">Format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L667"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.io.registry.Format" title="Link to this definition">#</a></dt>
 <dd><p>Defines a format on which readers/writers/sniffer can be registered.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -731,8 +731,8 @@ document.write(`
 <dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name of this format.</p>
 </dd>
 <dt><strong>encoding</strong><span class="classifier">str, optional</span></dt><dd><p>What the default encoding of this format is. If set to ‘binary’ then
-all registered handlers will receive an <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedReader" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BufferedReader</span></code></a> or
-<a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedWriter" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BufferedWriter</span></code></a> instead of an <a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.TextIOBase</span></code></a>. The
+all registered handlers will receive an <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedReader" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BufferedReader</span></code></a> or
+<a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedWriter" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BufferedWriter</span></code></a> instead of an <a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.TextIOBase</span></code></a>. The
 user will also be unable to override the encoding in that case.</p>
 </dd>
 <dt><strong>newline</strong><span class="classifier">str, optional</span></dt><dd><p>What the default newline handling of this format is. Default is to use
@@ -746,12 +746,6 @@ universal newline handling.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.io.registry.Format.is_binary_format" title="skbio.io.registry.Format.is_binary_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_binary_format</span></code></a></p></td>
 <td><p>Return True if this is a binary format.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.io.registry.Format.monkey_patched_readers" title="skbio.io.registry.Format.monkey_patched_readers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">monkey_patched_readers</span></code></a></p></td>
-<td><p>Set of classes bound to readers to monkey patch.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.io.registry.Format.monkey_patched_writers" title="skbio.io.registry.Format.monkey_patched_writers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">monkey_patched_writers</span></code></a></p></td>
-<td><p>Set of classes bound to writers to monkey patch.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skbio.io.registry.Format.name" title="skbio.io.registry.Format.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p>The name of this format.</p></td>
@@ -771,13 +765,13 @@ universal newline handling.</p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.Format.reader.html#skbio.io.registry.Format.reader" title="skbio.io.registry.Format.reader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reader</span></code></a>(cls[, monkey_patch, override])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.Format.reader.html#skbio.io.registry.Format.reader" title="skbio.io.registry.Format.reader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reader</span></code></a>(cls[, override])</p></td>
 <td><p>Decorate a function to act as the reader for a class in this format.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.io.registry.Format.sniffer.html#skbio.io.registry.Format.sniffer" title="skbio.io.registry.Format.sniffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sniffer</span></code></a>([override])</p></td>
 <td><p>Decorate a function to act as the sniffer for this format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.Format.writer.html#skbio.io.registry.Format.writer" title="skbio.io.registry.Format.writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writer</span></code></a>(cls[, monkey_patch, override])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.io.registry.Format.writer.html#skbio.io.registry.Format.writer" title="skbio.io.registry.Format.writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writer</span></code></a>(cls[, override])</p></td>
 <td><p>Decorate a function to act as the writer for a class in this format.</p></td>
 </tr>
 </tbody>
@@ -821,18 +815,6 @@ universal newline handling.</p>
 <dt class="sig sig-object py" id="skbio.io.registry.Format.is_binary_format">
 <span class="sig-name descname"><span class="pre">is_binary_format</span></span><a class="headerlink" href="#skbio.io.registry.Format.is_binary_format" title="Link to this definition">#</a></dt>
 <dd><p>Return True if this is a binary format.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="skbio.io.registry.Format.monkey_patched_readers">
-<span class="sig-name descname"><span class="pre">monkey_patched_readers</span></span><a class="headerlink" href="#skbio.io.registry.Format.monkey_patched_readers" title="Link to this definition">#</a></dt>
-<dd><p>Set of classes bound to readers to monkey patch.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="skbio.io.registry.Format.monkey_patched_writers">
-<span class="sig-name descname"><span class="pre">monkey_patched_writers</span></span><a class="headerlink" href="#skbio.io.registry.Format.monkey_patched_writers" title="Link to this definition">#</a></dt>
-<dd><p>Set of classes bound to writers to monkey patch.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -911,8 +893,6 @@ universal newline handling.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.io.registry.Format"><code class="docutils literal notranslate"><span class="pre">Format</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.io.registry.Format.is_binary_format"><code class="docutils literal notranslate"><span class="pre">Format.is_binary_format</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.io.registry.Format.monkey_patched_readers"><code class="docutils literal notranslate"><span class="pre">Format.monkey_patched_readers</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.io.registry.Format.monkey_patched_writers"><code class="docutils literal notranslate"><span class="pre">Format.monkey_patched_writers</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.io.registry.Format.name"><code class="docutils literal notranslate"><span class="pre">Format.name</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.io.registry.Format.readers"><code class="docutils literal notranslate"><span class="pre">Format.readers</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.io.registry.Format.sniffer_function"><code class="docutils literal notranslate"><span class="pre">Format.sniffer_function</span></code></a></li>
@@ -961,7 +941,7 @@ universal newline handling.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
     <br/>
   </p>
 </div>

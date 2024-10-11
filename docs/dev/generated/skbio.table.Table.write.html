@@ -41,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -747,11 +747,10 @@ document.write(`
 <h1>skbio.table.Table.write<a class="headerlink" href="#skbio-table-table-write" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.table.Table.write">
-<span class="sig-prename descclassname"><span class="pre">Table.</span></span><span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'biom'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L681"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.write" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Table.</span></span><span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L1143"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Table.write" title="Link to this definition">#</a></dt>
 <dd><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Table</span></code> to a file.</p>
-<p>This is a convenience method for <a class="reference internal" href="skbio.io.registry.write.html#skbio.io.registry.write" title="skbio.io.registry.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.write()</span></code></a>.
-For more information about the I/O system in scikit-bio, please
-see <a class="reference internal" href="../io.html#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code></a>.</p>
+<p>This is a convenience method for <a class="reference internal" href="skbio.io.registry.write.html#skbio.io.registry.write" title="skbio.io.registry.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.write()</span></code></a>. For more
+information about the I/O system in scikit-bio, please see <a class="reference internal" href="../io.html#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code></a>.</p>
 <p>Supported file formats include:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">'biom'</span></code> (<a class="reference internal" href="skbio.io.format.biom.html#module-skbio.io.format.biom" title="skbio.io.format.biom"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.biom</span></code></a>)</p></li>
@@ -759,17 +758,14 @@ see <a class="reference internal" href="../io.html#module-skbio.io" title="skbio
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>file</strong><span class="classifier">openable (filepath, URL, filehandle, etc.)</span></dt><dd><p>The location to write the given <cite>format</cite> into.  Something
-that is understood by <a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a>. Filehandles
-are not automatically closed, it is the responsibility of the
-caller.</p>
+<dt><strong>file</strong><span class="classifier">openable (filepath, filehandle, etc.)</span></dt><dd><p>The location to write the given <cite>format</cite> into. Something that is understood by
+<a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a>. Filehandles are not automatically closed, it is the
+responsibility of the caller.</p>
 </dd>
-<dt><strong>format</strong><span class="classifier">str</span></dt><dd><p>The format must be a registered format name with a writer for
-<code class="docutils literal notranslate"><span class="pre">Table</span></code>.
-Default is <cite>‘biom’</cite>.</p>
+<dt><strong>format</strong><span class="classifier">str, optional</span></dt><dd><p>The format to write the <code class="docutils literal notranslate"><span class="pre">Table</span></code> object as. The format must be a registered
+format name with a writer for <code class="docutils literal notranslate"><span class="pre">Table</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">'biom'</span></code>.</p>
 </dd>
-<dt><strong>kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Keyword arguments passed to <a class="reference internal" href="skbio.io.registry.write.html#skbio.io.registry.write" title="skbio.io.registry.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.write()</span></code></a>
-and the file format writer.</p>
+<dt><strong>kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional arguments passed to the writer for <code class="docutils literal notranslate"><span class="pre">Table</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -876,7 +872,7 @@ and the file format writer.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
     <br/>
   </p>
 </div>

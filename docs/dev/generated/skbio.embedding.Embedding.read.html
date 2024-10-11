@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Create a new &lt;code class=&quot;docutils literal notranslate&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ProteinVector&lt;/span&gt;&lt;/code&gt; instance from a file." />
+    <meta name="description" content="Create a new &lt;code class=&quot;docutils literal notranslate&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Embedding&lt;/span&gt;&lt;/code&gt; instance from a file." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.embedding.ProteinVector.read &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.embedding.Embedding.read &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -41,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -59,19 +59,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.embedding.ProteinVector.read';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.embedding.Embedding.read';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.embedding.ProteinVector.read.html" />
+    <link rel="canonical" href="../../../generated/skbio.embedding.Embedding.read.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.embedding.ProteinVector.write" href="skbio.embedding.ProteinVector.write.html" />
-    <link rel="prev" title="skbio.embedding.ProteinVector" href="skbio.embedding.ProteinVector.html" />
+    <link rel="next" title="skbio.embedding.Embedding.write" href="skbio.embedding.Embedding.write.html" />
+    <link rel="prev" title="skbio.embedding.Embedding.bytes" href="skbio.embedding.Embedding.bytes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -620,19 +620,20 @@ document.write(`
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.embedding.Embedding.html">skbio.embedding.Embedding</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.embedding.Embedding.html">skbio.embedding.Embedding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.Embedding.bytes.html">skbio.embedding.Embedding.bytes</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.embedding.Embedding.read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.Embedding.write.html">skbio.embedding.Embedding.write</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.html">skbio.embedding.SequenceEmbedding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.ProteinEmbedding.html">skbio.embedding.ProteinEmbedding</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.EmbeddingVector.html">skbio.embedding.EmbeddingVector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.SequenceVector.html">skbio.embedding.SequenceVector</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.embedding.ProteinVector.html">skbio.embedding.ProteinVector</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.embedding.ProteinVector.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.ProteinVector.write.html">skbio.embedding.ProteinVector.write</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.embedding.ProteinVector.html">skbio.embedding.ProteinVector</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.embed_vec_to_numpy.html">skbio.embedding.embed_vec_to_numpy</a></li>
@@ -680,7 +681,7 @@ document.write(`
     <li class="breadcrumb-item"><a href="../embedding.html" class="nav-link">Biological Embeddings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.embedding</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.embedding.ProteinVector.html" class="nav-link">skbio.embedding.ProteinVector</a></li>
+    <li class="breadcrumb-item"><a href="skbio.embedding.Embedding.html" class="nav-link">skbio.embedding.Embedding</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">skbio.embedd...</li>
   </ul>
@@ -699,38 +700,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-embedding-proteinvector-read">
-<h1>skbio.embedding.ProteinVector.read<a class="headerlink" href="#skbio-embedding-proteinvector-read" title="Link to this heading">#</a></h1>
+  <section id="skbio-embedding-embedding-read">
+<h1>skbio.embedding.Embedding.read<a class="headerlink" href="#skbio-embedding-embedding-read" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.embedding.ProteinVector.read">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ProteinVector.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.ProteinVector.read" title="Link to this definition">#</a></dt>
-<dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">ProteinVector</span></code> instance from a file.</p>
-<p>This is a convenience method for <a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read()</span></code></a>. For
-more information about the I/O system in scikit-bio, please see
-<a class="reference internal" href="../io.html#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code></a>.</p>
-<p>Supported file formats include:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">'embed'</span></code> (<a class="reference internal" href="skbio.io.format.embed.html#module-skbio.io.format.embed" title="skbio.io.format.embed"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.embed</span></code></a>)</p></li>
-</ul>
+<dt class="sig sig-object py" id="skbio.embedding.Embedding.read">
+<span class="sig-prename descclassname"><span class="pre">Embedding.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L1084"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.Embedding.read" title="Link to this definition">#</a></dt>
+<dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">Embedding</span></code> instance from a file.</p>
+<p>This is a convenience method for <a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read()</span></code></a>. For more information
+about the I/O system in scikit-bio, please see <a class="reference internal" href="../io.html#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>file</strong><span class="classifier">openable (filepath, URL, filehandle, etc.)</span></dt><dd><p>The location to read the given <cite>format</cite>. Something that is
-understood by <a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a>. Filehandles are not
-automatically closed, it is the responsibility of the caller.</p>
+<dt><strong>file</strong><span class="classifier">openable (filepath, URL, filehandle, etc.)</span></dt><dd><p>The location to read the given <cite>format</cite> into. Something that is understood by
+<a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a>. Filehandles are not automatically closed, it is the
+responsibility of the caller.</p>
 </dd>
-<dt><strong>format</strong><span class="classifier">str, optional</span></dt><dd><p>The format must be a format name with a reader for <code class="docutils literal notranslate"><span class="pre">ProteinVector</span></code>.
-If a <cite>format</cite> is not provided or is None, it will attempt to
-guess the format.</p>
+<dt><strong>format</strong><span class="classifier">str, optional</span></dt><dd><p>The format of the file. The format must be a format name with a reader for
+<code class="docutils literal notranslate"><span class="pre">Embedding</span></code>. If None, the format will be inferred.</p>
 </dd>
-<dt><strong>kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Keyword arguments passed to <a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read()</span></code></a> and
-the file format reader for <code class="docutils literal notranslate"><span class="pre">ProteinVector</span></code>.</p>
+<dt><strong>kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional arguments passed to <a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read()</span></code></a> and the reader for
+<code class="docutils literal notranslate"><span class="pre">Embedding</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ProteinVector</dt><dd><p>A new instance.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">Embedding</span></code></dt><dd><p>A new instance.</p>
 </dd>
 </dl>
 </dd>
@@ -738,10 +733,9 @@ the file format reader for <code class="docutils literal notranslate"><span clas
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.embedding.ProteinVector.write.html#skbio.embedding.ProteinVector.write" title="skbio.embedding.ProteinVector.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.embedding.Embedding.write.html#skbio.embedding.Embedding.write" title="skbio.embedding.Embedding.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.registry.read</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.util.open</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.io.format.embed.html#module-skbio.io.format.embed" title="skbio.io.format.embed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.format.embed</span></code></a></dt><dd></dd>
 </dl>
 </div>
 </dd></dl>
@@ -759,20 +753,20 @@ the file format reader for <code class="docutils literal notranslate"><span clas
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.embedding.ProteinVector.html"
+       href="skbio.embedding.Embedding.bytes.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.embedding.ProteinVector</p>
+        <p class="prev-next-title">skbio.embedding.Embedding.bytes</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.embedding.ProteinVector.write.html"
+       href="skbio.embedding.Embedding.write.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.embedding.ProteinVector.write</p>
+        <p class="prev-next-title">skbio.embedding.Embedding.write</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -794,7 +788,7 @@ the file format reader for <code class="docutils literal notranslate"><span clas
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.embedding.ProteinVector.read"><code class="docutils literal notranslate"><span class="pre">ProteinVector.read()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.embedding.Embedding.read"><code class="docutils literal notranslate"><span class="pre">Embedding.read()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -837,7 +831,7 @@ the file format reader for <code class="docutils literal notranslate"><span clas
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
     <br/>
   </p>
 </div>

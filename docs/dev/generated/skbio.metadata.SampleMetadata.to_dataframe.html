@@ -41,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -70,8 +70,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.metadata.SampleMetadata.write" href="skbio.metadata.SampleMetadata.write.html" />
-    <link rel="prev" title="skbio.metadata.SampleMetadata.read" href="skbio.metadata.SampleMetadata.read.html" />
+    <link rel="next" title="skbio.metadata.MetadataColumn" href="skbio.metadata.MetadataColumn.html" />
+    <link rel="prev" title="skbio.metadata.SampleMetadata.merge" href="skbio.metadata.SampleMetadata.merge.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -628,9 +628,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.get_ids.html">skbio.metadata.SampleMetadata.get_ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.load.html">skbio.metadata.SampleMetadata.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.merge.html">skbio.metadata.SampleMetadata.merge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.read.html">skbio.metadata.SampleMetadata.read</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.metadata.SampleMetadata.to_dataframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.metadata.SampleMetadata.write.html">skbio.metadata.SampleMetadata.write</a></li>
 </ul>
 </details></li>
 </ul>
@@ -711,7 +709,7 @@ document.write(`
 <h1>skbio.metadata.SampleMetadata.to_dataframe<a class="headerlink" href="#skbio-metadata-samplemetadata-to-dataframe" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.to_dataframe">
-<span class="sig-prename descclassname"><span class="pre">SampleMetadata.</span></span><span class="sig-name descname"><span class="pre">to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encode_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L573"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.to_dataframe" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">SampleMetadata.</span></span><span class="sig-name descname"><span class="pre">to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encode_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L577"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.to_dataframe" title="Link to this definition">#</a></dt>
 <dd><p>Create a pandas dataframe from the metadata.</p>
 <p>The dataframe’s index name (<code class="docutils literal notranslate"><span class="pre">Index.name</span></code>) will match this metadata
 object’s <code class="docutils literal notranslate"><span class="pre">id_header</span></code>, and the index will contain this metadata
@@ -749,20 +747,20 @@ vocabulary (strings) if a missing scheme was used.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.metadata.SampleMetadata.read.html"
+       href="skbio.metadata.SampleMetadata.merge.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.metadata.SampleMetadata.read</p>
+        <p class="prev-next-title">skbio.metadata.SampleMetadata.merge</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.metadata.SampleMetadata.write.html"
+       href="skbio.metadata.MetadataColumn.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.metadata.SampleMetadata.write</p>
+        <p class="prev-next-title">skbio.metadata.MetadataColumn</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -827,7 +825,7 @@ vocabulary (strings) if a missing scheme was used.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
     <br/>
   </p>
 </div>

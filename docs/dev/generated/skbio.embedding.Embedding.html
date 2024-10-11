@@ -41,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -623,6 +623,8 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.embedding.Embedding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="skbio.embedding.Embedding.bytes.html">skbio.embedding.Embedding.bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.Embedding.read.html">skbio.embedding.Embedding.read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.Embedding.write.html">skbio.embedding.Embedding.write</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.SequenceEmbedding.html">skbio.embedding.SequenceEmbedding</a></li>
@@ -699,7 +701,7 @@ document.write(`
 <h1>skbio.embedding.Embedding<a class="headerlink" href="#skbio-embedding-embedding" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.embedding.Embedding">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.embedding.</span></span><span class="sig-name descname"><span class="pre">Embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/embedding/_embedding.py#L30"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.Embedding" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.embedding.</span></span><span class="sig-name descname"><span class="pre">Embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/embedding/_embedding.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.Embedding" title="Link to this definition">#</a></dt>
 <dd><p>Embedding for a biological object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -728,6 +730,12 @@ document.write(`
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.Embedding.bytes.html#skbio.embedding.Embedding.bytes" title="skbio.embedding.Embedding.bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>()</p></td>
 <td><p>Bytes representation of string encoding.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.Embedding.read.html#skbio.embedding.Embedding.read" title="skbio.embedding.Embedding.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">Embedding</span></code> instance from a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.Embedding.write.html#skbio.embedding.Embedding.write" title="skbio.embedding.Embedding.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">Embedding</span></code> to a file.</p></td>
 </tr>
 </tbody>
 </table>
@@ -786,7 +794,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.embedding.Embedding.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/embedding/_embedding.py#L65"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.Embedding.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/embedding/_embedding.py#L69"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.Embedding.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
 
@@ -888,7 +896,7 @@ document.write(`
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
     <br/>
   </p>
 </div>

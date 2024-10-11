@@ -41,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -728,11 +728,11 @@ document.write(`
 <h1>skbio.io.registry.Format.writer<a class="headerlink" href="#skbio-io-registry-format-writer" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.io.registry.Format.writer">
-<span class="sig-prename descclassname"><span class="pre">Format.</span></span><span class="sig-name descname"><span class="pre">writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monkey_patch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L1038"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.io.registry.Format.writer" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Format.</span></span><span class="sig-name descname"><span class="pre">writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/registry.py#L913"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.io.registry.Format.writer" title="Link to this definition">#</a></dt>
 <dd><p>Decorate a function to act as the writer for a class in this format.</p>
 <p>The function should take an instance of <cite>cls</cite> as its first argument
 and the second argument is a filehandle which will be an implementation
-of either <a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.TextIOBase</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedWriter" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BufferedWriter</span></code></a>
+of either <a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.TextIOBase</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedWriter" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BufferedWriter</span></code></a>
 depending on if the format is text or binary, respectively. Any kwargs
 given by the user which are not handled by <a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a>
 will be passed into the function. Any kwarg with a default of
@@ -743,9 +743,6 @@ filehandle or <cite>None</cite> if not provided.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>cls</strong><span class="classifier">type or None</span></dt><dd><p>The class which the function will be registered to handle. If
 None, it is assumed that the function will consume a generator.</p>
-</dd>
-<dt><strong>monkey_patch</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to allow an IORegistry to attach a <cite>write</cite> method to <cite>cls</cite>
-with this format listed as an option.</p>
 </dd>
 <dt><strong>override</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, any existing writers for <cite>cls</cite> in this format will be
 overriden.</p>
@@ -761,14 +758,16 @@ overriden.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.io.registry</span> <span class="kn">import</span> <span class="n">Format</span><span class="p">,</span> <span class="n">IORegistry</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">IORegistry</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.io.registry</span> <span class="kn">import</span> <span class="n">Format</span><span class="p">,</span> <span class="n">io_registry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.io.registry</span> <span class="kn">import</span> <span class="n">Read</span><span class="p">,</span> <span class="n">Write</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">myformat</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;myformat&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span><span class="n">myformat</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io_registry</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span><span class="n">myformat</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># If developing a new format for skbio, use the create_format()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># factory instead of the above.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyObject</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">default_write_format</span> <span class="o">=</span> <span class="s1">&#39;myformat&#39;</span>
+<span class="gp">... </span>    <span class="n">read</span> <span class="o">=</span> <span class="n">Read</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">write</span> <span class="o">=</span> <span class="n">Write</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
 <span class="gp">...</span>
@@ -778,10 +777,11 @@ overriden.</p>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="o">.</span><span class="n">monkey_patch</span><span class="p">()</span> <span class="c1"># If developing skbio, this isn&#39;t needed</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">MyObject</span><span class="p">([</span><span class="s2">&quot;some content here!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">write</span><span class="p">([],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;myformat&#39;</span><span class="p">)</span>
 <span class="go">[&#39;myformat2\n&#39;, &#39;some content here!\n&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cleanup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io_registry</span><span class="o">.</span><span class="n">remove_format</span><span class="p">(</span><span class="s1">&#39;myformat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -877,7 +877,7 @@ overriden.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
     <br/>
   </p>
 </div>

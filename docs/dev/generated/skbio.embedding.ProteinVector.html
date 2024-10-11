@@ -41,7 +41,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.embedding.ProteinVector.read" href="skbio.embedding.ProteinVector.read.html" />
+    <link rel="next" title="skbio.embedding.embed_vec_to_numpy" href="skbio.embedding.embed_vec_to_numpy.html" />
     <link rel="prev" title="skbio.embedding.SequenceVector" href="skbio.embedding.SequenceVector.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -628,11 +628,7 @@ document.write(`
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.EmbeddingVector.html">skbio.embedding.EmbeddingVector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.SequenceVector.html">skbio.embedding.SequenceVector</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.embedding.ProteinVector</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.ProteinVector.read.html">skbio.embedding.ProteinVector.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.embedding.ProteinVector.write.html">skbio.embedding.ProteinVector.write</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.embedding.ProteinVector</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.embedding.embed_vec_to_numpy.html">skbio.embedding.embed_vec_to_numpy</a></li>
@@ -700,7 +696,7 @@ document.write(`
 <h1>skbio.embedding.ProteinVector<a class="headerlink" href="#skbio-embedding-proteinvector" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.embedding.ProteinVector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.embedding.</span></span><span class="sig-name descname"><span class="pre">ProteinVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/embedding/_protein.py#L123"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.ProteinVector" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.embedding.</span></span><span class="sig-name descname"><span class="pre">ProteinVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/embedding/_protein.py#L123"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.embedding.ProteinVector" title="Link to this definition">#</a></dt>
 <dd><p>Vector representation for a protein sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -766,23 +762,17 @@ also be a 2D array with only one row.</p>
 </tbody>
 </table>
 </div>
-<p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.ProteinVector.read.html#skbio.embedding.ProteinVector.read" title="skbio.embedding.ProteinVector.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(file[, format])</p></td>
-<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">ProteinVector</span></code> instance from a file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.ProteinVector.write.html#skbio.embedding.ProteinVector.write" title="skbio.embedding.ProteinVector.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
-<td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">ProteinVector</span></code> to a file.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <p class="rubric">Methods (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.Embedding.bytes.html#skbio.embedding.Embedding.bytes" title="skbio.embedding.Embedding.bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>()</p></td>
 <td><p>Bytes representation of string encoding.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.embedding.Embedding.read.html#skbio.embedding.Embedding.read" title="skbio.embedding.Embedding.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">ProteinVector</span></code> instance from a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.embedding.Embedding.write.html#skbio.embedding.Embedding.write" title="skbio.embedding.Embedding.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">ProteinVector</span></code> to a file.</p></td>
 </tr>
 </tbody>
 </table>
@@ -850,11 +840,11 @@ also be a 2D array with only one row.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.embedding.ProteinVector.read.html"
+       href="skbio.embedding.embed_vec_to_numpy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.embedding.ProteinVector.read</p>
+        <p class="prev-next-title">skbio.embedding.embed_vec_to_numpy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -922,7 +912,7 @@ also be a 2D array with only one row.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
     <br/>
   </p>
 </div>
