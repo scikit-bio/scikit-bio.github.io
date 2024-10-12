@@ -70,7 +70,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.closure" href="skbio.stats.composition.closure.html" />
+    <link rel="next" title="skbio.stats.composition.ancom" href="skbio.stats.composition.ancom.html" />
     <link rel="prev" title="skbio.stats.ordination.f_matrix" href="skbio.stats.ordination.f_matrix.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -628,27 +628,27 @@ document.write(`
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.power.html">skbio.stats.composition.power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.alr.html">skbio.stats.composition.alr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.alr_inv.html">skbio.stats.composition.alr_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr.html">skbio.stats.composition.clr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr_inv.html">skbio.stats.composition.clr_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr.html">skbio.stats.composition.ilr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr_inv.html">skbio.stats.composition.ilr_inv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.alr.html">skbio.stats.composition.alr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.alr_inv.html">skbio.stats.composition.alr_inv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.vlr.html">skbio.stats.composition.vlr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html">skbio.stats.composition.pairwise_vlr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.tree_basis.html">skbio.stats.composition.tree_basis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html">skbio.stats.composition.multiplicative_replacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.sbp_basis.html">skbio.stats.composition.sbp_basis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.tree_basis.html">skbio.stats.composition.tree_basis</a></li>
 </ul>
 </details></li>
 </ul>
@@ -742,18 +742,38 @@ geometry, only compositions with non-zero components can be considered.
 The multiplicative replacement technique <a class="reference internal" href="#r7e00d6f0c137-3" id="id3">[3]</a> can be used to substitute these
 zeros with small pseudocounts without introducing major distortions to the
 data.</p>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<section id="differential-abundance">
+<h2>Differential abundance<a class="headerlink" href="#differential-abundance" title="Link to this heading">#</a></h2>
+<p>Statistical tests for the differential abundance (DA) of components among groups of
+compositions.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closure</span></code></a>(mat)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a>(table, grouping[, alpha, tau, theta, ...])</p></td>
+<td><p>Perform a differential abundance test using ANCOM.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a>(table, grouping, treatment, ...)</p></td>
+<td><p><em>T</em>-test using Dirichlet-multinomial distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html#skbio.stats.composition.dirmult_lme" title="skbio.stats.composition.dirmult_lme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_lme</span></code></a>(table, metadata, formula[, ...])</p></td>
+<td><p>Fit a Dirichlet-multinomial linear mixed effects model.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="arithmetic-operations">
+<h2>Arithmetic operations<a class="headerlink" href="#arithmetic-operations" title="Link to this heading">#</a></h2>
+<p>Manipulate compositional data within the Aitchison space.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.centralize.html#skbio.stats.composition.centralize" title="skbio.stats.composition.centralize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centralize</span></code></a>(mat)</p></td>
+<td><p>Center data around its geometric average.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closure</span></code></a>(mat)</p></td>
 <td><p>Perform closure to ensure that all elements add up to 1.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a>(mat[, delta])</p></td>
-<td><p>Replace all zeros with small non-zero values.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html#skbio.stats.composition.multiplicative_replacement" title="skbio.stats.composition.multiplicative_replacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiplicative_replacement</span></code></a>(mat[, delta])</p></td>
-<td><p>Replace all zeros with small non-zero values.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.inner.html#skbio.stats.composition.inner" title="skbio.stats.composition.inner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner</span></code></a>(x, y)</p></td>
+<td><p>Calculate the Aitchson inner product.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.perturb.html#skbio.stats.composition.perturb" title="skbio.stats.composition.perturb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb</span></code></a>(x, y)</p></td>
 <td><p>Perform the perturbation operation.</p></td>
@@ -764,50 +784,80 @@ data.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.power.html#skbio.stats.composition.power" title="skbio.stats.composition.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power</span></code></a>(x, a)</p></td>
 <td><p>Perform the power operation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.inner.html#skbio.stats.composition.inner" title="skbio.stats.composition.inner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner</span></code></a>(x, y)</p></td>
-<td><p>Calculate the Aitchson inner product.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a>(mat)</p></td>
-<td><p>Perform centre log ratio transformation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.clr_inv.html#skbio.stats.composition.clr_inv" title="skbio.stats.composition.clr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr_inv</span></code></a>(mat)</p></td>
-<td><p>Perform inverse centre log ratio transformation.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ilr.html#skbio.stats.composition.ilr" title="skbio.stats.composition.ilr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr</span></code></a>(mat[, basis, check])</p></td>
-<td><p>Perform isometric log ratio transformation.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ilr_inv.html#skbio.stats.composition.ilr_inv" title="skbio.stats.composition.ilr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr_inv</span></code></a>(mat[, basis, check])</p></td>
-<td><p>Perform inverse isometric log ratio transform.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.alr.html#skbio.stats.composition.alr" title="skbio.stats.composition.alr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr</span></code></a>(mat[, denominator_idx])</p></td>
+</tbody>
+</table>
+</div>
+</section>
+<section id="log-ratio-transformation">
+<h2>Log-ratio transformation<a class="headerlink" href="#log-ratio-transformation" title="Link to this heading">#</a></h2>
+<p>Convert compositional data into log-ratio space to enable subsequent comparison
+and statistical analysis.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.alr.html#skbio.stats.composition.alr" title="skbio.stats.composition.alr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr</span></code></a>(mat[, denominator_idx])</p></td>
 <td><p>Perform additive log ratio transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.alr_inv.html#skbio.stats.composition.alr_inv" title="skbio.stats.composition.alr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr_inv</span></code></a>(mat[, denominator_idx])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.alr_inv.html#skbio.stats.composition.alr_inv" title="skbio.stats.composition.alr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr_inv</span></code></a>(mat[, denominator_idx])</p></td>
 <td><p>Perform inverse additive log ratio transform.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.centralize.html#skbio.stats.composition.centralize" title="skbio.stats.composition.centralize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centralize</span></code></a>(mat)</p></td>
-<td><p>Center data around its geometric average.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a>(mat)</p></td>
+<td><p>Perform centre log ratio transformation.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.clr_inv.html#skbio.stats.composition.clr_inv" title="skbio.stats.composition.clr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr_inv</span></code></a>(mat)</p></td>
+<td><p>Perform inverse centre log ratio transformation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ilr.html#skbio.stats.composition.ilr" title="skbio.stats.composition.ilr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr</span></code></a>(mat[, basis, check])</p></td>
+<td><p>Perform isometric log ratio transformation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ilr_inv.html#skbio.stats.composition.ilr_inv" title="skbio.stats.composition.ilr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr_inv</span></code></a>(mat[, basis, check])</p></td>
+<td><p>Perform inverse isometric log ratio transform.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="correlation-analysis">
+<h2>Correlation analysis<a class="headerlink" href="#correlation-analysis" title="Link to this heading">#</a></h2>
+<p>Measure the pairwise relationships of compositional data.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.vlr.html#skbio.stats.composition.vlr" title="skbio.stats.composition.vlr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vlr</span></code></a>(x, y[, ddof, robust])</p></td>
 <td><p>Calculate variance log ratio.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html#skbio.stats.composition.pairwise_vlr" title="skbio.stats.composition.pairwise_vlr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pairwise_vlr</span></code></a>(mat[, ids, ddof, robust, validate])</p></td>
 <td><p>Perform pairwise variance log ratio transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.tree_basis.html#skbio.stats.composition.tree_basis" title="skbio.stats.composition.tree_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tree_basis</span></code></a>(tree)</p></td>
-<td><p>Calculate the sparse representation of an ilr basis from a tree.</p></td>
+</tbody>
+</table>
+</div>
+</section>
+<section id="zero-handling">
+<h2>Zero handling<a class="headerlink" href="#zero-handling" title="Link to this heading">#</a></h2>
+<p>Replace zero values in compositional data with positive values, which is
+necessary prior to logarithmic operations.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a>(mat[, delta])</p></td>
+<td><p>Replace all zeros with small non-zero values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a>(table, grouping[, alpha, tau, theta, ...])</p></td>
-<td><p>Perform a differential abundance test using ANCOM.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.multiplicative_replacement.html#skbio.stats.composition.multiplicative_replacement" title="skbio.stats.composition.multiplicative_replacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiplicative_replacement</span></code></a>(mat[, delta])</p></td>
+<td><p>Replace all zeros with small non-zero values.</p></td>
 </tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="basis-construction">
+<h2>Basis construction<a class="headerlink" href="#basis-construction" title="Link to this heading">#</a></h2>
+<p>Generate basis vectors for compositional data via hierarchical partitioning, to
+allow for decomposition and transformation, such as ilr transform.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.sbp_basis.html#skbio.stats.composition.sbp_basis" title="skbio.stats.composition.sbp_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sbp_basis</span></code></a>(sbp)</p></td>
-<td><p>Build an orthogonal basis from a sequential binary partition (SBP).</p></td>
+<td><p>Build an orthonormal basis from a sequential binary partition (SBP).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a>(table, grouping, treatment, ...)</p></td>
-<td><p><em>T</em>-test using Dirichlet-multinomial distribution.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html#skbio.stats.composition.dirmult_lme" title="skbio.stats.composition.dirmult_lme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_lme</span></code></a>(table, metadata, formula[, ...])</p></td>
-<td><p>Fit a Dirichlet-multinomial linear mixed effects model.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.tree_basis.html#skbio.stats.composition.tree_basis" title="skbio.stats.composition.tree_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tree_basis</span></code></a>(tree)</p></td>
+<td><p>Calculate the sparse representation of an ilr basis from a tree.</p></td>
 </tr>
 </tbody>
 </table>
@@ -856,11 +906,11 @@ Mathematical Geology, 35.3 (2003)</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.closure.html"
+       href="skbio.stats.composition.ancom.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.closure</p>
+        <p class="prev-next-title">skbio.stats.composition.ancom</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -882,7 +932,12 @@ Mathematical Geology, 35.3 (2003)</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-abundance">Differential abundance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operations">Arithmetic operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-ratio-transformation">Log-ratio transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-handling">Zero handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-construction">Basis construction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
@@ -926,7 +981,7 @@ Mathematical Geology, 35.3 (2003)</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.2.
     <br/>
   </p>
 </div>
