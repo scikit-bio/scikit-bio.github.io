@@ -666,29 +666,42 @@
 <h1>skbio.tree.nj<a class="headerlink" href="#skbio-tree-nj" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.nj">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disallow_negative_branch_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_nj.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nj" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disallow_negative_branch_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_nj.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nj" title="Link to this definition">#</a></dt>
 <dd><p>Perform neighbor joining (NJ) for phylogenetic reconstruction.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing distances between taxa.</p>
+<dd class="field-odd"><dl>
+<dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing pairwise distances among taxa.</p>
 </dd>
-<dt><strong>disallow_negative_branch_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Neighbor joining can result in negative branch lengths, which don’t
-make sense in an evolutionary context. If <cite>True</cite>, negative branch
-lengths will be returned as zero, a common strategy for handling this
-issue that was proposed by the original developers of the algorithm.</p>
+<dt><strong>clip_to_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 <dt><strong>result_constructor</strong><span class="classifier">function, optional</span></dt><dd><p>Function to apply to construct the result object. This must take a
-newick-formatted string as input. The result of applying this function
-to a newick-formatted string will be returned from this function. This
-defaults to <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">TreeNode.read(StringIO(x),</span> <span class="pre">format='newick')</span></code>.</p>
+newick-formatted string as input. Deprecated and to be removed in a
+future release.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>disallow_negative_branch_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">clip_to_zero</span></code> for backward compatibility. Deprecated and to be
+removed in a future release.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>By default, the result object is a <cite>TreeNode</cite>, though this can be
-overridden by passing <cite>result_constructor</cite>.</p>
+<dd class="field-even"><dl>
+<dt>TreeNode</dt><dd><p>Reconstructed phylogenetic tree.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>The NJ algorithm has been optimized. The output may be slightly different
+from the previous one in root placement, node ordering, and the numeric
+precision of branch lengths. However, the overall tree topology and branch
+lengths should remain the same.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -702,13 +715,26 @@ overridden by passing <cite>result_constructor</cite>.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Neighbor joining was initially described in Saitou and Nei (1987) <a class="reference internal" href="#r7def033fcc8e-1" id="id1">[1]</a>. The
-example presented here is derived from the Wikipedia page on neighbor
-joining <a class="reference internal" href="#r7def033fcc8e-2" id="id2">[2]</a>. Gascuel and Steel (2006) provide a detailed overview of
-Neighbor joining in terms of its biological relevance and limitations <a class="reference internal" href="#r7def033fcc8e-3" id="id3">[3]</a>.</p>
-<p>Neighbor joining, by definition, creates unrooted trees. One strategy for
-rooting the resulting trees is midpoint rooting, which is accessible as
-<code class="docutils literal notranslate"><span class="pre">TreeNode.root_at_midpoint</span></code>.</p>
+<p>Neighbor joining (NJ) was initially described by Saitou and Nei (1987) <a class="reference internal" href="#r7def033fcc8e-1" id="id1">[1]</a>. It is
+a simple and efficient agglomerative clustering method that builds a phylogenetic
+tree based on a distance matrix. Gascuel and Steel (2006) provide a detailed
+overview of neighbor joining in terms of its biological relevance and limitations
+<a class="reference internal" href="#r7def033fcc8e-2" id="id2">[2]</a>.</p>
+<p>Neighbor joining, by definition, creates unrooted trees with varying tip heights,
+which contrasts UPGMA (<a class="reference internal" href="skbio.tree.upgma.html#skbio.tree.upgma" title="skbio.tree.upgma"><code class="xref py py-func docutils literal notranslate"><span class="pre">upgma()</span></code></a>). One strategy for rooting the resulting tree
+is midpoint rooting, which is accessible as <a class="reference internal" href="skbio.tree.TreeNode.root_at_midpoint.html#skbio.tree.TreeNode.root_at_midpoint" title="skbio.tree.TreeNode.root_at_midpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TreeNode.root_at_midpoint()</span></code></a>.</p>
+<p>Note that the tree constructed using neighbor joining is not rooted at a tip,
+unlike minimum evolution (<a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme()</span></code></a>), so re-rooting is required before tree
+re-arrangement operations such as nearest neighbor interchange (NNI) (<a class="reference internal" href="skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-func docutils literal notranslate"><span class="pre">nni()</span></code></a>)
+can be performed.</p>
+<p>Neighbor joining is most accurate when distances are additive – the distance
+between two taxa in the matrix equals to the sum of branch lengths connecting them
+in the tree. When this assumption is violated, which is common in real-world data,
+negative branch lengths may be produced, which cause challenges in interpretation
+and subsequent analyses. This function converts negative branch lengths into zeros
+by default, but this behavior can be disabled by setting <code class="docutils literal notranslate"><span class="pre">clip_to_zero</span></code> to False.</p>
+<p>The example presented here is derived from the Wikipedia page on neighbor joining
+<a class="reference internal" href="#r7def033fcc8e-3" id="id3">[3]</a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r7def033fcc8e-1" role="doc-biblioentry">
@@ -719,13 +745,13 @@ Evolution. PMID: 3447015.</p>
 </div>
 <div class="citation" id="r7def033fcc8e-2" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Neighbour_joining">http://en.wikipedia.org/wiki/Neighbour_joining</a></p>
+<p>Gascuel O, and Steel M. (2006) “Neighbor-Joining Revealed” Molecular
+Biology and Evolution, Volume 23, Issue 11, November 2006,
+Pages 1997-2000, <a class="reference external" href="https://doi.org/10.1093/molbev/msl072">https://doi.org/10.1093/molbev/msl072</a></p>
 </div>
 <div class="citation" id="r7def033fcc8e-3" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p>Gascuel O, and Steel M. (2006) “Neighbor-Joining Revealed” Molecular
-Biology and Evolution, Volume 23, Issue 11, November 2006,
-Pages 1997–2000, <a class="reference external" href="https://doi.org/10.1093/molbev/msl072">https://doi.org/10.1093/molbev/msl072</a></p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Neighbour_joining">http://en.wikipedia.org/wiki/Neighbour_joining</a></p>
 </div>
 </div>
 <p class="rubric">Examples</p>
@@ -748,29 +774,17 @@ taxa: a, b, c, d, and e.</p>
 those taxa. This is returned as a TreeNode object.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">nj</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
-<span class="go">          /-d</span>
+<span class="go">                              /-a</span>
+<span class="go">                    /--------|</span>
+<span class="go">          /--------|          \-b</span>
+<span class="go">         |         |</span>
+<span class="go">         |          \-c</span>
+<span class="go">---------|</span>
+<span class="go">         |--e</span>
 <span class="go">         |</span>
-<span class="go">         |          /-c</span>
-<span class="go">         |---------|</span>
-<span class="go">---------|         |          /-b</span>
-<span class="go">         |          \--------|</span>
-<span class="go">         |                    \-a</span>
-<span class="go">         |</span>
-<span class="go">          \-e</span>
+<span class="go">          \-d</span>
 </pre></div>
 </div>
-<p>Again, construct the neighbor joining tree, but instead return the newick
-string representing the tree, rather than the TreeNode object. (Note that
-in this example the string output is truncated when printed to facilitate
-rendering.)</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">newick_str</span> <span class="o">=</span> <span class="n">nj</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">result_constructor</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">newick_str</span><span class="p">[:</span><span class="mi">55</span><span class="p">],</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span>
-<span class="go">(d:2.000000, (c:4.000000, (b:3.000000, a:2.000000):3.00 ...</span>
-</pre></div>
-</div>
-<p>Notice that the tree constructed using neighbor joining is not rooted at a
-leaf node, unlike minimum evolution, so re-rooting is required before
-nearest neighbor interchange can be performed.</p>
 </dd></dl>
 
 </section>
