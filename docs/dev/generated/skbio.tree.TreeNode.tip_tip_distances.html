@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Return distance matrix between pairs of tips, and a tip order." />
+    <meta name="description" content="Return a distance matrix between pairs of tips." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.tip_tip_distances &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -651,6 +651,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bipart.html">skbio.tree.TreeNode.bipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.biparts.html">skbio.tree.TreeNode.biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
@@ -660,7 +662,9 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -744,27 +748,31 @@
 <h1>skbio.tree.TreeNode.tip_tip_distances<a class="headerlink" href="#skbio-tree-treenode-tip-tip-distances" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.tip_tip_distances">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">tip_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3568"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.tip_tip_distances" title="Link to this definition">#</a></dt>
-<dd><p>Return distance matrix between pairs of tips, and a tip order.</p>
-<p>By default, all pairwise distances are calculated in the tree. If
-<cite>endpoints</cite> are specified, then only the distances between those tips
-are computed.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">tip_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4030"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.tip_tip_distances" title="Link to this definition">#</a></dt>
+<dd><p>Return a distance matrix between pairs of tips.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>endpoints</strong><span class="classifier">list of TreeNode or str, or None</span></dt><dd><p>A list of TreeNode objects or names of TreeNode objects</p>
+<dd class="field-odd"><dl>
+<dt><strong>endpoints</strong><span class="classifier">list of TreeNode or str, optional</span></dt><dd><p>Tips or their names (i.e., taxa) to be included in the calculation. If not
+specified, all tips will be included.</p>
+</dd>
+<dt><strong>use_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the sum of branch lengths (True, default) or the number
+of branches (False) connecting each pair of tips.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>DistanceMatrix</dt><dd><p>The distance matrix</p>
+<dt>DistanceMatrix</dt><dd><p>The distance matrix.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If any of the specified <cite>endpoints</cite> are not tips</p>
+<dt>ValueError</dt><dd><p>If any of the specified <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> are not tips.</p>
 </dd>
 </dl>
 </dd>
@@ -777,12 +785,25 @@ are computed.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>If a node does not have an associated length, 0.0 will be used and a
-<code class="docutils literal notranslate"><span class="pre">RepresentationWarning</span></code> will be raised.</p>
+<p>This method calculates the sum of branch lengths connecting each pair of tips.
+It is also known as the patristic distance <a class="reference internal" href="#r614bdf5c92ef-1" id="id1">[1]</a>.</p>
+<p>If a node does not have an associated branch length, 0 will be used.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r614bdf5c92ef-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Fourment, M., &amp; Gibbs, M. J. (2006). PATRISTIC: a program for
+calculating patristic distances and graphically comparing the components of
+genetic change. BMC evolutionary biology, 6, 1-5.</p>
+</div>
+</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1,b:2)c:3,(d:4,e:5)f:6)root;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">tip_tip_distances</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Calculate path length distances (patristic distances).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">tip_tip_distances</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 <span class="go">4x4 distance matrix</span>
 <span class="go">IDs:</span>
@@ -792,6 +813,19 @@ are computed.</p>
 <span class="go"> [  3.   0.  15.  16.]</span>
 <span class="go"> [ 14.  15.   0.   9.]</span>
 <span class="go"> [ 15.  16.   9.   0.]]</span>
+</pre></div>
+</div>
+<p>Calculate path distances (branch counts).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">tip_tip_distances</span><span class="p">(</span><span class="n">use_length</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+<span class="go">4x4 distance matrix</span>
+<span class="go">IDs:</span>
+<span class="go">&#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;</span>
+<span class="go">Data:</span>
+<span class="go">[[ 0.  2.  4.  4.]</span>
+<span class="go"> [ 2.  0.  4.  4.]</span>
+<span class="go"> [ 4.  4.  0.  2.]</span>
+<span class="go"> [ 4.  4.  2.  0.]]</span>
 </pre></div>
 </div>
 </dd></dl>

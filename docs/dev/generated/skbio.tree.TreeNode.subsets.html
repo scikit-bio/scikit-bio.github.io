@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Return all sets of tip names that come from self and its descendants." />
+    <meta name="description" content="Return all subsets of taxa defined by nodes descending from self." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.subsets &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -73,7 +73,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.assign_supports" href="skbio.tree.TreeNode.assign_supports.html" />
+    <link rel="next" title="skbio.tree.TreeNode.bipart" href="skbio.tree.TreeNode.bipart.html" />
     <link rel="prev" title="skbio.tree.TreeNode.subset" href="skbio.tree.TreeNode.subset.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -651,6 +651,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bipart.html">skbio.tree.TreeNode.bipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.biparts.html">skbio.tree.TreeNode.biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
@@ -660,7 +662,9 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -744,14 +748,44 @@
 <h1>skbio.tree.TreeNode.subsets<a class="headerlink" href="#skbio-tree-treenode-subsets" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.subsets">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">subsets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3081"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.subsets" title="Link to this definition">#</a></dt>
-<dd><p>Return all sets of tip names that come from self and its descendants.</p>
-<p>Compute all subsets of tip names over <cite>self</cite>, or, represent a tree as a
-set of nested sets.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>frozenset</dt><dd><p>A frozenset of frozensets of str</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">within</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_full</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_single</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_to_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3121"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.subsets" title="Link to this definition">#</a></dt>
+<dd><p>Return all subsets of taxa defined by nodes descending from self.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>within</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>A custom set of taxa to refine the result. Only taxa within it will be
+considered. If None (default), all taxa in the tree will be considered.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>include_full</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include a set of all taxa in the result. Default is False, as
+such a set provides no topological information.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>include_single</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include subsets with only one taxon in the result. Default is
+False, as such sets provide no topological information.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>map_to_length</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, return a mapping of subsets to their branch lengths. Missing
+branch lengths will be replaced with 0. Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>frozenset of frozenset of str, or</dt><dd><p>All subsets of taxa defined by nodes descending from self. Returned if
+<cite>map_to_length</cite> is False.</p>
+</dd>
+<dt>dict of {frozenset of str: float}</dt><dd><p>Mapping of all subsets of taxa to their branch lengths. Returned if
+<cite>map_to_length</cite> is True.</p>
 </dd>
 </dl>
 </dd>
@@ -761,14 +795,53 @@ set of nested sets.</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subset</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html#skbio.tree.TreeNode.compare_subsets" title="skbio.tree.TreeNode.compare_subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_subsets</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.biparts.html#skbio.tree.TreeNode.biparts" title="skbio.tree.TreeNode.biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biparts</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>The returned value represents the tree as a set of nested sets, each of which
+representing a clade in the tree. It is useful for assessing topological
+patterns of a tree.</p>
+<p>The returned value itself and each of its components (frozensets) are unordered
+and hashable, making it efficient for lookup and comparison. For example, one
+can check whether a group of taxa form a clade in the tree, regardless of its
+internal structure.</p>
+<p>This method can be applied to both rooted and unrooted trees. However, the
+underlying assumption is that the direction of descendance is from the current
+node to the tips below. That is, the root of the tree, even if not explicitly
+defined, should be at or above the current node. This should be considered when
+applying this method to an unrooted tree. If such an assumption is not present,
+one should consider using <a class="reference internal" href="skbio.tree.TreeNode.biparts.html#skbio.tree.TreeNode.biparts" title="skbio.tree.TreeNode.biparts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">biparts()</span></code></a> instead.</p>
+<p>This method operates on the subtree below the current node.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(((a,b)c,(d,e)f)h)root;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">subsets</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">subsets</span><span class="p">)</span>
-<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,(b,c)d)e,(f,g)h)i;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-a</span>
+<span class="go">          /e-------|</span>
+<span class="go">         |         |          /-b</span>
+<span class="go">         |          \d-------|</span>
+<span class="go">-i-------|                    \-c</span>
+<span class="go">         |</span>
+<span class="go">         |          /-f</span>
+<span class="go">          \h-------|</span>
+<span class="go">                    \-g</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subsets</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">subsets</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">sorted</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
+<span class="go">[&#39;f&#39;, &#39;g&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">}</span> <span class="ow">in</span> <span class="n">subsets</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span> <span class="ow">in</span> <span class="n">subsets</span>
+<span class="go">False</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -795,11 +868,11 @@ set of nested sets.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.assign_supports.html"
+       href="skbio.tree.TreeNode.bipart.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.assign_supports</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.bipart</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

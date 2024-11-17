@@ -651,6 +651,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bipart.html">skbio.tree.TreeNode.bipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.biparts.html">skbio.tree.TreeNode.biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
@@ -660,7 +662,9 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -744,14 +748,25 @@
 <h1>skbio.tree.TreeNode.distance<a class="headerlink" href="#skbio-tree-treenode-distance" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.distance">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3418"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.distance" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3859"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.distance" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the distance between self and another node.</p>
-<p>This method can be used to compute the distances between two tips,
-however, it is not optimized for computing pairwise tip distances.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>other</strong><span class="classifier">TreeNode</span></dt><dd><p>The node to compute a distance to.</p>
+</dd>
+<dt><strong>use_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the sum of branch lengths (True, default) or the number
+of branches (False) connecting self and other.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>missing_as_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>When a node without an associated branch length is encountered, raise an
+error (False, default) or use 0 (True). Applicable when <code class="docutils literal notranslate"><span class="pre">use_length</span></code> is
+True.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -763,7 +778,7 @@ however, it is not optimized for computing pairwise tip distances.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>NoLengthError</dt><dd><p>If a node without branch length is encountered.</p>
+<dt>NoLengthError</dt><dd><p>If nodes without branch length are encountered.</p>
 </dd>
 </dl>
 </dd>
@@ -771,11 +786,28 @@ however, it is not optimized for computing pairwise tip distances.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="skbio.tree.TreeNode.path.html#skbio.tree.TreeNode.path" title="skbio.tree.TreeNode.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html#skbio.tree.TreeNode.tip_tip_distances" title="skbio.tree.TreeNode.tip_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tip_tip_distances</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html#skbio.tree.TreeNode.accumulate_to_ancestor" title="skbio.tree.TreeNode.accumulate_to_ancestor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accumulate_to_ancestor</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html#skbio.tree.TreeNode.compare_tip_distances" title="skbio.tree.TreeNode.compare_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_tip_distances</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html#skbio.tree.TreeNode.get_max_distance" title="skbio.tree.TreeNode.get_max_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_max_distance</span></code></a></dt><dd></dd>
 </dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The distance between two nodes is the length of the path (branches) connecting
+them. It is also known as the patristic distance <a class="reference internal" href="#rc9b816a55f12-1" id="id1">[1]</a>.</p>
+<p>When <cite>use_length=False</cite>, it is the number of branches in the path.</p>
+<p>This method can be used to compute the distance between two given nodes.
+However, it is not optimized for computing all pairwise tip distances. Use
+<a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html#skbio.tree.TreeNode.tip_tip_distances" title="skbio.tree.TreeNode.tip_tip_distances"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tip_tip_distances()</span></code></a> instead for that purpose.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rc9b816a55f12-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Fourment, M., &amp; Gibbs, M. J. (2006). PATRISTIC: a program for
+calculating patristic distances and graphically comparing the components of
+genetic change. BMC evolutionary biology, 6, 1-5.</p>
+</div>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
@@ -784,6 +816,8 @@ however, it is not optimized for computing pairwise tip distances.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tip_d</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tip_a</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">tip_d</span><span class="p">)</span>
 <span class="go">14.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tip_a</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">tip_d</span><span class="p">,</span> <span class="n">use_length</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">4.0</span>
 </pre></div>
 </div>
 </dd></dl>

@@ -74,7 +74,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.tree.TreeNode.is_bifurcating" href="skbio.tree.TreeNode.is_bifurcating.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.subsets" href="skbio.tree.TreeNode.subsets.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.biparts" href="skbio.tree.TreeNode.biparts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -651,6 +651,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bipart.html">skbio.tree.TreeNode.bipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.biparts.html">skbio.tree.TreeNode.biparts</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
@@ -660,7 +662,9 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -744,7 +748,7 @@
 <h1>skbio.tree.TreeNode.assign_supports<a class="headerlink" href="#skbio-tree-treenode-assign-supports" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.assign_supports">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">assign_supports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.assign_supports" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">assign_supports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3605"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.assign_supports" title="Link to this definition">#</a></dt>
 <dd><p>Extract support values from internal node labels of a tree.</p>
 <p class="rubric">Notes</p>
 <p>A “support value” measures the confidence or frequency of the incoming
@@ -804,12 +808,12 @@ Bioinformatics Toolkits.” Molecular biology and evolution 34.6
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.subsets.html"
+       href="skbio.tree.TreeNode.biparts.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.subsets</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.biparts</p>
       </div>
     </a>
     <a class="right-next"

@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Return fraction of overlapping subsets where self and other differ." />
+    <meta name="description" content="Calculate the difference of subsets between two trees." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.compare_subsets &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -73,8 +73,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.compare_tip_distances" href="skbio.tree.TreeNode.compare_tip_distances.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.compare_rfd" href="skbio.tree.TreeNode.compare_rfd.html" />
+    <link rel="next" title="skbio.tree.TreeNode.compare_biparts" href="skbio.tree.TreeNode.compare_biparts.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.compare_wrfd" href="skbio.tree.TreeNode.compare_wrfd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -651,6 +651,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bipart.html">skbio.tree.TreeNode.bipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.biparts.html">skbio.tree.TreeNode.biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
@@ -660,7 +662,9 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.compare_subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -744,22 +748,38 @@
 <h1>skbio.tree.TreeNode.compare_subsets<a class="headerlink" href="#skbio-tree-treenode-compare-subsets" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.compare_subsets">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_absent_taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3749"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_subsets" title="Link to this definition">#</a></dt>
-<dd><p>Return fraction of overlapping subsets where self and other differ.</p>
-<p>Names present in only one of the two trees will count as mismatches,
-if you don’t want this behavior, strip out the non-matching tips first.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_absent_taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4267"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_subsets" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the difference of subsets between two trees.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>other</strong><span class="classifier">TreeNode</span></dt><dd><p>The tree to compare</p>
+<dd class="field-odd"><dl>
+<dt><strong>other</strong><span class="classifier">TreeNode</span></dt><dd><p>The other tree to compare with.</p>
 </dd>
-<dt><strong>exclude_absent_taxa</strong><span class="classifier">bool</span></dt><dd><p>Strip out names that don’t occur in both trees</p>
+<dt><strong>shared_only</strong><span class="classifier">bool, optional</span></dt><dd><p>Only consider taxa shared with the other tree. Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>proportion</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return count (False) or proportion (True, default) of different
+subsets.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>symmetric</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to calculate the symmetric difference between self and other (True,
+default), or only the difference from self to other (False).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>exclude_absent_taxa</strong><span class="classifier">bool, optional</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">shared_only</span></code> for backward compatibility. Deprecated and to be
+removed in a future release.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>The fraction of overlapping subsets that differ between the trees</p>
+<dt>float</dt><dd><p>The count or proportion of subsets that differ between the trees.</p>
 </dd>
 </dl>
 </dd>
@@ -767,11 +787,13 @@ if you don’t want this behavior, strip out the non-matching tips first.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html#skbio.tree.TreeNode.compare_tip_distances" title="skbio.tree.TreeNode.compare_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_tip_distances</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.subsets.html#skbio.tree.TreeNode.subsets" title="skbio.tree.TreeNode.subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsets</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html#skbio.tree.TreeNode.compare_biparts" title="skbio.tree.TreeNode.compare_biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_biparts</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This metric is equivalent to the Robinson-Foulds distance on rooted trees.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b),(c,d));&quot;</span><span class="p">])</span>
@@ -795,20 +817,20 @@ if you don’t want this behavior, strip out the non-matching tips first.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.compare_rfd.html"
+       href="skbio.tree.TreeNode.compare_wrfd.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.compare_rfd</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.compare_wrfd</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.compare_tip_distances.html"
+       href="skbio.tree.TreeNode.compare_biparts.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.compare_tip_distances</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.compare_biparts</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

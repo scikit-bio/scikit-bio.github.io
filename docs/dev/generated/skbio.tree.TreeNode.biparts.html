@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Cache attributes on nodes of the tree through a postorder traversal." />
+    <meta name="description" content="Return all bipartitions within the tree under self." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.cache_attr &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.TreeNode.biparts &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -62,19 +62,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.cache_attr';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.biparts';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.cache_attr.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.biparts.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.assign_ids" href="skbio.tree.TreeNode.assign_ids.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.invalidate_caches" href="skbio.tree.TreeNode.invalidate_caches.html" />
+    <link rel="next" title="skbio.tree.TreeNode.assign_supports" href="skbio.tree.TreeNode.assign_supports.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.bipart" href="skbio.tree.TreeNode.bipart.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -640,7 +640,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html">skbio.tree.TreeNode.has_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html">skbio.tree.TreeNode.clear_caches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.invalidate_caches.html">skbio.tree.TreeNode.invalidate_caches</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.cache_attr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_ids.html">skbio.tree.TreeNode.assign_ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.index_tree.html">skbio.tree.TreeNode.index_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.create_caches.html">skbio.tree.TreeNode.create_caches</a></li>
@@ -652,7 +652,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bipart.html">skbio.tree.TreeNode.bipart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.biparts.html">skbio.tree.TreeNode.biparts</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
@@ -727,7 +727,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.tree.TreeNode.html" class="nav-link">skbio.tree.TreeNode</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.cache_attr</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.biparts</span></li>
   </ul>
 </nav>
 </div>
@@ -744,44 +744,37 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-cache-attr">
-<h1>skbio.tree.TreeNode.cache_attr<a class="headerlink" href="#skbio-tree-treenode-cache-attr" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-biparts">
+<h1>skbio.tree.TreeNode.biparts<a class="headerlink" href="#skbio-tree-treenode-biparts" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.cache_attr">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cache_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5017"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cache_attr" title="Link to this definition">#</a></dt>
-<dd><p>Cache attributes on nodes of the tree through a postorder traversal.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>func</strong><span class="classifier">callable</span></dt><dd><p>Function to calculate the attribute of the current node. The result will be
-combined with the attributes of the previous nodes, if applicable.</p>
-</dd>
-<dt><strong>cache_attrname</strong><span class="classifier">str</span></dt><dd><p>Name of the attribute to be attached to each node.</p>
-</dd>
-<dt><strong>cache_type</strong><span class="classifier">{list, tuple, set, frozenset}, callable, or None</span></dt><dd><p>The type of the cache. Can be any of the four iterable types: list
-(default), tuple, set, or frozenset. In these cases, combination of
-attributes of the node’s children and itself will be automated.</p>
-<p>Or a custom function that takes two arguments: list of attributes of its
-children, and attribute calculated from itself by <code class="docutils literal notranslate"><span class="pre">func</span></code>, and returns the
-combined attribute of the node.</p>
-<p>Or None, in which case combination of attributes of children and self
-will not take place, unless explicitly customized within <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
-<div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Tuple, custom function and None were added to the options.</p>
-</div>
-</dd>
-<dt><strong>register</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to register the attribute name as a cache of the tree, such that
-the attributes will be deleted from all nodes when the tree is manipulated
-or the <code class="docutils literal notranslate"><span class="pre">clear_caches</span></code> method is explicitly invoked. Default is True.</p>
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.biparts">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">biparts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">within</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_single</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_to_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.biparts" title="Link to this definition">#</a></dt>
+<dd><p>Return all bipartitions within the tree under self.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>within</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>A custom set of taxa to refine the result. Only taxa within it will be
+considered. If None (default), all taxa in the tree will be considered.</p>
+</dd>
+<dt><strong>include_single</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include bipartitions with only one taxon at either side.
+Default is False, as such bipartitions provide no topological
+information.</p>
+</dd>
+<dt><strong>map_to_length</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, return a mapping of subsets to their branch lengths. Missing
+branch lengths will be replaced with 0. Default is False.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">cache_type</span></code> is invalid.</p>
+<dt>frozenset of frozenset of str, or</dt><dd><p>All sets of names at the tips on the smaller side of each branch. Returned
+if <cite>map_to_length</cite> is False.</p>
+</dd>
+<dt>dict of {frozenset of str: float}</dt><dd><p>Mapping of All sets of smaller-side tip names to branch lengths. Returned
+if <cite>map_to_length</cite> is True.</p>
 </dd>
 </dl>
 </dd>
@@ -789,78 +782,68 @@ or the <code class="docutils literal notranslate"><span class="pre">clear_caches
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_caches</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.clear_caches.html#skbio.tree.TreeNode.clear_caches" title="skbio.tree.TreeNode.clear_caches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_caches</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.bipart.html#skbio.tree.TreeNode.bipart" title="skbio.tree.TreeNode.bipart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bipart</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.subsets.html#skbio.tree.TreeNode.subsets" title="skbio.tree.TreeNode.subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsets</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method provides an efficient interface to assign a custom attribute to
-every node of a tree through one postorder travesal. It is particularly useful
-if one needs to frequently look up attributes that would normally require one
-traversal of the tree per lookup. The assigned attributes may be automatically
-deleted when the tree is manipulated.</p>
+<p>The returned value represents the tree as a set of nested sets, each of which
+representing the position of a branch in the tree. It is useful for assessing
+topological patterns of a tree.</p>
+<p>The returned value itself and each of its components (frozensets) are unordered
+and hashable, making it efficient for lookup and comparison. For example, one
+can check whether the topologies of two trees are consistent, regardless of
+their root positions.</p>
+<p>This method can be applied to both rooted and unrooted trees. However, a rooted
+tree implies the direction of descendance, which may violate the purpose of
+bipartitioning a tree on arbitrary branches. If this is a concern, one should
+consider using <a class="reference internal" href="skbio.tree.TreeNode.subsets.html#skbio.tree.TreeNode.subsets" title="skbio.tree.TreeNode.subsets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subsets()</span></code></a> instead.</p>
+<p>This method operates on the subtree below the current node.</p>
 <p class="rubric">Examples</p>
-<p>This method facilitates evaluation for various useful node properties. Some
-representative examples are provided below.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1.2,b:1.6)c:0.3,(d:0.8,e:1.0)f:0.6)g;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,(b,c)),(d,e),f);&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                    /-a</span>
-<span class="go">          /c-------|</span>
-<span class="go">         |          \-b</span>
-<span class="go">-g-------|</span>
+<span class="go">          /--------|</span>
+<span class="go">         |         |          /-b</span>
+<span class="go">         |          \--------|</span>
+<span class="go">         |                    \-c</span>
+<span class="go">---------|</span>
 <span class="go">         |          /-d</span>
-<span class="go">          \f-------|</span>
-<span class="go">                    \-e</span>
+<span class="go">         |---------|</span>
+<span class="go">         |          \-e</span>
+<span class="go">         |</span>
+<span class="go">          \-f</span>
 </pre></div>
 </div>
-<p>Cache a list of all descending tip names on each node. This faciliates the
-assignment of taxon set under each clade in the tree. It resembles but is more
-efficient than calling <a class="reference internal" href="skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subset()</span></code></a> multiple times.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()</span> <span class="k">else</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;tip_names&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">include_self</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, tips: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tip_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="go">Node: g, tips: [&#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;e&#39;]</span>
-<span class="go">Node: c, tips: [&#39;a&#39;, &#39;b&#39;]</span>
-<span class="go">Node: a, tips: [&#39;a&#39;]</span>
-<span class="go">Node: b, tips: [&#39;b&#39;]</span>
-<span class="go">Node: f, tips: [&#39;d&#39;, &#39;e&#39;]</span>
-<span class="go">Node: d, tips: [&#39;d&#39;]</span>
-<span class="go">Node: e, tips: [&#39;e&#39;]</span>
+<p>Return all bipartitions of an unrooted tree.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">biparts</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">biparts</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">biparts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">sorted</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
+<span class="go">[&#39;d&#39;, &#39;e&#39;]</span>
 </pre></div>
 </div>
-<p>Cache the number of nodes per clade. The function <code class="docutils literal notranslate"><span class="pre">sum</span></code> is used in place of
-cache type such that the count will be accumulated. This resembles but is more
-efficient than calling <a class="reference internal" href="skbio.tree.TreeNode.count.html#skbio.tree.TreeNode.count" title="skbio.tree.TreeNode.count"><code class="xref py py-meth docutils literal notranslate"><span class="pre">count()</span></code></a> multiple times.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;node_count&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">node_count</span>
-<span class="go">7</span>
+<p>A second tree with the same topology but different root position.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree2</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(a,((b,c),((d,e),f)));&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree2</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">          /-a</span>
+<span class="go">         |</span>
+<span class="go">---------|                    /-b</span>
+<span class="go">         |          /--------|</span>
+<span class="go">         |         |          \-c</span>
+<span class="go">          \--------|</span>
+<span class="go">                   |                    /-d</span>
+<span class="go">                   |          /--------|</span>
+<span class="go">                    \--------|          \-e</span>
+<span class="go">                             |</span>
+<span class="go">                              \-f</span>
 </pre></div>
 </div>
-<p>Cache the sum of branch lengths per clade. This resembles but is more efficient
-than calling <a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html#skbio.tree.TreeNode.descending_branch_length" title="skbio.tree.TreeNode.descending_branch_length"><code class="xref py py-meth docutils literal notranslate"><span class="pre">descending_branch_length()</span></code></a> multiple times. Note: the result
-includes the stem branch of each clade. One needs to subtract <code class="docutils literal notranslate"><span class="pre">length</span></code> from
-each value in order to match the result of <code class="docutils literal notranslate"><span class="pre">descending_branch_length</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">.</span><span class="n">length</span> <span class="ow">or</span> <span class="mf">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;total_length&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">total_length</span>
-<span class="go">5.5</span>
-</pre></div>
-</div>
-<p>Cache the accumulative distances from all tips to the common ancestor of each
-clade. This allows one to measure the depth of a clade from the surface (tips)
-of a tree. One can further apply calculations like mean and standard deviation
-to the results. This is more efficient than calling
-<a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html#skbio.tree.TreeNode.accumulate_to_ancestor" title="skbio.tree.TreeNode.accumulate_to_ancestor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accumulate_to_ancestor()</span></code></a> multiple times. Also note that the result
-includes the stem branch of each clade.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dist_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">length</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">comb_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">prev</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span> <span class="o">+</span> <span class="n">curr</span> <span class="k">if</span> <span class="n">prev</span> <span class="k">else</span> <span class="n">curr</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">dist_f</span><span class="p">,</span> <span class="s1">&#39;accu_dists&#39;</span><span class="p">,</span> <span class="n">comb_f</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">accu_dists</span>
-<span class="go">array([ 1.5,  1.9,  1.4,  1.6])</span>
+<p>Although the tree has been re-positioned, the bipartitions remain the same.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">biparts</span> <span class="o">==</span> <span class="n">tree2</span><span class="o">.</span><span class="n">biparts</span><span class="p">()</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -878,20 +861,20 @@ includes the stem branch of each clade.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.invalidate_caches.html"
+       href="skbio.tree.TreeNode.bipart.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.invalidate_caches</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.bipart</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.assign_ids.html"
+       href="skbio.tree.TreeNode.assign_supports.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.assign_ids</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.assign_supports</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -914,7 +897,7 @@ includes the stem branch of each clade.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.cache_attr"><code class="docutils literal notranslate"><span class="pre">TreeNode.cache_attr()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.biparts"><code class="docutils literal notranslate"><span class="pre">TreeNode.biparts()</span></code></a></li>
 </ul>
   </nav></div>
 

@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Return the max tip tip distance between any pair of tips." />
+    <meta name="description" content="Return the maximum path distance between any pair of tips." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.get_max_distance &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -651,6 +651,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.count.html">skbio.tree.TreeNode.count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subset.html">skbio.tree.TreeNode.subset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subsets.html">skbio.tree.TreeNode.subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bipart.html">skbio.tree.TreeNode.bipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.biparts.html">skbio.tree.TreeNode.biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
@@ -660,7 +662,9 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -744,21 +748,25 @@
 <h1>skbio.tree.TreeNode.get_max_distance<a class="headerlink" href="#skbio-tree-treenode-get-max-distance" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.get_max_distance">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">get_max_distance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3511"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.get_max_distance" title="Link to this definition">#</a></dt>
-<dd><p>Return the max tip tip distance between any pair of tips.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>float</dt><dd><p>The distance between the two most distant tips in the tree</p>
-</dd>
-<dt>tuple of TreeNode</dt><dd><p>The two most distant tips in the tree</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">get_max_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3936"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.get_max_distance" title="Link to this definition">#</a></dt>
+<dd><p>Return the maximum path distance between any pair of tips.</p>
+<p>This is also referred to as the diameter of a tree.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>use_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the sum of branch lengths (True, default) or the number
+of branches (False) connecting each pair of tips.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>NoLengthError</dt><dd><p>A NoLengthError will be thrown if a node without length is
-encountered</p>
+<dt>float</dt><dd><p>The distance between the two most distant tips in the tree.</p>
+</dd>
+<dt>tuple of (TreeNode, TreeNode)</dt><dd><p>The two most distant tips in the tree.</p>
 </dd>
 </dl>
 </dd>
@@ -771,6 +779,10 @@ encountered</p>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html#skbio.tree.TreeNode.compare_tip_distances" title="skbio.tree.TreeNode.compare_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_tip_distances</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>If a node does not have an associated branch length, 0 will be used.</p>
+<p>When a tie is observed among more than one pair of tips, only one pair will be
+returned. The choice is stable. This often happens when <cite>use_length=False</cite>.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1,b:2)c:3,(d:4,e:5)f:6)root;&quot;</span><span class="p">])</span>
@@ -778,7 +790,7 @@ encountered</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span>
 <span class="go">16.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tips</span><span class="p">]</span>
-<span class="go">[&#39;b&#39;, &#39;e&#39;]</span>
+<span class="go">[&#39;e&#39;, &#39;b&#39;]</span>
 </pre></div>
 </div>
 </dd></dl>
