@@ -754,7 +754,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>name</strong><span class="classifier">TreeNode or str</span></dt><dd><p>The name of the node to find. If a <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> object is provided,
-then it is simply returned.</p>
+will find this particular node in the tree.</p>
 </dd>
 </dl>
 </dd>
@@ -766,7 +766,7 @@ then it is simply returned.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>MissingNodeError</dt><dd><p>If the node to be searched for is not found.</p>
+<dt>MissingNodeError</dt><dd><p>If the node to be searched for is not found in the current tree.</p>
 </dd>
 </dl>
 </dd>
@@ -789,11 +789,14 @@ of the tree.</p>
 <p>The first call of <code class="docutils literal notranslate"><span class="pre">find</span></code> will cache a node lookup table in the tree on the
 assumption that additional calls to <code class="docutils literal notranslate"><span class="pre">find</span></code> will be made. See
 <a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<p>This method searches within the entire tree where self is located, regardless
+if self is the root node.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="go">c</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;c&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
