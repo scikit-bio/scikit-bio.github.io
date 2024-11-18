@@ -753,8 +753,9 @@
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>endpoints</strong><span class="classifier">list of TreeNode or str, optional</span></dt><dd><p>Tips or their names (i.e., taxa) to be included in the calculation. If not
-specified, all tips will be included.</p>
+<dt><strong>endpoints</strong><span class="classifier">list of TreeNode or str, optional</span></dt><dd><p>Tips or their names (i.e., taxa) to be included in the calculation. The
+returned distance matrix will use this order. If not specified, all tips
+will be included.</p>
 </dd>
 <dt><strong>use_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the sum of branch lengths (True, default) or the number
 of branches (False) connecting each pair of tips.</p>
@@ -772,6 +773,10 @@ of branches (False) connecting each pair of tips.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt>MissingNodeError</dt><dd><p>If any of the specified <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> are not found in the tree.</p>
+</dd>
+<dt>DuplicateNodeError</dt><dd><p>If the specified <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> have duplicates.</p>
+</dd>
 <dt>ValueError</dt><dd><p>If any of the specified <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> are not tips.</p>
 </dd>
 </dl>
@@ -786,8 +791,11 @@ of branches (False) connecting each pair of tips.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>This method calculates the sum of branch lengths connecting each pair of tips.
-It is also known as the patristic distance <a class="reference internal" href="#r614bdf5c92ef-1" id="id1">[1]</a>.</p>
-<p>If a node does not have an associated branch length, 0 will be used.</p>
+It is also known as the patristic distance <a class="reference internal" href="#r614bdf5c92ef-1" id="id1">[1]</a>. If a node does not have an
+associated branch length, 0 will be used.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_length</span></code> is False, the method instead calculates the number of
+branches connecting each pair of tips.</p>
+<p>This method operates on the subtree below the current node.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r614bdf5c92ef-1" role="doc-biblioentry">
