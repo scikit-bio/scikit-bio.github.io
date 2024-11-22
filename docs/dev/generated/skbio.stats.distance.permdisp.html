@@ -683,7 +683,7 @@
 <h1>skbio.stats.distance.permdisp<a class="headerlink" href="#skbio-stats-distance-permdisp" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.permdisp">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permdisp.py#L28"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_neg_eigval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permdisp.py#L28"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
 <dd><p>Test for Homogeneity of Multivariate Groups Disperisons.</p>
 <p>PERMDISP is a multivariate analogue of Levene’s test for homogeneity of
 multivariate variances. Distances are handled by reducing the
@@ -720,20 +720,22 @@ significance. Must be greater than or equal to zero. If zero,
 statistical significance calculations will be skipped and the p-value
 will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
 </dd>
-<dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>Eigendecomposition method to use in performing PCoA.
-By default, uses SciPy’s <cite>eigh</cite>, which computes exact
-eigenvectors and eigenvalues for all dimensions. The alternate
-method, <cite>fsvd</cite>, uses faster heuristic eigendecomposition but loses
-accuracy. The magnitude of accuracy lost is dependent on dataset.
-Note that using <cite>fsvd</cite> is still considered experimental and
-should be used with care.
-Not used if distance_matrix is a OrdinationResults object.</p>
+<dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>Matrix decomposition method to use. Options are “eigh” (eigendecomposition,
+default) and “fsvd” (fast singular value decomposition). See
+<code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.stats.ordination.pcoa</span></code> for details. Not used if
+distance_matrix is a OrdinationResults object.</p>
 </dd>
 <dt><strong>number_of_dimensions</strong><span class="classifier">int, optional</span></dt><dd><p>Dimensions to reduce the distance matrix to if using the <cite>fsvd</cite> method.
 Not used if the <cite>eigh</cite> method is being selected.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
 <a class="reference internal" href="skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>warn_neg_eigval</strong><span class="classifier">bool or float, optional</span></dt><dd><p>Raise a warning if any negative eigenvalue of large magnitude is generated
+during PCoA. See <code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.stats.ordination.pcoa</span></code> for details.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
