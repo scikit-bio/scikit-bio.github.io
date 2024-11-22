@@ -682,6 +682,20 @@
   <section id="input-and-output-skbio-io">
 <span id="module-skbio.io"></span><h1>Input and Output (<a class="reference internal" href="#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code></a>)<a class="headerlink" href="#input-and-output-skbio-io" title="Link to this heading">#</a></h1>
 <p>This module provides input/output (I/O) functionality for scikit-bio.</p>
+<p>In bioinformatics there are many different file formats, and in scikit-bio there are
+many different classes which can read and write these formats. The many-to-many
+nature of the relationships between scikit-bio objects and file formats inspired
+the creation of the scikit-bio <code class="docutils literal notranslate"><span class="pre">io</span></code> module, which manages these relationships
+transparently.</p>
+<p>For general guidance on reading and writing files and working with scikit-bio objects,
+see the <a class="reference internal" href="#tutorial"><span class="std std-ref">Tutorial</span></a> section and the
+<a class="reference external" href="https://github.com/scikit-bio/scikit-bio-cookbook/blob/master/Reading%20and%20writing%20files.ipynb">Reading and writing files</a>
+notebook. For guidance on a specific format or scikit-bio object,
+see the documentation for that format or object.</p>
+<p>See the
+<a class="reference external" href="../../docs/latest/generated/skbio.io.registry.html#creating-a-new-format-for-scikit-bio">IORegistry docs</a>
+for guidance on creating custom formats and registering custom readers, writers, and
+sniffers.</p>
 <section id="supported-file-formats">
 <h2>Supported file formats<a class="headerlink" href="#supported-file-formats" title="Link to this heading">#</a></h2>
 <p>scikit-bio provides parsers for the following file formats. For details on what objects
@@ -861,7 +875,7 @@ are supported by each format, see the associated documentation.</p>
 </div>
 </section>
 <section id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<span id="id1"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
 <p>Reading and writing files (I/O) can be a complicated task:</p>
 <ul class="simple">
 <li><p>A file format can sometimes be read into more than one in-memory representation
@@ -880,7 +894,7 @@ using a generator (e.g., if the file cannot be fully loaded into memory).</p></l
 </ul>
 <p>To address these issues (and others), scikit-bio provides a simple, powerful
 interface for dealing with I/O. We accomplish this by using a single I/O
-registry.</p>
+registry defined in <a class="reference internal" href="generated/skbio.io.registry.IORegistry.html#skbio.io.registry.IORegistry" title="skbio.io.registry.IORegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.io.registry.IORegistry</span></code></a>.</p>
 <section id="what-kinds-of-files-scikit-bio-can-use">
 <h3>What kinds of files scikit-bio can use<a class="headerlink" href="#what-kinds-of-files-scikit-bio-can-use" title="Link to this heading">#</a></h3>
 <p>To see a complete list of file-like inputs that can be used for reading,
@@ -893,22 +907,34 @@ procedural interface:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_obj</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">SomeSkbioClass</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The second is to use the object-oriented (OO) interface which is automatically
-constructed from the procedural interface:</p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">file</span></code> can be a path to a file, a file handle, or any of the other
+objects with read support listed in the <a class="reference internal" href="generated/skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a> documentation.</p>
+<p>The second way to read files is to use the object-oriented interface, which is
+automatically constructed from the procedural interface:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_obj</span> <span class="o">=</span> <span class="n">SomeSkbioClass</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For example, to read a <code class="docutils literal notranslate"><span class="pre">newick</span></code> file using both interfaces you would type:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">read</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A very common use case in bioinformatics is to read multi-line FASTA and
+FASTQ files. For examples on how to achieve this with scikit-bio, please see the
+<a class="reference external" href="../../docs/dev/generated/skbio.io.format.fasta.html#examples">FASTA documentation</a>
+or the
+<a class="reference external" href="../../docs/dev/generated/skbio.io.format.fastq.html#examples">FASTQ documentation</a>.</p>
+</div>
+<p>As an example, let’s read a <a class="reference internal" href="generated/skbio.io.format.newick.html#module-skbio.io.format.newick" title="skbio.io.format.newick"><code class="xref py py-mod docutils literal notranslate"><span class="pre">newick</span></code></a> file into a
+<a class="reference internal" href="generated/skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code></a> object using both interfaces. Here we will use Python’s
+built-in <a class="reference external" href="https://docs.python.org/3/library/io.html#io.StringIO" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringIO</span></code></a> class to mimick an open file:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">read</span> <span class="k">as</span> <span class="n">sk_read</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">open_filehandle</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;(a, b);&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">open_filehandle</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;newick&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">TreeNode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">sk_read</span><span class="p">(</span><span class="n">open_filehandle</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;newick&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">TreeNode</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span>
 <span class="go">&lt;TreeNode, name: unnamed, internal node count: 0, tips count: 2&gt;</span>
 </pre></div>
 </div>
-<p>For the OO interface:</p>
+<p>Or, using the object-oriented interface:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">open_filehandle</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;(a, b);&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">open_filehandle</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;newick&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span>
@@ -919,9 +945,9 @@ constructed from the procedural interface:</p>
 generator will be returned. What the generator yields will depend on what
 format is being read.</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">into</span></code> is provided, format may be omitted and the registry will use its
-knowledge of the available formats for the requested class to infer the correct
-format. This format inference is also available in the OO interface, meaning
-that <code class="docutils literal notranslate"><span class="pre">format</span></code> may be omitted there as well.</p>
+knowledge of the available formats for the requested class to infer (sniff) the
+correct format. This format inference is also available in the object-oriented
+interface, meaning that <code class="docutils literal notranslate"><span class="pre">format</span></code> may be omitted there as well.</p>
 <p>As an example:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">open_filehandle</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;(a, b);&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">open_filehandle</span><span class="p">)</span>
@@ -936,7 +962,8 @@ which can be used to better parse the file.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There is a built-in <code class="docutils literal notranslate"><span class="pre">sniffer</span></code> which results in a useful error message
-if an empty file is provided as input and the format was omitted.</p>
+if an empty file is provided as input and the format was omitted. See the
+<a class="reference external" href="../../docs/dev/generated/skbio.io.registry.sniff.html">sniff documentation</a> for more information.</p>
 </div>
 </section>
 <section id="writing-files-from-scikit-bio">
@@ -946,19 +973,23 @@ if an empty file is provided as input and the format was omitted.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">my_obj</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>OO Interface:</p>
+<p>Object-oriented Interface:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_obj</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In the procedural interface, <code class="docutils literal notranslate"><span class="pre">format</span></code> is required. Without it, scikit-bio does
-not know how you want to serialize an object. OO interfaces define a default
-<code class="docutils literal notranslate"><span class="pre">format</span></code>, so it may not be necessary to include it.</p>
+not know how you want to serialize an object. Object-oriented interfaces define a
+default <code class="docutils literal notranslate"><span class="pre">format</span></code>, so it may not be necessary to include it.</p>
+<p>For more information on writing to a specific file format, please see that format’s
+documentation page.</p>
 </section>
 <section id="streaming-files-with-read-and-write">
 <h3>Streaming files with read and write<a class="headerlink" href="#streaming-files-with-read-and-write" title="Link to this heading">#</a></h3>
 <p>If you are working with particularly large files, streaming them might be preferable.
-Scikit-bio’s <code class="docutils literal notranslate"><span class="pre">io</span></code> module offers the ability to contruct a streaming interface from
-the <code class="docutils literal notranslate"><span class="pre">read</span></code> and <code class="docutils literal notranslate"><span class="pre">write</span></code> functions.</p>
+For instance, if your file is larger than your available memory, you won’t be able
+to read the entire file into memory at once. One way to get around this is to use
+streaming. Scikit-bio’s <code class="docutils literal notranslate"><span class="pre">io</span></code> module offers the ability to contruct a streaming
+interface from the <code class="docutils literal notranslate"><span class="pre">read</span></code> and <code class="docutils literal notranslate"><span class="pre">write</span></code> functions.</p>
 <p><code class="docutils literal notranslate"><span class="pre">skbio.io.read</span></code> returns a generator, which can then be passed to <code class="docutils literal notranslate"><span class="pre">skbio.io.write</span></code>
 to write only one chunk from the generator at a time.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seq_gen</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">big_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">)</span>
