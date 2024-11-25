@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Calculate the distance between two trees based on tip-to-tip distances." />
+    <meta name="description" content="Calculate the distance between two trees based on cophenetic distances." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.compare_tip_distances &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -75,7 +75,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.tree.TreeNode.ascii_art" href="skbio.tree.TreeNode.ascii_art.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.compare_biparts" href="skbio.tree.TreeNode.compare_biparts.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.compare_cophenet" href="skbio.tree.TreeNode.compare_cophenet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -660,12 +660,15 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html">skbio.tree.TreeNode.maxdist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html">skbio.tree.TreeNode.cophenet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html">skbio.tree.TreeNode.compare_rfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html">skbio.tree.TreeNode.compare_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html">skbio.tree.TreeNode.compare_cophenet</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.compare_tip_distances</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
@@ -749,8 +752,11 @@
 <h1>skbio.tree.TreeNode.compare_tip_distances<a class="headerlink" href="#skbio-tree-treenode-compare-tip-distances" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.compare_tip_distances">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unitcorr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4683"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_tip_distances" title="Link to this definition">#</a></dt>
-<dd><p>Calculate the distance between two trees based on tip-to-tip distances.</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unitcorr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4722"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_tip_distances" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the distance between two trees based on cophenetic distances.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">compare_tip_distances</span></code>. The old name is kept as an alias.</p>
+</div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -834,22 +840,26 @@ being treated separately.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html#skbio.tree.TreeNode.tip_tip_distances" title="skbio.tree.TreeNode.tip_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tip_tip_distances</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html#skbio.tree.TreeNode.cophenet" title="skbio.tree.TreeNode.cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cophenet</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html#skbio.tree.TreeNode.compare_wrfd" title="skbio.tree.TreeNode.compare_wrfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_wrfd</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method calculates the dissimilarity between the tip-to-tip distance
-matrices of two trees. Tips are identified by their names (i.e., taxa). Only
-tips shared between the two trees are considered. Tips unique to either tree
-are excluded from the calculation.</p>
+<p>This method calculates the dissimilarity between the cophenetic distance <a class="reference internal" href="#r99f548d4d63b-1" id="id3">[1]</a>
+(i.e., tip-to-tip distance) matrices of two trees. Tips are identified by
+their names (i.e., taxa). Only tips shared between the trees are considered.
+Tips unique to either tree are excluded from the calculation.</p>
 <p>The default behavior returns a unit correlation distance (range: [0, 1]),
 measuring the dissimilarity between the relative evolutionary distances among
 taxa, regardless of the tree scale (i.e., multiply all branch lengths in one
-tree by a factor and the result remains the same).</p>
+tree by a factor and the result remains the same). This measure is closely
+related to <strong>cophenetic correlation</strong>, which measures the similarity (instead
+of dissimilarity) between two cophenetic distance matrices, or between a
+cophenetic distance matrix and the original distance matrix among taxa on
+which hierarchical clustering was performed.</p>
 <p>When the metric is Euclidean and lengths are used, it returns the <strong>path-length
-distance</strong> <a class="reference internal" href="#r99f548d4d63b-1" id="id3">[1]</a>, which is the square root of the sum of squared differences of
+distance</strong> <a class="reference internal" href="#r99f548d4d63b-2" id="id4">[2]</a>, which is the square root of the sum of squared differences of
 path lengths among all pairs of taxa.</p>
 <div class="math notranslate nohighlight">
 \[d(T_1, T_2) = \sqrt{\sum (d_1(i,j) - d_2(i,j))^2}\]</div>
@@ -857,19 +867,24 @@ path lengths among all pairs of taxa.</p>
 pair of tips <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> in trees <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span>,
 respectively.</p>
 <p>When the metric is Euclidean and lengths are not used, it returns the <strong>path
-distance</strong> <a class="reference internal" href="#r99f548d4d63b-2" id="id4">[2]</a>, which insteads considers the number of edges in the path.</p>
+distance</strong> <a class="reference internal" href="#r99f548d4d63b-3" id="id5">[3]</a>, which insteads considers the number of edges in the path.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r99f548d4d63b-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
-<p>Lapointe, F. J., &amp; Cucumel, G. (1997). The average consensus procedure:
-combination of weighted trees containing identical or overlapping sets of
-taxa. Systematic Biology, 46(2), 306-312.</p>
+<p>Sokal, R. R., &amp; Rohlf, F. J. (1962). The comparison of dendrograms by
+objective methods. Taxon, 33-40.</p>
 </div>
 <div class="citation" id="r99f548d4d63b-2" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<p>Lapointe, F. J., &amp; Cucumel, G. (1997). The average consensus procedure:
+combination of weighted trees containing identical or overlapping sets of
+taxa. Systematic Biology, 46(2), 306-312.</p>
+</div>
+<div class="citation" id="r99f548d4d63b-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
 <p>Steel, M. A., &amp; Penny, D. (1993). Distributions of tree comparison
 metrics—some new results. Systematic Biology, 42(2), 126-141.</p>
 </div>
@@ -907,20 +922,20 @@ metrics—some new results. Systematic Biology, 42(2), 126-141.</p>
 </pre></div>
 </div>
 <p>Calculate the unit correlation distance between the two trees.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">tree1</span><span class="o">.</span><span class="n">compare_tip_distances</span><span class="p">(</span><span class="n">tree2</span><span class="p">,</span> <span class="n">ignore_self</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">tree1</span><span class="o">.</span><span class="n">compare_cophenet</span><span class="p">(</span><span class="n">tree2</span><span class="p">,</span> <span class="n">ignore_self</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="go">0.14131</span>
 </pre></div>
 </div>
 <p>Calculate the path-length distance between the two trees.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">tree1</span><span class="o">.</span><span class="n">compare_tip_distances</span><span class="p">(</span><span class="n">tree2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">tree1</span><span class="o">.</span><span class="n">compare_cophenet</span><span class="p">(</span><span class="n">tree2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>
 <span class="gp">... </span>                                <span class="n">ignore_self</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="go">13.71131</span>
 </pre></div>
 </div>
 <p>Calculate the path distance between the two trees.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_tip_distances</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_cophenet</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">tree2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">use_length</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_self</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">4.0</span>
 </pre></div>
@@ -940,12 +955,12 @@ metrics—some new results. Systematic Biology, 42(2), 126-141.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.compare_biparts.html"
+       href="skbio.tree.TreeNode.compare_cophenet.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.compare_biparts</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.compare_cophenet</p>
       </div>
     </a>
     <a class="right-next"

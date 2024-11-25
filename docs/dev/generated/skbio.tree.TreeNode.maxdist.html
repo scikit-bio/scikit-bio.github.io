@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Make a copy of the subtree." />
+    <meta name="description" content="Return the maximum distance between any pair of tips in the tree." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.subtree &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.TreeNode.maxdist &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -62,19 +62,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.subtree';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.maxdist';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.subtree.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.maxdist.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.append" href="skbio.tree.TreeNode.append.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.deepcopy" href="skbio.tree.TreeNode.deepcopy.html" />
+    <link rel="next" title="skbio.tree.TreeNode.get_max_distance" href="skbio.tree.TreeNode.get_max_distance.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.distance" href="skbio.tree.TreeNode.distance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -616,7 +616,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.non_tips.html">skbio.tree.TreeNode.non_tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.copy.html">skbio.tree.TreeNode.copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.deepcopy.html">skbio.tree.TreeNode.deepcopy</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.subtree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subtree.html">skbio.tree.TreeNode.subtree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.append.html">skbio.tree.TreeNode.append</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.extend.html">skbio.tree.TreeNode.extend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.insert.html">skbio.tree.TreeNode.insert</a></li>
@@ -659,7 +659,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html">skbio.tree.TreeNode.maxdist</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.maxdist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html">skbio.tree.TreeNode.get_max_distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html">skbio.tree.TreeNode.cophenet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html">skbio.tree.TreeNode.tip_tip_distances</a></li>
@@ -730,7 +730,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.tree.TreeNode.html" class="nav-link">skbio.tree.TreeNode</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.subtree</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.maxdist</span></li>
   </ul>
 </nav>
 </div>
@@ -747,15 +747,61 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-subtree">
-<h1>skbio.tree.TreeNode.subtree<a class="headerlink" href="#skbio-tree-treenode-subtree" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-maxdist">
+<h1>skbio.tree.TreeNode.maxdist<a class="headerlink" href="#skbio-tree-treenode-maxdist" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.subtree">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">subtree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tip_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L328"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.subtree" title="Link to this definition">#</a></dt>
-<dd><p>Make a copy of the subtree.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 0.6.3: </span>This method will be removed in version 0.7.0. It was never implemented, and
-its goal can be achieved by <a class="reference internal" href="skbio.tree.TreeNode.copy.html#skbio.tree.TreeNode.copy" title="skbio.tree.TreeNode.copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">copy()</span></code></a>.</p>
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.maxdist">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">maxdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3939"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.maxdist" title="Link to this definition">#</a></dt>
+<dd><p>Return the maximum distance between any pair of tips in the tree.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">get_max_distance</span></code>. The old name is kept as an alias.</p>
+</div>
+<p>This measure is also referred to as the <strong>diameter</strong> of a tree.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>use_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the sum of branch lengths (True, default) or the number
+of branches (False) connecting each pair of tips.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>The distance between the two most distant tips in the tree.</p>
+</dd>
+<dt>tuple of (TreeNode, TreeNode)</dt><dd><p>The two most distant tips in the tree.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.tree.TreeNode.distance.html#skbio.tree.TreeNode.distance" title="skbio.tree.TreeNode.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html#skbio.tree.TreeNode.cophenet" title="skbio.tree.TreeNode.cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cophenet</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.maxdists.html#scipy.cluster.hierarchy.maxdists" title="(in SciPy v1.14.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.cluster.hierarchy.maxdists</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This method identifies the two furthest apart tips in a tree, as measured by
+the sum of branch lengths (i.e., patristic distance) connecting them. Missing
+branch lengths will be replaced with 0. When <code class="docutils literal notranslate"><span class="pre">use_length=False</span></code>, the number
+of branches connecting two tips will be considered instead.</p>
+<p>When a tie is observed among more than one pair of tips, only one pair will be
+returned. The choice is stable. This often happens when <code class="docutils literal notranslate"><span class="pre">use_length=False</span></code>.</p>
+<p>This method operates on the subtree below the current node.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1,b:2)c:3,(d:4,e:5)f:6)root;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="p">,</span> <span class="n">tips</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">maxdist</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span>
+<span class="go">16.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tips</span><span class="p">]</span>
+<span class="go">[&#39;e&#39;, &#39;b&#39;]</span>
+</pre></div>
 </div>
 </dd></dl>
 
@@ -772,20 +818,20 @@ its goal can be achieved by <a class="reference internal" href="skbio.tree.TreeN
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.deepcopy.html"
+       href="skbio.tree.TreeNode.distance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.deepcopy</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.distance</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.append.html"
+       href="skbio.tree.TreeNode.get_max_distance.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.append</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.get_max_distance</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -808,7 +854,7 @@ its goal can be achieved by <a class="reference internal" href="skbio.tree.TreeN
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.subtree"><code class="docutils literal notranslate"><span class="pre">TreeNode.subtree()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.maxdist"><code class="docutils literal notranslate"><span class="pre">TreeNode.maxdist()</span></code></a></li>
 </ul>
   </nav></div>
 
