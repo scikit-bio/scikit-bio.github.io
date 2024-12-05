@@ -657,6 +657,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.total_length.html">skbio.tree.TreeNode.total_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html">skbio.tree.TreeNode.maxdist</a></li>
@@ -751,12 +752,15 @@
 <h1>skbio.tree.TreeNode.lowest_common_ancestor<a class="headerlink" href="#skbio-tree-treenode-lowest-common-ancestor" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.lowest_common_ancestor">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">lowest_common_ancestor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipnames</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.lowest_common_ancestor" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">lowest_common_ancestor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.lowest_common_ancestor" title="Link to this definition">#</a></dt>
 <dd><p>Find the lowest common ancestor of a list of nodes.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>tipnames</strong><span class="classifier">iterable of TreeNode or str</span></dt><dd><p>The nodes of interest.</p>
+<dd class="field-odd"><dl>
+<dt><strong>nodes</strong><span class="classifier">iterable of TreeNode or str</span></dt><dd><p>Instances or names of the nodes of interest.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">tipnames</span></code>. The old name is preserved as an alias.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -768,14 +772,18 @@
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If no tips could be found in the tree, or if not all tips were found.</p>
+<dt>MissingNodeError</dt><dd><p>If some nodes cannot be found in the tree.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Despite the parameter is named as <code class="docutils literal notranslate"><span class="pre">tipnames</span></code>, it can accept both tips and
-internal nodes.</p>
+<p>Both tips and internal nodes may be provided in <code class="docutils literal notranslate"><span class="pre">nodes</span></code>. If internal node
+names are provided, it is the user’s responsibility to ensure that they are
+unique in the tree.</p>
+<p>This method considers the entire tree rather than the subtree below self.
+Therefore, if some nodes are not descendants of self, the LCA of nodes will be
+ancestral to self.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)root;&quot;</span><span class="p">])</span>

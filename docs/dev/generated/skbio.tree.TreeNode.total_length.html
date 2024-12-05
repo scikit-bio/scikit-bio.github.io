@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Check if the current node has any children." />
+    <meta name="description" content="Calculate the total length of branches descending from self." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.has_children &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.TreeNode.total_length &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -62,19 +62,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.has_children';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.total_length';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.has_children.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.total_length.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.root" href="skbio.tree.TreeNode.root.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.is_root" href="skbio.tree.TreeNode.is_root.html" />
+    <link rel="next" title="skbio.tree.TreeNode.descending_branch_length" href="skbio.tree.TreeNode.descending_branch_length.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.accumulate_to_ancestor" href="skbio.tree.TreeNode.accumulate_to_ancestor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -599,7 +599,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.write.html">skbio.tree.TreeNode.write</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_tip.html">skbio.tree.TreeNode.is_tip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_root.html">skbio.tree.TreeNode.is_root</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.has_children</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.has_children.html">skbio.tree.TreeNode.has_children</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root.html">skbio.tree.TreeNode.root</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ancestors.html">skbio.tree.TreeNode.ancestors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.siblings.html">skbio.tree.TreeNode.siblings</a></li>
@@ -657,7 +657,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.total_length.html">skbio.tree.TreeNode.total_length</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.total_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html">skbio.tree.TreeNode.maxdist</a></li>
@@ -731,7 +731,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.tree.TreeNode.html" class="nav-link">skbio.tree.TreeNode</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.has_children</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.total_length</span></li>
   </ul>
 </nav>
 </div>
@@ -748,34 +748,93 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-has-children">
-<h1>skbio.tree.TreeNode.has_children<a class="headerlink" href="#skbio-tree-treenode-has-children" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-total-length">
+<h1>skbio.tree.TreeNode.total_length<a class="headerlink" href="#skbio-tree-treenode-total-length" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.has_children">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">has_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L397"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.has_children" title="Link to this definition">#</a></dt>
-<dd><p>Check if the current node has any children.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>bool</dt><dd><p>Whether the node has at least one child.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="skbio.tree.TreeNode.is_tip.html#skbio.tree.TreeNode.is_tip" title="skbio.tree.TreeNode.is_tip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_tip</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.is_root.html#skbio.tree.TreeNode.is_root" title="skbio.tree.TreeNode.is_root"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_root</span></code></a></dt><dd></dd>
-</dl>
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.total_length">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">total_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_stem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3815"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.total_length" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the total length of branches descending from self.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">descending_branch_length</span></code>. The old name is kept as an alias.</p>
 </div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>nodes</strong><span class="classifier">iterable of TreeNode or str, optional</span></dt><dd><p>Instances or names of a subset of descending nodes to refine the result.
+If provided, the total length of branches connecting these nodes will be
+returned. Otherwise, the total branch length of the tree will be returned.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">tip_subset</span></code>. The old name is kept as an alias.
+Can accept TreeNode instances in addition to names.
+Can accept internal nodes in addition to tips.</p>
+</div>
+</dd>
+<dt><strong>include_stem</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include the path from the lowest common ancestor (LCA) of the
+subset of nodes to self. Applicable when <code class="docutils literal notranslate"><span class="pre">nodes</span></code> is specified. Default is
+False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>include_self</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include the length of self. When <code class="docutils literal notranslate"><span class="pre">nodes</span></code> is provided and
+<code class="docutils literal notranslate"><span class="pre">include_stem</span></code> is False, it is instead the LCA of the subset of nodes.
+Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>The total descending branch length.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>MissingNodeError</dt><dd><p>If some nodes are not found in the tree or are not descendants of self.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The metric can be considered as the total amount of evolutionary change across
+all lineages in the tree.</p>
+<p>This metric is closely related to phylogenetic diversity (PD) in community
+ecology. When <code class="docutils literal notranslate"><span class="pre">include_stem</span></code> is True, it is equivalent to Faith’s PD (see
+<a class="reference internal" href="skbio.diversity.alpha.faith_pd.html#skbio.diversity.alpha.faith_pd" title="skbio.diversity.alpha.faith_pd"><code class="xref py py-func docutils literal notranslate"><span class="pre">faith_pd()</span></code></a>). However, this method is optimized
+to handle a single set of nodes, whereas the referred function is optimized
+to simultaneously calculate for multiple taxon sets (i.e., communities).</p>
+<p>Missing branch lengths will be replaced with 0.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">has_children</span><span class="p">())</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_children</span><span class="p">())</span>
-<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s2">&quot;(((A:.1,B:1.2)C:.6,(D:.9,E:.6)F:.9)G:2.4,(H:.4,I:.5)J:1.3)K;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                              /-A</span>
+<span class="go">                    /C-------|</span>
+<span class="go">                   |          \-B</span>
+<span class="go">          /G-------|</span>
+<span class="go">         |         |          /-D</span>
+<span class="go">         |          \F-------|</span>
+<span class="go">-K-------|                    \-E</span>
+<span class="go">         |</span>
+<span class="go">         |          /-H</span>
+<span class="go">          \J-------|</span>
+<span class="go">                    \-I</span>
+</pre></div>
+</div>
+<p>Calculate the total branch length of the tree.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">total_length</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">8.9</span>
+</pre></div>
+</div>
+<p>Calculate the total branch length connecting three taxa.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">total_length</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">6.3</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -793,20 +852,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.is_root.html"
+       href="skbio.tree.TreeNode.accumulate_to_ancestor.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.is_root</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.accumulate_to_ancestor</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.root.html"
+       href="skbio.tree.TreeNode.descending_branch_length.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.root</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.descending_branch_length</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -829,7 +888,7 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.has_children"><code class="docutils literal notranslate"><span class="pre">TreeNode.has_children()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.total_length"><code class="docutils literal notranslate"><span class="pre">TreeNode.total_length()</span></code></a></li>
 </ul>
   </nav></div>
 

@@ -658,6 +658,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.total_length.html">skbio.tree.TreeNode.total_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html">skbio.tree.TreeNode.maxdist</a></li>
@@ -838,10 +839,10 @@ unrooted and unordered trees as well, which are common in phylogenetics.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.neighbors.html#skbio.tree.TreeNode.neighbors" title="skbio.tree.TreeNode.neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code></a>([ignore])</p></td>
 <td><p>Return all nodes that are neighbors of the current node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.lowest_common_ancestor.html#skbio.tree.TreeNode.lowest_common_ancestor" title="skbio.tree.TreeNode.lowest_common_ancestor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowest_common_ancestor</span></code></a>(tipnames)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.lowest_common_ancestor.html#skbio.tree.TreeNode.lowest_common_ancestor" title="skbio.tree.TreeNode.lowest_common_ancestor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowest_common_ancestor</span></code></a>([nodes])</p></td>
 <td><p>Find the lowest common ancestor of a list of nodes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.lca.html#skbio.tree.TreeNode.lca" title="skbio.tree.TreeNode.lca"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lca</span></code></a>(tipnames)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.lca.html#skbio.tree.TreeNode.lca" title="skbio.tree.TreeNode.lca"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lca</span></code></a>([nodes])</p></td>
 <td><p>Find the lowest common ancestor of a list of nodes.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.path.html#skbio.tree.TreeNode.path" title="skbio.tree.TreeNode.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code></a>(other[, include_ends])</p></td>
@@ -1033,40 +1034,43 @@ unrooted and unordered trees as well, which are common in phylogenetics.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html#skbio.tree.TreeNode.accumulate_to_ancestor" title="skbio.tree.TreeNode.accumulate_to_ancestor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accumulate_to_ancestor</span></code></a>(ancestor)</p></td>
 <td><p>Calculate the distance between self and an ancestor.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html#skbio.tree.TreeNode.descending_branch_length" title="skbio.tree.TreeNode.descending_branch_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">descending_branch_length</span></code></a>([tip_subset])</p></td>
-<td><p>Find total descending branch length from self to a set of tips.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.total_length.html#skbio.tree.TreeNode.total_length" title="skbio.tree.TreeNode.total_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total_length</span></code></a>([nodes, include_stem, include_self])</p></td>
+<td><p>Calculate the total length of branches descending from self.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.distance.html#skbio.tree.TreeNode.distance" title="skbio.tree.TreeNode.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(other[, use_length, missing_as_zero])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html#skbio.tree.TreeNode.descending_branch_length" title="skbio.tree.TreeNode.descending_branch_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">descending_branch_length</span></code></a>([nodes, ...])</p></td>
+<td><p>Calculate the total length of branches descending from self.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.distance.html#skbio.tree.TreeNode.distance" title="skbio.tree.TreeNode.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(other[, use_length, missing_as_zero])</p></td>
 <td><p>Calculate the distance between self and another node.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html#skbio.tree.TreeNode.maxdist" title="skbio.tree.TreeNode.maxdist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxdist</span></code></a>([use_length])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html#skbio.tree.TreeNode.maxdist" title="skbio.tree.TreeNode.maxdist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxdist</span></code></a>([use_length])</p></td>
 <td><p>Return the maximum distance between any pair of tips in the tree.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html#skbio.tree.TreeNode.get_max_distance" title="skbio.tree.TreeNode.get_max_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_max_distance</span></code></a>([use_length])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.get_max_distance.html#skbio.tree.TreeNode.get_max_distance" title="skbio.tree.TreeNode.get_max_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_max_distance</span></code></a>([use_length])</p></td>
 <td><p>Return the maximum distance between any pair of tips in the tree.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html#skbio.tree.TreeNode.cophenet" title="skbio.tree.TreeNode.cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cophenet</span></code></a>([endpoints, use_length])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html#skbio.tree.TreeNode.cophenet" title="skbio.tree.TreeNode.cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cophenet</span></code></a>([endpoints, use_length])</p></td>
 <td><p>Return a distance matrix between each pair of tips in the tree.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html#skbio.tree.TreeNode.tip_tip_distances" title="skbio.tree.TreeNode.tip_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tip_tip_distances</span></code></a>([endpoints, use_length])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.tip_tip_distances.html#skbio.tree.TreeNode.tip_tip_distances" title="skbio.tree.TreeNode.tip_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tip_tip_distances</span></code></a>([endpoints, use_length])</p></td>
 <td><p>Return a distance matrix between each pair of tips in the tree.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a>(other[, proportion, rooted])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a>(other[, proportion, rooted])</p></td>
 <td><p>Calculate Robinson-Foulds distance between two trees.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html#skbio.tree.TreeNode.compare_wrfd" title="skbio.tree.TreeNode.compare_wrfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_wrfd</span></code></a>(other[, metric, rooted, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html#skbio.tree.TreeNode.compare_wrfd" title="skbio.tree.TreeNode.compare_wrfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_wrfd</span></code></a>(other[, metric, rooted, ...])</p></td>
 <td><p>Calculate weighted Robinson-Foulds distance or variants between two trees.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html#skbio.tree.TreeNode.compare_subsets" title="skbio.tree.TreeNode.compare_subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_subsets</span></code></a>(other[, shared_only, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html#skbio.tree.TreeNode.compare_subsets" title="skbio.tree.TreeNode.compare_subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_subsets</span></code></a>(other[, shared_only, ...])</p></td>
 <td><p>Calculate the difference of subsets between two trees.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html#skbio.tree.TreeNode.compare_biparts" title="skbio.tree.TreeNode.compare_biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_biparts</span></code></a>(other[, proportion, symmetric])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html#skbio.tree.TreeNode.compare_biparts" title="skbio.tree.TreeNode.compare_biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_biparts</span></code></a>(other[, proportion, symmetric])</p></td>
 <td><p>Calculate the difference of bipartitions between two trees.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a>(other[, sample, metric, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a>(other[, sample, metric, ...])</p></td>
 <td><p>Calculate the distance between two trees based on cophenetic distances.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html#skbio.tree.TreeNode.compare_tip_distances" title="skbio.tree.TreeNode.compare_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_tip_distances</span></code></a>(other[, sample, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html#skbio.tree.TreeNode.compare_tip_distances" title="skbio.tree.TreeNode.compare_tip_distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_tip_distances</span></code></a>(other[, sample, ...])</p></td>
 <td><p>Calculate the distance between two trees based on cophenetic distances.</p></td>
 </tr>
 </tbody>
