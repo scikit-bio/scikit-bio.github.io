@@ -656,7 +656,9 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.depth.html">skbio.tree.TreeNode.depth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.height.html">skbio.tree.TreeNode.height</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.total_length.html">skbio.tree.TreeNode.total_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.distance.html">skbio.tree.TreeNode.distance</a></li>
@@ -752,7 +754,7 @@
 <h1>skbio.tree.TreeNode.cache_attr<a class="headerlink" href="#skbio-tree-treenode-cache-attr" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.cache_attr">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cache_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5204"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cache_attr" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cache_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5352"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cache_attr" title="Link to this definition">#</a></dt>
 <dd><p>Cache attributes on nodes of the tree through a postorder traversal.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -844,7 +846,7 @@ efficient than calling <a class="reference internal" href="skbio.tree.TreeNode.c
 </pre></div>
 </div>
 <p>Cache the sum of branch lengths per clade. This resembles but is more efficient
-than calling <a class="reference internal" href="skbio.tree.TreeNode.total_length.html#skbio.tree.TreeNode.total_length" title="skbio.tree.TreeNode.total_length"><code class="xref py py-meth docutils literal notranslate"><span class="pre">total_length()</span></code></a> (with <cite>include_stem=True</cite>) multiple times.</p>
+than calling <a class="reference internal" href="skbio.tree.TreeNode.total_length.html#skbio.tree.TreeNode.total_length" title="skbio.tree.TreeNode.total_length"><code class="xref py py-meth docutils literal notranslate"><span class="pre">total_length()</span></code></a> multiple times.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">.</span><span class="n">length</span> <span class="ow">or</span> <span class="mf">0.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">cache_attr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;clade_size&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">clade_size</span>
@@ -852,11 +854,8 @@ than calling <a class="reference internal" href="skbio.tree.TreeNode.total_lengt
 </pre></div>
 </div>
 <p>Cache the accumulative distances from all tips to the common ancestor of each
-clade. This allows one to measure the depth of a clade from the surface (tips)
-of a tree. One can further apply calculations like mean and standard deviation
-to the results. This is more efficient than calling
-<a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html#skbio.tree.TreeNode.accumulate_to_ancestor" title="skbio.tree.TreeNode.accumulate_to_ancestor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accumulate_to_ancestor()</span></code></a> multiple times. Also note that the result
-includes the stem branch of each clade.</p>
+clade. This is more efficient than calling <a class="reference internal" href="skbio.tree.TreeNode.depth.html#skbio.tree.TreeNode.depth" title="skbio.tree.TreeNode.depth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">depth()</span></code></a> multiple times. One
+can further apply calculations like mean and standard deviation to the results.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dist_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">length</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">comb_f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">prev</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span> <span class="o">+</span> <span class="n">curr</span> <span class="k">if</span> <span class="n">prev</span> <span class="k">else</span> <span class="n">curr</span>

@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Return a string containing an ascii drawing of the tree." />
+    <meta name="description" content="Calculate the depth of the current node." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.tree.TreeNode.ascii_art &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.tree.TreeNode.depth &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -62,19 +62,19 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.ascii_art';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.TreeNode.depth';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.ascii_art.html" />
+    <link rel="canonical" href="../../../generated/skbio.tree.TreeNode.depth.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.from_linkage_matrix" href="skbio.tree.TreeNode.from_linkage_matrix.html" />
-    <link rel="prev" title="skbio.tree.TreeNode.compare_tip_distances" href="skbio.tree.TreeNode.compare_tip_distances.html" />
+    <link rel="next" title="skbio.tree.TreeNode.accumulate_to_ancestor" href="skbio.tree.TreeNode.accumulate_to_ancestor.html" />
+    <link rel="prev" title="skbio.tree.TreeNode.observed_node_counts" href="skbio.tree.TreeNode.observed_node_counts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -656,7 +656,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.depth.html">skbio.tree.TreeNode.depth</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.depth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.height.html">skbio.tree.TreeNode.height</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.total_length.html">skbio.tree.TreeNode.total_length</a></li>
@@ -672,7 +672,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html">skbio.tree.TreeNode.compare_biparts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html">skbio.tree.TreeNode.compare_cophenet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_tip_distances.html">skbio.tree.TreeNode.compare_tip_distances</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.ascii_art</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.to_taxonomy.html">skbio.tree.TreeNode.to_taxonomy</a></li>
@@ -733,7 +733,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.tree.TreeNode.html" class="nav-link">skbio.tree.TreeNode</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.ascii_art</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.tree.TreeNode.depth</span></li>
   </ul>
 </nav>
 </div>
@@ -750,41 +750,77 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-tree-treenode-ascii-art">
-<h1>skbio.tree.TreeNode.ascii_art<a class="headerlink" href="#skbio-tree-treenode-ascii-art" title="Link to this heading">#</a></h1>
+  <section id="skbio-tree-treenode-depth">
+<h1>skbio.tree.TreeNode.depth<a class="headerlink" href="#skbio-tree-treenode-depth" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.tree.TreeNode.ascii_art">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">ascii_art</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show_internal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5896"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.ascii_art" title="Link to this definition">#</a></dt>
-<dd><p>Return a string containing an ascii drawing of the tree.</p>
-<p>Note, this method calls a private recursive function and is not safe
-for large trees.</p>
-<dl class="field-list simple">
+<dt class="sig sig-object py" id="skbio.tree.TreeNode.depth">
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3787"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.depth" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the depth of the current node.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">accumulate_to_ancestor</span></code>. The old name is kept as an alias.</p>
+</div>
+<p>The <strong>depth</strong> of a node is the sum of branch lengths from it to the root of the
+tree.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>show_internal</strong><span class="classifier">bool</span></dt><dd><p>includes internal edge names</p>
+<dd class="field-odd"><dl>
+<dt><strong>ancestor</strong><span class="classifier">TreeNode, optional</span></dt><dd><p>An ancestral node of self. If provided, the distance from self to this node
+instead of the root node will be calculated.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Becomes optional.</p>
+</div>
 </dd>
-<dt><strong>compact</strong><span class="classifier">bool</span></dt><dd><p>use exactly one line per tip</p>
+<dt><strong>include_root</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the distance will include the length of the root node, or the
+given ancestral node if <code class="docutils literal notranslate"><span class="pre">ancestor</span></code> is provided. Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>use_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the sum of branch lengths (True, default) or the number
+of branches (False) from self to root.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+<dt><strong>missing_as_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>When a node without an associated branch length is encountered, raise an
+error (False, default) or use 0 (True). Applicable when <code class="docutils literal notranslate"><span class="pre">use_length</span></code> is
+True.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>str</dt><dd><p>an ASCII formatted version of the tree</p>
+<dt>float</dt><dd><p>The depth of self.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>NoParentError</dt><dd><p>If the given ancestral node is not an ancestor of self.</p>
+</dd>
+<dt>NoLengthError</dt><dd><p>If nodes without branch length are encountered, but <code class="docutils literal notranslate"><span class="pre">missing_as_zero</span></code> is
+False.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.tree.TreeNode.height.html#skbio.tree.TreeNode.height" title="skbio.tree.TreeNode.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.distance.html#skbio.tree.TreeNode.distance" title="skbio.tree.TreeNode.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)root;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
-<span class="go">                    /-a</span>
-<span class="go">          /c-------|</span>
-<span class="go">         |          \-b</span>
-<span class="go">-root----|</span>
-<span class="go">         |          /-d</span>
-<span class="go">          \f-------|</span>
-<span class="go">                    \-e</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1,b:2)c:3,(d:4,e:5)f:6)root;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">depth</span><span class="p">()</span>
+<span class="go">4.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">depth</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">))</span>
+<span class="go">1.0</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -802,20 +838,20 @@ for large trees.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.tree.TreeNode.compare_tip_distances.html"
+       href="skbio.tree.TreeNode.observed_node_counts.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.compare_tip_distances</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.observed_node_counts</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.from_linkage_matrix.html"
+       href="skbio.tree.TreeNode.accumulate_to_ancestor.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.from_linkage_matrix</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.accumulate_to_ancestor</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -838,7 +874,7 @@ for large trees.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.ascii_art"><code class="docutils literal notranslate"><span class="pre">TreeNode.ascii_art()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.TreeNode.depth"><code class="docutils literal notranslate"><span class="pre">TreeNode.depth()</span></code></a></li>
 </ul>
   </nav></div>
 

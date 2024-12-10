@@ -656,7 +656,9 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html">skbio.tree.TreeNode.is_bifurcating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.observed_node_counts.html">skbio.tree.TreeNode.observed_node_counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.depth.html">skbio.tree.TreeNode.depth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html">skbio.tree.TreeNode.accumulate_to_ancestor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.height.html">skbio.tree.TreeNode.height</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.total_length.html">skbio.tree.TreeNode.total_length</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.descending_branch_length.html">skbio.tree.TreeNode.descending_branch_length</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.distance</a></li>
@@ -752,7 +754,7 @@
 <h1>skbio.tree.TreeNode.distance<a class="headerlink" href="#skbio-tree-treenode-distance" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.distance">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3968"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.distance" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4116"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.distance" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the distance between self and another node.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -782,7 +784,8 @@ True.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>NoLengthError</dt><dd><p>If nodes without branch length are encountered.</p>
+<dt>NoLengthError</dt><dd><p>If nodes without branch length are encountered, but <code class="docutils literal notranslate"><span class="pre">missing_as_zero</span></code> is
+False.</p>
 </dd>
 </dl>
 </dd>
@@ -792,7 +795,6 @@ True.</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.path.html#skbio.tree.TreeNode.path" title="skbio.tree.TreeNode.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html#skbio.tree.TreeNode.cophenet" title="skbio.tree.TreeNode.cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cophenet</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.tree.TreeNode.accumulate_to_ancestor.html#skbio.tree.TreeNode.accumulate_to_ancestor" title="skbio.tree.TreeNode.accumulate_to_ancestor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accumulate_to_ancestor</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.maxdist.html#skbio.tree.TreeNode.maxdist" title="skbio.tree.TreeNode.maxdist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maxdist</span></code></a></dt><dd></dd>
 </dl>
