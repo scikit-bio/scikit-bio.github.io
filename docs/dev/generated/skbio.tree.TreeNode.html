@@ -692,6 +692,11 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nni.html">skbio.tree.nni</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.rf_dists.html">skbio.tree.rf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.wrf_dists.html">skbio.tree.wrf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.path_dists.html">skbio.tree.path_dists</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.majority_rule.html">skbio.tree.majority_rule</a></li>
 </ul>
 </div>
@@ -752,7 +757,7 @@
 <h1>skbio.tree.TreeNode<a class="headerlink" href="#skbio-tree-treenode" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">TreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">support</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L43"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">TreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">support</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L47"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode" title="Link to this definition">#</a></dt>
 <dd><p>Represent a node within a tree.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> instance stores links from a node to its parent node and optionally
 child nodes. In addition, it can represent the length of the branch connecting
@@ -934,8 +939,8 @@ unrooted and unordered trees as well, which are common in phylogenetics.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html#skbio.tree.TreeNode.bifurcate" title="skbio.tree.TreeNode.bifurcate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bifurcate</span></code></a>([insert_length, uncache])</p></td>
 <td><p>Convert the tree into a bifurcating tree.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.shuffle.html#skbio.tree.TreeNode.shuffle" title="skbio.tree.TreeNode.shuffle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shuffle</span></code></a>([k, names, shuffle_f, n])</p></td>
-<td><p>Shuffled tip names of the tree.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.shuffle.html#skbio.tree.TreeNode.shuffle" title="skbio.tree.TreeNode.shuffle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shuffle</span></code></a>([k, names, shuffler, n])</p></td>
+<td><p>Randomly shuffle tip names of the tree.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1021,7 +1026,7 @@ unrooted and unordered trees as well, which are common in phylogenetics.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.bipart.html#skbio.tree.TreeNode.bipart" title="skbio.tree.TreeNode.bipart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bipart</span></code></a>()</p></td>
 <td><p>Return a bipartition of the tree at the current branch.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.biparts.html#skbio.tree.TreeNode.biparts" title="skbio.tree.TreeNode.biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biparts</span></code></a>([within, include_single, map_to_length])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.biparts.html#skbio.tree.TreeNode.biparts" title="skbio.tree.TreeNode.biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biparts</span></code></a>([within, include_tips, ...])</p></td>
 <td><p>Return all bipartitions within the tree under self.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html#skbio.tree.TreeNode.assign_supports" title="skbio.tree.TreeNode.assign_supports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_supports</span></code></a>()</p></td>
@@ -1069,10 +1074,10 @@ unrooted and unordered trees as well, which are common in phylogenetics.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html#skbio.tree.TreeNode.compare_wrfd" title="skbio.tree.TreeNode.compare_wrfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_wrfd</span></code></a>(other[, metric, rooted, ...])</p></td>
 <td><p>Calculate weighted Robinson-Foulds distance or variants between two trees.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html#skbio.tree.TreeNode.compare_subsets" title="skbio.tree.TreeNode.compare_subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_subsets</span></code></a>(other[, shared_only, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_subsets.html#skbio.tree.TreeNode.compare_subsets" title="skbio.tree.TreeNode.compare_subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_subsets</span></code></a>(other[, shared_only, proportion])</p></td>
 <td><p>Calculate the difference of subsets between two trees.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html#skbio.tree.TreeNode.compare_biparts" title="skbio.tree.TreeNode.compare_biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_biparts</span></code></a>(other[, proportion, symmetric])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_biparts.html#skbio.tree.TreeNode.compare_biparts" title="skbio.tree.TreeNode.compare_biparts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_biparts</span></code></a>(other[, proportion])</p></td>
 <td><p>Calculate the difference of bipartitions between two trees.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a>(other[, sample, metric, ...])</p></td>
@@ -1176,37 +1181,37 @@ unrooted and unordered trees as well, which are common in phylogenetics.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.__copy__">
-<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__copy__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L250"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__copy__" title="Link to this definition">#</a></dt>
 <dd><p>Return a shallow copy.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.__deepcopy__">
-<span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L250"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__deepcopy__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L254"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__deepcopy__" title="Link to this definition">#</a></dt>
 <dd><p>Return a deep copy.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__getitem__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L163"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__getitem__" title="Link to this definition">#</a></dt>
 <dd><p>Slice the children of self.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.__iter__">
-<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__iter__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__iter__" title="Link to this definition">#</a></dt>
 <dd><p>Iterate over the children of self.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.__len__">
-<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__len__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__len__" title="Link to this definition">#</a></dt>
 <dd><p>Return the number of children of self.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L147"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return a Newick string of self, with names and distances.</p>
 </dd></dl>
 

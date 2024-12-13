@@ -691,6 +691,11 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nni.html">skbio.tree.nni</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.rf_dists.html">skbio.tree.rf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.wrf_dists.html">skbio.tree.wrf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.path_dists.html">skbio.tree.path_dists</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.majority_rule.html">skbio.tree.majority_rule</a></li>
 </ul>
 </div>
@@ -754,7 +759,7 @@
 <h1>skbio.tree.TreeNode.compare_subsets<a class="headerlink" href="#skbio-tree-treenode-compare-subsets" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.compare_subsets">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_absent_taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4590"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_subsets" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4511"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_subsets" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the difference of subsets between two trees.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -762,8 +767,8 @@
 <dt><strong>other</strong><span class="classifier">TreeNode</span></dt><dd><p>The other tree to compare with.</p>
 </dd>
 <dt><strong>shared_only</strong><span class="classifier">bool, optional</span></dt><dd><p>Only consider taxa shared with the other tree. Default is False.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">exclude_absent_taxa</span></code>. The old name is kept as an alias.</p>
 </div>
 </dd>
 <dt><strong>proportion</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return count (False) or proportion (True, default) of different
@@ -771,15 +776,6 @@ subsets.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
-</dd>
-<dt><strong>symmetric</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to calculate the symmetric difference between self and other (True,
-default), or only the difference from self to other (False).</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
-</div>
-</dd>
-<dt><strong>exclude_absent_taxa</strong><span class="classifier">bool, optional</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">shared_only</span></code> for backward compatibility. Deprecated and to be
-removed in a future release.</p>
 </dd>
 </dl>
 </dd>

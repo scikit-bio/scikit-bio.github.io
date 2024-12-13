@@ -692,6 +692,11 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nni.html">skbio.tree.nni</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.rf_dists.html">skbio.tree.rf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.wrf_dists.html">skbio.tree.wrf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.path_dists.html">skbio.tree.path_dists</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.majority_rule.html">skbio.tree.majority_rule</a></li>
 </ul>
 </div>
@@ -755,7 +760,7 @@
 <h1>skbio.tree.TreeNode.compare_wrfd<a class="headerlink" href="#skbio-tree-treenode-compare-wrfd" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.compare_wrfd">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_wrfd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cityblock'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rooted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_single</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4820"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_wrfd" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_wrfd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cityblock'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rooted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_tips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4721"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_wrfd" title="Link to this definition">#</a></dt>
 <dd><p>Calculate weighted Robinson-Foulds distance or variants between two trees.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
@@ -765,9 +770,9 @@
 <dd class="field-odd"><dl class="simple">
 <dt><strong>other</strong><span class="classifier">TreeNode</span></dt><dd><p>The other tree to compare with.</p>
 </dd>
-<dt><strong>metric</strong><span class="classifier">str or callable, optional</span></dt><dd><p>The pairwise distance metric to use. Can be a preset, a distance function
-name under <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html#module-scipy.spatial.distance" title="(in SciPy v1.14.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>, or a custom function that takes
-two vectors and returns a number. Some notable options are:</p>
+<dt><strong>metric</strong><span class="classifier">str or callable, optional</span></dt><dd><p>The distance metric to use. Can be a preset, a distance function name under
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html#module-scipy.spatial.distance" title="(in SciPy v1.14.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>, or a custom function that takes two vectors
+and returns a number. Some notable options are:</p>
 <ul class="simple">
 <li><p>“cityblock” (default): City block (Manhattan) distance. The result
 matches the original weighted Robinson-Foulds distance <a class="reference internal" href="#rb55296f8f9d0-1" id="id1">[1]</a>.</p></li>
@@ -785,7 +790,7 @@ this will be determined based on whether self is rooted. However, one
 can override it by explicitly setting True (rooted) or False (unrooted).
 See <a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_rfd()</span></code></a> for details.</p>
 </dd>
-<dt><strong>include_single</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include single-taxon biparitions (terminal branches) in the
+<dt><strong>include_tips</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include single-taxon biparitions (terminal branches) in the
 calculation. Default is True, such that all branches in the trees are
 considered. Set this as False if terminal branch lengths are absent or
 irrelevant.</p>
@@ -804,15 +809,16 @@ irrelevant.</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.wrf_dists.html#skbio.tree.wrf_dists" title="skbio.tree.wrf_dists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.tree.wrf_dists</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
 <p>The Robinson-Foulds (RF) distance may be weighted by the branch lengths of
-biparitions to account for evolutionary distances in addition to branching
+bipartitions to account for evolutionary distances in addition to branching
 patterns.</p>
 <p>The default behavior of this method calculates the original weighted RF (wRF)
 distance <a class="reference internal" href="#rb55296f8f9d0-1" id="id3">[1]</a>, which is the sum of differences of branch lengths of matching
-biparitions. Bipartitions unique to one tree are given a length of 0 in the
+bipartitions. Bipartitions unique to one tree are given a length of 0 in the
 other tree during calculation.</p>
 <div class="math notranslate nohighlight">
 \[\text{wRF}(T_1, T_2) = \sum_{s \in S_1 \cup S_2} |l_1(s) - l_2(s)|\]</div>
@@ -896,7 +902,7 @@ on subsets instead of bipartitions).</p>
 </pre></div>
 </div>
 <p>Calculate the KF distance without considering terminal branches.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">tree1</span><span class="o">.</span><span class="n">compare_wrfd</span><span class="p">(</span><span class="n">tree2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">include_single</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">tree1</span><span class="o">.</span><span class="n">compare_wrfd</span><span class="p">(</span><span class="n">tree2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">include_tips</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="go">3.74166</span>
 </pre></div>

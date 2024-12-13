@@ -692,6 +692,11 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.nni.html">skbio.tree.nni</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.rf_dists.html">skbio.tree.rf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.wrf_dists.html">skbio.tree.wrf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.path_dists.html">skbio.tree.path_dists</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.majority_rule.html">skbio.tree.majority_rule</a></li>
 </ul>
 </div>
@@ -755,7 +760,7 @@
 <h1>skbio.tree.TreeNode.compare_tip_distances<a class="headerlink" href="#skbio-tree-treenode-compare-tip-distances" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.compare_tip_distances">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unitcorr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4976"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_tip_distances" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">compare_tip_distances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unitcorr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4876"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.compare_tip_distances" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the distance between two trees based on cophenetic distances.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">compare_tip_distances</span></code>. The old name is kept as an alias.</p>
@@ -768,9 +773,9 @@
 <dt><strong>sample</strong><span class="classifier">int, optional</span></dt><dd><p>Randomly subsample this number of tips in common between the trees to
 compare. This is useful when comparing very large trees.</p>
 </dd>
-<dt><strong>metric</strong><span class="classifier">str or callable, optional</span></dt><dd><p>The pairwise distance metric to use. Can be a preset, a distance function
-name under <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html#module-scipy.spatial.distance" title="(in SciPy v1.14.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>, or a custom function that takes
-two vectors and returns a number. Some notable options are:</p>
+<dt><strong>metric</strong><span class="classifier">str or callable, optional</span></dt><dd><p>The distance metric to use. Can be a preset, a distance function name under
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html#module-scipy.spatial.distance" title="(in SciPy v1.14.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>, or a custom function that takes two vectors
+and returns a number. Some notable options are:</p>
 <ul class="simple">
 <li><p>“cityblock”: City block (Manhattan) distance.</p></li>
 <li><p>“euclidean”: Euclidean distance. The result matches the path-length
@@ -785,15 +790,16 @@ correlation distance (range: [0, 1]).</p></li>
 <p><span class="versionmodified changed">Changed in version 0.6.3: </span>Accepts a function on two vectors instead of two <cite>DistanceMatrix</cite>
 instances. The default value “unitcorr” is consistent with the previous
 default behavior.</p>
+<p>Renamed from <code class="docutils literal notranslate"><span class="pre">dist_f</span></code>. The old name is kept as an alias.</p>
 </div>
 </dd>
-<dt><strong>shuffler</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>The shuffling function to use if <code class="docutils literal notranslate"><span class="pre">sample</span></code> is specified. Default is the
-<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle" title="(in NumPy v2.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shuffle</span></code></a> method of a NumPy random
-generator. If an integer is provided, a random generator will be
-constructed using this number as the seed.</p>
+<dt><strong>shuffler</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>The shuffling function to use if <code class="docutils literal notranslate"><span class="pre">sample</span></code> is specified. Default is
+<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.shuffle.html#numpy.random.Generator.shuffle" title="(in NumPy v2.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shuffle()</span></code></a>. If an integer is provided, a
+random generator will be constructed using this number as the seed.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.6.3: </span>Switched to NumPy’s new random generator. Can accept a random seed or
 random generator instance.</p>
+<p>Renamed from <code class="docutils literal notranslate"><span class="pre">shuffle_f</span></code>. The old name is kept as an alias.</p>
 </div>
 </dd>
 <dt><strong>use_length</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to calculate the sum of branch lengths (True, default) or the
@@ -811,12 +817,6 @@ number of branches (False) connecting each pair of tips.</p>
 <p class="admonition-title">Note</p>
 <p>The default value will be set as True in 0.7.0.</p>
 </div>
-</dd>
-<dt><strong>dist_f</strong><span class="classifier">str or callable, optional</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">metric</span></code> for backward compatibility. Deprecated and to be
-removed in a future release.</p>
-</dd>
-<dt><strong>shuffle_f</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">shuffler</span></code> for backward compatibility. Deprecated and to be
-removed in a future release.</p>
 </dd>
 </dl>
 </dd>
@@ -846,6 +846,7 @@ being treated separately.</p>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.cophenet.html#skbio.tree.TreeNode.cophenet" title="skbio.tree.TreeNode.cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cophenet</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_rfd</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html#skbio.tree.TreeNode.compare_wrfd" title="skbio.tree.TreeNode.compare_wrfd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_wrfd</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.path_dists.html#skbio.tree.path_dists" title="skbio.tree.path_dists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.tree.path_dists</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
