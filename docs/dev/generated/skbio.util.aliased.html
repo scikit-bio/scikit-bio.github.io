@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Replace all zeros with small non-zero values." />
+    <meta name="description" content="Create an alias for a function or method." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.multiplicative_replacement &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.util.aliased &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -17,8 +17,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -28,8 +28,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -38,10 +38,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=240ceacb" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=4317e44f"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -62,20 +62,20 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.multiplicative_replacement';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.util.aliased';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.composition.multiplicative_replacement.html" />
+    <link rel="canonical" href="../../../generated/skbio.util.aliased.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.sbp_basis" href="skbio.stats.composition.sbp_basis.html" />
-    <link rel="prev" title="skbio.stats.composition.multi_replace" href="skbio.stats.composition.multi_replace.html" />
+    <link rel="next" title="skbio.util.register_aliases" href="skbio.util.register_aliases.html" />
+    <link rel="prev" title="skbio.util.deprecated" href="skbio.util.deprecated.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -229,7 +229,9 @@
 </li>
 
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
@@ -269,7 +271,7 @@
 </li>
 
 
-<li class=" current active">
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../stats.html">
     Multivariate Statistics (skbio.stats)
   </a>
@@ -304,7 +306,7 @@
 </li>
 
 
-<li class=" ">
+<li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
   </a>
@@ -498,7 +500,7 @@
 </li>
 
 
-<li class="nav-item current active">
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../stats.html">
     Multivariate Statistics (skbio.stats)
   </a>
@@ -533,7 +535,7 @@
 </li>
 
 
-<li class="nav-item ">
+<li class="nav-item current active">
   <a class="nav-link nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
   </a>
@@ -595,45 +597,27 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.distance.html">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.get_data_path.html">skbio.util.get_data_path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.assert_ordination_results_equal.html">skbio.util.assert_ordination_results_equal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.assert_data_frame_almost_equal.html">skbio.util.assert_data_frame_almost_equal</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.ordination.html">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.PlottableMixin.html">skbio.util.PlottableMixin</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb_inv.html">skbio.stats.composition.perturb_inv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.power.html">skbio.stats.composition.power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.alr.html">skbio.stats.composition.alr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.alr_inv.html">skbio.stats.composition.alr_inv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr.html">skbio.stats.composition.clr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr_inv.html">skbio.stats.composition.clr_inv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr.html">skbio.stats.composition.ilr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr_inv.html">skbio.stats.composition.ilr_inv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.vlr.html">skbio.stats.composition.vlr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html">skbio.stats.composition.pairwise_vlr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.multiplicative_replacement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.sbp_basis.html">skbio.stats.composition.sbp_basis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.tree_basis.html">skbio.stats.composition.tree_basis</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.overrides.html">skbio.util.overrides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.classproperty.html">skbio.util.classproperty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.classonlymethod.html">skbio.util.classonlymethod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.deprecated.html">skbio.util.deprecated</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.util.aliased</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.register_aliases.html">skbio.util.register_aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.params_aliased.html">skbio.util.params_aliased</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.subsample_counts.html">skbio.stats.subsample_counts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.isubsample.html">skbio.stats.isubsample</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.evolve.html">Evolutionary statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.evolve</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.gradient.html">Gradient analyses (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.gradient</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.stats.power.html">Empirical Power Estimation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.power</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.get_rng.html">skbio.util.get_rng</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.cardinal_to_ordinal.html">skbio.util.cardinal_to_ordinal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.find_duplicates.html">skbio.util.find_duplicates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.safe_md5.html">skbio.util.safe_md5</a></li>
 </ul>
 </div>
 </nav></div>
@@ -641,9 +625,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -670,12 +659,9 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../stats.html" class="nav-link">Multivariate Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="../util.html" class="nav-link">Utilities for Developers (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util</span></code>)</a></li>
     
-    
-    <li class="breadcrumb-item"><a href="skbio.stats.composition.html" class="nav-link">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.multiplicative_replacement</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.util.aliased</span></li>
   </ul>
 </nav>
 </div>
@@ -692,49 +678,36 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-composition-multiplicative-replacement">
-<h1>skbio.stats.composition.multiplicative_replacement<a class="headerlink" href="#skbio-stats-composition-multiplicative-replacement" title="Link to this heading">#</a></h1>
+  <section id="skbio-util-aliased">
+<h1>skbio.util.aliased<a class="headerlink" href="#skbio-util-aliased" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.composition.multiplicative_replacement">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">multiplicative_replacement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L271"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.multiplicative_replacement" title="Link to this definition">#</a></dt>
-<dd><p>Replace all zeros with small non-zero values.</p>
-<p>This function is an alias for <code class="docutils literal notranslate"><span class="pre">multi_replace</span></code>.</p>
+<dt class="sig sig-object py" id="skbio.util.aliased">
+<span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">aliased</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.aliased" title="Link to this definition">#</a></dt>
+<dd><p>Create an alias for a function or method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Alias name of the function or method.</p>
 </dd>
-<dt><strong>delta</strong><span class="classifier">float, optional</span></dt><dd><p>A small number to be used to replace zeros. If not specified, the
-default value is <span class="math notranslate nohighlight">\(\delta = \frac{1}{N^2}\)</span> where <span class="math notranslate nohighlight">\(N\)</span> is the
-number of components.</p>
+<dt><strong>ver</strong><span class="classifier">str, optional</span></dt><dd><p>Version when alias was created.</p>
 </dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>ndarray of shape (n_compositions, n_components)</dt><dd><p>The matrix where all of the values are non-zero and each composition
-(row) adds up to 1.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If negative proportions are created due to a large <code class="docutils literal notranslate"><span class="pre">delta</span></code>.</p>
+<dt><strong>warn</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, raise a deprecation warning when alias is called.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">multiplicative_replacement</span></code> is deprecated as of <code class="docutils literal notranslate"><span class="pre">0.6.0</span></code> in favor of
-<code class="docutils literal notranslate"><span class="pre">multi_replace</span></code>.</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.util.deprecated.html#skbio.util.deprecated" title="skbio.util.deprecated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deprecated</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.util.register_aliases.html#skbio.util.register_aliases" title="skbio.util.register_aliases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_aliases</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.util.params_aliased.html#skbio.util.params_aliased" title="skbio.util.params_aliased"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_aliased</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This is a decorator that can be applied to a function or method to indicate its
+alias status. To make it effective, <a class="reference internal" href="skbio.util.register_aliases.html#skbio.util.register_aliases" title="skbio.util.register_aliases"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_aliases()</span></code></a> must be applied to the
+parent module or class.</p>
 </dd></dl>
 
 </section>
@@ -750,20 +723,20 @@ number of components.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.multi_replace.html"
+       href="skbio.util.deprecated.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.multi_replace</p>
+        <p class="prev-next-title">skbio.util.deprecated</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.sbp_basis.html"
+       href="skbio.util.register_aliases.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.sbp_basis</p>
+        <p class="prev-next-title">skbio.util.register_aliases</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -786,7 +759,7 @@ number of components.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.multiplicative_replacement"><code class="docutils literal notranslate"><span class="pre">multiplicative_replacement()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.util.aliased"><code class="docutils literal notranslate"><span class="pre">aliased()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -803,8 +776,8 @@ number of components.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -841,7 +814,8 @@ number of components.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>
