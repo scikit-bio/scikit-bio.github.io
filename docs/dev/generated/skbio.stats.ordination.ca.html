@@ -31,7 +31,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -708,35 +708,18 @@ ordination that PCA when the data has lots of zero values.</p>
 <p>It is related to Principal Component Analysis (PCA) but it should
 be preferred in the case of steep or long gradients, that is, when
 there are many zeros in the input data matrix.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
+<dd class="field-odd"><dl class="simple">
 <dt><strong>X</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Samples by features table (n, m). It can be applied to different kinds
 of data tables but data must be non-negative and dimensionally
 homogeneous (quantitative or binary). The rows correspond to the
 samples and the columns correspond to the features.</p>
 </dd>
-<dt><strong>scaling</strong><span class="classifier">{1, 2}</span></dt><dd><p>For a more detailed explanation of the interpretation, check Legendre &amp;
-Legendre 1998, section 9.4.3. The notes that follow are quick
-recommendations.</p>
-<p>Scaling type 1 maintains <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows
-(samples): in the transformed space, the euclidean distances between
-rows are equal to the <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows in the
-original space. It should be used when studying the ordination of
-samples. Rows (samples) that are near a column (features) have high
-contributions from it.</p>
-<p>Scaling type 2 preserves <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between columns
-(features), so euclidean distance between columns after transformation
-is equal to <span class="math notranslate nohighlight">\(\chi^2\)</span> distance between columns in the original
-space. It is best used when we are interested in the ordination of
-features. A column (features) that is next to a row (sample) means that
-it is more abundant there.</p>
-<p>Other types of scalings are currently not implemented, as they’re less
-used by ecologists (Legendre &amp; Legendre 1998, p. 456).</p>
-<p>In general, features appearing far from the center of the biplot and
-far from its edges will probably exhibit better relationships than
-features either in the center (may be multimodal features, not related
-to the shown ordination axes…) or the edges (sparse features…).</p>
+<dt><strong>scaling</strong><span class="classifier">{1, 2}</span></dt><dd><p>Scaling type 1 maintains <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows.
+Scaling type 2 preserves <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between columns.
+For a more detailed explanation of the interpretation,
+check notes below and Legendre &amp; Legendre 1998, section 9.4.3.</p>
 </dd>
 </dl>
 </dd>
@@ -768,6 +751,20 @@ explained.</p>
 <p class="rubric">Notes</p>
 <p>The algorithm is based on <a class="reference internal" href="#ra0268fac96d8-1" id="id1">[1]</a>, S 9.4.1., and is expected to give the same
 results as <code class="docutils literal notranslate"><span class="pre">cca(X)</span></code> in R’s package vegan.</p>
+<p>In Scaling type 1, the euclidean distances between rows in the transformed
+space equal their <span class="math notranslate nohighlight">\(\chi^2\)</span> distances in the original space.
+Rows (samples) near a column (features) indicate high contributions from
+that feature.</p>
+<p>In Scaling type 2, the euclidean distances between columns in the
+transformed space equal their <span class="math notranslate nohighlight">\(\chi^2\)</span> distances in the original
+space. Columns (features) near a row (sample) indicate higher abundance
+in that sample.
+Other types of scalings are currently not implemented, as they are less used
+by ecologists (Legendre &amp; Legendre 1998, p. 456).</p>
+<p>Features far from the center of the biplot and far from its edges often
+exhibit better relationships than features either in the center (may represent
+multimodal features, not related to the shown ordination axes) or the
+edges (sparse features).</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="ra0268fac96d8-1" role="doc-biblioentry">
@@ -856,7 +853,7 @@ Amsterdam.</p>
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

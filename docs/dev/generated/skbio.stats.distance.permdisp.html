@@ -31,7 +31,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -812,7 +812,7 @@ dispersions. Biometrics, 62(1), 245-253.</p>
 <p class="rubric">Examples</p>
 <p>Load a 6x6 distance matrix and grouping vector denoting 2 groups of
 objects:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span>    <span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">],</span>
 <span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>    <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">],</span>
 <span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span>
@@ -825,7 +825,7 @@ objects:</p>
 </div>
 <p>Run PERMDISP using 99 permutations to caluculate the p-value. The seed is to
 make the output deterministic. You may skip it if that’s not necessary.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">permdisp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">permdisp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> 
 <span class="go">method name               PERMDISP</span>
 <span class="go">test statistic name        F-value</span>
@@ -875,7 +875,7 @@ statistics.</p>
 grouping instead of a grouping vector. The following DataFrame’s
 Grouping column specifies the same grouping as the vector we used in the
 previous examples.:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
 <span class="gp">... </span>     <span class="p">{</span><span class="s1">&#39;Grouping&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;s1&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">:</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                   <span class="s1">&#39;s5&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">:</span> <span class="s1">&#39;G2&#39;</span><span class="p">}})</span>
@@ -986,7 +986,7 @@ determine whether clustering within groups is significant.</p>
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

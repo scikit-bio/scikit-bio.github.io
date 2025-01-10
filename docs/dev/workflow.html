@@ -31,7 +31,7 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -692,7 +692,7 @@ deciding what methods are executed based on state or runtime options.</p>
 </section>
 <section id="tutorial">
 <h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.workflow</span> <span class="kn">import</span> <span class="n">Workflow</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.workflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">Workflow</span>
 </pre></div>
 </div>
 <p>As an example of the <a class="reference internal" href="generated/skbio.workflow.Workflow.html#skbio.workflow.Workflow" title="skbio.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workflow</span></code></a> object, let’s construct a sequence processor
@@ -705,23 +705,23 @@ which can be called from workflow methods, but they will not be subjected
 directly to workflow checks.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nuc_pattern</span> <span class="o">=</span> <span class="s1">&#39;AATTG&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">has_nuc_pattern</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">nuc_pattern</span><span class="p">)]</span> <span class="o">==</span> <span class="n">nuc_pattern</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">SequenceProcessor</span><span class="p">(</span><span class="n">Workflow</span><span class="p">):</span>
-<span class="gp">... </span>   <span class="k">def</span> <span class="nf">initialize_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">SequenceProcessor</span><span class="p">(</span><span class="n">Workflow</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="k">def</span><span class="w"> </span><span class="nf">initialize_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 <span class="gp">... </span>       <span class="c1"># Setup the state for a new item (e.g., a new sequence)</span>
 <span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">item</span>
 <span class="gp">... </span>   <span class="nd">@method</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="gp">... </span>   <span class="k">def</span> <span class="nf">check_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="k">def</span><span class="w"> </span><span class="nf">check_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>       <span class="c1"># Always make sure the sequence is at least 10 nucleotides</span>
 <span class="gp">... </span>       <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
 <span class="gp">... </span>           <span class="bp">self</span><span class="o">.</span><span class="n">failed</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="gp">... </span>   <span class="nd">@method</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 <span class="gp">... </span>   <span class="nd">@requires</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">has_nuc_pattern</span><span class="p">)</span>
-<span class="gp">... </span>   <span class="k">def</span> <span class="nf">truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="k">def</span><span class="w"> </span><span class="nf">truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>       <span class="c1"># Truncate if a specific starting nucleotide pattern is observed</span>
 <span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">nuc_pattern</span><span class="p">):]</span>
 <span class="gp">... </span>   <span class="nd">@method</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 <span class="gp">... </span>   <span class="nd">@requires</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s1">&#39;reverse&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">... </span>   <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>       <span class="c1"># Reverse the sequence if indicatd at runtime</span>
 <span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -745,9 +745,9 @@ Callbacks are optional – by default, a success will simply yield the state
 member variable while failures are ignored – but, depending on your workflow,
 it can be useful to handle failures or potentially do something fun and
 exciting on success.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">success_f</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">success_f</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="s2">&quot;SUCCESS: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">state</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fail_f</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">fail_f</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="s2">&quot;FAIL: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">state</span>
 </pre></div>
 </div>
@@ -834,19 +834,19 @@ cProfile).</p>
 <p>Three final components of the workflow that are quite handy are objects that
 allow you to indicate <code class="docutils literal notranslate"><span class="pre">anything</span></code> as an option value, anything that is
 <code class="docutils literal notranslate"><span class="pre">not_none</span></code>, and a mechanism to define a range of valid values.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.workflow</span> <span class="kn">import</span> <span class="n">not_none</span><span class="p">,</span> <span class="n">anything</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Ex</span><span class="p">(</span><span class="n">Workflow</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.workflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">not_none</span><span class="p">,</span> <span class="n">anything</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">Ex</span><span class="p">(</span><span class="n">Workflow</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nd">@method</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="nd">@requires</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">not_none</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">do_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">do_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">pass</span>
 <span class="gp">... </span>    <span class="nd">@method</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="nd">@requires</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">anything</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">do_something_else</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_else</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">pass</span>
 <span class="gp">... </span>    <span class="nd">@method</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="nd">@requires</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">do_something_awesome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_awesome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">pass</span>
 <span class="gp">...</span>
 </pre></div>
@@ -932,7 +932,7 @@ allow you to indicate <code class="docutils literal notranslate"><span class="pr
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

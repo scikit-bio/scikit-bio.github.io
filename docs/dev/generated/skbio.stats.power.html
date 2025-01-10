@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -737,7 +737,7 @@ matches.</p>
 variables, <code class="docutils literal notranslate"><span class="pre">ind</span></code> and <code class="docutils literal notranslate"><span class="pre">dep</span></code>. Let’s use random subsampling to estimate the
 statistical power of our test with an alpha of 0.1, 0.01, and 0.001.</p>
 <p>We will use a random seed to ensure the reproducibility of results.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ind</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ind</span> 
@@ -750,10 +750,10 @@ statistical power of our test with an alpha of 0.1, 0.01, and 0.001.</p>
 </pre></div>
 </div>
 <p>Let’s define a test that will draw a list of sample pairs and determine
-if they’re correlated. We’ll use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html#scipy.stats.pearsonr" title="(in SciPy v1.14.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.pearsonr()</span></code></a> which takes
+if they’re correlated. We’ll use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html#scipy.stats.pearsonr" title="(in SciPy v1.15.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.pearsonr()</span></code></a> which takes
 two arrays and returns a correlation coefficient and a p-value representing
 the probability the two distributions are correlated.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">pearsonr</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pearsonr</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">pvalue</span>
 </pre></div>
 </div>
@@ -768,7 +768,7 @@ the first distribution.</p>
 by setting <code class="docutils literal notranslate"><span class="pre">draw_mode</span></code> to “matched”. We can also set our critical value, so
 that we estimate power for a critical value of <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>, an
 estimate for the critical value of 0.01, and a critical value of 0.001.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.power</span> <span class="kn">import</span> <span class="n">subsample_power</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.power</span><span class="w"> </span><span class="kn">import</span> <span class="n">subsample_power</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pwr_100</span><span class="p">,</span> <span class="n">counts_100</span> <span class="o">=</span> <span class="n">subsample_power</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">test</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="n">samples</span><span class="p">,</span> <span class="n">max_counts</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_counts</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">counts_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">draw_mode</span><span class="o">=</span><span class="s1">&#39;matched&#39;</span><span class="p">,</span> <span class="n">alpha_pwr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">num_iter</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
@@ -871,7 +871,7 @@ we need to be confident that we have not committed a type II error increases.</p
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

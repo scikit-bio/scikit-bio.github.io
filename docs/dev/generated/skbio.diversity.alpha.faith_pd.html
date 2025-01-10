@@ -31,7 +31,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -843,14 +843,14 @@ each count corresponds to, which we’ll provide as <code class="docutils litera
 </pre></div>
 </div>
 <p>We also need a phylogenetic tree that relates the taxa to one another.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
 <span class="gp">... </span>                      <span class="s1">&#39;(U4:0.75,(U5:0.5,((U6:0.33,U7:0.62):0.5&#39;</span>
 <span class="gp">... </span>                      <span class="s1">&#39;,U8:0.5):0.5):0.5):1.25):0.0)root;&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>We can then compute the Faith PD of the sample.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.diversity.alpha</span> <span class="kn">import</span> <span class="n">faith_pd</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity.alpha</span><span class="w"> </span><span class="kn">import</span> <span class="n">faith_pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span> <span class="o">=</span> <span class="n">faith_pd</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">taxa</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">6.95</span>
@@ -936,7 +936,7 @@ each count corresponds to, which we’ll provide as <code class="docutils litera
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

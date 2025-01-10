@@ -31,7 +31,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -773,8 +773,8 @@ assays. You have some preliminary measurements, and you’d like to
 predict how many (more) cells you need to analyze for 80% power.</p>
 <p>You have information about 60 cells, which we’ll simulate below. Note
 that we are setting a random seed value for consistency.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span>
 <span class="gp">... </span>    <span class="s1">&#39;CELL_LINE&#39;</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">60</span><span class="p">,)),</span>
@@ -790,7 +790,7 @@ that we are setting a random seed value for consistency.</p>
 <p>We will approach this by assuming that the distribution of our outcome is
 not normally distributed, and apply a kruskal-wallis test to compare
 between the cytokine treated and untreated cells.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kruskal</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kruskal</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">kruskal</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;OUTCOME&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">pvalue</span>
 </pre></div>
 </div>
@@ -814,7 +814,7 @@ system, although further iteration might encourage the consideration of
 variable with effect sizes similar, or larger than the variable of
 interest.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">control_cats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SOURCE&#39;</span><span class="p">,</span> <span class="s1">&#39;CELL_LINE&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.power</span> <span class="kn">import</span> <span class="n">subsample_paired_power</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.power</span><span class="w"> </span><span class="kn">import</span> <span class="n">subsample_paired_power</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pwr</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">subsample_paired_power</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">test</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s1">&#39;TREATMENT&#39;</span><span class="p">,</span> <span class="n">control_cats</span><span class="o">=</span><span class="n">control_cats</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">counts_interval</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">num_iter</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">num_runs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
@@ -910,7 +910,7 @@ samples per group.</p>
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

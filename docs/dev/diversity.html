@@ -31,7 +31,7 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -884,7 +884,7 @@ passed as strings which won’t be listed here, such as those implemented in
 </div>
 <p>First, we’ll compute <span class="math notranslate nohighlight">\(S_{obs}\)</span>, an alpha diversity metric, for each
 sample using the <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code> driver function:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.diversity</span> <span class="kn">import</span> <span class="n">alpha_diversity</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity</span><span class="w"> </span><span class="kn">import</span> <span class="n">alpha_diversity</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_sobs</span> <span class="o">=</span> <span class="n">alpha_diversity</span><span class="p">(</span><span class="s1">&#39;sobs&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_sobs</span> 
 <span class="go">A    5</span>
@@ -899,8 +899,8 @@ sample using the <code class="docutils literal notranslate"><span class="pre">al
 <p>Next we’ll compute Faith’s PD on the same samples. Since this is a
 phylogenetic diversity metric, we’ll first create a tree and an ordered
 list of taxa.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span>
 <span class="gp">... </span>                     <span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
 <span class="gp">... </span>                     <span class="s1">&#39;(U4:0.75,(U5:0.5,(U6:0.5,U7:0.5):0.5):&#39;</span>
@@ -922,7 +922,7 @@ list of taxa.</p>
 all pairs of samples. Notice that the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">ids</span></code> parameters
 provided to <code class="docutils literal notranslate"><span class="pre">beta_diversity</span></code> are the same as those provided to
 <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.diversity</span> <span class="kn">import</span> <span class="n">beta_diversity</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity</span><span class="w"> </span><span class="kn">import</span> <span class="n">beta_diversity</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bc_dm</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s2">&quot;braycurtis&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bc_dm</span><span class="p">)</span>
 <span class="go">6x6 distance matrix</span>
@@ -961,7 +961,7 @@ we’ll determine if the UniFrac and Bray-Curtis distance matrices are
 significantly correlated by computing the Mantel correlation between them.
 Then we’ll determine if the p-value is significant based on an alpha of
 0.05.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">mantel</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">mantel</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">mantel</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">,</span> <span class="n">bc_dm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 <span class="go">0.922404392093</span>
@@ -972,13 +972,13 @@ Then we’ll determine if the p-value is significant based on an alpha of
 </div>
 <p>Next, we’ll perform principal coordinates analysis (PCoA) on our weighted
 UniFrac distance matrix.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.ordination</span> <span class="kn">import</span> <span class="n">pcoa</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">pcoa</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wu_pc</span> <span class="o">=</span> <span class="n">pcoa</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>PCoA plots are only really interesting in the context of sample metadata, so
 let’s define some before we visualize these results.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
 <span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;gut&#39;</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">],</span>
 <span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;skin&#39;</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">],</span>
@@ -1037,7 +1037,7 @@ accomplish this; many operate on distance matrices. Let’s use ANOSIM to
 quantify the strength of the clustering we see in the ordination plots
 above, using our weighted UniFrac distance matrix and sample metadata.</p>
 <p>First test the grouping of samples by subject:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.stats.distance</span> <span class="kn">import</span> <span class="n">anosim</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">anosim</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">anosim</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">,</span> <span class="n">sample_md</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;subject&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">999</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;test statistic&#39;</span><span class="p">]</span>
 <span class="go">-0.33333333333333331</span>
@@ -1190,7 +1190,7 @@ is relevant), this will give us a symmetric 2x2 correlation matrix.</p>
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

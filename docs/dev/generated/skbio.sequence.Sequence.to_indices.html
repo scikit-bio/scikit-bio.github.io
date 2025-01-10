@@ -31,7 +31,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -749,7 +749,7 @@ of a string. Not effective if <cite>alphabet</cite> is set.</p>
 <p class="rubric">Examples</p>
 <p>Convert a protein sequence into indices of unique amino acids in it.
 Note that the unique characters are ordered.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">Protein</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protein</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Protein</span><span class="p">(</span><span class="s1">&#39;MEEPQSDPSV&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="p">,</span> <span class="n">uniq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
@@ -760,7 +760,7 @@ Note that the unique characters are ordered.</p>
 </div>
 <p>Convert a DNA sequence into indices of nucleotides in an alphabet.
 Note that the order of characters is consistent with the alphabet.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CTCAAAAGTC&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">alphabet</span><span class="o">=</span><span class="s1">&#39;TCGA&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
@@ -768,7 +768,7 @@ Note that the order of characters is consistent with the alphabet.</p>
 </pre></div>
 </div>
 <p>Use the alphabet included in a substitution matrix.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">SubstitutionMatrix</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubstitutionMatrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="o">.</span><span class="n">by_name</span><span class="p">(</span><span class="s1">&#39;NUC.4.4&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">alphabet</span><span class="o">=</span><span class="n">sm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
@@ -874,7 +874,7 @@ acids (<cite>wildcard=’auto’</cite> is the default behavior).</p>
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

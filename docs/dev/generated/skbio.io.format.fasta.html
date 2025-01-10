@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -1039,7 +1039,7 @@ registry in practice:</p>
 </div>
 <p>Since these sequences are of equal length (presumably because they’ve been
 aligned), let’s read the FASTA file into a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">TabularMSA</span><span class="p">,</span> <span class="n">DNA</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span><span class="p">,</span> <span class="n">DNA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
 <span class="go">TabularMSA[DNA]</span>
@@ -1058,7 +1058,7 @@ aligned), let’s read the FASTA file into a <code class="docutils literal notra
 <p>Note that we didn’t specify a file format in the <code class="docutils literal notranslate"><span class="pre">read</span></code> call. The FASTA
 sniffer detected the correct file format for us!</p>
 <p>To write the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> in FASTA format:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">StringIO</span><span class="p">()</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">msa</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 <span class="go">&gt;seq1 Turkey</span>
@@ -1081,7 +1081,7 @@ writer. The generator-based reader yields <code class="docutils literal notransl
 if <code class="docutils literal notranslate"><span class="pre">constructor</span></code> is supplied) one at a time, instead of loading all sequences
 into memory. For example, let’s use the generator-based reader to process a
 single sequence at a time in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio.io</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">skbio.io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">seq</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -1137,7 +1137,7 @@ single sequence at a time in a <code class="docutils literal notranslate"><span 
 </pre></div>
 </div>
 <p>A single sequence can also be read into a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> (or subclass):</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">Sequence</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">Sequence</span>
@@ -1297,9 +1297,9 @@ and QUAL files, respectively:</p>
 <p>Suppose you have a multi-FASTA file and want to read each sequence into a <code class="docutils literal notranslate"><span class="pre">DNA</span></code>
 object in a list. We’ll be using <code class="docutils literal notranslate"><span class="pre">io.StringIO</span></code> to make a mock FASTA file in
 memory.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio.sequence</span> <span class="kn">import</span> <span class="n">DNA</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">skbio</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span> <span class="o">=</span> <span class="s2">&quot;&gt;seq1 Turkey</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
 <span class="gp">... </span>     <span class="s2">&quot;AAGCTNGGGCATTTCAGGGTGAGCCCGGGCAATACAGGGTAT</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
 <span class="gp">... </span>     <span class="s2">&quot;&gt;seq2 Salmo gair</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
@@ -1492,7 +1492,7 @@ searches”. Science 227 (4693): 1435-41.</p>
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>

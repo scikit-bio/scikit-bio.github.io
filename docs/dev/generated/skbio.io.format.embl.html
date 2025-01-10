@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -885,8 +885,8 @@ EMBL writers follow these conventions while writing EMBL files.</p>
 </pre></div>
 </div>
 <p>Now we can read it as <code class="docutils literal notranslate"><span class="pre">DNA</span></code> object:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">io</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skbio</span> <span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">RNA</span><span class="p">,</span> <span class="n">Sequence</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">RNA</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">embl</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">embl_str</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dna_seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">embl</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dna_seq</span>
@@ -967,7 +967,7 @@ sequence</p>
 <h2>Reading EMBL Files using generators<a class="headerlink" href="#reading-embl-files-using-generators" title="Link to this heading">#</a></h2>
 <p>Soppose we have an EMBL file with multiple records: we can instantiate a
 generator object to deal with multiple records</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skbio</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">skbio</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">embl</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">embl_str</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">embl_gen</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">embl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;embl&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dna_seq</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">embl_gen</span><span class="p">)</span>
@@ -1089,7 +1089,7 @@ generator object to deal with multiple records</p>
 
   <p class="copyright">
     
-      © Copyright 2014-2024, scikit-bio development team.
+      © Copyright 2014-2025, scikit-bio development team.
       <br/>
     
   </p>
