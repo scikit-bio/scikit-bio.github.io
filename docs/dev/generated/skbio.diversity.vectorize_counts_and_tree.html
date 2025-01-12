@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Compute unweighted UniFrac." />
+    <meta name="description" content="Index tree and convert counts to np.array in corresponding order." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.diversity.beta.unweighted_unifrac &#8212; scikit-bio 0.6.3-dev documentation</title>
+    <title>skbio.diversity.vectorize_counts_and_tree &#8212; scikit-bio 0.6.3-dev documentation</title>
   
   
   
@@ -62,7 +62,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.diversity.beta.unweighted_unifrac';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.diversity.vectorize_counts_and_tree';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -70,12 +70,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.diversity.beta.unweighted_unifrac.html" />
+    <link rel="canonical" href="../../../generated/skbio.diversity.vectorize_counts_and_tree.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.diversity.beta.weighted_unifrac" href="skbio.diversity.beta.weighted_unifrac.html" />
-    <link rel="prev" title="Beta diversity measures (skbio.diversity.beta)" href="skbio.diversity.beta.html" />
+    <link rel="next" title="Multivariate Statistics (skbio.stats)" href="../stats.html" />
+    <link rel="prev" title="skbio.diversity.block_beta_diversity" href="skbio.diversity.block_beta_diversity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.3-dev" />
@@ -603,12 +603,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.diversity.alpha_diversity.html">skbio.diversity.alpha_diversity</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.diversity.beta.html">Beta diversity measures (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity.beta</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.diversity.beta.unweighted_unifrac</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.diversity.beta.weighted_unifrac.html">skbio.diversity.beta.weighted_unifrac</a></li>
-</ul>
-</details></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.diversity.beta.html">Beta diversity measures (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity.beta</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.diversity.get_beta_diversity_metrics.html">skbio.diversity.get_beta_diversity_metrics</a></li>
 </ul>
 <ul class="nav bd-sidenav">
@@ -616,8 +612,8 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.diversity.partial_beta_diversity.html">skbio.diversity.partial_beta_diversity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.diversity.block_beta_diversity.html">skbio.diversity.block_beta_diversity</a></li>
 </ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.diversity.vectorize_counts_and_tree.html">skbio.diversity.vectorize_counts_and_tree</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.diversity.vectorize_counts_and_tree</a></li>
 </ul>
 </div>
 </nav></div>
@@ -661,10 +657,7 @@
     
     <li class="breadcrumb-item"><a href="../diversity.html" class="nav-link">Community Diversity (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code>)</a></li>
     
-    
-    <li class="breadcrumb-item"><a href="skbio.diversity.beta.html" class="nav-link">Beta diversity measures (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity.beta</span></code>)</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.diversity.beta.unweighted_unifrac</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.diversity.vectorize_counts_and_tree</span></li>
   </ul>
 </nav>
 </div>
@@ -681,46 +674,31 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-diversity-beta-unweighted-unifrac">
-<h1>skbio.diversity.beta.unweighted_unifrac<a class="headerlink" href="#skbio-diversity-beta-unweighted-unifrac" title="Link to this heading">#</a></h1>
+  <section id="skbio-diversity-vectorize-counts-and-tree">
+<h1>skbio.diversity.vectorize_counts_and_tree<a class="headerlink" href="#skbio-diversity-vectorize-counts-and-tree" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.diversity.beta.unweighted_unifrac">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.beta.</span></span><span class="sig-name descname"><span class="pre">unweighted_unifrac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/beta/_unifrac.py#L29"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.beta.unweighted_unifrac" title="Link to this definition">#</a></dt>
-<dd><p>Compute unweighted UniFrac.</p>
+<dt class="sig sig-object py" id="skbio.diversity.vectorize_counts_and_tree">
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">vectorize_counts_and_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_util.py#L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.vectorize_counts_and_tree" title="Link to this definition">#</a></dt>
+<dd><p>Index tree and convert counts to np.array in corresponding order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>u_counts, v_counts: list, np.array</strong></dt><dd><p>Vectors of counts/abundances of taxa for two samples. Must be equal
-length.</p>
+<dt><strong>counts</strong><span class="classifier">array_like of shape (n_samples, n_taxa) or (n_taxa,)</span></dt><dd><p>Counts/abundances of taxa in one or multiple samples.</p>
 </dd>
-<dt><strong>taxa</strong><span class="classifier">list, np.array</span></dt><dd><p>Vector of taxon IDs corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the
-same length as <code class="docutils literal notranslate"><span class="pre">u_counts</span></code> and <code class="docutils literal notranslate"><span class="pre">v_counts</span></code>. Required.</p>
+<dt><strong>taxa</strong><span class="classifier">array_like of shape (n_taxa,)</span></dt><dd><p>Taxon IDs corresponding to tip names in <cite>tree</cite>.</p>
 </dd>
 <dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Tree relating taxa. The set of tip names in the tree can be a superset
-of <code class="docutils literal notranslate"><span class="pre">taxa</span></code>, but not a subset. Required.</p>
-</dd>
-<dt><strong>validate: bool, optional</strong></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">False</span></code>, validation of the input won’t be performed. This step can
-be slow, so if validation is run elsewhere it can be disabled here.
-However, invalid input data can lead to invalid results or error
-messages that are hard to interpret, so this step should not be
-bypassed if you’re not certain that your input data are valid. See
-<a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a> for the description of what validation entails
-so you can determine if you can safely disable validation.</p>
-</dd>
-<dt><strong>otu_ids</strong><span class="classifier">list, np.array</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">taxa</span></code> for backward compatibility. Deprecated and to be
-removed in a future release.</p>
+of <cite>taxa</cite>, but not a subset.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>The unweighted UniFrac distance between the two samples.</p>
+<dt>ndarray of shape (n_samples, n_nodes)</dt><dd><p>Total counts/abundances of taxa descending from individual nodes of the tree.</p>
 </dd>
-</dl>
+<dt>dict of array</dt><dd><p>Indexed tree. See <cite>to_array</cite>.</p>
 </dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError, MissingNodeError, DuplicateNodeError</dt><dd><p>If validation fails. Exact error will depend on what was invalid.</p>
+<dt>ndarray of shape (n_nodes,)</dt><dd><p>Branch lengths of corresponding nodes of the tree.</p>
 </dd>
 </dl>
 </dd>
@@ -728,94 +706,21 @@ removed in a future release.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.diversity.beta.weighted_unifrac.html#skbio.diversity.beta.weighted_unifrac" title="skbio.diversity.beta.weighted_unifrac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">weighted_unifrac</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.diversity.beta_diversity.html#skbio.diversity.beta_diversity" title="skbio.diversity.beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity.beta_diversity</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.TreeNode.to_array.html#skbio.tree.TreeNode.to_array" title="skbio.tree.TreeNode.to_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.tree.TreeNode.to_array</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Unweighted UniFrac was originally described in <a class="reference internal" href="#r8a9b0c04b103-1" id="id1">[1]</a>. A discussion of
-unweighted (qualitative) versus weighted (quantitative) diversity metrics
-is presented in <a class="reference internal" href="#r8a9b0c04b103-2" id="id2">[2]</a>. Deeper mathematical discussions of this metric is
-presented in <a class="reference internal" href="#r8a9b0c04b103-3" id="id3">[3]</a>.</p>
-<p>If computing unweighted UniFrac for multiple pairs of samples, using
-<code class="docutils literal notranslate"><span class="pre">skbio.diversity.beta_diversity</span></code> will be much faster than calling this
-function individually on each sample.</p>
-<p>This implementation differs from that in PyCogent (and therefore QIIME
-versions less than 2.0.0) by imposing a few additional restrictions on the
-inputs. First, the input tree must be rooted. In PyCogent, if an unrooted
-tree was provided that had a single trifurcating node (a newick convention
-for unrooted trees) that node was considered the root of the tree. Next,
-all taxa must be tips in the tree. PyCogent would silently ignore taxa that
-were not present the tree. To reproduce UniFrac results from PyCogent with
-scikit-bio, ensure that your PyCogent UniFrac calculations are performed on
-a rooted tree and that all taxa are present in the tree.</p>
-<p>This implementation of unweighted UniFrac is the array-based implementation
-described in <a class="reference internal" href="#r8a9b0c04b103-4" id="id4">[4]</a>.</p>
-<p>If using large number of samples or a large tree, we advise using the
-optimized UniFrac library <a class="reference internal" href="#r8a9b0c04b103-5" id="id5">[5]</a>.</p>
+<p>Leveraging internal node counts in the tree (in addition to tip abundances) can
+double the accuracy in downstream machine learning pipelines <a class="reference internal" href="#rc2d41b6a8247-1" id="id1">[1]</a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="r8a9b0c04b103-1" role="doc-biblioentry">
+<div class="citation" id="rc2d41b6a8247-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Lozupone, C. &amp; Knight, R. UniFrac: a new phylogenetic method for
-comparing microbial communities. Appl. Environ. Microbiol. 71, 8228-8235
-(2005).</p>
+<p>Martino C., McDonald D., Cantrell K., Dilmore AH., Vázquez-Baeza Y.,
+Shenhav L., Shaffer J.P., Rahman G., Armstrong G., Allaband C., Song S.J.,
+Knight R. Compositionally aware phylogenetic beta-diversity measures better
+resolve microbiomes associated with phenotype. mSystems. 7(3) (2022).</p>
 </div>
-<div class="citation" id="r8a9b0c04b103-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>Lozupone, C. A., Hamady, M., Kelley, S. T. &amp; Knight, R. Quantitative
-and qualitative beta diversity measures lead to different insights into
-factors that structure microbial communities. Appl. Environ. Microbiol.
-73, 1576-1585 (2007).</p>
-</div>
-<div class="citation" id="r8a9b0c04b103-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p>Lozupone, C., Lladser, M. E., Knights, D., Stombaugh, J. &amp; Knight,
-R. UniFrac: an effective distance metric for microbial community
-comparison. ISME J. 5, 169-172 (2011).</p>
-</div>
-<div class="citation" id="r8a9b0c04b103-4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
-<p>Hamady M, Lozupone C, Knight R. Fast UniFrac: facilitating high-
-throughput phylogenetic analyses of microbial communities including
-analysis of pyrosequencing and PhyloChip data.  ISME J. 4(1):17-27
-(2010).</p>
-</div>
-<div class="citation" id="r8a9b0c04b103-5" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
-<p><a class="github reference external" href="https://github.com/biocore/unifrac">biocore/unifrac</a></p>
-</div>
-</div>
-<p class="rubric">Examples</p>
-<p>Assume we have the following abundance data for two samples, <code class="docutils literal notranslate"><span class="pre">u</span></code> and
-<code class="docutils literal notranslate"><span class="pre">v</span></code>, represented as a pair of counts vectors. These counts represent the
-number of times specific Operational Taxonomic Units, or taxa, were
-observed in each of the samples.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u_counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v_counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Because UniFrac is a phylogenetic diversity metric, we need to know which
-taxon each count corresponds to, which we’ll provide as <code class="docutils literal notranslate"><span class="pre">taxa</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;U2&#39;</span><span class="p">,</span> <span class="s1">&#39;U3&#39;</span><span class="p">,</span> <span class="s1">&#39;U4&#39;</span><span class="p">,</span> <span class="s1">&#39;U5&#39;</span><span class="p">,</span> <span class="s1">&#39;U6&#39;</span><span class="p">,</span> <span class="s1">&#39;U7&#39;</span><span class="p">,</span> <span class="s1">&#39;U8&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>We also need a phylogenetic tree that relates the taxa to one another.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(U4:0.75,(U5:0.5,((U6:0.33,U7:0.62):0.5&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;,U8:0.5):0.5):0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>We can then compute the unweighted UniFrac distance between the samples.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity.beta</span><span class="w"> </span><span class="kn">import</span> <span class="n">unweighted_unifrac</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">uu</span> <span class="o">=</span> <span class="n">unweighted_unifrac</span><span class="p">(</span><span class="n">u_counts</span><span class="p">,</span> <span class="n">v_counts</span><span class="p">,</span> <span class="n">taxa</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="go">0.37</span>
-</pre></div>
 </div>
 </dd></dl>
 
@@ -832,20 +737,20 @@ taxon each count corresponds to, which we’ll provide as <code class="docutils 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.diversity.beta.html"
+       href="skbio.diversity.block_beta_diversity.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Beta diversity measures (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity.beta</span></code>)</p>
+        <p class="prev-next-title">skbio.diversity.block_beta_diversity</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.diversity.beta.weighted_unifrac.html"
+       href="../stats.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.diversity.beta.weighted_unifrac</p>
+        <p class="prev-next-title">Multivariate Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats</span></code>)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -868,7 +773,7 @@ taxon each count corresponds to, which we’ll provide as <code class="docutils 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.diversity.beta.unweighted_unifrac"><code class="docutils literal notranslate"><span class="pre">unweighted_unifrac()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.diversity.vectorize_counts_and_tree"><code class="docutils literal notranslate"><span class="pre">vectorize_counts_and_tree()</span></code></a></li>
 </ul>
   </nav></div>
 
