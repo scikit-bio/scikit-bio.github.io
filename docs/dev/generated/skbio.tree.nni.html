@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Perform nearest neighbor interchange (NNI) on a phylogenetic tree." />
+    <meta name="description" content="Perform nearest neighbor interchange (NNI) to improve a phylogenetic tree." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.nni &#8212; scikit-bio 0.6.3-dev documentation</title>
@@ -679,8 +679,14 @@
 <h1>skbio.tree.nni<a class="headerlink" href="#skbio-tree-nni" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.nni">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_edge_estimation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_nni.py#L15"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nni" title="Link to this definition">#</a></dt>
-<dd><p>Perform nearest neighbor interchange (NNI) on a phylogenetic tree.</p>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L260"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nni" title="Link to this definition">#</a></dt>
+<dd><p>Perform nearest neighbor interchange (NNI) to improve a phylogenetic tree.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.2.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Computational efficiency significantly improved.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -688,97 +694,96 @@
 </dd>
 <dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing distances between taxa.</p>
 </dd>
-<dt><strong>allow_edge_estimation</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to perform an OLS-based estimation of edge values (<code class="docutils literal notranslate"><span class="pre">True</span></code>, default)
-or return a tree without edge values assigned (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<dt><strong>balanced</strong><span class="classifier">bool, optional</span></dt><dd><p>Use the OLS framework (False) or the balanced framework (True, default).</p>
 </dd>
-<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether manipulate the tree in place (<code class="docutils literal notranslate"><span class="pre">True</span></code>, default) or return a
-copy of the tree (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
-</dd>
-<dt><strong>balanced</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to use the minimum evolution framework or the balanced
-minimum evolution framework. The definition of average distance
-between subtrees either ignores subtree size (<code class="docutils literal notranslate"><span class="pre">True</span></code>, default)
-or calculates based on subtree size (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<dt><strong>clip_to_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>Rearranged phylogenetic tree (if <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
+<dt>TreeNode</dt><dd><p>Rearranged phylogenetic tree.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>NNI algorithm for minimum evolution problem on phylogenetic trees. It rearranges
-an initial tree topology by performing subtree exchanges such that the distance
-is minimized. This implementation is based on the FastNNI algorithm and the
-BNNI algorithm (BNNI)[R2d0c0545a225-1]_.</p>
-<p>The two versions of NNI are due to the relationship with minimum evolution
-and the use of average distances between subtrees. FastNNI is based on the
-Minimum Evolution (ME) problem while BNNI is based on the Balanced Minimum
-Evolution (BME) problem. In BME the sizes of subtrees are ignored while ME
-considers the size of subtrees in the calculation of average distance.</p>
-<p>For both versions of NNI, the input tree is required to be binary and rooted
-at a leaf node such that there is a unique descendant from the root.</p>
+<p>Nearest neighbor interchange (NNI) is a method for tree rearrangement aiming at
+optimizing a given tree topology according to certain criteria. It iteratively
+swaps neighboring branches that could result in better trees, until no such swaps
+remain in the optimized tree.</p>
+<p>This function performs NNI for the minimum evolution (ME) problem on phylogenetic
+trees. The implementation is based on <a class="reference internal" href="#r2d0c0545a225-1" id="id1">[1]</a>. Two versions of the method are
+provided: the FastNNI algorithm (<code class="docutils literal notranslate"><span class="pre">balanced=False</span></code>) based on an ordinary least
+squares (OLS) framework (see also <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a>) and the BNNI algorithm
+(<code class="docutils literal notranslate"><span class="pre">balanced=True</span></code>) based on a balanced framework (see also <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme()</span></code></a>). The
+former is more scalable than the latter.</p>
+<p>The input tree may be rooted or unrooted, and it must be strictly bifurcating. One
+can apply <a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html#skbio.tree.TreeNode.is_bifurcating" title="skbio.tree.TreeNode.is_bifurcating"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_bifurcating()</span></code></a> or <a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html#skbio.tree.TreeNode.bifurcate" title="skbio.tree.TreeNode.bifurcate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bifurcate()</span></code></a> to check
+or make a bifurcating tree. The set of taxa in the tree (accessible via
+<a class="reference internal" href="skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subset()</span></code></a>) must match those in the distance matrix.</p>
+<p>The output tree is unrooted, with the first taxon in the distance matrix placed as
+a child of the root node. Branch lengths are assigned according to the framework of
+choice. See also <a class="reference internal" href="skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-func docutils literal notranslate"><span class="pre">nj()</span></code></a> regarding rooting an unrooted tree and dealing with
+potential negative branch lengths.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r2d0c0545a225-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p>Desper R, Gascuel O. Fast and accurate phylogeny reconstruction
-algorithms based on the minimum-evolution principle. J Comput Biol.
-2002;9(5):687-705. doi: 10.1089/106652702761034136. PMID: 12487758.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Desper, R., &amp; Gascuel, O. (2002). Fast and accurate phylogeny reconstruction
+algorithms based on the minimum-evolution principle. J Comput Biol, 9(5),
+687-705.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<p>Define a new distance matrix object describing the distances between five
-taxa: human, monkey, pig, rat, and chicken.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span><span class="p">,</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">nni</span>
 </pre></div>
 </div>
+<p>Define a distance matrix describing the distances between five taxa.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span>  <span class="mf">0.18</span><span class="p">,</span>  <span class="mf">0.34</span><span class="p">,</span>  <span class="mf">0.55</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.02</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mf">0.19</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span>  <span class="mf">0.55</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.19</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mf">0.34</span><span class="p">,</span>  <span class="mf">0.54</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.34</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span>  <span class="mf">0.34</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mf">0.62</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.55</span><span class="p">,</span>  <span class="mf">0.55</span><span class="p">,</span>  <span class="mf">0.54</span><span class="p">,</span>  <span class="mf">0.62</span><span class="p">,</span>  <span class="mi">0</span><span class="p">]],</span>
-<span class="gp">... </span>                     <span class="p">[</span><span class="s1">&#39;human&#39;</span><span class="p">,</span><span class="s1">&#39;monkey&#39;</span><span class="p">,</span><span class="s1">&#39;pig&#39;</span><span class="p">,</span><span class="s1">&#39;rat&#39;</span><span class="p">,</span><span class="s1">&#39;chicken&#39;</span><span class="p">])</span>
+<span class="gp">... </span>                    <span class="p">[</span><span class="s1">&#39;human&#39;</span><span class="p">,</span><span class="s1">&#39;monkey&#39;</span><span class="p">,</span><span class="s1">&#39;pig&#39;</span><span class="p">,</span><span class="s1">&#39;rat&#39;</span><span class="p">,</span><span class="s1">&#39;chicken&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Also, provide a tree topology to be rearranged. The tree provided is
-required to be a binary tree rooted at a leaf node.</p>
-<p>Note that the tree provided does not require to have assigned edge lengths.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(((human,chicken),(rat,monkey)))pig;&quot;</span><span class="p">])</span>
+<p>Provide a tree to be rearranged. The tree must be bifurcating. Branches lengths are
+not required.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((human,chicken),(rat,monkey),pig);&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
-<span class="go">                              /-human</span>
-<span class="go">                    /--------|</span>
-<span class="go">                   |          \-chicken</span>
-<span class="go">-pig----- /--------|</span>
-<span class="go">                   |          /-rat</span>
-<span class="go">                    \--------|</span>
-<span class="go">                              \-monkey</span>
+<span class="go">                    /-human</span>
+<span class="go">          /--------|</span>
+<span class="go">         |          \-chicken</span>
+<span class="go">         |</span>
+<span class="go">---------|          /-rat</span>
+<span class="go">         |---------|</span>
+<span class="go">         |          \-monkey</span>
+<span class="go">         |</span>
+<span class="go">          \-pig</span>
 </pre></div>
 </div>
-<p>Perform nearest neighbor interchange (NNI), here the BNNI version is used.
-By default, the tree is rearrangede in place.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nni</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
+<p>Perform nearest neighbor interchange (NNI). This will rearrange tree topolgy to
+better approach the minimum evolution criterion.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">nni</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
-<span class="go">                              /-rat</span>
-<span class="go">                    /--------|</span>
-<span class="go">                   |          \-chicken</span>
-<span class="go">-pig----- /--------|</span>
-<span class="go">                   |          /-monkey</span>
-<span class="go">                    \--------|</span>
-<span class="go">                              \-human</span>
+<span class="go">                    /-pig</span>
+<span class="go">          /--------|</span>
+<span class="go">         |         |          /-chicken</span>
+<span class="go">         |          \--------|</span>
+<span class="go">---------|                    \-rat</span>
+<span class="go">         |</span>
+<span class="go">         |--monkey</span>
+<span class="go">         |</span>
+<span class="go">          \-human</span>
 </pre></div>
 </div>
-<p>Besides rearranging the tree, estimated edge lengths are assigned to the
+<p>Besides rearranging tree topology, estimated branch lengths are assigned to the
 tree.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rat</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;rat&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rat</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
-<span class="go">0.21</span>
+<span class="go">0.20875</span>
 </pre></div>
 </div>
 </dd></dl>

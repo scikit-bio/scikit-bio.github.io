@@ -760,7 +760,7 @@
 <h1>skbio.tree.TreeNode.is_bifurcating<a class="headerlink" href="#skbio-tree-treenode-is-bifurcating" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.is_bifurcating">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">is_bifurcating</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3695"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.is_bifurcating" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">is_bifurcating</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3712"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.is_bifurcating" title="Link to this definition">#</a></dt>
 <dd><p>Check if the tree is bifurcating.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
@@ -770,6 +770,9 @@
 <dd class="field-odd"><dl class="simple">
 <dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to consider single-child nodes as violations of bifurcation.
 Default is False.</p>
+</dd>
+<dt><strong>include_self</strong><span class="classifier">bool, optional</span></dt><dd><p>If False, will not check the current node. This is useful for checking an
+unrooted tree, whose root node may have three children. Default is True.</p>
 </dd>
 </dl>
 </dd>

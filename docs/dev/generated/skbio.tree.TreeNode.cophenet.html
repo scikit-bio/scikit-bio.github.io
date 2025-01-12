@@ -760,7 +760,7 @@
 <h1>skbio.tree.TreeNode.cophenet<a class="headerlink" href="#skbio-tree-treenode-cophenet" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.cophenet">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cophenet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4271"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cophenet" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cophenet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L4291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cophenet" title="Link to this definition">#</a></dt>
 <dd><p>Return a distance matrix between each pair of tips in the tree.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">tip_tip_distances</span></code>. The old name is kept as an alias.</p>
@@ -802,7 +802,7 @@ of branches (False) connecting each pair of tips.</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.TreeNode.distance.html#skbio.tree.TreeNode.distance" title="skbio.tree.TreeNode.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a></dt><dd></dd>
-<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.cophenet.html#scipy.cluster.hierarchy.cophenet" title="(in SciPy v1.15.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.cluster.hierarchy.cophenet</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.cophenet.html#scipy.cluster.hierarchy.cophenet" title="(in SciPy v1.15.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.cluster.hierarchy.cophenet</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -822,7 +822,7 @@ non-ultrametric (e.g., <a class="reference internal" href="skbio.tree.nj.html#sk
 node may have different heights. Therefore, the cophenetic distance is instead
 defined as the patristic distance between the two tips. For ultrametric trees
 (e.g., <a class="reference internal" href="skbio.tree.upgma.html#skbio.tree.upgma" title="skbio.tree.upgma"><code class="xref py py-func docutils literal notranslate"><span class="pre">upgma()</span></code></a>), this method’s result should match SciPy’s
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.cophenet.html#scipy.cluster.hierarchy.cophenet" title="(in SciPy v1.15.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cophenet()</span></code></a>.</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.cophenet.html#scipy.cluster.hierarchy.cophenet" title="(in SciPy v1.15.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cophenet()</span></code></a>.</p>
 <p>One should also distinguish cophenetic distance from a related metric:
 cophenetic value <a class="reference internal" href="#r87c0c3977926-1" id="id3">[1]</a>, which is the patristic distance between the LCA of two
 tips and the root of the tree. It quantifies the shared evolutionary history

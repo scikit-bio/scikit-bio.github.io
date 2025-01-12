@@ -707,10 +707,15 @@ which is unbiased towards the size of subtrees computed.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>UPGMA is a hierarchical clustering method appearing as the <cite>average</cite> function
-in the SciPy package, where the linkage matrix produced by <cite>average</cite> is used
-to construct a TreeNode object. A weighted variant is known as WPGMA, and both
-variants are due to Sokal and Michener <a class="reference internal" href="#r011823e66e05-1" id="id1">[1]</a>.</p>
+<p>UPGMA (unweighted pair group method with arithmetic mean) is a simple hierarchical
+clustering method that iteratively groups proximal taxa or taxon groups to form a
+tree structure. A weighted variant is known as WPGMA, and both variants are due to
+Sokal and Michener <a class="reference internal" href="#r011823e66e05-1" id="id1">[1]</a>.</p>
+<p>This function wraps SciPy’s <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html#scipy.cluster.hierarchy.linkage" title="(in SciPy v1.15.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">linkage()</span></code></a> function, with
+the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter set as “average” (UPGMA) or “weighted” (WPGMA). It takes a
+scikit-bio DistanceMatrix object and returns a scikit-bio TreeNode object.</p>
+<p>UPGMA creates a rooted and ultrametric tree – all tips will have the same height
+(distance from the root node).</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r011823e66e05-1" role="doc-biblioentry">

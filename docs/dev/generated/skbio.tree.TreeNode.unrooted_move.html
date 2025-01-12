@@ -760,10 +760,15 @@
 <h1>skbio.tree.TreeNode.unrooted_move<a class="headerlink" href="#skbio-tree-treenode-unrooted-move" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.unrooted_move">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'length',</span> <span class="pre">'support'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2412"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_move" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'length',</span> <span class="pre">'support'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2417"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_move" title="Link to this definition">#</a></dt>
 <dd><p>Walk the tree unrooted-style and rearrange it.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.3: </span>The underlying algorithm is now iterative instead of recursive, therefore
+won’t be constrained by Python’s maximum recursion limit when working with
+large trees. Parameter <code class="docutils literal notranslate"><span class="pre">parent</span></code> was removed as it is no longer needed.</p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -791,10 +796,10 @@ branch attributes during the operation.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method recursively walks a tree from a given node in an unrooted
-style (i.e., directions of branches are not assumed). It rerranges the
-tree such that the given node becomes the root node and all other nodes
-are re-positioned accordingly, whereas the topology remains the same.</p>
+<p>This method walks a tree from a given node in an unrooted style (i.e.,
+directions of branches are not assumed). It rerranges the tree such that
+the given node becomes the root node and all other nodes are re-positioned
+accordingly, whereas the topology remains the same.</p>
 <p>This method manipulates the tree in place. There is no return value.
 The new tree should be referred to by the node where the operation
 started, as it has become the new root node.</p>

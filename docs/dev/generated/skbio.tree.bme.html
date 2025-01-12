@@ -679,23 +679,23 @@
 <h1>skbio.tree.bme<a class="headerlink" href="#skbio-tree-bme" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.bme">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">bme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_edge_estimation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_bme.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.bme" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">bme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L157"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.bme" title="Link to this definition">#</a></dt>
 <dd><p>Perform balanced minimum evolution (BME) for phylogenetic reconstruction.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing distances between taxa.</p>
 </dd>
-<dt><strong>allow_edge_estimation</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to perform an OLS-based estimation of branch
-lengths (<code class="docutils literal notranslate"><span class="pre">True</span></code>, default) or return a tree without
-branch lengths assigned (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<dt><strong>clip_to_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TreeNode</dt><dd><p>Reconstructed phylogenetic Tree with estimated edge
-values (if <code class="docutils literal notranslate"><span class="pre">allow_edge_estimation</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
+<dt>TreeNode</dt><dd><p>Reconstructed phylogenetic tree.</p>
 </dd>
 </dl>
 </dd>
@@ -704,26 +704,52 @@ values (if <code class="docutils literal notranslate"><span class="pre">allow_ed
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gme</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nni</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nj</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Balanced Minimum Evolution (BME) is a refinement of the distance-based minimum
-evolution problem where average distances between subtrees ignores the size of the
-subtrees. The BME algorithm implemented here uses the same OLS based edge
-estimation used with Greedy Minimum Evolution (GME).</p>
+<p>Balanced Minimum Evolution (BME) <a class="reference internal" href="#r24fbe14e2594-1" id="id1">[1]</a> is a refinement of the distance-based minimum
+evolution problem where the average distances between subtrees are independent of
+the sizes of the subtrees. This is referred to as a balanced (or simply BME)
+framework <a class="reference internal" href="#r24fbe14e2594-2" id="id2">[2]</a>, as in contrast to the OLS framework used by GME (<a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a>).</p>
+<p>The BME algorithm implemented here uses a similar greedy algorithm as implemented
+in <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a>, but less scalable due to the need to update subtree distances as
+the tree topology changes. The algorithm is sub-<em>O</em>(<em>n</em><sup>3</sup>) in time and
+<em>O</em>(<em>n</em><sup>2</sup>) in space.</p>
+<p>Refer to <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a> for the format of the output tree and subsequent treatments.</p>
+<p>A BME-generated tree may be further improved by executing the BNNI algorithm
+implemented in <a class="reference internal" href="skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-func docutils literal notranslate"><span class="pre">nni()</span></code></a> (with <code class="docutils literal notranslate"><span class="pre">balanced=True</span></code>).</p>
+<p>The same method was provided by FastME <a class="reference internal" href="#r24fbe14e2594-3" id="id3">[3]</a>. See <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a> for notes on this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Experimental feature: Add <code class="docutils literal notranslate"><span class="pre">parallel=True</span></code> will enable parallelization,
+which might increase the performance of the algorithm. This feature may not
+be stable and may be modified without notice in the future.</p>
+</div>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r24fbe14e2594-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p>Desper R, Gascuel O. Fast and accurate phylogeny reconstruction
-algorithms based on the minimum-evolution principle. J Comput Biol.
-2002;9(5):687-705. doi: 10.1089/106652702761034136. PMID: 12487758.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Desper, R., &amp; Gascuel, O. (2002). Fast and accurate phylogeny reconstruction
+algorithms based on the minimum-evolution principle. J Comput Biol, 9(5),
+687-705.</p>
+</div>
+<div class="citation" id="r24fbe14e2594-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Pauplin, Y. (2000). Direct calculation of a tree length using a distance
+matrix. J Mol Evol, 51, 41-47.</p>
+</div>
+<div class="citation" id="r24fbe14e2594-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Lefort, V., Desper, R., &amp; Gascuel, O. (2015). FastME 2.0: a comprehensive,
+accurate, and fast distance-based phylogeny inference program. Mol Biol Evol,
+32(10), 2798-2800.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<p>Define a new distance matrix object describing the distances between five
-taxa: human, monkey, pig, rat, and chicken.</p>
+<p>Define a new distance matrix object describing the distances between five taxa:
+human, monkey, pig, rat, and chicken.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">bme</span>
 </pre></div>
@@ -733,7 +759,7 @@ taxa: human, monkey, pig, rat, and chicken.</p>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.19</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mf">0.34</span><span class="p">,</span>  <span class="mf">0.54</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.34</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span>  <span class="mf">0.34</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mf">0.62</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.55</span><span class="p">,</span>  <span class="mf">0.55</span><span class="p">,</span>  <span class="mf">0.54</span><span class="p">,</span>  <span class="mf">0.62</span><span class="p">,</span>  <span class="mi">0</span><span class="p">]],</span>
-<span class="gp">... </span>                     <span class="p">[</span><span class="s1">&#39;human&#39;</span><span class="p">,</span><span class="s1">&#39;monkey&#39;</span><span class="p">,</span><span class="s1">&#39;pig&#39;</span><span class="p">,</span><span class="s1">&#39;rat&#39;</span><span class="p">,</span><span class="s1">&#39;chicken&#39;</span><span class="p">])</span>
+<span class="gp">... </span>                    <span class="p">[</span><span class="s1">&#39;human&#39;</span><span class="p">,</span><span class="s1">&#39;monkey&#39;</span><span class="p">,</span><span class="s1">&#39;pig&#39;</span><span class="p">,</span><span class="s1">&#39;rat&#39;</span><span class="p">,</span><span class="s1">&#39;chicken&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Perform Balanced Minimum Evoltuion (BME) and construct the minimum evolution tree
@@ -741,18 +767,17 @@ representing the relationship between those taxa. This is returned as a TreeNode
 object.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">bme</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
-<span class="go">                    /-monkey</span>
-<span class="go">-human--- /--------|</span>
-<span class="go">                   |          /-pig</span>
-<span class="go">                    \--------|</span>
-<span class="go">                             |          /-chicken</span>
-<span class="go">                              \--------|</span>
-<span class="go">                                        \-rat</span>
+<span class="go">          /-monkey</span>
+<span class="go">         |</span>
+<span class="go">         |          /-pig</span>
+<span class="go">         |---------|</span>
+<span class="go">---------|         |          /-rat</span>
+<span class="go">         |          \--------|</span>
+<span class="go">         |                    \-chicken</span>
+<span class="go">         |</span>
+<span class="go">          \-human</span>
 </pre></div>
 </div>
-<p>Notice that, unlike neighbor joining, the tree is rooted at a taxa/leaf node.
-This will allow it to have nearest neighbor interchange performed on it without
-needing to re-root the tree.</p>
 </dd></dl>
 
 </section>
