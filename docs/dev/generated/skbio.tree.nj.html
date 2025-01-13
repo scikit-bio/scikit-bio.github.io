@@ -679,14 +679,14 @@
 <h1>skbio.tree.nj<a class="headerlink" href="#skbio-tree-nj" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.nj">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py#L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nj" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py#L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nj" title="Link to this definition">#</a></dt>
 <dd><p>Perform neighbor joining (NJ) for phylogenetic reconstruction.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing pairwise distances among taxa.</p>
 </dd>
-<dt><strong>clip_to_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
+<dt><strong>neg_as_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.6.3: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">disallow_negative_branch_length</span></code>. The old name is kept as an alias but is deprecated.</p>
 </div>
@@ -736,20 +736,20 @@ to improve efficiency, but no heuristic was involved to further accelerate it at
 the cost of accuracy. Therefore, one is guaranteed to obtain an optimal tree. The
 algorithm is <em>O</em>(<em>n</em><sup>3</sup>) in time and <em>O</em>(<em>n</em><sup>2</sup>) in space.</p>
 <p>NJ creates an <strong>unrooted</strong> tree with varying tip heights. This contrasts UPGMA
-(<a class="reference internal" href="skbio.tree.upgma.html#skbio.tree.upgma" title="skbio.tree.upgma"><code class="xref py py-func docutils literal notranslate"><span class="pre">upgma()</span></code></a>), which always produces ultrametric trees. One may subsequently use
-choice of strategies such as midpoint rooting (<a class="reference internal" href="skbio.tree.TreeNode.root_at_midpoint.html#skbio.tree.TreeNode.root_at_midpoint" title="skbio.tree.TreeNode.root_at_midpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">root_at_midpoint()</span></code></a>)
-or outgroup rooting (<a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html#skbio.tree.TreeNode.root_by_outgroup" title="skbio.tree.TreeNode.root_by_outgroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">root_by_outgroup()</span></code></a>) to convert the result into
+(<a class="reference internal" href="skbio.tree.upgma.html#skbio.tree.upgma" title="skbio.tree.upgma"><code class="xref py py-func docutils literal notranslate"><span class="pre">upgma</span></code></a>), which always produces ultrametric trees. One may subsequently use
+choice of strategies such as midpoint rooting (<a class="reference internal" href="skbio.tree.TreeNode.root_at_midpoint.html#skbio.tree.TreeNode.root_at_midpoint" title="skbio.tree.TreeNode.root_at_midpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">root_at_midpoint</span></code></a>)
+or outgroup rooting (<a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html#skbio.tree.TreeNode.root_by_outgroup" title="skbio.tree.TreeNode.root_by_outgroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">root_by_outgroup</span></code></a>) to convert the result into
 a rooted tree.</p>
 <p>NJ is most accurate when distances are <strong>additive</strong> – the distance between two
 taxa in the matrix equals to the sum of branch lengths connecting them in the tree.
 When this assumption is violated, which is common in real studies, negative branch
 lengths may be produced, challenging interpretation and subsequent analyses. To
 address this issue, this function converts negative branch lengths into zeros by
-default, but this behavior can be disabled by setting <code class="docutils literal notranslate"><span class="pre">clip_to_zero</span></code> to False.</p>
+default, but this behavior can be disabled by setting <code class="docutils literal notranslate"><span class="pre">neg_as_zero</span></code> to False.</p>
 <p>Gascuel and Steel (2006) provide a detailed overview of neighbor joining in terms
 of its biological relevance and limitations <a class="reference internal" href="#r7def033fcc8e-2" id="id2">[2]</a>. They proved that NJ is a greedy
 heuristic to the balanced minimum evolution (BME) problem. An alternative method
-to this problem is provided by <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme()</span></code></a>.</p>
+to this problem is provided by <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme</span></code></a>.</p>
 <p>The example presented here is derived from the Wikipedia page on neighbor joining
 <a class="reference internal" href="#r7def033fcc8e-3" id="id3">[3]</a>.</p>
 <p class="rubric">References</p>
@@ -851,7 +851,7 @@ those taxa. This is returned as a TreeNode object.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.nj"><code class="docutils literal notranslate"><span class="pre">nj()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.nj"><code class="docutils literal notranslate"><span class="pre">nj</span></code></a></li>
 </ul>
   </nav></div>
 

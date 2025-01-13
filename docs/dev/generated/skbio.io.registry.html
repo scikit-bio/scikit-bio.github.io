@@ -746,10 +746,10 @@ of this tutorial.</p>
 <cite>skbio/io/format/</cite> named after the file format you are implementing.
 For example, if the format you are implementing is called <cite>myformat</cite> then you
 would create a file called <cite>skbio/io/format/myformat.py</cite>.</p>
-<p>The next step is to import the <a class="reference internal" href="skbio.io.registry.create_format.html#skbio.io.registry.create_format" title="skbio.io.registry.create_format"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_format()</span></code></a> factory from
+<p>The next step is to import the <a class="reference internal" href="skbio.io.registry.create_format.html#skbio.io.registry.create_format" title="skbio.io.registry.create_format"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_format</span></code></a> factory from
 <a class="reference internal" href="../io.html#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code></a>. This will allow you to create a new <a class="reference internal" href="skbio.io.registry.Format.html#skbio.io.registry.Format" title="skbio.io.registry.Format"><code class="xref py py-class docutils literal notranslate"><span class="pre">Format</span></code></a> object
 that <cite>io_registry</cite> will know about.</p>
-<p>Ideally you should name the result of <a class="reference internal" href="skbio.io.registry.create_format.html#skbio.io.registry.create_format" title="skbio.io.registry.create_format"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_format()</span></code></a> as your file name.
+<p>Ideally you should name the result of <a class="reference internal" href="skbio.io.registry.create_format.html#skbio.io.registry.create_format" title="skbio.io.registry.create_format"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_format</span></code></a> as your file name.
 For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_format</span>
 
@@ -758,7 +758,7 @@ For example:</p>
 </div>
 <p>The <cite>myformat</cite> object is what we will use to register our new functionality.
 At this point you should evaulate whether your format is binary or text.
-If your format is binary, your <a class="reference internal" href="skbio.io.registry.create_format.html#skbio.io.registry.create_format" title="skbio.io.registry.create_format"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_format()</span></code></a> call should look like
+If your format is binary, your <a class="reference internal" href="skbio.io.registry.create_format.html#skbio.io.registry.create_format" title="skbio.io.registry.create_format"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_format</span></code></a> call should look like
 this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myformat</span> <span class="o">=</span> <span class="n">create_format</span><span class="p">(</span><span class="s1">&#39;myformat&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
 </pre></div>
@@ -778,7 +778,7 @@ functionality of our format (e.g., sniffer, readers, and writers).</p>
     <span class="c1"># do something with `fh` to determine the membership of the file</span>
 </pre></div>
 </div>
-<p>For futher details on sniffer functions see <a class="reference internal" href="skbio.io.registry.Format.sniffer.html#skbio.io.registry.Format.sniffer" title="skbio.io.registry.Format.sniffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Format.sniffer()</span></code></a>.</p>
+<p>For futher details on sniffer functions see <a class="reference internal" href="skbio.io.registry.Format.sniffer.html#skbio.io.registry.Format.sniffer" title="skbio.io.registry.Format.sniffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Format.sniffer</span></code></a>.</p>
 <p>Creating a reader is very similar, but has one difference:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@myformat</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">SomeSkbioClass</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">_myformat_to_some_skbio_class</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">kwarg1</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="n">FileSentinel</span><span class="p">):</span>
@@ -789,7 +789,7 @@ functionality of our format (e.g., sniffer, readers, and writers).</p>
 <p>Here we bound a function to a specific class. We also demonstrated using
 our FileSentinel object to indicate to the registry that this reader can take
 auxilary files that should be handled in the same way as the primary file.
-For futher details on reader functions see <a class="reference internal" href="skbio.io.registry.Format.reader.html#skbio.io.registry.Format.reader" title="skbio.io.registry.Format.reader"><code class="xref py py-func docutils literal notranslate"><span class="pre">Format.reader()</span></code></a>.</p>
+For futher details on reader functions see <a class="reference internal" href="skbio.io.registry.Format.reader.html#skbio.io.registry.Format.reader" title="skbio.io.registry.Format.reader"><code class="xref py py-func docutils literal notranslate"><span class="pre">Format.reader</span></code></a>.</p>
 <p>Creating a writer is about the same:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@myformat</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">SomeSkbioClass</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">_some_skbio_class_to_myformat</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">fh</span><span class="p">,</span> <span class="n">kwarg1</span><span class="o">=</span><span class="s1">&#39;whatever&#39;</span><span class="p">,</span>
@@ -801,7 +801,7 @@ For futher details on reader functions see <a class="reference internal" href="s
 <p>This is exactly the same as the <cite>reader</cite> above just in reverse, we also
 receive the object we are writing as the first parameter instead of the file
 (which is the second one). For further details on writer functions see
-<a class="reference internal" href="skbio.io.registry.Format.writer.html#skbio.io.registry.Format.writer" title="skbio.io.registry.Format.writer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Format.writer()</span></code></a>.</p>
+<a class="reference internal" href="skbio.io.registry.Format.writer.html#skbio.io.registry.Format.writer" title="skbio.io.registry.Format.writer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Format.writer</span></code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When raising errors in readers and writers, the error should be a

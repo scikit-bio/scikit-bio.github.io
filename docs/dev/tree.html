@@ -675,13 +675,18 @@
                   
   <section id="trees-and-phylogenetics-skbio-tree">
 <span id="module-skbio.tree"></span><h1>Trees and Phylogenetics (<a class="reference internal" href="#module-skbio.tree" title="skbio.tree"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code></a>)<a class="headerlink" href="#trees-and-phylogenetics-skbio-tree" title="Link to this heading">#</a></h1>
-<p>This module provides functionality for working with trees, including
-phylogenetic trees and hierarchies. Functionality is provided for constructing
-trees, for traversing in multiple ways, comparisons, fetching subtrees, and
-more. This module supports trees that are multifurcating and nodes that have
-single descendants.</p>
+<p>This module provides functionality for working with trees, including phylogenetic trees
+and various types of hierarchies with relevance in biology or beyond. It supports trees
+that are multifurcating and nodes that have single descendants. Functionality is
+provided for constructing trees, for traversing in multiple ways, comparisons, fetching
+subtrees, and more.</p>
+<p>See the <a class="reference internal" href="#tree-tutorial"><span class="std std-ref">Tutorial</span></a> section for working with trees using scikit-bio.</p>
 <section id="tree-structure-and-operations">
 <h2>Tree structure and operations<a class="headerlink" href="#tree-structure-and-operations" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> is the data structure for tree representation. A tree consists of an
+arbitrary number of interconnected <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> objects representing individual nodes.
+Each node has pointers to its parent and children. The class provides a large number of
+methods to achieve various tasks for tree analysis and manipulation.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TreeNode</span></code></a>([name, length, support, parent, ...])</p></td>
@@ -693,18 +698,19 @@ single descendants.</p>
 </section>
 <section id="tree-construction">
 <h2>Tree Construction<a class="headerlink" href="#tree-construction" title="Link to this heading">#</a></h2>
+<p>Algorithms for phylogenetic reconstruction based on distance matrices.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.upgma.html#skbio.tree.upgma" title="skbio.tree.upgma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">upgma</span></code></a>(dm[, weighted])</p></td>
 <td><p>Perform unweighted pair group method with arithmetic mean (UPGMA) or its weighted variant (WPGMA) for phylogenetic reconstruction.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nj</span></code></a>(dm[, clip_to_zero, result_constructor, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nj</span></code></a>(dm[, neg_as_zero, result_constructor, ...])</p></td>
 <td><p>Perform neighbor joining (NJ) for phylogenetic reconstruction.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gme</span></code></a>(dm[, clip_to_zero])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gme</span></code></a>(dm[, neg_as_zero])</p></td>
 <td><p>Perform greedy minimum evolution (GME) for phylogenetic reconstruction.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bme</span></code></a>(dm[, clip_to_zero])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bme</span></code></a>(dm[, neg_as_zero])</p></td>
 <td><p>Perform balanced minimum evolution (BME) for phylogenetic reconstruction.</p></td>
 </tr>
 </tbody>
@@ -713,9 +719,10 @@ single descendants.</p>
 </section>
 <section id="tree-rearrangement">
 <h2>Tree Rearrangement<a class="headerlink" href="#tree-rearrangement" title="Link to this heading">#</a></h2>
+<p>Algorithms for improving an existing phylogenetic tree via rearrangement.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nni</span></code></a>(tree, dm[, balanced, clip_to_zero])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nni</span></code></a>(tree, dm[, balanced, neg_as_zero])</p></td>
 <td><p>Perform nearest neighbor interchange (NNI) to improve a phylogenetic tree.</p></td>
 </tr>
 </tbody>
@@ -724,6 +731,7 @@ single descendants.</p>
 </section>
 <section id="tree-comparison">
 <h2>Tree Comparison<a class="headerlink" href="#tree-comparison" title="Link to this heading">#</a></h2>
+<p>Metrics for assessing the topological or length dissimilarity among trees.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.tree.rf_dists.html#skbio.tree.rf_dists" title="skbio.tree.rf_dists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rf_dists</span></code></a>(trees[, ids, shared_by_all, ...])</p></td>
@@ -774,28 +782,34 @@ single descendants.</p>
 </section>
 </section>
 <section id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<span id="tree-tutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<p>In scikit-bio, the <a class="reference internal" href="generated/skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code></a> class is the main and only data structure for tree
+represention. It is simple, flexible and powerful.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 </pre></div>
 </div>
-<p>A new tree can be constructed from a Newick string. Newick is a common format
-used to represent tree objects within a file. Newick was part of the original
-PHYLIP package from Joseph Felsenstein’s group (defined <a class="reference external" href="http://goo.gl/fIY1Iq">here</a>), and is based around representing nesting with
-parentheses. For instance, the following string describes a 3 taxon tree, with
-one internal node:</p>
+<section id="loading-a-tree">
+<h3>Loading a tree<a class="headerlink" href="#loading-a-tree" title="Link to this heading">#</a></h3>
+<p>A tree can be constructed from a Newick string. <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Newick_format">Newick</a> is a
+common file format used to represent tree structure based on nesting with parentheses.
+For instance, the following string describes a 3-taxon tree, with one internal node:</p>
 <blockquote>
-<div><p>((A, B)C, D)root;</p>
+<div><p>((A,B)C,D)root;</p>
 </div></blockquote>
-<p>Where A, B, and D are tips of the tree, and C is an internal node that covers
-tips A and B.</p>
-<p>Now let’s construct a simple tree and dump an ASCII representation:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;((A, B)C, D)root;&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">is_root</span><span class="p">())</span> <span class="c1"># is this the root of the tree?</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">is_tip</span><span class="p">())</span> <span class="c1"># is this node a tip?</span>
-<span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<p>Where A, B, and D are tips of the tree, and C is an internal node that unites tips A
+and B. C and D are in turn united by the root of the tree.</p>
+<p>If this string is stored in a file <code class="docutils literal notranslate"><span class="pre">input.nwk</span></code>, we can read it into scikit-bio with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;input.nwk&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, we can directly convert a Newick string into a tree with:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A,B)C,D)root;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span>
+<span class="go">&lt;TreeNode, name: root, internal node count: 1, tips count: 3&gt;</span>
+</pre></div>
+</div>
+<p>Let’s display an ASCII representation of the tree:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                    /-A</span>
 <span class="go">          /C-------|</span>
 <span class="go">-root----|          \-B</span>
@@ -803,15 +817,99 @@ tips A and B.</p>
 <span class="go">          \-D</span>
 </pre></div>
 </div>
-<p>There are a few common ways to traverse a tree, and depending on your use,
-some methods are more appropriate than others. Wikipedia has a well written
-page on tree <a class="reference external" href="http://goo.gl/K4Ufl">traversal methods</a>, and will go into
-further depth than what we’ll cover here. We’re only going to cover two of the
-commonly used traversals here, preorder and postorder, but we will show
-examples of two other common helper traversal methods to gather tips or
-internal nodes.</p>
-<p>The first traversal we’ll cover is a preorder traversal in which you evaluate
-from root to tips, looking at the left most child first. For instance:</p>
+<p>Optionally, we can attach branch lengths to the nodes in a Newick string. In
+phylogenetics, the branch length usually represents the amount of evolution
+accumulated from one node to another. For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A:2,B:3)C:1,D:4)root;&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>To save a tree to a Newick file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;output.nwk&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="navigating-in-a-tree">
+<h3>Navigating in a tree<a class="headerlink" href="#navigating-in-a-tree" title="Link to this heading">#</a></h3>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">tree</span></code> is a <a class="reference internal" href="generated/skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code></a> object. It is merely the <strong>root</strong> node of
+the tree, but one can refer to the entire tree with just the root.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;root&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">is_root</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Starting from the root node one can navigate to its child nodes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>The first child of root has the name “C”. It is an <strong>internal node</strong> of the tree.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;C&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>The branch length can be accessed via attribute <code class="docutils literal notranslate"><span class="pre">length</span></code>. Note, that it is the length
+of the branch connecting the current node and its parent.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">length</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p>scikit-bio’s <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> is highly flexible that we can refer to a subtree (a.k.a., a
+clade) within a larger tree using its root node (here “C”). There is no need to detach
+the subtree and we can just work with it in-place. Most tree analyses implemented in
+scikit-bio also apply to subtrees.</p>
+<p>The second child “D” is a <strong>tip</strong> (a.k.a., leaf). In a phylogenetic tree, a tip often
+represents a <strong>taxon</strong>, i.e. an organism or a group of organisms being studied.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;D&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Each node has exactly one parent node, with the exception of the root node, whose
+parent is None.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;root&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">parent</span></code> and <code class="docutils literal notranslate"><span class="pre">children</span></code> attributes connect multiple nodes into a tree
+structure. Additionally, one can use methods like <a class="reference internal" href="generated/skbio.tree.TreeNode.siblings.html#skbio.tree.TreeNode.siblings" title="skbio.tree.TreeNode.siblings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">siblings</span></code></a>,
+<a class="reference internal" href="generated/skbio.tree.TreeNode.neighbors.html#skbio.tree.TreeNode.neighbors" title="skbio.tree.TreeNode.neighbors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">neighbors</span></code></a>, <a class="reference internal" href="generated/skbio.tree.TreeNode.ancestors.html#skbio.tree.TreeNode.ancestors" title="skbio.tree.TreeNode.ancestors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ancestors</span></code></a> and <a class="reference internal" href="generated/skbio.tree.TreeNode.root.html#skbio.tree.TreeNode.root" title="skbio.tree.TreeNode.root"><code class="xref py py-meth docutils literal notranslate"><span class="pre">root</span></code></a>
+to navigate to node with certain relationships to the current node. For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">siblings</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;C&#39;</span>
+</pre></div>
+</div>
+<p>One can quickly find a node by name using <a class="reference internal" href="generated/skbio.tree.TreeNode.find.html#skbio.tree.TreeNode.find" title="skbio.tree.TreeNode.find"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;A&#39;</span>
+</pre></div>
+</div>
+<p>If the tree is giant, the first call of <code class="docutils literal notranslate"><span class="pre">find</span></code> may take a while, but all subsequent
+calls will complete in a flash. That’s because <code class="docutils literal notranslate"><span class="pre">find</span></code> will cache and reuse a lookup
+table under the hood.</p>
+</section>
+<section id="traversing-a-tree">
+<h3>Traversing a tree<a class="headerlink" href="#traversing-a-tree" title="Link to this heading">#</a></h3>
+<p>The process of visiting each and every node within a tree is called <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Tree_traversal">tree
+traversal</a>. There are a few common ways to traverse a tree, and
+depending on your use, some methods are more appropriate than others. The wiki page
+linked above will go into further depth on this topic. Here, we’re only going to cover
+two of the commonly used traversal methods: <a class="reference internal" href="generated/skbio.tree.TreeNode.preorder.html#skbio.tree.TreeNode.preorder" title="skbio.tree.TreeNode.preorder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preorder</span></code></a> and
+<a class="reference internal" href="generated/skbio.tree.TreeNode.postorder.html#skbio.tree.TreeNode.postorder" title="skbio.tree.TreeNode.postorder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">postorder</span></code></a>.</p>
+<p>A preorder traversal moves from root to tips, looking at the left most child first.
+For instance:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">preorder</span><span class="p">():</span>
 <span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">root</span>
@@ -821,8 +919,8 @@ from root to tips, looking at the left most child first. For instance:</p>
 <span class="go">D</span>
 </pre></div>
 </div>
-<p>The next method we’ll look at is a postorder traveral which will evaluate the
-left subtree tips first before walking back up the tree:</p>
+<p>A postorder traversal moves from tips to root,  accessing the left subtree tips first
+before walking back up the tree:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">postorder</span><span class="p">():</span>
 <span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">A</span>
@@ -832,69 +930,330 @@ left subtree tips first before walking back up the tree:</p>
 <span class="go">root</span>
 </pre></div>
 </div>
-<p><cite>TreeNode</cite> provides two helper methods as well for iterating over just the tips
-or for iterating over just the internal nodes.</p>
+<p>If you are not certain (or don’t mind) what method should be used to traverse the tree,
+simply use <a class="reference internal" href="generated/skbio.tree.TreeNode.traverse.html#skbio.tree.TreeNode.traverse" title="skbio.tree.TreeNode.traverse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">traverse</span></code></a>.</p>
+<p>Note, by default, those traversal methods will include self, i.e., the root node from
+which traversal starts. One can pass the <code class="docutils literal notranslate"><span class="pre">include_self=False</span></code> flag to the method call
+if you wish to exclude it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> provides multiple methods for iterating over certain nodes. For examples,
+<a class="reference internal" href="generated/skbio.tree.TreeNode.tips.html#skbio.tree.TreeNode.tips" title="skbio.tree.TreeNode.tips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tips</span></code></a> and <a class="reference internal" href="generated/skbio.tree.TreeNode.non_tips.html#skbio.tree.TreeNode.non_tips" title="skbio.tree.TreeNode.non_tips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">non_tips</span></code></a> iterate over tips and internal
+nodes, respectively:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">tips</span><span class="p">():</span>
-<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Node name: </span><span class="si">%s</span><span class="s2">, Is a tip: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()))</span>
-<span class="go">Node name: A, Is a tip: True</span>
-<span class="go">Node name: B, Is a tip: True</span>
-<span class="go">Node name: D, Is a tip: True</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="go">A</span>
+<span class="go">B</span>
+<span class="go">D</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">non_tips</span><span class="p">():</span>
-<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Node name: </span><span class="si">%s</span><span class="s2">, Is a tip: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()))</span>
-<span class="go">Node name: C, Is a tip: False</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="go">C</span>
 </pre></div>
 </div>
-<p>Note, by default, <cite>non_tips</cite> will ignore <cite>self</cite> (which is the root in this
-case).  You can pass the <cite>include_self</cite> flag to <cite>non_tips</cite> if you wish to
-include <cite>self</cite>.</p>
-<p>The <cite>TreeNode</cite> provides a few ways to compare trees. First, let’s create two
-similar trees and compare their topologies using <cite>compare_subsets</cite>. This
-distance is the fraction of common clades present in the two trees, where a
-distance of 0 means the trees contain identical clades, and a distance of 1
-indicates the trees do not share any common clades:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;((A, B)C, (D, E)F, (G, H)I)root;&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree2</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;((G, H)C, (D, E)F, (B, A)I)root;&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree3</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;((D, B)C, (A, E)F, (G, H)I)root;&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_subsets</span><span class="p">(</span><span class="n">tree1</span><span class="p">))</span>  <span class="c1"># identity case</span>
+<p>If we just want to know the total number of nodes (or just tips) in a tree, we can do:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">tips</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>Instead, if we want to obtain a set of taxa (tip names) from a tree, we can use the
+<a class="reference internal" href="generated/skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subset</span></code></a> method (it is called the “subset” because one can call it at
+any node and get a subset of taxa descending from it).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">subset</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">taxa</span><span class="p">)</span>
+<span class="go">[&#39;A&#39;, &#39;B&#39;, &#39;D&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="editing-a-tree">
+<h3>Editing a tree<a class="headerlink" href="#editing-a-tree" title="Link to this heading">#</a></h3>
+<p>As discussed above, a tree consists of multiple <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> objects connected to each
+other. To manipulate a tree, one just needs to change the connections between nodes.
+<code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> provides several standard methods that let you work with nodes like Python
+lists.</p>
+<p>Create a new tip “E” and attach it to the internal node “C” as a child of it:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">node</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-A</span>
+<span class="go">                   |</span>
+<span class="go">          /C-------|--B</span>
+<span class="go">         |         |</span>
+<span class="go">-root----|          \-E</span>
+<span class="go">         |</span>
+<span class="go">          \-D</span>
+</pre></div>
+</div>
+<p>Create two tips “F” and “G” and attach both of them to tip “D”. Now “D” becomes an
+internal node because it has children:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">TreeNode</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">),</span> <span class="n">TreeNode</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-A</span>
+<span class="go">                   |</span>
+<span class="go">          /C-------|--B</span>
+<span class="go">         |         |</span>
+<span class="go">-root----|          \-E</span>
+<span class="go">         |</span>
+<span class="go">         |          /-F</span>
+<span class="go">          \D-------|</span>
+<span class="go">                    \-G</span>
+</pre></div>
+</div>
+<p>Prune clade “D” and graft it to node “B”. Once a node is attached to a new parent, the
+connection to its old parent is automatically removed.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-A</span>
+<span class="go">                   |</span>
+<span class="go">                   |                    /-F</span>
+<span class="go">-root---- /C-------|-B------- /D-------|</span>
+<span class="go">                   |                    \-G</span>
+<span class="go">                   |</span>
+<span class="go">                    \-E</span>
+</pre></div>
+</div>
+<p>Remove clade “D” from node “B”. This operation detaches the two nodes, but the removed
+node still exists in the memory and once can still use it.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">                    /-A</span>
+<span class="go">                   |</span>
+<span class="go">-root---- /C-------|--B</span>
+<span class="go">                   |</span>
+<span class="go">                    \-E</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">          /-F</span>
+<span class="go">-D-------|</span>
+<span class="go">          \-G</span>
+</pre></div>
+</div>
+<p>These methods automatically clear lookup tables and other caches because they may be
+obsolete for the modified tree. This safety measure could impact performance when
+working with very large trees. If caches are not present or relevant, we can add
+<code class="docutils literal notranslate"><span class="pre">uncache=False</span></code> to these methods to skip this check. See <a class="reference internal" href="generated/skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">has_caches</span></code></a>
+for details.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> provides several advanced methods for editing a tree as a batch. For
+examples, <a class="reference internal" href="generated/skbio.tree.TreeNode.bifurcate.html#skbio.tree.TreeNode.bifurcate" title="skbio.tree.TreeNode.bifurcate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bifurcate</span></code></a> converts an arbitrary tree into a bifurcating
+tree (binary tree), <a class="reference internal" href="generated/skbio.tree.TreeNode.shear.html#skbio.tree.TreeNode.shear" title="skbio.tree.TreeNode.shear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shear</span></code></a> refines a tree to a given set of taxa,
+<a class="reference internal" href="generated/skbio.tree.TreeNode.unpack_by_func.html#skbio.tree.TreeNode.unpack_by_func" title="skbio.tree.TreeNode.unpack_by_func"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unpack_by_func</span></code></a> unpacks (contracts) branches that suffice certain
+criteria (e.g., bootstrap support below a threshold).</p>
+</section>
+<section id="building-a-tree">
+<h3>Building a tree<a class="headerlink" href="#building-a-tree" title="Link to this heading">#</a></h3>
+<p>scikit-bio provides several common algorithms for building a tree structure based on
+a distance matrix (<a class="reference internal" href="generated/skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a>) that stores pairwise
+distances between taxa.</p>
+<p>In the field of <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Phylogenetics">phylogenetics</a>, the evolutionary relationships
+among organisms are inferred using genetic data.
+<a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Distance_matrices_in_phylogeny">Distance-based methods</a> are a common category
+of methods for such purpose. The distances are usually computed from sequence alignment
+(see <a class="reference internal" href="alignment.html#module-skbio.alignment" title="skbio.alignment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.alignment</span></code></a>), but they can also be inferred using alternative methods
+such as _k_-mer frequency (see <a class="reference internal" href="generated/skbio.sequence.Sequence.kmer_frequencies.html#skbio.sequence.Sequence.kmer_frequencies" title="skbio.sequence.Sequence.kmer_frequencies"><code class="xref py py-func docutils literal notranslate"><span class="pre">kmer_frequencies</span></code></a>) and
+community diversity (see <a class="reference internal" href="generated/skbio.diversity.beta.html#module-skbio.diversity.beta" title="skbio.diversity.beta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity.beta</span></code></a>), and the applications of
+distance-based tree building are not limited to evolutionary biology, but can be
+extended to other fields (e.g., <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Hierarchical_clustering">hierarchical clustering</a> in data science).</p>
+<p>To begin with, let’s create a distance matrix of seven taxa.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.</span>   <span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.033</span><span class="p">,</span> <span class="mf">0.387</span><span class="p">,</span> <span class="mf">0.626</span><span class="p">,</span> <span class="mf">0.635</span><span class="p">,</span> <span class="mf">0.665</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.</span>   <span class="p">,</span> <span class="mf">0.028</span><span class="p">,</span> <span class="mf">0.387</span><span class="p">,</span> <span class="mf">0.626</span><span class="p">,</span> <span class="mf">0.635</span><span class="p">,</span> <span class="mf">0.665</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.033</span><span class="p">,</span> <span class="mf">0.028</span><span class="p">,</span> <span class="mf">0.</span>   <span class="p">,</span> <span class="mf">0.396</span><span class="p">,</span> <span class="mf">0.635</span><span class="p">,</span> <span class="mf">0.64</span> <span class="p">,</span> <span class="mf">0.679</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.387</span><span class="p">,</span> <span class="mf">0.387</span><span class="p">,</span> <span class="mf">0.396</span><span class="p">,</span> <span class="mf">0.</span>   <span class="p">,</span> <span class="mf">0.611</span><span class="p">,</span> <span class="mf">0.611</span><span class="p">,</span> <span class="mf">0.66</span> <span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.626</span><span class="p">,</span> <span class="mf">0.626</span><span class="p">,</span> <span class="mf">0.635</span><span class="p">,</span> <span class="mf">0.611</span><span class="p">,</span> <span class="mf">0.</span>   <span class="p">,</span> <span class="mf">0.147</span><span class="p">,</span> <span class="mf">0.758</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.635</span><span class="p">,</span> <span class="mf">0.635</span><span class="p">,</span> <span class="mf">0.64</span> <span class="p">,</span> <span class="mf">0.611</span><span class="p">,</span> <span class="mf">0.147</span><span class="p">,</span> <span class="mf">0.</span>   <span class="p">,</span> <span class="mf">0.754</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.665</span><span class="p">,</span> <span class="mf">0.665</span><span class="p">,</span> <span class="mf">0.679</span><span class="p">,</span> <span class="mf">0.66</span> <span class="p">,</span> <span class="mf">0.758</span><span class="p">,</span> <span class="mf">0.754</span><span class="p">,</span> <span class="mf">0.</span>   <span class="p">],</span>
+<span class="gp">... </span><span class="p">],</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="s1">&#39;human&#39;</span><span class="p">,</span> <span class="s1">&#39;chimp&#39;</span><span class="p">,</span> <span class="s1">&#39;monkey&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;rat&#39;</span><span class="p">,</span> <span class="s1">&#39;chicken&#39;</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The following code applies <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Neighbor_joining">neighbor joining</a> (<a class="reference internal" href="generated/skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-func docutils literal notranslate"><span class="pre">nj</span></code></a>), a
+classic distance-based tree-building algorithm:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">nj</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">nj</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Display the reconstructed phylogenetic tree:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">          /-human</span>
+<span class="go">         |</span>
+<span class="go">         |--chimp</span>
+<span class="go">---------|</span>
+<span class="go">         |          /-monkey</span>
+<span class="go">         |         |</span>
+<span class="go">          \--------|          /-pig</span>
+<span class="go">                   |         |</span>
+<span class="go">                    \--------|                    /-mouse</span>
+<span class="go">                             |          /--------|</span>
+<span class="go">                              \--------|          \-rat</span>
+<span class="go">                                       |</span>
+<span class="go">                                        \-chicken</span>
+</pre></div>
+</div>
+<p>Other methods include <a class="reference internal" href="generated/skbio.tree.upgma.html#skbio.tree.upgma" title="skbio.tree.upgma"><code class="xref py py-func docutils literal notranslate"><span class="pre">upgma</span></code></a> (simplest), <a class="reference internal" href="generated/skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a> (highly scalable) and
+<a class="reference internal" href="generated/skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme</span></code></a>. All of them can be applied in the same way.</p>
+<p>These four methods create a tree from scratch through a fixed set of procedures.
+Additionally, starting from an existing tree, <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Tree_rearrangement">tree rearrangement</a> methods will explore the tree space further in order to
+improve it. Nearest neighbor interchange (<a class="reference internal" href="generated/skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-func docutils literal notranslate"><span class="pre">nni</span></code></a>) is one such method.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">nni</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">nni</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="rooting-a-tree">
+<h3>Rooting a tree<a class="headerlink" href="#rooting-a-tree" title="Link to this heading">#</a></h3>
+<p>The phylogenetic tree created above seems to properly reflect the relatedness among the
+seven organisms. However, the “root” of the tree doesn’t appear to be aligned with our
+knowledge of evolution. This is because the tree is in fact <strong>unrooted</strong>. That is, the
+placement of branches does not inform the direction of evolution.</p>
+<p>In scikit-bio, the distinguishment between rooted and unrooted trees is implicit: Every
+tree has a root node. A tree is considered as “rooted” if its root node has exactly two
+children. In contrast, an “unrooted” tree may have three (the most common case), one,
+or more than three children attached to its root node.</p>
+<p>There are several approaches to root an unrooted tree to reflect the correct direction
+of evolution. Midpoint rooting (<a class="reference internal" href="generated/skbio.tree.TreeNode.root_at_midpoint.html#skbio.tree.TreeNode.root_at_midpoint" title="skbio.tree.TreeNode.root_at_midpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">root_at_midpoint</span></code></a>) is a simple method
+that places the root at the midpoint between the two most distant tips in the tree.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rooted</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_at_midpoint</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rooted</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
+<span class="go">          /-chicken</span>
+<span class="go">         |</span>
+<span class="go">-root----|                    /-mouse</span>
+<span class="go">         |          /--------|</span>
+<span class="go">         |         |          \-rat</span>
+<span class="go">          \--------|</span>
+<span class="go">                   |          /-pig</span>
+<span class="go">                    \--------|</span>
+<span class="go">                             |          /-monkey</span>
+<span class="go">                              \--------|</span>
+<span class="go">                                       |          /-chimp</span>
+<span class="go">                                        \--------|</span>
+<span class="go">                                                  \-human</span>
+</pre></div>
+</div>
+<p>If we already know which taxon or taxa (called an “outgroup”) were separated from all
+other taxa in evolution, we can perform outgroup rooting
+(<a class="reference internal" href="generated/skbio.tree.TreeNode.root_by_outgroup.html#skbio.tree.TreeNode.root_by_outgroup" title="skbio.tree.TreeNode.root_by_outgroup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">root_by_outgroup</span></code></a>):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rooted</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_by_outgroup</span><span class="p">([</span><span class="s2">&quot;chicken&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Or we can directly root a tree at a given taxon, node or branch:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rooted</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_at</span><span class="p">(</span><span class="s2">&quot;chicken&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To convert a rooted tree into unrooted, we can apply the <a class="reference internal" href="generated/skbio.tree.TreeNode.unroot.html#skbio.tree.TreeNode.unroot" title="skbio.tree.TreeNode.unroot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unroot</span></code></a>
+method.</p>
+</section>
+<section id="analyzing-topology">
+<h3>Analyzing topology<a class="headerlink" href="#analyzing-topology" title="Link to this heading">#</a></h3>
+<p>The topology of a tree describes the grouping pattern among taxa. For example, in the
+rooted tree displayed above, human, chimp and monkey form a clade (a monophyletic
+group), while mouse and rat form another clade. A clade can be referred to by its root
+node, which is the lowest common ancestor (<a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Lowest_common_ancestor">LCA</a>) of all
+descending taxa:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">primate</span> <span class="o">=</span> <span class="n">rooted</span><span class="o">.</span><span class="n">lca</span><span class="p">([</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;chimp&quot;</span><span class="p">,</span> <span class="s2">&quot;monkey&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rodent</span> <span class="o">=</span> <span class="n">rooted</span><span class="o">.</span><span class="n">lca</span><span class="p">([</span><span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;rat&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that one doesn’t need to list all descending taxa in order to find the LCA. Two
+or more taxa that join at the LCA node on their paths to the root are sufficient for
+locating the LCA.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">primate</span> <span class="o">=</span> <span class="n">rooted</span><span class="o">.</span><span class="n">lca</span><span class="p">([</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;monkey&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>A clade regardless of its internal structure can be simply defined by the
+<a class="reference internal" href="generated/skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subset</span></code></a> of taxa descending from it (see above). All
+<a class="reference internal" href="generated/skbio.tree.TreeNode.subsets.html#skbio.tree.TreeNode.subsets" title="skbio.tree.TreeNode.subsets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subsets</span></code></a> within a rooted tree describes all possible taxon groups.</p>
+<p>Assume we have another rooted tree <code class="docutils literal notranslate"><span class="pre">tree2</span></code> of the same taxa. To assess whether
+that tree also support human, chimp and monkey grouped together, we can simply do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">primate</span><span class="o">.</span><span class="n">subset</span><span class="p">()</span> <span class="ow">in</span> <span class="n">tree2</span><span class="o">.</span><span class="n">subsets</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When working with unrooted trees, we should replace the notion of subset with
+bipartition (<a class="reference internal" href="generated/skbio.tree.TreeNode.bipart.html#skbio.tree.TreeNode.bipart" title="skbio.tree.TreeNode.bipart"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bipart</span></code></a>), which defines the separation of all taxa into
+two parts by a given branch, regardless of the direction of evolution. For example,
+both the rooted and unrooted trees support the separation of primates from other taxa:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">primate</span><span class="o">.</span><span class="n">bipart</span><span class="p">()</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">biparts</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The topology of two trees with shared taxa can be compared using the Robinson-Foulds
+(RF) distance, which is the number of bipartitions (unrooted trees) or subsets
+(rooted trees) that are distinct between the two trees. For example, let’s define
+three trees, the first two of which have the same topology despite different orders
+of clades.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A,B),(C,D),(E,F));&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree2</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((F,E),(C,D),(B,A));&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree3</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((C,B),(A,D),(E,F));&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Calculate RF distances using (<a class="reference internal" href="generated/skbio.tree.TreeNode.compare_rfd.html#skbio.tree.TreeNode.compare_rfd" title="skbio.tree.TreeNode.compare_rfd"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_rfd</span></code></a>):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_rfd</span><span class="p">(</span><span class="n">tree1</span><span class="p">)</span>  <span class="c1"># identity case</span>
 <span class="go">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_subsets</span><span class="p">(</span><span class="n">tree2</span><span class="p">))</span>  <span class="c1"># same tree but different clade order</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_rfd</span><span class="p">(</span><span class="n">tree2</span><span class="p">)</span>  <span class="c1"># same tree but different clade order</span>
 <span class="go">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_subsets</span><span class="p">(</span><span class="n">tree3</span><span class="p">))</span>  <span class="c1"># only 1 of 3 common subsets</span>
-<span class="go">0.6666666666666666</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_rfd</span><span class="p">(</span><span class="n">tree3</span><span class="p">)</span>  <span class="c1"># only 1 of 3 common clade</span>
+<span class="go">4.0</span>
 </pre></div>
 </div>
-<p>We can additionally take into account branch length when computing distances
-between trees. First, we’re going to construct two new trees with described
-branch length, note the difference in the Newick strings:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span> <span class="o">=</span> \
-<span class="gp">... </span>    <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;((A:0.1, B:0.2)C:0.3, D:0.4, E:0.5)root;&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree2</span> <span class="o">=</span> \
-<span class="gp">... </span>    <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;((A:0.4, B:0.8)C:0.3, D:0.1, E:0.5)root;&quot;</span><span class="p">))</span>
+<p>We can calculate pairwise RF distances between any number of trees using a single call
+of <a class="reference internal" href="generated/skbio.tree.rf_dists.html#skbio.tree.rf_dists" title="skbio.tree.rf_dists"><code class="xref py py-func docutils literal notranslate"><span class="pre">rf_dists</span></code></a>, which returns a distance matrix:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">rf_dists</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">rf_dists</span><span class="p">([</span><span class="n">tree1</span><span class="p">,</span> <span class="n">tree2</span><span class="p">,</span> <span class="n">tree3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
+<span class="go">3x3 distance matrix</span>
+<span class="go">IDs:</span>
+<span class="go">&#39;0&#39;, &#39;1&#39;, &#39;2&#39;</span>
+<span class="go">Data:</span>
+<span class="go">[[ 0.  0.  4.]</span>
+<span class="go"> [ 0.  0.  4.]</span>
+<span class="go"> [ 4.  4.  0.]]</span>
 </pre></div>
 </div>
-<p>In these two trees, we’ve added on a description of length from the node to
-its parent, so for instance:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree1</span><span class="o">.</span><span class="n">postorder</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
-<span class="go">A 0.1</span>
-<span class="go">B 0.2</span>
-<span class="go">C 0.3</span>
-<span class="go">D 0.4</span>
-<span class="go">E 0.5</span>
-<span class="go">root None</span>
+</section>
+<section id="analyzing-distances">
+<h3>Analyzing distances<a class="headerlink" href="#analyzing-distances" title="Link to this heading">#</a></h3>
+<p>With branch lengths annotated, a phylogenetic tree describes the evolutionary distances
+among taxa. This important property is the basis for multiple downstream analyses, such
+as community diversity (see <a class="reference internal" href="diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a>).</p>
+<p>The <a class="reference internal" href="generated/skbio.tree.TreeNode.distance.html#skbio.tree.TreeNode.distance" title="skbio.tree.TreeNode.distance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">distance</span></code></a> between two nodes in a tree (a.k.a., patristic distance)
+is the total length of branches constituting the path connecting them. For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">human</span><span class="p">,</span> <span class="n">mouse</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;human&quot;</span><span class="p">),</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;mouse&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">human</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">mouse</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">0.628</span>
 </pre></div>
 </div>
-<p>Now let’s compare two trees using the distances computed pairwise between tips
-in the trees. The distance computed, by default, is the correlation of
-cophenetic (tip-to-tip) distances between trees:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_cophenet</span><span class="p">(</span><span class="n">tree1</span><span class="p">))</span>  <span class="c1"># identity case</span>
-<span class="go">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_cophenet</span><span class="p">(</span><span class="n">tree2</span><span class="p">))</span>
-<span class="go">0.120492524415</span>
+<p>The maximum distance between any pair of taxa (<a class="reference internal" href="generated/skbio.tree.TreeNode.maxdist.html#skbio.tree.TreeNode.maxdist" title="skbio.tree.TreeNode.maxdist"><code class="xref py py-meth docutils literal notranslate"><span class="pre">maxdist</span></code></a>) and the total
+branch length connecting all taxa (<a class="reference internal" href="generated/skbio.tree.TreeNode.total_length.html#skbio.tree.TreeNode.total_length" title="skbio.tree.TreeNode.total_length"><code class="xref py py-meth docutils literal notranslate"><span class="pre">total_length</span></code></a>) can be used to
+measure the biodiversity of groups of organisms.</p>
+<p>The distances between all pairs of tips (taxa) in a tree can be efficiently calculated
+using <a class="reference internal" href="generated/skbio.tree.TreeNode.cophenet.html#skbio.tree.TreeNode.cophenet" title="skbio.tree.TreeNode.cophenet"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cophenet</span></code></a>, which returns a distance matrix.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dm</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">cophenet</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>The evolutionary distances reflected by two trees can be compared. First, let’s create
+two trees with the same taxa but different branch lengths.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A:0.1,B:0.2):0.3,C:0.4,D:0.5);&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree2</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A:0.4,B:0.8):0.3,C:0.1,D:0.5);&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Calculate the distance between the cophenetic distance matrics using
+(<a class="reference internal" href="generated/skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a>):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_cophenet</span><span class="p">(</span><span class="n">tree2</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">0.12</span>
+</pre></div>
+</div>
+<p>Likewise, we can calculate this metric between multiple trees using <a class="reference internal" href="generated/skbio.tree.path_dists.html#skbio.tree.path_dists" title="skbio.tree.path_dists"><code class="xref py py-func docutils literal notranslate"><span class="pre">path_dists</span></code></a>.</p>
+</section>
 </section>
 </section>
 
@@ -953,7 +1312,17 @@ cophenetic (tip-to-tip) distances between trees:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-tree">Loading a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating-in-a-tree">Navigating in a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traversing-a-tree">Traversing a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-tree">Editing a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-tree">Building a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rooting-a-tree">Rooting a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-topology">Analyzing topology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-distances">Analyzing distances</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

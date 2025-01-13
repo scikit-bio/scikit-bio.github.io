@@ -887,11 +887,11 @@ are supported by each format, see the associated documentation.</p>
 <p>Reading and writing files (I/O) can be a complicated task:</p>
 <ul class="simple">
 <li><p>A file format can sometimes be read into more than one in-memory representation
-(i.e., object). For example, a FASTA file can be read into an
-<a class="reference internal" href="generated/skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.alignment.TabularMSA</span></code></a> or <a class="reference internal" href="generated/skbio.sequence.DNA.html#skbio.sequence.DNA" title="skbio.sequence.DNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.sequence.DNA</span></code></a> depending on
+(i.e., object). For example, a FASTA file can be read into a
+<a class="reference internal" href="generated/skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a> or <a class="reference internal" href="generated/skbio.sequence.DNA.html#skbio.sequence.DNA" title="skbio.sequence.DNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNA</span></code></a> depending on
 what operations you’d like to perform on your data.</p></li>
 <li><p>A single object might be writeable to more than one file format. For example, an
-<a class="reference internal" href="generated/skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.alignment.TabularMSA</span></code></a> object could be written to FASTA, FASTQ,
+<a class="reference internal" href="generated/skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a> object could be written to FASTA, FASTQ,
 CLUSTAL, or PHYLIP formats, just to name a few.</p></li>
 <li><p>You might not know the exact file format of your file, but you want to read
 it into an appropriate object.</p></li>
@@ -902,11 +902,11 @@ using a generator (e.g., if the file cannot be fully loaded into memory).</p></l
 </ul>
 <p>To address these issues (and others), scikit-bio provides a simple, powerful
 interface for dealing with I/O. We accomplish this by using a single I/O
-registry defined in <a class="reference internal" href="generated/skbio.io.registry.IORegistry.html#skbio.io.registry.IORegistry" title="skbio.io.registry.IORegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.io.registry.IORegistry</span></code></a>.</p>
+registry defined in <a class="reference internal" href="generated/skbio.io.registry.IORegistry.html#skbio.io.registry.IORegistry" title="skbio.io.registry.IORegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">IORegistry</span></code></a>.</p>
 <section id="what-kinds-of-files-scikit-bio-can-use">
 <h3>What kinds of files scikit-bio can use<a class="headerlink" href="#what-kinds-of-files-scikit-bio-can-use" title="Link to this heading">#</a></h3>
 <p>To see a complete list of file-like inputs that can be used for reading,
-writing, and sniffing, see the documentation for <a class="reference internal" href="generated/skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a>.</p>
+writing, and sniffing, see the documentation for <a class="reference internal" href="generated/skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open</span></code></a>.</p>
 </section>
 <section id="reading-files-into-scikit-bio">
 <h3>Reading files into scikit-bio<a class="headerlink" href="#reading-files-into-scikit-bio" title="Link to this heading">#</a></h3>
@@ -916,7 +916,7 @@ procedural interface:</p>
 </pre></div>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">file</span></code> can be a path to a file, a file handle, or any of the other
-objects with read support listed in the <a class="reference internal" href="generated/skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open()</span></code></a> documentation.</p>
+objects with read support listed in the <a class="reference internal" href="generated/skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open</span></code></a> documentation.</p>
 <p>The second way to read files is to use the object-oriented interface, which is
 automatically constructed from the procedural interface:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_obj</span> <span class="o">=</span> <span class="n">SomeSkbioClass</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;someformat&#39;</span><span class="p">)</span>
@@ -949,7 +949,7 @@ built-in <a class="reference external" href="https://docs.python.org/3/library/i
 <span class="go">&lt;TreeNode, name: unnamed, internal node count: 0, tips count: 2&gt;</span>
 </pre></div>
 </div>
-<p>In the case of <a class="reference internal" href="generated/skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read()</span></code></a> if <code class="docutils literal notranslate"><span class="pre">into</span></code> is not provided, then a
+<p>In the case of <a class="reference internal" href="generated/skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read</span></code></a> if <code class="docutils literal notranslate"><span class="pre">into</span></code> is not provided, then a
 generator will be returned. What the generator yields will depend on what
 format is being read.</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">into</span></code> is provided, format may be omitted and the registry will use its

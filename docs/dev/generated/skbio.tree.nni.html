@@ -679,7 +679,7 @@
 <h1>skbio.tree.nni<a class="headerlink" href="#skbio-tree-nni" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.nni">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L260"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nni" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">nni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L260"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.nni" title="Link to this definition">#</a></dt>
 <dd><p>Perform nearest neighbor interchange (NNI) to improve a phylogenetic tree.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
@@ -696,7 +696,7 @@
 </dd>
 <dt><strong>balanced</strong><span class="classifier">bool, optional</span></dt><dd><p>Use the OLS framework (False) or the balanced framework (True, default).</p>
 </dd>
-<dt><strong>clip_to_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
+<dt><strong>neg_as_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
 </dd>
 </dl>
 </dd>
@@ -710,22 +710,23 @@
 <p class="rubric">Notes</p>
 <p>Nearest neighbor interchange (NNI) is a method for tree rearrangement aiming at
 optimizing a given tree topology according to certain criteria. It iteratively
-swaps neighboring branches that could result in better trees, until no such swaps
+swaps neighboring branches that could result in a better tree, until no such swaps
 remain in the optimized tree.</p>
 <p>This function performs NNI for the minimum evolution (ME) problem on phylogenetic
 trees. The implementation is based on <a class="reference internal" href="#r2d0c0545a225-1" id="id1">[1]</a>. Two versions of the method are
 provided: the FastNNI algorithm (<code class="docutils literal notranslate"><span class="pre">balanced=False</span></code>) based on an ordinary least
-squares (OLS) framework (see also <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a>) and the BNNI algorithm
-(<code class="docutils literal notranslate"><span class="pre">balanced=True</span></code>) based on a balanced framework (see also <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme()</span></code></a>). The
+squares (OLS) framework (see also <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a>) and the BNNI algorithm
+(<code class="docutils literal notranslate"><span class="pre">balanced=True</span></code>) based on a balanced framework (see also <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme</span></code></a>). The
 former is more scalable than the latter.</p>
 <p>The input tree may be rooted or unrooted, and it must be strictly bifurcating. One
-can apply <a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html#skbio.tree.TreeNode.is_bifurcating" title="skbio.tree.TreeNode.is_bifurcating"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_bifurcating()</span></code></a> or <a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html#skbio.tree.TreeNode.bifurcate" title="skbio.tree.TreeNode.bifurcate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bifurcate()</span></code></a> to check
+can apply <a class="reference internal" href="skbio.tree.TreeNode.is_bifurcating.html#skbio.tree.TreeNode.is_bifurcating" title="skbio.tree.TreeNode.is_bifurcating"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_bifurcating</span></code></a> or <a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html#skbio.tree.TreeNode.bifurcate" title="skbio.tree.TreeNode.bifurcate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bifurcate</span></code></a> to check
 or make a bifurcating tree. The set of taxa in the tree (accessible via
-<a class="reference internal" href="skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subset()</span></code></a>) must match those in the distance matrix.</p>
+<a class="reference internal" href="skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subset</span></code></a>) must match those in the distance matrix.</p>
 <p>The output tree is unrooted, with the first taxon in the distance matrix placed as
 a child of the root node. Branch lengths are assigned according to the framework of
-choice. See also <a class="reference internal" href="skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-func docutils literal notranslate"><span class="pre">nj()</span></code></a> regarding rooting an unrooted tree and dealing with
+choice. See also <a class="reference internal" href="skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-func docutils literal notranslate"><span class="pre">nj</span></code></a> regarding rooting an unrooted tree and dealing with
 potential negative branch lengths.</p>
+<p>The same methods were provided by FastME <a class="reference internal" href="#r2d0c0545a225-2" id="id2">[2]</a>. See <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a> for notes on this.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r2d0c0545a225-1" role="doc-biblioentry">
@@ -733,6 +734,12 @@ potential negative branch lengths.</p>
 <p>Desper, R., &amp; Gascuel, O. (2002). Fast and accurate phylogeny reconstruction
 algorithms based on the minimum-evolution principle. J Comput Biol, 9(5),
 687-705.</p>
+</div>
+<div class="citation" id="r2d0c0545a225-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Lefort, V., Desper, R., &amp; Gascuel, O. (2015). FastME 2.0: a comprehensive,
+accurate, and fast distance-based phylogeny inference program. Mol Biol Evol,
+32(10), 2798-2800.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
@@ -837,7 +844,7 @@ tree.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.nni"><code class="docutils literal notranslate"><span class="pre">nni()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.nni"><code class="docutils literal notranslate"><span class="pre">nni</span></code></a></li>
 </ul>
   </nav></div>
 

@@ -794,7 +794,7 @@ these samples using a binomial model. (<em>Note that this is a simulation.</em>)
 </div>
 <p>Let’s set up a test function, so we can test the probability of
 finding a difference in frequency between the two groups. We’ll use
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy.stats.chisquare" title="(in SciPy v1.15.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.chisquare()</span></code></a> to look for the difference in frequency
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html#scipy.stats.chisquare" title="(in SciPy v1.15.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.chisquare</span></code></a> to look for the difference in frequency
 between groups.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">chisquare</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">chisquare</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
@@ -808,9 +808,9 @@ between groups.</p>
 </div>
 <p>Since there are an even number of samples, and we don’t have enough
 information to try controlling the data, we’ll use
-<a class="reference internal" href="#skbio.stats.power.subsample_power" title="skbio.stats.power.subsample_power"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsample_power()</span></code></a> to compare the two groups. If we had
+<a class="reference internal" href="#skbio.stats.power.subsample_power" title="skbio.stats.power.subsample_power"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsample_power</span></code></a> to compare the two groups. If we had
 metadata about other risk factors, like a reproductive history, BMI,
-tobacco use, we might want to use <a class="reference internal" href="skbio.stats.power.subsample_paired_power.html#skbio.stats.power.subsample_paired_power" title="skbio.stats.power.subsample_paired_power"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsample_paired_power()</span></code></a>.
+tobacco use, we might want to use <a class="reference internal" href="skbio.stats.power.subsample_paired_power.html#skbio.stats.power.subsample_paired_power" title="skbio.stats.power.subsample_paired_power"><code class="xref py py-func docutils literal notranslate"><span class="pre">subsample_paired_power</span></code></a>.
 We’ll also use “ind” <code class="docutils literal notranslate"><span class="pre">draw_mode</span></code>, since there is no linkage between the
 two groups of samples.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.power</span><span class="w"> </span><span class="kn">import</span> <span class="n">subsample_power</span>
@@ -927,7 +927,7 @@ power.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.power.subsample_power"><code class="docutils literal notranslate"><span class="pre">subsample_power()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.power.subsample_power"><code class="docutils literal notranslate"><span class="pre">subsample_power</span></code></a></li>
 </ul>
   </nav></div>
 

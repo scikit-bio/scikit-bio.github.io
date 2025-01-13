@@ -679,7 +679,7 @@
 <h1>skbio.tree.bme<a class="headerlink" href="#skbio-tree-bme" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.bme">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">bme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L157"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.bme" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">bme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L157"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.bme" title="Link to this definition">#</a></dt>
 <dd><p>Perform balanced minimum evolution (BME) for phylogenetic reconstruction.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
@@ -689,7 +689,7 @@
 <dd class="field-odd"><dl class="simple">
 <dt><strong>dm</strong><span class="classifier">skbio.DistanceMatrix</span></dt><dd><p>Input distance matrix containing distances between taxa.</p>
 </dd>
-<dt><strong>clip_to_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
+<dt><strong>neg_as_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), convert negative branch lengths into zeros.</p>
 </dd>
 </dl>
 </dd>
@@ -712,19 +712,19 @@
 <p>Balanced Minimum Evolution (BME) <a class="reference internal" href="#r24fbe14e2594-1" id="id1">[1]</a> is a refinement of the distance-based minimum
 evolution problem where the average distances between subtrees are independent of
 the sizes of the subtrees. This is referred to as a balanced (or simply BME)
-framework <a class="reference internal" href="#r24fbe14e2594-2" id="id2">[2]</a>, as in contrast to the OLS framework used by GME (<a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a>).</p>
+framework <a class="reference internal" href="#r24fbe14e2594-2" id="id2">[2]</a>, as in contrast to the OLS framework used by GME (<a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a>).</p>
 <p>The BME algorithm implemented here uses a similar greedy algorithm as implemented
-in <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a>, but less scalable due to the need to update subtree distances as
+in <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a>, but less scalable due to the need to update subtree distances as
 the tree topology changes. The algorithm is sub-<em>O</em>(<em>n</em><sup>3</sup>) in time and
 <em>O</em>(<em>n</em><sup>2</sup>) in space.</p>
-<p>Refer to <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a> for the format of the output tree and subsequent treatments.</p>
+<p>Refer to <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a> for the format of the output tree and subsequent treatments.</p>
 <p>A BME-generated tree may be further improved by executing the BNNI algorithm
-implemented in <a class="reference internal" href="skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-func docutils literal notranslate"><span class="pre">nni()</span></code></a> (with <code class="docutils literal notranslate"><span class="pre">balanced=True</span></code>).</p>
-<p>The same method was provided by FastME <a class="reference internal" href="#r24fbe14e2594-3" id="id3">[3]</a>. See <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme()</span></code></a> for notes on this.</p>
+implemented in <a class="reference internal" href="skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-func docutils literal notranslate"><span class="pre">nni</span></code></a> (with <code class="docutils literal notranslate"><span class="pre">balanced=True</span></code>).</p>
+<p>The same method was provided by FastME <a class="reference internal" href="#r24fbe14e2594-3" id="id3">[3]</a>. See <a class="reference internal" href="skbio.tree.gme.html#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a> for notes on this.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Experimental feature: Add <code class="docutils literal notranslate"><span class="pre">parallel=True</span></code> will enable parallelization,
-which might increase the performance of the algorithm. This feature may not
+which may increase the performance of the algorithm. This feature may not
 be stable and may be modified without notice in the future.</p>
 </div>
 <p class="rubric">References</p>
@@ -829,7 +829,7 @@ object.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.bme"><code class="docutils literal notranslate"><span class="pre">bme()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.tree.bme"><code class="docutils literal notranslate"><span class="pre">bme</span></code></a></li>
 </ul>
   </nav></div>
 
