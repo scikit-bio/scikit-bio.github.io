@@ -1005,6 +1005,26 @@ to write only one chunk from the generator at a time.</p>
 </pre></div>
 </div>
 </section>
+<section id="support-for-stdin">
+<h3>Support for stdin<a class="headerlink" href="#support-for-stdin" title="Link to this heading">#</a></h3>
+<p>You may stream files in scikit-bio through stdin. To do this, you must set the
+<code class="docutils literal notranslate"><span class="pre">verify</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">read</span></code> function to <code class="docutils literal notranslate"><span class="pre">False</span></code>. This will bypass
+scikit-bio’s sniffers, which is what enables piping to function. However, the cost is
+that scikit-bio is no longer checking that your file formats are correct, so the user
+must be confident that they know the file format they are working with.</p>
+<p>For example, if you wanted to pipe a FASTA file into a python script, your script could
+look like this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">skbio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">skbio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This would then enable you to do the following.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>some_file.fna<span class="w"> </span><span class="p">|</span><span class="w"> </span>python<span class="w"> </span>script.py
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1066,6 +1086,7 @@ to write only one chunk from the generator at a time.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-files-into-scikit-bio">Reading files into scikit-bio</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-files-from-scikit-bio">Writing files from scikit-bio</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-files-with-read-and-write">Streaming files with read and write</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-for-stdin">Support for stdin</a></li>
 </ul>
 </li>
 </ul>
