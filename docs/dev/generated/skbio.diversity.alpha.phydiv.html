@@ -722,15 +722,18 @@
 <h1>skbio.diversity.alpha.phydiv<a class="headerlink" href="#skbio-diversity-alpha-phydiv" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.alpha.phydiv">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">phydiv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rooted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otu_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_pd.py#L248"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.phydiv" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.alpha.</span></span><span class="sig-name descname"><span class="pre">phydiv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rooted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/alpha/_pd.py#L244"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha.phydiv" title="Link to this definition">#</a></dt>
 <dd><p>Calculate generalized phylogenetic diversity (PD) metrics.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>counts</strong><span class="classifier">1-D array_like, int</span></dt><dd><p>Vectors of counts/abundances of taxa for one sample.</p>
 </dd>
 <dt><strong>taxa</strong><span class="classifier">list, np.array</span></dt><dd><p>Vector of taxon IDs corresponding to tip names in <code class="docutils literal notranslate"><span class="pre">tree</span></code>. Must be the same
 length as <code class="docutils literal notranslate"><span class="pre">counts</span></code>. Required.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">otu_ids</span></code>. The old name is kept as an alias but is deprecated.</p>
+</div>
 </dd>
 <dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Tree relating taxa. The set of tip names in the tree can be a superset of
 <code class="docutils literal notranslate"><span class="pre">taxa</span></code>, but not a subset. Required.</p>
@@ -744,9 +747,6 @@ descending from the branch (default: False). A float within [0, 1] indicates
 the degree of partial-weighting (0: unweighted, 1: fully-weighted).</p>
 </dd>
 <dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether validate the input data. See <a class="reference internal" href="skbio.diversity.alpha.faith_pd.html#skbio.diversity.alpha.faith_pd" title="skbio.diversity.alpha.faith_pd"><code class="xref py py-func docutils literal notranslate"><span class="pre">faith_pd</span></code></a> for details.</p>
-</dd>
-<dt><strong>otu_ids</strong><span class="classifier">list, np.array</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">taxa</span></code> for backward compatibility. Deprecated and to be removed in a
-future release.</p>
 </dd>
 </dl>
 </dd>
