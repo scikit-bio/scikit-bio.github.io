@@ -55,12 +55,6 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'UA-6636235-9');
-            </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.gff3';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -795,7 +789,7 @@ the annotation belong to.</p>
 an interval feature in <code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">IntervalMetadata</span><span class="p">,</span>
 <span class="gp">... </span>          <span class="n">seq_id</span><span class="o">=</span><span class="s1">&#39;seq_1&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">3 interval features</span>
 <span class="go">-------------------</span>
 <span class="go">Interval(interval_metadata=&lt;4604421736&gt;, bounds=[(9, 90)], fuzzy=[(False, False)], metadata={&#39;type&#39;: &#39;gene&#39;, &#39;phase&#39;: 0, &#39;strand&#39;: &#39;+&#39;, &#39;source&#39;: &#39;.&#39;, &#39;score&#39;: &#39;.&#39;, &#39;ID&#39;: &#39;gen1&#39;})</span>
@@ -804,7 +798,7 @@ an interval feature in <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <p>We can write the <code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object back to GFF3 file:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>    
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">seq_id</span><span class="o">=</span><span class="s1">&#39;seq_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 <span class="go">##gff-version 3</span>
 <span class="go">seq_1   .       gene    10      90      .       +       0       ID=gen1</span>
@@ -824,7 +818,7 @@ an interval feature in <code class="docutils literal notranslate"><span class="p
 <p>We can also read the GFF3 file into a generator:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">gff_str</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">im</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>   
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">im</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># the seq id</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>   <span class="c1"># the interval metadata on this seq</span>
 <span class="go">seq_1</span>
@@ -989,7 +983,7 @@ an interval feature in <code class="docutils literal notranslate"><span class="p
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

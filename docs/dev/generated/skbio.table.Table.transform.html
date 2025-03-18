@@ -56,12 +56,6 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'UA-6636235-9');
-            </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.table.Table.transform';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -660,6 +654,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.example_table.html">skbio.table.example_table</a></li>
 </ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.Augmentation.html">skbio.table.Augmentation</a></li>
+</ul>
 </div>
 </nav></div>
     </div>
@@ -768,7 +765,7 @@ itself.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;y&#39;</span><span class="p">}],</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 <span class="go"># Constructed from biom file</span>
 <span class="go">#OTU ID S1  S2  S3</span>
 <span class="go">O1  0.0 0.0 1.0</span>
@@ -781,7 +778,7 @@ itself.</p>
 </div>
 <p>Transform to a new table on samples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table2</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
 <span class="go"># Constructed from biom file</span>
 <span class="go">#OTU ID S1  S2  S3</span>
 <span class="go">O1  0.0 0.0 0.5</span>
@@ -789,7 +786,7 @@ itself.</p>
 </pre></div>
 </div>
 <p><cite>table</cite> hasn’t changed</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> 
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 <span class="go"># Constructed from biom file</span>
 <span class="go">#OTU ID S1  S2  S3</span>
 <span class="go">O1  0.0 0.0 1.0</span>
@@ -801,7 +798,7 @@ itself.</p>
 </pre></div>
 </div>
 <p><cite>table</cite> is different now</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> 
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 <span class="go"># Constructed from biom file</span>
 <span class="go">#OTU ID S1  S2  S3</span>
 <span class="go">O1  0.0 0.0 0.5</span>
@@ -809,7 +806,7 @@ itself.</p>
 </pre></div>
 </div>
 <p>but the table returned (<cite>table3</cite>) is the same as <cite>table</cite></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table3</span><span class="p">)</span> 
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table3</span><span class="p">)</span>
 <span class="go"># Constructed from biom file</span>
 <span class="go">#OTU ID S1  S2  S3</span>
 <span class="go">O1  0.0 0.0 0.5</span>
@@ -910,7 +907,7 @@ itself.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

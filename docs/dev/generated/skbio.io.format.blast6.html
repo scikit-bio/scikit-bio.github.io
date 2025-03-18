@@ -55,12 +55,6 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'UA-6636235-9');
-            </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.blast6';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -989,7 +983,7 @@ in the order they will appear in the file.</p></li>
 be used:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;blast+6&quot;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
 <span class="gp">... </span>                   <span class="n">default_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
 <span class="go">  qseqid                           sseqid  pident  length  mismatch  gapopen \</span>
 <span class="go">0   moaC     gi|15800534|ref|NP_286546.1|  100.00   161.0       0.0      0.0</span>
 <span class="go">1   moaC  gi|170768970|ref|ZP_02903423.1|   99.38   161.0       1.0      0.0</span>
@@ -1015,7 +1009,7 @@ in the file:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;blast+6&quot;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
 <span class="gp">... </span>                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;qseqid&#39;</span><span class="p">,</span> <span class="s1">&#39;pident&#39;</span><span class="p">,</span> <span class="s1">&#39;mismatch&#39;</span><span class="p">,</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                            <span class="s1">&#39;gapopen&#39;</span><span class="p">,</span> <span class="s1">&#39;qend&#39;</span><span class="p">,</span> <span class="s1">&#39;bitscore&#39;</span><span class="p">,</span> <span class="s1">&#39;sstart&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
 <span class="go">  qseqid  pident  mismatch  length  gapopen   qend  bitscore  sstart</span>
 <span class="go">0   moaC  100.00       0.0   161.0      0.0  161.0     330.0     1.0</span>
 <span class="go">1   moaC   99.38       1.0   161.0      0.0  161.0     329.0     1.0</span>
@@ -1139,7 +1133,7 @@ in the file:</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

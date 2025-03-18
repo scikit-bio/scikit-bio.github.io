@@ -56,12 +56,6 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'UA-6636235-9');
-            </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.metadata.IntervalMetadata';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -686,7 +680,7 @@
 <h1>skbio.metadata.IntervalMetadata<a class="headerlink" href="#skbio-metadata-intervalmetadata" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.metadata.IntervalMetadata">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.metadata.</span></span><span class="sig-name descname"><span class="pre">IntervalMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_interval.py#L392"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.IntervalMetadata" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.metadata.</span></span><span class="sig-name descname"><span class="pre">IntervalMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_interval.py#L392"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.IntervalMetadata" title="Link to this definition">#</a></dt>
 <dd><p>Stores the interval features.</p>
 <p><code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object allows storage, modification, and
 querying of interval features covering a region of a single coordinate
@@ -737,18 +731,18 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 </div>
 <p>Let’s add annotations of 3 genes:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">)],</span>
-<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagB&#39;</span><span class="p">})</span>  
+<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagB&#39;</span><span class="p">})</span>
 <span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span>
-<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagC&#39;</span><span class="p">})</span>  
+<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagC&#39;</span><span class="p">})</span>
 <span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagC&#39;})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span>
-<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagA&#39;</span><span class="p">})</span>  
+<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagA&#39;</span><span class="p">})</span>
 <span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})</span>
 </pre></div>
 </div>
 <p>Show the object representation:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>    
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">3 interval features</span>
 <span class="go">-------------------</span>
 <span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})</span>
@@ -758,7 +752,7 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 </div>
 <p>We can sort the genes by their bounds:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">3 interval features</span>
 <span class="go">-------------------</span>
 <span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})</span>
@@ -771,18 +765,18 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>
 <span class="go">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">query</span><span class="p">([(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>
 <span class="go">[Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagA&#39;</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span>
 <span class="go">[Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})]</span>
 </pre></div>
 </div>
 <p>Drop the gene(s) we get from query:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>   
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">2 interval features</span>
 <span class="go">-------------------</span>
 <span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagC&#39;})</span>
@@ -790,7 +784,7 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.IntervalMetadata.default_write_format" title="skbio.metadata.IntervalMetadata.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p></p></td>
@@ -808,7 +802,7 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 </table>
 </div>
 <p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.IntervalMetadata.add.html#skbio.metadata.IntervalMetadata.add" title="skbio.metadata.IntervalMetadata.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(bounds[, fuzzy, metadata])</p></td>
 <td><p>Create and add an <code class="docutils literal notranslate"><span class="pre">Interval</span></code> to this <code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code>.</p></td>
@@ -838,7 +832,7 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 </table>
 </div>
 <p class="rubric">Special methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.IntervalMetadata.__copy__" title="skbio.metadata.IntervalMetadata.__copy__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__copy__</span></code></a>()</p></td>
 <td><p>Return a shallow copy.</p></td>
@@ -856,7 +850,7 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 </table>
 </div>
 <p class="rubric">Special methods (inherited)</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
 <td><p>Return self&gt;=value.</p></td>
@@ -1089,7 +1083,7 @@ bounds.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>
