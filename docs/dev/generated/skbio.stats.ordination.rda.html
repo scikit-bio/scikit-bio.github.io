@@ -689,7 +689,7 @@
 <h1>skbio.stats.ordination.rda<a class="headerlink" href="#skbio-stats-ordination-rda" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.ordination.rda">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">rda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_redundancy_analysis.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.rda" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">rda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_Y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_redundancy_analysis.py#L18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.rda" title="Link to this definition">#</a></dt>
 <dd><p>Compute redundancy analysis, a type of canonical analysis.</p>
 <p>It is related to PCA and multiple regression because the explained
 variables <cite>y</cite> are fitted to the explanatory variables <cite>x</cite> and PCA
@@ -700,17 +700,19 @@ when it’s large, so that the contingency table is sparse.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>y</strong><span class="classifier">pd.DataFrame</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times p\)</span> response matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number
+<dt><strong>y</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times p\)</span> response matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number
 of samples and <span class="math notranslate nohighlight">\(p\)</span> is the number of features. Its columns
 need be dimensionally homogeneous (or you can set <cite>scale_Y=True</cite>).
 This matrix is also referred to as the community matrix that
-commonly stores information about species abundances</p>
+commonly stores information about species abundances. Can be numpy,
+pandas, polars, AnnData, or BIOM (skbio.Table).</p>
 </dd>
-<dt><strong>x</strong><span class="classifier">pd.DataFrame</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times m, n \geq m\)</span> matrix of explanatory
+<dt><strong>x</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times m, n \geq m\)</span> matrix of explanatory
 variables, where <span class="math notranslate nohighlight">\(n\)</span> is the number of samples and
 <span class="math notranslate nohighlight">\(m\)</span> is the number of metadata variables. Its columns
 need not be standardized, but doing so turns regression
-coefficients into standard regression coefficients.</p>
+coefficients into standard regression coefficients. Can be numpy,
+pandas, polars, AnnData, or BIOM (skbio.Table).</p>
 </dd>
 <dt><strong>scale_Y</strong><span class="classifier">bool, optional</span></dt><dd><p>Controls whether the response matrix columns are scaled to
 have unit standard deviation. Defaults to <cite>False</cite>.</p>
@@ -720,6 +722,23 @@ the ordination of rows (samples) because their transformed
 distances approximate their original euclidean
 distances. Especially interesting when most explanatory
 variables are binary.</p>
+</dd>
+<dt><strong>sample_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of samples. If not provided implicitly by the input DataFrame or
+explicitly by the user, sample_ids will default to a list of integers starting
+at zero.</p>
+</dd>
+<dt><strong>feature_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of features. If not provided implicitly by y or explicitly by the
+user, it will default to list of integers starting at zero.</p>
+</dd>
+<dt><strong>constraint_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of metadata variables (constraints). If not provided implicitly
+by y or explicitly by the user, it will default to a list of integers
+starting at zero.</p>
+</dd>
+<dt><strong>output_format</strong><span class="classifier">str, optional</span></dt><dd><p>The desired format of the output object. Can be <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">polars</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Note that all scikit-bio ordination functions return an
+<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object. In this case the attributes of the
+<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object will be in the specified format. Default is
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
 <p>Scaling type 2 produces a correlation biplot. It focuses
 on the relationships among explained variables (<cite>y</cite>). It
 is interpreted like scaling type 1, but taking into

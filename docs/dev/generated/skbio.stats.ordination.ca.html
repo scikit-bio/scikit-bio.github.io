@@ -689,7 +689,7 @@
 <h1>skbio.stats.ordination.ca<a class="headerlink" href="#skbio-stats-ordination-ca" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.ordination.ca">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">ca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_correspondence_analysis.py#L17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.ca" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">ca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_correspondence_analysis.py#L18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.ca" title="Link to this definition">#</a></dt>
 <dd><p>Compute correspondence analysis.</p>
 <p>Correspondence analysis is a multivariate statistical technique for ordination.
 In general, rows in the data table will correspond to samples and
@@ -705,15 +705,28 @@ there are many zeros in the input data matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Samples by features table (n, m). It can be applied to different kinds
+<dt><strong>X</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p>Samples by features table (n, m). It can be applied to different kinds
 of data tables but data must be non-negative and dimensionally
 homogeneous (quantitative or binary). The rows correspond to the
-samples and the columns correspond to the features.</p>
+samples and the columns correspond to the features. Can be numpy,
+pandas, polars, AnnData, or BIOM (skbio.Table).</p>
+</dd>
+<dt><strong>sample_ids</strong><span class="classifier">list of str</span></dt><dd><p>List of ids of samples. If not provided implicitly by X or explicitly
+by the user, it will default to a list of integers starting at zero.</p>
+</dd>
+<dt><strong>feature_ids</strong><span class="classifier">list of str</span></dt><dd><p>List of ids of features. If not provided implicitly by X or explicitly
+by the user, it will default to a list of integers starting at zero.</p>
 </dd>
 <dt><strong>scaling</strong><span class="classifier">{1, 2}</span></dt><dd><p>Scaling type 1 maintains <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows.
 Scaling type 2 preserves <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between columns.
 For a more detailed explanation of the interpretation,
 check notes below and Legendre &amp; Legendre 1998, section 9.4.3.</p>
+</dd>
+<dt><strong>output_format</strong><span class="classifier">str</span></dt><dd><p>The desired format of the output object. Can be <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">polars</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Note that all scikit-bio ordination functions return an
+<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object. In this case the attributes of the
+<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object will be in the specified format. Default is
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
 </dd>
 </dl>
 </dd>

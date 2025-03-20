@@ -68,7 +68,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="skbio.util.get_data_path" href="generated/skbio.util.get_data_path.html" />
+    <link rel="next" title="Configuration Options (skbio.util.config)" href="generated/skbio.util.config.html" />
     <link rel="prev" title="skbio.workflow.method" href="generated/skbio.workflow.method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -591,8 +591,14 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.config.html">Configuration Options (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util.config</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.get_config.html">skbio.util.get_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.set_config.html">skbio.util.set_config</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.get_data_path.html">skbio.util.get_data_path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.assert_ordination_results_equal.html">skbio.util.assert_ordination_results_equal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.assert_ordination_results_equal_np.html">skbio.util.assert_ordination_results_equal_np</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.assert_data_frame_almost_equal.html">skbio.util.assert_data_frame_almost_equal</a></li>
 </ul>
 <ul class="nav bd-sidenav">
@@ -674,6 +680,24 @@
 <p>This package provides general exception/warning definitions used throughout
 scikit-bio, as well as various utility functionality, including I/O and
 unit-testing convenience functions.</p>
+<section id="user-configuration-utilities">
+<h2>User configuration utilities<a class="headerlink" href="#user-configuration-utilities" title="Link to this heading">#</a></h2>
+<p>Configuration options for functional input and output.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.config.html#module-skbio.util.config" title="skbio.util.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config</span></code></a></p></td>
+<td><p>Configuration Options (skbio.util.config)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.get_config.html#skbio.util.get_config" title="skbio.util.get_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_config</span></code></a>(option)</p></td>
+<td><p>Get the current value of an skbio config option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.set_config.html#skbio.util.set_config" title="skbio.util.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a>(option, value)</p></td>
+<td><p>Set an skbio config option.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="testing-utilities">
 <h2>Testing utilities<a class="headerlink" href="#testing-utilities" title="Link to this heading">#</a></h2>
 <p>Common functionality to support testing in skbio.</p>
@@ -685,7 +709,10 @@ unit-testing convenience functions.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.assert_ordination_results_equal.html#skbio.util.assert_ordination_results_equal" title="skbio.util.assert_ordination_results_equal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_ordination_results_equal</span></code></a>(left, right)</p></td>
 <td><p>Assert that ordination results objects are equal.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.assert_data_frame_almost_equal.html#skbio.util.assert_data_frame_almost_equal" title="skbio.util.assert_data_frame_almost_equal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_data_frame_almost_equal</span></code></a>(left, right)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.assert_ordination_results_equal_np.html#skbio.util.assert_ordination_results_equal_np" title="skbio.util.assert_ordination_results_equal_np"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_ordination_results_equal_np</span></code></a>(obs, exp)</p></td>
+<td><p>NumPy version of testing ordination results.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.assert_data_frame_almost_equal.html#skbio.util.assert_data_frame_almost_equal" title="skbio.util.assert_data_frame_almost_equal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_data_frame_almost_equal</span></code></a>(left, right)</p></td>
 <td><p>Raise AssertionError if <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> objects are not &quot;almost equal&quot;.</p></td>
 </tr>
 </tbody>
@@ -775,11 +802,11 @@ unit-testing convenience functions.</p>
       </div>
     </a>
     <a class="right-next"
-       href="generated/skbio.util.get_data_path.html"
+       href="generated/skbio.util.config.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.util.get_data_path</p>
+        <p class="prev-next-title">Configuration Options (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util.config</span></code>)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -802,6 +829,7 @@ unit-testing convenience functions.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-configuration-utilities">User configuration utilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-utilities">Testing utilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-utilities">Plotting utilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorators">Decorators</a></li>

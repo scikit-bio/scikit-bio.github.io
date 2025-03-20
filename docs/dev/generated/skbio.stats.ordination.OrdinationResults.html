@@ -688,7 +688,7 @@
 <h1>skbio.stats.ordination.OrdinationResults<a class="headerlink" href="#skbio-stats-ordination-ordinationresults" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.stats.ordination.OrdinationResults">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">OrdinationResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">short_method_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_method_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eigvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">biplot_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportion_explained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">OrdinationResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">short_method_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_method_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eigvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">biplot_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportion_explained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults" title="Link to this definition">#</a></dt>
 <dd><p>Store ordination results, providing serialization and plotting support.</p>
 <p>Stores various components of ordination results. Provides methods for
 serializing/deserializing results, as well as generation of basic
@@ -701,22 +701,26 @@ representations of itself within the IPython Notebook.</p>
 </dd>
 <dt><strong>long_method_name</strong><span class="classifier">str</span></dt><dd><p>Ordination method name.</p>
 </dd>
-<dt><strong>eigvals</strong><span class="classifier">pd.Series</span></dt><dd><p>The resulting eigenvalues.  The index corresponds to the ordination
+<dt><strong>eigvals</strong><span class="classifier">ndarray</span></dt><dd><p>The resulting eigenvalues.  The index corresponds to the ordination
 axis labels</p>
 </dd>
-<dt><strong>samples</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>The position of the samples in the ordination space, row-indexed by the
+<dt><strong>samples</strong><span class="classifier">ndarray</span></dt><dd><p>The position of the samples in the ordination space, row-indexed by the
 sample id.</p>
 </dd>
-<dt><strong>features</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>The position of the features in the ordination space, row-indexed by
+<dt><strong>sample_ids</strong><span class="classifier">list of str, or should it be pd.Index?</span></dt><dd><p>The names of the samples. Must be provided if samples is an array.</p>
+</dd>
+<dt><strong>features</strong><span class="classifier">ndarray</span></dt><dd><p>The position of the features in the ordination space, row-indexed by
 the feature id.</p>
 </dd>
-<dt><strong>biplot_scores</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Correlation coefficients of the samples with respect to the features.</p>
+<dt><strong>feature_ids</strong><span class="classifier">array-like of str</span></dt><dd><p>The names of the features. Must be provided if features is an array.</p>
 </dd>
-<dt><strong>sample_constraints</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Site constraints (linear combinations of constraining variables):
+<dt><strong>biplot_scores</strong><span class="classifier">ndarray</span></dt><dd><p>Correlation coefficients of the samples with respect to the features.</p>
+</dd>
+<dt><strong>sample_constraints</strong><span class="classifier">ndarray</span></dt><dd><p>Site constraints (linear combinations of constraining variables):
 coordinates of the sites in the space of the explanatory variables X.
 These are the fitted site scores</p>
 </dd>
-<dt><strong>proportion_explained</strong><span class="classifier">pd.Series</span></dt><dd><p>Proportion explained by each of the dimensions in the ordination space.
+<dt><strong>proportion_explained</strong><span class="classifier">ndarray</span></dt><dd><p>Proportion explained by each of the dimensions in the ordination space.
 The index corresponds to the ordination axis labels</p>
 </dd>
 </dl>
@@ -817,7 +821,7 @@ The index corresponds to the ordination axis labels</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.ordination.OrdinationResults.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L107"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return a string representation of the ordination results.</p>
 <p>String representation lists ordination results attributes and indicates
 whether or not they are present. If an attribute is present, its

@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Indicate that a member is being overridden from a specific parent class." />
+    <meta name="description" content="NumPy version of testing ordination results." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.util.overrides &#8212; scikit-bio 0.6.4-dev documentation</title>
+    <title>skbio.util.assert_ordination_results_equal_np &#8212; scikit-bio 0.6.4-dev documentation</title>
   
   
   
@@ -56,7 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.util.overrides';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.util.assert_ordination_results_equal_np';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -64,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.util.overrides.html" />
+    <link rel="canonical" href="../../../generated/skbio.util.assert_ordination_results_equal_np.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.util.classproperty" href="skbio.util.classproperty.html" />
-    <link rel="prev" title="skbio.util.PlottableMixin" href="skbio.util.PlottableMixin.html" />
+    <link rel="next" title="skbio.util.assert_data_frame_almost_equal" href="skbio.util.assert_data_frame_almost_equal.html" />
+    <link rel="prev" title="skbio.util.assert_ordination_results_equal" href="skbio.util.assert_ordination_results_equal.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -595,17 +595,17 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.get_config.html">skbio.util.get_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.set_config.html">skbio.util.set_config</a></li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.get_data_path.html">skbio.util.get_data_path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.assert_ordination_results_equal.html">skbio.util.assert_ordination_results_equal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.util.assert_ordination_results_equal_np.html">skbio.util.assert_ordination_results_equal_np</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.util.assert_ordination_results_equal_np</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.assert_data_frame_almost_equal.html">skbio.util.assert_data_frame_almost_equal</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.PlottableMixin.html">skbio.util.PlottableMixin</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.util.overrides</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.overrides.html">skbio.util.overrides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.classproperty.html">skbio.util.classproperty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.classonlymethod.html">skbio.util.classonlymethod</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.deprecated.html">skbio.util.deprecated</a></li>
@@ -661,7 +661,7 @@
     
     <li class="breadcrumb-item"><a href="../util.html" class="nav-link">Utilities for Developers (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.util.overrides</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.util.assert_ordination_results_equal_np</span></li>
   </ul>
 </nav>
 </div>
@@ -678,37 +678,12 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-util-overrides">
-<h1>skbio.util.overrides<a class="headerlink" href="#skbio-util-overrides" title="Link to this heading">#</a></h1>
+  <section id="skbio-util-assert-ordination-results-equal-np">
+<h1>skbio.util.assert_ordination_results_equal_np<a class="headerlink" href="#skbio-util-assert-ordination-results-equal-np" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.util.overrides">
-<span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_class</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py#L22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.overrides" title="Link to this definition">#</a></dt>
-<dd><p>Indicate that a member is being overridden from a specific parent class.</p>
-<p>Decorator for class-level members. Used to indicate that a member is being
-overridden from a specific parent class. If the member does not have a docstring,
-it will pull one from the parent class. When chaining decorators, this should be
-first as it is relatively nondestructive.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>interface_class</strong><span class="classifier">class</span></dt><dd><p>The class which has a member overridden by the decorated member.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>function</dt><dd><p>The function is not changed or replaced.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>OverrideError</dt><dd><p>If the <cite>interface_class</cite> does not possess a member of the same name
-as the decorated member.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="skbio.util.assert_ordination_results_equal_np">
+<span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">assert_ordination_results_equal_np</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_method_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_testing.py#L169"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.assert_ordination_results_equal_np" title="Link to this definition">#</a></dt>
+<dd><p>NumPy version of testing ordination results.</p>
 </dd></dl>
 
 </section>
@@ -724,20 +699,20 @@ as the decorated member.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.util.PlottableMixin.html"
+       href="skbio.util.assert_ordination_results_equal.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.util.PlottableMixin</p>
+        <p class="prev-next-title">skbio.util.assert_ordination_results_equal</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.util.classproperty.html"
+       href="skbio.util.assert_data_frame_almost_equal.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.util.classproperty</p>
+        <p class="prev-next-title">skbio.util.assert_data_frame_almost_equal</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -760,7 +735,7 @@ as the decorated member.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.util.overrides"><code class="docutils literal notranslate"><span class="pre">overrides</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.util.assert_ordination_results_equal_np"><code class="docutils literal notranslate"><span class="pre">assert_ordination_results_equal_np</span></code></a></li>
 </ul>
   </nav></div>
 
