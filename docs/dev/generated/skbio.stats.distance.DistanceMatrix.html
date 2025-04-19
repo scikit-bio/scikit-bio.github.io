@@ -690,6 +690,29 @@
 <p>A <cite>DistanceMatrix</cite> is a <cite>DissimilarityMatrix</cite> with the additional
 requirement that the matrix data is symmetric. There are additional methods
 made available that take advantage of this symmetry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">array_like or DissimilarityMatrix</span></dt><dd><p>Square, hollow, two-dimensional <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of distances
+(floats), or a structure that can be converted to a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>
+using <code class="docutils literal notranslate"><span class="pre">numpy.asarray</span></code> or a one-dimensional vector of distances
+(floats), as defined by <cite>scipy.spatial.distance.squareform</cite>. Can
+instead be a <cite>DissimilarityMatrix</cite> (or <cite>DistanceMatrix</cite>) instance,
+in which case the instance’s data will be used.
+Data will be converted to a float <code class="docutils literal notranslate"><span class="pre">dtype</span></code> if necessary. A copy will
+<em>not</em> be made if already a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> with a float <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
+</dd>
+<dt><strong>ids</strong><span class="classifier">sequence of str, optional</span></dt><dd><p>Sequence of strings to be used as object IDs. Must match the number of
+rows/cols in <cite>data</cite>. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), IDs will be
+monotonically-increasing integers cast as strings, with numbering
+starting from zero, e.g., <code class="docutils literal notranslate"><span class="pre">('0',</span> <span class="pre">'1',</span> <span class="pre">'2',</span> <span class="pre">'3',</span> <span class="pre">...)</span></code>.</p>
+</dd>
+<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If <cite>validate</cite> is <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default) and data is not a
+DistanceMatrix object, the input data will be validated.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
