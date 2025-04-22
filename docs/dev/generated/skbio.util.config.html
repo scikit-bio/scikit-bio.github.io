@@ -6,6 +6,8 @@
 
   <head>
     <meta charset="utf-8" />
+    <meta name="description" content="List of identifiers for samples (rows). If not provided implicitly by the input
+data structure or explicitly by the user, defaults to integers starting at..." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Configuration Options (skbio.util.config) &#8212; scikit-bio 0.6.4-dev documentation</title>
@@ -617,6 +619,9 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.params_aliased.html">skbio.util.params_aliased</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.DataTable.html">skbio.util.DataTable</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.get_rng.html">skbio.util.get_rng</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.cardinal_to_ordinal.html">skbio.util.cardinal_to_ordinal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.find_duplicates.html">skbio.util.find_duplicates</a></li>
@@ -696,14 +701,15 @@ allowing users to work with different data formats without changing existing wor
 <td><p>Get the current value of an skbio config option.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.config.set_config.html#skbio.util.config.set_config" title="skbio.util.config.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a>(option, value)</p></td>
-<td><p>Set an skbio config option.</p></td>
+<td><p>Set a scikit-bio config option.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="supported-input-formats">
-<h2>Supported Input Formats<a class="headerlink" href="#supported-input-formats" title="Link to this heading">#</a></h2>
+<section id="the-datatable-type">
+<h2>The DataTable Type<a class="headerlink" href="#the-datatable-type" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="skbio.util.DataTable.html#skbio.util.DataTable" title="skbio.util.DataTable"><code class="xref py py-data docutils literal notranslate"><span class="pre">DataTable</span></code></a> type is the union of the following types of objects:</p>
 <ul class="simple">
 <li><p>Numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> (2D)</p></li>
 <li><p>pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></li>
@@ -711,14 +717,62 @@ allowing users to work with different data formats without changing existing wor
 <li><p>scikit-bio <a class="reference internal" href="skbio.table.Table.html#skbio.table.Table" title="skbio.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p></li>
 <li><p><a class="reference external" href="https://anndata.readthedocs.io/en/stable/generated/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.11.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object</p></li>
 </ul>
-<p>Input handling of supported types is handled automatically. No need to set a
-configuration variable to use whichever input type you like. When possible, row and
-column identifiers will be preserved and carried through operations to the results.
-When IDs are not available from the input data and not provided explicitly, integer
-indices starting from 0 will be used.</p>
+<p>For all functions which accept a <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> type as input, any objects from this
+list are acceptable input. Input handling of supported types is handled automatically.
+No need to set a configuration variable to use whichever input type you like. When
+possible, row and column identifiers will be preserved and carried through operations
+to the results. When IDs are not available from the input data and not provided
+explicitly, integer indices starting from 0 will be used.</p>
+</section>
+<section id="sample-and-feature-identifiers">
+<h2>Sample and Feature Identifiers<a class="headerlink" href="#sample-and-feature-identifiers" title="Link to this heading">#</a></h2>
+<p>In scikit-bio, data is commonly organized in a two-dimensional structure:</p>
+<ul class="simple">
+<li><p><strong>sample_ids</strong>: Identifiers for rows, typically representing biological samples,
+observations, or experimental units (e.g., patients, sites, time points).</p></li>
+<li><p><strong>feature_ids</strong>: Identifiers for columns, typically representing measured variables
+or characteristics (e.g., taxa, genes, OTUs, metabolites, environmental parameters).</p></li>
+</ul>
+<p>Different data formats use different terminology for these concepts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>: “index” (rows) and “columns”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">anndata</span></code>: “obs” (samples) and “var” (features)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scikit-bio</span> <span class="pre">Table</span></code>: “sample” (samples) and “observation”
+(features)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">polars</span></code>: rows (by position) and “schema” (features)</p></li>
+</ul>
+</section>
+<section id="common-datatable-parameters">
+<h2>Common DataTable Parameters<a class="headerlink" href="#common-datatable-parameters" title="Link to this heading">#</a></h2>
+<p>Many functions that accept <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> inputs share a set of common parameters that
+control how identifiers are handled and specify output format preferences:</p>
+<dl>
+<dt>sample_ids<span class="classifier">list of str, optional</span></dt><dd><p>List of identifiers for samples (rows). If not provided implicitly by the input
+data structure or explicitly by the user, defaults to integers starting at zero.
+This parameter is useful when the input format doesn’t support row labels
+(e.g., NumPy arrays) or when you want to override existing labels.</p>
+</dd>
+<dt>feature_ids<span class="classifier">list of str, optional</span></dt><dd><p>List of identifiers for features (columns). If not provided implicitly by the
+input data structure or explicitly by the user, defaults to integers starting
+at zero. This parameter is useful when the input format doesn’t support column
+labels (e.g., NumPy arrays) or when you want to override existing labels.</p>
+</dd>
+<dt>output_format<span class="classifier">str, optional</span></dt><dd><p>Specifies the desired format for the output. Valid options are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>: Return pandas DataFrames/Series (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;numpy&quot;</span></code>: Return NumPy ndarrays</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;polars&quot;</span></code>: Return Polars DataFrames/Series</p></li>
+</ul>
+<p>Note that this parameter overrides the global configuration setting for
+the specific function call.</p>
+</dd>
+</dl>
 </section>
 <section id="supported-output-formats">
 <h2>Supported Output Formats<a class="headerlink" href="#supported-output-formats" title="Link to this heading">#</a></h2>
+<p>Currently, scikit-bio functions support outputing the following types of data. Note
+that this list is not equivalent to the input types supported through the <code class="docutils literal notranslate"><span class="pre">DataTable</span></code>
+type.</p>
 <ul class="simple">
 <li><p>Numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> (2D and 1D)</p></li>
 <li><p>pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a> (default)</p></li>
@@ -728,8 +782,8 @@ indices starting from 0 will be used.</p>
 <section id="configuring-output-format">
 <h2>Configuring Output Format<a class="headerlink" href="#configuring-output-format" title="Link to this heading">#</a></h2>
 <p>There are two ways to control the output format.</p>
-<p>The first option is to use the <cite>set_config</cite> function. This function will change the
-global behavior of scikit-bio functions.:</p>
+<p>The first option is to use the <a class="reference internal" href="generated/skbio.util.config.set_config.html#skbio.util.config.set_config" title="skbio.util.config.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_config</span></code></a> function. This function will change
+the global behavior of scikit-bio functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set_config is available as a top level import from skbio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
 
@@ -741,7 +795,7 @@ global behavior of scikit-bio functions.:</p>
 </pre></div>
 </div>
 <p>The second option is to set the desired output format on a per-function basis, using
-the <cite>output_format</cite> parameter:</p>
+the <code class="docutils literal notranslate"><span class="pre">output_format</span></code> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">cca</span>
 
 <span class="c1"># This specific call will return an</span>
@@ -750,11 +804,6 @@ the <cite>output_format</cite> parameter:</p>
 <span class="n">res</span> <span class="o">=</span> <span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
-<p>When using the default pandas backend, existing workflows remain unchanged.
-Additionally, input and output formats do not have to match.</p>
 </section>
 </section>
 
@@ -806,10 +855,11 @@ Additionally, input and output formats do not have to match.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-input-formats">Supported Input Formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-datatable-type">The DataTable Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-and-feature-identifiers">Sample and Feature Identifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-datatable-parameters">Common DataTable Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-output-formats">Supported Output Formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-output-format">Configuring Output Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
 </ul>
   </nav></div>
 

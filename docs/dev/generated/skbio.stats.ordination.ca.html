@@ -705,28 +705,18 @@ there are many zeros in the input data matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p>Samples by features table (n, m). It can be applied to different kinds
-of data tables but data must be non-negative and dimensionally
-homogeneous (quantitative or binary). The rows correspond to the
-samples and the columns correspond to the features. Can be numpy,
-pandas, polars, AnnData, or BIOM (skbio.Table).</p>
-</dd>
-<dt><strong>sample_ids</strong><span class="classifier">list of str</span></dt><dd><p>List of ids of samples. If not provided implicitly by X or explicitly
-by the user, it will default to a list of integers starting at zero.</p>
-</dd>
-<dt><strong>feature_ids</strong><span class="classifier">list of str</span></dt><dd><p>List of ids of features. If not provided implicitly by X or explicitly
-by the user, it will default to a list of integers starting at zero.</p>
+<dt><strong>X</strong><span class="classifier">table_like</span></dt><dd><p>Samples by features table (n, m). It can be applied to different kinds
+of data tables, but data must be non-negative and dimensionally homogeneous
+(quantitative or binary). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
 <dt><strong>scaling</strong><span class="classifier">{1, 2}</span></dt><dd><p>Scaling type 1 maintains <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows.
 Scaling type 2 preserves <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between columns.
 For a more detailed explanation of the interpretation,
 check notes below and Legendre &amp; Legendre 1998, section 9.4.3.</p>
 </dd>
-<dt><strong>output_format</strong><span class="classifier">str</span></dt><dd><p>The desired format of the output object. Can be <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">polars</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Note that all scikit-bio ordination functions return an
-<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object. In this case the attributes of the
-<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object will be in the specified format. Default is
-<code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+<dt><strong>sample_ids, feature_ids, output_format</strong><span class="classifier">optional</span></dt><dd><p>Standard <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> parameters. See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
 </dl>
 </dd>
@@ -756,7 +746,7 @@ explained.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm is based on <a class="reference internal" href="#ra0268fac96d8-1" id="id1">[1]</a>, S 9.4.1., and is expected to give the same
+<p>The algorithm is based on <a class="reference internal" href="#ra0268fac96d8-1" id="id2">[1]</a>, S 9.4.1., and is expected to give the same
 results as <code class="docutils literal notranslate"><span class="pre">cca(X)</span></code> in R’s package vegan.</p>
 <p>In Scaling type 1, the euclidean distances between rows in the transformed
 space equal their <span class="math notranslate nohighlight">\(\chi^2\)</span> distances in the original space.
@@ -775,7 +765,7 @@ edges (sparse features).</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="ra0268fac96d8-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Legendre P. and Legendre L. 1998. Numerical Ecology. Elsevier,
 Amsterdam.</p>
 </div>

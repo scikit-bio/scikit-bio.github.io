@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Set an skbio config option." />
+    <meta name="description" content="Set a scikit-bio config option." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.util.set_config &#8212; scikit-bio 0.6.4-dev documentation</title>
@@ -614,6 +614,9 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.params_aliased.html">skbio.util.params_aliased</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.util.DataTable.html">skbio.util.DataTable</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.get_rng.html">skbio.util.get_rng</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.cardinal_to_ordinal.html">skbio.util.cardinal_to_ordinal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.find_duplicates.html">skbio.util.find_duplicates</a></li>
@@ -683,17 +686,33 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.util.set_config">
 <span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/config/_config.py#L12"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.set_config" title="Link to this definition">#</a></dt>
-<dd><p>Set an skbio config option.</p>
+<dd><p>Set a scikit-bio config option.</p>
+<p>This function enables users to set the configuration of scikit-bio functions
+globally.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>option</strong><span class="classifier">str</span></dt><dd><p>The configuration option to be modified.</p>
+<dt><strong>option</strong><span class="classifier">str</span></dt><dd><p>The configuration option to be modified. Currently there is only one
+configurable option, <code class="docutils literal notranslate"><span class="pre">&quot;output&quot;</span></code>.</p>
 </dd>
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>The value to update the configuration dictionary with.</p>
+<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>The value to update the configuration dictionary with. For the
+<code class="docutils literal notranslate"><span class="pre">&quot;output&quot;</span></code> option, <code class="docutils literal notranslate"><span class="pre">value</span></code> may be set to <code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;polars&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;numpy&quot;</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ValueError</dt><dd><p>If an unkown option is used or if an unsupported value for an option is used.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

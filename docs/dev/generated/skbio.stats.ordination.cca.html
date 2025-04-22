@@ -707,32 +707,23 @@ are deemed explanatory should be included in the analysis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>y</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p>Samples by features table (n, m). Can be numpy, pandas, polars, AnnData,
-or BIOM (skbio.Table).</p>
+<dt><strong>y</strong><span class="classifier">table_like</span></dt><dd><p>Samples by features table (n, m). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
-<dt><strong>x</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p>Samples by constraints table (n, q). Can be numpy, pandas, polars, AnnData,
-or BIOM (skbio.Table).</p>
+<dt><strong>x</strong><span class="classifier">table_like</span></dt><dd><p>Samples by constraints table (n, q). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
 <dt><strong>scaling</strong><span class="classifier">int, {1, 2}, optional</span></dt><dd><p>Scaling type 1 maintains <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows.
 Scaling type 2 preserves <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between columns.
 For a more detailed explanation of the interpretation, check Legendre &amp;
 Legendre 1998, section 9.4.3.</p>
 </dd>
-<dt><strong>sample_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of samples. If not provided implicitly by the input DataFrame or
-explicitly by the user, sample_ids will default to a list of integers starting
-at zero.</p>
+<dt><strong>constraint_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of identifiers for metadata variables or constraints. If not provided
+implicitly by the input data structure or explicitly by the user, defaults
+to integers starting at zero.</p>
 </dd>
-<dt><strong>feature_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of features. If not provided implicitly by y or explicitly by the
-user, it will default to a list of integers starting at zero.</p>
-</dd>
-<dt><strong>constraint_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of constraints. If not provided implicitly by y or explicitly by
-the user, it will default to a list of integers starting at zero.</p>
-</dd>
-<dt><strong>output_format</strong><span class="classifier">str, optional</span></dt><dd><p>The desired format of the output object. Can be <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">polars</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Note that all scikit-bio ordination functions return an
-<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object. In this case the attributes of the
-<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object will be in the specified format. Default is
-<code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+<dt><strong>sample_ids, feature_ids, output_format</strong><span class="classifier">optional</span></dt><dd><p>Standard <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> parameters. See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
 </dl>
 </dd>
@@ -762,7 +753,7 @@ If <cite>y</cite> contains a row of only 0’s.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm is based on <a class="reference internal" href="#r560320b74bfe-3" id="id3">[3]</a>, S 11.2, and is expected to give
+<p>The algorithm is based on <a class="reference internal" href="#r560320b74bfe-3" id="id5">[3]</a>, S 11.2, and is expected to give
 the same results as <code class="docutils literal notranslate"><span class="pre">cca(y,</span> <span class="pre">x)</span></code> in R’s package vegan, except
 that this implementation won’t drop constraining variables due to
 perfect collinearity: the user needs to choose which ones to
@@ -791,7 +782,7 @@ correspondence analysis and related multivariate methods in
 aquatic ecology”, Aquatic Sciences 57.3 (1995), pp. 255-289.</p>
 </div>
 <div class="citation" id="r560320b74bfe-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
 <p>Legendre P. and Legendre L. 1998. Numerical
 Ecology. Elsevier, Amsterdam.</p>
 </div>

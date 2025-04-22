@@ -700,19 +700,19 @@ when it’s large, so that the contingency table is sparse.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>y</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times p\)</span> response matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number
+<dt><strong>y</strong><span class="classifier">table_like</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times p\)</span> response matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number
 of samples and <span class="math notranslate nohighlight">\(p\)</span> is the number of features. Its columns
 need be dimensionally homogeneous (or you can set <cite>scale_Y=True</cite>).
 This matrix is also referred to as the community matrix that
-commonly stores information about species abundances. Can be numpy,
-pandas, polars, AnnData, or BIOM (skbio.Table).</p>
+commonly stores information about species abundances. See the
+<a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type documentation for details.</p>
 </dd>
-<dt><strong>x</strong><span class="classifier">DataFrame or ndarray</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times m, n \geq m\)</span> matrix of explanatory
+<dt><strong>x</strong><span class="classifier">table_like</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times m, n \geq m\)</span> matrix of explanatory
 variables, where <span class="math notranslate nohighlight">\(n\)</span> is the number of samples and
 <span class="math notranslate nohighlight">\(m\)</span> is the number of metadata variables. Its columns
 need not be standardized, but doing so turns regression
-coefficients into standard regression coefficients. Can be numpy,
-pandas, polars, AnnData, or BIOM (skbio.Table).</p>
+coefficients into standard regression coefficients. See the
+<a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type documentation for details.</p>
 </dd>
 <dt><strong>scale_Y</strong><span class="classifier">bool, optional</span></dt><dd><p>Controls whether the response matrix columns are scaled to
 have unit standard deviation. Defaults to <cite>False</cite>.</p>
@@ -721,31 +721,21 @@ have unit standard deviation. Defaults to <cite>False</cite>.</p>
 the ordination of rows (samples) because their transformed
 distances approximate their original euclidean
 distances. Especially interesting when most explanatory
-variables are binary.</p>
-</dd>
-<dt><strong>sample_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of samples. If not provided implicitly by the input DataFrame or
-explicitly by the user, sample_ids will default to a list of integers starting
-at zero.</p>
-</dd>
-<dt><strong>feature_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of features. If not provided implicitly by y or explicitly by the
-user, it will default to list of integers starting at zero.</p>
-</dd>
-<dt><strong>constraint_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of ids of metadata variables (constraints). If not provided implicitly
-by y or explicitly by the user, it will default to a list of integers
-starting at zero.</p>
-</dd>
-<dt><strong>output_format</strong><span class="classifier">str, optional</span></dt><dd><p>The desired format of the output object. Can be <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">polars</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Note that all scikit-bio ordination functions return an
-<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object. In this case the attributes of the
-<code class="docutils literal notranslate"><span class="pre">OrdinationResults</span></code> object will be in the specified format. Default is
-<code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
-<p>Scaling type 2 produces a correlation biplot. It focuses
+variables are binary.
+Scaling type 2 produces a correlation biplot. It focuses
 on the relationships among explained variables (<cite>y</cite>). It
 is interpreted like scaling type 1, but taking into
 account that distances between objects don’t approximate
 their euclidean distances.</p>
 <p>See more details about distance and correlation biplots in
-<a class="reference internal" href="#r748625b0e6bb-1" id="id1">[1]</a>, S 9.1.4.</p>
+<a class="reference internal" href="#r748625b0e6bb-1" id="id2">[1]</a>, S 9.1.4.</p>
+</dd>
+<dt><strong>constraint_ids</strong><span class="classifier">list of str, optional</span></dt><dd><p>List of identifiers for metadata variables or constraints (applicable in
+constrained ordination methods). If not provided implicitly by the input data
+structure or explicitly by the user, defaults to integers starting at zero.</p>
+</dd>
+<dt><strong>sample_ids, feature_ids, output_format</strong><span class="classifier">optional</span></dt><dd><p>Standard <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> parameters. See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
 </dl>
 </dd>
@@ -776,17 +766,17 @@ scores, sample constraints, etc.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm is based on <a class="reference internal" href="#r748625b0e6bb-1" id="id2">[1]</a>, S 11.1, and is expected to
+<p>The algorithm is based on <a class="reference internal" href="#r748625b0e6bb-1" id="id4">[1]</a>, S 11.1, and is expected to
 give the same results as <code class="docutils literal notranslate"><span class="pre">rda(y,</span> <span class="pre">x)</span></code> in R’s package vegan.
 The eigenvalues reported in vegan are re-normalized to
 <span class="math notranslate nohighlight">\(\sqrt{\frac{s}{n-1}}\)</span> <cite>n</cite> is the number of samples,
 and <cite>s</cite> is the original eigenvalues. Here we will only return
-the original eigenvalues, as recommended in <a class="reference internal" href="#r748625b0e6bb-1" id="id3">[1]</a>.</p>
+the original eigenvalues, as recommended in <a class="reference internal" href="#r748625b0e6bb-1" id="id5">[1]</a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r748625b0e6bb-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id5">3</a>)</span>
 <p>Legendre P. and Legendre L. 1998. Numerical
 Ecology. Elsevier, Amsterdam.</p>
 </div>
