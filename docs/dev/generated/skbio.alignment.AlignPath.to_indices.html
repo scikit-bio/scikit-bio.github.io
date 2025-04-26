@@ -597,6 +597,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_coordinates.html">skbio.alignment.AlignPath.from_coordinates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_indices.html">skbio.alignment.AlignPath.from_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html">skbio.alignment.AlignPath.from_tabular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.stops.html">skbio.alignment.AlignPath.stops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_bits.html">skbio.alignment.AlignPath.to_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_coordinates.html">skbio.alignment.AlignPath.to_coordinates</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.alignment.AlignPath.to_indices</a></li>
@@ -616,6 +617,9 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_nucleotide.html">skbio.alignment.local_pairwise_align_nucleotide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_protein.html">skbio.alignment.local_pairwise_align_protein</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
@@ -686,7 +690,7 @@
 <h1>skbio.alignment.AlignPath.to_indices<a class="headerlink" href="#skbio-alignment-alignpath-to-indices" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.to_indices">
-<span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">to_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L302"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.to_indices" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">to_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L416"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.to_indices" title="Link to this definition">#</a></dt>
 <dd><p>Generate an array of indices of characters in the original sequences.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -699,7 +703,7 @@ value. If “del”, delete columns that have any gap. If “mask”, return an
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ndarray of int of shape (n_seqs, n_positions)</dt><dd><p>Array of indices of characters in the original sequences.</p>
+<dt>ndarray of int of shape (n_sequences, n_positions)</dt><dd><p>Array of indices of characters in the original sequences.</p>
 </dd>
 </dl>
 </dd>

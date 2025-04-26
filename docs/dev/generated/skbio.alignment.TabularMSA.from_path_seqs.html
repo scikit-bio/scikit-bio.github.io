@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Create a tabular MSA from an alignment path and sequences." />
+    <meta name="description" content="Create a tabular MSA from an alignment path and the original sequences." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.alignment.TabularMSA.from_path_seqs &#8212; scikit-bio 0.6.4-dev documentation</title>
@@ -625,6 +625,9 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
 </ul>
 </div>
@@ -694,7 +697,55 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.TabularMSA.from_path_seqs">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TabularMSA.</span></span><span class="sig-name descname"><span class="pre">from_path_seqs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L2485"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA.from_path_seqs" title="Link to this definition">#</a></dt>
-<dd><p>Create a tabular MSA from an alignment path and sequences.</p>
+<dd><p>Create a tabular MSA from an alignment path and the original sequences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">AlignPath</span></dt><dd><p>Alignment path.</p>
+</dd>
+<dt><strong>seqs</strong><span class="classifier">iterable of GrammaredSequence</span></dt><dd><p>Original sequences.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>TabularMSA</dt><dd><p>The created tabular MSA object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html#skbio.alignment.AlignPath.from_tabular" title="skbio.alignment.AlignPath.from_tabular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.alignment.AlignPath.from_tabular</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGTCGTGC&#39;</span><span class="p">),</span>
+<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CAGTC&#39;</span><span class="p">),</span>
+<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGTCGTT&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="n">starts</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">from_path_seqs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">seqs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">---------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 3</span>
+<span class="go">    position count: 8</span>
+<span class="go">---------------------</span>
+<span class="go">CGTCGTGC</span>
+<span class="go">CA--GT-C</span>
+<span class="go">CGTCGT-T</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

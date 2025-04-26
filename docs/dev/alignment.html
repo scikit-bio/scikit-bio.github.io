@@ -609,6 +609,9 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
 </ul>
 </div>
@@ -680,10 +683,10 @@ sequences with custom alphabets.</p>
 <td><p>Store a multiple sequence alignment in tabular (row/column) form.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignPath</span></code></a>(lengths, states, starts)</p></td>
-<td><p>Create an alignment path from segment lengths and states.</p></td>
+<td><p>Store an alignment path between sequences.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a>(lengths, states, starts)</p></td>
-<td><p>Create a pairwise alignment path from segment lengths and states.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a>(lengths, states[, starts])</p></td>
+<td><p>Store a pairwise alignment path between two sequences.</p></td>
 </tr>
 </tbody>
 </table>
@@ -726,6 +729,17 @@ sequences with custom alphabets.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align.html#skbio.alignment.local_pairwise_align" title="skbio.alignment.local_pairwise_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">local_pairwise_align</span></code></a>(seq1, seq2, ...)</p></td>
 <td><p>Locally align exactly two seqs with Smith-Waterman.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="alignment-statistics">
+<h2>Alignment statistics<a class="headerlink" href="#alignment-statistics" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.align_score.html#skbio.alignment.align_score" title="skbio.alignment.align_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">align_score</span></code></a>(alignment, sub_score, gap_cost)</p></td>
+<td><p>Calculate the alignment score of two or more aligned sequences.</p></td>
 </tr>
 </tbody>
 </table>
@@ -938,6 +952,9 @@ positions of each aligned sequence:</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-structure">Alignment structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-algorithms">Alignment algorithms</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-statistics">Alignment statistics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a></li>
 </ul>
 </li>

@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Unpack states into an array of bits." />
+    <meta name="description" content="Unpack the alignment path into an array of bits." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.alignment.AlignPath.to_bits &#8212; scikit-bio 0.6.4-dev documentation</title>
@@ -69,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.alignment.AlignPath.to_coordinates" href="skbio.alignment.AlignPath.to_coordinates.html" />
-    <link rel="prev" title="skbio.alignment.AlignPath.from_tabular" href="skbio.alignment.AlignPath.from_tabular.html" />
+    <link rel="prev" title="skbio.alignment.AlignPath.stops" href="skbio.alignment.AlignPath.stops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -597,6 +597,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_coordinates.html">skbio.alignment.AlignPath.from_coordinates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_indices.html">skbio.alignment.AlignPath.from_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html">skbio.alignment.AlignPath.from_tabular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.stops.html">skbio.alignment.AlignPath.stops</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.alignment.AlignPath.to_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_coordinates.html">skbio.alignment.AlignPath.to_coordinates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_indices.html">skbio.alignment.AlignPath.to_indices</a></li>
@@ -616,6 +617,9 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_nucleotide.html">skbio.alignment.local_pairwise_align_nucleotide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_protein.html">skbio.alignment.local_pairwise_align_protein</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
@@ -686,12 +690,26 @@
 <h1>skbio.alignment.AlignPath.to_bits<a class="headerlink" href="#skbio-alignment-alignpath-to-bits" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.to_bits">
-<span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">to_bits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L171"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.to_bits" title="Link to this definition">#</a></dt>
-<dd><p>Unpack states into an array of bits.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ndarray of (0, 1) of shape (n_seqs, n_positions)</dt><dd><p>Array of zeros (character) and ones (gap) which represent the alignment.</p>
+<span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">to_bits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L196"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.to_bits" title="Link to this definition">#</a></dt>
+<dd><p>Unpack the alignment path into an array of bits.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.4: </span>The default behavior now returns positions.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>expand</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), each column in the returned array represents a position
+in the original alignment. If False, each column represents a segment in
+the alignment path.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.4.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of (0, 1) of shape (n_sequences, n_positions or n_segments)</dt><dd><p>Array of zeros (character) and ones (gap) which represent the alignment.</p>
 </dd>
 </dl>
 </dd>
@@ -706,7 +724,17 @@
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_tabular</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">to_bits</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Return a bit array representing positions:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">to_bits</span><span class="p">()</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 1, 1, 0, 0, 1, 0],</span>
+<span class="go">       [0, 0, 0, 0, 0, 0, 1, 0]], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>Return a bit array representing segments:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">to_bits</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">array([[0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 1, 0, 1, 0],</span>
 <span class="go">       [0, 0, 0, 1, 0]], dtype=uint8)</span>
@@ -727,12 +755,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.alignment.AlignPath.from_tabular.html"
+       href="skbio.alignment.AlignPath.stops.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.alignment.AlignPath.from_tabular</p>
+        <p class="prev-next-title">skbio.alignment.AlignPath.stops</p>
       </div>
     </a>
     <a class="right-next"
