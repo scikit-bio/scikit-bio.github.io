@@ -601,6 +601,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.GeneticCode.html">skbio.sequence.GeneticCode</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.sequence.SubstitutionMatrix</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.by_name.html">skbio.sequence.SubstitutionMatrix.by_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.copy.html">skbio.sequence.SubstitutionMatrix.copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.from_dict.html">skbio.sequence.SubstitutionMatrix.from_dict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.get_names.html">skbio.sequence.SubstitutionMatrix.get_names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.identity.html">skbio.sequence.SubstitutionMatrix.identity</a></li>
@@ -677,7 +678,7 @@
 <h1>skbio.sequence.SubstitutionMatrix<a class="headerlink" href="#skbio-sequence-substitutionmatrix" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.SubstitutionMatrix">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">SubstitutionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_substitution.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">SubstitutionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_substitution.py#L18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix" title="Link to this definition">#</a></dt>
 <dd><p>Scoring matrix between characters in biological sequences.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -721,25 +722,101 @@ pre-defined and can be referred to by name. Examples include NUC.4.4 for
 nucleotides, and variants of BLOSUM and PAM matrices for amino acids.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code>. Therefore,
 all attributes and methods of the latter also apply to the former.</p>
+<p>The default floating-point data type of <code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code> is float32. If you
+create with an integer array or nested lists, it will be automatically casted into
+float32. However, if the input array is already in float64 type, the type will be
+preserved.</p>
+<p>The underlying array of an <code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code> object is guaranteed to be
+C-contiguous, which facilitates row-major operations.</p>
 <p class="rubric">Examples</p>
+<p>Create a simple substitution matrix between the four nucleotide bases “A”, “C”, “G”
+and “T”. The value 2 in the main diagonal represents a match between two identical
+bases. The value -1 in the upper-right and lower-left triangles represents a
+mismatch between two different bases.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubstitutionMatrix</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span><span class="o">.</span><span class="n">alphabet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">alphabet</span>
 <span class="go">(&#39;A&#39;, &#39;C&#39;, &#39;G&#39;, &#39;T&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span><span class="o">.</span><span class="n">scores</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">scores</span>
 <span class="go">array([[ 2., -1., -1., -1.],</span>
 <span class="go">       [-1.,  2., -1., -1.],</span>
 <span class="go">       [-1., -1.,  2., -1.],</span>
-<span class="go">       [-1., -1., -1.,  2.]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">]</span>
+<span class="go">       [-1., -1., -1.,  2.]], dtype=float32)</span>
+</pre></div>
+</div>
+<p>Look up the substitution score between a pair of bases.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">]</span>
 <span class="go">-1.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">]</span>
 <span class="go">2.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">blosum62</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="o">.</span><span class="n">by_name</span><span class="p">(</span><span class="s1">&#39;BLOSUM62&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This matrix can also be created using the <code class="docutils literal notranslate"><span class="pre">identity</span></code> method.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Load the pre-defined substitution matrix “NUC.4.4”, which covers the four bases plus
+degenerate codes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="o">.</span><span class="n">by_name</span><span class="p">(</span><span class="s1">&#39;NUC.4.4&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">alphabet</span>
+<span class="go">(&#39;A&#39;, &#39;T&#39;, &#39;G&#39;, &#39;C&#39;, &#39;S&#39;, &#39;W&#39;, &#39;R&#39;, &#39;Y&#39;, &#39;K&#39;, &#39;M&#39;, &#39;B&#39;, &#39;V&#39;, &#39;H&#39;, &#39;D&#39;, &#39;N&#39;)</span>
+</pre></div>
+</div>
+<p>With a <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> object, one can efficiently map all
+characters to their indices in the substitution matrix.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GGATCC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span>
+<span class="go">array([2, 2, 0, 1, 3, 3])</span>
+</pre></div>
+</div>
+<p>This approach enables various subsequent operations. For example, one can
+efficiently create a position-to-position scoring matrix between two sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GGATCC&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AGATCT&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span> <span class="o">=</span> <span class="n">seq1</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">sm</span><span class="p">),</span> <span class="n">seq2</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">scores</span><span class="p">[</span><span class="n">idx1</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">idx2</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]]</span>
+<span class="go">array([[-4.,  5., -4., -4., -4., -4.],</span>
+<span class="go">       [-4.,  5., -4., -4., -4., -4.],</span>
+<span class="go">       [ 5., -4.,  5., -4., -4., -4.],</span>
+<span class="go">       [-4., -4., -4.,  5., -4.,  5.],</span>
+<span class="go">       [-4., -4., -4., -4.,  5., -4.],</span>
+<span class="go">       [-4., -4., -4., -4.,  5., -4.]], dtype=float32)</span>
+</pre></div>
+</div>
+<p>Finding indices of sequence characters is most efficient when the alphabet consists
+of only ASCII codes (0 to 127). This can be determined by the <code class="docutils literal notranslate"><span class="pre">is_ascii</span></code> flag of
+a substitution matrix. Most common nucleotide and amino acid substitution matrices
+only contain ASCII codes.</p>
+<p>However, one is not limited to ASCII characters. Using Unicode characters beyond
+code point 127 is valid.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="p">(</span><span class="s1">&#39;äëïöü&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">alphabet</span>
+<span class="go">(&#39;ä&#39;, &#39;ë&#39;, &#39;ï&#39;, &#39;ö&#39;, &#39;ü&#39;)</span>
+</pre></div>
+</div>
+<p>Any iterables of scalars are valid alphabets, granting flexibility in working with
+non-character data types. For example, one can include words or tokens in a
+substitution matrix.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tokens</span> <span class="o">=</span> <span class="s1">&#39;lorem ipsum dolor sit amet&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">alphabet</span>
+<span class="go">(&#39;lorem&#39;, &#39;ipsum&#39;, &#39;dolor&#39;, &#39;sit&#39;, &#39;amet&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="p">[</span><span class="s1">&#39;lorem&#39;</span><span class="p">,</span> <span class="s1">&#39;ipsum&#39;</span><span class="p">]</span>
+<span class="go">1.0</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -790,16 +867,19 @@ all attributes and methods of the latter also apply to the former.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.by_name.html#skbio.sequence.SubstitutionMatrix.by_name" title="skbio.sequence.SubstitutionMatrix.by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">by_name</span></code></a>(name)</p></td>
 <td><p>Load a pre-defined substitution matrix by its name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.from_dict.html#skbio.sequence.SubstitutionMatrix.from_dict" title="skbio.sequence.SubstitutionMatrix.from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_dict</span></code></a>(dictionary)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.copy.html#skbio.sequence.SubstitutionMatrix.copy" title="skbio.sequence.SubstitutionMatrix.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>Return a deep copy of the substitution matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.from_dict.html#skbio.sequence.SubstitutionMatrix.from_dict" title="skbio.sequence.SubstitutionMatrix.from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_dict</span></code></a>(dictionary[, dtype])</p></td>
 <td><p>Create a substitution matrix from a 2D dictionary.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.get_names.html#skbio.sequence.SubstitutionMatrix.get_names" title="skbio.sequence.SubstitutionMatrix.get_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_names</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.get_names.html#skbio.sequence.SubstitutionMatrix.get_names" title="skbio.sequence.SubstitutionMatrix.get_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_names</span></code></a>()</p></td>
 <td><p>List names of pre-defined substitution matrices.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.identity.html#skbio.sequence.SubstitutionMatrix.identity" title="skbio.sequence.SubstitutionMatrix.identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identity</span></code></a>(alphabet, match, mismatch)</p></td>
-<td><p>Create an identity substitution matrix.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.identity.html#skbio.sequence.SubstitutionMatrix.identity" title="skbio.sequence.SubstitutionMatrix.identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identity</span></code></a>(alphabet, match, mismatch[, dtype])</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.to_dict.html#skbio.sequence.SubstitutionMatrix.to_dict" title="skbio.sequence.SubstitutionMatrix.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dict</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.to_dict.html#skbio.sequence.SubstitutionMatrix.to_dict" title="skbio.sequence.SubstitutionMatrix.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dict</span></code></a>()</p></td>
 <td><p>Create a 2D dictionary from the substitution matrix.</p></td>
 </tr>
 </tbody>
@@ -811,40 +891,37 @@ all attributes and methods of the latter also apply to the former.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.between.html#skbio.stats.distance.DissimilarityMatrix.between" title="skbio.stats.distance.DissimilarityMatrix.between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">between</span></code></a>(from_, to_[, allow_overlap])</p></td>
 <td><p>Obtain the distances between the two groups of IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.copy.html#skbio.stats.distance.DissimilarityMatrix.copy" title="skbio.stats.distance.DissimilarityMatrix.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
-<td><p>Return a deep copy of the dissimilarity matrix.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.filter.html#skbio.stats.distance.DissimilarityMatrix.filter" title="skbio.stats.distance.DissimilarityMatrix.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(ids[, strict])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.filter.html#skbio.stats.distance.DissimilarityMatrix.filter" title="skbio.stats.distance.DissimilarityMatrix.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(ids[, strict])</p></td>
 <td><p>Filter the dissimilarity matrix by IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.from_iterable.html#skbio.stats.distance.DissimilarityMatrix.from_iterable" title="skbio.stats.distance.DissimilarityMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.from_iterable.html#skbio.stats.distance.DissimilarityMatrix.from_iterable" title="skbio.stats.distance.DissimilarityMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys])</p></td>
 <td><p>Create DissimilarityMatrix from an iterable given a metric.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.index.html#skbio.stats.distance.DissimilarityMatrix.index" title="skbio.stats.distance.DissimilarityMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.index.html#skbio.stats.distance.DissimilarityMatrix.index" title="skbio.stats.distance.DissimilarityMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
 <td><p>Return the index of the specified ID.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.plot.html#skbio.stats.distance.DissimilarityMatrix.plot" title="skbio.stats.distance.DissimilarityMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.plot.html#skbio.stats.distance.DissimilarityMatrix.plot" title="skbio.stats.distance.DissimilarityMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
 <td><p>Create a heatmap of the dissimilarity matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.read.html#skbio.stats.distance.DissimilarityMatrix.read" title="skbio.stats.distance.DissimilarityMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.read.html#skbio.stats.distance.DissimilarityMatrix.read" title="skbio.stats.distance.DissimilarityMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
 <td><p>Create a new <code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code> instance from a file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.redundant_form.html#skbio.stats.distance.DissimilarityMatrix.redundant_form" title="skbio.stats.distance.DissimilarityMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.redundant_form.html#skbio.stats.distance.DissimilarityMatrix.redundant_form" title="skbio.stats.distance.DissimilarityMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
 <td><p>Return an array of dissimilarities in redundant format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.rename.html#skbio.stats.distance.DissimilarityMatrix.rename" title="skbio.stats.distance.DissimilarityMatrix.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(mapper[, strict])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.rename.html#skbio.stats.distance.DissimilarityMatrix.rename" title="skbio.stats.distance.DissimilarityMatrix.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(mapper[, strict])</p></td>
 <td><p>Rename IDs in the dissimilarity matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.to_data_frame.html#skbio.stats.distance.DissimilarityMatrix.to_data_frame" title="skbio.stats.distance.DissimilarityMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.to_data_frame.html#skbio.stats.distance.DissimilarityMatrix.to_data_frame" title="skbio.stats.distance.DissimilarityMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
 <td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> from this <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.transpose.html#skbio.stats.distance.DissimilarityMatrix.transpose" title="skbio.stats.distance.DissimilarityMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.transpose.html#skbio.stats.distance.DissimilarityMatrix.transpose" title="skbio.stats.distance.DissimilarityMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
 <td><p>Return the transpose of the dissimilarity matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.within.html#skbio.stats.distance.DissimilarityMatrix.within" title="skbio.stats.distance.DissimilarityMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.within.html#skbio.stats.distance.DissimilarityMatrix.within" title="skbio.stats.distance.DissimilarityMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
 <td><p>Obtain all the distances among the set of IDs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.write.html#skbio.stats.distance.DissimilarityMatrix.write" title="skbio.stats.distance.DissimilarityMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.write.html#skbio.stats.distance.DissimilarityMatrix.write" title="skbio.stats.distance.DissimilarityMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code> to a file.</p></td>
 </tr>
 </tbody>
@@ -909,7 +986,7 @@ all attributes and methods of the latter also apply to the former.</p>
 <span class="sig-name descname"><span class="pre">is_ascii</span></span><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix.is_ascii" title="Link to this definition">#</a></dt>
 <dd><p>Whether alphabet consists of single ASCII characters.</p>
 <p><cite>True</cite> if every character in the alphabet can be represented by a
-single ASCII character within code point range 0 to 255.</p>
+single ASCII character within code point range 0 to 127.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">

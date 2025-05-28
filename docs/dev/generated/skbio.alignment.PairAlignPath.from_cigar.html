@@ -601,6 +601,12 @@
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.pair_align.html">skbio.alignment.pair_align</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.html">skbio.alignment.StripedSmithWaterman</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.AlignmentStructure.html">skbio.alignment.AlignmentStructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_ssw.html">skbio.alignment.local_pairwise_align_ssw</a></li>
@@ -612,9 +618,6 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_nucleotide.html">skbio.alignment.local_pairwise_align_nucleotide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_protein.html">skbio.alignment.local_pairwise_align_protein</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
@@ -685,15 +688,15 @@
 <h1>skbio.alignment.PairAlignPath.from_cigar<a class="headerlink" href="#skbio-alignment-pairalignpath-from-cigar" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.PairAlignPath.from_cigar">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PairAlignPath.</span></span><span class="sig-name descname"><span class="pre">from_cigar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cigar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L748"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.PairAlignPath.from_cigar" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PairAlignPath.</span></span><span class="sig-name descname"><span class="pre">from_cigar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cigar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L1016"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.PairAlignPath.from_cigar" title="Link to this definition">#</a></dt>
 <dd><p>Create a pairwise alignment path from a CIGAR string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>cigar</strong><span class="classifier">str</span></dt><dd><p>CIGAR format string used to build the PairAlignPath.</p>
 </dd>
-<dt><strong>starts</strong><span class="classifier">array_like of (int, int), optional</span></dt><dd><p>Start position (0-based) of each sequence in the alignment. If omitted,
-will set as zeros.</p>
+<dt><strong>starts</strong><span class="classifier">array_like of (int, int), optional</span></dt><dd><p>Start position of each sequence in the alignment. If omitted, will set as
+zeros.</p>
 </dd>
 </dl>
 </dd>
@@ -709,7 +712,7 @@ will set as zeros.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cigar</span> <span class="o">=</span> <span class="s2">&quot;2M5P3D1I&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">PairAlignPath</span><span class="o">.</span><span class="n">from_cigar</span><span class="p">(</span><span class="n">cigar</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
-<span class="go">&lt;PairAlignPath, position count: 11, CIGAR: &#39;2M5P3D1I&#39;&gt;</span>
+<span class="go">&lt;PairAlignPath, positions: 11, CIGAR: &#39;2M5P3D1I&#39;&gt;</span>
 </pre></div>
 </div>
 </dd></dl>

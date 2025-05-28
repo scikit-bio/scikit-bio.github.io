@@ -56,7 +56,6 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.alignment.align_score';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -69,8 +68,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.alignment.make_identity_substitution_matrix" href="skbio.alignment.make_identity_substitution_matrix.html" />
-    <link rel="prev" title="skbio.alignment.local_pairwise_align" href="skbio.alignment.local_pairwise_align.html" />
+    <link rel="next" title="skbio.alignment.StripedSmithWaterman" href="skbio.alignment.StripedSmithWaterman.html" />
+    <link rel="prev" title="skbio.alignment.pair_align" href="skbio.alignment.pair_align.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -597,6 +596,12 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.PairAlignPath.html">skbio.alignment.PairAlignPath</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.pair_align.html">skbio.alignment.pair_align</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.alignment.align_score</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.html">skbio.alignment.StripedSmithWaterman</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.AlignmentStructure.html">skbio.alignment.AlignmentStructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_ssw.html">skbio.alignment.local_pairwise_align_ssw</a></li>
@@ -608,9 +613,6 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_nucleotide.html">skbio.alignment.local_pairwise_align_nucleotide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_protein.html">skbio.alignment.local_pairwise_align_protein</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.alignment.align_score</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
@@ -678,7 +680,7 @@
 <h1>skbio.alignment.align_score<a class="headerlink" href="#skbio-alignment-align-score" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.alignment.align_score">
-<span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">align_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alignment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_cost</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">terminal_gaps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-.'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_score.py#L118"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.align_score" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">align_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alignment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">-1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">free_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-.'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_score.py#L21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.align_score" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the alignment score of two or more aligned sequences.</p>
 <p>For two sequences, their pairwise alignment score will be calculated. For three or
 more sequences, the sum-of-pairs (SP) alignment score will be returned.</p>
@@ -688,8 +690,7 @@ more sequences, the sum-of-pairs (SP) alignment score will be returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>alignment</strong><span class="classifier">TabularMSA, list of Sequence or str, or (AlignPath, list of Sequence</span></dt><dd></dd>
-<dt><strong>or str)</strong></dt><dd><p>Aligned sequences. Can be any of the following:</p>
+<dt><strong>alignment</strong><span class="classifier">TabularMSA, iterable, or (AlignPath, iterable)</span></dt><dd><p>Aligned sequences. Can be any of the following:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>.</p></li>
 <li><p>List of <em>aligned</em> sequences as raw strings or <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects.</p></li>
@@ -697,32 +698,14 @@ more sequences, the sum-of-pairs (SP) alignment score will be returned.</p>
 <em>original</em> (unaligned) sequences.</p></li>
 </ul>
 </dd>
-<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), SubstitutionMatrix, or str</span></dt><dd><p>Score of a match, mismatch or substitution. It can be one of the following:</p>
-<ul class="simple">
-<li><p>Tuple of two numbers: Match score and mismatch score.</p></li>
-<li><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>: A matrix of substitution scores.</p></li>
-<li><p>String: Name of the substitution matrix that can be recognized by
-<code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix.by_name</span></code>.</p></li>
-</ul>
+<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), SubstitutionMatrix, or str</span></dt><dd><p>Score of a substitution. May be two numbers (match, mismatch), a substitution
+matrix, or its name. See <a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a> for details. Default is
+(1.0, -1.0).</p>
 </dd>
-<dt><strong>gap_cost</strong><span class="classifier">float or tuple of (float, float)</span></dt><dd><p>Penalty of a gap. The value is usually positive, representing a subtraction
-from the alignment score. It can be one of the following:</p>
-<ul class="simple">
-<li><p>One number: Linear gap penalty. Each gap position is penalized by this value
-(<em>g</em>). A contiguous gap of length <em>n</em> has a total penalty of <em>g</em> * <em>n</em>.</p></li>
-<li><p>Tuple of two numbers: Affine gap penalty. The two numbers (<em>o</em>, <em>e</em>)
-represent gap opening penalty and gap extension penalty, respectively. A
-contiguous gap of length <em>n</em> has a total penalty of <em>o</em> + <em>e</em> * <em>n</em>.
-See also notes below.</p></li>
-</ul>
+<dt><strong>gap_cost</strong><span class="classifier">float or tuple of (float, float)</span></dt><dd><p>Penalty of a gap. May be one (linear) or two numbers (affine). See
+<a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a> for details. Default is 2.0.</p>
 </dd>
-<dt><strong>terminal_gaps</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether gaps at the terminals of the sequences should be penalized. It can be:</p>
-<ul class="simple">
-<li><p>False (default): Do not penalize terminal gaps. This behavior is known as the
-semi-global (or “glocal”) alignment.</p></li>
-<li><p>True: Penalize terminal gaps using the same method defined by <code class="docutils literal notranslate"><span class="pre">gap_cost</span></code>.
-This behavior is the true global alignment.</p></li>
-</ul>
+<dt><strong>free_ends</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), gaps at the sequence terminals are free from penalization.</p>
 </dd>
 <dt><strong>gap_chars</strong><span class="classifier">iterable of 1-length str, optional</span></dt><dd><p>Character(s) that represent gaps. Only relevant when <code class="docutils literal notranslate"><span class="pre">alignment</span></code> is
 a list of aligned sequences.</p>
@@ -752,39 +735,9 @@ substitution matrix.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pair_align</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.sequence.SubstitutionMatrix</span></code></a></dt><dd></dd>
 </dl>
-</div>
-<p class="rubric">Notes</p>
-<p>Under the affine gap penalty mode, which is the most common situation, the penalty
-of a contiguous gap of length <span class="math notranslate nohighlight">\(n\)</span> is calculated as:</p>
-<div class="math notranslate nohighlight">
-\[G(n) = o + e \times n \tag{1}\]</div>
-<p>where <span class="math notranslate nohighlight">\(o\)</span> is the gap opening penalty and <span class="math notranslate nohighlight">\(e\)</span> is the gap extension
-penalty.</p>
-<p>It should be noted that, discrepancy exists among literature and implementations
-regarding whether gap extension penalty should apply to the first position of a
-gap. scikit-bio’s equation is consistent with multiple common alignment tools,
-such as BLAST (<a class="reference internal" href="#r31f8001f85d8-1" id="id1">[1]</a>), Minimap2, SeqAn3, and WFA2-lib.</p>
-<p>Meanwhile, multiple other tools, such as EMBOSS, parasail, Biopython and Biotite,
-use the following equation instead:</p>
-<div class="math notranslate nohighlight">
-\[G(n) = o + e \times (n - 1) \tag{2}\]</div>
-<p>Therefore, if you intend to reproduce the behavior of a software tool of the
-latter category using scikit-bio, you will need to subtract <span class="math notranslate nohighlight">\(e\)</span> from
-<span class="math notranslate nohighlight">\(o\)</span> when adopting its parameters. For example, EMBOSS’ default parameters
-<code class="docutils literal notranslate"><span class="pre">o=10,</span> <span class="pre">e=0.5</span></code> will become <code class="docutils literal notranslate"><span class="pre">o=9.5,</span> <span class="pre">e=0.5</span></code> in scikit-bio. Vice versa.</p>
-<div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.4: </span>Previous alignment algorithms in scikit-bio used Eq. 2. These functions were
-deprecated in 0.5.x and will be removed in 0.6.x. Future functions will
-uniformly use Eq. 1.</p>
-</div>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="r31f8001f85d8-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK62051/">https://www.ncbi.nlm.nih.gov/books/NBK62051/</a></p>
-</div>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">Protein</span>
@@ -803,7 +756,7 @@ default BLASTN parameters).</p>
 <p>Calculate the score of a multiple alignment of protein sequences, using the
 BLOSUM62 substitution matrix, with gap opening and extension penalties being 11
 and 1 (the default BLASTP parameters). Note that terminal gaps are not penalized
-by default unless <code class="docutils literal notranslate"><span class="pre">terminal_gaps</span></code> is set to True.</p>
+by default unless <code class="docutils literal notranslate"><span class="pre">free_ends</span></code> is set to False.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;MKQ-PSV&quot;</span><span class="p">),</span>
 <span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;MKIDTS-&quot;</span><span class="p">),</span>
 <span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;MVIDPSS&quot;</span><span class="p">)])</span>
@@ -826,20 +779,20 @@ by default unless <code class="docutils literal notranslate"><span class="pre">t
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.alignment.local_pairwise_align.html"
+       href="skbio.alignment.pair_align.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.alignment.local_pairwise_align</p>
+        <p class="prev-next-title">skbio.alignment.pair_align</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.alignment.make_identity_substitution_matrix.html"
+       href="skbio.alignment.StripedSmithWaterman.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.alignment.make_identity_substitution_matrix</p>
+        <p class="prev-next-title">skbio.alignment.StripedSmithWaterman</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

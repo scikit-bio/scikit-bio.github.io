@@ -69,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.sequence.SubstitutionMatrix.get_names" href="skbio.sequence.SubstitutionMatrix.get_names.html" />
-    <link rel="prev" title="skbio.sequence.SubstitutionMatrix.by_name" href="skbio.sequence.SubstitutionMatrix.by_name.html" />
+    <link rel="prev" title="skbio.sequence.SubstitutionMatrix.copy" href="skbio.sequence.SubstitutionMatrix.copy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -601,6 +601,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.GeneticCode.html">skbio.sequence.GeneticCode</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html">skbio.sequence.SubstitutionMatrix</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.by_name.html">skbio.sequence.SubstitutionMatrix.by_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.copy.html">skbio.sequence.SubstitutionMatrix.copy</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.SubstitutionMatrix.from_dict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.get_names.html">skbio.sequence.SubstitutionMatrix.get_names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.identity.html">skbio.sequence.SubstitutionMatrix.identity</a></li>
@@ -680,7 +681,7 @@
 <h1>skbio.sequence.SubstitutionMatrix.from_dict<a class="headerlink" href="#skbio-sequence-substitutionmatrix-from-dict" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.SubstitutionMatrix.from_dict">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SubstitutionMatrix.</span></span><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_substitution.py#L170"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix.from_dict" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SubstitutionMatrix.</span></span><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_substitution.py#L280"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix.from_dict" title="Link to this definition">#</a></dt>
 <dd><p>Create a substitution matrix from a 2D dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -693,6 +694,8 @@ characters.</p>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>SubstitutionMatrix</dt><dd><p>Substitution matrix constructed from the dictionary.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">{‘float32’, ‘float64’}, optional</span></dt><dd><p>Floating-point data type of the matrix. Default is “float32”.</p>
 </dd>
 </dl>
 </dd>
@@ -716,7 +719,7 @@ characters.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mat</span><span class="o">.</span><span class="n">scores</span>
 <span class="go">array([[ 1.,  0.,  0.],</span>
 <span class="go">       [ 0.,  1.,  0.],</span>
-<span class="go">       [ 0.,  0.,  1.]])</span>
+<span class="go">       [ 0.,  0.,  1.]], dtype=float32)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -734,12 +737,12 @@ characters.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.sequence.SubstitutionMatrix.by_name.html"
+       href="skbio.sequence.SubstitutionMatrix.copy.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.sequence.SubstitutionMatrix.by_name</p>
+        <p class="prev-next-title">skbio.sequence.SubstitutionMatrix.copy</p>
       </div>
     </a>
     <a class="right-next"

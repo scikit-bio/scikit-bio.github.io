@@ -693,17 +693,17 @@
 <h1>skbio.sequence.Sequence.to_indices<a class="headerlink" href="#skbio-sequence-sequence-to-indices" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.to_indices">
-<span class="sig-prename descclassname"><span class="pre">Sequence.</span></span><span class="sig-name descname"><span class="pre">to_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_gaps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wildcard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_codes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L2107"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.to_indices" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Sequence.</span></span><span class="sig-name descname"><span class="pre">to_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_gaps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wildcard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_codes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L2105"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.to_indices" title="Link to this definition">#</a></dt>
 <dd><p>Convert the sequence into indices of characters.</p>
 <p>The result will be indices of characters in an alphabet, if provided,
 otherwise indices of unique characters observed in the sequence, in
 which case the unique characters in sorted order will also be returned.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>alphabet</strong><span class="classifier">iterable of scalar or skbio.SubstitutionMatrix, optional</span></dt><dd><p>Explicitly provided alphabet. The returned indices will be indices
 of characters in this alphabet. If <cite>None</cite>, will return indices of
-unique characters observed in the sequence.s</p>
+unique characters observed in the sequence.</p>
 </dd>
 <dt><strong>mask_gaps</strong><span class="classifier">‘auto’ or bool, optional</span></dt><dd><p>Mask gap characters in the sequence, and return a masked array
 instead of a standard array. The gap characters are defined by the
@@ -722,10 +722,14 @@ of a string. Not effective if <cite>alphabet</cite> is set.</p>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>1D np.ndarray or np.ma.ndarray of uint8</dt><dd><p>Vector of character indices representing the sequence</p>
+<dd class="field-even"><dl>
+<dt>1D np.ndarray or np.ma.ndarray of intp</dt><dd><p>Vector of character indices representing the sequence</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.4: </span>The array data type was changed from <code class="docutils literal notranslate"><span class="pre">uint8</span></code> to <code class="docutils literal notranslate"><span class="pre">intp</span></code>, which is
+the native NumPy indexing type without the need of casting.</p>
+</div>
 </dd>
-<dt>str or 1D np.array of uint8, optional</dt><dd><p>Sorted unique characters observed in the sequence.</p>
+<dt>str or 1D np.ndarray of uint8, optional</dt><dd><p>Sorted unique characters observed in the sequence.</p>
 </dd>
 </dl>
 </dd>
@@ -747,7 +751,7 @@ Note that the unique characters are ordered.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Protein</span><span class="p">(</span><span class="s1">&#39;MEEPQSDPSV&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="p">,</span> <span class="n">uniq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
-<span class="go">array([2, 1, 1, 3, 4, 5, 0, 3, 5, 6], dtype=uint8)</span>
+<span class="go">array([2, 1, 1, 3, 4, 5, 0, 3, 5, 6])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">uniq</span>
 <span class="go">&#39;DEMPQSV&#39;</span>
 </pre></div>
@@ -758,7 +762,7 @@ Note that the order of characters is consistent with the alphabet.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CTCAAAAGTC&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">alphabet</span><span class="o">=</span><span class="s1">&#39;TCGA&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
-<span class="go">array([1, 0, 1, 3, 3, 3, 3, 2, 0, 1], dtype=uint8)</span>
+<span class="go">array([1, 0, 1, 3, 3, 3, 3, 2, 0, 1])</span>
 </pre></div>
 </div>
 <p>Use the alphabet included in a substitution matrix.</p>
@@ -766,7 +770,7 @@ Note that the order of characters is consistent with the alphabet.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="o">.</span><span class="n">by_name</span><span class="p">(</span><span class="s1">&#39;NUC.4.4&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">alphabet</span><span class="o">=</span><span class="n">sm</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
-<span class="go">array([3, 1, 3, 0, 0, 0, 0, 2, 1, 3], dtype=uint8)</span>
+<span class="go">array([3, 1, 3, 0, 0, 0, 0, 2, 1, 3])</span>
 </pre></div>
 </div>
 <p>Gap characters (“-” and “.”) in the sequence will be masked
@@ -785,7 +789,7 @@ acids (<cite>wildcard=’auto’</cite> is the default behavior).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GAGRCTC&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">alphabet</span><span class="o">=</span><span class="s1">&#39;ACGTN&#39;</span><span class="p">,</span> <span class="n">wildcard</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
-<span class="go">array([2, 0, 2, 4, 1, 3, 1], dtype=uint8)</span>
+<span class="go">array([2, 0, 2, 4, 1, 3, 1])</span>
 </pre></div>
 </div>
 </dd></dl>

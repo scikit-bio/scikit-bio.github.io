@@ -68,7 +68,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.alignment.AlignPath.from_bits" href="skbio.alignment.AlignPath.from_bits.html" />
+    <link rel="next" title="skbio.alignment.AlignPath.from_aligned" href="skbio.alignment.AlignPath.from_aligned.html" />
     <link rel="prev" title="skbio.alignment.TabularMSA.write" href="skbio.alignment.TabularMSA.write.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -593,17 +593,24 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.TabularMSA.html">skbio.alignment.TabularMSA</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">skbio.alignment.AlignPath</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_aligned.html">skbio.alignment.AlignPath.from_aligned</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_bits.html">skbio.alignment.AlignPath.from_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_coordinates.html">skbio.alignment.AlignPath.from_coordinates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_indices.html">skbio.alignment.AlignPath.from_indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html">skbio.alignment.AlignPath.from_tabular</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.stops.html">skbio.alignment.AlignPath.stops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_aligned.html">skbio.alignment.AlignPath.to_aligned</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_bits.html">skbio.alignment.AlignPath.to_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_coordinates.html">skbio.alignment.AlignPath.to_coordinates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.alignment.AlignPath.to_indices.html">skbio.alignment.AlignPath.to_indices</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.PairAlignPath.html">skbio.alignment.PairAlignPath</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.pair_align.html">skbio.alignment.pair_align</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.StripedSmithWaterman.html">skbio.alignment.StripedSmithWaterman</a></li>
@@ -617,9 +624,6 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_nucleotide.html">skbio.alignment.local_pairwise_align_nucleotide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align_protein.html">skbio.alignment.local_pairwise_align_protein</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
@@ -687,19 +691,11 @@
 <h1>skbio.alignment.AlignPath<a class="headerlink" href="#skbio-alignment-alignpath" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">AlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L37"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">AlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L38"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath" title="Link to this definition">#</a></dt>
 <dd><p>Store an alignment path between sequences.</p>
-<p>It defines the operations of aligning sequences by inserting gaps into designated
-positions between characters.</p>
-<p>The underlying data structure of the <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> class efficiently represents a
-sequence alignment as two equal-length vectors: lengths and gap status. The lengths
-vector contains the lengths of individual segments of the alignment with consistent
-gap status. The gap status vector contains the encoded bits of the gap (1) and
-character (0) status for each position in the alignment.</p>
-<p>This data structure is detached from the original sequences and is highly memory
-efficient. It permits fully vectorized operations and enables efficient conversion
-between various formats such as CIGAR, tabular, indices (Biotite), and coordinates
-(Biopython).</p>
+<p>It is a compact data structure that stores the operations of sequence alignment:
+inserting gaps into designated positions between subsequences. It does not store
+the sequence data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -708,7 +704,11 @@ between various formats such as CIGAR, tabular, indices (Biotite), and coordinat
 <dt><strong>states</strong><span class="classifier">array_like of uint8 of shape (n_segments,) or (n_packs, n_segments)</span></dt><dd><p>Packed bits representing character (0) or gap (1) status per sequence per
 segment in the alignment.</p>
 </dd>
-<dt><strong>starts</strong><span class="classifier">array_like of int of shape (n_sequences,)</span></dt><dd><p>Start position (0-based) of each sequence in the alignment.</p>
+<dt><strong>ranges</strong><span class="classifier">array_like of int of shape (n_sequences, 2), optional</span></dt><dd><p>Start and stop positions of each sequence in the alignment.</p>
+</dd>
+<dt><strong>starts</strong><span class="classifier">array_like of int of shape (n_sequences,), optional</span></dt><dd><p>Start position of each sequence in the alignment.</p>
+</dd>
+<dt><strong>stops</strong><span class="classifier">array_like of int of shape (n_sequences,), optional</span></dt><dd><p>Stop position of each sequence in the alignment.</p>
 </dd>
 </dl>
 </dd>
@@ -717,42 +717,47 @@ segment in the alignment.</p>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.sequence.Sequence</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.alignment.TabularMSA</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.sequence.Sequence</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The underlying logic of the <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> data structure is rooted in two concepts:
-run length encoding and bit arrays.</p>
-<p>The lengths array is calculated by performing run length encoding on the alignment,
-considering each segment with consistent gap status to be an individual unit in the
-encoding. In the above example, the first three positions of the alignment contain
-no gaps, so the first value in the lengths array is 3, and so on.</p>
-<p>The states array is calculated by turning the alignment segments into a bit array
-where gaps become 1’s, and characters become zeros. Then, the 0’s and 1’s are
-converted into bytes. In the above example, the fourth segment, which has length 1,
-would become [0, 1, 1], which then becomes 6.</p>
+<p>The underlying data structure of the <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> class efficiently represents a
+sequence alignment as two equal-length vectors: <code class="docutils literal notranslate"><span class="pre">lengths</span></code> and <code class="docutils literal notranslate"><span class="pre">states</span></code>. The
+lengths vector contains the lengths of individual segments of the alignment with
+consistent gap status. The states vector contains the packed bits of gap (1) and
+and character (0) status for each position in the alignment.</p>
+<p>This data structure is calculated by performing
+<a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Run-length_encoding">run-length encoding</a> (RLE) on the alignment,
+considering each segment with consistent gap status to be a unit in the encoding.
+This resembles the CIGAR string (see <a class="reference internal" href="skbio.alignment.PairAlignPath.to_cigar.html#skbio.alignment.PairAlignPath.to_cigar" title="skbio.alignment.PairAlignPath.to_cigar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PairAlignPath.to_cigar</span></code></a>), and is
+generalized to an arbitrary number of sequences.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> object is detached from the original or aligned sequences and is
+highly memory efficient. The more similar the sequences are (i.e., the fewer gaps),
+the more compact this data structure is. In the worst case, this object consumes
+1/8 memory space of the aligned sequences.</p>
+<p>This class permits fully vectorized operations and enables efficient conversion
+between various formats such as aligned sequences, indices (Biotite), and
+coordinates (Biopython).</p>
+<p>In addition to alignment operations, an <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> object also stores the ranges
+(start and stop positions) of the aligned region in the original sequences. This
+facilitates extraction of aligned sequences. The positions are 0-based and
+half-open, consistent with Python indexing, and compatible with the
+<a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/BED_(file_format)">BED format</a>.</p>
+<p>The ranges can be defined by supplying <code class="docutils literal notranslate"><span class="pre">starts</span></code>, <code class="docutils literal notranslate"><span class="pre">stops</span></code> or <code class="docutils literal notranslate"><span class="pre">ranges</span></code>. With
+either of the first two, the program will locate the other side based on lengths
+and states. For the last one, the program will NOT validate the correctness of the
+values but simply take them.</p>
 <p class="rubric">Examples</p>
 <p>Create an <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> object from a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object with three DNA
 sequences and 20 positions.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span>
 <span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGGTCGTAACGCGTA---CA&#39;</span><span class="p">),</span>
 <span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CAG--GTAAG-CATACCTCA&#39;</span><span class="p">),</span>
-<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGGTCGTCAC-TGTACACTA&#39;</span><span class="p">)</span>
-<span class="gp">... </span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
-<span class="go">TabularMSA[DNA]</span>
-<span class="go">----------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    sequence count: 3</span>
-<span class="go">    position count: 20</span>
-<span class="go">----------------------</span>
-<span class="go">CGGTCGTAACGCGTA---CA</span>
-<span class="go">CAG--GTAAG-CATACCTCA</span>
-<span class="go">CGGTCGTCAC-TGTACACTA</span>
+<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGGTCGTCAC-TGTACACTA&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_tabular</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
 <span class="go">AlignPath</span>
@@ -761,20 +766,72 @@ sequences and 20 positions.</p>
 <span class="go">states: [0 2 0 6 0 1 0]</span>
 </pre></div>
 </div>
+<p>In the above example, the first three positions of the alignment contain no gaps,
+so the first value in the lengths array is 3, and that in the states array is 0.
+The fourth segment, which has length 1, would have gap status (0, 1, 1), which
+then becomes 6 after bit packing. So on so forth.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> object is rarely created from scratch. But one still could, like:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="p">(</span><span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="n">starts</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">starts</span></code> defines the start positions of the aligned region of each
+sequence. The program will automatically calculate the stop positions.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">starts</span>
+<span class="go">array([5, 1, 0])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">stops</span>
+<span class="go">array([22, 18, 19])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">ranges</span>
+<span class="go">array([[ 5, 22],</span>
+<span class="go">       [ 1, 18],</span>
+<span class="go">       [ 0, 19]])</span>
+</pre></div>
+</div>
+<p>With the ranges, one can extract aligned subsequences from the original sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;NNNNNCGGTCGTAACGCGTACANNNNNNN&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;NCAGGTAAGCATACCTCA&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;CGGTCGTCACTGTACACTANN&quot;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span><span class="p">,</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">ranges</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">])</span>
+<span class="go">CGGTCGTAACGCGTACA</span>
+<span class="go">CAGGTAAGCATACCTCA</span>
+<span class="go">CGGTCGTCACTGTACACTA</span>
+</pre></div>
+</div>
+<p>Alternatively, one can extract the aligned sequences with gap characters:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">path</span><span class="o">.</span><span class="n">to_aligned</span><span class="p">(</span><span class="n">seqs</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">CGGTCGTAACGCGTA---CA</span>
+<span class="go">CAG--GTAAG-CATACCTCA</span>
+<span class="go">CGGTCGTCAC-TGTACACTA</span>
+</pre></div>
+</div>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.lengths" title="skbio.alignment.AlignPath.lengths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lengths</span></code></a></p></td>
 <td><p>Array of lengths of segments in alignment path.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.shape" title="skbio.alignment.AlignPath.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.ranges" title="skbio.alignment.AlignPath.ranges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ranges</span></code></a></p></td>
+<td><p>Array of (start, stop) positions of sequences in the alignment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.shape" title="skbio.alignment.AlignPath.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
 <td><p>Number of sequences (rows) and positions (columns).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.starts" title="skbio.alignment.AlignPath.starts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.starts" title="skbio.alignment.AlignPath.starts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts</span></code></a></p></td>
 <td><p>Array of start positions of sequences in the alignment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.states" title="skbio.alignment.AlignPath.states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">states</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.states" title="skbio.alignment.AlignPath.states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">states</span></code></a></p></td>
 <td><p>Array of gap status of segments in alignment path.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.alignment.AlignPath.stops" title="skbio.alignment.AlignPath.stops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stops</span></code></a></p></td>
+<td><p>Array of stop positions of sequences in the alignment.</p></td>
 </tr>
 </tbody>
 </table>
@@ -782,28 +839,31 @@ sequences and 20 positions.</p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_bits.html#skbio.alignment.AlignPath.from_bits" title="skbio.alignment.AlignPath.from_bits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_bits</span></code></a>(bits[, starts])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_aligned.html#skbio.alignment.AlignPath.from_aligned" title="skbio.alignment.AlignPath.from_aligned"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_aligned</span></code></a>(aln[, gap_chars, starts])</p></td>
+<td><p>Create an alignment path from aligned sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_bits.html#skbio.alignment.AlignPath.from_bits" title="skbio.alignment.AlignPath.from_bits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_bits</span></code></a>(bits[, starts])</p></td>
 <td><p>Create an alignment path from a bit array (0 - character, 1 - gap).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_coordinates.html#skbio.alignment.AlignPath.from_coordinates" title="skbio.alignment.AlignPath.from_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_coordinates</span></code></a>(coords)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_coordinates.html#skbio.alignment.AlignPath.from_coordinates" title="skbio.alignment.AlignPath.from_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_coordinates</span></code></a>(coords)</p></td>
 <td><p>Create an alignment path from an array of segment coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_indices.html#skbio.alignment.AlignPath.from_indices" title="skbio.alignment.AlignPath.from_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_indices</span></code></a>(indices[, gap])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_indices.html#skbio.alignment.AlignPath.from_indices" title="skbio.alignment.AlignPath.from_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_indices</span></code></a>(indices[, gap])</p></td>
 <td><p>Create an alignment path from character indices in the original sequences.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html#skbio.alignment.AlignPath.from_tabular" title="skbio.alignment.AlignPath.from_tabular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_tabular</span></code></a>(msa)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html#skbio.alignment.AlignPath.from_tabular" title="skbio.alignment.AlignPath.from_tabular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_tabular</span></code></a>(msa[, starts])</p></td>
 <td><p>Create an alignment path from a <cite>TabularMSA</cite> object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.stops.html#skbio.alignment.AlignPath.stops" title="skbio.alignment.AlignPath.stops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stops</span></code></a>()</p></td>
-<td><p>Calculate the stop positions of sequences in the alignment.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_aligned.html#skbio.alignment.AlignPath.to_aligned" title="skbio.alignment.AlignPath.to_aligned"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_aligned</span></code></a>(seqs[, gap_char, flanking])</p></td>
+<td><p>Extract aligned regions from original sequences.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_bits.html#skbio.alignment.AlignPath.to_bits" title="skbio.alignment.AlignPath.to_bits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_bits</span></code></a>([expand])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_bits.html#skbio.alignment.AlignPath.to_bits" title="skbio.alignment.AlignPath.to_bits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_bits</span></code></a>([expand])</p></td>
 <td><p>Unpack the alignment path into an array of bits.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_coordinates.html#skbio.alignment.AlignPath.to_coordinates" title="skbio.alignment.AlignPath.to_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_coordinates</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_coordinates.html#skbio.alignment.AlignPath.to_coordinates" title="skbio.alignment.AlignPath.to_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_coordinates</span></code></a>()</p></td>
 <td><p>Generate an array of segment coordinates in the original sequences.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_indices.html#skbio.alignment.AlignPath.to_indices" title="skbio.alignment.AlignPath.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([gap])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.alignment.AlignPath.to_indices.html#skbio.alignment.AlignPath.to_indices" title="skbio.alignment.AlignPath.to_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_indices</span></code></a>([gap])</p></td>
 <td><p>Generate an array of indices of characters in the original sequences.</p></td>
 </tr>
 </tbody>
@@ -856,11 +916,15 @@ sequences and 20 positions.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignPath.ranges">
+<span class="sig-name descname"><span class="pre">ranges</span></span><a class="headerlink" href="#skbio.alignment.AlignPath.ranges" title="Link to this definition">#</a></dt>
+<dd><p>Array of (start, stop) positions of sequences in the alignment.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.shape">
 <span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#skbio.alignment.AlignPath.shape" title="Link to this definition">#</a></dt>
 <dd><p>Number of sequences (rows) and positions (columns).</p>
-<p class="rubric">Notes</p>
-<p>This property is not writeable.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -875,9 +939,15 @@ sequences and 20 positions.</p>
 <dd><p>Array of gap status of segments in alignment path.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.alignment.AlignPath.stops">
+<span class="sig-name descname"><span class="pre">stops</span></span><a class="headerlink" href="#skbio.alignment.AlignPath.stops" title="Link to this definition">#</a></dt>
+<dd><p>Array of stop positions of sequences in the alignment.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L225"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return string representation of this alignment path.</p>
 </dd></dl>
 
@@ -905,11 +975,11 @@ sequences and 20 positions.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.alignment.AlignPath.from_bits.html"
+       href="skbio.alignment.AlignPath.from_aligned.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.alignment.AlignPath.from_bits</p>
+        <p class="prev-next-title">skbio.alignment.AlignPath.from_aligned</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -934,9 +1004,11 @@ sequences and 20 positions.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath"><code class="docutils literal notranslate"><span class="pre">AlignPath</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath.lengths"><code class="docutils literal notranslate"><span class="pre">AlignPath.lengths</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath.ranges"><code class="docutils literal notranslate"><span class="pre">AlignPath.ranges</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath.shape"><code class="docutils literal notranslate"><span class="pre">AlignPath.shape</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath.starts"><code class="docutils literal notranslate"><span class="pre">AlignPath.starts</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath.states"><code class="docutils literal notranslate"><span class="pre">AlignPath.states</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath.stops"><code class="docutils literal notranslate"><span class="pre">AlignPath.stops</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.alignment.AlignPath.__str__"><code class="docutils literal notranslate"><span class="pre">AlignPath.__str__</span></code></a></li>
 </ul>
 </li>
