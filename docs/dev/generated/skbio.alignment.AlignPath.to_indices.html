@@ -712,15 +712,47 @@ value. If “del”, delete columns that have any gap. If “mask”, return an
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.alignment.AlignPath.from_indices.html#skbio.alignment.AlignPath.from_indices" title="skbio.alignment.AlignPath.from_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_indices</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The transpose of the output matches the underlying data structure of Biotite’s
+<code class="docutils literal notranslate"><span class="pre">Alignment</span></code> class <a class="reference internal" href="#rcdfb7817faa8-1" id="id1">[1]</a>. Therefore, one can convert scikit-bio alignments into
+Biotite alignments, and vice versa.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rcdfb7817faa8-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.biotite-python.org/latest/apidoc/biotite.sequence.align.Alignment.html">biotite.sequence.align.Alignment</a></p>
+</div>
+</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="p">(</span><span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<span class="gp">... </span>                 <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-<span class="gp">... </span>                 <span class="n">starts</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">to_indices</span><span class="p">()</span>
-<span class="go">array([[ 0, -1, -1,  1,  2,  3],</span>
-<span class="go">       [ 0,  1,  2, -1, -1, -1],</span>
-<span class="go">       [ 0, -1, -1,  1,  2, -1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="p">(</span><span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="n">starts</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">to_indices</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span>
+<span class="go">array([[ 0,  1,  2,  3,  4, -1],</span>
+<span class="go">       [ 1,  2, -1,  3,  4,  5],</span>
+<span class="go">       [ 2,  3, -1,  4,  5,  6]])</span>
+</pre></div>
+</div>
+<p>One can create a Biotite <code class="docutils literal notranslate"><span class="pre">Alignment</span></code> object from the transposed indices and
+the original sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">biotite.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">NucleotideSequence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">biotite.sequence.align</span><span class="w"> </span><span class="kn">import</span> <span class="n">Alignment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">NucleotideSequence</span><span class="p">(</span><span class="s2">&quot;ACGTGA&quot;</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">NucleotideSequence</span><span class="p">(</span><span class="s2">&quot;TACTCA&quot;</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">NucleotideSequence</span><span class="p">(</span><span class="s2">&quot;GGACTGA&quot;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span> <span class="o">=</span> <span class="n">Alignment</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aln</span><span class="p">)</span>
+<span class="go">ACGTG-</span>
+<span class="go">AC-TCA</span>
+<span class="go">AC-TGA</span>
 </pre></div>
 </div>
 </dd></dl>
