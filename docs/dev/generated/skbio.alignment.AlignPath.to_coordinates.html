@@ -705,15 +705,52 @@ for each sequence.</p>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.alignment.AlignPath.from_coordinates.html#skbio.alignment.AlignPath.from_coordinates" title="skbio.alignment.AlignPath.from_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_coordinates</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The output is consistent with the underlying data structure of BioPython’s
+<code class="docutils literal notranslate"><span class="pre">Alignment</span></code> class <a class="reference internal" href="#r95e849b004fe-1" id="id1">[1]</a>. Therefore, one can convert scikit-bio alignments into
+Biopython alignments, and vice versa.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r95e849b004fe-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://biopython.org/docs/latest/api/Bio.Align.html#Bio.Align.Alignment">Bio.Align.Alignment</a></p>
+</div>
+</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="p">(</span><span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<span class="gp">... </span>                 <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-<span class="gp">... </span>                 <span class="n">starts</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">to_coordinates</span><span class="p">()</span>
-<span class="go">array([[0, 1, 1, 3, 4],</span>
-<span class="go">       [0, 1, 3, 3, 3],</span>
-<span class="go">       [0, 1, 1, 3, 3]]...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="p">(</span><span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="n">starts</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">to_coordinates</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span>
+<span class="go">array([[0, 2, 3, 5, 5],</span>
+<span class="go">       [1, 3, 3, 5, 6],</span>
+<span class="go">       [2, 4, 4, 6, 7]]...</span>
+</pre></div>
+</div>
+<p>One can create a Biopython <code class="docutils literal notranslate"><span class="pre">Alignment</span></code> object from the coordinates and the
+original sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Bio.Align</span><span class="w"> </span><span class="kn">import</span> <span class="n">Alignment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ACGTGA&quot;</span><span class="p">,</span> <span class="s2">&quot;TACTCA&quot;</span><span class="p">,</span> <span class="s2">&quot;GGACTGA&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span> <span class="o">=</span> <span class="n">Alignment</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span><span class="o">.</span><span class="n">coordinates</span> <span class="ow">is</span> <span class="n">coords</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span><span class="o">.</span><span class="n">counts</span><span class="p">()</span>
+<span class="go">AlignmentCounts(gaps=5, identities=11, mismatches=2)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aln</span><span class="p">)</span>
+<span class="go">                  0 ACGTG- 5</span>
+<span class="go">                  1 AC-TCA 6</span>
+<span class="go">                  2 AC-TGA 7</span>
 </pre></div>
 </div>
 </dd></dl>

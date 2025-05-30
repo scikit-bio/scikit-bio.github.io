@@ -694,7 +694,7 @@
 <h1>skbio.alignment.AlignPath.from_coordinates<a class="headerlink" href="#skbio-alignment-alignpath-from-coordinates" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.from_coordinates">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">from_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L793"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.from_coordinates" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">from_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L826"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.from_coordinates" title="Link to this definition">#</a></dt>
 <dd><p>Create an alignment path from an array of segment coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -711,6 +711,22 @@ for each sequence.</p>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.alignment.AlignPath.to_coordinates.html#skbio.alignment.AlignPath.to_coordinates" title="skbio.alignment.AlignPath.to_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_coordinates</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The input is compatible with the underlying data structure of BioPython’s
+<code class="docutils literal notranslate"><span class="pre">Alignment</span></code> class <a class="reference internal" href="#r71388990b2bd-1" id="id1">[1]</a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r71388990b2bd-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://biopython.org/docs/latest/api/Bio.Align.html#Bio.Align.Alignment">Bio.Align.Alignment</a></p>
+</div>
+</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
@@ -723,6 +739,29 @@ for each sequence.</p>
 <span class="go">Shape(sequence=3, position=6)</span>
 <span class="go">lengths: [1 2 2 1]</span>
 <span class="go">states: [0 5 2 6]</span>
+</pre></div>
+</div>
+<p>One can convert a Biopython’s <code class="docutils literal notranslate"><span class="pre">Alignment</span></code> object into a scikit-bio alignment
+path using this method.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Bio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Align</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="s2">&quot;GATCGTC&quot;</span><span class="p">,</span> <span class="s2">&quot;ATCGCTC&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">target            0 GATCG-TC 7</span>
+<span class="go">                  0 -||||-|| 8</span>
+<span class="go">query             0 -ATCGCTC 7</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span>
+<span class="go">array([[0, 1, 5, 5, 7],</span>
+<span class="go">       [0, 0, 4, 5, 7]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">PairAlignPath</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">PairAlignPath</span><span class="o">.</span><span class="n">from_coordinates</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
+<span class="go">&lt;PairAlignPath, positions: 8, CIGAR: &#39;1D4M1I2M&#39;&gt;</span>
 </pre></div>
 </div>
 </dd></dl>
