@@ -685,13 +685,13 @@
 <h1>skbio.alignment.PairAlignPath<a class="headerlink" href="#skbio-alignment-pairalignpath" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.alignment.PairAlignPath">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">PairAlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L973"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.PairAlignPath" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">PairAlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L977"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.PairAlignPath" title="Link to this definition">#</a></dt>
 <dd><p>Store a pairwise alignment path between two sequences.</p>
 <p><code class="docutils literal notranslate"><span class="pre">PairAlignPath</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code>, with additional methods specific
 to pairwise alignments, such as the processing of CIGAR strings.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>lengths</strong><span class="classifier">array_like of int of shape (n_segments,)</span></dt><dd><p>Length of each segment in the alignment.</p>
 </dd>
 <dt><strong>states</strong><span class="classifier">array_like of uint8 of shape (n_segments,)</span></dt><dd><p>Bits representing character (0) or gap (1) status per sequence per segment in
@@ -702,6 +702,11 @@ the alignment.</p>
 <dt><strong>starts</strong><span class="classifier">array_like of int of shape (n_sequences,), optional</span></dt><dd><p>Start position of each sequence in the alignment.</p>
 </dd>
 <dt><strong>stops</strong><span class="classifier">array_like of int of shape (n_sequences,), optional</span></dt><dd><p>Stop position of each sequence in the alignment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If none of <code class="docutils literal notranslate"><span class="pre">ranges</span></code>, <code class="docutils literal notranslate"><span class="pre">starts</span></code> or <code class="docutils literal notranslate"><span class="pre">stops</span></code> are provided,
+<code class="docutils literal notranslate"><span class="pre">starts=[0,</span> <span class="pre">0]</span></code> will be used.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -715,8 +720,100 @@ the alignment.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>If none of <code class="docutils literal notranslate"><span class="pre">ranges</span></code>, <code class="docutils literal notranslate"><span class="pre">starts</span></code> or <code class="docutils literal notranslate"><span class="pre">stops</span></code> are provided, <code class="docutils literal notranslate"><span class="pre">starts=[0,</span> <span class="pre">0]</span></code> will
-be used.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PairAlignPath</span></code> uses a compact data structure to store alignment operations.
+Specifically, it encodes gap status in the two sequences in <code class="docutils literal notranslate"><span class="pre">states</span></code>, a 2-D array
+with just one row of packed bits. The elements may be:</p>
+<ul class="simple">
+<li><p>0: Gap in neither sequence.</p></li>
+<li><p>1: Gap in sequence 1.</p></li>
+<li><p>2: Gap in sequence 2.</p></li>
+<li><p>3: Gap in both sequences.</p></li>
+</ul>
+<p>Meanwhile, it stores the length of segment per gap status in a 1-D array
+<code class="docutils literal notranslate"><span class="pre">lengths</span></code>. For example, the following alignment:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GAGCCAT-AC
+GC--CATAAC
+</pre></div>
+</div>
+<p>Can be represented by:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lengths: 2 2 3 1 2
+ states: 0 2 0 1 0
+</pre></div>
+</div>
+<p>This data structure resembles the <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Sequence_alignment#CIGAR_ Format">CIGAR string</a>, as defined in the SAM format specification <a class="reference internal" href="#r58d19d09588f-1" id="id1">[1]</a>. One can convert a
+pairwise alignment path to/from a CIGAR string using the <a class="reference internal" href="skbio.alignment.PairAlignPath.to_cigar.html#skbio.alignment.PairAlignPath.to_cigar" title="skbio.alignment.PairAlignPath.to_cigar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_cigar</span></code></a> /
+<a class="reference internal" href="skbio.alignment.PairAlignPath.from_cigar.html#skbio.alignment.PairAlignPath.from_cigar" title="skbio.alignment.PairAlignPath.from_cigar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_cigar</span></code></a> methods.</p>
+<p>The translation from CIGAR codes to <code class="docutils literal notranslate"><span class="pre">states</span></code> elements is as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>BAM</p></th>
+<th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M</span></code></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Alignment match</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>Insertion to the reference</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>Deletion from the reference</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>Skipped region from the reference</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>Soft clipping</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+<td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>Hard clipping</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">P</span></code></p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+<td><p>Padding</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">=</span></code></p></td>
+<td><p>7</p></td>
+<td><p>0</p></td>
+<td><p>Sequence match</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
+<td><p>8</p></td>
+<td><p>0</p></td>
+<td><p>Sequence mismatch</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sequences 1 and 2 are referred to as “query” and “reference” in the SAM format.</p>
+</div>
+<p>See also the superclass <a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlignPath</span></code></a>, a generalization of this data structure
+to an arbitrary number of sequences.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r58d19d09588f-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://samtools.github.io/hts-specs/SAMv1.pdf">https://samtools.github.io/hts-specs/SAMv1.pdf</a></p>
+</div>
+</div>
 <p class="rubric">Attributes (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
@@ -828,7 +925,7 @@ be used.</p>
 <p class="rubric">Details</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.PairAlignPath.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L1029"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.PairAlignPath.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L1098"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.PairAlignPath.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return string representation of this alignment path.</p>
 </dd></dl>
 

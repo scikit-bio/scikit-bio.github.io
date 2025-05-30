@@ -691,14 +691,14 @@
 <h1>skbio.alignment.AlignPath<a class="headerlink" href="#skbio-alignment-alignpath" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">AlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L38"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">AlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L41"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath" title="Link to this definition">#</a></dt>
 <dd><p>Store an alignment path between sequences.</p>
 <p>It is a compact data structure that stores the operations of sequence alignment:
 inserting gaps into designated positions between subsequences. It does not store
 the sequence data.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>lengths</strong><span class="classifier">array_like of int of shape (n_segments,)</span></dt><dd><p>Length of each segment in the alignment.</p>
 </dd>
 <dt><strong>states</strong><span class="classifier">array_like of uint8 of shape (n_segments,) or (n_packs, n_segments)</span></dt><dd><p>Packed bits representing character (0) or gap (1) status per sequence per
@@ -709,6 +709,13 @@ segment in the alignment.</p>
 <dt><strong>starts</strong><span class="classifier">array_like of int of shape (n_sequences,), optional</span></dt><dd><p>Start position of each sequence in the alignment.</p>
 </dd>
 <dt><strong>stops</strong><span class="classifier">array_like of int of shape (n_sequences,), optional</span></dt><dd><p>Stop position of each sequence in the alignment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ranges can be defined by supplying <code class="docutils literal notranslate"><span class="pre">starts</span></code>, <code class="docutils literal notranslate"><span class="pre">stops</span></code> or <code class="docutils literal notranslate"><span class="pre">ranges</span></code>.
+With either of the first two, the program will locate the other side based
+on <code class="docutils literal notranslate"><span class="pre">lengths</span></code> and <code class="docutils literal notranslate"><span class="pre">states</span></code>. For the last (<code class="docutils literal notranslate"><span class="pre">ranges</span></code>), the program will
+NOT validate the correctness of the values but simply take them.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -744,10 +751,6 @@ coordinates (Biopython).</p>
 facilitates extraction of aligned sequences. The positions are 0-based and
 half-open, consistent with Python indexing, and compatible with the
 <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/BED_(file_format)">BED format</a>.</p>
-<p>The ranges can be defined by supplying <code class="docutils literal notranslate"><span class="pre">starts</span></code>, <code class="docutils literal notranslate"><span class="pre">stops</span></code> or <code class="docutils literal notranslate"><span class="pre">ranges</span></code>. With
-either of the first two, the program will locate the other side based on lengths
-and states. For the last one, the program will NOT validate the correctness of the
-values but simply take them.</p>
 <p class="rubric">Examples</p>
 <p>Create an <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> object from a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object with three DNA
 sequences and 20 positions.</p>
@@ -947,7 +950,7 @@ sequence. The program will automatically calculate the stop positions.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L225"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return string representation of this alignment path.</p>
 </dd></dl>
 
