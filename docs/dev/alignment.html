@@ -592,11 +592,17 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.TabularMSA.html">skbio.alignment.TabularMSA</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.AlignPath.html">skbio.alignment.AlignPath</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.PairAlignPath.html">skbio.alignment.PairAlignPath</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.pair_align.html">skbio.alignment.pair_align</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.pair_align_nucl.html">skbio.alignment.pair_align_nucl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.pair_align_prot.html">skbio.alignment.pair_align_prot</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
@@ -677,30 +683,50 @@
 <span id="module-skbio.alignment"></span><h1>Sequence Alignments (<a class="reference internal" href="#module-skbio.alignment" title="skbio.alignment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.alignment</span></code></a>)<a class="headerlink" href="#sequence-alignments-skbio-alignment" title="Link to this heading">#</a></h1>
 <p>This module provides functionality for computing and manipulating sequence
 alignments. DNA, RNA, and protein sequences can be aligned, as well as
-sequences with custom alphabets.</p>
-<section id="alignment-structure">
-<h2>Alignment structure<a class="headerlink" href="#alignment-structure" title="Link to this heading">#</a></h2>
+sequences with or without custom alphabets.</p>
+<section id="alignment-structures">
+<h2>Alignment structures<a class="headerlink" href="#alignment-structures" title="Link to this heading">#</a></h2>
+<p>Tabular format of aligned sequences.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>(sequences[, metadata, ...])</p></td>
 <td><p>Store a multiple sequence alignment in tabular (row/column) form.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignPath</span></code></a>(lengths, states, *[, ranges, ...])</p></td>
+</tbody>
+</table>
+</div>
+<p>Compact format of alignment paths.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignPath</span></code></a>(lengths, states, *[, ranges, ...])</p></td>
 <td><p>Store an alignment path between sequences.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a>(lengths, states, *[, ranges, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a>(lengths, states, *[, ranges, ...])</p></td>
 <td><p>Store a pairwise alignment path between two sequences.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="alignment-algorithm-new">
-<h2>Alignment algorithm (new)<a class="headerlink" href="#alignment-algorithm-new" title="Link to this heading">#</a></h2>
+<section id="pairwise-alignment">
+<h2>Pairwise alignment<a class="headerlink" href="#pairwise-alignment" title="Link to this heading">#</a></h2>
+<p>A versatile, efficient and generalizable pairwise alignment algorithm.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pair_align</span></code></a>(seq1, seq2, /[, mode, sub_score, ...])</p></td>
 <td><p>Perform pairwise alignment of two sequences.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Convenience wrappers with preset scoring schemes.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.pair_align_nucl.html#skbio.alignment.pair_align_nucl" title="skbio.alignment.pair_align_nucl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pair_align_nucl</span></code></a>(seq1, seq2, /, **kwargs)</p></td>
+<td><p>Align two nucleotide sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.alignment.pair_align_prot.html#skbio.alignment.pair_align_prot" title="skbio.alignment.pair_align_prot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pair_align_prot</span></code></a>(seq1, seq2, /, **kwargs)</p></td>
+<td><p>Align two protein sequences.</p></td>
 </tr>
 </tbody>
 </table>
@@ -717,9 +743,10 @@ sequences with custom alphabets.</p>
 </table>
 </div>
 </section>
-<section id="alignment-algorithms-deprecated">
-<h2>Alignment algorithms (deprecated)<a class="headerlink" href="#alignment-algorithms-deprecated" title="Link to this heading">#</a></h2>
-<p class="rubric">Optimized (i.e., production-ready) algorithms</p>
+<section id="deprecated-functionality">
+<h2>Deprecated functionality<a class="headerlink" href="#deprecated-functionality" title="Link to this heading">#</a></h2>
+<p class="rubric">Alignment algorithms</p>
+<p>SSW wrapper (optimized; production-ready)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.StripedSmithWaterman.html#skbio.alignment.StripedSmithWaterman" title="skbio.alignment.StripedSmithWaterman"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StripedSmithWaterman</span></code></a></p></td>
@@ -734,7 +761,7 @@ sequences with custom alphabets.</p>
 </tbody>
 </table>
 </div>
-<p class="rubric">Slow (i.e., educational-purposes only) algorithms</p>
+<p>Pure Python algorithms (slow; educational-purposes only)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.global_pairwise_align_nucleotide.html#skbio.alignment.global_pairwise_align_nucleotide" title="skbio.alignment.global_pairwise_align_nucleotide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">global_pairwise_align_nucleotide</span></code></a>(seq1, seq2)</p></td>
@@ -758,8 +785,7 @@ sequences with custom alphabets.</p>
 </tbody>
 </table>
 </div>
-<section id="deprecated-functionality">
-<h3>Deprecated functionality<a class="headerlink" href="#deprecated-functionality" title="Link to this heading">#</a></h3>
+<p class="rubric">Substitution matrix</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.make_identity_substitution_matrix.html#skbio.alignment.make_identity_substitution_matrix" title="skbio.alignment.make_identity_substitution_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_identity_substitution_matrix</span></code></a>(...[, ...])</p></td>
@@ -768,7 +794,6 @@ sequences with custom alphabets.</p>
 </tbody>
 </table>
 </div>
-</section>
 </section>
 <section id="tutorial">
 <h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
@@ -964,11 +989,14 @@ positions of each aligned sequence:</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-structure">Alignment structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-algorithm-new">Alignment algorithm (new)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-structures">Alignment structures</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-alignment">Pairwise alignment</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-statistics">Alignment statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-algorithms-deprecated">Alignment algorithms (deprecated)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a><ul class="nav section-nav flex-column">
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">

@@ -69,7 +69,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.alignment.align_score" href="skbio.alignment.align_score.html" />
+    <link rel="next" title="skbio.alignment.pair_align_nucl" href="skbio.alignment.pair_align_nucl.html" />
     <link rel="prev" title="skbio.alignment.PairAlignPath.to_cigar" href="skbio.alignment.PairAlignPath.to_cigar.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -593,11 +593,17 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.TabularMSA.html">skbio.alignment.TabularMSA</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.AlignPath.html">skbio.alignment.AlignPath</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.PairAlignPath.html">skbio.alignment.PairAlignPath</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.alignment.pair_align</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.pair_align_nucl.html">skbio.alignment.pair_align_nucl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.pair_align_prot.html">skbio.alignment.pair_align_prot</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
@@ -734,6 +740,12 @@ contiguous gap of length <em>k</em> has a total penalty of <em>o</em> + <em>e</e
 See also notes below.</p></li>
 </ul>
 <p>Default is 2.0 (linear gap penalty).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Infinites are valid values for <code class="docutils literal notranslate"><span class="pre">sub_score</span></code> and <code class="docutils literal notranslate"><span class="pre">gap_cost</span></code>. For example,
+<code class="docutils literal notranslate"><span class="pre">gap_cost=np.inf</span></code> disables gaps. <code class="docutils literal notranslate"><span class="pre">sub_score=(...,</span> <span class="pre">-np.inf)</span></code> disables
+mismatches.</p>
+</div>
 </dd>
 <dt><strong>free_ends</strong><span class="classifier">bool, 2-tuple of bool, or 4-tuple of bool, optional</span></dt><dd><p>Whether gaps at the sequence terminals are free from penalization. Relevant
 when <code class="docutils literal notranslate"><span class="pre">mode</span></code> is “global”. Alignment with free ends is known as semi-global
@@ -766,8 +778,8 @@ traceback and return no path (None).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">mode=&quot;local&quot;</span></code>, it is possible that there is no path with a score &gt;
-0. In this case, an empty list will be returned. <code class="docutils literal notranslate"><span class="pre">mode=global</span></code> guarantees
-to return at least one path, even if it’s completely misaligned.</p>
+0. In this case, an empty list will be returned. <code class="docutils literal notranslate"><span class="pre">mode=&quot;global&quot;</span></code>
+guarantees to return at least one path, even if it’s completely misaligned.</p>
 </div>
 </dd>
 <dt><strong>atol</strong><span class="classifier">float, optional</span></dt><dd><p>Absolute tolerance in comparing scores of alternative alignment paths. This is
@@ -825,12 +837,14 @@ algorithms are exact and the output alignments are guaranteed to be optimal.</p>
 <p>The default parameters <code class="docutils literal notranslate"><span class="pre">sub_score=(1,</span> <span class="pre">-1),</span> <span class="pre">gap_cost=2</span></code> is a simple scoring scheme
 that quickly captures sequence similarity. However, in bioinformatics applications,
 one usually wants to replace them with more realistic parameters according to the
-specific task. For your reference, below are the default parameters of some common
+specific task. For reference, below are the default parameters of some common
 bioinformatics programs:</p>
 <ul class="simple">
 <li><p>NCBI MegaBLAST (nucleotide): <code class="docutils literal notranslate"><span class="pre">sub_score=(1,</span> <span class="pre">-2),</span> <span class="pre">gap_cost=2.5</span></code></p></li>
-<li><p>NCBI BLASTN (nucleotide): <code class="docutils literal notranslate"><span class="pre">sub_score=(2,</span> <span class="pre">-3),</span> <span class="pre">gap_cost=(5,</span> <span class="pre">2)</span></code></p></li>
-<li><p>NCBI BLASTP (protein): <code class="docutils literal notranslate"><span class="pre">sub_score=&quot;BLOSUM62&quot;,</span> <span class="pre">gap_cost=(11,</span> <span class="pre">1)</span></code></p></li>
+<li><p>NCBI BLASTN (nucleotide): <code class="docutils literal notranslate"><span class="pre">sub_score=(2,</span> <span class="pre">-3),</span> <span class="pre">gap_cost=(5,</span> <span class="pre">2)</span></code>
+(see also <a class="reference internal" href="skbio.alignment.pair_align_nucl.html#skbio.alignment.pair_align_nucl" title="skbio.alignment.pair_align_nucl"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align_nucl</span></code></a>)</p></li>
+<li><p>NCBI BLASTP (protein): <code class="docutils literal notranslate"><span class="pre">sub_score=&quot;BLOSUM62&quot;,</span> <span class="pre">gap_cost=(11,</span> <span class="pre">1)</span></code>
+(see also <a class="reference internal" href="skbio.alignment.pair_align_prot.html#skbio.alignment.pair_align_prot" title="skbio.alignment.pair_align_prot"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align_prot</span></code></a>)</p></li>
 <li><p>EMBOSS Needle/Water (protein): <code class="docutils literal notranslate"><span class="pre">sub_score=&quot;BLOSUM62&quot;,</span> <span class="pre">gap_cost=(9.5,</span> <span class="pre">0.5)</span></code>
 (for nucleotide, replace <code class="docutils literal notranslate"><span class="pre">sub_score</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;NUC.4.4&quot;</span></code>)</p></li>
 <li><p>EBI FASTA (protein): <code class="docutils literal notranslate"><span class="pre">sub_score=&quot;BLOSUM50&quot;,</span> <span class="pre">gap_cost=(8,</span> <span class="pre">2)</span></code></p></li>
@@ -1033,11 +1047,11 @@ the target (<code class="docutils literal notranslate"><span class="pre">ranges[
       </div>
     </a>
     <a class="right-next"
-       href="skbio.alignment.align_score.html"
+       href="skbio.alignment.pair_align_nucl.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.alignment.align_score</p>
+        <p class="prev-next-title">skbio.alignment.pair_align_nucl</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
