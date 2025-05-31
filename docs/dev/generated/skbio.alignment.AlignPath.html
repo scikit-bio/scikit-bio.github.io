@@ -697,7 +697,7 @@
 <h1>skbio.alignment.AlignPath<a class="headerlink" href="#skbio-alignment-alignpath" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">AlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L41"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">AlignPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath" title="Link to this definition">#</a></dt>
 <dd><p>Store an alignment path between sequences.</p>
 <p>It is a compact data structure that stores the operations of sequence alignment:
 inserting gaps into designated positions between subsequences. It does not store
@@ -769,16 +769,21 @@ sequences and 20 positions.</p>
 <span class="gp">... </span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_tabular</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
-<span class="go">AlignPath</span>
-<span class="go">Shape(sequence=3, position=20)</span>
-<span class="go">lengths: [3 2 5 1 4 3 2]</span>
-<span class="go">states: [0 2 0 6 0 1 0]</span>
+<span class="go">&lt;AlignPath, sequences: 3, positions: 20, segments: 7&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">lengths</span>
+<span class="go">array([3, 2, 5, 1, 4, 3, 2])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">states</span>
+<span class="go">array([[0, 2, 0, 6, 0, 1, 0]], dtype=uint8)</span>
 </pre></div>
 </div>
 <p>In the above example, the first three positions of the alignment contain no gaps,
 so the first value in the lengths array is 3, and that in the states array is 0.
 The fourth segment, which has length 1, would have gap status (0, 1, 1), which
-then becomes 6 after bit packing. So on so forth.</p>
+then becomes 6 after bit packing.</p>
 <p>An <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> object is rarely created from scratch. But one still could, like:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="p">(</span><span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
 <span class="gp">... </span>                 <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -956,7 +961,7 @@ sequence. The program will automatically calculate the stop positions.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L230"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return string representation of this alignment path.</p>
 </dd></dl>
 

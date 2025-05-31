@@ -700,7 +700,7 @@
 <h1>skbio.alignment.AlignPath.from_coordinates<a class="headerlink" href="#skbio-alignment-alignpath-from-coordinates" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.from_coordinates">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">from_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L902"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.from_coordinates" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">from_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L894"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.from_coordinates" title="Link to this definition">#</a></dt>
 <dd><p>Create an alignment path from an array of segment coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -741,10 +741,7 @@ for each sequence.</p>
 <span class="gp">... </span>                        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_coordinates</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
-<span class="go">AlignPath</span>
-<span class="go">Shape(sequence=3, position=6)</span>
-<span class="go">lengths: [1 2 2 1]</span>
-<span class="go">states: [0 5 2 6]</span>
+<span class="go">&lt;AlignPath, sequences: 3, positions: 6, segments: 4&gt;</span>
 </pre></div>
 </div>
 <p>One can convert a Biopython’s <code class="docutils literal notranslate"><span class="pre">Alignment</span></code> object into a scikit-bio alignment
@@ -767,7 +764,7 @@ path using this method.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">PairAlignPath</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">PairAlignPath</span><span class="o">.</span><span class="n">from_coordinates</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
-<span class="go">&lt;PairAlignPath, positions: 8, CIGAR: &#39;1D4M1I2M&#39;&gt;</span>
+<span class="go">&lt;PairAlignPath, positions: 8, segments: 4, CIGAR: &#39;1D4M1I2M&#39;&gt;</span>
 </pre></div>
 </div>
 </dd></dl>
