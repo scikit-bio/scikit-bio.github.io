@@ -699,7 +699,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>cigar</strong><span class="classifier">str</span></dt><dd><p>CIGAR format string used to build the PairAlignPath.</p>
+<dt><strong>cigar</strong><span class="classifier">str or bytes</span></dt><dd><p>CIGAR format string used to build the PairAlignPath.</p>
 </dd>
 <dt><strong>starts</strong><span class="classifier">array_like of (int, int), optional</span></dt><dd><p>Start position of each sequence in the alignment. If omitted, will set as
 zeros.</p>
@@ -709,6 +709,14 @@ zeros.</p>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>PairAlignPath</dt><dd><p>The pairwise alignment path created from the given CIGAR string.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>CIGAR string is empty.</p>
+</dd>
+<dt>ValueError</dt><dd><p>CIGAR string contains invalid characters.</p>
 </dd>
 </dl>
 </dd>
