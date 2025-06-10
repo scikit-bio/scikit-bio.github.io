@@ -608,20 +608,12 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.StripedSmithWaterman.html">skbio.alignment.StripedSmithWaterman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.AlignmentStructure.html">skbio.alignment.AlignmentStructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align_ssw.html">skbio.alignment.local_pairwise_align_ssw</a></li>
-</ul>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.global_pairwise_align_nucleotide.html">skbio.alignment.global_pairwise_align_nucleotide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.global_pairwise_align_protein.html">skbio.alignment.global_pairwise_align_protein</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.global_pairwise_align.html">skbio.alignment.global_pairwise_align</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align_nucleotide.html">skbio.alignment.local_pairwise_align_nucleotide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align_protein.html">skbio.alignment.local_pairwise_align_protein</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align.html">skbio.alignment.local_pairwise_align</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.alignment.make_identity_substitution_matrix.html">skbio.alignment.make_identity_substitution_matrix</a></li>
 </ul>
 </div>
 </nav></div>
@@ -745,22 +737,6 @@ sequences with or without custom alphabets.</p>
 </section>
 <section id="deprecated-functionality">
 <h2>Deprecated functionality<a class="headerlink" href="#deprecated-functionality" title="Link to this heading">#</a></h2>
-<p class="rubric">Alignment algorithms</p>
-<p>SSW wrapper (optimized; production-ready)</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.StripedSmithWaterman.html#skbio.alignment.StripedSmithWaterman" title="skbio.alignment.StripedSmithWaterman"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StripedSmithWaterman</span></code></a></p></td>
-<td><p>Performs a striped Smith Waterman Alignment.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.alignment.AlignmentStructure.html#skbio.alignment.AlignmentStructure" title="skbio.alignment.AlignmentStructure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignmentStructure</span></code></a></p></td>
-<td><p>Wraps the result of an alignment c struct so it is accessible to Python</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align_ssw.html#skbio.alignment.local_pairwise_align_ssw" title="skbio.alignment.local_pairwise_align_ssw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">local_pairwise_align_ssw</span></code></a>(sequence1, ...)</p></td>
-<td><p>Align query and target sequences with Striped Smith-Waterman.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <p>Pure Python algorithms (slow; educational-purposes only)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
@@ -781,15 +757,6 @@ sequences with or without custom alphabets.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.alignment.local_pairwise_align.html#skbio.alignment.local_pairwise_align" title="skbio.alignment.local_pairwise_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">local_pairwise_align</span></code></a>(seq1, seq2, ...)</p></td>
 <td><p>Locally align exactly two seqs with Smith-Waterman.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Substitution matrix</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.make_identity_substitution_matrix.html#skbio.alignment.make_identity_substitution_matrix" title="skbio.alignment.make_identity_substitution_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_identity_substitution_matrix</span></code></a>(...[, ...])</p></td>
-<td><p>Generate substitution matrix where all matches are scored equally.</p></td>
 </tr>
 </tbody>
 </table>
@@ -819,74 +786,16 @@ object, using sequence IDs as the MSA’s index:</p>
 </pre></div>
 </div>
 </section>
-<section id="using-the-optimized-alignment-algorithm">
-<h3>Using the optimized alignment algorithm<a class="headerlink" href="#using-the-optimized-alignment-algorithm" title="Link to this heading">#</a></h3>
-<p>Using the convenient <code class="docutils literal notranslate"><span class="pre">local_pairwise_align_ssw</span></code> function:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">local_pairwise_align_ssw</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alignment</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">start_end_positions</span> <span class="o">=</span> <span class="n">local_pairwise_align_ssw</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACTAAGGCTCTCTACCCCTCTCAGAGA&quot;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACTAAGGCTCCTAACCCCCTTTTCTCAGA&quot;</span><span class="p">)</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alignment</span>
-<span class="go">TabularMSA[DNA]</span>
-<span class="go">------------------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    sequence count: 2</span>
-<span class="go">    position count: 30</span>
-<span class="go">------------------------------</span>
-<span class="go">ACTAAGGCTCTCT-ACCCC----TCTCAGA</span>
-<span class="go">ACTAAGGCTC-CTAACCCCCTTTTCTCAGA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span>
-<span class="go">27</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">start_end_positions</span>
-<span class="go">[(0, 24), (0, 28)]</span>
-</pre></div>
-</div>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">StripedSmithWaterman</span></code> object:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">StripedSmithWaterman</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="n">StripedSmithWaterman</span><span class="p">(</span><span class="s2">&quot;ACTAAGGCTCTCTACCCCTCTCAGAGA&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alignment</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s2">&quot;AAAAAACTCTCTAAACTCACTAAGGCTCTCTACCCCTCTTCAGAGAAGTCGA&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
-<span class="go">ACTAAGGCTC...</span>
-<span class="go">ACTAAGGCTC...</span>
-<span class="go">Score: 49</span>
-<span class="go">Length: 28</span>
-</pre></div>
-</div>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">StripedSmithWaterman</span></code> object for multiple targets in an efficient
-way and finding the aligned sequence representations:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">StripedSmithWaterman</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alignments</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">target_sequences</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="s2">&quot;GCTAACTAGGCTCCCTTCTACCCCTCTCAGAGA&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;GCCCAGTAGCTTCCCAATATGAGAGCATCAATTGTAGATCGGGCC&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;TCTATAAGATTCCGCATGCGTTACTTATAAGATGTCTCAACGG&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;TAGAGATTAATTGCCACTGCCAAAATTCTG&quot;</span>
-<span class="gp">... </span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">query_sequence</span> <span class="o">=</span> <span class="s2">&quot;ACTAAGGCTCTCTACCCCTCTCAGAGA&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="n">StripedSmithWaterman</span><span class="p">(</span><span class="n">query_sequence</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">target_sequence</span> <span class="ow">in</span> <span class="n">target_sequences</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">alignment</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">target_sequence</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">alignments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">alignments</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">ACTAAGGCTC...</span>
-<span class="go">ACT-AGGCTC...</span>
-<span class="go">Score: 38</span>
-<span class="go">Length: 30</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">alignments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">aligned_query_sequence</span><span class="p">)</span>
-<span class="go">ACTAAGGCTC---TCTACCCCTCTCAGAGA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">alignments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">aligned_target_sequence</span><span class="p">)</span>
-<span class="go">ACT-AGGCTCCCTTCTACCCCTCTCAGAGA</span>
-</pre></div>
-</div>
 </section>
-<section id="using-the-slow-alignment-algorithm">
-<h3>Using the slow alignment algorithm<a class="headerlink" href="#using-the-slow-alignment-algorithm" title="Link to this heading">#</a></h3>
-<p>scikit-bio also provides pure-Python implementations of Smith-Waterman and
-Needleman-Wunsch alignment. These are much slower than the methods described
-above, but serve as useful educational examples as they’re simpler to
-experiment with. Functions are provided for local and global alignment of
+<section id="alignment-algorithm-examples">
+<h2>Alignment Algorithm Examples<a class="headerlink" href="#alignment-algorithm-examples" title="Link to this heading">#</a></h2>
+<p>scikit-bio provides pure-Python implementations of Smith-Waterman and
+Needleman-Wunsch alignment. These are much slower than implementations
+in languages such as C, but serve as useful educational examples as they’re
+simpler to understand for programmers not experienced with C and are easy to
+experiment with. These are _far_ too slow to use in production applications
+when run on long sequences or run many times.</p>
+<p>Functions are provided for local and global alignment of
 protein and nucleotide sequences. The <code class="docutils literal notranslate"><span class="pre">global*</span></code> and <code class="docutils literal notranslate"><span class="pre">local*</span></code> functions
 differ in the underlying algorithm that is applied (<code class="docutils literal notranslate"><span class="pre">global*</span></code> uses Needleman-
 Wunsch while <code class="docutils literal notranslate"><span class="pre">local*</span></code> uses Smith-Waterman), and <code class="docutils literal notranslate"><span class="pre">*protein</span></code> and
@@ -938,7 +847,6 @@ positions of each aligned sequence:</p>
 <span class="go">ACGTGCCTA-GGTACGCAAG</span>
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 
@@ -996,15 +904,12 @@ positions of each aligned sequence:</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-statistics">Alignment statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a><ul class="nav section-nav flex-column">
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-data-structure">Alignment data structure</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-optimized-alignment-algorithm">Using the optimized alignment algorithm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-slow-alignment-algorithm">Using the slow alignment algorithm</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-algorithm-examples">Alignment Algorithm Examples</a></li>
 </ul>
   </nav></div>
 
