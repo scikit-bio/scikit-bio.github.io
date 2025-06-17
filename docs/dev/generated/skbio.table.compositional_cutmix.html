@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Data Augmentation by vanilla mixup." />
+    <meta name="description" content="Data Augmentation by compositional cutmix." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.table.Augmentation.mixup &#8212; scikit-bio 0.6.4-dev documentation</title>
+    <title>skbio.table.compositional_cutmix &#8212; scikit-bio 0.6.4-dev documentation</title>
   
   
   
@@ -57,7 +57,7 @@
                 gtag('config', 'UA-6636235-9');
             </script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.table.Augmentation.mixup';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.table.compositional_cutmix';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -65,12 +65,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.table.Augmentation.mixup.html" />
+    <link rel="canonical" href="../../../generated/skbio.table.compositional_cutmix.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.table.Augmentation.phylomix" href="skbio.table.Augmentation.phylomix.html" />
-    <link rel="prev" title="skbio.table.Augmentation.compositional_cutmix" href="skbio.table.Augmentation.compositional_cutmix.html" />
+    <link rel="next" title="skbio.table.mixup" href="skbio.table.mixup.html" />
+    <link rel="prev" title="skbio.table.phylomix" href="skbio.table.phylomix.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -598,13 +598,10 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.example_table.html">skbio.table.example_table</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.table.Augmentation.html">skbio.table.Augmentation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Augmentation.aitchison_mixup.html">skbio.table.Augmentation.aitchison_mixup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Augmentation.compositional_cutmix.html">skbio.table.Augmentation.compositional_cutmix</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.table.Augmentation.mixup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.table.Augmentation.phylomix.html">skbio.table.Augmentation.phylomix</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.phylomix.html">skbio.table.phylomix</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.table.compositional_cutmix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.mixup.html">skbio.table.mixup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.aitchison_mixup.html">skbio.table.aitchison_mixup</a></li>
 </ul>
 </div>
 </nav></div>
@@ -648,10 +645,7 @@
     
     <li class="breadcrumb-item"><a href="../table.html" class="nav-link">Data Table (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code>)</a></li>
     
-    
-    <li class="breadcrumb-item"><a href="skbio.table.Augmentation.html" class="nav-link">skbio.table.Augmentation</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.table.Augmentation.mixup</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.table.compositional_cutmix</span></li>
   </ul>
 </nav>
 </div>
@@ -668,83 +662,78 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-table-augmentation-mixup">
-<h1>skbio.table.Augmentation.mixup<a class="headerlink" href="#skbio-table-augmentation-mixup" title="Link to this heading">#</a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="skbio.table.Augmentation.mixup">
-<span class="sig-prename descclassname"><span class="pre">Augmentation.</span></span><span class="sig-name descname"><span class="pre">mixup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/table/_augment.py#L154"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.Augmentation.mixup" title="Link to this definition">#</a></dt>
-<dd><p>Data Augmentation by vanilla mixup.</p>
-<p>Randomly select two samples <span class="math notranslate nohighlight">\(s_1\)</span> and <span class="math notranslate nohighlight">\(s_2\)</span> from the OTU table,
-and generate a new sample <span class="math notranslate nohighlight">\(s\)</span> by a linear combination
-of <span class="math notranslate nohighlight">\(s_1\)</span> and <span class="math notranslate nohighlight">\(s_2\)</span>, as follows:</p>
-<div class="math notranslate nohighlight">
-\[s = \lambda \cdot s_1 + (1 - \lambda) \cdot s_2\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is a random number sampled from a beta distribution
-with parameters <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span>.
-The label is computed as the linear combination of
-the two labels of the two samples</p>
-<div class="math notranslate nohighlight">
-\[y = \lambda \cdot y_1 + (1 - \lambda) \cdot y_2\]</div>
+  <section id="skbio-table-compositional-cutmix">
+<h1>skbio.table.compositional_cutmix<a class="headerlink" href="#skbio-table-compositional-cutmix" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="skbio.table.compositional_cutmix">
+<span class="sig-prename descclassname"><span class="pre">skbio.table.</span></span><span class="sig-name descname"><span class="pre">compositional_cutmix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/table/_augment.py#L465"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.compositional_cutmix" title="Link to this definition">#</a></dt>
+<dd><p>Data Augmentation by compositional cutmix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>n_samples</strong><span class="classifier">int</span></dt><dd><p>The number of new samples to generate.</p>
+<dt><strong>table</strong><span class="classifier">table_like</span></dt><dd><p>Samples by features table (n, m). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
-<dt><strong>alpha</strong><span class="classifier">float</span></dt><dd><p>The alpha parameter of the beta distribution.</p>
+<dt><strong>samples</strong><span class="classifier">int</span></dt><dd><p>The number of new samples to generate.</p>
+</dd>
+<dt><strong>label</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The label of the table. The label is expected to has a shape of
+<code class="docutils literal notranslate"><span class="pre">(samples,)</span></code> or <code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">n_classes)</span></code>.</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> and the input is not already compositional, scikit-bio’s
+<a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-func docutils literal notranslate"><span class="pre">closure</span></code></a> function will be called, ensuring
+values for each sample add up to 1. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
 <a class="reference internal" href="skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+</dd>
+<dt><strong>output_format</strong><span class="classifier">str, optional</span></dt><dd><p>Standard <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> parameter. See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
+documentation for details.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>augmented_matrix</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>The augmented matrix.</p>
+<dt><strong>augmented_matrix</strong><span class="classifier">table_like</span></dt><dd><p>The augmented matrix.</p>
 </dd>
-<dt><strong>augmented_label</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>The augmented label, in one-hot encoding.
-if the user want to use the augmented label for regression,
-users can simply call <code class="docutils literal notranslate"><span class="pre">np.argmax(aug_label,</span> <span class="pre">axis=1)</span></code>
-to get the discrete labels.</p>
+<dt><strong>augmented_label</strong><span class="classifier">table_like</span></dt><dd><p>The augmented label, the label is 1D array.
+User can use the 1D label for both classification and regression.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The mixup is based on <a class="reference internal" href="#r013d4965699a-1" id="id1">[1]</a>, and shares the same core concept as PyTorch’s
-<a class="reference external" href="https://pytorch.org/vision/main/generated/torchvision.transforms.v2.MixUp.html">MixUp</a>.
-there are key differences:</p>
-<ol class="arabic simple">
-<li><p>This implementation generates new samples to augment a dataset,
-while PyTorch’s MixUp is applied on-the-fly during training
-to batches of data.</p></li>
-<li><p>This implementation randomly selects pairs of samples from the entire
-dataset, while PyTorch’s implementation typically mixes consecutive
-samples in a batch (requiring prior shuffling).</p></li>
-<li><p>This implementation returns an augmented dataset with both original and
-new samples, while PyTorch’s implementation transforms a batch in-place.</p></li>
-<li><p>This implementation is designed for omic data tables,
-while PyTorch’s is primarily for image data.
-And this implementation is mainly based on the Numpy Library.</p></li>
+<p>This algorithm currently only works with binary classification problems, as it
+requires intra-class generation of possible sample pairs.</p>
+<p>The algorithm is described in <a class="reference internal" href="#r0c8f0cdc1878-1" id="id2">[1]</a>,
+This method needs to do cutmix on compositional data in the same class.
+by randomly selecting counts from one of two samples to generate
+a new sample. For this method to work, the label must be provided.
+The algorithm has 4 steps:</p>
+<p>1. Draw a class <span class="math notranslate nohighlight">\(c\)</span> from the class prior
+and draw <span class="math notranslate nohighlight">\(\lambda \sim Uniform(0, 1)\)</span></p>
+<p>2. Draw two training points <span class="math notranslate nohighlight">\(i_1, i_2\)</span> from the training set
+such that <span class="math notranslate nohighlight">\(y_{i_1} = y_{i_2} = c\)</span>, uniformly at random</p>
+<p>3. For each <span class="math notranslate nohighlight">\(j \in \{1, ..., p\}\)</span>, draw <span class="math notranslate nohighlight">\(I_j \sim Binomial(\lambda)\)</span>
+and set <span class="math notranslate nohighlight">\(\tilde{x}_j = x_{i_1j}\)</span> if <span class="math notranslate nohighlight">\(I_j = 1\)</span>,
+and <span class="math notranslate nohighlight">\(\tilde{x}_j = x_{i_2j}\)</span> if <span class="math notranslate nohighlight">\(I_j = 0\)</span></p>
+<ol class="arabic simple" start="4">
+<li><p>Set <span class="math notranslate nohighlight">\(\tilde{y} = c\)</span></p></li>
 </ol>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="r013d4965699a-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Zhang, H., Cisse, M., Dauphin, Y. N., &amp; Lopez-Paz, D. (2017).
-mixup: Beyond Empirical Risk Minimization.
-arXiv preprint arXiv:1710.09412.</p>
+<div class="citation" id="r0c8f0cdc1878-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Gordon-Rodriguez, E., Quinn, T., &amp; Cunningham, J. P. (2022).
+Data augmentation for compositional data: Advancing predictive
+models of the microbiome. Advances in Neural Information Processing
+Systems, 35, 20551-20565.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Augmentation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sample_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">feature_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;O</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">feature_ids</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">augmentation</span> <span class="o">=</span> <span class="n">Augmentation</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_matrix</span><span class="p">,</span> <span class="n">aug_label</span> <span class="o">=</span> <span class="n">augmentation</span><span class="o">.</span><span class="n">mixup</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">compositional_cutmix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_matrix</span><span class="p">,</span> <span class="n">aug_label</span> <span class="o">=</span> <span class="n">compositional_cutmix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="go">(9, 10)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_label</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -766,20 +755,20 @@ arXiv preprint arXiv:1710.09412.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.table.Augmentation.compositional_cutmix.html"
+       href="skbio.table.phylomix.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.table.Augmentation.compositional_cutmix</p>
+        <p class="prev-next-title">skbio.table.phylomix</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.table.Augmentation.phylomix.html"
+       href="skbio.table.mixup.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.table.Augmentation.phylomix</p>
+        <p class="prev-next-title">skbio.table.mixup</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -802,7 +791,7 @@ arXiv preprint arXiv:1710.09412.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.Augmentation.mixup"><code class="docutils literal notranslate"><span class="pre">Augmentation.mixup</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.table.compositional_cutmix"><code class="docutils literal notranslate"><span class="pre">compositional_cutmix</span></code></a></li>
 </ul>
   </nav></div>
 
