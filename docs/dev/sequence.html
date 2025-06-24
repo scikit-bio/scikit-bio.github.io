@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Storing and working with sequences: nucleotides, amino acids, custom alphabets and unrestricted ones." name="description" />
 
+    <meta property="article:modified_time" content="2024-08-19T07:11:16+00:00" />
     <title>Biological Sequences (skbio.sequence) &#8212; scikit-bio 0.6.4-dev documentation</title>
   
   
@@ -73,6 +74,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
+    <meta name="docbuild:last-update" content="Aug 19, 2024"/>
   </head>
   
   
@@ -673,6 +675,8 @@ and generic/non-biological sequences with no alphabet restrictions (<a class="re
 immutable object that translates DNA or RNA sequences into protein sequences, and
 the <a class="reference internal" href="generated/skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a> class, which stores scores of substitutions between
 sequence characters.</p>
+<p>See the <a class="reference internal" href="#sequence-tutorial"><span class="std std-ref">Tutorial</span></a> section for working with biological sequences using
+scikit-bio.</p>
 <section id="sequence-types">
 <h2>Sequence types<a class="headerlink" href="#sequence-types" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
@@ -733,263 +737,485 @@ sequence characters.</p>
 </div>
 </section>
 <section id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
-<p>The primary information stored for each different type of sequence object is the
-underlying sequence data itself. This is stored as an immutable NumPy array.
-Additionally, each type of sequence may include optional metadata and positional
-metadata. Note that metadata and positional metadata are mutable.</p>
-<p>Common operations are defined as methods, for example computing the reverse complement
-of a DNA sequence, or searching for N-glycosylation motifs in protein sequences. Class
-attributes provide valid character sets, complement maps for different sequence types,
-and degenerate character definitions.</p>
-<p>New sequences are created with optional metadata and positional metadata.
-Metadata is stored as a Python <code class="docutils literal notranslate"><span class="pre">dict</span></code>, while positional metadata is stored as
-a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">RNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACCGGGTA&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s2">&quot;my-sequence&quot;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span><span class="s2">&quot;GFP&quot;</span><span class="p">},</span>
-<span class="gp">... </span>         <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;quality&#39;</span><span class="p">:[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">]})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span id="sequence-tutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<section id="creating-sequences">
+<h3>Creating sequences<a class="headerlink" href="#creating-sequences" title="Link to this heading">#</a></h3>
+<p>Create a DNA sequence from a string of nucleotide characters:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GAATTC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">DNA</span>
-<span class="go">-----------------------------</span>
-<span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;GFP&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;my-sequence&#39;</span>
-<span class="go">Positional metadata:</span>
-<span class="go">    &#39;quality&#39;: &lt;dtype: int64&gt;</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 8</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 62.50%</span>
-<span class="go">-----------------------------</span>
-<span class="go">0 ACCGGGTA</span>
-</pre></div>
-</div>
-<p>New sequences can also be created from existing sequences, for example as their
-reverse complement or degapped (i.e., unaligned) version.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;.ACC--GGG-TA...&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;my-sequence&#39;</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">degap</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span>
-<span class="go">DNA</span>
-<span class="go">--------------------------</span>
-<span class="go">Metadata:</span>
-<span class="go">    &#39;id&#39;: &#39;my-sequence&#39;</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 8</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 62.50%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 ACCGGGTA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d3</span>
-<span class="go">DNA</span>
-<span class="go">--------------------------</span>
-<span class="go">Metadata:</span>
-<span class="go">    &#39;id&#39;: &#39;my-sequence&#39;</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 8</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 62.50%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 TACCCGGT</span>
-</pre></div>
-</div>
-<p>It’s also straightforward to compute distances between sequences (optionally
-using user-defined distance metrics, the default is Hamming distance which
-requires that the sequences being compared are the same length) for use in
-sequence clustering, phylogenetic reconstruction, etc.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;GACCCGCUUU&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r2</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;GCCCCCCUUU&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
-<span class="go">0.2</span>
-</pre></div>
-</div>
-<p>Similarly, you can calculate the percent (dis)similarity between a pair of
-aligned sequences.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r3</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;ACCGUUAGUC&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r4</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;ACGGGU--UC&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r3</span><span class="o">.</span><span class="n">match_frequency</span><span class="p">(</span><span class="n">r4</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="go">0.6</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r3</span><span class="o">.</span><span class="n">mismatch_frequency</span><span class="p">(</span><span class="n">r4</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="go">0.4</span>
-</pre></div>
-</div>
-<p>Sequences can be searched for known motif types. This returns the slices that
-describe the matches.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r5</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;AGG-GGACUGAA&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">r5</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">motif</span>
-<span class="go">slice(0, 3, None)</span>
-<span class="go">slice(4, 7, None)</span>
-<span class="go">slice(9, 12, None)</span>
-</pre></div>
-</div>
-<p>Those slices can be used to extract the relevant subsequences.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">r5</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">r5</span><span class="p">[</span><span class="n">motif</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="go">RNA</span>
-<span class="go">--------------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 3</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 66.67%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 AGG</span>
-
-<span class="go">RNA</span>
-<span class="go">--------------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 3</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 66.67%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 GGA</span>
-
-<span class="go">RNA</span>
-<span class="go">--------------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 3</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 33.33%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 GAA</span>
-</pre></div>
-</div>
-<p>And gaps or other features can be ignored while searching, as these may disrupt
-otherwise meaningful motifs.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">r5</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">r5</span><span class="o">.</span><span class="n">gaps</span><span class="p">()):</span>
-<span class="gp">... </span>    <span class="n">r5</span><span class="p">[</span><span class="n">motif</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="go">RNA</span>
-<span class="go">--------------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 7</span>
-<span class="go">    has gaps: True</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 66.67%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 AGG-GGA</span>
-
-<span class="go">RNA</span>
-<span class="go">--------------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 3</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: False</span>
-<span class="go">    has definites: True</span>
-<span class="go">    GC-content: 33.33%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 GAA</span>
-</pre></div>
-</div>
-<p>In the above example, removing gaps from the resulting motif matches is easily
-achieved, as the sliced matches themselves are sequences of the same type as
-the input.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">r5</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">r5</span><span class="o">.</span><span class="n">gaps</span><span class="p">()):</span>
-<span class="gp">... </span>    <span class="n">r5</span><span class="p">[</span><span class="n">motif</span><span class="p">]</span><span class="o">.</span><span class="n">degap</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="go">RNA</span>
 <span class="go">--------------------------</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 6</span>
 <span class="go">    has gaps: False</span>
 <span class="go">    has degenerates: False</span>
 <span class="go">    has definites: True</span>
-<span class="go">    GC-content: 66.67%</span>
+<span class="go">    GC-content: 33.33%</span>
 <span class="go">--------------------------</span>
-<span class="go">0 AGGGGA</span>
-
-<span class="go">RNA</span>
-<span class="go">--------------------------</span>
+<span class="go">0 GAATTC</span>
+</pre></div>
+</div>
+<p>Optionally, one may attach metadata to a sequence object. Details of metadata are
+introduced in <a class="reference internal" href="#annotate-sequences"><span class="std std-ref">Annotating sequences</span></a> below.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GAATTC&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;EcoRI recognition site&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
+<span class="go">DNA</span>
+<span class="go">-------------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;description&#39;: &#39;EcoRI recognition site&#39;</span>
+<span class="go">    &#39;id&#39;: &#39;S1&#39;</span>
 <span class="go">Stats:</span>
-<span class="go">    length: 3</span>
+<span class="go">    length: 6</span>
 <span class="go">    has gaps: False</span>
 <span class="go">    has degenerates: False</span>
 <span class="go">    has definites: True</span>
 <span class="go">    GC-content: 33.33%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 GAA</span>
+<span class="go">-------------------------------------------</span>
+<span class="go">0 GAATTC</span>
 </pre></div>
 </div>
-<p>Sequences can similarly be searched for arbitrary patterns using regular
-expressions.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">r5</span><span class="o">.</span><span class="n">find_with_regex</span><span class="p">(</span><span class="s1">&#39;(G+AC[UT])&#39;</span><span class="p">):</span>
+<p>Sequences can be read from <a class="reference internal" href="io.html#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">file</span> <span class="pre">formats</span></code></a> recognizable by scikit-bio.
+For example, to read a DNA sequence from a <a class="reference internal" href="generated/skbio.io.format.fasta.html#module-skbio.io.format.fasta" title="skbio.io.format.fasta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">FASTA</span></code></a> file:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;input.fa&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The filename “input.fa” can also be a file handle or other readable objects.</p>
+<p>To read all sequences from a multi-FASTA file into a list of sequence objects, you will
+need:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span> <span class="k">as</span> <span class="n">sk_read</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sk_read</span><span class="p">(</span><span class="s1">&#39;input.fa&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="sequence-grammar">
+<h3>Sequence grammar<a class="headerlink" href="#sequence-grammar" title="Link to this heading">#</a></h3>
+<p>The three common biological sequence types: <code class="docutils literal notranslate"><span class="pre">DNA</span></code>, <code class="docutils literal notranslate"><span class="pre">RNA</span></code> and <code class="docutils literal notranslate"><span class="pre">Protein</span></code>, are
+<a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">grammared</span> <span class="pre">sequences</span></code></a>. That is, each of them has a defined
+alphabet (character set), which typically consists of:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.definite_chars" title="skbio.sequence.GrammaredSequence.definite_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">definite</span> <span class="pre">characters</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">ACGT</span></code>,
+which represent the four canonical nucleotides in a DNA sequence,</p></li>
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.degenerate_chars" title="skbio.sequence.GrammaredSequence.degenerate_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">degenerate</span> <span class="pre">characters</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">R</span></code>,
+which represents <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">G</span></code>,</p></li>
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.gap_chars" title="skbio.sequence.GrammaredSequence.gap_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">gap</span> <span class="pre">character(s)</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">-</span></code>, and</p></li>
+<li><p>a <a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.wildcard_char" title="skbio.sequence.GrammaredSequence.wildcard_char"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wildcard</span> <span class="pre">character</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">N</span></code>, which
+is also a degenerate character.</p></li>
+</ul>
+<p>Use of any of these characters in the sequence data is valid. For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GCCRCCATGG&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Kozak consensus sequence&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;name&#39;: &#39;Kozak consensus sequence&#39;</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 10</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: True</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 70.00%</span>
+<span class="go">--------------------------------------</span>
+<span class="go">0 GCCRCCATGG</span>
+</pre></div>
+</div>
+<p>One can customize grammared sequence types, for example to include modified amino
+acids, methylation sites, or non-biological molecules. Refer to
+<a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a> for instructions.</p>
+<p>Each class contains a degenerate map for lookup:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">DNA</span><span class="o">.</span><span class="n">degenerate_map</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">])</span>
+<span class="go">[&#39;A&#39;, &#39;G&#39;]</span>
+</pre></div>
+</div>
+<p>Check if a sequence contains degenerate characters:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">has_degenerates</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Identify the positions of degenerate characters:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">degenerates</span><span class="p">()</span>
+<span class="go">array([False, False, False,  True, False, False, False, False, False,</span>
+<span class="go">       False], dtype=bool)</span>
+</pre></div>
+</div>
+<p>Likewise, one can create a sequence with gaps, and identify the gap positions.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gapped</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ATG--CAC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gapped</span><span class="o">.</span><span class="n">gaps</span><span class="p">()</span>
+<span class="go">array([False, False, False,  True,  True, False, False, False], dtype=bool)</span>
+</pre></div>
+</div>
+<p>One can efficiently remove all gaps from a sequence:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ungapped</span> <span class="o">=</span> <span class="n">gapped</span><span class="o">.</span><span class="n">degap</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ungapped</span><span class="p">)</span>
+<span class="go">ATGCAC</span>
+</pre></div>
+</div>
+</section>
+<section id="exploring-sequences">
+<h3>Exploring sequences<a class="headerlink" href="#exploring-sequences" title="Link to this heading">#</a></h3>
+<p>The primary information stored in a sequence object is the sequence data itself. It can
+be retrieved from the string representation of the sequence:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">&#39;GCCRCCATGG&#39;</span>
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">GCCRCCATGG</span>
+</pre></div>
+</div>
+<p>Under the hood, the sequence data is stored as a NumPy array of bytes, which permit
+compact storage and efficient, vectorized operations.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([b&#39;G&#39;, b&#39;C&#39;, b&#39;C&#39;, b&#39;R&#39;, b&#39;C&#39;, b&#39;C&#39;, b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;, b&#39;G&#39;],</span>
+<span class="go">      dtype=&#39;|S1&#39;)</span>
+</pre></div>
+</div>
+<p>This array can also be viewed as ASCII code points:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="go">array([71, 67, 67, 82, 67, 67, 65, 84, 71, 71], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>A sequence object shares typical behaviors of a Python string. This means that you can
+apply Python string <strong>indexing</strong> and <strong>slicing</strong> approaches on a sequence. For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;name&#39;: &#39;Kozak consensus sequence&#39;</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 1</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 100.00%</span>
+<span class="go">--------------------------------------</span>
+<span class="go">0 G</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;name&#39;: &#39;Kozak consensus sequence&#39;</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 3</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: True</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 66.67%</span>
+<span class="go">--------------------------------------</span>
+<span class="go">0 CRC</span>
+</pre></div>
+</div>
+<p>The output of indexing or slicing is also a sequence object. This process doesn’t
+copy the original sequence data. Instead, it returns a <strong>view</strong> of the same memory
+space, which is efficient. Refer to NumPy’s <a class="reference external" href="https://numpy.org/doc/stable/user/basics.copies.html">copies and views</a> for more information.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">base</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Some Python string methods, such as <code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">index</span></code>, also work on scikit-bio
+sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;ATG&#39;</span><span class="p">)</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>To concatenate multiple sequences:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GGATCC&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AAGCTT&#39;</span><span class="p">),</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GAATTC&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">GGATCCAAGCTTGAATTC</span>
+</pre></div>
+</div>
+</section>
+<section id="sequence-conversion">
+<h3>Sequence conversion<a class="headerlink" href="#sequence-conversion" title="Link to this heading">#</a></h3>
+<p>scikit-bio supports convenient conversion between DNA (two strands), RNA and protein
+sequences. For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dna</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;TGCTACATCCAGAACTGCCCCCTGGGA&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;oxytocin&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dna</span>
+<span class="go">DNA</span>
+<span class="go">-------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;name&#39;: &#39;oxytocin&#39;</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 27</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 59.26%</span>
+<span class="go">-------------------------------</span>
+<span class="go">0 TGCTACATCC AGAACTGCCC CCTGGGA</span>
+</pre></div>
+</div>
+<p>Reverse complement a DNA sequence:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dna</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">())</span>
+<span class="go">TCCCAGGGGGCAGTTCTGGATGTAGCA</span>
+</pre></div>
+</div>
+<p>Transcribe a DNA sequence into mRNA:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rna</span> <span class="o">=</span> <span class="n">dna</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rna</span><span class="p">)</span>
+<span class="go">UGCUACAUCCAGAACUGCCCCCUGGGA</span>
+</pre></div>
+</div>
+<p>Translate an mRNA sequence into protein:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prot</span> <span class="o">=</span> <span class="n">rna</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">prot</span><span class="p">)</span>
+<span class="go">CYIQNCPLG</span>
+</pre></div>
+</div>
+<p>By default, the standard genetic code table (1) is used. To use a specific table (see
+the <a class="reference internal" href="generated/skbio.sequence.GeneticCode.html#skbio.sequence.GeneticCode" title="skbio.sequence.GeneticCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneticCode</span></code></a> class for details), simply specify its index:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prot</span> <span class="o">=</span> <span class="n">rna</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>  <span class="c1"># Bacteria</span>
+</pre></div>
+</div>
+<p>A DNA sequence can be directly translated into protein. The output is the same as
+transcription followed by translation.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prot_</span> <span class="o">=</span> <span class="n">dna</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prot_</span> <span class="o">==</span> <span class="n">prot</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="searching-for-patterns">
+<h3>Searching for patterns<a class="headerlink" href="#searching-for-patterns" title="Link to this heading">#</a></h3>
+<p>Sequences can be searched for patterns, a.k.a., <strong>motifs</strong> in molecular biology. Except
+for searching for exact substrings using the <code class="docutils literal notranslate"><span class="pre">index</span></code> method (see above), one can also
+search for flexibly defined patterns using <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">RNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;AGG-GGACUGAA&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">seq</span><span class="o">.</span><span class="n">find_with_regex</span><span class="p">(</span><span class="s1">&#39;(G+AC[UT])&#39;</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">match</span>
 <span class="go">slice(4, 9, None)</span>
 </pre></div>
 </div>
-<p>DNA can be transcribed to RNA:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dna</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ATGTGTATTTGA&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rna</span> <span class="o">=</span> <span class="n">dna</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rna</span>
-<span class="go">RNA</span>
-<span class="go">--------------------------</span>
+<p>The returned values are slices, with which one can extract the relevant subsequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="n">match</span><span class="p">])</span>
+<span class="go">GGACU</span>
+</pre></div>
+</div>
+<p>scikit-bio has a convenience shortcut <code class="docutils literal notranslate"><span class="pre">find_motifs</span></code>, which searches for contiguous
+runs of purines or pyrimidines.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">seq</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="n">motif</span><span class="p">])</span>
+<span class="go">AGG</span>
+<span class="go">GGA</span>
+<span class="go">GAA</span>
+</pre></div>
+</div>
+</section>
+<section id="comparing-sequences">
+<h3>Comparing sequences<a class="headerlink" href="#comparing-sequences" title="Link to this heading">#</a></h3>
+<p>It is straightforward to compute the distance between two sequences. By default, the
+Hamming distance (<a class="reference internal" href="generated/skbio.sequence.distance.hamming.html#skbio.sequence.distance.hamming" title="skbio.sequence.distance.hamming"><code class="xref py py-func docutils literal notranslate"><span class="pre">hamming</span></code></a>, i.e., proportion of different sites) is
+calculated, This metric is useful in analyses such as sequence clustering and
+phylogenetic reconstruction.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;GACCCGCUUU&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;GCCCCCCUUU&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span>
+<span class="go">0.2</span>
+</pre></div>
+</div>
+<p>Hamming distance requires that the two sequences have the same length. This often
+requires that you <strong>align</strong> the sequences before comparison. See <a class="reference internal" href="alignment.html#module-skbio.alignment" title="skbio.alignment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.alignment</span></code></a>
+for how to align sequences.</p>
+<p>Similarly, you can calculate the percent (dis)similarity between a pair of
+aligned sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;ACCGUUAGUC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;ACGGGU--UC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span><span class="o">.</span><span class="n">match_frequency</span><span class="p">(</span><span class="n">seq2</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">0.6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span><span class="o">.</span><span class="n">mismatch_frequency</span><span class="p">(</span><span class="n">seq2</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">0.4</span>
+</pre></div>
+</div>
+</section>
+<section id="annotating-sequences">
+<span id="annotate-sequences"></span><h3>Annotating sequences<a class="headerlink" href="#annotating-sequences" title="Link to this heading">#</a></h3>
+<p>Metadata describe the properties of a sequence or some of its regions/sites. scikit-bio
+supports three types of sequence metadata: <strong>metadata</strong> (for the entire sequence),
+<strong>positional metadata</strong> (for sites), and <strong>interval metadata</strong> (for regions).</p>
+<p><code class="docutils literal notranslate"><span class="pre">metadata</span></code> stores the properties of the entire sequence, such as ID, description,
+source, function, etc., as a Python dictionary. The following example creates a DNA
+sequence with “gene” and “product” properties.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;TGGTATATAGTTTAAACAAAACGAATGATTTCGACTCATTAAATTATGATAATCATATTTACCAA&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;TRNR&#39;</span><span class="p">,</span> <span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="s1">&#39;tRNA-Arg&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------------------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;gene&#39;: &#39;TRNR&#39;</span>
+<span class="go">    &#39;product&#39;: &#39;tRNA-Arg&#39;</span>
 <span class="go">Stats:</span>
-<span class="go">    length: 12</span>
+<span class="go">    length: 65</span>
 <span class="go">    has gaps: False</span>
 <span class="go">    has degenerates: False</span>
 <span class="go">    has definites: True</span>
-<span class="go">    GC-content: 25.00%</span>
-<span class="go">--------------------------</span>
-<span class="go">0 AUGUGUAUUU GA</span>
+<span class="go">    GC-content: 23.08%</span>
+<span class="go">--------------------------------------------------------------------</span>
+<span class="go">0  TGGTATATAG TTTAAACAAA ACGAATGATT TCGACTCATT AAATTATGAT AATCATATTT</span>
+<span class="go">60 ACCAA</span>
 </pre></div>
 </div>
-<p>Both DNA and RNA can be translated into a protein sequence. For example, let’s
-translate our DNA and RNA sequences using NCBI’s standard genetic code (table
-ID 1, the default genetic code in scikit-bio):</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">protein_from_dna</span> <span class="o">=</span> <span class="n">dna</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">protein_from_dna</span>
+<p>Access the metadata by key:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span>
+<span class="go">&#39;tRNA-Arg&#39;</span>
+</pre></div>
+</div>
+<p>Modify the metadata of an existing sequence:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;organism&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Homo sapiens&#39;</span>
+</pre></div>
+</div>
+<p>Many of scikit-bio’s file format parsers can automatically populate metadata fields.
+For example, the FASTA parser reads the sequence ID and description into the <code class="docutils literal notranslate"><span class="pre">id</span></code>
+and <code class="docutils literal notranslate"><span class="pre">description</span></code> fields:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protein</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fasta</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&gt;NP_000591.1 interleukin-6 isoform 1 precursor [Homo sapiens]</span>
+<span class="gp">... </span><span class="s1">MNSFSTSAFGPVAFSLGLLLVLPAAFPAPVPPGEDSKDVAAPHRQPLTSSERIDKQIRYILDGISALRKE</span>
+<span class="gp">... </span><span class="s1">TCNKSNMCESSKEALAENNLNLPKMAEKDGCFQSGFNEETCLVKIITGLLEFEVYLEYLQNRFESSEEQA</span>
+<span class="gp">... </span><span class="s1">RAVQMSTKVLIQFLQKKAKNLDAITTPDPTTNASLLTKLQAQNQWLQDMTTHLILRSFKEFLQSSLRALR</span>
+<span class="gp">... </span><span class="s1">QM&#39;&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Protein</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">fasta</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">Protein</span>
-<span class="go">--------------------------</span>
+<span class="go">---------------------------------------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;description&#39;: &#39;interleukin-6 isoform 1 precursor [Homo sapiens]&#39;</span>
+<span class="go">    &#39;id&#39;: &#39;NP_000591.1&#39;</span>
 <span class="go">Stats:</span>
-<span class="go">    length: 4</span>
+<span class="go">    length: 212</span>
 <span class="go">    has gaps: False</span>
 <span class="go">    has degenerates: False</span>
 <span class="go">    has definites: True</span>
-<span class="go">    has stops: True</span>
-<span class="go">--------------------------</span>
-<span class="go">0 MCI*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">protein_from_rna</span> <span class="o">=</span> <span class="n">rna</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">protein_from_rna</span>
-<span class="go">Protein</span>
-<span class="go">--------------------------</span>
+<span class="go">    has stops: False</span>
+<span class="go">---------------------------------------------------------------------</span>
+<span class="go">0   MNSFSTSAFG PVAFSLGLLL VLPAAFPAPV PPGEDSKDVA APHRQPLTSS ERIDKQIRYI</span>
+<span class="go">60  LDGISALRKE TCNKSNMCES SKEALAENNL NLPKMAEKDG CFQSGFNEET CLVKIITGLL</span>
+<span class="go">120 EFEVYLEYLQ NRFESSEEQA RAVQMSTKVL IQFLQKKAKN LDAITTPDPT TNASLLTKLQ</span>
+<span class="go">180 AQNQWLQDMT THLILRSFKE FLQSSLRALR QM</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code> stores per-character properties. Each property has the same
+number of values as the sequence length. The following example annotates three types
+of sites on the human TP53 protein sequence.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAA&#39;</span>
+<span class="gp">... </span>    <span class="s1">&#39;PPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKT&#39;</span>
+<span class="gp">... </span>    <span class="s1">&#39;CPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRN&#39;</span>
+<span class="gp">... </span>    <span class="s1">&#39;TFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGR&#39;</span>
+<span class="gp">... </span>    <span class="s1">&#39;DRRTEEENLRKKGEPHHELPPGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALEL&#39;</span>
+<span class="gp">... </span>    <span class="s1">&#39;KDAQAGKEPGGSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sites</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">acetylation</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">acetylation</span><span class="p">[[</span><span class="mi">119</span><span class="p">,</span> <span class="mi">304</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">372</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">381</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">methylation</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">methylation</span><span class="p">[[</span><span class="mi">332</span><span class="p">,</span> <span class="mi">334</span><span class="p">,</span> <span class="mi">336</span><span class="p">,</span> <span class="mi">369</span><span class="p">,</span> <span class="mi">371</span><span class="p">,</span> <span class="mi">372</span><span class="p">,</span> <span class="mi">381</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phosphorylation</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phosphorylation</span><span class="p">[[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="mi">268</span><span class="p">,</span> <span class="mi">314</span><span class="p">,</span> <span class="mi">391</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Protein</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;NP_000537.3&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;TP53&#39;</span><span class="p">},</span>
+<span class="gp">... </span>              <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;acetylation&#39;</span><span class="p">:</span> <span class="n">acetylation</span><span class="p">,</span>
+<span class="gp">... </span>                                   <span class="s1">&#39;methylation&#39;</span><span class="p">:</span> <span class="n">methylation</span><span class="p">,</span>
+<span class="gp">... </span>                                   <span class="s1">&#39;phosphorylation&#39;</span><span class="p">:</span> <span class="n">phosphorylation</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Once created, positional metadata are stored as a dataframe.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="p">)</span>
+<span class="go">     acetylation  methylation  phosphorylation</span>
+<span class="go">0          False        False            False</span>
+<span class="go">1          False        False            False</span>
+<span class="go">2          False        False            False</span>
+<span class="go">3          False        False            False</span>
+<span class="go">4          False        False            False</span>
+<span class="go">..           ...          ...              ...</span>
+<span class="go">388        False        False            False</span>
+<span class="go">389        False        False            False</span>
+<span class="go">390        False        False            False</span>
+<span class="go">391        False        False             True</span>
+<span class="go">392        False        False            False</span>
+
+<span class="go">[393 rows x 3 columns]</span>
+</pre></div>
+</div>
+<p>Likewise, scikit-bio’s <a class="reference internal" href="generated/skbio.io.format.fastq.html#module-skbio.io.format.fastq" title="skbio.io.format.fastq"><code class="xref py py-mod docutils literal notranslate"><span class="pre">FASTQ</span></code></a> parser can automatically
+populate the “quality” column of the positional metadata:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fastq</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;@S00001/1</span>
+<span class="gp">... </span><span class="s1">CGTGCTCCACGCTCTCCTGCACGCCCGAGCCGTTGCGGTCGGCGAGAGCCATGTCGACGGCGGGCTTGAG</span>
+<span class="gp">... </span><span class="s1">+</span>
+<span class="gp">... </span><span class="s1">DDAEGGGGIIIGIJKJKKKHIKJAKKKHCGIKKJAJGICKKKAJEJA:G1EJJKJHJFKJIDIEII?=DC</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">fastq</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fastq&#39;</span><span class="p">,</span> <span class="n">phred_offset</span><span class="o">=</span><span class="mi">33</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------------------------------------------------</span>
+<span class="go">Metadata:</span>
+<span class="go">    &#39;description&#39;: &#39;&#39;</span>
+<span class="go">    &#39;id&#39;: &#39;S00001/1&#39;</span>
+<span class="go">Positional metadata:</span>
+<span class="go">    &#39;quality&#39;: &lt;dtype: uint8&gt;</span>
 <span class="go">Stats:</span>
-<span class="go">    length: 4</span>
+<span class="go">    length: 70</span>
 <span class="go">    has gaps: False</span>
 <span class="go">    has degenerates: False</span>
 <span class="go">    has definites: True</span>
-<span class="go">    has stops: True</span>
-<span class="go">--------------------------</span>
-<span class="go">0 MCI*</span>
+<span class="go">    GC-content: 71.43%</span>
+<span class="go">--------------------------------------------------------------------</span>
+<span class="go">0  CGTGCTCCAC GCTCTCCTGC ACGCCCGAGC CGTTGCGGTC GGCGAGAGCC ATGTCGACGG</span>
+<span class="go">60 CGGGCTTGAG</span>
 </pre></div>
 </div>
-<p>The two translations are equivalent:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">protein_from_dna</span> <span class="o">==</span> <span class="n">protein_from_rna</span>
-<span class="go">True</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="p">[</span><span class="s1">&#39;quality&#39;</span><span class="p">])</span>
+<span class="go">0     35</span>
+<span class="go">1     35</span>
+<span class="go">2     32</span>
+<span class="go">3     36</span>
+<span class="go">4     38</span>
+<span class="go">      ..</span>
+<span class="go">65    40</span>
+<span class="go">66    30</span>
+<span class="go">67    28</span>
+<span class="go">68    35</span>
+<span class="go">69    34</span>
+<span class="go">Name: quality, Length: 70, dtype: uint8</span>
 </pre></div>
 </div>
-<p>Class-level methods contain information about the molecule types.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">DNA</span><span class="o">.</span><span class="n">degenerate_map</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
-<span class="go">[&#39;C&#39;, &#39;G&#39;, &#39;T&#39;]</span>
+<p><code class="docutils literal notranslate"><span class="pre">interval_metadata</span></code> stores properties that span a range in the sequence, such as
+genes and regulatory elements. See the <a class="reference internal" href="generated/skbio.metadata.IntervalMetadata.html#skbio.metadata.IntervalMetadata" title="skbio.metadata.IntervalMetadata"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntervalMetadata</span></code></a> class
+for details. The following example annotates three regions of the human H4C6 gene.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fasta</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&gt;NM_003540.4 Homo sapiens H4 clustered histone 6 (H4C6), mRNA</span>
+<span class="gp">... </span><span class="s1">GCAAAAGTTAAGAGTTGTTGTTTGTCTTCGATCATGTCTGGTAGAGGCAAAGGTGGTAAAGGTTTAGGAA</span>
+<span class="gp">... </span><span class="s1">AGGGAGGCGCCAAGCGCCATCGCAAAGTGCTGCGTGACAACATACAGGGCATCACGAAGCCCGCCATCCG</span>
+<span class="gp">... </span><span class="s1">TCGCTTGGCCCGACGCGGCGGCGTGAAACGCATTTCGGGCCTCATTTATGAGGAGACCCGCGGTGTTCTT</span>
+<span class="gp">... </span><span class="s1">AAGGTGTTCCTGGAGAATGTGATACGGGACGCCGTAACCTACACGGAGCACGCCAAGCGTAAGACAGTCA</span>
+<span class="gp">... </span><span class="s1">CTGCAATGGATGTTGTCTACGCGCTCAAGCGCCAGGGACGCACTCTGTACGGCTTTGGTGGCTGAGCCTC</span>
+<span class="gp">... </span><span class="s1">ACCCCGGCTTTTTATTTAACAGCTCACCCATAAAAGGCCCTTTTCAGGGCC&#39;&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">fasta</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">401</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;exon&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">345</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;cds&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">385</span><span class="p">,</span> <span class="mi">401</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;stem_loop&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">RNA</span><span class="o">.</span><span class="n">degenerate_map</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
-<span class="go">[&#39;C&#39;, &#39;G&#39;, &#39;U&#39;]</span>
+<p>scikit-bio’s <a class="reference internal" href="generated/skbio.io.format.gff3.html#module-skbio.io.format.gff3" title="skbio.io.format.gff3"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GFF3</span></code></a> parser can read sequence annotation
+into interval metadata. The following code reads a genome’s sequence and annotation
+from separate files and combine.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntervalMetadata</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;genomic.fna&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span> <span class="o">=</span> <span class="n">IntervalMetadata</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;genomic.gff&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">seq_id</span><span class="o">=</span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+<p>If the GFF3 contains the sequence, one can read the sequence and annotation all at
+once:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;genomic.gff&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1044,7 +1270,16 @@ ID 1, the default genetic code in scikit-bio):</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-utilities">Sequence utilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-calculation">Distance calculation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-classes">Abstract classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-sequences">Creating sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-grammar">Sequence grammar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-sequences">Exploring sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-conversion">Sequence conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-patterns">Searching for patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-sequences">Comparing sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#annotating-sequences">Annotating sequences</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

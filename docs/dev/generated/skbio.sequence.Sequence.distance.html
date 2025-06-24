@@ -698,30 +698,29 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>other</strong><span class="classifier">str, Sequence, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>Sequence to compute the distance to. If <cite>other</cite> is a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code>
-object, it must be the same type as this sequence. Other input
-types will be converted into a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object of the same type
-as this sequence.</p>
+<dt><strong>other</strong><span class="classifier">str, Sequence, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>Sequence to compute the distance to. If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object,
+it must be the same type as this sequence. Other input types will be
+converted into a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object of the same type as this sequence.</p>
 </dd>
-<dt><strong>metric</strong><span class="classifier">function, optional</span></dt><dd><p>Function used to compute the distance between this sequence and
-<cite>other</cite>. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), Hamming distance will be used
-(<a class="reference internal" href="skbio.sequence.distance.hamming.html#skbio.sequence.distance.hamming" title="skbio.sequence.distance.hamming"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.sequence.distance.hamming</span></code></a>). <cite>metric</cite> should take two
-<code class="docutils literal notranslate"><span class="pre">skbio.Sequence</span></code> objects and return a <code class="docutils literal notranslate"><span class="pre">float</span></code>. The sequence
-objects passed to <cite>metric</cite> will be the same type as this sequence.
-See <a class="reference internal" href="skbio.sequence.distance.html#module-skbio.sequence.distance" title="skbio.sequence.distance"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code></a> for other predefined metrics
-that can be supplied via <cite>metric</cite>.</p>
+<dt><strong>metric</strong><span class="classifier">callable, optional</span></dt><dd><p>Function used to compute the distance between this sequence and <code class="docutils literal notranslate"><span class="pre">other</span></code>.
+By default, Hamming distance will be used (see
+<a class="reference internal" href="skbio.sequence.distance.hamming.html#skbio.sequence.distance.hamming" title="skbio.sequence.distance.hamming"><code class="xref py py-func docutils literal notranslate"><span class="pre">hamming</span></code></a>). <code class="docutils literal notranslate"><span class="pre">metric</span></code> should be a function
+that takes two <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects and returns a <code class="docutils literal notranslate"><span class="pre">float</span></code>. The sequence
+objects passed to <code class="docutils literal notranslate"><span class="pre">metric</span></code> will be the same type as this sequence. See
+<a class="reference internal" href="skbio.sequence.distance.html#module-skbio.sequence.distance" title="skbio.sequence.distance"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code></a> for other predefined metrics that can be
+supplied via <code class="docutils literal notranslate"><span class="pre">metric</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>Distance between this sequence and <cite>other</cite> as defined by <cite>metric</cite>.</p>
+<dt>float</dt><dd><p>Distance between this and other sequences as defined by <code class="docutils literal notranslate"><span class="pre">metric</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>TypeError</dt><dd><p>If <cite>other</cite> is a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object with a different type than this
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">other</span></code> is a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object with a different type than this
 sequence.</p>
 </dd>
 </dl>
@@ -731,8 +730,6 @@ sequence.</p>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.sequence.distance.html#module-skbio.sequence.distance" title="skbio.sequence.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code></a></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">fraction_diff</span></code></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">fraction_same</span></code></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Examples</p>
