@@ -295,7 +295,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -303,6 +303,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -524,7 +531,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -532,6 +539,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -685,7 +699,7 @@
 <h1>skbio.stats.distance.randdm<a class="headerlink" href="#skbio-stats-distance-randdm" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.randdm">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">randdm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1307"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.randdm" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">randdm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1308"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.randdm" title="Link to this definition">#</a></dt>
 <dd><p>Generate a distance matrix populated with random distances.</p>
 <p>Using the default <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, distances are randomly drawn from a uniform
 distribution over <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1)</span></code>.</p>
@@ -706,7 +720,7 @@ integers cast as strings (numbering starts at 1). For example,
 random distance matrix. The returned distance matrix will be of this
 type. By default, a <cite>DistanceMatrix</cite> instance will be returned.</p>
 </dd>
-<dt><strong>random_fn</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>Functionfor generating random values. It must accept (n_rows, n_columns) and
+<dt><strong>random_fn</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>Function for generating random values. It must accept (n_rows, n_columns) and
 return a 2D array of float-like. Default is the
 <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.random.html#numpy.random.Generator.random" title="(in NumPy v2.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random</span></code></a> method of a NumPy random
 generator. If an integer is provided, a random generator will be constructed

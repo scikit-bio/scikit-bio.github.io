@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Working with biological data tables in BIOM format." name="description" />
 
-    <meta property="article:modified_time" content="2024-08-19T07:11:16+00:00" />
     <title>Data Table (skbio.table) &#8212; scikit-bio 0.6.4-dev documentation</title>
   
   
@@ -74,7 +73,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
-    <meta name="docbuild:last-update" content="Aug 19, 2024"/>
   </head>
   
   
@@ -297,7 +295,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -305,6 +303,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -526,7 +531,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -534,6 +539,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -594,15 +606,16 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.Table.html">skbio.table.Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.example_table.html">skbio.table.example_table</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.example_table.html">skbio.table.example_table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/table_like.html">Table-like formats</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.phylomix.html">skbio.table.phylomix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.compositional_cutmix.html">skbio.table.compositional_cutmix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.mixup.html">skbio.table.mixup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.aitchison_mixup.html">skbio.table.aitchison_mixup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.table.mixup.html">skbio.table.mixup</a></li>
 </ul>
 </div>
 </nav></div>
@@ -662,47 +675,54 @@
                   
   <section id="data-table-skbio-table">
 <span id="module-skbio.table"></span><h1>Data Table (<a class="reference internal" href="#module-skbio.table" title="skbio.table"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code></a>)<a class="headerlink" href="#data-table-skbio-table" title="Link to this heading">#</a></h1>
-<p>This module provides support for interaction with data tables in the Biological
-Observation Matrix (BIOM) format.</p>
-<p>Please refer to the <a class="reference external" href="https://biom-format.org/">BIOM documentation</a> for the
-instructions on working with BIOM tables.</p>
+<p>This module provides support for interaction with data tables.</p>
 <section id="biom-table">
 <h2>BIOM table<a class="headerlink" href="#biom-table" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://biom-format.org/">Biological Observation Matrix (BIOM)</a> is an efficient and
+versatile sparse table format designed for biological “omic” data types. It is the
+native table format in scikit-bio.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.Table.html#skbio.table.Table" title="skbio.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>(data, observation_ids, sample_ids[, ...])</p></td>
 <td><p>The (canonically pronounced 'teh') Table.</p></td>
 </tr>
-</tbody>
-</table>
-</div>
-<section id="example-data">
-<h3>Example data<a class="headerlink" href="#example-data" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.example_table.html#skbio.table.example_table" title="skbio.table.example_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_table</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.table.example_table.html#skbio.table.example_table" title="skbio.table.example_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_table</span></code></a></p></td>
 <td><p>The (canonically pronounced 'teh') Table.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
+<section id="table-like-formats">
+<h2>Table-like formats<a class="headerlink" href="#table-like-formats" title="Link to this heading">#</a></h2>
+<p>scikit-bio functions directly operate on various “table-like” formats, such as BIOM
+table, Pandas and Polars dataframes, NumPy array and AnnData objects, without the need
+for explicit format conversion. Read below on the specifics, nomenclature and usage of
+supported table-like formats.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/table_like.html">Table-like formats</a></li>
+</ul>
+</div>
 </section>
 <section id="data-augmentation">
-<h2>Data Augmentation<a class="headerlink" href="#data-augmentation" title="Link to this heading">#</a></h2>
+<h2>Data augmentation<a class="headerlink" href="#data-augmentation" title="Link to this heading">#</a></h2>
+<p>Techniques for creating synthetic samples based on the current data and biological
+properties. Helpful for improving the accuracy and robustness of machine learning
+models.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.phylomix.html#skbio.table.phylomix" title="skbio.table.phylomix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">phylomix</span></code></a>(table, tree, tip_to_obs_mapping, ...)</p></td>
-<td><p>Data augmentation by phylomix.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.phylomix.html#skbio.table.phylomix" title="skbio.table.phylomix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">phylomix</span></code></a>(table, n, tree[, taxa, labels, ...])</p></td>
+<td><p>Data augmentation by PhyloMix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.table.compositional_cutmix.html#skbio.table.compositional_cutmix" title="skbio.table.compositional_cutmix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compositional_cutmix</span></code></a>(table, samples[, ...])</p></td>
-<td><p>Data Augmentation by compositional cutmix.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.table.compositional_cutmix.html#skbio.table.compositional_cutmix" title="skbio.table.compositional_cutmix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compositional_cutmix</span></code></a>(table, n[, labels, ...])</p></td>
+<td><p>Data augmentation by compositional cutmix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.mixup.html#skbio.table.mixup" title="skbio.table.mixup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixup</span></code></a>(table, samples[, label, alpha, ...])</p></td>
-<td><p>Data Augmentation by vanilla mixup.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.table.aitchison_mixup.html#skbio.table.aitchison_mixup" title="skbio.table.aitchison_mixup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aitchison_mixup</span></code></a>(table, n[, labels, ...])</p></td>
+<td><p>Data augmentation by Aitchison mixup.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.table.aitchison_mixup.html#skbio.table.aitchison_mixup" title="skbio.table.aitchison_mixup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aitchison_mixup</span></code></a>(table, samples[, label, ...])</p></td>
-<td><p>Data Augmentation by Aitchison mixup.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.table.mixup.html#skbio.table.mixup" title="skbio.table.mixup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixup</span></code></a>(table, n[, labels, intra_class, ...])</p></td>
+<td><p>Data augmentation by vanilla mixup.</p></td>
 </tr>
 </tbody>
 </table>
@@ -757,11 +777,9 @@ instructions on working with BIOM tables.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biom-table">BIOM table</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-data">Example data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-augmentation">Data Augmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biom-table">BIOM table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-like-formats">Table-like formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-augmentation">Data augmentation</a></li>
 </ul>
   </nav></div>
 

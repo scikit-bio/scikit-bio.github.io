@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Analyzing biodiversity of communities -- groups of organisms living in the same area." name="description" />
 
-    <meta property="article:modified_time" content="2024-08-19T07:11:16+00:00" />
     <title>Community Diversity (skbio.diversity) &#8212; scikit-bio 0.6.4-dev documentation</title>
   
   
@@ -75,7 +74,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
-    <meta name="docbuild:last-update" content="Aug 19, 2024"/>
   </head>
   
   
@@ -298,7 +296,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -306,6 +304,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -527,7 +532,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -535,6 +540,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -725,7 +737,7 @@ various biological data types.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.diversity.partial_beta_diversity.html#skbio.diversity.partial_beta_diversity" title="skbio.diversity.partial_beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_beta_diversity</span></code></a>(metric, counts, ids, ...)</p></td>
 <td><p>Compute distances only between specified ID pairs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.diversity.block_beta_diversity.html#skbio.diversity.block_beta_diversity" title="skbio.diversity.block_beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">block_beta_diversity</span></code></a>(metric, counts, ids[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.diversity.block_beta_diversity.html#skbio.diversity.block_beta_diversity" title="skbio.diversity.block_beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">block_beta_diversity</span></code></a>(metric, counts[, ids, ...])</p></td>
 <td><p>Perform a block-decomposition beta diversity calculation.</p></td>
 </tr>
 </tbody>
@@ -774,8 +786,8 @@ appropriate. Therefore, the term OTU was replaced by taxon in scikit-bio
 for a particular taxon. We will refer to the frequencies associated with a
 single sample as a <em>counts vector</em> or <code class="docutils literal notranslate"><span class="pre">counts</span></code> throughout the documentation.
 Counts vectors are <cite>array_like</cite>: anything that can be converted into a 1-D
-numpy array is acceptable input. For example, you can provide a numpy array or
-a native Python list and the results will be identical.</p>
+array is acceptable input. For example, you can provide a NumPy array or a
+native Python list and the results will be identical.</p>
 <p>The driver functions <a class="reference internal" href="generated/skbio.diversity.alpha_diversity.html#skbio.diversity.alpha_diversity" title="skbio.diversity.alpha_diversity"><code class="xref py py-func docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a> and <a class="reference internal" href="generated/skbio.diversity.beta_diversity.html#skbio.diversity.beta_diversity" title="skbio.diversity.beta_diversity"><code class="xref py py-func docutils literal notranslate"><span class="pre">beta_diversity</span></code></a> are
 designed to compute alpha diversity for one or more samples, or beta diversity
 for one or more pairs of samples. The driver functions accept a matrix
@@ -784,7 +796,7 @@ matrix represents a single sample’s count vector, so that rows represent
 samples and columns represent taxa.</p>
 <p>Some diversity metrics incorporate relationships between the taxa in their
 computation through reference to a phylogenetic tree. These metrics
-additionally take a <code class="xref py py-class docutils literal notranslate"><span class="pre">skbio.TreeNode</span></code> object and a list of taxa mapping
+additionally take a <code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code> object and a list of taxa mapping
 the values in the counts vector to tips in the tree.</p>
 <p>The driver functions are optimized so that computing a diversity metric more
 than one time (i.e., for more than one sample for alpha diversity metrics, or
@@ -856,28 +868,27 @@ that is a tripleton. We do not have any 0-tons or doubletons:</p>
 <p>The driver functions take a parameter, <code class="docutils literal notranslate"><span class="pre">metric</span></code>, that specifies which
 diversity metric should be applied. The value that you provide for <code class="docutils literal notranslate"><span class="pre">metric</span></code>
 can be either a string (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;faith_pd&quot;</span></code>) or a function (e.g.,
-<code class="docutils literal notranslate"><span class="pre">skbio.diversity.alpha.faith_pd</span></code>). The metric should generally be passed as a
-string, as this often uses an optimized version of the metric. For example,
-passing  <code class="docutils literal notranslate"><span class="pre">metric=&quot;faith_pd&quot;</span></code> (a string) to <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code> will be tens
-of times faster than passing <code class="docutils literal notranslate"><span class="pre">metric=skbio.diversity.alpha.faith_pd</span></code> (a
-function) when computing Faith’s PD on about 100 samples.  Similarly, passing
-<code class="docutils literal notranslate"><span class="pre">metric=&quot;unweighted_unifrac&quot;</span></code> (a string) will be hundreds of times
-faster than passing <code class="docutils literal notranslate"><span class="pre">metric=skbio.diversity.beta.unweighted_unifrac</span></code> (a
-function) when computing unweighted UniFrac on about 100 samples. The latter
-may be faster if computing only one alpha or beta diversity value, but in
-these cases the run times will likely be so small that the difference will be
-negligible. <strong>We therefore recommend that you always pass the metric as a
-string when possible.</strong></p>
+<a class="reference internal" href="generated/skbio.diversity.alpha.faith_pd.html#skbio.diversity.alpha.faith_pd" title="skbio.diversity.alpha.faith_pd"><code class="xref py py-func docutils literal notranslate"><span class="pre">faith_pd</span></code></a>). The metric should generally be passed as a string,
+as this often uses an optimized version of the metric. For example, passing
+<code class="docutils literal notranslate"><span class="pre">metric=&quot;faith_pd&quot;</span></code> (a string) to <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code> will be tens of times
+faster than passing <code class="docutils literal notranslate"><span class="pre">metric=faith_pd</span></code> (a function) when computing Faith’s PD
+on about 100 samples.  Similarly, passing <code class="docutils literal notranslate"><span class="pre">metric=&quot;unweighted_unifrac&quot;</span></code> (a
+string) will be hundreds of times faster than passing
+<code class="docutils literal notranslate"><span class="pre">metric=unweighted_unifrac</span></code> (a function) when computing unweighted UniFrac
+on about 100 samples. The latter may be faster if computing only one alpha or
+beta diversity value, but in these cases the run times will likely be so small
+that the difference will be negligible. <strong>We therefore recommend that you
+always pass the metric as a string when possible.</strong></p>
 <p>Passing a metric as a string will not be possible if the metric you’d like to
 run is not one that scikit-bio knows about. This might be the case, for
 example, if you’re applying a custom metric that you’ve developed. To discover
 the metric names that scikit-bio knows about as strings that can be passed as
 <code class="docutils literal notranslate"><span class="pre">metric</span></code> to <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code> or <code class="docutils literal notranslate"><span class="pre">beta_diversity</span></code>, you can call
-<code class="docutils literal notranslate"><span class="pre">get_alpha_diversity_metrics</span></code> or <code class="docutils literal notranslate"><span class="pre">get_beta_diversity_metrics</span></code>,
+<a class="reference internal" href="generated/skbio.diversity.get_alpha_diversity_metrics.html#skbio.diversity.get_alpha_diversity_metrics" title="skbio.diversity.get_alpha_diversity_metrics"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_alpha_diversity_metrics</span></code></a> or <a class="reference internal" href="generated/skbio.diversity.get_beta_diversity_metrics.html#skbio.diversity.get_beta_diversity_metrics" title="skbio.diversity.get_beta_diversity_metrics"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_beta_diversity_metrics</span></code></a>,
 respectively. These functions return lists of alpha and beta diversity metrics
 that are implemented in scikit-bio. There may be additional metrics that can be
 passed as strings which won’t be listed here, such as those implemented in
-<code class="docutils literal notranslate"><span class="pre">scipy.spatial.distance.pdist</span></code>.</p>
+SciPy’s <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html#scipy.spatial.distance.pdist" title="(in SciPy v1.16.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pdist</span></code></a>.</p>
 </section>
 </section>
 <section id="tutorial">

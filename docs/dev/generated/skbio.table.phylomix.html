@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Data augmentation by phylomix." />
+    <meta name="description" content="Data augmentation by PhyloMix." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.table.phylomix &#8212; scikit-bio 0.6.4-dev documentation</title>
@@ -69,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.table.compositional_cutmix" href="skbio.table.compositional_cutmix.html" />
-    <link rel="prev" title="skbio.table.example_table" href="skbio.table.example_table.html" />
+    <link rel="prev" title="Table-like formats" href="../reference/table_like.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -295,7 +295,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -303,6 +303,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -524,7 +531,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -532,6 +539,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -592,15 +606,16 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.Table.html">skbio.table.Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.example_table.html">skbio.table.example_table</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.table.example_table.html">skbio.table.example_table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/table_like.html">Table-like formats</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.table.phylomix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.compositional_cutmix.html">skbio.table.compositional_cutmix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.table.mixup.html">skbio.table.mixup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.aitchison_mixup.html">skbio.table.aitchison_mixup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.mixup.html">skbio.table.mixup</a></li>
 </ul>
 </div>
 </nav></div>
@@ -665,93 +680,99 @@
 <h1>skbio.table.phylomix<a class="headerlink" href="#skbio-table-phylomix" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.table.phylomix">
-<span class="sig-prename descclassname"><span class="pre">skbio.table.</span></span><span class="sig-name descname"><span class="pre">phylomix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_to_obs_mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/table/_augment.py#L589"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.phylomix" title="Link to this definition">#</a></dt>
-<dd><p>Data augmentation by phylomix.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">skbio.table.</span></span><span class="sig-name descname"><span class="pre">phylomix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intra_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/table/_augment.py#L804"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.phylomix" title="Link to this definition">#</a></dt>
+<dd><p>Data augmentation by PhyloMix.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>table</strong><span class="classifier">table_like</span></dt><dd><p>Samples by features table (n, m). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
-documentation for details.</p>
+<dd class="field-odd"><dl>
+<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>Input data table to be augmented. See
+<a class="reference internal" href="../reference/table_like.html"><span class="doc">supported formats</span></a>.</p>
 </dd>
-<dt><strong>tree</strong><span class="classifier">skbio.tree.TreeNode</span></dt><dd><p>The tree to use to augment the table.</p>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of synthetic samples to generate.</p>
 </dd>
-<dt><strong>tip_to_obs_mapping</strong><span class="classifier">dict</span></dt><dd><p>A dictionary mapping tips to feature indices.</p>
+<dt><strong>tree</strong><span class="classifier"><a class="reference internal" href="skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code></a></span></dt><dd><p>Tree structure modeling the relationships between features.</p>
 </dd>
-<dt><strong>samples</strong><span class="classifier">int</span></dt><dd><p>The number of new samples to generate.</p>
+<dt><strong>taxa</strong><span class="classifier">array_like of shape (n_features,), optional</span></dt><dd><p>Taxa (tip names) in <code class="docutils literal notranslate"><span class="pre">tree</span></code> corresponding to individual features. Can be
+omitted if <code class="docutils literal notranslate"><span class="pre">table</span></code> already contains feature IDs that are taxa. Otherwise
+they need to be explicitly provided. Should be a subset of taxa in the tree.</p>
 </dd>
-<dt><strong>label</strong><span class="classifier">ndarray</span></dt><dd><p>The label of the table. The label is expected to has a shape of <code class="docutils literal notranslate"><span class="pre">(samples,)</span></code>
-or <code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">n_classes)</span></code>.</p>
+<dt><strong>labels</strong><span class="classifier">array_like of shape (n_samples,) or (n_samples, n_classes), optional</span></dt><dd><p>Class labels for the data. Accepts either indices (1-D) or one-hot encoded
+labels (2-D).</p>
 </dd>
-<dt><strong>alpha</strong><span class="classifier">float</span></dt><dd><p>The alpha parameter of the beta distribution.</p>
+<dt><strong>intra_class</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, synthetic samples will be created by mixing samples within each
+class. If <code class="docutils literal notranslate"><span class="pre">False</span></code> (Default), any samples regardless of class can be mixed.</p>
 </dd>
-<dt><strong>normalize</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> and the input is not already compositional, scikit-bio’s
-<a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-func docutils literal notranslate"><span class="pre">closure</span></code></a> function will be called, ensuring
-values for each sample add up to 1. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Shape parameter of the beta distribution.</p>
+</dd>
+<dt><strong>append</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the returned data include both the original and synthetic samples. If
+False (default), only the synthetic samples are returned.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
 <a class="reference internal" href="skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
-</dd>
-<dt><strong>output_format</strong><span class="classifier">str, optional</span></dt><dd><p>Standard <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> parameter. See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
-documentation for details.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>augmented_matrix</strong><span class="classifier">table_like</span></dt><dd><p>The augmented matrix.</p>
+<dt><strong>aug_matrix</strong><span class="classifier">ndarray of shape (n, n_features)</span></dt><dd><p>Augmented data matrix.</p>
 </dd>
-<dt><strong>augmented_label</strong><span class="classifier">table_like</span></dt><dd><p>The augmented label, in one-hot encoding.
-if the user want to use the augmented label for regression,
-users can simply call <code class="docutils literal notranslate"><span class="pre">np.argmax(aug_label,</span> <span class="pre">axis=1)</span></code>
-to get the discrete labels.</p>
+<dt><strong>aug_labels</strong><span class="classifier">ndarray of shape (n, n_classes), optional</span></dt><dd><p>Augmented class labels in one-hot encoded format. Available if <code class="docutils literal notranslate"><span class="pre">labels</span></code> are
+provided. One can call <code class="docutils literal notranslate"><span class="pre">aug_labels.argmax(axis=1)</span></code> to get class indices.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If taxa are unavailable.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.table.mixup.html#skbio.table.mixup" title="skbio.table.mixup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixup</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
-<p>The algorithm is based on <a class="reference internal" href="#r05de1206cf54-1" id="id2">[1]</a>, and leverages phylogenetic
-relationships to guide data augmentation in microbiome and other omic data.
-By mixing the abundances of phylogenetically related
-taxa (leaves of a selected node), Phylomix preserves the biological
-structure while introducing new synthetic samples.</p>
-<p>The selection of nodes follows a random sampling approach,
-where a subset of taxa is chosen based on a
-Beta-distributed mixing coefficient. This ensures that the augmented
-data maintains biologically meaningful compositional relationships.</p>
-<p>In the original paper, the authors assumed a bifurcated phylogenetic tree,
-but this implementation works with any tree structure. If desired,
-users can bifurcate their tree using <code class="docutils literal notranslate"><span class="pre">skbio.tree.TreeNode.bifurcate()</span></code>
-before augmentation.</p>
-<p>Phylomix is particularly valuable for microbiome-trait association studies,
-where preserving phylogenetic similarity between related taxa is crucial for
-accurate downstream predictions. This approach helps address the
-common challenge of limited sample sizes in omic data studies.</p>
-<p>The method assumes that all tips in the phylogenetic tree
-are represented in the <code class="docutils literal notranslate"><span class="pre">tip_to_obs_mapping</span></code> dictionary.</p>
+<p>The Phylomix method was described in <a class="reference internal" href="#r05de1206cf54-1" id="id1">[1]</a>.</p>
+<p>This method leverages phylogenetic relationships to guide data augmentation in
+microbiome and other omic data. By mixing the abundances of evolutionarily related
+taxa (tips of a selected node), Phylomix preserves the biological structure while
+introducing new synthetic samples.</p>
+<p>The selection of nodes follows a random sampling approach, where a subset of taxa
+is chosen based on a Beta-distributed mixing coefficient. This ensures that the
+augmented data maintains biologically meaningful compositional relationships.</p>
+<p>In the original paper, the authors assumed a bifurcated phylogenetic tree, but this
+implementation works with any tree structure. If desired, the user can bifurcate
+the tree using <a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html#skbio.tree.TreeNode.bifurcate" title="skbio.tree.TreeNode.bifurcate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bifurcate</span></code></a> before augmentation.</p>
+<p>Phylomix is particularly valuable for microbiome-trait association studies, where
+preserving phylogenetic similarity between related taxa is crucial for accurate
+downstream predictions. This approach helps address the common challenge of limited
+sample sizes in omic data studies.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r05de1206cf54-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>Jiang, Y., Liao, D., Zhu, Q., &amp; Lu, Y. Y. (2025).
-PhyloMix: Enhancing microbiome-trait association prediction through
-phylogeny-mixing augmentation. Bioinformatics, btaf014.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Jiang, Y., Liao, D., Zhu, Q., &amp; Lu, Y. Y. (2025). PhyloMix: Enhancing
+microbiome-trait association prediction through phylogeny-mixing augmentation.
+Bioinformatics, btaf014.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">phylomix</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(((a,b)int1,c)int2,(x,y)int3);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tip_to_obs_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_matrix</span><span class="p">,</span> <span class="n">aug_label</span> <span class="o">=</span> <span class="n">phylomix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
-<span class="gp">... </span>                                 <span class="n">tree</span><span class="p">,</span>
-<span class="gp">... </span>                                 <span class="n">tip_to_obs_mapping</span><span class="p">,</span>
-<span class="gp">... </span>                                 <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-<span class="gp">... </span>                                 <span class="n">samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">phylomix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s1">&#39;(((a,b),c),(d,e));&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_matrix</span><span class="p">,</span> <span class="n">aug_labels</span> <span class="o">=</span> <span class="n">phylomix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">matrix</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">,</span> <span class="n">taxa</span><span class="o">=</span><span class="n">taxa</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="go">(7, 5)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_label</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="go">(7, 2)</span>
+<span class="go">(5, 5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(5, 2)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -769,12 +790,12 @@ phylogeny-mixing augmentation. Bioinformatics, btaf014.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.table.example_table.html"
+       href="../reference/table_like.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.table.example_table</p>
+        <p class="prev-next-title">Table-like formats</p>
       </div>
     </a>
     <a class="right-next"

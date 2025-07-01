@@ -295,7 +295,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -303,6 +303,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -524,7 +531,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -532,6 +539,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -672,46 +686,46 @@
 <h1>skbio.diversity.block_beta_diversity<a class="headerlink" href="#skbio-diversity-block-beta-diversity" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.block_beta_diversity">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">block_beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_block.py#L253"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.block_beta_diversity" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">block_beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_block.py#L260"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.block_beta_diversity" title="Link to this definition">#</a></dt>
 <dd><p>Perform a block-decomposition beta diversity calculation.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>metric</strong><span class="classifier">str or callable</span></dt><dd><p>The pairwise distance function to apply. If <code class="docutils literal notranslate"><span class="pre">metric</span></code> is a string, it
-must be resolvable by scikit-bio (e.g., UniFrac methods), or must be
-callable.</p>
+<dt><strong>metric</strong><span class="classifier">str or callable</span></dt><dd><p>The beta diversity metric to apply to the samples. See
+<a class="reference internal" href="skbio.diversity.beta_diversity.html#skbio.diversity.beta_diversity" title="skbio.diversity.beta_diversity"><code class="xref py py-func docutils literal notranslate"><span class="pre">beta_diversity</span></code></a> for details.</p>
 </dd>
-<dt><strong>counts</strong><span class="classifier">2D array_like of ints or floats</span></dt><dd><p>Matrix containing count/abundance data where each row contains counts
-of taxa in a given sample.</p>
+<dt><strong>counts</strong><span class="classifier">table_like of shape (n_samples, n_taxa)</span></dt><dd><p>Matrix containing count/abundance data of the samples. See
+<a class="reference internal" href="../reference/table_like.html"><span class="doc">supported formats</span></a>.</p>
 </dd>
-<dt><strong>ids</strong><span class="classifier">iterable of strs</span></dt><dd><p>Identifiers for each sample in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</p>
+<dt><strong>ids</strong><span class="classifier">array_like of shape (n_samples,), optional</span></dt><dd><p>Identifiers for each sample in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</p>
 </dd>
-<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>See <code class="docutils literal notranslate"><span class="pre">skbio.diversity.beta_diversity</span></code> for details.</p>
+<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), validate the input data. See <code class="docutils literal notranslate"><span class="pre">beta_diversity</span></code> for
+details.</p>
 </dd>
-<dt><strong>reduce_f</strong><span class="classifier">function, optional</span></dt><dd><p>A method to reduce <cite>PartialDistanceMatrix</cite> objects into a single
+<dt><strong>reduce_f</strong><span class="classifier">callable, optional</span></dt><dd><p>A method to reduce <cite>PartialDistanceMatrix</cite> objects into a single
 <cite>DistanceMatrix</cite>. The expected signature is:</p>
 <blockquote>
 <div><p><cite>f(Iterable of DistanceMatrix) -&gt; DistanceMatrix</cite></p>
 </div></blockquote>
 <p>Note, this is the reduce within a map/reduce.</p>
 </dd>
-<dt><strong>map_f: function, optional</strong></dt><dd><p>A method that accepts a <cite>_block_compute</cite>. The expected signature is:</p>
+<dt><strong>map_f: callable, optional</strong></dt><dd><p>A method that accepts a <cite>_block_compute</cite>. The expected signature is:</p>
 <blockquote>
 <div><p><cite>f(**kwargs) -&gt; DistanceMatrix</cite></p>
 </div></blockquote>
 <p>NOTE: ipyparallel’s <cite>map_async</cite> will not work here as we need to be
 able to pass around <cite>**kwargs`</cite>.</p>
 </dd>
-<dt><strong>k</strong><span class="classifier">int, optional</span></dt><dd><p>The blocksize used when computing distances</p>
+<dt><strong>k</strong><span class="classifier">int, optional</span></dt><dd><p>The blocksize used when computing distances. Default is 64.</p>
 </dd>
-<dt><strong>kwargs</strong><span class="classifier">kwargs, optional</span></dt><dd><p>Metric-specific parameters.</p>
+<dt><strong>kwargs</strong><span class="classifier">kwargs, optional</span></dt><dd><p>Metric-specific parameters. See <code class="docutils literal notranslate"><span class="pre">beta_diversity</span></code> for details.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>DistanceMatrix</dt><dd><p>A distance matrix relating all samples represented by counts to each
-other.</p>
+<dt>DistanceMatrix</dt><dd><p>Distances between all pairs of samples (i.e., rows). The number of
+rows and columns will be equal to the number of rows in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -719,8 +733,8 @@ other.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.diversity.beta_diversity.html#skbio.diversity.beta_diversity" title="skbio.diversity.beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity.beta_diversity</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.diversity.partial_beta_diversity.html#skbio.diversity.partial_beta_diversity" title="skbio.diversity.partial_beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity.partial_beta_diversity</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.diversity.beta_diversity.html#skbio.diversity.beta_diversity" title="skbio.diversity.beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beta_diversity</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.diversity.partial_beta_diversity.html#skbio.diversity.partial_beta_diversity" title="skbio.diversity.partial_beta_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_beta_diversity</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>

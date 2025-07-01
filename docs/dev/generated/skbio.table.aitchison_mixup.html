@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Data Augmentation by Aitchison mixup." />
+    <meta name="description" content="Data augmentation by Aitchison mixup." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.table.aitchison_mixup &#8212; scikit-bio 0.6.4-dev documentation</title>
@@ -69,8 +69,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Metadata (skbio.metadata)" href="../metadata.html" />
-    <link rel="prev" title="skbio.table.mixup" href="skbio.table.mixup.html" />
+    <link rel="next" title="skbio.table.mixup" href="skbio.table.mixup.html" />
+    <link rel="prev" title="skbio.table.compositional_cutmix" href="skbio.table.compositional_cutmix.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -296,7 +296,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -304,6 +304,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -525,7 +532,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -533,6 +540,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -593,15 +607,16 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.Table.html">skbio.table.Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.example_table.html">skbio.table.example_table</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="skbio.table.example_table.html">skbio.table.example_table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/table_like.html">Table-like formats</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.phylomix.html">skbio.table.phylomix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.table.compositional_cutmix.html">skbio.table.compositional_cutmix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.table.mixup.html">skbio.table.mixup</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.table.aitchison_mixup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.table.mixup.html">skbio.table.mixup</a></li>
 </ul>
 </div>
 </nav></div>
@@ -666,92 +681,104 @@
 <h1>skbio.table.aitchison_mixup<a class="headerlink" href="#skbio-table-aitchison-mixup" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.table.aitchison_mixup">
-<span class="sig-prename descclassname"><span class="pre">skbio.table.</span></span><span class="sig-name descname"><span class="pre">aitchison_mixup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/table/_augment.py#L323"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.aitchison_mixup" title="Link to this definition">#</a></dt>
-<dd><p>Data Augmentation by Aitchison mixup.</p>
-<p>This function requires the data to be compositional. If the
-table is not normalized, it will be normalized first.</p>
+<span class="sig-prename descclassname"><span class="pre">skbio.table.</span></span><span class="sig-name descname"><span class="pre">aitchison_mixup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intra_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/table/_augment.py#L465"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.table.aitchison_mixup" title="Link to this definition">#</a></dt>
+<dd><p>Data augmentation by Aitchison mixup.</p>
+<p>This function requires the data to be compositional (values per sample sum to one).
+If not, the function will automatically normalize them prior to augmentation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>table</strong><span class="classifier">table_like</span></dt><dd><p>Samples by features table (n, m). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
-documentation for details.</p>
+<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>Input data table to be augmented. See
+<a class="reference internal" href="../reference/table_like.html"><span class="doc">supported formats</span></a>.</p>
 </dd>
-<dt><strong>samples</strong><span class="classifier">int</span></dt><dd><p>The number of new samples to generate.</p>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of synthetic samples to generate.</p>
 </dd>
-<dt><strong>label</strong><span class="classifier">ndarray</span></dt><dd><p>The label of the table. The label is expected to has a shape of <code class="docutils literal notranslate"><span class="pre">(samples,)</span></code>
-or <code class="docutils literal notranslate"><span class="pre">(samples,</span> <span class="pre">n_classes)</span></code>.</p>
+<dt><strong>labels</strong><span class="classifier">array_like of shape (n_samples,) or (n_samples, n_classes), optional</span></dt><dd><p>Class labels for the data. Accepts either indices (1-D) or one-hot encoded
+labels (2-D).</p>
 </dd>
-<dt><strong>alpha</strong><span class="classifier">float</span></dt><dd><p>The alpha parameter of the beta distribution.</p>
+<dt><strong>intra_class</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, synthetic samples will be created by mixing samples within each
+class. If <code class="docutils literal notranslate"><span class="pre">False</span></code> (Default), any samples regardless of class can be mixed.</p>
 </dd>
-<dt><strong>normalize</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> and the input is not already compositional, scikit-bio’s
+<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Shape parameter of the beta distribution.</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), and the input is not already compositional, scikit-bio’s
 <a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-func docutils literal notranslate"><span class="pre">closure</span></code></a> function will be called, ensuring
-values for each sample add up to 1. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+values for each sample add up to 1.</p>
+</dd>
+<dt><strong>append</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the returned data include both the original and synthetic samples. If
+False (default), only the synthetic samples are returned.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
 <a class="reference internal" href="skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
-</dd>
-<dt><strong>output_format</strong><span class="classifier">str, optional</span></dt><dd><p>Standard <code class="docutils literal notranslate"><span class="pre">DataTable</span></code> parameter. See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">DataTable</a> type
-documentation for details.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>augmented_matrix</strong><span class="classifier">table_like</span></dt><dd><p>The augmented matrix.</p>
+<dt><strong>aug_matrix</strong><span class="classifier">ndarray of shape (n, n_features)</span></dt><dd><p>Augmented data matrix.</p>
 </dd>
-<dt><strong>augmented_label</strong><span class="classifier">table_like</span></dt><dd><p>The augmented label, in one-hot encoding.
-if the user want to use the augmented label for regression,
-users can simply call <code class="docutils literal notranslate"><span class="pre">np.argmax(aug_label,</span> <span class="pre">axis=1)</span></code>
-to get the discrete labels.</p>
+<dt><strong>aug_labels</strong><span class="classifier">ndarray of shape (n, n_classes), optional</span></dt><dd><p>Augmented class labels in one-hot encoded format. Available if <code class="docutils literal notranslate"><span class="pre">labels</span></code> are
+provided. One can call <code class="docutils literal notranslate"><span class="pre">aug_labels.argmax(axis=1)</span></code> to get class indices.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.table.mixup.html#skbio.table.mixup" title="skbio.table.mixup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mixup</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.table.compositional_cutmix.html#skbio.table.compositional_cutmix" title="skbio.table.compositional_cutmix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compositional_cutmix</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
-<p>The algorithm is based on <a class="reference internal" href="#rd8c32092c97f-1" id="id2">[1]</a>, and leverages the Aitchison geometry
-to guide data augmentation in compositional data,
-this is essentially the vanilla mixup in the Aitchison geometry.
-This mixup method only works on the Compositional data.
-where a set of datapoints are living in the simplex:
-<span class="math notranslate nohighlight">\(x_i &gt; 0\)</span>, and <span class="math notranslate nohighlight">\(\sum_{i=1}^{p} x_i = 1\)</span>.
-The augmented sample is computed as the linear combination of
-the two samples in the Aitchison geometry. In the Aitchision
-Geometry, we define the addition and scalar multiplication as:</p>
-<div class="math notranslate nohighlight">
-\[\lambda \otimes s =
-\frac{1}{\sum_{j=1}^{p} s_j^{\lambda}}
-(x_1^{\lambda}, x_2^{\lambda}, ..., x_p^{\lambda})\]</div>
-<div class="math notranslate nohighlight">
-\[s \oplus t =
-\frac{1}{\sum_{j=1}^{p} s_j t_j}
-(s_1 t_1, s_2 t_2, ..., s_p t_p)\]</div>
+<p>The algorithm is based on <a class="reference internal" href="#rd8c32092c97f-1" id="id1">[1]</a>, and leverages the Aitchison geometry to guide the
+augmentation of compositional data. It is essentially the vanilla mixup method in
+the Aitchison space.</p>
+<p>This method only works on compositional data, where a set of data points live in
+the simplex: <span class="math notranslate nohighlight">\(x_i &gt; 0\)</span>, and <span class="math notranslate nohighlight">\(\sum_{i=1}^{p} x_i = 1\)</span>.</p>
+<p>An augmented sample <span class="math notranslate nohighlight">\(s\)</span> is computed as the linear combination of two samples
+<span class="math notranslate nohighlight">\(s_1\)</span> and <span class="math notranslate nohighlight">\(s_2\)</span> in the Aitchison space:</p>
 <div class="math notranslate nohighlight">
 \[s = (\lambda \otimes  s_1) \oplus ((1 - \lambda) \otimes s_2)\]</div>
-<p>The label is computed as the linear combination of
-the two labels of the two samples</p>
+<p>where <span class="math notranslate nohighlight">\(\otimes\)</span> is the Aitchison scalar multiplication, defined as:</p>
+<div class="math notranslate nohighlight">
+\[\lambda \otimes s =
+\frac{1}{\sum_{i=1}^{n} s_i^{\lambda}}
+(s_1^{\lambda}, s_2^{\lambda}, ..., s_n^{\lambda})\]</div>
+<p><span class="math notranslate nohighlight">\(\oplus\)</span> is the Aitchison addition, defined as:</p>
+<div class="math notranslate nohighlight">
+\[s \oplus t =
+\frac{1}{\sum_{i=1}^{n} s_i t_i}
+(s_1 t_1, s_2 t_2, ..., s_n t_n)\]</div>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span> is a mixing coefficient drawn from a beta distribution:</p>
+<div class="math notranslate nohighlight">
+\[\lambda \sim \mathrm{Beta}(\alpha, \alpha)\]</div>
+<p>The label <span class="math notranslate nohighlight">\(y\)</span> is computed as the linear combination of the labels of the two
+samples (<span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span>):</p>
 <div class="math notranslate nohighlight">
 \[y = \lambda \cdot y_1 + (1 - \lambda) \cdot y_2\]</div>
-<p>By mixing the counts of two samples, Aitchison mixup preserves the
-compositional nature of the data, and the sum-to-one property.</p>
+<p>By mixing the counts of two samples, Aitchison mixup preserves the compositional
+nature of the data, and the sum-to-one property.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="rd8c32092c97f-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>Gordon-Rodriguez, E., Quinn, T., &amp; Cunningham, J. P. (2022).
-Data augmentation for compositional data: Advancing predictive
-models of the microbiome. Advances in Neural Information Processing
-Systems, 35, 20551-20565.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Gordon-Rodriguez, E., Quinn, T., &amp; Cunningham, J. P. (2022). Data
+augmentation for compositional data: Advancing predictive models of the
+microbiome. Advances in Neural Information Processing Systems, 35,
+20551-20565.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">aitchison_mixup</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_matrix</span><span class="p">,</span> <span class="n">aug_label</span> <span class="o">=</span> <span class="n">aitchison_mixup</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">aitchison_mixup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_matrix</span><span class="p">,</span> <span class="n">aug_labels</span> <span class="o">=</span> <span class="n">aitchison_mixup</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="go">(9, 10)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_label</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="go">(9, 2)</span>
+<span class="go">(5, 10)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">aug_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(5, 2)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -769,20 +796,20 @@ Systems, 35, 20551-20565.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.table.mixup.html"
+       href="skbio.table.compositional_cutmix.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.table.mixup</p>
+        <p class="prev-next-title">skbio.table.compositional_cutmix</p>
       </div>
     </a>
     <a class="right-next"
-       href="../metadata.html"
+       href="skbio.table.mixup.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Metadata (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.metadata</span></code>)</p>
+        <p class="prev-next-title">skbio.table.mixup</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

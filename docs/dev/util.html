@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="General exception/warning definitions, utilities, and unit-testing functionality." name="description" />
 
-    <meta property="article:modified_time" content="2024-08-19T07:11:16+00:00" />
     <title>Utilities for Developers (skbio.util) &#8212; scikit-bio 0.6.4-dev documentation</title>
   
   
@@ -69,12 +68,11 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Configuration Options (skbio.util.config)" href="generated/skbio.util.config.html" />
+    <link rel="next" title="skbio.util.get_data_path" href="generated/skbio.util.get_data_path.html" />
     <link rel="prev" title="skbio.workflow.method" href="generated/skbio.workflow.method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
-    <meta name="docbuild:last-update" content="Aug 19, 2024"/>
   </head>
   
   
@@ -297,7 +295,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -305,6 +303,13 @@
 <li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="#">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -526,7 +531,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -534,6 +539,13 @@
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -593,11 +605,6 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.config.html">Configuration Options (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util.config</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.get_config.html">skbio.util.get_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.set_config.html">skbio.util.set_config</a></li>
-</ul>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.get_data_path.html">skbio.util.get_data_path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.assert_ordination_results_equal.html">skbio.util.assert_ordination_results_equal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.assert_ordination_results_equal_np.html">skbio.util.assert_ordination_results_equal_np</a></li>
@@ -605,6 +612,9 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.PlottableMixin.html">skbio.util.PlottableMixin</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.get_rng.html">skbio.util.get_rng</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.overrides.html">skbio.util.overrides</a></li>
@@ -616,10 +626,6 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.params_aliased.html">skbio.util.params_aliased</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.DataTable.html">skbio.util.DataTable</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.get_rng.html">skbio.util.get_rng</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.cardinal_to_ordinal.html">skbio.util.cardinal_to_ordinal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.find_duplicates.html">skbio.util.find_duplicates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.util.safe_md5.html">skbio.util.safe_md5</a></li>
@@ -685,24 +691,6 @@
 <p>This package provides general exception/warning definitions used throughout
 scikit-bio, as well as various utility functionality, including I/O and
 unit-testing convenience functions.</p>
-<section id="user-configuration-utilities">
-<h2>User configuration utilities<a class="headerlink" href="#user-configuration-utilities" title="Link to this heading">#</a></h2>
-<p>Configuration options for functional input and output.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.config.html#module-skbio.util.config" title="skbio.util.config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config</span></code></a></p></td>
-<td><p>Configuration Options (skbio.util.config)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.get_config.html#skbio.util.get_config" title="skbio.util.get_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_config</span></code></a>(option)</p></td>
-<td><p>Get the current value of an skbio config option.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.set_config.html#skbio.util.set_config" title="skbio.util.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a>(option, value)</p></td>
-<td><p>Set a scikit-bio config option.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 <section id="testing-utilities">
 <h2>Testing utilities<a class="headerlink" href="#testing-utilities" title="Link to this heading">#</a></h2>
 <p>Common functionality to support testing in skbio.</p>
@@ -730,6 +718,17 @@ unit-testing convenience functions.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.PlottableMixin.html#skbio.util.PlottableMixin" title="skbio.util.PlottableMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlottableMixin</span></code></a>()</p></td>
 <td><p>A plottable object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="randomization">
+<h2>Randomization<a class="headerlink" href="#randomization" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rng</span></code></a>([seed])</p></td>
+<td><p>Get a random generator.</p></td>
 </tr>
 </tbody>
 </table>
@@ -764,32 +763,18 @@ unit-testing convenience functions.</p>
 </table>
 </div>
 </section>
-<section id="types">
-<h2>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.DataTable.html#skbio.util.DataTable" title="skbio.util.DataTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataTable</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 <section id="miscellaneous-utilities">
 <h2>Miscellaneous utilities<a class="headerlink" href="#miscellaneous-utilities" title="Link to this heading">#</a></h2>
 <p>Generally useful functionality that doesn’t fit in more specific locations.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rng</span></code></a>([seed])</p></td>
-<td><p>Get a random generator.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.cardinal_to_ordinal.html#skbio.util.cardinal_to_ordinal" title="skbio.util.cardinal_to_ordinal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cardinal_to_ordinal</span></code></a>(n)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.cardinal_to_ordinal.html#skbio.util.cardinal_to_ordinal" title="skbio.util.cardinal_to_ordinal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cardinal_to_ordinal</span></code></a>(n)</p></td>
 <td><p>Return ordinal string version of cardinal int <cite>n</cite>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.find_duplicates.html#skbio.util.find_duplicates" title="skbio.util.find_duplicates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_duplicates</span></code></a>(iterable)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.find_duplicates.html#skbio.util.find_duplicates" title="skbio.util.find_duplicates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_duplicates</span></code></a>(iterable)</p></td>
 <td><p>Find duplicate elements in an iterable.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.util.safe_md5.html#skbio.util.safe_md5" title="skbio.util.safe_md5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_md5</span></code></a>(open_file[, block_size])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.util.safe_md5.html#skbio.util.safe_md5" title="skbio.util.safe_md5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_md5</span></code></a>(open_file[, block_size])</p></td>
 <td><p>Compute an md5 sum without loading the file into memory.</p></td>
 </tr>
 </tbody>
@@ -818,11 +803,11 @@ unit-testing convenience functions.</p>
       </div>
     </a>
     <a class="right-next"
-       href="generated/skbio.util.config.html"
+       href="generated/skbio.util.get_data_path.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Configuration Options (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util.config</span></code>)</p>
+        <p class="prev-next-title">skbio.util.get_data_path</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -845,11 +830,10 @@ unit-testing convenience functions.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-configuration-utilities">User configuration utilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-utilities">Testing utilities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-utilities">Plotting utilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#randomization">Randomization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorators">Decorators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-utilities">Miscellaneous utilities</a></li>
 </ul>
   </nav></div>

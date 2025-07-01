@@ -295,7 +295,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -303,6 +303,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -524,7 +531,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../workflow.html">
-    Workflow construction (skbio.workflow)
+    Workflow Construction (skbio.workflow)
   </a>
 </li>
 
@@ -532,6 +539,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../util.html">
     Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../config.html">
+    Configuration Options
   </a>
 </li>
 
@@ -672,45 +686,43 @@
 <h1>skbio.diversity.beta_diversity<a class="headerlink" href="#skbio-diversity-beta-diversity" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.diversity.beta_diversity">
-<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairwise_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_driver.py#L358"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.beta_diversity" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">beta_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairwise_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_driver.py#L228"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.beta_diversity" title="Link to this definition">#</a></dt>
 <dd><p>Compute distances between all pairs of samples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>metric</strong><span class="classifier">str, callable</span></dt><dd><p>The pairwise distance function to apply. See the scipy <code class="docutils literal notranslate"><span class="pre">pdist</span></code> docs
-and the scikit-bio functions linked under <em>See Also</em> for available
-metrics. Passing metrics as a strings is preferable as this often
-results in an optimized version of the metric being used.</p>
+<dt><strong>metric</strong><span class="classifier">str or callable</span></dt><dd><p>The beta diversity metric, i.e., a pairwise distance function to apply to the
+sample(s). See <a class="reference internal" href="skbio.diversity.beta.html#module-skbio.diversity.beta" title="skbio.diversity.beta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">beta</span></code></a> and SciPy’s
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html#scipy.spatial.distance.pdist" title="(in SciPy v1.16.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pdist</span></code></a> for available metrics. Passing metric as
+a string is preferable as this often results in an optimized version of the
+metric being used.</p>
 </dd>
-<dt><strong>counts</strong><span class="classifier">2D array_like of ints or floats, 2D pandas DataFrame, Table</span></dt><dd><p>Matrix containing count/abundance data where each row contains counts
-of taxa in a given sample.</p>
+<dt><strong>counts</strong><span class="classifier">table_like of shape (n_samples, n_taxa) or (n_taxa,)</span></dt><dd><p>Vector or matrix containing count/abundance data of one or multiple samples.
+See <a class="reference internal" href="../reference/table_like.html"><span class="doc">supported formats</span></a>.</p>
 </dd>
-<dt><strong>ids</strong><span class="classifier">iterable of strs, optional</span></dt><dd><p>Identifiers for each sample in <code class="docutils literal notranslate"><span class="pre">counts</span></code>. By default, samples will be
-assigned integer identifiers in the order that they were provided
-(where the type of the identifiers will be <code class="docutils literal notranslate"><span class="pre">str</span></code>).</p>
+<dt><strong>ids</strong><span class="classifier">array_like of shape (n_samples,), optional</span></dt><dd><p>Identifiers for each sample in <code class="docutils literal notranslate"><span class="pre">counts</span></code>. If not provided, will extract sample
+IDs from <code class="docutils literal notranslate"><span class="pre">counts</span></code>, if available, or assign integer identifiers in the order
+that samples were provided.</p>
 </dd>
-<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">False</span></code>, validation of the input won’t be performed. This step can
-be slow, so if validation is run elsewhere it can be disabled here.
-However, invalid input data can lead to invalid results or error
-messages that are hard to interpret, so this step should not be
-bypassed if you’re not certain that your input data are valid. See
-<a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a> for the description of what validation entails
-so you can determine if you can safely disable validation.</p>
+<dt><strong>validate: bool, optional</strong></dt><dd><p>If True (default), validate the input data before applying the alpha diversity
+metric. See <a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a> for the details of validation.</p>
 </dd>
-<dt><strong>pairwise_func</strong><span class="classifier">callable, optional</span></dt><dd><p>The function to use for computing pairwise distances. This function
-must take <code class="docutils literal notranslate"><span class="pre">counts</span></code> and <code class="docutils literal notranslate"><span class="pre">metric</span></code> and return a square, hollow, 2-D
-<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of dissimilarities (floats). Examples of functions
-that can be provided are <code class="docutils literal notranslate"><span class="pre">scipy.spatial.distance.pdist</span></code> and
-<code class="docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise_distances</span></code>. By default,
-<code class="docutils literal notranslate"><span class="pre">scipy.spatial.distance.pdist</span></code> will be used.</p>
+<dt><strong>pairwise_func</strong><span class="classifier">callable, optional</span></dt><dd><p>The function to use for computing pairwise distances. Must take <code class="docutils literal notranslate"><span class="pre">counts</span></code> and
+<code class="docutils literal notranslate"><span class="pre">metric</span></code> and return a square, hollow, 2-D float array of dissimilarities.
+Examples of functions that can be provided are SciPy’s
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html#scipy.spatial.distance.pdist" title="(in SciPy v1.16.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pdist</span></code></a> (default) and scikit-learn’s
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pairwise_distances</span></code></a>.</p>
 </dd>
-<dt><strong>kwargs</strong><span class="classifier">kwargs, optional</span></dt><dd><p>Metric-specific parameters.</p>
+<dt><strong>kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Metric-specific parameters. Refer to the documentation of the chosen metric.
+A special parameter is <code class="docutils literal notranslate"><span class="pre">taxa</span></code>, needed by some phylogenetic metrics. If not
+provided, will extract taxa (feature IDs) from <code class="docutils literal notranslate"><span class="pre">counts</span></code>, if available, and
+pass to the metric.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>skbio.DistanceMatrix</dt><dd><p>Distances between all pairs of samples (i.e., rows). The number of
+<dt><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a></dt><dd><p>Distances between all pairs of samples (i.e., rows). The number of
 rows and columns will be equal to the number of rows in <code class="docutils literal notranslate"><span class="pre">counts</span></code>.</p>
 </dd>
 </dl>
@@ -719,7 +731,7 @@ rows and columns will be equal to the number of rows in <code class="docutils li
 <dd class="field-odd"><dl class="simple">
 <dt>ValueError, MissingNodeError, DuplicateNodeError</dt><dd><p>If validation fails. Exact error will depend on what was invalid.</p>
 </dd>
-<dt>iTypeError</dt><dd><p>If invalid method-specific parameters are provided.</p>
+<dt>Any Exception</dt><dd><p>If invalid method-specific parameters are provided.</p>
 </dd>
 </dl>
 </dd>
@@ -727,10 +739,9 @@ rows and columns will be equal to the number of rows in <code class="docutils li
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.diversity.beta.html#module-skbio.diversity.beta" title="skbio.diversity.beta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity.beta</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.diversity.get_beta_diversity_metrics.html#skbio.diversity.get_beta_diversity_metrics" title="skbio.diversity.get_beta_diversity_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity.get_beta_diversity_metrics</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.diversity.alpha_diversity.html#skbio.diversity.alpha_diversity" title="skbio.diversity.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.diversity.alpha_diversity</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.diversity.beta.html#module-skbio.diversity.beta" title="skbio.diversity.beta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beta</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.diversity.get_beta_diversity_metrics.html#skbio.diversity.get_beta_diversity_metrics" title="skbio.diversity.get_beta_diversity_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_beta_diversity_metrics</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.diversity.alpha_diversity.html#skbio.diversity.alpha_diversity" title="skbio.diversity.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html#scipy.spatial.distance.pdist" title="(in SciPy v1.16.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.spatial.distance.pdist</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances" title="(in scikit-learn v1.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise_distances</span></code></a></dt><dd></dd>
 </dl>
