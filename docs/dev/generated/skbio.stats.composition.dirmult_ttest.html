@@ -68,7 +68,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.centralize" href="skbio.stats.composition.centralize.html" />
+    <link rel="next" title="skbio.stats.composition.dirmult_lme" href="skbio.stats.composition.dirmult_lme.html" />
     <link rel="prev" title="skbio.stats.composition.ancom" href="skbio.stats.composition.ancom.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -614,6 +614,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.dirmult_ttest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -709,7 +710,7 @@
 <h1>skbio.stats.composition.dirmult_ttest<a class="headerlink" href="#skbio-stats-composition-dirmult-ttest" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.dirmult_ttest">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1991"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L2281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
 <dd><p><em>T</em>-test using Dirichlet-multinomial distribution.</p>
 <p>The Dirichlet-multinomial distribution is a compound distribution that
 combines a Dirichlet distribution over the probabilities of a multinomial
@@ -723,21 +724,31 @@ samples, drawn from each Dirichlet-multinomial distribution. The
 log-fold changes as well as their credible intervals, the <em>p</em>-values and
 the multiple comparison corrected <em>p</em>-values are reported.</p>
 <p>This process mirrors the approach performed by the R package “ALDEx2” <a class="reference internal" href="#r70d1167c12d8-1" id="id1">[1]</a>.</p>
+<p>Additionally, this function excludes hits with a 95% confidence interval of
+fold-change crossing zero during any draw. This step further reduces false
+positive hits, especially among low-abundance features.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>table</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Contingency table of counts where rows are features and columns are samples.</p>
+<dd class="field-odd"><dl>
+<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>A matrix containing count or proportional abundance data of the samples. See
+<a class="reference internal" href="../reference/table_like.html"><span class="doc">supported formats</span></a>.</p>
 </dd>
-<dt><strong>grouping</strong><span class="classifier">pd.Series</span></dt><dd><p>Vector indicating the assignment of samples to groups. For example,
-these could be strings or integers denoting which group a sample
-belongs to. It must be the same length as the samples in <code class="docutils literal notranslate"><span class="pre">table</span></code>.
-The index must be the same on <code class="docutils literal notranslate"><span class="pre">table</span></code> and <code class="docutils literal notranslate"><span class="pre">grouping</span></code> but need not be
-in the same order. The <em>t</em>-test is computed between the <code class="docutils literal notranslate"><span class="pre">treatment</span></code>
-group and the <code class="docutils literal notranslate"><span class="pre">reference</span></code> group specified in the <code class="docutils literal notranslate"><span class="pre">grouping</span></code> vector.</p>
+<dt><strong>grouping</strong><span class="classifier">pd.Series or 1-D array_like</span></dt><dd><p>Vector indicating the assignment of samples to groups. These could be strings
+or integers denoting which group a sample belongs to. If it is a pandas Series
+and the table contains sample IDs, its index will be filtered and reordered to
+match the sample IDs. Otherwise, it must be the same length as the samples in
+the table.</p>
 </dd>
-<dt><strong>treatment</strong><span class="classifier">str</span></dt><dd><p>Name of the treatment group.</p>
+<dt><strong>treatment</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the treatment group. The <em>t</em>-test is computed between the <code class="docutils literal notranslate"><span class="pre">treatment</span></code>
+group and the <code class="docutils literal notranslate"><span class="pre">reference</span></code> group specified in the <code class="docutils literal notranslate"><span class="pre">grouping</span></code> vector. If
+omitted, the first group in the sorted order of all group names will be the
+treatment group.</p>
 </dd>
-<dt><strong>reference</strong><span class="classifier">str</span></dt><dd><p>Name of the reference group.</p>
+<dt><strong>reference</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the reference group. See above. If omitted, all groups other than the
+treatment group will be combined as the reference group.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.4: </span><code class="docutils literal notranslate"><span class="pre">treatment</span></code> and <code class="docutils literal notranslate"><span class="pre">reference</span></code> are now optional.</p>
+</div>
 </dd>
 <dt><strong>pseudocount</strong><span class="classifier">float, optional</span></dt><dd><p>A non-zero value added to the input counts to ensure that all of the
 estimated abundances are strictly greater than zero.</p>
@@ -746,11 +757,10 @@ estimated abundances are strictly greater than zero.</p>
 More draws provide higher uncertainty surrounding the estimated
 log-fold changes and <em>p</em>-values.</p>
 </dd>
-<dt><strong>p_adjust</strong><span class="classifier">str or None, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
+<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
 Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-
 Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported
-by statsmodels’
-<a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
+by statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
 Case-insensitive. If None, no correction will be performed.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance for drawing from the
@@ -761,32 +771,37 @@ Dirichlet distribution. See <a class="reference internal" href="skbio.util.get_r
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
 <dt>pd.DataFrame</dt><dd><p>A table of features, their log-fold changes and other relevant statistics.</p>
-<p><code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">statistic</span></code> is the <em>t</em>-statistic outputted from the <em>t</em>-test. <em>t</em>-statistics
-are generated from each posterior draw.  The reported <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">statistic</span></code> is the
-average across all of the posterior draws.</p>
-<p><code class="docutils literal notranslate"><span class="pre">df</span></code> is the degrees of freedom from the <em>t</em>-test.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Log2(FC)</span></code> is the expected log2-fold change. Within each posterior draw
-the log2 fold-change is computed as the difference between the mean
-log-abundance the <code class="docutils literal notranslate"><span class="pre">treatment</span></code> group and the <code class="docutils literal notranslate"><span class="pre">reference</span></code> group. All log2
-fold changes are expressed in clr coordinates. The reported <code class="docutils literal notranslate"><span class="pre">Log2(FC)</span></code>
-is the average of all of the log2-fold changes computed from each of the
-posterior draws.</p>
-<p><code class="docutils literal notranslate"><span class="pre">CI(2.5)</span></code> is the 2.5% quantile of the log2-fold change. The reported
-<code class="docutils literal notranslate"><span class="pre">CI(2.5)</span></code> is the 2.5% quantile of all of the log2-fold changes computed
-from each of the posterior draws.</p>
-<p><code class="docutils literal notranslate"><span class="pre">CI(97.5)</span></code> is the 97.5% quantile of the log2-fold change. The
-reported <code class="docutils literal notranslate"><span class="pre">CI(97.5)</span></code> is the 97.5% quantile of all of the log2-fold
-changes computed from each of the posterior draws.</p>
-<p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code> is the <em>p</em>-value of the <em>t</em>-test. The reported values are the
-average of all of the <em>p</em>-values computed from the <em>t</em>-tests calculated
-across all of the posterior draws.</p>
-<p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code> is the <em>p</em>-value of the <em>t</em>-test after performing multiple
-comparison correction.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Reject</span> <span class="pre">null</span> <span class="pre">hypothesis</span></code> indicates if feature is differentially
-abundant across groups (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>). In order for a
-feature to be differentially abundant, the qvalue needs to be significant
-(i.e. &lt;0.05) and the confidence intervals reported by <code class="docutils literal notranslate"><span class="pre">CI(2.5)</span></code> and
-<code class="docutils literal notranslate"><span class="pre">CI(97.5)</span></code> must not overlap with zero.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T-statistic</span></code>: <em>t</em>-statistic of Welch’s <em>t</em>-test. The reported value is the
+average across all of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Log2(FC)</span></code>: Expected log2-fold change of abundance from the reference group
+to the treatment group. The value is expressed in the center log ratio (see
+<a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a>) transformed coordinates. The reported value is the average of
+all of the log2-fold changes computed from each of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CI(2.5)</span></code>: 2.5% quantile of the log2-fold change. The reported value is the
+minimum of all of the 2.5% quantiles computed from each of the posterior
+draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CI(97.5)</span></code>: 97.5% quantile of the log2-fold change. The reported value is
+the maximum of all of the 97.5% quantiles computed from each of the posterior
+draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of Welch’s <em>t</em>-test. The reported value is the average
+of all of the <em>p</em>-values computed from each of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value of Welch’s <em>t</em>-test for multiple comparisons.
+The reported value is the average of all of the <em>q</em>-values computed from each
+of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Signif</span></code>: Whether feature is significantly differentially abundant between
+the treatment and reference groups. A feature marked as “True” suffice: 1)
+The <em>q</em>-value must be less than or equal to the significance level (0.05). 2)
+The confidence interval (CI(2.5)..CI(97.5)) must not overlap with zero.</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.4: </span><code class="docutils literal notranslate"><span class="pre">df</span></code> (degrees of freedom) was removed from the report, as this metric is
+inconsistent across draws.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.6.4: </span>Renamed “T-statistic” as “T-statistic”.
+Renamed “Reject null hypothesis” as “Signif”.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -794,7 +809,9 @@ feature to be differentially abundant, the qvalue needs to be significant
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind" title="(in SciPy v1.16.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.stats.ttest_ind</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.CompareMeans.html#statsmodels.stats.weightstats.CompareMeans" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.stats.weightstats.CompareMeans</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -835,17 +852,16 @@ selective growth experiments by compositional data analysis. Microbiome, 2,
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                      <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lfc_result</span> <span class="o">=</span> <span class="n">dirmult_ttest</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                           <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lfc_result</span><span class="p">[[</span><span class="s2">&quot;Log2(FC)&quot;</span><span class="p">,</span> <span class="s2">&quot;CI(2.5)&quot;</span><span class="p">,</span> <span class="s2">&quot;CI(97.5)&quot;</span><span class="p">,</span> <span class="s2">&quot;qvalue&quot;</span><span class="p">]]</span>
-<span class="go">    Log2(FC)   CI(2.5)  CI(97.5)    qvalue</span>
-<span class="go">b1 -4.991987 -7.884498 -2.293463  0.020131</span>
-<span class="go">b2 -2.533729 -3.594590 -1.462339  0.007446</span>
-<span class="go">b3  1.627677 -1.048219  4.750792  0.068310</span>
-<span class="go">b4  1.707221 -0.467481  4.164998  0.065613</span>
-<span class="go">b5  1.528243 -1.036910  3.978387  0.068310</span>
-<span class="go">b6  1.182343 -0.702656  3.556061  0.068310</span>
-<span class="go">b7  1.480232 -0.601277  4.043888  0.068310</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">dirmult_ttest</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">    T-statistic  Log2(FC)   CI(2.5)  CI(97.5)    pvalue    qvalue  Signif</span>
+<span class="go">b1   -17.178600 -4.991987 -7.884498 -2.293463  0.003355  0.020131    True</span>
+<span class="go">b2   -16.873187 -2.533729 -3.594590 -1.462339  0.001064  0.007446    True</span>
+<span class="go">b3     6.942727  1.627677 -1.048219  4.750792  0.021130  0.068310   False</span>
+<span class="go">b4     6.522786  1.707221 -0.467481  4.164998  0.013123  0.065613   False</span>
+<span class="go">b5     6.654142  1.528243 -1.036910  3.978387  0.019360  0.068310   False</span>
+<span class="go">b6     3.839520  1.182343 -0.702656  3.556061  0.045376  0.068310   False</span>
+<span class="go">b7     7.600734  1.480232 -0.601277  4.043888  0.017077  0.068310   False</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -872,11 +888,11 @@ selective growth experiments by compositional data analysis. Microbiome, 2,
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.centralize.html"
+       href="skbio.stats.composition.dirmult_lme.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.centralize</p>
+        <p class="prev-next-title">skbio.stats.composition.dirmult_lme</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

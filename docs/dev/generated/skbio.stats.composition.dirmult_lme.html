@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Calculate the sparse representation of an ilr basis from a tree." />
+    <meta name="description" content="Fit a Dirichlet-multinomial linear mixed effects model." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.tree_basis &#8212; scikit-bio 0.6.4-dev documentation</title>
+    <title>skbio.stats.composition.dirmult_lme &#8212; scikit-bio 0.6.4-dev documentation</title>
   
   
   
@@ -56,7 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.tree_basis';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.dirmult_lme';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -64,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.composition.tree_basis.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.composition.dirmult_lme.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.subsample_counts" href="skbio.stats.subsample_counts.html" />
-    <link rel="prev" title="skbio.stats.composition.sbp_basis" href="skbio.stats.composition.sbp_basis.html" />
+    <link rel="next" title="skbio.stats.composition.centralize" href="skbio.stats.composition.centralize.html" />
+    <link rel="prev" title="skbio.stats.composition.dirmult_ttest" href="skbio.stats.composition.dirmult_ttest.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.6.4-dev" />
@@ -614,7 +614,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -631,7 +631,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html">skbio.stats.composition.pairwise_vlr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.sbp_basis.html">skbio.stats.composition.sbp_basis</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.tree_basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.tree_basis.html">skbio.stats.composition.tree_basis</a></li>
 </ul>
 </details></li>
 </ul>
@@ -689,7 +689,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.stats.composition.html" class="nav-link">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.tree_basis</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.dirmult_lme</span></li>
   </ul>
 </nav>
 </div>
@@ -706,47 +706,165 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-composition-tree-basis">
-<h1>skbio.stats.composition.tree_basis<a class="headerlink" href="#skbio-stats-composition-tree-basis" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-composition-dirmult-lme">
+<h1>skbio.stats.composition.dirmult_lme<a class="headerlink" href="#skbio-stats-composition-dirmult-lme" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.composition.tree_basis">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">tree_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1317"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.tree_basis" title="Link to this definition">#</a></dt>
-<dd><p>Calculate the sparse representation of an ilr basis from a tree.</p>
-<p>This computes an orthonormal basis specified from a bifurcating tree.</p>
+<dt class="sig sig-object py" id="skbio.stats.composition.dirmult_lme">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_lme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vc_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_converge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_warnings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L2573"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_lme" title="Link to this definition">#</a></dt>
+<dd><p>Fit a Dirichlet-multinomial linear mixed effects model.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.4.</span></p>
+</div>
+<p>The Dirichlet-multinomial distribution is a compound distribution that
+combines a Dirichlet distribution over the probabilities of a multinomial
+distribution. This distribution is used to model the distribution of
+species abundances in a community.</p>
+<p>To fit the linear mixed effects model we first fit a Dirichlet-multinomial
+distribution for each sample, and then we compute the fold change and
+<em>p</em>-value for each feature. The fold change is computed as the slopes
+from the resulting model. Statistical tests are then performed on the posterior
+samples, drawn from each Dirichlet-multinomial distribution. The
+log-fold changes as well as their credible intervals, the <em>p</em>-values and
+the multiple comparison corrected <em>p</em>-values are reported.</p>
+<p>This function uses the <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.html#statsmodels.regression.mixed_linear_model.MixedLM" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixedLM</span></code></a>
+class from statsmodels.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Input bifurcating tree. Must be strictly bifurcating (i.e. every
-internal node needs to have exactly two children). This is used to
-specify the ilr basis.</p>
+<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>A matrix containing count or proportional abundance data of the samples. See
+<a class="reference internal" href="../reference/table_like.html"><span class="doc">supported formats</span></a>.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier">pd.DataFrame or 2-D array_like</span></dt><dd><p>The metadata for the model. Rows correspond to samples and columns correspond
+to covariates in the model. Must be a pandas DataFrame or convertible to a
+pandas DataFrame.</p>
+</dd>
+<dt><strong>formula</strong><span class="classifier">str or generic Formula object</span></dt><dd><p>The formula defining the model. Refer to <a class="reference external" href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy’s documentation</a> on how to specify
+a formula.</p>
+</dd>
+<dt><strong>grouping</strong><span class="classifier">str, pd.Series or 1-D array_like</span></dt><dd><p>A vector or a metadata column name indicating the assignment of samples to
+groups. Samples are independent between groups during model fitting.</p>
+</dd>
+<dt><strong>pseudocount</strong><span class="classifier">float, optional</span></dt><dd><p>A non-zero value added to the input counts to ensure that all of the
+estimated abundances are strictly greater than zero. Default is 0.5.</p>
+</dd>
+<dt><strong>draws</strong><span class="classifier">int, optional</span></dt><dd><p>Number of draws from the Dirichlet-multinomial posterior distribution.
+Default is 128.</p>
+</dd>
+<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
+Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-
+Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported
+by statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
+Case-insensitive. If None, no correction will be performed.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance for drawing from the
+Dirichlet distribution. See <a class="reference internal" href="skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+</dd>
+<dt><strong>re_formula</strong><span class="classifier">str, optional</span></dt><dd><p>Random coefficient formula. See <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.from_formula.html#statsmodels.regression.mixed_linear_model.MixedLM.from_formula" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code></a> for details.</p>
+</dd>
+<dt><strong>vc_formula</strong><span class="classifier">str, optional</span></dt><dd><p>Variance component formula. See <code class="docutils literal notranslate"><span class="pre">MixedLM.from_formula</span></code> for details.</p>
+</dd>
+<dt><strong>model_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to pass to <code class="docutils literal notranslate"><span class="pre">MixedLM</span></code>.</p>
+</dd>
+<dt><strong>fit_method</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Optimization method for model fitting. Can be a single method name, or a list
+of method names to be tried sequentially. See <a class="reference external" href="https://www.statsmodels.org/stable/optimization.html">statsmodels.optimization</a>
+for available methods. If None, a default list of methods will be tried.</p>
+</dd>
+<dt><strong>fit_converge</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, model fittings that were completed but did not converge will be
+excluded from the calculation of final statistics. Default is False.</p>
+</dd>
+<dt><strong>fit_warnings</strong><span class="classifier">bool, optional</span></dt><dd><p>Issue warnings if any during the model fitting process. Default is False.
+Warnings are usually issued when the optimization methods do not converge,
+which is common in the analysis. Default is False.</p>
+</dd>
+<dt><strong>fit_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to pass to <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.fit.html#statsmodels.regression.mixed_linear_model.MixedLM.fit" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedLM.fit</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>scipy.sparse.coo_matrix</dt><dd><p>The ilr basis required to perform the ilr_inv transform. This is also
-known as the sequential binary partition. Note that this matrix is
-represented in clr coordinates.</p>
-</dd>
-<dt>list of str</dt><dd><p>List of tree node names indicating the ordering in the basis.</p>
+<dt>pd.DataFrame</dt><dd><p>A table of features and covariates, their log-fold changes and other relevant
+statistics.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Covariate</span></code>: Covariate name, i.e., independent variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Reps</span></code>: Number of Dirichlet-multinomial posterior draws that supported the
+reported statistics, i.e., the number of successful model fittings on this
+feature. Max: <code class="docutils literal notranslate"><span class="pre">draws</span></code> (if none failed). Min: 0 (in which case all
+statistics are NaN).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Log2(FC)</span></code>: Expected log2-fold change of abundance from the reference
+category to the covariate category defined in the formula. The value is
+expressed in the center log ratio (see <a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a>) transformed coordinates.
+The reported value is the average of all of the log2-fold changes computed
+from each of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CI(2.5)</span></code>: 2.5% quantile of the log2-fold change. The reported value is the
+minimum of all of the 2.5% quantiles computed from each of the posterior
+draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CI(97.5)</span></code>: 97.5% quantile of the log2-fold change. The reported value is
+the maximum of all of the 97.5% quantiles computed from each of the posterior
+draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of the linear mixed effects model. The reported value
+is the average of all of the <em>p</em>-values computed from each of the posterior
+draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value of the linear mixed effects model for multiple
+comparisons. The reported value is the average of all of the <em>q</em>-values
+computed from each of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Signif</span></code>: Whether the covariate category is significantly differentially
+abundant from the reference category. A feature-covariate pair marked as
+“True” suffice: 1) The <em>q</em>-value must be less than or equal to the
+significance level (0.05). 2) The confidence interval (CI(2.5)..CI(97.5))
+must not overlap with zero.</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If the tree doesn’t contain two branches.</p>
-</dd>
 </dl>
-</dd>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.formula.api.mixedlm.html#statsmodels.formula.api.mixedlm" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.formula.api.mixedlm</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.html#statsmodels.regression.mixed_linear_model.MixedLM" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.regression.mixed_linear_model.MixedLM</span></code></a></dt><dd></dd>
 </dl>
+</div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;((b,c)a, d)root;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">tree</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span><span class="p">,</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">tree_basis</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-<span class="go">array([[-0.40824829, -0.40824829,  0.81649658],</span>
-<span class="go">       [-0.70710678,  0.70710678,  0.        ]])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">dirmult_lme</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[[</span><span class="mf">1.00000053</span><span class="p">,</span> <span class="mf">6.09924644</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999843</span><span class="p">,</span> <span class="mf">7.0000045</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999884</span><span class="p">,</span> <span class="mf">8.08474053</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999758</span><span class="p">,</span> <span class="mf">1.10000349</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999902</span><span class="p">,</span> <span class="mf">2.00000027</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999862</span><span class="p">,</span> <span class="mf">2.99998318</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.00000084</span><span class="p">,</span> <span class="mf">2.10001257</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.9999991</span><span class="p">,</span> <span class="mf">3.09998418</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999899</span><span class="p">,</span> <span class="mf">3.9999742</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.10000124</span><span class="p">,</span> <span class="mf">5.0001796</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.00000053</span><span class="p">,</span> <span class="mf">6.09924644</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.10000173</span><span class="p">,</span> <span class="mf">6.99693644</span><span class="p">]],</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">,</span> <span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;z1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s1">&#39;z2&#39;</span><span class="p">,</span> <span class="s1">&#39;z3&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Y1&#39;</span><span class="p">,</span> <span class="s1">&#39;Y2&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;patient&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="s1">&#39;treatment&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],},</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;z1&#39;</span><span class="p">,</span> <span class="s1">&#39;z2&#39;</span><span class="p">,</span> <span class="s1">&#39;z3&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">dirmult_lme</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s1">&#39;time + treatment&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">grouping</span><span class="o">=</span><span class="s1">&#39;patient&#39;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p_adjust</span><span class="o">=</span><span class="s1">&#39;sidak&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">  FeatureID  Covariate  Reps  Log2(FC)   CI(2.5)  CI(97.5)    pvalue  \</span>
+<span class="go">0        Y1       time   128 -0.210769 -1.532255  1.122148  0.403737</span>
+<span class="go">1        Y1  treatment   128 -0.744061 -3.401978  1.581917  0.252057</span>
+<span class="go">2        Y2       time   128  0.210769 -1.122148  1.532255  0.403737</span>
+<span class="go">3        Y2  treatment   128  0.744061 -1.581917  3.401978  0.252057</span>
+
+<span class="go">     qvalue  Signif</span>
+<span class="go">0  0.644470   False</span>
+<span class="go">1  0.440581   False</span>
+<span class="go">2  0.644470   False</span>
+<span class="go">3  0.440581   False</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -764,20 +882,20 @@ represented in clr coordinates.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.sbp_basis.html"
+       href="skbio.stats.composition.dirmult_ttest.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.sbp_basis</p>
+        <p class="prev-next-title">skbio.stats.composition.dirmult_ttest</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.subsample_counts.html"
+       href="skbio.stats.composition.centralize.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.subsample_counts</p>
+        <p class="prev-next-title">skbio.stats.composition.centralize</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -800,7 +918,7 @@ represented in clr coordinates.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.tree_basis"><code class="docutils literal notranslate"><span class="pre">tree_basis</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.dirmult_lme"><code class="docutils literal notranslate"><span class="pre">dirmult_lme</span></code></a></li>
 </ul>
   </nav></div>
 

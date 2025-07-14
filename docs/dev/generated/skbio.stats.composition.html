@@ -614,6 +614,7 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -734,10 +735,13 @@ compositions.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a>(table, grouping[, alpha, tau, theta, ...])</p></td>
-<td><p>Perform a differential abundance test using ANCOM.</p></td>
+<td><p>Perform differential abundance test using ANCOM.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a>(table, grouping, treatment, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a>(table, grouping[, treatment, ...])</p></td>
 <td><p><em>T</em>-test using Dirichlet-multinomial distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html#skbio.stats.composition.dirmult_lme" title="skbio.stats.composition.dirmult_lme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_lme</span></code></a>(table, metadata, formula, grouping)</p></td>
+<td><p>Fit a Dirichlet-multinomial linear mixed effects model.</p></td>
 </tr>
 </tbody>
 </table>
@@ -751,19 +755,19 @@ compositions.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.centralize.html#skbio.stats.composition.centralize" title="skbio.stats.composition.centralize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centralize</span></code></a>(mat)</p></td>
 <td><p>Center data around its geometric average.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closure</span></code></a>(mat)</p></td>
-<td><p>Perform closure to ensure that all elements add up to 1.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.closure.html#skbio.stats.composition.closure" title="skbio.stats.composition.closure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">closure</span></code></a>(mat[, axis, validate])</p></td>
+<td><p>Perform closure to ensure that all components of each composition sum to 1.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.inner.html#skbio.stats.composition.inner" title="skbio.stats.composition.inner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner</span></code></a>(x, y)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.inner.html#skbio.stats.composition.inner" title="skbio.stats.composition.inner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner</span></code></a>(x, y[, validate])</p></td>
 <td><p>Calculate the Aitchson inner product.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.perturb.html#skbio.stats.composition.perturb" title="skbio.stats.composition.perturb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb</span></code></a>(x, y)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.perturb.html#skbio.stats.composition.perturb" title="skbio.stats.composition.perturb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb</span></code></a>(x, y[, validate])</p></td>
 <td><p>Perform the perturbation operation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.perturb_inv.html#skbio.stats.composition.perturb_inv" title="skbio.stats.composition.perturb_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb_inv</span></code></a>(x, y)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.perturb_inv.html#skbio.stats.composition.perturb_inv" title="skbio.stats.composition.perturb_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perturb_inv</span></code></a>(x, y[, validate])</p></td>
 <td><p>Perform the inverse perturbation operation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.power.html#skbio.stats.composition.power" title="skbio.stats.composition.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power</span></code></a>(x, a)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.power.html#skbio.stats.composition.power" title="skbio.stats.composition.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">power</span></code></a>(x, a[, validate])</p></td>
 <td><p>Perform the power operation.</p></td>
 </tr>
 </tbody>
@@ -777,22 +781,22 @@ and statistical analysis.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.alr.html#skbio.stats.composition.alr" title="skbio.stats.composition.alr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr</span></code></a>(mat[, denominator_idx, axis, validate])</p></td>
-<td><p>Perform additive log ratio transformation.</p></td>
+<td><p>Perform additive log ratio (ALR) transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.alr_inv.html#skbio.stats.composition.alr_inv" title="skbio.stats.composition.alr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr_inv</span></code></a>(mat[, denominator_idx])</p></td>
-<td><p>Perform inverse additive log ratio transform.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.alr_inv.html#skbio.stats.composition.alr_inv" title="skbio.stats.composition.alr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr_inv</span></code></a>(mat[, denominator_idx, axis])</p></td>
+<td><p>Perform inverse additive log ratio (ALR) transform.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a>(mat[, validate])</p></td>
-<td><p>Perform centre log ratio transformation.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a>(mat[, axis, validate])</p></td>
+<td><p>Perform centre log ratio (CLR) transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.clr_inv.html#skbio.stats.composition.clr_inv" title="skbio.stats.composition.clr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr_inv</span></code></a>(mat[, validate])</p></td>
-<td><p>Perform inverse centre log ratio transformation.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.clr_inv.html#skbio.stats.composition.clr_inv" title="skbio.stats.composition.clr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr_inv</span></code></a>(mat[, axis, validate])</p></td>
+<td><p>Perform inverse centre log ratio (CLR) transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ilr.html#skbio.stats.composition.ilr" title="skbio.stats.composition.ilr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr</span></code></a>(mat[, basis, validate])</p></td>
-<td><p>Perform isometric log ratio transformation.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ilr.html#skbio.stats.composition.ilr" title="skbio.stats.composition.ilr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr</span></code></a>(mat[, basis, axis, validate])</p></td>
+<td><p>Perform isometric log ratio (ILR) transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ilr_inv.html#skbio.stats.composition.ilr_inv" title="skbio.stats.composition.ilr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr_inv</span></code></a>(mat[, basis, validate])</p></td>
-<td><p>Perform inverse isometric log ratio transform.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ilr_inv.html#skbio.stats.composition.ilr_inv" title="skbio.stats.composition.ilr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ilr_inv</span></code></a>(mat[, basis, axis, validate])</p></td>
+<td><p>Perform inverse isometric log ratio (ILR) transformation.</p></td>
 </tr>
 </tbody>
 </table>
