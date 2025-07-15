@@ -453,15 +453,13 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity</span><span class="w"> </span><span class="kn">import</span> <span class="n">beta_diversity</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">pcoa</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data.tsv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data.tsv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;metadata.tsv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;tree.nwk&#39;</span><span class="p">)</span>
 
-<span class="n">bdiv</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span>
-    <span class="s1">&#39;weighted_unifrac&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">otu_ids</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span>
-<span class="p">)</span>
+<span class="n">bdiv</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s1">&#39;weighted_unifrac&#39;</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">)</span>
 
-<span class="n">ordi</span> <span class="o">=</span> <span class="n">pcoa</span><span class="p">(</span><span class="n">bdiv</span><span class="p">,</span> <span class="n">number_of_dimensions</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ordi</span> <span class="o">=</span> <span class="n">pcoa</span><span class="p">(</span><span class="n">bdiv</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ordi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;bodysite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
