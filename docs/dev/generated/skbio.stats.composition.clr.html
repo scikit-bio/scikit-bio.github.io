@@ -711,7 +711,7 @@
 <h1>skbio.stats.composition.clr<a class="headerlink" href="#skbio-stats-composition-clr" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.clr">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">clr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L517"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.clr" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">clr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L539"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.clr" title="Link to this definition">#</a></dt>
 <dd><p>Perform centre log ratio (CLR) transformation.</p>
 <p>This function transforms compositions from Aitchison geometry to the real
 space. The <span class="math notranslate nohighlight">\(clr\)</span> transform is both an isometry and an isomorphism
@@ -725,15 +725,24 @@ defined on the following spaces:</p>
 \[clr(x) = \ln\left[\frac{x_1}{g_m(x)}, \ldots, \frac{x_D}{g_m(x)}\right]\]</div>
 <p>where <span class="math notranslate nohighlight">\(g_m(x) = (\prod\limits_{i=1}^{D} x_i)^{1/D}\)</span> is the geometric
 mean of <span class="math notranslate nohighlight">\(x\)</span>.</p>
-<dl class="field-list simple">
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>The function now works on any dimension in arrays of any number of dimensions.</p>
+</div>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>mat</strong><span class="classifier">array_like of shape (…, n_components, …)</span></dt><dd><p>A matrix of positive proportions.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which CLR transformation will be performed. Each vector on this axis
 is considered as a composition. Default is the last axis (-1).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.0.</span></p>
+</div>
 </dd>
 <dt><strong>validate</strong><span class="classifier">bool, default True</span></dt><dd><p>Check if the matrix consists of strictly positive values.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.0.</span></p>
+</div>
 </dd>
 </dl>
 </dd>

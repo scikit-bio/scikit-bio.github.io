@@ -711,7 +711,7 @@
 <h1>skbio.stats.composition.ancom<a class="headerlink" href="#skbio-stats-composition-ancom" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.ancom">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'f_oneway'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1709"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancom" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'f_oneway'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1771"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancom" title="Link to this definition">#</a></dt>
 <dd><p>Perform differential abundance test using ANCOM.</p>
 <p>Analysis of composition of microbiomes (ANCOM) is done by calculating
 pairwise log ratios between all features and performing a significance
@@ -724,6 +724,9 @@ hypothesis for feature <span class="math notranslate nohighlight">\(i\)</span>:<
 <p>where <span class="math notranslate nohighlight">\(u_i^{(1)}\)</span> is the mean abundance for feature <span class="math notranslate nohighlight">\(i\)</span> in the
 first group and <span class="math notranslate nohighlight">\(u_i^{(2)}\)</span> is the mean abundance for feature
 <span class="math notranslate nohighlight">\(i\)</span> in the second group.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Computational efficiency significantly improved.</p>
+</div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -767,7 +770,7 @@ accept at least two vectors of floats and returns a test statistic and
 a <em>p</em>-value. Functions under <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> can be directly specified
 by name. The default is one-way ANOVA (“f_oneway”).</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.4: </span>Test funcion must accept 2-D arrays as input, perform batch testing, and
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Test funcion must accept 2-D arrays as input, perform batch testing, and
 return 1-D arrays. SciPy functions have this capability. Custom functions
 may need modification.</p>
 </div>
@@ -795,7 +798,7 @@ feature is tested to be significantly different against.</p></li>
 abundant across groups (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p></li>
 </ul>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.4: </span>Renamed “Reject null hypothesis” into “Signif”.</p>
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed <code class="docutils literal notranslate"><span class="pre">Reject</span> <span class="pre">null</span> <span class="pre">hypothesis</span></code> as <code class="docutils literal notranslate"><span class="pre">Signif</span></code>.</p>
 </div>
 </dd>
 <dt>pd.DataFrame</dt><dd><p>A table of features and their percentile abundances in each group. If

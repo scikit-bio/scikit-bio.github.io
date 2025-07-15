@@ -711,10 +711,10 @@
 <h1>skbio.stats.composition.alr_inv<a class="headerlink" href="#skbio-stats-composition-alr-inv" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.alr_inv">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">alr_inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L967"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.alr_inv" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">alr_inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L1025"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.alr_inv" title="Link to this definition">#</a></dt>
 <dd><p>Perform inverse additive log ratio (ALR) transform.</p>
 <p>This function transforms compositions from the non-isometric real space of
-alrs to Aitchison geometry.</p>
+ALRs to Aitchison geometry.</p>
 <div class="math notranslate nohighlight">
 \[alr^{-1}: \mathbb{R}^{D-1} \rightarrow S^D\]</div>
 <p>The inverse ALR transformation is defined as follows:</p>
@@ -726,17 +726,26 @@ alrs to Aitchison geometry.</p>
              \frac{x_D}{\sum_{i=1}^{D} x_i} \right]\]</div>
 <p>for some <span class="math notranslate nohighlight">\(D\)</span> dimensional real vector <span class="math notranslate nohighlight">\(x\)</span> and
 <span class="math notranslate nohighlight">\(D\)</span> is the number of components for every composition.</p>
-<dl class="field-list simple">
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>The function now works on any dimension in arrays of any number of dimensions.</p>
+</div>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>mat</strong><span class="classifier">array_like of shape (…, n_components - 1, …)</span></dt><dd><p>A matrix of ALR-transformed data.</p>
 </dd>
-<dt><strong>denominator_idx</strong><span class="classifier">int, optional</span></dt><dd><p>Index on the target axis where the denominator (reference composition) will be
+<dt><strong>ref_idx</strong><span class="classifier">int, optional</span></dt><dd><p>Index on the target axis where the reference composition (denominator) will be
 inserted. Default is 0 (the first position).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">denominator_idx</span></code>. The old name is kept as an alias.</p>
+</div>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which inverse ALR transformation will be performed. Each vector on
 this axis is considered as a CLR-transformed composition. Default is the last
 axis (-1).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.0.</span></p>
+</div>
 </dd>
 </dl>
 </dd>

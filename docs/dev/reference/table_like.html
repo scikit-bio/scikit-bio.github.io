@@ -6,8 +6,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="List of identifiers for samples (rows). If not provided implicitly by the input
-data structure or explicitly by the user, defaults to integers starting at..." />
+    <meta name="description" content="Identifiers for samples (rows). If not provided implicitly by the input table or
+explicitly by the user, defaults to &lt;code class=&quot;docutils literal..." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Tabular data formats supported by scikit-bio" name="description" />
 
@@ -680,106 +680,158 @@ data structure or explicitly by the user, defaults to integers starting at..." /
                   
   <section id="table-like-formats">
 <h1>Table-like formats<a class="headerlink" href="#table-like-formats" title="Link to this heading">#</a></h1>
-<p>This module provides a flexible configuration system which allows scikit-bio
-functions to accept multiple types of input data structures and return results in the
-users preferred format.</p>
-<p>The dispatch system follows a design similar to scikit-learn’s <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API,
-allowing users to work with different data formats without changing existing workflows.</p>
-<section id="the-tablelike-type">
-<h2>The TableLike Type<a class="headerlink" href="#the-tablelike-type" title="Link to this heading">#</a></h2>
-<p>The <code class="xref py py-data docutils literal notranslate"><span class="pre">TableLike</span></code> type is the union of the following types of objects:</p>
-<ul class="simple">
-<li><p>Numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> (2D)</p></li>
-<li><p>pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></li>
-<li><p>Polars <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
-<li><p>scikit-bio <a class="reference internal" href="../generated/skbio.table.Table.html#skbio.table.Table" title="skbio.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p></li>
-<li><p><a class="reference external" href="https://anndata.readthedocs.io/en/stable/generated/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.11.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object</p></li>
-</ul>
-<p>For all functions which accept a <code class="docutils literal notranslate"><span class="pre">TableLike</span></code> type as input, any objects from this
-list are acceptable input. Input handling of supported types is handled automatically.
-No need to set a configuration variable to use whichever input type you like. When
-possible, row and column identifiers will be preserved and carried through operations
-to the results. When IDs are not available from the input data and not provided
-explicitly, integer indices starting from 0 will be used.</p>
+<p>Tabular data are among the most common data structures in bioinformatics (and many
+other fields). scikit-bio provides a flexible system that accepts multiple input data
+formats and returns results in the user’s preferred format.</p>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+<p>In scikit-bio, a table is an <strong>ID-labeled data matrix</strong>.</p>
+<p>Data are stored in a two-dimensional structure with <strong>rows = samples</strong> and
+<strong>columns = features</strong>. Cell values represent counts, abundances, or other numeric
+measurements of a given feature within a given sample. The entire table must be in
+a homogeneous data type.</p>
+<p>Internally, a table is decomposed into a 2-D data matrix, and lists of sample IDs and
+feature IDs (<a class="reference internal" href="#terminology"><span class="std std-ref">explained below</span></a>).</p>
+<p>IDs are optional. When they are absent, scikit-bio uses integer indices to refer to
+samples and features. When IDs are present, however, scikit-bio uses them to bridge
+structured biological knowledge with numeric data, enabling convenient ID-based in
+addition to index-based operations (e.g., <a class="reference internal" href="../generated/skbio.diversity.alpha_diversity.html#skbio.diversity.alpha_diversity" title="skbio.diversity.alpha_diversity"><code class="xref py py-func docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a> and
+<a class="reference internal" href="../generated/skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a>).</p>
 </section>
-<section id="sample-and-feature-identifiers">
-<h2>Sample and Feature Identifiers<a class="headerlink" href="#sample-and-feature-identifiers" title="Link to this heading">#</a></h2>
-<p>In scikit-bio, data is commonly organized in a two-dimensional structure:</p>
-<ul class="simple">
-<li><p><strong>sample_ids</strong>: Identifiers for rows, typically representing biological samples,
-observations, or experimental units (e.g., patients, sites, time points).</p></li>
-<li><p><strong>feature_ids</strong>: Identifiers for columns, typically representing measured variables
-or characteristics (e.g., taxa, genes, OTUs, metabolites, environmental parameters).</p></li>
-</ul>
-<p>Different data formats use different terminology for these concepts:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>: “index” (rows) and “columns”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">anndata</span></code>: “obs” (samples) and “var” (features)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scikit-bio</span> <span class="pre">Table</span></code>: “sample” (samples) and “observation”
-(features)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">polars</span></code>: rows (by position) and “schema” (features)</p></li>
-</ul>
+<section id="supported-table-like-formats">
+<h2>Supported table-like formats<a class="headerlink" href="#supported-table-like-formats" title="Link to this heading">#</a></h2>
+<p>Scikit-bio supports a variety of table-like formats used in bioinformatics, scientific
+computing and data science in general. When a function parameter is annotated as
+<code class="docutils literal notranslate"><span class="pre">table_like</span></code>, it accepts any of the following formats:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Sample IDs</p></th>
+<th class="head"><p>Feature IDs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>skbio <a class="reference internal" href="../generated/skbio.table.Table.html#skbio.table.Table" title="skbio.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a>(i.e., BIOM table)</p></td>
+<td><p>“sample”</p></td>
+<td><p>“observation”</p></td>
+</tr>
+<tr class="row-odd"><td><p>anndata <a class="reference external" href="https://anndata.readthedocs.io/en/stable/generated/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.11.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></p></td>
+<td><p>“obs” (observation)</p></td>
+<td><p>“var” (variable)</p></td>
+</tr>
+<tr class="row-even"><td><p>pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></td>
+<td><p>“index” (rows)</p></td>
+<td><p>“columns”</p></td>
+</tr>
+<tr class="row-odd"><td><p>Polars <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p></td>
+<td><p>N/A (rows)</p></td>
+<td><p>“schema”</p></td>
+</tr>
+<tr class="row-even"><td><p>array-like objects (<a class="reference internal" href="#array-like"><span class="std std-ref">detailed below</span></a>)</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Input handling of supported types is automatic. No manual conversion is required. If
+provided, sample and feature IDs will be preserved and propagated to downstream
+results. Otherwise, integer indices starting at 0 will be used.</p>
 </section>
-<section id="common-tablelike-parameters">
-<h2>Common TableLike Parameters<a class="headerlink" href="#common-tablelike-parameters" title="Link to this heading">#</a></h2>
-<p>Many functions that accept <code class="docutils literal notranslate"><span class="pre">TableLike</span></code> inputs share a set of common parameters that
-control how identifiers are handled and specify output format preferences:</p>
+<section id="supported-array-like-formats">
+<span id="array-like"></span><h2>Supported array-like formats<a class="headerlink" href="#supported-array-like-formats" title="Link to this heading">#</a></h2>
+<p>Scikit-bio supports a wide range of array libraries in the Python ecosystem. A
+parameter annotated as <code class="docutils literal notranslate"><span class="pre">array_like</span></code> accepts any of the following formats:</p>
+<ul class="simple">
+<li><p>Numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, the “native” format which most of scikit-bio’s
+functions are optimized for (e.g., utilizing vectorization if possible).</p></li>
+<li><p>Any array object compliant with the <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a>. Examples are PyTorch <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>,
+CuPy <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, JAX <code class="docutils literal notranslate"><span class="pre">Array</span></code>, Dask <code class="docutils literal notranslate"><span class="pre">Array</span></code>, and sparse <code class="docutils literal notranslate"><span class="pre">SparseArray</span></code>.</p></li>
+<li><p>Any object convertible to a ≥1-dimensional NumPy array via <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="(in NumPy v2.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asarray</span></code></a>.
+Examples are plain Python lists and tuples.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A proportion of scikit-bio functions offer <em>native</em> support for alternative array
+libraries. For instance, log-ratio transformations like
+<a class="reference internal" href="../generated/skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a> can consume and return GPU-resident
+tensors with arbitrary dimensions, eliminating the overhead of round-tripping
+through NumPy and significantly accelerating computation.</p>
+</div>
+</section>
+<section id="samples-and-features">
+<span id="terminology"></span><h2>Samples and features<a class="headerlink" href="#samples-and-features" title="Link to this heading">#</a></h2>
+<p>Typically, the two table dimensions represent:</p>
+<ul class="simple">
+<li><p><strong>Sample IDs</strong> (row labels): biological samples, or any other experimental units
+(specimens, subjects, sites, time points, cells, etc.).</p></li>
+<li><p><strong>Feature IDs</strong> (column labels): variables or characteristics measured in each
+sample (taxa, genes, molecules, environmental factors, etc.).</p></li>
+</ul>
+<p>Terminology varies across disciplines and can sometimes be confusing. Scikit-bio
+standardizes on “sample” and “feature” – the most common terms in data science.
+But you may encounter aliases:</p>
+<ul class="simple">
+<li><p>In the BIOM format (wrapped by <a class="reference internal" href="../table.html#module-skbio.table" title="skbio.table"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table</span></code></a>), features are called
+“observations” and samples stay “samples”. (Beware: in anndata, “observations”
+instead refer to samples.)</p></li>
+<li><p>Some other scikit-bio sub-modules adopt field-specific terms, documented on their
+index pages, such as:</p>
+<ul>
+<li><p><a class="reference internal" href="../diversity.html#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a>: sample → “community”, feature → “taxon”</p></li>
+<li><p><a class="reference internal" href="../generated/skbio.stats.composition.html#module-skbio.stats.composition" title="skbio.stats.composition"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code></a>: sample → “composition”, feature → “component”</p></li>
+</ul>
+</li>
+</ul>
+<p>Depending on the research task, you are free to transpose a table to swap samples and
+features.</p>
+</section>
+<section id="common-parameters">
+<h2>Common parameters<a class="headerlink" href="#common-parameters" title="Link to this heading">#</a></h2>
+<p>Many functions involving tabular data share a set of common parameters that control how
+IDs are handled and specify output format preferences:</p>
 <dl>
-<dt>sample_ids<span class="classifier">list of str, optional</span></dt><dd><p>List of identifiers for samples (rows). If not provided implicitly by the input
-data structure or explicitly by the user, defaults to integers starting at zero.
-This parameter is useful when the input format doesn’t support row labels
-(e.g., NumPy arrays) or when you want to override existing labels.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">sample_ids</span></code><span class="classifier"><em>list of str, optional</em></span></dt><dd><p>Identifiers for samples (rows). If not provided implicitly by the input table or
+explicitly by the user, defaults to <code class="docutils literal notranslate"><span class="pre">range(n_samples)</span></code>. This parameter is useful
+when the input format doesn’t support row labels (e.g., NumPy arrays) or when you
+want to override existing labels.</p>
 </dd>
-<dt>feature_ids<span class="classifier">list of str, optional</span></dt><dd><p>List of identifiers for features (columns). If not provided implicitly by the
-input data structure or explicitly by the user, defaults to integers starting
-at zero. This parameter is useful when the input format doesn’t support column
-labels (e.g., NumPy arrays) or when you want to override existing labels.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">feature_ids</span></code><span class="classifier"><em>list of str, optional</em></span></dt><dd><p>Identifiers for features (columns). Analogous to <code class="docutils literal notranslate"><span class="pre">sample_ids</span></code>.  Default:
+<code class="docutils literal notranslate"><span class="pre">range(n_features)</span></code>.</p>
 </dd>
-<dt>output_format<span class="classifier">str, optional</span></dt><dd><p>Specifies the desired format for the output. Valid options are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>: Return pandas DataFrames/Series (default)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;numpy&quot;</span></code>: Return NumPy ndarrays</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;polars&quot;</span></code>: Return Polars DataFrames/Series</p></li>
-</ul>
-<p>Note that this parameter overrides the global configuration setting for
-the specific function call.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">output_format</span></code><span class="classifier"><em>{“pandas”, “numpy”, “polars”}</em>, optional</span></dt><dd><p>Preferred output format <strong>for this call only</strong> (default: <code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>).  This
+setting overrides the global configuration (see below).</p>
 </dd>
 </dl>
 </section>
-<section id="supported-output-formats">
-<h2>Supported Output Formats<a class="headerlink" href="#supported-output-formats" title="Link to this heading">#</a></h2>
-<p>Currently, scikit-bio functions support outputing the following types of data. Note
-that this list is not equivalent to the input types supported through the <code class="docutils literal notranslate"><span class="pre">TableLike</span></code>
-type.</p>
+<section id="output-formats">
+<h2>Output formats<a class="headerlink" href="#output-formats" title="Link to this heading">#</a></h2>
+<p>Some functions that <em>produce</em> tables can return the result in one of three formats:</p>
 <ul class="simple">
-<li><p>Numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> (2D and 1D)</p></li>
+<li><p>NumPy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> (2-D and 1-D)</p></li>
 <li><p>pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a> (default)</p></li>
 <li><p>Polars <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></p></li>
 </ul>
-</section>
-<section id="configuring-output-format">
-<h2>Configuring Output Format<a class="headerlink" href="#configuring-output-format" title="Link to this heading">#</a></h2>
 <p>There are two ways to control the output format.</p>
-<p>The first option is to use the <code class="xref py py-func docutils literal notranslate"><span class="pre">set_config</span></code> function. This function will change
-the global behavior of scikit-bio functions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set_config is available as a top level import from skbio</span>
+<p>The first option is to set the desired output format on a per-function basis, using
+the <code class="docutils literal notranslate"><span class="pre">output_format</span></code> parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">cca</span>
+
+<span class="c1"># This specific call will return an `OrdinationResults` object whose attributes are</span>
+<span class="c1"># NumPy arrays.</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second option is to use the <a class="reference internal" href="../generated/skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a> function. It will change the
+global behavior of scikit-bio functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># `set_config` is available as a top level import from skbio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
 
-<span class="c1"># Set output format to NumPy arrays</span>
+<span class="c1"># Set output format to NumPy arrays, or</span>
 <span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
 
 <span class="c1"># Return to default pandas output</span>
 <span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The second option is to set the desired output format on a per-function basis, using
-the <code class="docutils literal notranslate"><span class="pre">output_format</span></code> parameter.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">cca</span>
-
-<span class="c1"># This specific call will return an</span>
-<span class="c1"># :class:`~skbio.stats.ordination.OrdinationResults` object whose attributes are</span>
-<span class="c1"># numpy arrays</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -832,11 +884,12 @@ the <code class="docutils literal notranslate"><span class="pre">output_format</
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tablelike-type">The TableLike Type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-and-feature-identifiers">Sample and Feature Identifiers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-tablelike-parameters">Common TableLike Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-output-formats">Supported Output Formats</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-output-format">Configuring Output Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-table-like-formats">Supported table-like formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-array-like-formats">Supported array-like formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-and-features">Samples and features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-parameters">Common parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-formats">Output formats</a></li>
 </ul>
   </nav></div>
 

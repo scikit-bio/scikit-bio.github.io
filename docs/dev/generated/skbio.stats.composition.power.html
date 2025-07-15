@@ -711,7 +711,7 @@
 <h1>skbio.stats.composition.power<a class="headerlink" href="#skbio-stats-composition-power" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.power">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L430"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.power" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L448"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.power" title="Link to this definition">#</a></dt>
 <dd><p>Perform the power operation.</p>
 <p>This operation is defined as follows:</p>
 <div class="math notranslate nohighlight">
@@ -722,14 +722,17 @@
              \frac{x_D}{\sum_{i=1}^{D} x_i} \right]\]</div>
 <p>for some <span class="math notranslate nohighlight">\(D\)</span> dimensional real vector <span class="math notranslate nohighlight">\(x\)</span> and
 <span class="math notranslate nohighlight">\(D\)</span> is the number of components for every composition.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>x</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
 </dd>
 <dt><strong>a</strong><span class="classifier">float</span></dt><dd><p>A scalar exponent.</p>
 </dd>
 <dt><strong>validate</strong><span class="classifier">bool, default True</span></dt><dd><p>Check if the compositions are legitimate.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.0.</span></p>
+</div>
 </dd>
 </dl>
 </dd>

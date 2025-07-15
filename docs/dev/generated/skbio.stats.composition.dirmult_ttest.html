@@ -710,7 +710,7 @@
 <h1>skbio.stats.composition.dirmult_ttest<a class="headerlink" href="#skbio-stats-composition-dirmult-ttest" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.dirmult_ttest">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L2281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L2346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
 <dd><p><em>T</em>-test using Dirichlet-multinomial distribution.</p>
 <p>The Dirichlet-multinomial distribution is a compound distribution that
 combines a Dirichlet distribution over the probabilities of a multinomial
@@ -727,6 +727,9 @@ the multiple comparison corrected <em>p</em>-values are reported.</p>
 <p>Additionally, this function excludes hits with a 95% confidence interval of
 fold-change crossing zero during any draw. This step further reduces false
 positive hits, especially among low-abundance features.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Computational efficiency significantly improved.</p>
+</div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -747,7 +750,7 @@ treatment group.</p>
 <dt><strong>reference</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the reference group. See above. If omitted, all groups other than the
 treatment group will be combined as the reference group.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.4: </span><code class="docutils literal notranslate"><span class="pre">treatment</span></code> and <code class="docutils literal notranslate"><span class="pre">reference</span></code> are now optional.</p>
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span><code class="docutils literal notranslate"><span class="pre">treatment</span></code> and <code class="docutils literal notranslate"><span class="pre">reference</span></code> are now optional.</p>
 </div>
 </dd>
 <dt><strong>pseudocount</strong><span class="classifier">float, optional</span></dt><dd><p>A non-zero value added to the input counts to ensure that all of the
@@ -795,12 +798,12 @@ The <em>q</em>-value must be less than or equal to the significance level (0.05)
 The confidence interval (CI(2.5)..CI(97.5)) must not overlap with zero.</p></li>
 </ul>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.4: </span><code class="docutils literal notranslate"><span class="pre">df</span></code> (degrees of freedom) was removed from the report, as this metric is
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span><code class="docutils literal notranslate"><span class="pre">df</span></code> (degrees of freedom) was removed from the report, as this metric is
 inconsistent across draws.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.4: </span>Renamed “T-statistic” as “T-statistic”.
-Renamed “Reject null hypothesis” as “Signif”.</p>
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">statistic</span></code> as <code class="docutils literal notranslate"><span class="pre">T-statistic</span></code>.
+Renamed <code class="docutils literal notranslate"><span class="pre">Reject</span> <span class="pre">null</span> <span class="pre">hypothesis</span></code> as <code class="docutils literal notranslate"><span class="pre">Signif</span></code>.</p>
 </div>
 </dd>
 </dl>
