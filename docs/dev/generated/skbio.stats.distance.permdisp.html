@@ -713,7 +713,7 @@
 <h1>skbio.stats.distance.permdisp<a class="headerlink" href="#skbio-stats-distance-permdisp" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.permdisp">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_neg_eigval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permdisp.py#L29"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_neg_eigval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permdisp.py#L29"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
 <dd><p>Test for Homogeneity of Multivariate Groups Disperisons.</p>
 <p>PERMDISP is a multivariate analogue of Levene’s test for homogeneity of
 multivariate variances. Distances are handled by reducing the
@@ -722,18 +722,21 @@ F-statistic to assess whether the dispersions between groups is significant</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>distance_matrix</strong><span class="classifier">DistanceMatrix or OrdinationResults</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
+<dt><strong>distmat</strong><span class="classifier">DistanceMatrix or OrdinationResults</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
 between samples of microbial communities) or
 result of pcoa on such a matrix.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">distance_matrix</span></code>. The old name is kept as an alias.</p>
+</div>
 </dd>
 <dt><strong>grouping</strong><span class="classifier">1-D array_like or pandas.DataFrame</span></dt><dd><p>Vector indicating the assignment of objects to groups. For example,
 these could be strings or integers denoting which group an object
 belongs to. If <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>, it must be the same
-length and in the same order as the objects in <cite>distance_matrix</cite>. If
+length and in the same order as the objects in <cite>distmat</cite>. If
 <cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, the column specified by <cite>column</cite> will be
 used as the grouping vector. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> must be indexed by the
-IDs in <cite>distance_matrix</cite> (i.e., the row labels must be distance matrix
-IDs), but the order of IDs between <cite>distance_matrix</cite> and the
+IDs in <cite>distmat</cite> (i.e., the row labels must be distance matrix
+IDs), but the order of IDs between <cite>distmat</cite> and the
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> need not be the same. All IDs in the distance matrix must
 be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Extra IDs in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> are
 allowed (they are ignored in the calculations).</p>
@@ -753,7 +756,7 @@ will be <code class="docutils literal notranslate"><span class="pre">np.nan</spa
 <dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>Matrix decomposition method to use. Options are “eigh” (eigendecomposition,
 default) and “fsvd” (fast singular value decomposition). See
 <code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.stats.ordination.pcoa</span></code> for details. Not used if
-distance_matrix is a OrdinationResults object.</p>
+distmat is a OrdinationResults object.</p>
 </dd>
 <dt><strong>dimensions</strong><span class="classifier">int, optional</span></dt><dd><p>Dimensions to reduce the distance matrix to if using the <cite>fsvd</cite> method.
 Not used if the <cite>eigh</cite> method is being selected.</p>
@@ -799,11 +802,11 @@ or if method is not eigh or fsvd</p>
 <dt>ValueError</dt><dd><p>If a list and a column name are both provided</p>
 </dd>
 <dt>ValueError</dt><dd><p>If a list is provided for <cite>grouping</cite> and it’s length does not match
-the number of ids in distance_matrix</p>
+the number of ids in distmat</p>
 </dd>
 <dt>ValueError</dt><dd><p>If all of the values in the grouping vector are unique</p>
 </dd>
-<dt>KeyError</dt><dd><p>If there are ids in grouping that are not in distance_matrix</p>
+<dt>KeyError</dt><dd><p>If there are ids in grouping that are not in distmat</p>
 </dd>
 </dl>
 </dd>

@@ -713,7 +713,7 @@
 <h1>skbio.stats.distance.anosim<a class="headerlink" href="#skbio-stats-distance-anosim" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.anosim">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">anosim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_anosim.py#L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.anosim" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">anosim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_anosim.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.anosim" title="Link to this definition">#</a></dt>
 <dd><p>Test for significant differences between groups using ANOSIM.</p>
 <p>Analysis of Similarities (ANOSIM) is a non-parametric method that tests
 whether two or more groups of objects (e.g., samples) are significantly
@@ -729,17 +729,20 @@ are equal to or greater than the original (unpermuted) R statistic.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>distance_matrix</strong><span class="classifier">DistanceMatrix</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
+<dt><strong>distmat</strong><span class="classifier">DistanceMatrix</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
 between samples of microbial communities).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">distance_matrix</span></code>. The old name is kept as an alias.</p>
+</div>
 </dd>
 <dt><strong>grouping</strong><span class="classifier">1-D array_like or pandas.DataFrame</span></dt><dd><p>Vector indicating the assignment of objects to groups. For example,
 these could be strings or integers denoting which group an object
 belongs to. If <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>, it must be the same
-length and in the same order as the objects in <cite>distance_matrix</cite>. If
+length and in the same order as the objects in <cite>distmat</cite>. If
 <cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, the column specified by <cite>column</cite> will be
 used as the grouping vector. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> must be indexed by the
-IDs in <cite>distance_matrix</cite> (i.e., the row labels must be distance matrix
-IDs), but the order of IDs between <cite>distance_matrix</cite> and the
+IDs in <cite>distmat</cite> (i.e., the row labels must be distance matrix
+IDs), but the order of IDs between <cite>distmat</cite> and the
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> need not be the same. All IDs in the distance matrix must
 be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Extra IDs in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> are
 allowed (they are ignored in the calculations).</p>

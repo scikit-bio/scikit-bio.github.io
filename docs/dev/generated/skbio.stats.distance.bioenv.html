@@ -714,7 +714,7 @@
 <h1>skbio.stats.distance.bioenv<a class="headerlink" href="#skbio-stats-distance-bioenv" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.bioenv">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">bioenv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_bioenv.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.bioenv" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">bioenv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_bioenv.py#L20"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.bioenv" title="Link to this definition">#</a></dt>
 <dd><p>Find subset of variables maximally correlated with distances.</p>
 <p>Finds subsets of variables whose Euclidean distances (after scaling the
 variables; see Notes section below for details) are maximally
@@ -730,16 +730,19 @@ variable subsets will be computed for subset sizes 1, 2, and 3.</p>
 community distance matrix and all possible Euclidean environmental distance
 matrices at the given subset size. The combination of environmental
 variables with maximum correlation is chosen as the “best” subset.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>distance_matrix</strong><span class="classifier">DistanceMatrix</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
+<dd class="field-odd"><dl>
+<dt><strong>distmat</strong><span class="classifier">DistanceMatrix</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
 between samples of microbial communities).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">distance_matrix</span></code>. The old name is kept as an alias.</p>
+</div>
 </dd>
 <dt><strong>data_frame</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>Contains columns of variables (e.g., numeric environmental variables
-such as pH) associated with the objects in <cite>distance_matrix</cite>. Must be
-indexed by the IDs in <cite>distance_matrix</cite> (i.e., the row labels must be
-distance matrix IDs), but the order of IDs between <cite>distance_matrix</cite>
+such as pH) associated with the objects in <cite>distmat</cite>. Must be
+indexed by the IDs in <cite>distmat</cite> (i.e., the row labels must be
+distance matrix IDs), but the order of IDs between <cite>distmat</cite>
 and <cite>data_frame</cite> need not be the same. All IDs in the distance matrix
 must be present in <cite>data_frame</cite>. Extra IDs in <cite>data_frame</cite> are allowed
 (they are ignored in the calculations).</p>
@@ -763,7 +766,7 @@ size, as well as the correlation coefficient of each.</p>
 <dt>TypeError</dt><dd><p>If invalid input types are provided, or if one or more specified
 columns in <cite>data_frame</cite> are not numeric.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If column name(s) or <cite>distance_matrix</cite> IDs cannot be found in
+<dt>ValueError</dt><dd><p>If column name(s) or <cite>distmat</cite> IDs cannot be found in
 <cite>data_frame</cite>, if there is missing data (<code class="docutils literal notranslate"><span class="pre">NaN</span></code>) in the environmental
 variables, or if the environmental variables cannot be scaled (e.g.,
 due to zero variance).</p>
