@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>About scikit-bio &#8212; scikit-bio</title>
+    <title>scikit-bio roadmap &#8212; scikit-bio</title>
   
   
   
@@ -54,14 +54,13 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'about';</script>
-    <link rel="canonical" href="https://scikit.bio/about.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'roadmap';</script>
+    <link rel="canonical" href="https://scikit.bio/roadmap.html" />
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="author" title="About these documents" href="#" />
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="scikit-bio roadmap" href="roadmap.html" />
-    <link rel="prev" title="Releasing a new version" href="devdoc/release.html" />
+    <link rel="prev" title="About scikit-bio" href="about.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -188,8 +187,8 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="about.html">
     About
   </a>
 </li>
@@ -202,8 +201,8 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="roadmap.html">
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="#">
     Roadmap
   </a>
 </li>
@@ -262,6 +261,10 @@
   
   
 
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
   
 </div>
 
@@ -331,15 +334,15 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="about.html">
     About
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="roadmap.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     Roadmap
   </a>
 </li>
@@ -429,7 +432,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">About scikit-bio</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">scikit-bio roadmap</span></li>
   </ul>
 </nav>
 </div>
@@ -446,56 +449,29 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="about-scikit-bio">
-<h1>About scikit-bio<a class="headerlink" href="#about-scikit-bio" title="Link to this heading">#</a></h1>
-<p>scikit-bio (canonically pronounced <em>sigh-kit-buy-oh</em>) is a library for working with biological data in Python. scikit-bio is open source BSD-licensed software that is currently under active development.</p>
-<section id="adoption">
-<h2>Adoption<a class="headerlink" href="#adoption" title="Link to this heading">#</a></h2>
-<p>Some of the projects that we know of that are using scikit-bio are:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://qiime2.org/">QIIME 2</a>, <a class="reference external" href="https://qiita.ucsd.edu/">Qiita</a>, <a class="reference external" href="https://biocore.github.io/emperor/">Emperor</a>, <a class="reference external" href="https://github.com/biocore/tax2tree">tax2tree</a>, <a class="reference external" href="https://github.com/JTFouquier/ghost-tree">ghost-tree</a>, <a class="reference external" href="https://github.com/biocore/Platypus-Conquistador">Platypus-Conquistador</a>, <a class="reference external" href="https://readiab.org">An Introduction to Applied Bioinformatics</a>.</p></li>
-</ul>
+  <section id="scikit-bio-roadmap">
+<h1>scikit-bio roadmap<a class="headerlink" href="#scikit-bio-roadmap" title="Link to this heading">#</a></h1>
+<p>This is a dynamic document tracking current development directions. It may be used for inspiration and encouragement and for coordination of efforts.</p>
+<section id="type-annotations">
+<h2>Type annotations<a class="headerlink" href="#type-annotations" title="Link to this heading">#</a></h2>
+<p>We are systematically adding type annotations to the scikit-bio codebase to improve code readability, IDE autocompletion, and bug detection in both development and downstream applications. Recent progress includes type annotations for distance statistics, alignment modules, and other core functionality shipped in v0.7.0. New code development incorporates type annotations by default, while existing modules are being updated incrementally.</p>
 </section>
-<section id="license">
-<h2>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h2>
-<p>scikit-bio is available under the new BSD license. See <a class="extlink-repo reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/LICENSE.txt">LICENSE.txt</a> for scikit-bio’s license, and the <a class="extlink-repo reference external" href="https://github.com/scikit-bio/scikit-bio/tree/main/licenses">licenses directory</a> for the licenses of third-party software that is (either partially or entirely) distributed with scikit-bio.</p>
+<section id="interoperability">
+<h2>Interoperability<a class="headerlink" href="#interoperability" title="Link to this heading">#</a></h2>
+<p>We are enhancing scikit-bio’s ability to work seamlessly with diverse data formats and computing frameworks. A new dispatch system handles multiple table formats including arrays, Pandas and Polars dataframes, BIOM tables, and AnnData objects, allowing functions to operate on any supported format while preserving input types or enabling user-specified output formats. This table dispatch system shipped in v0.7.0. Additionally, we are adopting the Python array API standard to enable compatibility with GPU-accelerated libraries. The integration of these complementary systems will significantly improve scikit-bio’s interoperability across the scientific Python ecosystem.</p>
 </section>
-<section id="team">
-<h2>Team<a class="headerlink" href="#team" title="Link to this heading">#</a></h2>
-<p>Our core development team consists of three lead developers: <strong>Dr. Qiyun Zhu</strong> at Arizona State University (ASU) (&#64;qiyunzhu), <strong>Dr. James Morton</strong> at Gutz Analytics (&#64;mortonjt), and <strong>Dr. Daniel McDonald</strong> at the University of California San Diego (UCSD) (&#64;wasade), one software engineer: <strong>Matthew Aton</strong> (&#64;mataton) and one bioinformatician: <strong>Dr. Lars Hunger</strong> (&#64;LarsHunger). <strong>Dr. Rob Knight</strong> at UCSD (&#64;rob-knight) provides guidance on the development and research. <strong>Dr. Greg Caporaso</strong> (&#64;gregcaporaso) at Northern Arizona University (NAU), the former leader of the scikit-bio project, serves as an advisor on the current project.</p>
+<section id="gpu-support">
+<h2>GPU support<a class="headerlink" href="#gpu-support" title="Link to this heading">#</a></h2>
+<p>Modern omics datasets often exceed memory limitations and benefit from hardware acceleration. To address this, we are adopting the Python array API standard, which enables seamless interoperability with GPU-accelerated libraries like CuPy and JAX, as well as distributed computing frameworks like Dask. Initial implementation has focused on compositional transformation algorithms, with successful testing on PyTorch GPU objects. This foundation will be extended to additional computational bottlenecks including UniFrac, PERMANOVA, mantel, and permdisp, enabling significant performance improvements for large-scale analyses.</p>
 </section>
-<section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
-<p>We thank the many contributors to scikit-bio. A complete <a class="extlink-repo reference external" href="https://github.com/scikit-bio/scikit-bio/graphs/contributors">list of contributors</a> to the scikit-bio codebase is available at GitHub. This however may miss the larger community who contributed by testing the software and providing valuable comments, who we hold equal appreciation to.</p>
-<p>Wanna contribute? We enthusiastically welcome community contributors! Whether it’s adding new features, improving code, or enhancing documentation, your contributions drive scikit-bio and open-source bioinformatics forward. Start your journey by reading the <a class="reference internal" href="contribute.html"><span class="doc">Contributor’s guidelines</span></a>.</p>
+<section id="support-for-free-threaded-python">
+<h2>Support for free-threaded Python<a class="headerlink" href="#support-for-free-threaded-python" title="Link to this heading">#</a></h2>
+<p>CPython 3.13 introduces a free-threaded build that removes the Global Interpreter Lock, enabling true multi-threading for CPU-bound tasks. This presents significant opportunities for scikit-bio’s computationally intensive operations. However, adoption depends on ecosystem readiness - key dependencies including statsmodels and h5py do not yet provide free-threaded builds. We will monitor dependency support and evaluate implementation once the required packages become available, with particular focus on algorithms that would benefit most from parallel execution.</p>
 </section>
-<section id="funding">
-<h2>Funding<a class="headerlink" href="#funding" title="Link to this heading">#</a></h2>
-<p>The development of scikit-bio is currently supported by the U.S. Department of Energy, Office of Science under award number <a class="reference external" href="https://genomicscience.energy.gov/compbioawards2023/#Expanding">DE-SC0024320</a>, awarded to Dr. Qiyun Zhu at ASU (lead PI), Dr. James Morton at Gutz Analytics, and Dr. Rob Knight at UCSD.</p>
-<img alt="DOE SC logo" class="only-light" src="_images/doe_logo_green.png" />
-<img alt="DOE SC logo" class="only-dark" src="_images/doe_logo_white.png" />
+<section id="benchmarking">
+<h2>Benchmarking<a class="headerlink" href="#benchmarking" title="Link to this heading">#</a></h2>
+<p>Performance monitoring is critical for preventing regression in computationally intensive bioinformatics workflows. While scikit-bio previously had lightweight benchmarks using asv, these were not maintained and became outdated. We have established a dedicated benchmarking repository (<a class="github reference external" href="https://github.com/scikit-bio/scikit-bio-benchmarks">scikit-bio/scikit-bio-benchmarks</a>) to systematically track performance across releases, starting with version 0.6.1 and continuing for all future releases. The current framework includes basic benchmarks with plans to expand coverage to key algorithms and data structures. This infrastructure will help ensure that performance improvements and potential regressions are identified early in the development process.</p>
 </section>
-<section id="citation">
-<h2>Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h2>
-<p>If you use scikit-bio for any published research, please see our <a class="reference external" href="https://zenodo.org/record/8209901">Zenodo page</a> for how to cite.</p>
-</section>
-<section id="collaboration">
-<h2>Collaboration<a class="headerlink" href="#collaboration" title="Link to this heading">#</a></h2>
-<p>For collaboration inquiries and other formal communications, please reach out to <strong>Dr. Qiyun Zhu</strong> at <a class="reference external" href="mailto:qiyun&#46;zhu&#37;&#52;&#48;asu&#46;edu">qiyun<span>&#46;</span>zhu<span>&#64;</span>asu<span>&#46;</span>edu</a>. We welcome academic and industrial partnerships to advance our mission.</p>
-</section>
-<section id="branding">
-<h2>Branding<a class="headerlink" href="#branding" title="Link to this heading">#</a></h2>
-<p>The logo of scikit-bio was created by <a class="reference external" href="https://cargocollective.com/alinaprassas">Alina Prassas</a>. Vector and bitmap image files are available at the <a class="extlink-repo reference external" href="https://github.com/scikit-bio/scikit-bio/tree/main/logos">logos</a> directory.</p>
-</section>
-<section id="pre-history">
-<h2>Pre-history<a class="headerlink" href="#pre-history" title="Link to this heading">#</a></h2>
-<p>scikit-bio began from code derived from <a class="reference external" href="https://github.com/pycogent/pycogent">PyCogent</a> and <a class="reference external" href="https://github.com/biocore/qiime">QIIME</a>, and the contributors and/or copyright holders have agreed to make the code they wrote for PyCogent and/or QIIME available under the BSD license. The contributors to PyCogent and/or QIIME modules that have been ported to scikit-bio are listed below:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-kebab-horizontal no-title" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a2 2 0 1 1-.001-3.999A2 2 0 0 1 20 14ZM6 12a2 2 0 1 1-3.999.001A2 2 0 0 1 6 12Zm8 0a2 2 0 1 1-3.999.001A2 2 0 0 1 14 12Z"></path></svg></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Rob Knight (&#64;rob-knight), Gavin Huttley (&#64;gavinhuttley), Daniel McDonald (&#64;wasade), Micah Hamady, Antonio Gonzalez (&#64;antgonza), Sandra Smit, Greg Caporaso (&#64;gregcaporaso), Jai Ram Rideout (&#64;jairideout), Cathy Lozupone (&#64;clozupone), Mike Robeson (&#64;mikerobeson), Marcin Cieslik, Peter Maxwell, Jeremy Widmann, Zongzhi Liu, Michael Dwan, Logan Knecht (&#64;loganknecht), Andrew Cochran, Jose Carlos Clemente (&#64;cleme), Damien Coy, Levi McCracken, Andrew Butterfield, Will Van Treuren (&#64;wdwvt1), Justin Kuczynski (&#64;justin212k), Jose Antonio Navas Molina (&#64;josenavas), Matthew Wakefield (&#64;genomematt) and Jens Reeder (&#64;jensreeder).</p>
-</div>
-</details></section>
 </section>
 
 
@@ -508,6 +484,28 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-annotations">Type annotations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interoperability">Interoperability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-support">GPU support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-for-free-threaded-python">Support for free-threaded Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">Benchmarking</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
