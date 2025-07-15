@@ -629,7 +629,7 @@ explicitly by the user, defaults to &lt;code class=&quot;docutils literal..." />
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../generated/skbio.table.phylomix.html">skbio.table.phylomix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generated/skbio.table.compositional_cutmix.html">skbio.table.compositional_cutmix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generated/skbio.table.compos_cutmix.html">skbio.table.compos_cutmix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generated/skbio.table.aitchison_mixup.html">skbio.table.aitchison_mixup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generated/skbio.table.mixup.html">skbio.table.mixup</a></li>
 </ul>
@@ -733,11 +733,11 @@ computing and data science in general. When a function parameter is annotated as
 <td><p>“obs” (observation)</p></td>
 <td><p>“var” (variable)</p></td>
 </tr>
-<tr class="row-even"><td><p>pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></td>
+<tr class="row-even"><td><p>Pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></td>
 <td><p>“index” (rows)</p></td>
 <td><p>“columns”</p></td>
 </tr>
-<tr class="row-odd"><td><p>Polars <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p></td>
+<tr class="row-odd"><td><p>Polars <a class="reference external" href="https://docs.pola.rs/api/python/stable/reference/dataframe/index.html"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></td>
 <td><p>N/A (rows)</p></td>
 <td><p>“schema”</p></td>
 </tr>
@@ -822,13 +822,15 @@ setting overrides the global configuration (see below).</p>
 <h2>Output formats<a class="headerlink" href="#output-formats" title="Link to this heading">#</a></h2>
 <p>Some functions that <em>produce</em> tables can return the result in one of three formats:</p>
 <ul class="simple">
+<li><p>Pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a> (default)</p></li>
+<li><p>Polars <a class="reference external" href="https://docs.pola.rs/api/python/stable/reference/dataframe/index.html"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a> and <a class="reference external" href="https://docs.pola.rs/api/python/stable/reference/series/index.html"><code class="docutils literal notranslate"><span class="pre">Series</span></code></a></p></li>
 <li><p>NumPy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> (2-D and 1-D)</p></li>
-<li><p>pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.3.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a> (default)</p></li>
-<li><p>Polars <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></p></li>
 </ul>
-<p>There are two ways to control the output format.</p>
-<p>The first option is to set the desired output format on a per-function basis, using
-the <code class="docutils literal notranslate"><span class="pre">output_format</span></code> parameter.</p>
+<p>There are two ways to control the output format:</p>
+<ol class="arabic simple">
+<li><p>Set the desired output format on a per-function basis, using the <code class="docutils literal notranslate"><span class="pre">output_format</span></code>
+parameter.</p></li>
+</ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">cca</span>
 
 <span class="c1"># This specific call will return an `OrdinationResults` object whose attributes are</span>
@@ -836,16 +838,18 @@ the <code class="docutils literal notranslate"><span class="pre">output_format</
 <span class="n">res</span> <span class="o">=</span> <span class="n">cca</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The second option is to use the <a class="reference internal" href="../generated/skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a> function. It will change the
-global behavior of scikit-bio functions.</p>
+<ol class="arabic simple" start="2">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">table_output</span></code> configuration option using <a class="reference internal" href="../generated/skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a>. It
+will change the global behavior of all scikit-bio functions.</p></li>
+</ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># `set_config` is available as a top level import from skbio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
 
 <span class="c1"># Set output format to NumPy arrays, or</span>
-<span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
 
-<span class="c1"># Return to default pandas output</span>
-<span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
+<span class="c1"># Return to default Pandas output</span>
+<span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

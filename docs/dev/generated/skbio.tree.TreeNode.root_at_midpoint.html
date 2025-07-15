@@ -639,8 +639,6 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tips.html">skbio.tree.TreeNode.tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.copy.html">skbio.tree.TreeNode.copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.deepcopy.html">skbio.tree.TreeNode.deepcopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subtree.html">skbio.tree.TreeNode.subtree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.append.html">skbio.tree.TreeNode.append</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.extend.html">skbio.tree.TreeNode.extend</a></li>
@@ -659,7 +657,6 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html">skbio.tree.TreeNode.root_by_outgroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unroot.html">skbio.tree.TreeNode.unroot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_copy.html">skbio.tree.TreeNode.unrooted_copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html">skbio.tree.TreeNode.unrooted_deepcopy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html">skbio.tree.TreeNode.unrooted_move</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_ids.html">skbio.tree.TreeNode.assign_ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
@@ -782,19 +779,18 @@
 <h1>skbio.tree.TreeNode.root_at_midpoint<a class="headerlink" href="#skbio-tree-treenode-root-at-midpoint" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.root_at_midpoint">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">root_at_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['name']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2749"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.root_at_midpoint" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">root_at_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2645"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.root_at_midpoint" title="Link to this definition">#</a></dt>
 <dd><p>Reroot the tree at the midpoint of the two tips farthest apart.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>reset</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to remove the original root of a rooted tree before performing
-the rerooting operation. Default is False.</p>
+the rerooting operation. Default is True.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The default value will be set as True in 0.7.0.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Set the default value to True.</p>
 </div>
 </dd>
 <dt><strong>branch_attrs</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Attributes of each node that should be considered as attributes of
@@ -804,20 +800,16 @@ automatically included as they are always branch attributes.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">name</span></code> will be removed from the default in 0.7.0, as
-it is usually considered as an attribute of the node instead of
-the branch.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Removed <code class="docutils literal notranslate"><span class="pre">name</span></code> from the default values.</p>
 </div>
 </dd>
 <dt><strong>root_name</strong><span class="classifier">str or None, optional</span></dt><dd><p>Name for the new root node, if it doesn’t have one.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The default value will be set as <code class="docutils literal notranslate"><span class="pre">None</span></code> in 0.7.0.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Set the default value to None.</p>
 </div>
 </dd>
 <dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to reroot the tree in place (True) or to create a rerooted copy of
@@ -844,12 +836,6 @@ evaluated nodes don’t have length.</p>
 </dl>
 </dd>
 </dl>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The default behavior of <code class="docutils literal notranslate"><span class="pre">root_at_midpoint</span></code> is subject to change in
-0.7.0. The new default behavior can be achieved by specifying
-<code class="docutils literal notranslate"><span class="pre">reset=True,</span> <span class="pre">branch_attrs=[],</span> <span class="pre">root_name=None</span></code>.</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
@@ -885,15 +871,15 @@ distance matrices. The American Naturalist, 106(951), 645-668.</p>
 <span class="go">          \-g</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_at_midpoint</span><span class="p">(</span><span class="n">branch_attrs</span><span class="o">=</span><span class="p">[])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_at_midpoint</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="go">((d:3.0,e:4.0)f:2.0,((a:1.0,b:1.0)c:2.0,g:1.0)h:3.0)root;</span>
+<span class="go">((d:3.0,e:4.0)f:2.0,((a:1.0,b:1.0)c:2.0,g:1.0)h:3.0);</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                    /-d</span>
 <span class="go">          /f-------|</span>
 <span class="go">         |          \-e</span>
-<span class="go">-root----|</span>
+<span class="go">---------|</span>
 <span class="go">         |                    /-a</span>
 <span class="go">         |          /c-------|</span>
 <span class="go">          \h-------|          \-b</span>

@@ -1148,7 +1148,7 @@ that places the root at the midpoint between the two most distant tips in the tr
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rooted</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">          /-chicken</span>
 <span class="go">         |</span>
-<span class="go">-root----|                    /-mouse</span>
+<span class="go">---------|                    /-mouse</span>
 <span class="go">         |          /--------|</span>
 <span class="go">         |         |          \-rat</span>
 <span class="go">          \--------|</span>
@@ -1263,14 +1263,14 @@ using <a class="reference internal" href="generated/skbio.tree.TreeNode.cophenet
 </div>
 <p>The evolutionary distances reflected by two trees can be compared. First, let’s create
 two trees with the same taxa but different branch lengths.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A:0.1,B:0.2):0.3,C:0.4,D:0.5);&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree2</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A:0.4,B:0.8):0.3,C:0.1,D:0.5);&quot;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A:0.1,B:0.3):0.3,C:0.4,D:0.5);&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree2</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((A:0.4,B:0.7):0.3,C:0.1,D:0.5);&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Calculate the distance between the cophenetic distance matrics using
+<p>Calculate the distance between the cophenetic distance matrices using
 (<a class="reference internal" href="generated/skbio.tree.TreeNode.compare_cophenet.html#skbio.tree.TreeNode.compare_cophenet" title="skbio.tree.TreeNode.compare_cophenet"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_cophenet</span></code></a>):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree1</span><span class="o">.</span><span class="n">compare_cophenet</span><span class="p">(</span><span class="n">tree2</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">0.12</span>
+<span class="go">0.376</span>
 </pre></div>
 </div>
 <p>Likewise, we can calculate this metric between multiple trees using <a class="reference internal" href="generated/skbio.tree.path_dists.html#skbio.tree.path_dists" title="skbio.tree.path_dists"><code class="xref py py-func docutils literal notranslate"><span class="pre">path_dists</span></code></a>.</p>

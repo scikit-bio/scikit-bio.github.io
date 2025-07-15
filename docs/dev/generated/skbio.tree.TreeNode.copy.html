@@ -68,7 +68,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.deepcopy" href="skbio.tree.TreeNode.deepcopy.html" />
+    <link rel="next" title="skbio.tree.TreeNode.append" href="skbio.tree.TreeNode.append.html" />
     <link rel="prev" title="skbio.tree.TreeNode.traverse" href="skbio.tree.TreeNode.traverse.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -639,8 +639,6 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tips.html">skbio.tree.TreeNode.tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.deepcopy.html">skbio.tree.TreeNode.deepcopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subtree.html">skbio.tree.TreeNode.subtree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.append.html">skbio.tree.TreeNode.append</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.extend.html">skbio.tree.TreeNode.extend</a></li>
@@ -659,7 +657,6 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html">skbio.tree.TreeNode.root_by_outgroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unroot.html">skbio.tree.TreeNode.unroot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_copy.html">skbio.tree.TreeNode.unrooted_copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html">skbio.tree.TreeNode.unrooted_deepcopy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html">skbio.tree.TreeNode.unrooted_move</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_ids.html">skbio.tree.TreeNode.assign_ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
@@ -782,19 +779,18 @@
 <h1>skbio.tree.TreeNode.copy<a class="headerlink" href="#skbio-tree-treenode-copy" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.copy">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L264"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.copy" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L262"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.copy" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy of self using an iterative approach.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>deep</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to perform a deep (True, default) or shallow (False) copy of node
+<dt><strong>deep</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to perform a deep (True) or shallow (False, default) copy of node
 attributes.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The default value will be changed to False in 0.7.0.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>The default value has been changed to False.</p>
 </div>
 </dd>
 </dl>
@@ -856,11 +852,11 @@ between deep and shallow copies only applies to each node attribute.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.deepcopy.html"
+       href="skbio.tree.TreeNode.append.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.deepcopy</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.append</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

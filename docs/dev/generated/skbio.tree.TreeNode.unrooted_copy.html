@@ -68,7 +68,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.tree.TreeNode.unrooted_deepcopy" href="skbio.tree.TreeNode.unrooted_deepcopy.html" />
+    <link rel="next" title="skbio.tree.TreeNode.unrooted_move" href="skbio.tree.TreeNode.unrooted_move.html" />
     <link rel="prev" title="skbio.tree.TreeNode.unroot" href="skbio.tree.TreeNode.unroot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -639,8 +639,6 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.tips.html">skbio.tree.TreeNode.tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.traverse.html">skbio.tree.TreeNode.traverse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.copy.html">skbio.tree.TreeNode.copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.deepcopy.html">skbio.tree.TreeNode.deepcopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.subtree.html">skbio.tree.TreeNode.subtree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.append.html">skbio.tree.TreeNode.append</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.bifurcate.html">skbio.tree.TreeNode.bifurcate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.extend.html">skbio.tree.TreeNode.extend</a></li>
@@ -659,7 +657,6 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.root_by_outgroup.html">skbio.tree.TreeNode.root_by_outgroup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unroot.html">skbio.tree.TreeNode.unroot</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.tree.TreeNode.unrooted_copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_deepcopy.html">skbio.tree.TreeNode.unrooted_deepcopy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.unrooted_move.html">skbio.tree.TreeNode.unrooted_move</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_ids.html">skbio.tree.TreeNode.assign_ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.cache_attr.html">skbio.tree.TreeNode.cache_attr</a></li>
@@ -782,7 +779,7 @@
 <h1>skbio.tree.TreeNode.unrooted_copy<a class="headerlink" href="#skbio-tree-treenode-unrooted-copy" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.unrooted_copy">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'length',</span> <span class="pre">'name',</span> <span class="pre">'support'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_copy" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">unrooted_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'length',</span> <span class="pre">'support'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L2202"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.unrooted_copy" title="Link to this definition">#</a></dt>
 <dd><p>Walk the tree unrooted-style and return a copy.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -795,20 +792,16 @@ attributes during the operation.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">name</span></code> will be removed from the default in 0.7.0, as it is
-usually considered as an attribute of the node instead of the branch.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Removed <code class="docutils literal notranslate"><span class="pre">name</span></code> from the default values.</p>
 </div>
 </dd>
 <dt><strong>root_name</strong><span class="classifier">str or None, optional</span></dt><dd><p>Name for the new root node, if it doesn’t have one.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This parameter will be removed in 0.7.0, and the root node will
-not be renamed.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.0: </span>Set the default value to None.</p>
 </div>
 </dd>
 <dt><strong>deep</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to perform a shallow (False, default) or deep (True) copy of node
@@ -837,12 +830,6 @@ needed.</p>
 </dl>
 </dd>
 </dl>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The default behavior of <code class="docutils literal notranslate"><span class="pre">unrooted_copy</span></code> is subject to change in 0.7.0. The
-new default behavior can be achieved by specifying
-<code class="docutils literal notranslate"><span class="pre">branch_attrs={&quot;length&quot;,</span> <span class="pre">&quot;support&quot;},</span> <span class="pre">root_name=None</span></code>.</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
@@ -864,7 +851,7 @@ branch if the branch is flipped in the new tree.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,(b,c)d)e,(f,g)h)i;&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_tree</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unrooted_copy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_tree</span><span class="p">)</span>
-<span class="go">(b,c,(a,((f,g)h)e)d)root;</span>
+<span class="go">(b,c,(a,((f,g)h)i)e)d;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -891,11 +878,11 @@ branch if the branch is flipped in the new tree.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.tree.TreeNode.unrooted_deepcopy.html"
+       href="skbio.tree.TreeNode.unrooted_move.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.tree.TreeNode.unrooted_deepcopy</p>
+        <p class="prev-next-title">skbio.tree.TreeNode.unrooted_move</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

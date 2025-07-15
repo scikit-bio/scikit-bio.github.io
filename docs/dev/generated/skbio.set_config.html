@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Set a scikit-bio config option." />
+    <meta name="description" content="Set a scikit-bio configuration option." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.set_config &#8212; scikit-bio 0.6.4-dev documentation</title>
@@ -684,19 +684,16 @@
 <h1>skbio.set_config<a class="headerlink" href="#skbio-set-config" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.set_config">
-<span class="sig-prename descclassname"><span class="pre">skbio.</span></span><span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/_config.py#L139"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.set_config" title="Link to this definition">#</a></dt>
-<dd><p>Set a scikit-bio config option.</p>
+<span class="sig-prename descclassname"><span class="pre">skbio.</span></span><span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/_config.py#L45"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.set_config" title="Link to this definition">#</a></dt>
+<dd><p>Set a scikit-bio configuration option.</p>
 <p>This function enables users to set the configuration of scikit-bio functions
 globally.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>option</strong><span class="classifier">str</span></dt><dd><p>The configuration option to be modified. Currently there is only one
-configurable option, <code class="docutils literal notranslate"><span class="pre">&quot;output&quot;</span></code>.</p>
+<dt><strong>option</strong><span class="classifier">str</span></dt><dd><p>The configuration option to be modified.</p>
 </dd>
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>The value to update the configuration dictionary with. For the
-<code class="docutils literal notranslate"><span class="pre">&quot;output&quot;</span></code> option, <code class="docutils literal notranslate"><span class="pre">value</span></code> may be set to <code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;polars&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;numpy&quot;</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;pandas&quot;</span></code>.</p>
+<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>The value to update the configuration dictionary with.</p>
 </dd>
 </dl>
 </dd>
@@ -709,7 +706,7 @@ configurable option, <code class="docutils literal notranslate"><span class="pre
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="s2">&quot;table_output&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
