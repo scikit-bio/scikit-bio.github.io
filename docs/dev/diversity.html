@@ -232,13 +232,6 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="../../roadmap.html">
-    Roadmap
-  </a>
-</li>
-
-
-<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="io.html">
     Input and Output (skbio.io)
   </a>
@@ -475,13 +468,6 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-external" href="../../roadmap.html">
-    Roadmap
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="io.html">
     Input and Output (skbio.io)
   </a>
@@ -696,14 +682,15 @@
                   
   <section id="community-diversity-skbio-diversity">
 <span id="module-skbio.diversity"></span><h1>Community Diversity (<a class="reference internal" href="#module-skbio.diversity" title="skbio.diversity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.diversity</span></code></a>)<a class="headerlink" href="#community-diversity-skbio-diversity" title="Link to this heading">#</a></h1>
-<p>This module provides functionality for analyzing biodiversity of communities
-– groups of organisms living in the same area. It implements various metrics
-of alpha (within-community) and beta (between-community) diversity, and
-provides “driver functions” for computing alpha and beta diversity for an
-entire data table. Additional utilities are provided to support discovery of
-available diversity metrics. While diversity metrics were originally designed
-to study biological communities, they can be generalized to the analysis of
-various biological data types.</p>
+<p>This module provides functionality for analyzing biodiversity of communities – groups
+of organisms living in the same area. It implements various metrics of <strong>alpha</strong>
+(<em>within</em>-community) and <strong>beta</strong> (<em>between</em>-community) diversity, and provides “driver
+functions” for computing alpha and beta diversity for an entire data table. Additional
+utilities are provided to support discovery of available diversity metrics. While
+diversity metrics were originally designed to study biological communities, they can be
+generalized to the analysis of various biological data types.</p>
+<p>See an <a class="reference internal" href="#diversity-intro"><strong>Introduction</strong></a> to community data and diversity metrics and a
+<a class="reference internal" href="#diversity-tutorial"><strong>Tutorial</strong></a> for performing community diversity analyses using scikit-bio.</p>
 <section id="alpha-diversity">
 <h2>Alpha diversity<a class="headerlink" href="#alpha-diversity" title="Link to this heading">#</a></h2>
 <p class="rubric">Alpha diversity metrics</p>
@@ -770,7 +757,7 @@ various biological data types.</p>
 </div>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<span id="diversity-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>A community (i.e., sample) is represented by a vector of frequencies of taxa
 within the sample. The term “taxon” (plural: “taxa”) describes a group of
 biologically related organisms that constitute a unit in the community. Taxa
@@ -906,7 +893,7 @@ SciPy’s <a class="reference external" href="https://docs.scipy.org/doc/scipy/r
 </section>
 </section>
 <section id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<span id="diversity-tutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
 <p>Create a matrix containing 6 samples (rows) and 7 taxa (columns):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>

@@ -231,13 +231,6 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="../../roadmap.html">
-    Roadmap
-  </a>
-</li>
-
-
-<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="io.html">
     Input and Output (skbio.io)
   </a>
@@ -474,13 +467,6 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-external" href="../../roadmap.html">
-    Roadmap
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="io.html">
     Input and Output (skbio.io)
   </a>
@@ -704,6 +690,8 @@
 <p>This module provides functionality for computing and manipulating sequence
 alignments. DNA, RNA, and protein sequences can be aligned, as well as
 sequences with or without custom alphabets.</p>
+<p>See the <a class="reference internal" href="#alignment-tutorial"><strong>Tutorial</strong></a> section for performing and working with sequence
+alignments using scikit-bio.</p>
 <section id="alignment-structures">
 <h2>Alignment structures<a class="headerlink" href="#alignment-structures" title="Link to this heading">#</a></h2>
 <p>Tabular format of aligned sequences.</p>
@@ -791,90 +779,326 @@ sequences with or without custom alphabets.</p>
 </div>
 </section>
 <section id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
-<section id="alignment-data-structure">
-<h3>Alignment data structure<a class="headerlink" href="#alignment-data-structure" title="Link to this heading">#</a></h3>
-<p>Load two DNA sequences that have been previously aligned into a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code>
-object, using sequence IDs as the MSA’s index:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span><span class="p">,</span> <span class="n">DNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACC--G-GGTA..&quot;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s2">&quot;seq1&quot;</span><span class="p">}),</span>
-<span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;TCC--G-GGCA..&quot;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s2">&quot;seq2&quot;</span><span class="p">})]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">minter</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span id="alignment-tutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<p>Sequence alignment is the process of arranging biological sequences such that they
+resemble each other when positioned together. The alignment reveals the degree of
+similarity between sequences, which may indicate evolutionary relationships (i.e.,
+“homology”) and/or structural and functional relevance. The alignment process permits
+only one operation: shifting characters by inserting gaps (<cite>-</cite>) between them. Shuffling
+characters is not permitted.</p>
+<section id="quick-start">
+<h3>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h3>
+<p>To demonstrate this process, let’s create two DNA sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACTACCAGATTACTTACGGATCAGGTACTTGCCAACAA&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGAAACTACTAGATTACGGATCTTACTTTCCAGCAAGG&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Just by eyeballing, we can observe some local similarities between the sequences,
+particularly in the middle sections. However, the beginning and ending portions aren’t
+so similar between the two.</p>
+<p>Apply <a class="reference internal" href="generated/skbio.alignment.pair_align_nucl.html#skbio.alignment.pair_align_nucl" title="skbio.alignment.pair_align_nucl"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align_nucl</span></code></a> to perform pairwise alignment of the two nucleotide
+sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">pair_align_nucl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span> <span class="o">=</span> <span class="n">pair_align_nucl</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span>
+<span class="go">PairAlignResult(score=22.0, paths=[&lt;PairAlignPath, positions: 44, segments: 7, ...</span>
+</pre></div>
+</div>
+<p>The result contains <code class="docutils literal notranslate"><span class="pre">score</span></code> and <code class="docutils literal notranslate"><span class="pre">paths</span></code>. The latter is a list of optimal alignment
+paths calculated by the algorithm. By default, only one path will be returned, which is
+all we need in most applications.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span><span class="o">.</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&lt;PairAlignPath, positions: 44, segments: 7, CIGAR: &#39;4I13M4D6M2D13M2I&#39;&gt;</span>
+</pre></div>
+</div>
+<p>To obtain aligned sequences, we can call the <a class="reference internal" href="generated/skbio.alignment.AlignPath.to_aligned.html#skbio.alignment.AlignPath.to_aligned" title="skbio.alignment.AlignPath.to_aligned"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_aligned</span></code></a> method of
+the path.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span><span class="o">.</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_aligned</span><span class="p">((</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
+<span class="go">[&#39;----ACTACCAGATTACTTACGGATCAGGTACTTGCCAACAA--&#39;,</span>
+<span class="go"> &#39;CGAAACTACTAGATTAC----GGATCT--TACTTTCCAGCAAGG&#39;]</span>
+</pre></div>
+</div>
+<p>As we can see, by inserting four consecutive gaps in the appropriate positions, the two
+sequences appear more similar, or “aligned”, with one another.</p>
+<p>The score measures the goodness of the alignment. The value is dependent on the
+sequences and the alignment parameters (discussed below).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span><span class="o">.</span><span class="n">score</span>
+<span class="go">22.0</span>
+</pre></div>
+</div>
+<p>Likewise, we can align protein sequences with <a class="reference internal" href="generated/skbio.alignment.pair_align_prot.html#skbio.alignment.pair_align_prot" title="skbio.alignment.pair_align_prot"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align_prot</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protein</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">pair_align_prot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pair_align_prot</span><span class="p">(</span><span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;HEAGAWGHEE&quot;</span><span class="p">),</span> <span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;PAWHEAE&quot;</span><span class="p">))</span>
+<span class="go">PairAlignResult(score=15.0, paths=[&lt;PairAlignPath, positions: 13, segments: 3, ...</span>
+</pre></div>
+</div>
+</section>
+<section id="alignment-algorithm">
+<h3>Alignment algorithm<a class="headerlink" href="#alignment-algorithm" title="Link to this heading">#</a></h3>
+<p>The alignment algorithm aims to find the optimal alignment path(s) that yield the
+highest possible alignment score for two sequences. For decades,
+<a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> (DP) has been the gold standard for
+pairwise sequence alignment, and is widely covered in many bioinformatics textbooks.
+scikit-bio also implements this algorithm. <code class="docutils literal notranslate"><span class="pre">pair_align_nucl</span></code> and <code class="docutils literal notranslate"><span class="pre">pair_align_prot</span></code>
+are but convenience wrappers for the function <a class="reference internal" href="generated/skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a>, which offers multiple
+customizable parameters and comprehensive documentation explaining the algorithm and
+everything you need to know for using it.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">pair_align</span>
+</pre></div>
+</div>
+<p>By referring to the documentation of <code class="docutils literal notranslate"><span class="pre">pair_align</span></code>, we can customize the algorithm’s
+behavior to best suit our research objectives. The default mode is <em>global</em> alignment,
+as in the Needleman-Wunsch algorithm (which you may recall from textbooks), with both
+ends free of gap penalty (a.k.a., “semi-global alignment”, or “overlap alignment”, in
+some literature).</p>
+<p>Next, we will switch to <em>local</em> alignment, as in the Smith-Waterman algorithm.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span> <span class="o">=</span> <span class="n">pair_align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span>
+<span class="go">PairAlignResult(score=13.0, paths=[&lt;PairAlignPath, positions: 25, segments: 3, ...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span><span class="o">.</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_aligned</span><span class="p">((</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
+<span class="go">[&#39;TTACGGATCAGGTACTTGCCAACAA&#39;, &#39;TTACGGATCT--TACTTTCCAGCAA&#39;]</span>
+</pre></div>
+</div>
+<p>As shown, the alignment is shorter than that of the global alignment, and truncated:
+only the highly similar regions in the middle of the two sequences are preserved, while
+the less similar regions at both ends are discarded.</p>
+<p>We can further tweak the alignment parameters. The wrapper function <code class="docutils literal notranslate"><span class="pre">pair_align_nucl</span></code>
+uses parameters that are consistent with NCBI BLASTN’s defaults. To replicate this
+behavior using <code class="docutils literal notranslate"><span class="pre">pair_align</span></code>, we can proceed as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span> <span class="o">=</span> <span class="n">pair_align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;global&quot;</span><span class="p">,</span> <span class="n">sub_score</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">),</span> <span class="n">gap_cost</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span>
+<span class="go">PairAlignResult(score=22.0, paths=[&lt;PairAlignPath, positions: 44, segments: 7, ...</span>
+</pre></div>
+</div>
+<p>Here, 2 and -3 in <code class="docutils literal notranslate"><span class="pre">sub_score</span></code> represent match and mismatch scores (added to the
+alignment score). 5 and 2 in <code class="docutils literal notranslate"><span class="pre">gap_cost</span></code> represent gap opening and gap extension
+penalties (subtracted from the alignment score). The use of two gap penalty values is
+known to as <em>affine</em> gap penalty.</p>
+<p>Let’s try an alternative setting. The follow parameters uses a nucleotide substitution
+matrix “NUC.4.4” to replace match/mismatch scores. This provides more flexibility in
+defining the score between pairs of characters. For example, when there are degenerate
+characters in the DNA sequences, such as “R” and “Y”, the substitution matrix usually
+models the substitution scores more realistically. In addition, this setting uses a
+simple <em>linear</em> gap penalty scheme to replace the more sophisticated affine gap penalty
+scheme.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span> <span class="o">=</span> <span class="n">pair_align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;global&quot;</span><span class="p">,</span> <span class="n">sub_score</span><span class="o">=</span><span class="s2">&quot;NUC.4.4&quot;</span><span class="p">,</span> <span class="n">gap_cost</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span>
+<span class="go">PairAlignResult(score=106.0, paths=[&lt;PairAlignPath, positions: 44, segments: 7, ...</span>
+</pre></div>
+</div>
+<p>Scikit-bio also provides an <a class="reference internal" href="generated/skbio.alignment.align_score.html#skbio.alignment.align_score" title="skbio.alignment.align_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">align_score</span></code></a> function to calculate the alignment
+score of an existing alignment. You will need to supply the same parameters to get the
+same outcome.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">align_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">((</span><span class="n">aln</span><span class="o">.</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)),</span> <span class="n">sub_score</span><span class="o">=</span><span class="s2">&quot;NUC.4.4&quot;</span><span class="p">,</span> <span class="n">gap_cost</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">106.0</span>
+</pre></div>
+</div>
+<p>Pairwise alignment is often taught in bioinformatics courses. By adding
+<code class="docutils literal notranslate"><span class="pre">keep_matrices=True</span></code> to the function, the alignment matrix calculated during the DP
+process will be retained. This can be particularly useful for educational purposes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="p">,</span> <span class="p">(</span><span class="n">path</span><span class="p">,),</span> <span class="p">(</span><span class="n">matrix</span><span class="p">,)</span> <span class="o">=</span> <span class="n">pair_align</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;GATCT&quot;</span><span class="p">,</span> <span class="s2">&quot;GTAC&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;global&quot;</span><span class="p">,</span> <span class="n">free_ends</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">keep_matrices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span>
+<span class="go">array([[  0.,  -2.,  -4.,  -6.,  -8.],</span>
+<span class="go">       [ -2.,   1.,  -1.,  -3.,  -5.],</span>
+<span class="go">       [ -4.,  -1.,   0.,   0.,  -2.],</span>
+<span class="go">       [ -6.,  -3.,   0.,  -1.,  -1.],</span>
+<span class="go">       [ -8.,  -5.,  -2.,  -1.,   0.],</span>
+<span class="go">       [-10.,  -7.,  -4.,  -3.,  -2.]]...</span>
+</pre></div>
+</div>
+</section>
+<section id="alignment-path">
+<h3>Alignment path<a class="headerlink" href="#alignment-path" title="Link to this heading">#</a></h3>
+<p>A pairwise alignment path is an instance of the <a class="reference internal" href="generated/skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a> class, which in
+turn is a subclass of the <a class="reference internal" href="generated/skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlignPath</span></code></a> class. This class implements an efficient
+data structure to store the “path”, i.e., the events of placing gaps inside sequences.
+It uses run-length encoding (RLE) under the hood, and does not store the sequence data,
+such that its memory cost is minimum. Refer to the class documentation for details of
+this data structure.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">aln</span><span class="o">.</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">lengths</span>
+<span class="go">array([ 4, 13,  4,  6,  2, 13,  2])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">states</span>
+<span class="go">array([[1, 0, 2, 0, 2, 0, 1]], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>The path can be represented by a CIGAR string, which is a common format used by many
+high-throughput pairwise alignment tools.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">to_cigar</span><span class="p">()</span>
+<span class="go">&#39;4I13M4D6M2D13M2I&#39;</span>
+</pre></div>
+</div>
+<p>The letters in the CIGAR string represent the gap-placing events: <code class="docutils literal notranslate"><span class="pre">I</span></code> (insertion):
+gap in sequence 1, <code class="docutils literal notranslate"><span class="pre">D</span></code> (deletion): gap in sequence 2, <code class="docutils literal notranslate"><span class="pre">M</span></code> (mis/match): gap in
+neither sequence. The numbers represent the length of each segment. As you may have
+noticed, the <code class="docutils literal notranslate"><span class="pre">PairAlignPath</span></code> data structure resembles the CIGAR encoding. In this
+example, the alignment path contains four consecutive gaps flanking four chunks of
+(mis)matched characters.</p>
+<p>If we pass the sequences to the <a class="reference internal" href="generated/skbio.alignment.PairAlignPath.to_cigar.html#skbio.alignment.PairAlignPath.to_cigar" title="skbio.alignment.PairAlignPath.to_cigar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_cigar</span></code></a> method, we will get
+<code class="docutils literal notranslate"><span class="pre">=</span></code> (match, i.e., same character) and <code class="docutils literal notranslate"><span class="pre">X</span></code> (mismatch, i.e., different characters)
+instead of <code class="docutils literal notranslate"><span class="pre">M</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">to_cigar</span><span class="p">((</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
+<span class="go">&#39;4I5=1X7=4D5=1X2D5=1X3=1X3=2I&#39;</span>
+</pre></div>
+</div>
+<p>One can construct a <code class="docutils literal notranslate"><span class="pre">PairAlignPath</span></code> from a CIGAR string using the
+<a class="reference internal" href="generated/skbio.alignment.PairAlignPath.from_cigar.html#skbio.alignment.PairAlignPath.from_cigar" title="skbio.alignment.PairAlignPath.from_cigar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_cigar</span></code></a> method. Likewise, this process doesn’t rely on the
+sequence data. Therefore, it is suitable for handling many CIGAR strings from large
+data files, such as those in SAM/BAM formatted files.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">PairAlignPath</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">PairAlignPath</span><span class="o">.</span><span class="n">from_cigar</span><span class="p">(</span><span class="s1">&#39;1I8M2D5M2I&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
+<span class="go">&lt;PairAlignPath, positions: 18, segments: 5, CIGAR: &#39;1I8M2D5M2I&#39;&gt;</span>
+</pre></div>
+</div>
+<p>This method can also be used to parse CIGAR-formatted alignment results of external
+sequence alignment tools, such as <strong>Parasail</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">parasail</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">parasail</span><span class="o">.</span><span class="n">nw_trace</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">PairAlignPath</span><span class="o">.</span><span class="n">from_cigar</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">cigar</span><span class="o">.</span><span class="n">decode</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> is a more generalized data structure that supports an arbitrary number
+of sequences. For example, we can directly construct a path of three aligned sequences
+using the <a class="reference internal" href="generated/skbio.alignment.AlignPath.from_aligned.html#skbio.alignment.AlignPath.from_aligned" title="skbio.alignment.AlignPath.from_aligned"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_aligned</span></code></a> method:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_aligned</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s1">&#39;CGTCGTGC&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;CA--GT-C&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;CGTCGT-T&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
+<span class="go">&lt;AlignPath, sequences: 3, positions: 8, segments: 5&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">lengths</span>
+<span class="go">array([2, 2, 2, 1, 1])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([0, 2, 0, 6, 0], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> (as well as <code class="docutils literal notranslate"><span class="pre">PairAlignPath</span></code>) class serves as a central hub for
+interacting with different alignment formats and tools. For example, the
+<a class="reference internal" href="generated/skbio.alignment.AlignPath.from_coordinates.html#skbio.alignment.AlignPath.from_coordinates" title="skbio.alignment.AlignPath.from_coordinates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_coordinates</span></code></a> method can parse <strong>BioPython</strong>’s alignment results
+(and vice versa with <a class="reference internal" href="generated/skbio.alignment.AlignPath.to_coordinates.html#skbio.alignment.AlignPath.to_coordinates" title="skbio.alignment.AlignPath.to_coordinates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_coordinates</span></code></a>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Bio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Align</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_coordinates</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="generated/skbio.alignment.AlignPath.from_indices.html#skbio.alignment.AlignPath.from_indices" title="skbio.alignment.AlignPath.from_indices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_indices</span></code></a> method can parse <strong>Biotite</strong>’s alignment results
+(and vice versa with <a class="reference internal" href="generated/skbio.alignment.AlignPath.to_indices.html#skbio.alignment.AlignPath.to_indices" title="skbio.alignment.AlignPath.to_indices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_indices</span></code></a>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">biotite.sequence.align</span><span class="w"> </span><span class="kn">import</span> <span class="n">align_optimal</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">align_optimal</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_indices</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">trace</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="tabular-alignment">
+<h3>Tabular alignment<a class="headerlink" href="#tabular-alignment" title="Link to this heading">#</a></h3>
+<p>In addition to alignment paths, scikit-bio provides <a class="reference internal" href="generated/skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, a tabular data
+structure that hosts aligned sequences (“MSA” stands for multiple sequence alignment).</p>
+<p>One can convert an alignment path and the original (unaligned) sequences into a
+<code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object using the <a class="reference internal" href="generated/skbio.alignment.TabularMSA.from_path_seqs.html#skbio.alignment.TabularMSA.from_path_seqs" title="skbio.alignment.TabularMSA.from_path_seqs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_path_seqs</span></code></a> method (and vice
+versa with <a class="reference internal" href="generated/skbio.alignment.AlignPath.from_tabular.html#skbio.alignment.AlignPath.from_tabular" title="skbio.alignment.AlignPath.from_tabular"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AlignPath.from_tabular</span></code></a>).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="p">,</span> <span class="p">(</span><span class="n">path</span><span class="p">,),</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pair_align_nucl</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">from_path_seqs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
 <span class="go">TabularMSA[DNA]</span>
-<span class="go">----------------------</span>
+<span class="go">--------------------------------------------</span>
 <span class="go">Stats:</span>
 <span class="go">    sequence count: 2</span>
-<span class="go">    position count: 13</span>
-<span class="go">----------------------</span>
-<span class="go">ACC--G-GGTA..</span>
-<span class="go">TCC--G-GGCA..</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
-<span class="go">Index([&#39;seq1&#39;, &#39;seq2&#39;], dtype=&#39;object&#39;)</span>
+<span class="go">    position count: 44</span>
+<span class="go">--------------------------------------------</span>
+<span class="go">----ACTACCAGATTACTTACGGATCAGGTACTTGCCAACAA--</span>
+<span class="go">CGAAACTACTAGATTAC----GGATCT--TACTTTCCAGCAAGG</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="alignment-algorithm-examples">
-<h2>Alignment Algorithm Examples<a class="headerlink" href="#alignment-algorithm-examples" title="Link to this heading">#</a></h2>
-<p>scikit-bio provides pure-Python implementations of Smith-Waterman and
-Needleman-Wunsch alignment. These are much slower than implementations
-in languages such as C, but serve as useful educational examples as they’re
-simpler to understand for programmers not experienced with C and are easy to
-experiment with. These are _far_ too slow to use in production applications
-when run on long sequences or run many times.</p>
-<p>Functions are provided for local and global alignment of
-protein and nucleotide sequences. The <code class="docutils literal notranslate"><span class="pre">global*</span></code> and <code class="docutils literal notranslate"><span class="pre">local*</span></code> functions
-differ in the underlying algorithm that is applied (<code class="docutils literal notranslate"><span class="pre">global*</span></code> uses Needleman-
-Wunsch while <code class="docutils literal notranslate"><span class="pre">local*</span></code> uses Smith-Waterman), and <code class="docutils literal notranslate"><span class="pre">*protein</span></code> and
-<code class="docutils literal notranslate"><span class="pre">*nucleotide</span></code> differ in their default scoring of matches, mismatches, and
-gaps.</p>
-<p>Here we locally align a pair of protein sequences using gap open penalty
-of 11 and a gap extend penalty of 1 (in other words, it is much more
-costly to open a new gap than extend an existing one).</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protein</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">local_pairwise_align_protein</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;HEAGAWGHEE&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;PAWHEAE&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alignment</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">start_end_positions</span> <span class="o">=</span> <span class="n">local_pairwise_align_protein</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<p>Alternatively, one can read from a multi-FASTA file of aligned sequences:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;input.fasta&#39;</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This returns an <code class="docutils literal notranslate"><span class="pre">skbio.TabularMSA</span></code> object, the alignment score, and start/end
-positions of each aligned sequence:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alignment</span>
-<span class="go">TabularMSA[Protein]</span>
-<span class="go">---------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    sequence count: 2</span>
-<span class="go">    position count: 5</span>
-<span class="go">---------------------</span>
-<span class="go">AWGHE</span>
-<span class="go">AW-HE</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span>
-<span class="go">25.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">start_end_positions</span>
-<span class="go">[(4, 8), (1, 4)]</span>
-</pre></div>
-</div>
-<p>Similarly, we can perform global alignment of nucleotide sequences:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">global_pairwise_align_nucleotide</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;GCGTGCCTAAGGTATGCAAG&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACGTGCCTAGGTACGCAAG&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alignment</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">start_end_positions</span> <span class="o">=</span> <span class="n">global_pairwise_align_nucleotide</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alignment</span>
+<p>Or directly from aligned sequence objects:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGTCGTGC&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CA--GT-C&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGTCGT-T&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
 <span class="go">TabularMSA[DNA]</span>
-<span class="go">----------------------</span>
+<span class="go">---------------------</span>
 <span class="go">Stats:</span>
-<span class="go">    sequence count: 2</span>
-<span class="go">    position count: 20</span>
-<span class="go">----------------------</span>
-<span class="go">GCGTGCCTAAGGTATGCAAG</span>
-<span class="go">ACGTGCCTA-GGTACGCAAG</span>
+<span class="go">    sequence count: 3</span>
+<span class="go">    position count: 8</span>
+<span class="go">---------------------</span>
+<span class="go">CGTCGTGC</span>
+<span class="go">CA--GT-C</span>
+<span class="go">CGTCGT-T</span>
 </pre></div>
 </div>
+<p>A <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object is iterally like a table. If you are also familiar with pandas
+DataFrame, you can apply similar indexing methods to it.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
+<span class="go">RangeIndex(start=0, stop=3, step=1)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 8</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 75.00%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 CGTCGTGC</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="go">Sequence</span>
+<span class="go">-------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 3</span>
+<span class="go">-------------</span>
+<span class="go">0 GAG</span>
+</pre></div>
+</div>
+<p>Like <a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>, <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> can be annotated with metadata.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test alignment&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;identity&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">86</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The class provides some utilities for downstream analysis. For example, to obtain a
+consensus sequence of the alignment:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">consensus</span><span class="p">()</span>
+<span class="go">DNA</span>
+<span class="go">------------------------------</span>
+<span class="go">Positional metadata:</span>
+<span class="go">    &#39;identity&#39;: &lt;dtype: int64&gt;</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 8</span>
+<span class="go">    has gaps: True</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 71.43%</span>
+<span class="go">------------------------------</span>
+<span class="go">0 CGTCGT-C</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -934,10 +1158,12 @@ positions of each aligned sequence:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-statistics">Alignment statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-data-structure">Alignment data structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-algorithm">Alignment algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-path">Alignment path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-alignment">Tabular alignment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-algorithm-examples">Alignment Algorithm Examples</a></li>
 </ul>
   </nav></div>
 

@@ -232,13 +232,6 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="../../../roadmap.html">
-    Roadmap
-  </a>
-</li>
-
-
-<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../io.html">
     Input and Output (skbio.io)
   </a>
@@ -470,13 +463,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-external" href="../../../about.html">
     About
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="../../../roadmap.html">
-    Roadmap
   </a>
 </li>
 
@@ -735,11 +721,9 @@ are deemed explanatory should be included in the analysis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>y</strong><span class="classifier">table_like</span></dt><dd><p>Samples by features table (n, m). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">TableLike</a> type
-documentation for details.</p>
+<dt><strong>y</strong><span class="classifier">table_like</span></dt><dd><p>Samples by features table (n, m). See <a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
 </dd>
-<dt><strong>x</strong><span class="classifier">table_like</span></dt><dd><p>Samples by constraints table (n, q). See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">TableLike</a> type
-documentation for details.</p>
+<dt><strong>x</strong><span class="classifier">table_like</span></dt><dd><p>Samples by constraints table (n, q). See above.</p>
 </dd>
 <dt><strong>scaling</strong><span class="classifier">int, {1, 2}, optional</span></dt><dd><p>Scaling type 1 maintains <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows.
 Scaling type 2 preserves <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between columns.
@@ -750,8 +734,7 @@ Legendre 1998, section 9.4.3.</p>
 implicitly by the input data structure or explicitly by the user, defaults
 to integers starting at zero.</p>
 </dd>
-<dt><strong>sample_ids, feature_ids, output_format</strong><span class="classifier">optional</span></dt><dd><p>Standard <code class="docutils literal notranslate"><span class="pre">TableLike</span></code> parameters. See the <a class="reference external" href="../../../docs/dev/generated/skbio.util.config.html#the-datatable-type">TableLike</a> type
-documentation for details.</p>
+<dt><strong>sample_ids, feature_ids, output_format</strong><span class="classifier">optional</span></dt><dd><p>Standard table parameters. See <a class="reference internal" href="../table.html#table-params"><span class="std std-ref">Common parameters</span></a> for details.</p>
 </dd>
 </dl>
 </dd>
@@ -781,7 +764,7 @@ If <cite>y</cite> contains a row of only 0’s.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm is based on <a class="reference internal" href="#r560320b74bfe-3" id="id5">[3]</a>, S 11.2, and is expected to give
+<p>The algorithm is based on <a class="reference internal" href="#r560320b74bfe-3" id="id3">[3]</a>, S 11.2, and is expected to give
 the same results as <code class="docutils literal notranslate"><span class="pre">cca(y,</span> <span class="pre">x)</span></code> in R’s package vegan, except
 that this implementation won’t drop constraining variables due to
 perfect collinearity: the user needs to choose which ones to
@@ -810,7 +793,7 @@ correspondence analysis and related multivariate methods in
 aquatic ecology”, Aquatic Sciences 57.3 (1995), pp. 255-289.</p>
 </div>
 <div class="citation" id="r560320b74bfe-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>Legendre P. and Legendre L. 1998. Numerical
 Ecology. Elsevier, Amsterdam.</p>
 </div>
