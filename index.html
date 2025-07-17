@@ -101,6 +101,9 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">scikit-bio 0.7.0 has been released! <a href='https://github.com/scikit-bio/scikit-bio/releases/tag/0.7.0'>Check it out</a>.</div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -492,14 +495,15 @@
 <div class="sd-card-footer docutils">
 <details>
 <summary>Example</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">pair_align_prot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">hamming</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">nj</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">align_dist</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">):</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">pair_align_prot</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">aln1</span><span class="p">,</span> <span class="n">aln2</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">to_aligned</span><span class="p">((</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">hamming</span><span class="p">(</span><span class="n">aln1</span><span class="p">,</span> <span class="n">aln2</span><span class="p">)</span>
+    <span class="n">score</span><span class="p">,</span> <span class="p">(</span><span class="n">path</span><span class="p">,),</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pair_align_prot</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>
+    <span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">from_path_seqs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">hamming</span><span class="p">(</span><span class="o">*</span><span class="n">msa</span><span class="p">)</span>
 
 <span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
    <span class="n">seqs</span><span class="p">,</span> <span class="n">align_dist</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span>
