@@ -445,21 +445,21 @@
   <section id="scikit-bio-roadmap">
 <h1>scikit-bio roadmap<a class="headerlink" href="#scikit-bio-roadmap" title="Link to this heading">#</a></h1>
 <p>This is a dynamic document tracking current development directions. It may be used for inspiration and encouragement and for coordination of efforts.</p>
-<section id="type-annotations">
-<h2>Type annotations<a class="headerlink" href="#type-annotations" title="Link to this heading">#</a></h2>
-<p>We are systematically adding type annotations to the scikit-bio codebase to improve code readability, IDE autocompletion, and bug detection in both development and downstream applications. Recent progress includes type annotations for distance statistics, alignment modules, and other core functionality shipped in v0.7.0. New code development incorporates type annotations by default, while existing modules are being updated incrementally.</p>
-</section>
 <section id="interoperability">
 <h2>Interoperability<a class="headerlink" href="#interoperability" title="Link to this heading">#</a></h2>
-<p>We are enhancing scikit-bio’s ability to work seamlessly with diverse data formats and computing frameworks. A new dispatch system handles multiple table formats including arrays, Pandas and Polars dataframes, BIOM tables, and AnnData objects, allowing functions to operate on any supported format while preserving input types or enabling user-specified output formats. This table dispatch system shipped in v0.7.0. Additionally, we are adopting the Python array API standard to enable compatibility with GPU-accelerated libraries. The integration of these complementary systems will significantly improve scikit-bio’s interoperability across the scientific Python ecosystem.</p>
+<p>We are enhancing scikit-bio’s ability to work seamlessly with diverse data formats and computing frameworks. A new dispatch system handles multiple table formats including arrays, Pandas and Polars dataframes, BIOM tables, and AnnData objects, allowing functions to operate on any supported format while preserving input types or enabling user-specified output formats. This table dispatch system shipped in v0.7.0. Additionally, we are adopting the Python array API standard to enable compatibility with GPU-accelerated libraries. The integration of these complementary systems will significantly improve scikit-bio’s interoperability across the scientific Python ecosystem and support its use across omics disciplines.</p>
 </section>
 <section id="gpu-support">
 <h2>GPU support<a class="headerlink" href="#gpu-support" title="Link to this heading">#</a></h2>
-<p>Modern omics datasets often exceed memory limitations and benefit from hardware acceleration. To address this, we are adopting the Python array API standard, which enables seamless interoperability with GPU-accelerated libraries like CuPy and JAX, as well as distributed computing frameworks like Dask. Initial implementation has focused on compositional transformation algorithms, with successful testing on PyTorch GPU objects. This foundation will be extended to additional computational bottlenecks including UniFrac, PERMANOVA, mantel, and permdisp, enabling significant performance improvements for large-scale analyses.</p>
+<p>Modern omics datasets often exceed memory limitations and benefit from hardware acceleration. To address this, we are adopting the Python array API standard, which enables seamless interoperability with GPU-accelerated libraries like CuPy and JAX, as well as distributed computing frameworks like Dask. Initial implementation has focused on compositional transformation algorithms, with successful testing on PyTorch GPU objects. This foundation will be extended to additional algorithms, enabling significant performance improvements for large-scale analyses.</p>
 </section>
 <section id="support-for-free-threaded-python">
 <h2>Support for free-threaded Python<a class="headerlink" href="#support-for-free-threaded-python" title="Link to this heading">#</a></h2>
 <p>CPython 3.13 introduces a free-threaded build that removes the Global Interpreter Lock, enabling true multi-threading for CPU-bound tasks. This presents significant opportunities for scikit-bio’s computationally intensive operations. However, adoption depends on ecosystem readiness - key dependencies including statsmodels and h5py do not yet provide free-threaded builds. We will monitor dependency support and evaluate implementation once the required packages become available, with particular focus on algorithms that would benefit most from parallel execution.</p>
+</section>
+<section id="type-annotations">
+<h2>Type annotations<a class="headerlink" href="#type-annotations" title="Link to this heading">#</a></h2>
+<p>We are systematically adding type annotations to the scikit-bio codebase to improve code readability, IDE autocompletion, and bug detection in both development and downstream applications. Recent progress includes type annotations for distance statistics, alignment modules, and other core functionality shipped in v0.7.0. New code development incorporates type annotations by default, while existing modules are being updated incrementally.</p>
 </section>
 <section id="benchmarking">
 <h2>Benchmarking<a class="headerlink" href="#benchmarking" title="Link to this heading">#</a></h2>
@@ -490,10 +490,10 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-annotations">Type annotations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interoperability">Interoperability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-support">GPU support</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-for-free-threaded-python">Support for free-threaded Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-annotations">Type annotations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">Benchmarking</a></li>
 </ul>
   </nav></div>
