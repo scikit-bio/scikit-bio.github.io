@@ -736,10 +736,10 @@ HDF5 <a class="reference internal" href="#r7684bba23467-1" id="id1">[1]</a> file
 <cite>matrix</cite> are all zeros.</p>
 <p>The dissimilarity between <cite>ids[i]</cite> and <cite>ids[j]</cite> is interpreted
 to be the value at <cite>matrix[i, j]</cite>. <cite>i</cite> and <cite>j</cite> are integer indices.</p>
-<p>Required attributes:</p>
+<p>Required datasets:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<tr class="row-odd"><th class="head"><p>Datasets</p></th>
 <th class="head"><p>Value
 type</p></th>
 <th class="head"><p>Description</p></th>
@@ -771,6 +771,9 @@ number of IDs</p></td>
 </tbody>
 </table>
 </div>
+<p>Optionally, the file can contain several matrices.
+In such a case, the ‘matrix’ dataset will not exist and we will use
+‘matrix:0’ instead.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This file format is most useful for storing large matrices that do

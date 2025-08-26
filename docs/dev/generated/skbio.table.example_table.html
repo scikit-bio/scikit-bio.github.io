@@ -685,8 +685,50 @@ based on JSON to provide the overall structure for the format while
 versions 2.0 and 2.1 are based on HDF5. For more information see <a class="reference internal" href="#r9046ca075d1b-1" id="id1">[1]</a>
 and <a class="reference internal" href="#r9046ca075d1b-2" id="id2">[2]</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">array_like</span></dt><dd><p>An (N,M) sample by observation matrix represented as one of these
+types:
+* An 1-dimensional array of values
+* An n-dimensional array of values
+* An empty list
+* A list of numpy arrays
+* A list of dict
+* A list of sparse matrices
+* A dictionary of values
+* A list of lists
+* A sparse matrix of values</p>
+</dd>
+<dt><strong>observation_ids</strong><span class="classifier">array_like of str</span></dt><dd><p>A (N,) dataset of the observation IDs, where N is the total number
+of IDs</p>
+</dd>
+<dt><strong>sample_ids</strong><span class="classifier">array_like of str</span></dt><dd><p>A (M,) dataset of the sample IDs, where M is the total number of IDs</p>
+</dd>
+<dt><strong>observation_metadata</strong><span class="classifier">list of dicts, optional</span></dt><dd><p>per observation dictionary of annotations where every key represents a
+metadata field that contains specific metadata information,
+ie taxonomy, KEGG pathway, etc</p>
+</dd>
+<dt><strong>sample_metadata</strong><span class="classifier">array_like of dicts, optional</span></dt><dd><p>per sample dictionary of annotations where every key represents a
+metadata field that contains sample specific metadata information, ie</p>
+</dd>
+<dt><strong>table_id</strong><span class="classifier">str, optional</span></dt><dd><p>A field that can be used to identify the table</p>
+</dd>
+<dt><strong>type</strong><span class="classifier">str, see notes</span></dt><dd><p>The type of table represented</p>
+</dd>
+<dt><strong>create_date</strong><span class="classifier">str, optional</span></dt><dd><p>Date that this table was built</p>
+</dd>
+<dt><strong>generated_by</strong><span class="classifier">str, optional</span></dt><dd><p>Individual who built the table</p>
+</dd>
+<dt><strong>observation_group_metadata</strong><span class="classifier">list, optional</span></dt><dd><p>group that contains observation specific group metadata information
+(e.g., phylogenetic tree)</p>
+</dd>
+<dt><strong>sample_group_metadata</strong><span class="classifier">list, optional</span></dt><dd><p>group that contains sample specific group metadata information
+(e.g., relationships between samples)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt><strong>shape</strong></dt><dd></dd>
 <dt><strong>dtype</strong></dt><dd></dd>
 <dt><strong>nnz</strong></dt><dd></dd>
@@ -698,8 +740,8 @@ and <a class="reference internal" href="#r9046ca075d1b-2" id="id2">[2]</a></p>
 <dt><strong>format_version</strong></dt><dd></dd>
 </dl>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
 <dt>TableException</dt><dd><p>When an invalid table type is provided.</p>
 </dd>
 </dl>
