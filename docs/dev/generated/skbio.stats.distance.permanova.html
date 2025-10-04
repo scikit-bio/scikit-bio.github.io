@@ -56,6 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.permanova';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -701,18 +702,34 @@
 <dt class="sig sig-object py" id="skbio.stats.distance.permanova">
 <span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permanova</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permanova.py#L35"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permanova" title="Link to this definition">#</a></dt>
 <dd><p>Test for significant differences between groups using PERMANOVA.</p>
-<p>Permutational Multivariate Analysis of Variance (PERMANOVA) is a
-non-parametric method that tests whether two or more groups of objects
-(e.g., samples) are significantly different based on a categorical factor.
-It is conceptually similar to ANOVA except that it operates on a distance
-matrix, which allows for multivariate analysis. PERMANOVA computes a
-pseudo-F statistic.</p>
-<p>Statistical significance is assessed via a permutation test. The assignment
-of objects to groups (<cite>grouping</cite>) is randomly permuted a number of times
-(controlled via <cite>permutations</cite>). A pseudo-F statistic is computed for each
-permutation and the p-value is the proportion of permuted pseudo-F
-statisics that are equal to or greater than the original (unpermuted)
-pseudo-F statistic.</p>
+<p>Permutational Multivariate Analysis of Variance (PERMANOVA) is a non-parametric
+method that tests whether two or more groups of objects (e.g., samples) are
+significantly different based on a categorical factor. It is conceptually
+similar to ANOVA except that it operates on distances between objects via a
+distance matrix, which allows for multivariate analysis. Unlike classical
+Multivariate Analysis of Variance (MANOVA), PERMANOVA makes no assumptions
+about the distribution of the underlying data. As such, rather than computing
+a true <cite>F</cite> statistic based in known distributions of variables, it computes a
+pseudo-<cite>F</cite> statistic whose significance can be assessed by a permutation test.</p>
+<p>The pseudo-<cite>F</cite> statistic is the ratio of between-group variance to within-group
+variance, defined in <a class="reference internal" href="#rf45214b43870-1" id="id1">[1]</a> analogously to the <cite>F</cite> statistic in ANOVA:</p>
+<div class="math notranslate nohighlight">
+\[F = \frac{{SS}_{between}/(g - 1)}{{SS}_{within}/(n - g)}\]</div>
+<p>It is computed from the sums of squares <span class="math notranslate nohighlight">\({SS}_{between}\)</span> and
+<span class="math notranslate nohighlight">\({SS}_{within}\)</span> divided by their corresponding degrees of freedom, where
+<span class="math notranslate nohighlight">\(n\)</span> is the number of distinct objects and <span class="math notranslate nohighlight">\(g\)</span> is the number of groups.</p>
+<p>Statistical significance is assessed via a permutation test. Objects in the distance
+matrix are assigned to groups (<cite>grouping</cite>) based on a categorical factor. This
+assignment of groups is permuted a number of times (controlled via <cite>permutations</cite>),
+and a pseudo-<cite>F</cite> statistic is computed for each permutation. Under the null
+hypothesis that the groupings of objects have no effect on the distribution of
+the underlying data, the pseudo-<cite>F</cite> statistics of these permutations should be
+identically distributed for a given distance matrix. The probability of a given
+pseudo-<cite>F</cite> statistic being at least as extreme as an observed one is then the
+proportion of permuted pseudo-<cite>F</cite> statistics (<span class="math notranslate nohighlight">\(F^{\pi}\)</span>) that are greater
+than or equal to the observed (unpermuted) one (<span class="math notranslate nohighlight">\(F\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[p = \frac{1 + \text{no. of } F^{\pi} \geq F}{1 + \text{no. of permutations}}\]</div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -740,7 +757,7 @@ Cannot be provided if <cite>grouping</cite> is 1-D <code class="docutils literal
 </dd>
 <dt><strong>permutations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of permutations to use when assessing statistical
 significance. Must be greater than or equal to zero. If zero,
-statistical significance calculations will be skipped and the p-value
+statistical significance calculations will be skipped and the <cite>p</cite>-value
 will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
@@ -763,21 +780,41 @@ will be <code class="docutils literal notranslate"><span class="pre">np.nan</spa
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.stats.distance.anosim.html#skbio.stats.distance.anosim" title="skbio.stats.distance.anosim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anosim</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.multivariate.manova.MANOVA.html#statsmodels.multivariate.manova.MANOVA" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">statsmodels.multivariate.manova.MANOVA</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.permutation_test.html#scipy.stats.permutation_test" title="(in SciPy v1.16.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.stats.permutation_test</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>See <a class="reference internal" href="#rf45214b43870-1" id="id1">[1]</a> for the original method reference, as well as <code class="docutils literal notranslate"><span class="pre">vegan::adonis</span></code>,
-available in R’s vegan package <a class="reference internal" href="#rf45214b43870-2" id="id2">[2]</a>.</p>
-<p>The p-value will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> if <cite>permutations</cite> is zero.</p>
+<p>See <a class="reference internal" href="#rf45214b43870-1" id="id2">[1]</a> for the original method reference, as well as <code class="docutils literal notranslate"><span class="pre">vegan::adonis</span></code>,
+available in R’s vegan package <a class="reference internal" href="#rf45214b43870-2" id="id3">[2]</a>.</p>
+<p>The precision of the <cite>p</cite>-value is dependent on the number of permutations. The
+default precision is <span class="math notranslate nohighlight">\(0.001=1/(1+999)\)</span> from the default value
+<code class="docutils literal notranslate"><span class="pre">permutations=999</span></code>. The unpermuted grouping always contributes the first
+permutation to the numerator and denominator of the <cite>p</cite>-value, so 1 is added
+to both. This circumvents the risk of the probability being zero by chance
+even when it is nonzero. It is suggested in <a class="reference internal" href="#rf45214b43870-1" id="id4">[1]</a> that at least 1000
+permutations should be performed for a confidence level of 0.05, and
+5000 permutations should be performed for a confidence level of 0.01. The
+<cite>p</cite>-value will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> if <code class="docutils literal notranslate"><span class="pre">permutations</span></code> is zero.</p>
+<p>A related statistic reported by some implementations (such as
+<code class="docutils literal notranslate"><span class="pre">vegan::adonis</span></code>) is the <span class="math notranslate nohighlight">\(R^2\)</span> value, which describes the proportion
+of variance in the data explained by the grouping:</p>
+<div class="math notranslate nohighlight">
+\[R^2 = \frac{{SS}_{between}}{{SS}_{total}}\]</div>
+<p>This is not currently computed by this function, but it may be derived from the
+outputs using the following formula:</p>
+<div class="math notranslate nohighlight">
+\[R^2 = \frac{1}{(n - g)/(g - 1)F + 1}\]</div>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="rf45214b43870-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id4">3</a>)</span>
 <p>Anderson, Marti J. “A new method for non-parametric multivariate
 analysis of variance.” Austral Ecology 26.1 (2001): 32-46.</p>
 </div>
 <div class="citation" id="rf45214b43870-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="http://cran.r-project.org/web/packages/vegan/index.html">http://cran.r-project.org/web/packages/vegan/index.html</a></p>
 </div>
 </div>
