@@ -940,7 +940,7 @@ or the
 </div>
 <p>As an example, let’s read a <a class="reference internal" href="generated/skbio.io.format.newick.html#module-skbio.io.format.newick" title="skbio.io.format.newick"><code class="xref py py-mod docutils literal notranslate"><span class="pre">newick</span></code></a> file into a
 <a class="reference internal" href="generated/skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code></a> object using both interfaces. Here we will use Python’s
-built-in <a class="reference external" href="https://docs.python.org/3/library/io.html#io.StringIO" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringIO</span></code></a> class to mimick an open file:</p>
+built-in <a class="reference external" href="https://docs.python.org/3/library/io.html#io.StringIO" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringIO</span></code></a> class to mimick an open file:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span> <span class="k">as</span> <span class="n">sk_read</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
@@ -971,7 +971,7 @@ interface, meaning that <code class="docutils literal notranslate"><span class="
 <span class="go">&lt;TreeNode, name: unnamed, internal node count: 0, tips count: 2&gt;</span>
 </pre></div>
 </div>
-<p>We call format inference <strong>sniffing</strong>, much like the <a class="reference external" href="https://docs.python.org/3/library/csv.html#csv.Sniffer" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csv.Sniffer</span></code></a>
+<p>We call format inference <strong>sniffing</strong>, much like the <a class="reference external" href="https://docs.python.org/3/library/csv.html#csv.Sniffer" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csv.Sniffer</span></code></a>
 class of Python’s standard library. The goal of a <code class="docutils literal notranslate"><span class="pre">sniffer</span></code> is two-fold: to
 identify if a file is a specific format, and if it is, to provide <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>
 which can be used to better parse the file.</p>
