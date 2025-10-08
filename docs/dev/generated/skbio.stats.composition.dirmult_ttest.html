@@ -69,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.stats.composition.dirmult_lme" href="skbio.stats.composition.dirmult_lme.html" />
-    <link rel="prev" title="skbio.stats.composition.ancom" href="skbio.stats.composition.ancom.html" />
+    <link rel="prev" title="skbio.stats.composition.ancombc" href="skbio.stats.composition.ancombc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.1-dev" />
@@ -613,6 +613,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc.html">skbio.stats.composition.ancombc</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
@@ -710,7 +711,7 @@
 <h1>skbio.stats.composition.dirmult_ttest<a class="headerlink" href="#skbio-stats-composition-dirmult-ttest" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.dirmult_ttest">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition.py#L2346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_dirmult.py#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
 <dd><p><em>T</em>-test using Dirichlet-multinomial distribution.</p>
 <p>The Dirichlet-multinomial distribution is a compound distribution that
 combines a Dirichlet distribution over the probabilities of a multinomial
@@ -882,12 +883,12 @@ selective growth experiments by compositional data analysis. Microbiome, 2,
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.ancom.html"
+       href="skbio.stats.composition.ancombc.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.ancom</p>
+        <p class="prev-next-title">skbio.stats.composition.ancombc</p>
       </div>
     </a>
     <a class="right-next"

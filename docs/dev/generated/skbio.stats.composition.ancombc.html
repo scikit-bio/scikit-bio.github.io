@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Build an orthonormal basis from a sequential binary partition (SBP)." />
+    <meta name="description" content="Perform differential abundance test using ANCOM-BC." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.sbp_basis &#8212; scikit-bio 0.7.1-dev documentation</title>
+    <title>skbio.stats.composition.ancombc &#8212; scikit-bio 0.7.1-dev documentation</title>
   
   
   
@@ -56,8 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.sbp_basis';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.ancombc';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -65,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.composition.sbp_basis.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.composition.ancombc.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.tree_basis" href="skbio.stats.composition.tree_basis.html" />
-    <link rel="prev" title="skbio.stats.composition.multi_replace" href="skbio.stats.composition.multi_replace.html" />
+    <link rel="next" title="skbio.stats.composition.dirmult_ttest" href="skbio.stats.composition.dirmult_ttest.html" />
+    <link rel="prev" title="skbio.stats.composition.ancom" href="skbio.stats.composition.ancom.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.1-dev" />
@@ -614,7 +613,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc.html">skbio.stats.composition.ancombc</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.ancombc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
@@ -632,7 +631,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.vlr.html">skbio.stats.composition.vlr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html">skbio.stats.composition.pairwise_vlr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.sbp_basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.sbp_basis.html">skbio.stats.composition.sbp_basis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.tree_basis.html">skbio.stats.composition.tree_basis</a></li>
 </ul>
 </details></li>
@@ -691,7 +690,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.stats.composition.html" class="nav-link">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.sbp_basis</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.ancombc</span></li>
   </ul>
 </nav>
 </div>
@@ -708,75 +707,155 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-composition-sbp-basis">
-<h1>skbio.stats.composition.sbp_basis<a class="headerlink" href="#skbio-stats-composition-sbp-basis" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-composition-ancombc">
+<h1>skbio.stats.composition.ancombc<a class="headerlink" href="#skbio-stats-composition-ancombc" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.composition.sbp_basis">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">sbp_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbp</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L1377"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.sbp_basis" title="Link to this definition">#</a></dt>
-<dd><p>Build an orthonormal basis from a sequential binary partition (SBP).</p>
-<p>A SBP is a hierarchical collection of binary divisions of compositional
-parts (<a class="reference internal" href="#r3ab766b8ee56-1" id="id1">[1]</a>). The child groups are divided again until all groups contain a
-single part. The SBP can be encoded in a <span class="math notranslate nohighlight">\((D - 1) \times D\)</span> matrix
-where, for each row, parts can be grouped by -1 and +1 tags, and 0 for
-excluded parts. The <em>i</em>-th balance is computed as follows:</p>
-<div class="math notranslate nohighlight">
-\[b_i = \sqrt{ \frac{r_i s_i}{r_i+s_i} }
-\ln \left( \frac{g(x_{r_i})}{g(x_{s_i})} \right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(b_i\)</span> is the <em>i</em>-th balance corresponding to the <em>i</em>-th row in
-the SBP, <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(s_i\)</span> and the number of respectively <code class="docutils literal notranslate"><span class="pre">+1</span></code>
-and <code class="docutils literal notranslate"><span class="pre">-1</span></code> labels in the <em>i</em>-th row of the SBP and where <span class="math notranslate nohighlight">\(g(x) =
-(\prod\limits_{i=1}^{D} x_i)^{1/D}\)</span> is the geometric mean of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dt class="sig sig-object py" id="skbio.stats.composition.ancombc">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancombc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancombc" title="Link to this definition">#</a></dt>
+<dd><p>Perform differential abundance test using ANCOM-BC.</p>
+<p>Analysis of compositions of microbiomes with bias correction (ANCOM-BC) <a class="reference internal" href="#r1bf23095540c-1" id="id1">[1]</a> is a
+differential abundance testing method featuring the estimation and correction for
+the bias of differential sampling fractions.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.1.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>sbp</strong><span class="classifier">array_like of shape (n_partitions, n_features)</span></dt><dd><p>A contrast matrix, also known as a sequential binary partition, where
-every row represents a partition between two groups of features. A part
-labelled <code class="docutils literal notranslate"><span class="pre">+1</span></code> would correspond to that feature being in the numerator
-of the given row partition, a part labelled <code class="docutils literal notranslate"><span class="pre">-1</span></code> would correspond to
-features being in the denominator of that given row partition, and
-<code class="docutils literal notranslate"><span class="pre">0</span></code> would correspond to features excluded in the row partition.</p>
+<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>A matrix containing count or proportional abundance data of the samples. See
+<a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier">pd.DataFrame or 2-D array_like</span></dt><dd><p>The metadata for the model. Rows correspond to samples and columns correspond
+to covariates in the model. Must be a pandas DataFrame or convertible to a
+pandas DataFrame.</p>
+</dd>
+<dt><strong>formula</strong><span class="classifier">str or generic Formula object</span></dt><dd><p>The formula defining the model. Refer to <a class="reference external" href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy’s documentation</a> on how to specify
+a formula.</p>
+</dd>
+<dt><strong>max_iter</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of iterations for the bias estimation process. Default is 100.</p>
+</dd>
+<dt><strong>tol</strong><span class="classifier">float, optional</span></dt><dd><p>Absolute convergence tolerance for the bias estimation process. Default is
+1e-5.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Significance level for the statistical tests. Must be in the range of (0, 1).
+Default is 0.05.</p>
+</dd>
+<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
+Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-
+Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported
+by statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
+Case-insensitive. If None, no correction will be performed.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ndarray of shape (n_partitions, n_features)</dt><dd><p>An orthonormal basis in the Aitchison simplex.</p>
+<dt>pd.DataFrame</dt><dd><p>A table of features and covariates, their log-fold changes and other relevant
+statistics.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Covariate</span></code>: Covariate name, i.e., independent variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Log2(FC)</span></code>: Expected log2-fold change of abundance from the reference
+category to the covariate category defined in the formula. The value is
+expressed in the center log ratio (see <a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a>) transformed coordinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SE</span></code>: Standard error of the estimated Log2(FC).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code>: <em>W</em>-statistic, or the number of features that the current feature is
+tested to be significantly different against.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of the linear mixed effects model. The reported value
+is the average of all of the <em>p</em>-values computed from each of the posterior
+draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value of the linear mixed effects model for multiple
+comparisons. The reported value is the average of all of the <em>q</em>-values
+computed from each of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Signif</span></code>: Whether the covariate category is significantly differentially
+abundant from the reference category. A feature-covariate pair marked as
+“True” suffice: 1) The <em>q</em>-value must be less than or equal to the
+significance level (0.05). 2) The confidence interval (CI(2.5)..CI(97.5))
+must not overlap with zero.</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">sbp_basis</span></code> method was derived from the <code class="docutils literal notranslate"><span class="pre">gsi.buildilrBase()</span></code>
-function implemented in the R package “compositions” <a class="reference internal" href="#r3ab766b8ee56-2" id="id2">[2]</a>.</p>
+<p>The input data table for ANCOM-BC must contain only positive numbers. One needs to
+remove zero values by, e.g., adding a pseudocount of 1.0.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="r3ab766b8ee56-1" role="doc-biblioentry">
+<div class="citation" id="r1bf23095540c-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Parent, S.É., Parent, L.E., Egozcue, J.J., Rozane, D.E.,
-Hernandes, A., Lapointe, L., Hébert-Gentile, V., Naess, K.,
-Marchand, S., Lafond, J., Mattos, D., Barlow, P., Natale, W., 2013.
-The plant ionome revisited by the nutrient balance concept.
-Front. Plant Sci. 4, 39.</p>
-</div>
-<div class="citation" id="r3ab766b8ee56-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>van den Boogaart, K. Gerald, Tolosana-Delgado, Raimon and Bren,
-Matevz, 2014. <cite>compositions</cite>: Compositional Data Analysis. R package
-version 1.40-1. <a class="reference external" href="https://CRAN.R-project.org/package=compositions">https://CRAN.R-project.org/package=compositions</a>.</p>
+<p>Lin, H. and Peddada, S.D., 2020. Analysis of compositions of microbiomes
+with bias correction. Nature communications, 11(1), p.3514.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sbp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-<span class="gp">... </span>                <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<span class="gp">... </span>                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-<span class="gp">... </span>                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sbp_basis</span><span class="p">(</span><span class="n">sbp</span><span class="p">)</span>
-<span class="go">array([[ 0.54772256,  0.54772256, -0.36514837, -0.36514837, -0.36514837],</span>
-<span class="go">       [ 0.70710678, -0.70710678,  0.        ,  0.        ,  0.        ],</span>
-<span class="go">       [ 0.        ,  0.        ,  0.81649658, -0.40824829, -0.40824829],</span>
-<span class="go">       [ 0.        ,  0.        ,  0.        ,  0.70710678, -0.70710678]])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">ancombc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+<p>Let’s load in a DataFrame with six samples and seven features (e.g., these
+may be bacterial taxa):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">9</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span>
+<span class="gp">... </span>                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b1&#39;</span><span class="p">,</span> <span class="s1">&#39;b2&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span> <span class="s1">&#39;b4&#39;</span><span class="p">,</span> <span class="s1">&#39;b5&#39;</span><span class="p">,</span> <span class="s1">&#39;b6&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                              <span class="s1">&#39;b7&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Then create a grouping vector. In this example, there is a treatment group
+and a placebo group.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;grouping&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">]},</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Now run <code class="docutils literal notranslate"><span class="pre">ancombc</span></code> to determine if there are any features that are significantly
+different in abundance between the treatment and the placebo groups.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="s1">&#39;grouping&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">   FeatureID              Covariate  Log2(FC)       SE         W   pvalue  \</span>
+<span class="go">0         b1              Intercept   0.71929  0.03350  21.47231  0.00000</span>
+<span class="go">1         b1  grouping[T.treatment]  -1.18171  0.38489  -3.07024  0.00214</span>
+<span class="go">2         b2              Intercept   0.70579  0.01785  39.54846  0.00000</span>
+<span class="go">3         b2  grouping[T.treatment]  -0.53687  0.09653  -5.56153  0.00000</span>
+<span class="go">4         b3              Intercept   0.06944  0.08654   0.80242  0.42231</span>
+<span class="go">5         b3  grouping[T.treatment]   0.06816  0.12041   0.56604  0.57136</span>
+<span class="go">6         b4              Intercept  -0.00218  0.01530  -0.14216  0.88695</span>
+<span class="go">7         b4  grouping[T.treatment]   0.11309  0.11952   0.94618  0.34406</span>
+<span class="go">8         b5              Intercept   0.07821  0.06485   1.20602  0.22781</span>
+<span class="go">9         b5  grouping[T.treatment]   0.00370  0.11492   0.03218  0.97433</span>
+<span class="go">10        b6              Intercept  -0.00218  0.01530  -0.14216  0.88695</span>
+<span class="go">11        b6  grouping[T.treatment]  -0.11796  0.07188  -1.64114  0.10077</span>
+<span class="go">12        b7              Intercept  -0.00218  0.01530  -0.14216  0.88695</span>
+<span class="go">13        b7  grouping[T.treatment]   0.05232  0.07063   0.74074  0.45885</span>
+
+<span class="go">     qvalue  Signif</span>
+<span class="go">0   0.00000    True</span>
+<span class="go">1   0.01283    True</span>
+<span class="go">2   0.00000    True</span>
+<span class="go">3   0.00000    True</span>
+<span class="go">4   1.00000   False</span>
+<span class="go">5   1.00000   False</span>
+<span class="go">6   1.00000   False</span>
+<span class="go">7   1.00000   False</span>
+<span class="go">8   1.00000   False</span>
+<span class="go">9   1.00000   False</span>
+<span class="go">10  1.00000   False</span>
+<span class="go">11  0.50384   False</span>
+<span class="go">12  1.00000   False</span>
+<span class="go">13  1.00000   False</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -794,20 +873,20 @@ version 1.40-1. <a class="reference external" href="https://CRAN.R-project.org/p
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.multi_replace.html"
+       href="skbio.stats.composition.ancom.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.multi_replace</p>
+        <p class="prev-next-title">skbio.stats.composition.ancom</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.tree_basis.html"
+       href="skbio.stats.composition.dirmult_ttest.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.tree_basis</p>
+        <p class="prev-next-title">skbio.stats.composition.dirmult_ttest</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -830,7 +909,7 @@ version 1.40-1. <a class="reference external" href="https://CRAN.R-project.org/p
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.sbp_basis"><code class="docutils literal notranslate"><span class="pre">sbp_basis</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.ancombc"><code class="docutils literal notranslate"><span class="pre">ancombc</span></code></a></li>
 </ul>
   </nav></div>
 
