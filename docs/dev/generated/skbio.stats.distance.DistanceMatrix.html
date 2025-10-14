@@ -69,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.stats.distance.DistanceMatrix.condensed_form" href="skbio.stats.distance.DistanceMatrix.condensed_form.html" />
-    <link rel="prev" title="skbio.stats.distance.DissimilarityMatrix.write" href="skbio.stats.distance.DissimilarityMatrix.write.html" />
+    <link rel="prev" title="skbio.stats.distance.SymmetricMatrix.transpose" href="skbio.stats.distance.SymmetricMatrix.transpose.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.1-dev" />
@@ -606,7 +606,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.distance.html">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html">skbio.stats.distance.DissimilarityMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html">skbio.stats.distance.PairwiseMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html">skbio.stats.distance.SymmetricMatrix</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.distance.DistanceMatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.randdm.html">skbio.stats.distance.randdm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.anosim.html">skbio.stats.distance.anosim</a></li>
@@ -699,24 +700,24 @@
 <h1>skbio.stats.distance.DistanceMatrix<a class="headerlink" href="#skbio-stats-distance-distancematrix" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.stats.distance.DistanceMatrix">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">DistanceMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1042"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DistanceMatrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">DistanceMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condensed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1737"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DistanceMatrix" title="Link to this definition">#</a></dt>
 <dd><p>Store distances between objects.</p>
-<p>A <cite>DistanceMatrix</cite> is a <cite>DissimilarityMatrix</cite> with the additional
-requirement that the matrix data is symmetric. There are additional methods
-made available that take advantage of this symmetry. The
-<a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.plot.html#skbio.stats.distance.DissimilarityMatrix.plot" title="skbio.stats.distance.DissimilarityMatrix.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot</span></code></a> method provides
+<p>A <cite>DistanceMatrix</cite> is a <cite>SymmetricMatrix</cite> with the additional
+requirement that the matrix data is hollow. There are additional methods
+made available that take advantage of this hollowness. The
+<a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.plot.html#skbio.stats.distance.PairwiseMatrix.plot" title="skbio.stats.distance.PairwiseMatrix.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot</span></code></a> method provides
 convenient built-in plotting functionality.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>data</strong><span class="classifier">array_like or DissimilarityMatrix</span></dt><dd><p>Square, hollow, two-dimensional <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of distances
+<dt><strong>data</strong><span class="classifier">array_like or PairwiseMatrix</span></dt><dd><p>Square, hollow, two-dimensional <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of distances
 (floats), or a structure that can be converted to a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>
 using <code class="docutils literal notranslate"><span class="pre">numpy.asarray</span></code> or a one-dimensional vector of distances
-(floats), as defined by <cite>scipy.spatial.distance.squareform</cite>. Can
-instead be a <cite>DissimilarityMatrix</cite> (or <cite>DistanceMatrix</cite>) instance,
-in which case the instance’s data will be used.
-Data will be converted to a float <code class="docutils literal notranslate"><span class="pre">dtype</span></code> if necessary. A copy will
-<em>not</em> be made if already a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> with a float <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
+(floats), as defined by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.squareform.html">scipy.spatial.distance.squareform</a>.
+Can instead be a <cite>PairwiseMatrix</cite> (or <cite>DistanceMatrix</cite>) instance, in which case
+the instance’s data will be used. Data will be converted to a float <code class="docutils literal notranslate"><span class="pre">dtype</span></code>
+if necessary. A copy will <em>not</em> be made if already a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> with a
+float <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
 </dd>
 <dt><strong>ids</strong><span class="classifier">sequence of str, optional</span></dt><dd><p>Sequence of strings to be used as object IDs. Must match the number of
 rows/cols in <cite>data</cite>. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), IDs will be
@@ -732,7 +733,8 @@ DistanceMatrix object, the input data will be validated.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix" title="skbio.stats.distance.DissimilarityMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix" title="skbio.stats.distance.PairwiseMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html#skbio.stats.distance.SymmetricMatrix" title="skbio.stats.distance.SymmetricMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SymmetricMatrix</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -740,8 +742,8 @@ DistanceMatrix object, the input data will be validated.</p>
 facilitate use with other scientific Python routines (e.g., scipy), the
 distances can be retrieved in condensed (vector-form) format using
 <cite>condensed_form</cite>.</p>
-<p><cite>DistanceMatrix</cite> only requires that the distances it stores are symmetric.
-Checks are <em>not</em> performed to ensure the other three metric properties
+<p><cite>DistanceMatrix</cite> only requires that the distances it stores are symmetric and
+hollow. Checks are <em>not</em> performed to ensure the other three metric properties
 hold (non-negativity, identity of indiscernibles, and triangle inequality)
 <a class="reference internal" href="#r8212bb0c75ea-2" id="id2">[2]</a>. Thus, a <cite>DistanceMatrix</cite> instance can store distances that are not
 metric.</p>
@@ -759,26 +761,29 @@ metric.</p>
 <p class="rubric">Attributes (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.T" title="skbio.stats.distance.DissimilarityMatrix.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></a></p></td>
-<td><p>Transpose of the dissimilarity matrix.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html#skbio.stats.distance.SymmetricMatrix.T" title="skbio.stats.distance.SymmetricMatrix.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></a></p></td>
+<td><p>Transpose of the matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.data" title="skbio.stats.distance.DissimilarityMatrix.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
-<td><p>Array of dissimilarities.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.data" title="skbio.stats.distance.PairwiseMatrix.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<td><p>Array of pairwise relationships.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.default_write_format" title="skbio.stats.distance.DissimilarityMatrix.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.default_write_format" title="skbio.stats.distance.PairwiseMatrix.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.dtype" title="skbio.stats.distance.DissimilarityMatrix.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
-<td><p>Data type of the dissimilarities.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html#skbio.stats.distance.SymmetricMatrix.diagonal" title="skbio.stats.distance.SymmetricMatrix.diagonal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diagonal</span></code></a></p></td>
+<td><p>Diagonal value(s) of the matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.ids" title="skbio.stats.distance.DissimilarityMatrix.ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.dtype" title="skbio.stats.distance.PairwiseMatrix.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>Data type of the matrix values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.ids" title="skbio.stats.distance.PairwiseMatrix.ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ids</span></code></a></p></td>
 <td><p>Tuple of object IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.shape" title="skbio.stats.distance.DissimilarityMatrix.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
-<td><p>Two-element tuple containing the dissimilarity matrix dimensions.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.shape" title="skbio.stats.distance.PairwiseMatrix.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
+<td><p>Two-element tuple containing the redundant form matrix dimensions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.size" title="skbio.stats.distance.DissimilarityMatrix.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
-<td><p>Total number of elements in the dissimilarity matrix.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.size" title="skbio.stats.distance.PairwiseMatrix.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
+<td><p>Total number of elements in the underlying data structure.</p></td>
 </tr>
 </tbody>
 </table>
@@ -789,12 +794,6 @@ metric.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.condensed_form.html#skbio.stats.distance.DistanceMatrix.condensed_form" title="skbio.stats.distance.DistanceMatrix.condensed_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">condensed_form</span></code></a>()</p></td>
 <td><p>Return an array of distances in condensed format.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.from_iterable.html#skbio.stats.distance.DistanceMatrix.from_iterable" title="skbio.stats.distance.DistanceMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys, ...])</p></td>
-<td><p>Create DistanceMatrix from all pairs in an iterable given a metric.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.permute.html#skbio.stats.distance.DistanceMatrix.permute" title="skbio.stats.distance.DistanceMatrix.permute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permute</span></code></a>([condensed, seed])</p></td>
-<td><p>Randomly permute both rows and columns in the matrix.</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.to_series.html#skbio.stats.distance.DistanceMatrix.to_series" title="skbio.stats.distance.DistanceMatrix.to_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_series</span></code></a>()</p></td>
 <td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> from this <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code>.</p></td>
 </tr>
@@ -804,40 +803,46 @@ metric.</p>
 <p class="rubric">Methods (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.between.html#skbio.stats.distance.DissimilarityMatrix.between" title="skbio.stats.distance.DissimilarityMatrix.between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">between</span></code></a>(from_, to_[, allow_overlap])</p></td>
-<td><p>Obtain the distances between the two groups of IDs.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.between.html#skbio.stats.distance.PairwiseMatrix.between" title="skbio.stats.distance.PairwiseMatrix.between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">between</span></code></a>(from_, to_[, allow_overlap])</p></td>
+<td><p>Obtain the pairwise values between the two groups of IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.copy.html#skbio.stats.distance.DissimilarityMatrix.copy" title="skbio.stats.distance.DissimilarityMatrix.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
-<td><p>Return a deep copy of the dissimilarity matrix.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.copy.html#skbio.stats.distance.SymmetricMatrix.copy" title="skbio.stats.distance.SymmetricMatrix.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>Return a deep copy of the symmetric matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.filter.html#skbio.stats.distance.DissimilarityMatrix.filter" title="skbio.stats.distance.DissimilarityMatrix.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(ids[, strict])</p></td>
-<td><p>Filter the dissimilarity matrix by IDs.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.filter.html#skbio.stats.distance.PairwiseMatrix.filter" title="skbio.stats.distance.PairwiseMatrix.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(ids[, strict])</p></td>
+<td><p>Filter the matrix by IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.index.html#skbio.stats.distance.DissimilarityMatrix.index" title="skbio.stats.distance.DissimilarityMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.from_iterable.html#skbio.stats.distance.SymmetricMatrix.from_iterable" title="skbio.stats.distance.SymmetricMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys, ...])</p></td>
+<td><p>Create PairwiseMatrix from an iterable given a metric.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.index.html#skbio.stats.distance.PairwiseMatrix.index" title="skbio.stats.distance.PairwiseMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
 <td><p>Return the index of the specified ID.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.plot.html#skbio.stats.distance.DissimilarityMatrix.plot" title="skbio.stats.distance.DissimilarityMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
-<td><p>Create a heatmap of the dissimilarity matrix.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.permute.html#skbio.stats.distance.SymmetricMatrix.permute" title="skbio.stats.distance.SymmetricMatrix.permute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permute</span></code></a>([condensed, seed])</p></td>
+<td><p>Randomly permute both rows and columns in the matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.read.html#skbio.stats.distance.DissimilarityMatrix.read" title="skbio.stats.distance.DissimilarityMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.plot.html#skbio.stats.distance.PairwiseMatrix.plot" title="skbio.stats.distance.PairwiseMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
+<td><p>Create a heatmap of the matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.read.html#skbio.stats.distance.PairwiseMatrix.read" title="skbio.stats.distance.PairwiseMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
 <td><p>Create a new <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instance from a file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.redundant_form.html#skbio.stats.distance.DissimilarityMatrix.redundant_form" title="skbio.stats.distance.DissimilarityMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
-<td><p>Return an array of dissimilarities in redundant format.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.redundant_form.html#skbio.stats.distance.SymmetricMatrix.redundant_form" title="skbio.stats.distance.SymmetricMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
+<td><p>Return an array of values in redundant format.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.rename.html#skbio.stats.distance.DissimilarityMatrix.rename" title="skbio.stats.distance.DissimilarityMatrix.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(mapper[, strict])</p></td>
-<td><p>Rename IDs in the dissimilarity matrix.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.rename.html#skbio.stats.distance.PairwiseMatrix.rename" title="skbio.stats.distance.PairwiseMatrix.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(mapper[, strict])</p></td>
+<td><p>Rename IDs in the matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.to_data_frame.html#skbio.stats.distance.DissimilarityMatrix.to_data_frame" title="skbio.stats.distance.DissimilarityMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
-<td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> from this <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.to_data_frame.html#skbio.stats.distance.PairwiseMatrix.to_data_frame" title="skbio.stats.distance.PairwiseMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
+<td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> from this <code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.transpose.html#skbio.stats.distance.DissimilarityMatrix.transpose" title="skbio.stats.distance.DissimilarityMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
-<td><p>Return the transpose of the dissimilarity matrix.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.transpose.html#skbio.stats.distance.SymmetricMatrix.transpose" title="skbio.stats.distance.SymmetricMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
+<td><p>Return the transpose of the matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.within.html#skbio.stats.distance.DissimilarityMatrix.within" title="skbio.stats.distance.DissimilarityMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
-<td><p>Obtain all the distances among the set of IDs.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.within.html#skbio.stats.distance.PairwiseMatrix.within" title="skbio.stats.distance.PairwiseMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
+<td><p>Obtain all the pairwise values among the set of IDs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.write.html#skbio.stats.distance.DissimilarityMatrix.write" title="skbio.stats.distance.DissimilarityMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.write.html#skbio.stats.distance.PairwiseMatrix.write" title="skbio.stats.distance.PairwiseMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
 <td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> to a file.</p></td>
 </tr>
 </tbody>
@@ -846,17 +851,17 @@ metric.</p>
 <p class="rubric">Special methods (inherited)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.__contains__" title="skbio.stats.distance.DissimilarityMatrix.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a>(lookup_id)</p></td>
-<td><p>Check if the specified ID is in the dissimilarity matrix.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.__contains__" title="skbio.stats.distance.PairwiseMatrix.__contains__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__contains__</span></code></a>(lookup_id)</p></td>
+<td><p>Check if the specified ID is in the matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.__eq__" title="skbio.stats.distance.DissimilarityMatrix.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
-<td><p>Compare this dissimilarity matrix to another for equality.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.__eq__" title="skbio.stats.distance.PairwiseMatrix.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a>(other)</p></td>
+<td><p>Compare this matrix to another for equality.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code>(value, /)</p></td>
 <td><p>Return self&gt;=value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.__getitem__" title="skbio.stats.distance.DissimilarityMatrix.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(index)</p></td>
-<td><p>Slice into dissimilarity data by object ID or numpy indexing.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html#skbio.stats.distance.SymmetricMatrix.__getitem__" title="skbio.stats.distance.SymmetricMatrix.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(index)</p></td>
+<td><p>Slice into data by object ID or numpy indexing.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
 <td><p>Helper for pickle.</p></td>
@@ -870,11 +875,11 @@ metric.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
 <td><p>Return self&lt;value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.__ne__" title="skbio.stats.distance.DissimilarityMatrix.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
-<td><p>Determine whether two dissimilarity matrices are not equal.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.__ne__" title="skbio.stats.distance.PairwiseMatrix.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
+<td><p>Determine whether two matrices are not equal.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DissimilarityMatrix.html#skbio.stats.distance.DissimilarityMatrix.__str__" title="skbio.stats.distance.DissimilarityMatrix.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
-<td><p>Return a string representation of the dissimilarity matrix.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix.__str__" title="skbio.stats.distance.PairwiseMatrix.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Return a string representation of the matrix.</p></td>
 </tr>
 </tbody>
 </table>
@@ -895,12 +900,12 @@ metric.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.distance.DissimilarityMatrix.write.html"
+       href="skbio.stats.distance.SymmetricMatrix.transpose.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.distance.DissimilarityMatrix.write</p>
+        <p class="prev-next-title">skbio.stats.distance.SymmetricMatrix.transpose</p>
       </div>
     </a>
     <a class="right-next"
