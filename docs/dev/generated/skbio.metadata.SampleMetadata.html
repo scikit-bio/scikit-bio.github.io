@@ -693,7 +693,7 @@
 <h1>skbio.metadata.SampleMetadata<a class="headerlink" href="#skbio-metadata-samplemetadata" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.metadata.SampleMetadata">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.metadata.</span></span><span class="sig-name descname"><span class="pre">SampleMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_missing_schemes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_missing_scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blank'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.metadata.</span></span><span class="sig-name descname"><span class="pre">SampleMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_missing_schemes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_missing_scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blank'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L241"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata" title="Link to this definition">#</a></dt>
 <dd><p>Store metadata associated with identifiers in a study.</p>
 <p>Metadata is tabular in nature, mapping study identifiers (e.g. sample or
 feature IDs) to columns of metadata associated with each ID.</p>
@@ -853,6 +853,9 @@ or in <cite>column_missing_schemes</cite>.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#skbio.metadata.SampleMetadata.__ne__" title="skbio.metadata.SampleMetadata.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></a>(other)</p></td>
 <td><p>Determine if this metadata is not equal to another.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.metadata.SampleMetadata.__str__" title="skbio.metadata.SampleMetadata.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a>()</p></td>
+<td><p>Return the string summary of the metadata and its columns.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -873,9 +876,6 @@ or in <cite>column_missing_schemes</cite>.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code>(value, /)</p></td>
 <td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code>(/)</p></td>
-<td><p>Return str(self).</p></td>
 </tr>
 </tbody>
 </table>
@@ -927,7 +927,7 @@ read-only.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.__eq__">
-<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L525"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.__eq__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L534"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.__eq__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if this metadata is equal to another.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Metadata</span></code> objects are equal if their IDs, columns (including column
 names, types, and ordering), ID headers, and metadata values are equal.</p>
@@ -955,7 +955,7 @@ names, types, and ordering), ID headers, and metadata values are equal.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.__ne__">
-<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L552"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.__ne__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L561"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.__ne__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if this metadata is not equal to another.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Metadata</span></code> objects are not equal if their IDs, columns (including
 column names, types, or ordering), ID headers, or metadata values are
@@ -980,6 +980,13 @@ not equal.</p>
 <dt><a class="reference internal" href="#skbio.metadata.SampleMetadata.__eq__" title="skbio.metadata.SampleMetadata.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></a></dt><dd></dd>
 </dl>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.metadata.SampleMetadata.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/metadata/_metadata.py#L526"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.metadata.SampleMetadata.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return the string summary of the metadata and its columns.</p>
+<p>Required to inherit from SkbioObject.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1039,6 +1046,7 @@ not equal.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.default_write_format"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.default_write_format</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.__eq__"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.__eq__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.__ne__"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.__ne__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.metadata.SampleMetadata.__str__"><code class="docutils literal notranslate"><span class="pre">SampleMetadata.__str__</span></code></a></li>
 </ul>
 </li>
 </ul>
