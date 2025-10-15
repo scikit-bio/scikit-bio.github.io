@@ -703,7 +703,7 @@
 <h1>skbio.stats.distance.PairwiseMatrix.filter<a class="headerlink" href="#skbio-stats-distance-pairwisematrix-filter" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix.filter">
-<span class="sig-prename descclassname"><span class="pre">PairwiseMatrix.</span></span><span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L483"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.filter" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">PairwiseMatrix.</span></span><span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L482"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.filter" title="Link to this definition">#</a></dt>
 <dd><p>Filter the matrix by IDs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -711,22 +711,22 @@
 <dt><strong>ids</strong><span class="classifier">sequence of str</span></dt><dd><p>IDs to retain. May not contain duplicates or be empty. Each ID must
 be present in the matrix.</p>
 </dd>
-<dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>If <cite>strict</cite> is <code class="docutils literal notranslate"><span class="pre">True</span></code> and an ID that is not found in the distance
-matrix is found in <cite>ids</cite>, a <code class="docutils literal notranslate"><span class="pre">MissingIDError</span></code> exception will be
-raised, otherwise the ID will be ignored.</p>
+<dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default) and an ID that is not found in the distance matrix but is
+found in <code class="docutils literal notranslate"><span class="pre">ids</span></code>, a <code class="docutils literal notranslate"><span class="pre">MissingIDError</span></code> exception will be raised, otherwise
+the ID will be ignored.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>PairwiseMatrix</dt><dd><p>Filtered matrix containing only the IDs specified in
-<cite>ids</cite>. IDs will be in the same order as they appear in <cite>ids</cite>.</p>
+<dt>PairwiseMatrix</dt><dd><p>Filtered matrix containing only the IDs specified in <code class="docutils literal notranslate"><span class="pre">ids</span></code>. IDs will be
+in the same order as they appear in <code class="docutils literal notranslate"><span class="pre">ids</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>MissingIDError</dt><dd><p>If an ID in <cite>ids</cite> is not in the object’s list of IDs.</p>
+<dt>MissingIDError</dt><dd><p>If an ID in <code class="docutils literal notranslate"><span class="pre">ids</span></code> is not in the object’s list of IDs.</p>
 </dd>
 </dl>
 </dd>

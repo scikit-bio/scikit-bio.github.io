@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Create PairwiseMatrix from an iterable given a metric." />
+    <meta name="description" content="Create a pairwise matrix from an iterable of objects given a metric." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.stats.distance.PairwiseMatrix.from_iterable &#8212; scikit-bio 0.7.1-dev documentation</title>
@@ -703,36 +703,33 @@
 <h1>skbio.stats.distance.PairwiseMatrix.from_iterable<a class="headerlink" href="#skbio-stats-distance-pairwisematrix-from-iterable" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix.from_iterable">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PairwiseMatrix.</span></span><span class="sig-name descname"><span class="pre">from_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L215"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.from_iterable" title="Link to this definition">#</a></dt>
-<dd><p>Create PairwiseMatrix from an iterable given a metric.</p>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PairwiseMatrix.</span></span><span class="sig-name descname"><span class="pre">from_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.from_iterable" title="Link to this definition">#</a></dt>
+<dd><p>Create a pairwise matrix from an iterable of objects given a metric.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>iterable</strong><span class="classifier">iterable</span></dt><dd><p>Iterable containing objects to compute pairwise relationships on.</p>
+<dt><strong>iterable</strong><span class="classifier">iterable</span></dt><dd><p>Objects to compute pairwise relationships on.</p>
 </dd>
-<dt><strong>metric</strong><span class="classifier">callable</span></dt><dd><p>A function that takes two arguments and returns a float
-representing the relationship between the two arguments.</p>
+<dt><strong>metric</strong><span class="classifier">callable</span></dt><dd><p>A function that takes two arguments and returns a float representing the
+relationship between the two objects.</p>
 </dd>
-<dt><strong>key</strong><span class="classifier">callable or metadata key, optional</span></dt><dd><p>A function that takes one argument and returns a string
-representing the id of the element in the pairwise matrix.
-Alternatively, a key to a <cite>metadata</cite> property if it exists for
-each element in the <cite>iterable</cite>. If None, then default ids will be
-used.</p>
+<dt><strong>key</strong><span class="classifier">callable or str, optional</span></dt><dd><p>A function that takes one argument and returns a string representing the ID
+of the object. Alternatively, a key to the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> property if exists
+for each object in the <code class="docutils literal notranslate"><span class="pre">iterable</span></code>. If None, the default IDs will be used.</p>
 </dd>
-<dt><strong>keys</strong><span class="classifier">iterable, optional</span></dt><dd><p>An iterable of the same length as <cite>iterable</cite>. Each element will be
-used as the respective key.</p>
+<dt><strong>keys</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>IDs of the objects. Must be the same length as <code class="docutils literal notranslate"><span class="pre">iterable</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>PairwiseMatrix</dt><dd><p>The <cite>metric</cite> applied to all pairwise elements in the <cite>iterable</cite>.</p>
+<dt>PairwiseMatrix</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">metric</span></code> applied to all pairwise elements in the <code class="docutils literal notranslate"><span class="pre">iterable</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If <cite>key</cite> and <cite>keys</cite> are both provided.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">keys</span></code> are both provided.</p>
 </dd>
 </dl>
 </dd>

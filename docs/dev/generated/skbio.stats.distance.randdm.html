@@ -700,12 +700,11 @@
 <h1>skbio.stats.distance.randdm<a class="headerlink" href="#skbio-stats-distance-randdm" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.randdm">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">randdm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1947"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.randdm" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">randdm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1927"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.randdm" title="Link to this definition">#</a></dt>
 <dd><p>Generate a distance matrix populated with random distances.</p>
 <p>Using the default <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, distances are randomly drawn from a uniform
-distribution over <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1)</span></code>.</p>
-<p>Regardless of <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, the resulting distance matrix is guaranteed to
-be symmetric and hollow.</p>
+distribution over <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1)</span></code>. Regardless of <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, the resulting distance
+matrix is guaranteed to be symmetric and hollow.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -717,9 +716,9 @@ be symmetric and hollow.</p>
 integers cast as strings (numbering starts at 1). For example,
 <code class="docutils literal notranslate"><span class="pre">('1',</span> <span class="pre">'2',</span> <span class="pre">'3')</span></code>.</p>
 </dd>
-<dt><strong>constructor</strong><span class="classifier">type, optional</span></dt><dd><p><cite>PairwiseMatrix</cite> or subclass constructor to use when creating the
-random distance matrix. The returned distance matrix will be of this
-type. By default, a <cite>DistanceMatrix</cite> instance will be returned.</p>
+<dt><strong>constructor</strong><span class="classifier">type, optional</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> or its subclass to use when creating the random distance
+matrix. The returned matrix will be of this type. By default, a
+<code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instance will be returned.</p>
 </dd>
 <dt><strong>random_fn</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>Function for generating random values. It must accept (n_rows, n_columns) and
 return a 2D array of float-like. Default is the
@@ -736,7 +735,7 @@ of two separate parameters.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>PairwiseMatrix</dt><dd><p><cite>PairwiseMatrix</cite> (or subclass) instance of random distances. Type
+<dt>PairwiseMatrix</dt><dd><p><code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> (or subclass) instance of random distances. Type
 depends on <code class="docutils literal notranslate"><span class="pre">constructor</span></code>.</p>
 </dd>
 </dl>

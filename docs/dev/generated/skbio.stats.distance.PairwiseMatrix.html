@@ -700,36 +700,34 @@
 <h1>skbio.stats.distance.PairwiseMatrix<a class="headerlink" href="#skbio-stats-distance-pairwisematrix" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">PairwiseMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L72"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">PairwiseMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L77"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix" title="Link to this definition">#</a></dt>
 <dd><p>Store pairwise relationships between objects.</p>
-<p>A <cite>PairwiseMatrix</cite> instance stores a square, two-dimensional
-matrix of relationships between objects. Objects could be, for example,
-samples or DNA sequences. A sequence of IDs accompanies the
-data.</p>
-<p>Methods are provided to load and save pairwise matrices from/to disk,
-as well as perform common operations such as extracting values
-based on object ID. Additionally, the
-<a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.plot.html#skbio.stats.distance.PairwiseMatrix.plot" title="skbio.stats.distance.PairwiseMatrix.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot</span></code></a> method provides
-convenient built-in plotting functionality.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> object stores a square, two-dimensional matrix of
+relationships between objects. Objects could be, for example, biological samples
+or DNA sequences. A sequence of IDs accompanies the data.</p>
+<p>Methods are provided to load and save pairwise matrices from/to disk, as well as
+perform common operations such as extracting values based on object ID.
+Additionally, the <a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.plot.html#skbio.stats.distance.PairwiseMatrix.plot" title="skbio.stats.distance.PairwiseMatrix.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot</span></code></a> method provides convenient built-in plotting
+functionality.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.1: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> to better reflect the nature of the matrix
+data. The old name <code class="docutils literal notranslate"><span class="pre">DissimilarityMatrix</span></code> is kept as an alias.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>data</strong><span class="classifier">array_like or PairwiseMatrix</span></dt><dd><p>Square, two-dimensional <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of pairwise relationships
-(floats), or a structure that can be converted to a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>
-using <code class="docutils literal notranslate"><span class="pre">numpy.asarray</span></code> or a one-dimensional vector of pairwise relationships
-(floats), as defined by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.squareform.html">scipy.spatial.distance.squareform</a>.
-Can instead be a <cite>PairwiseMatrix</cite> (or subclass) instance, in which case the
-instance’s data will be used. Data will be converted to a float <code class="docutils literal notranslate"><span class="pre">dtype</span></code> if
-necessary. A copy will <em>not</em> be made if already a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> with a
-float <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
+<dt><strong>data</strong><span class="classifier">1-D or 2-D array_like, or PairwiseMatrix</span></dt><dd><p>A square 2-D array of pairwise relationships between objects, or a 1-D array
+representing its condensed form, with the diagonal defaulting to zero. Can
+instead be an instance of <code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> or its subclass, in which case its
+data and IDs will be directly used.</p>
 </dd>
-<dt><strong>ids</strong><span class="classifier">sequence of str, optional</span></dt><dd><p>Sequence of strings to be used as object IDs. Must match the number of
-rows/cols in <cite>data</cite>. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), IDs will be
-monotonically-increasing integers cast as strings, with numbering
-starting from zero, e.g., <code class="docutils literal notranslate"><span class="pre">('0',</span> <span class="pre">'1',</span> <span class="pre">'2',</span> <span class="pre">'3',</span> <span class="pre">...)</span></code>.</p>
+<dt><strong>ids</strong><span class="classifier">sequence of str, optional</span></dt><dd><p>IDs of the objects. Must match the number of rows/columns in <code class="docutils literal notranslate"><span class="pre">data</span></code>. If None
+(default) and <code class="docutils literal notranslate"><span class="pre">data</span></code> does not contain IDs, IDs will be
+monotonically-increasing integers cast as strings, starting from zero (i.e.,
+‘0’, ‘1’, ‘2’, ‘3’, …).</p>
 </dd>
-<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If <cite>validate</cite> is <code class="docutils literal notranslate"><span class="pre">True</span></code> (default) and data is not a
-<cite>PairwiseMatrix</cite> object, the input data will be validated.</p>
+<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default) and <code class="docutils literal notranslate"><span class="pre">data</span></code> is not a <code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> object, the input
+data will be validated.</p>
 </dd>
 </dl>
 </dd>
@@ -743,16 +741,14 @@ starting from zero, e.g., <code class="docutils literal notranslate"><span class
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The values are stored in redundant (square-form) format <a class="reference internal" href="#rd3dc0457468f-1" id="id1">[1]</a>.</p>
+<p>The matrix data are stored in redundant (square-form) format. If the input <code class="docutils literal notranslate"><span class="pre">data</span></code>
+is already a square NumPy array of float32 or float64 type, it will be directly
+used without making a copy. If <code class="docutils literal notranslate"><span class="pre">data</span></code> is in condensed (vector-form) format, the
+diagonal will be set as zero. The definitions of redundant/condensed formats follow
+SciPy’s <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.squareform.html#scipy.spatial.distance.squareform" title="(in SciPy v1.16.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">squareform</span></code></a>.</p>
 <p>The data are not checked for symmetry or hollowness, nor guaranteed/assumed to be
-symmetric or hollow.</p>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="rd3dc0457468f-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/spatial.distance.html">http://docs.scipy.org/doc/scipy/reference/spatial.distance.html</a></p>
-</div>
-</div>
+symmetric or hollow. Refer to <code class="docutils literal notranslate"><span class="pre">SymmetricMatrix</span></code> or <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instead if
+such checks are expected.</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
@@ -793,7 +789,7 @@ symmetric or hollow.</p>
 <td><p>Filter the matrix by IDs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.from_iterable.html#skbio.stats.distance.PairwiseMatrix.from_iterable" title="skbio.stats.distance.PairwiseMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys])</p></td>
-<td><p>Create PairwiseMatrix from an iterable given a metric.</p></td>
+<td><p>Create a pairwise matrix from an iterable of objects given a metric.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.index.html#skbio.stats.distance.PairwiseMatrix.index" title="skbio.stats.distance.PairwiseMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
 <td><p>Return the index of the specified ID.</p></td>
@@ -811,7 +807,7 @@ symmetric or hollow.</p>
 <td><p>Rename IDs in the matrix.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.to_data_frame.html#skbio.stats.distance.PairwiseMatrix.to_data_frame" title="skbio.stats.distance.PairwiseMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
-<td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> from this <code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code>.</p></td>
+<td><p>Create a pandas DataFrame from this matrix.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.transpose.html#skbio.stats.distance.PairwiseMatrix.transpose" title="skbio.stats.distance.PairwiseMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
 <td><p>Return the transpose of the matrix.</p></td>
@@ -908,7 +904,7 @@ returned.</p>
 <p>A tuple of strings, one for each object in the pairwise matrix.</p>
 <p class="rubric">Notes</p>
 <p>This property is writeable, but the number of new IDs must match the
-number of objects in <cite>data</cite>.</p>
+number of objects in <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -932,7 +928,7 @@ size is equal to the number of elements in the condensed array.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix.__contains__">
-<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookup_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L915"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__contains__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookup_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L910"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__contains__" title="Link to this definition">#</a></dt>
 <dd><p>Check if the specified ID is in the matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -943,7 +939,7 @@ size is equal to the number of elements in the condensed array.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>bool</dt><dd><p><cite>True</cite> if <cite>lookup_id</cite> is in the matrix, <cite>False</cite> otherwise.</p>
+<dt>bool</dt><dd><p>True if <code class="docutils literal notranslate"><span class="pre">lookup_id</span></code> is in the matrix, False otherwise.</p>
 </dd>
 </dl>
 </dd>
@@ -958,12 +954,12 @@ size is equal to the number of elements in the condensed array.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix.__eq__">
-<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L852"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__eq__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L847"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__eq__" title="Link to this definition">#</a></dt>
 <dd><p>Compare this matrix to another for equality.</p>
-<p>Two matrices are equal if they have the same shape, IDs
-(in the same order!), and have data arrays that are equal.</p>
-<p>Checks are <em>not</em> performed to ensure that <cite>other</cite> is a
-<cite>PairwiseMatrix</cite> instance.</p>
+<p>Two matrices are equal if they have the same shape and IDs (in the same
+order!), and have data arrays that are equal.</p>
+<p>Checks are <em>not</em> performed to ensure that <code class="docutils literal notranslate"><span class="pre">other</span></code> is a <code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code>
+instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -973,7 +969,7 @@ size is equal to the number of elements in the condensed array.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>bool</dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if <cite>self</cite> is equal to <cite>other</cite>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dt>bool</dt><dd><p>True if <code class="docutils literal notranslate"><span class="pre">self</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">other</span></code>, False otherwise.</p>
 </dd>
 </dl>
 </dd>
@@ -982,36 +978,33 @@ size is equal to the number of elements in the condensed array.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L935"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__getitem__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L930"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__getitem__" title="Link to this definition">#</a></dt>
 <dd><p>Slice into data by object ID or numpy indexing.</p>
-<p>Extracts data from the matrix by object ID, a pair of
-IDs, or numpy indexing/slicing.</p>
+<p>Extracts data from the matrix by object ID, a pair of IDs, or NumPy
+indexing/slicing.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>index</strong><span class="classifier">str, two-tuple of str, or numpy index</span></dt><dd><p><cite>index</cite> can be one of the following forms: an ID, a pair of IDs, or
-a numpy index.</p>
-<p>If <cite>index</cite> is a string, it is assumed to be an ID and a
-<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> row vector is returned for the corresponding ID.
-Note that the ID’s row of values is returned, <em>not</em> its
-column. If the matrix is symmetric, the two will be identical, but
-this makes a difference if the matrix is asymmetric.</p>
-<p>If <cite>index</cite> is a two-tuple of strings, each string is assumed to be
-an ID and the corresponding matrix element is returned that
-represents the value between the two IDs. Note that the
-order of lookup by ID pair matters if the matrix is asymmetric: the
-first ID will be used to look up the row, and the second ID will be
-used to look up the column. Thus, <code class="docutils literal notranslate"><span class="pre">dm['a',</span> <span class="pre">'b']</span></code> may not be the
-same as <code class="docutils literal notranslate"><span class="pre">dm['b',</span> <span class="pre">'a']</span></code> if the matrix is asymmetric.</p>
-<p>Otherwise, <cite>index</cite> will be passed through to
-<code class="docutils literal notranslate"><span class="pre">PairwiseMatrix.data.__getitem__</span></code>, allowing for standard
-indexing of a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (e.g., slicing).</p>
+<dt><strong>index</strong><span class="classifier">str, two-tuple of str, or numpy index</span></dt><dd><p>Can be one of the following:</p>
+<ul class="simple">
+<li><p>A string: Returns the row vector of this ID.</p></li>
+<li><p>A tuple of two strings: Returns the value between the first ID (row) and
+the second ID (column).</p></li>
+<li><p>Otherwise, <code class="docutils literal notranslate"><span class="pre">index</span></code> will be passed through to <code class="docutils literal notranslate"><span class="pre">.data.__getitem__</span></code>,
+allowing for standard indexing of a NumPy array (e.g., slicing).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first ID is the row and the second ID (if provided) is the column.
+This order matters when the matrix is asymmetric (i.e.,
+<code class="docutils literal notranslate"><span class="pre">mat['a',</span> <span class="pre">'b']</span></code> may not be the same as <code class="docutils literal notranslate"><span class="pre">mat['b',</span> <span class="pre">'a']</span></code>).</p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ndarray or scalar</dt><dd><p>Indexed data, where return type depends on the form of <cite>index</cite> (see
+<dt>1-D ndarray or scalar</dt><dd><p>Indexed data, where return type depends on the form of <cite>index</cite> (see
 description of <cite>index</cite> for more details).</p>
 </dd>
 </dl>
@@ -1031,7 +1024,7 @@ requirement.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix.__ne__">
-<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L895"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__ne__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L890"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__ne__" title="Link to this definition">#</a></dt>
 <dd><p>Determine whether two matrices are not equal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1042,7 +1035,7 @@ requirement.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>bool</dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if <cite>self</cite> is not equal to <cite>other</cite>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+<dt>bool</dt><dd><p>True if <code class="docutils literal notranslate"><span class="pre">self</span></code> is not equal to <code class="docutils literal notranslate"><span class="pre">other</span></code>, False otherwise.</p>
 </dd>
 </dl>
 </dd>
@@ -1057,7 +1050,7 @@ requirement.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.PairwiseMatrix.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L833"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L828"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.PairwiseMatrix.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return a string representation of the matrix.</p>
 <p>Summary includes matrix dimensions, a (truncated) list of IDs, and
 (truncated) array of values.</p>

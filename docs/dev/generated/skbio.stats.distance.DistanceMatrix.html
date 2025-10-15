@@ -700,32 +700,32 @@
 <h1>skbio.stats.distance.DistanceMatrix<a class="headerlink" href="#skbio-stats-distance-distancematrix" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.stats.distance.DistanceMatrix">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">DistanceMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condensed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1737"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DistanceMatrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">DistanceMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condensed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1714"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DistanceMatrix" title="Link to this definition">#</a></dt>
 <dd><p>Store distances between objects.</p>
-<p>A <cite>DistanceMatrix</cite> is a <cite>SymmetricMatrix</cite> with the additional
-requirement that the matrix data is hollow. There are additional methods
-made available that take advantage of this hollowness. The
-<a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.plot.html#skbio.stats.distance.PairwiseMatrix.plot" title="skbio.stats.distance.PairwiseMatrix.plot"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot</span></code></a> method provides
-convenient built-in plotting functionality.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> is a <code class="docutils literal notranslate"><span class="pre">SymmetricMatrix</span></code> with the additional requirement that
+the matrix data is hollow (i.e., diagonal is zero). There are additional methods
+made available that take advantage of this hollowness.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>data</strong><span class="classifier">array_like or PairwiseMatrix</span></dt><dd><p>Square, hollow, two-dimensional <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of distances
-(floats), or a structure that can be converted to a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>
-using <code class="docutils literal notranslate"><span class="pre">numpy.asarray</span></code> or a one-dimensional vector of distances
-(floats), as defined by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.squareform.html">scipy.spatial.distance.squareform</a>.
-Can instead be a <cite>PairwiseMatrix</cite> (or <cite>DistanceMatrix</cite>) instance, in which case
-the instance’s data will be used. Data will be converted to a float <code class="docutils literal notranslate"><span class="pre">dtype</span></code>
-if necessary. A copy will <em>not</em> be made if already a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> with a
-float <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
+<dt><strong>data</strong><span class="classifier">1-D or 2-D array_like, or PairwiseMatrix</span></dt><dd><p>A square 2-D array of pairwise distances between objects, or a 1-D array
+representing its condensed form. Can instead be an instance of
+<code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> or its subclass, in which case its data and IDs will be
+directly used.</p>
 </dd>
-<dt><strong>ids</strong><span class="classifier">sequence of str, optional</span></dt><dd><p>Sequence of strings to be used as object IDs. Must match the number of
-rows/cols in <cite>data</cite>. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), IDs will be
-monotonically-increasing integers cast as strings, with numbering
-starting from zero, e.g., <code class="docutils literal notranslate"><span class="pre">('0',</span> <span class="pre">'1',</span> <span class="pre">'2',</span> <span class="pre">'3',</span> <span class="pre">...)</span></code>.</p>
+<dt><strong>ids</strong><span class="classifier">sequence of str, optional</span></dt><dd><p>IDs of the objects. Must match the number of rows/columns in <code class="docutils literal notranslate"><span class="pre">data</span></code>. If None
+(default) and <code class="docutils literal notranslate"><span class="pre">data</span></code> does not contain IDs, IDs will be
+monotonically-increasing integers cast as strings, starting from zero (i.e.,
+‘0’, ‘1’, ‘2’, ‘3’, …).</p>
 </dd>
-<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If <cite>validate</cite> is <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default) and data is not a
-DistanceMatrix object, the input data will be validated.</p>
+<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default) and <code class="docutils literal notranslate"><span class="pre">data</span></code> is not a <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> object, the input
+data will be validated.</p>
+</dd>
+<dt><strong>condensed</strong><span class="classifier">bool, optional</span></dt><dd><p>Store the data in a 2-D redundant form (False, default) or a 1-D condensed form
+(True).</p>
+</dd>
+<dt><strong>diagonal</strong><span class="classifier">1-D array_like or float, optional</span></dt><dd><p>Values along the diagonal of the matrix. Must be zero. This parameter is a
+placeholder for interface compatibility with <code class="docutils literal notranslate"><span class="pre">SymmetricMatrix</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -741,11 +741,11 @@ DistanceMatrix object, the input data will be validated.</p>
 <p>The distances are stored in redundant (square-form) format <a class="reference internal" href="#r8212bb0c75ea-1" id="id1">[1]</a>. To
 facilitate use with other scientific Python routines (e.g., scipy), the
 distances can be retrieved in condensed (vector-form) format using
-<cite>condensed_form</cite>.</p>
-<p><cite>DistanceMatrix</cite> only requires that the distances it stores are symmetric and
+<code class="docutils literal notranslate"><span class="pre">condensed_form</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> only requires that the distances it stores are symmetric and
 hollow. Checks are <em>not</em> performed to ensure the other three metric properties
 hold (non-negativity, identity of indiscernibles, and triangle inequality)
-<a class="reference internal" href="#r8212bb0c75ea-2" id="id2">[2]</a>. Thus, a <cite>DistanceMatrix</cite> instance can store distances that are not
+<a class="reference internal" href="#r8212bb0c75ea-2" id="id2">[2]</a>. Thus, a <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instance can store distances that are not
 metric.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
@@ -795,7 +795,7 @@ metric.</p>
 <td><p>Return an array of distances in condensed format.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.to_series.html#skbio.stats.distance.DistanceMatrix.to_series" title="skbio.stats.distance.DistanceMatrix.to_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_series</span></code></a>()</p></td>
-<td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> from this <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code>.</p></td>
+<td><p>Create a pandas Series from this <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -813,7 +813,7 @@ metric.</p>
 <td><p>Filter the matrix by IDs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.from_iterable.html#skbio.stats.distance.SymmetricMatrix.from_iterable" title="skbio.stats.distance.SymmetricMatrix.from_iterable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_iterable</span></code></a>(iterable, metric[, key, keys, ...])</p></td>
-<td><p>Create PairwiseMatrix from an iterable given a metric.</p></td>
+<td><p>Create a symmetric matrix from an iterable given a metric.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.index.html#skbio.stats.distance.PairwiseMatrix.index" title="skbio.stats.distance.PairwiseMatrix.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(lookup_id)</p></td>
 <td><p>Return the index of the specified ID.</p></td>
@@ -834,7 +834,7 @@ metric.</p>
 <td><p>Rename IDs in the matrix.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.to_data_frame.html#skbio.stats.distance.PairwiseMatrix.to_data_frame" title="skbio.stats.distance.PairwiseMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
-<td><p>Create a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> from this <code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code>.</p></td>
+<td><p>Create a pandas DataFrame from this matrix.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.transpose.html#skbio.stats.distance.SymmetricMatrix.transpose" title="skbio.stats.distance.SymmetricMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
 <td><p>Return the transpose of the matrix.</p></td>
@@ -861,7 +861,7 @@ metric.</p>
 <td><p>Return self&gt;=value.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html#skbio.stats.distance.SymmetricMatrix.__getitem__" title="skbio.stats.distance.SymmetricMatrix.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></a>(index)</p></td>
-<td><p>Slice into data by object ID or numpy indexing.</p></td>
+<td><p>Slice into data by object ID or NumPy indexing.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code>(/)</p></td>
 <td><p>Helper for pickle.</p></td>
