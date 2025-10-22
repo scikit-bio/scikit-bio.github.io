@@ -703,7 +703,7 @@
 <h1>skbio.stats.distance.SymmetricMatrix.redundant_form<a class="headerlink" href="#skbio-stats-distance-symmetricmatrix-redundant-form" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.distance.SymmetricMatrix.redundant_form">
-<span class="sig-prename descclassname"><span class="pre">SymmetricMatrix.</span></span><span class="sig-name descname"><span class="pre">redundant_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.SymmetricMatrix.redundant_form" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">SymmetricMatrix.</span></span><span class="sig-name descname"><span class="pre">redundant_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1619"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.SymmetricMatrix.redundant_form" title="Link to this definition">#</a></dt>
 <dd><p>Return an array of values in redundant format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -716,8 +716,22 @@
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.as_redundant.html#skbio.stats.distance.SymmetricMatrix.as_redundant" title="skbio.stats.distance.SymmetricMatrix.as_redundant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_redundant</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.condensed_form.html#skbio.stats.distance.SymmetricMatrix.condensed_form" title="skbio.stats.distance.SymmetricMatrix.condensed_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">condensed_form</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.as_condensed.html#skbio.stats.distance.SymmetricMatrix.as_condensed" title="skbio.stats.distance.SymmetricMatrix.as_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_condensed</span></code></a></dt><dd></dd>
 </dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Create a symmetric matrix in condensed form and expand to square form:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">SymmetricMatrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SymmetricMatrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">condensed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">data</span>
+<span class="go">array([ 1., 2., 3.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span><span class="o">.</span><span class="n">redundant_form</span><span class="p">()</span>
+<span class="go">array([[ 0., 1., 2.],</span>
+<span class="go">       [ 1., 0., 3.],</span>
+<span class="go">       [ 2., 3., 0.]])</span>
+</pre></div>
 </div>
 </dd></dl>
 

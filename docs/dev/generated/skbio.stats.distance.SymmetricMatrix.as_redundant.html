@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Return an array of distances in condensed format." />
+    <meta name="description" content="Return a redundant form deep copy of the matrix." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.distance.DistanceMatrix.condensed_form &#8212; scikit-bio 0.7.1-dev documentation</title>
+    <title>skbio.stats.distance.SymmetricMatrix.as_redundant &#8212; scikit-bio 0.7.1-dev documentation</title>
   
   
   
@@ -56,7 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.DistanceMatrix.condensed_form';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.SymmetricMatrix.as_redundant';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -64,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.distance.DistanceMatrix.condensed_form.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.distance.SymmetricMatrix.as_redundant.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.distance.DistanceMatrix.to_series" href="skbio.stats.distance.DistanceMatrix.to_series.html" />
-    <link rel="prev" title="skbio.stats.distance.DistanceMatrix" href="skbio.stats.distance.DistanceMatrix.html" />
+    <link rel="next" title="skbio.stats.distance.SymmetricMatrix.condensed_form" href="skbio.stats.distance.SymmetricMatrix.condensed_form.html" />
+    <link rel="prev" title="skbio.stats.distance.SymmetricMatrix.as_condensed" href="skbio.stats.distance.SymmetricMatrix.as_condensed.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.1-dev" />
@@ -607,8 +607,8 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.distance.html">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html">skbio.stats.distance.PairwiseMatrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html">skbio.stats.distance.SymmetricMatrix</a></li>
-<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html">skbio.stats.distance.DistanceMatrix</a></li>
+<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html">skbio.stats.distance.SymmetricMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html">skbio.stats.distance.DistanceMatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.randdm.html">skbio.stats.distance.randdm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.anosim.html">skbio.stats.distance.anosim</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.permanova.html">skbio.stats.distance.permanova</a></li>
@@ -680,9 +680,9 @@
     <li class="breadcrumb-item"><a href="skbio.stats.distance.html" class="nav-link">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.stats.distance.DistanceMatrix.html" class="nav-link">skbio.stats.distance.DistanceMatrix</a></li>
+    <li class="breadcrumb-item"><a href="skbio.stats.distance.SymmetricMatrix.html" class="nav-link">skbio.stats.distance.SymmetricMatrix</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.distance.DistanceMatrix.condensed_form</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.distance.SymmetricMatrix.as_redundant</span></li>
   </ul>
 </nav>
 </div>
@@ -699,30 +699,45 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-distance-distancematrix-condensed-form">
-<h1>skbio.stats.distance.DistanceMatrix.condensed_form<a class="headerlink" href="#skbio-stats-distance-distancematrix-condensed-form" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-distance-symmetricmatrix-as-redundant">
+<h1>skbio.stats.distance.SymmetricMatrix.as_redundant<a class="headerlink" href="#skbio-stats-distance-symmetricmatrix-as-redundant" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.stats.distance.DistanceMatrix.condensed_form">
-<span class="sig-prename descclassname"><span class="pre">DistanceMatrix.</span></span><span class="sig-name descname"><span class="pre">condensed_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1803"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DistanceMatrix.condensed_form" title="Link to this definition">#</a></dt>
-<dd><p>Return an array of distances in condensed format.</p>
+<dt class="sig sig-object py" id="skbio.stats.distance.SymmetricMatrix.as_redundant">
+<span class="sig-prename descclassname"><span class="pre">SymmetricMatrix.</span></span><span class="sig-name descname"><span class="pre">as_redundant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1581"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.SymmetricMatrix.as_redundant" title="Link to this definition">#</a></dt>
+<dd><p>Return a redundant form deep copy of the matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ndarray</dt><dd><p>One-dimensional <cite>numpy.ndarray</cite> of distances in condensed format.</p>
+<dt>SymmetricMatrix</dt><dd><p>A new matrix object with the same data stored in redundant form.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>Condensed format is described in <a class="reference internal" href="#rf203c70da9fc-1" id="id1">[1]</a>.</p>
-<p>The conversion is not a constant-time operation, though it should be
-relatively quick to perform.</p>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="rf203c70da9fc-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/spatial.distance.html">http://docs.scipy.org/doc/scipy/reference/spatial.distance.html</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.redundant_form.html#skbio.stats.distance.SymmetricMatrix.redundant_form" title="skbio.stats.distance.SymmetricMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.condensed_form.html#skbio.stats.distance.SymmetricMatrix.condensed_form" title="skbio.stats.distance.SymmetricMatrix.condensed_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">condensed_form</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.as_condensed.html#skbio.stats.distance.SymmetricMatrix.as_condensed" title="skbio.stats.distance.SymmetricMatrix.as_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_condensed</span></code></a></dt><dd></dd>
+</dl>
 </div>
+<p class="rubric">Notes</p>
+<p>This method always returns a new matrix object, even if the matrix is already
+in redundant form. The new matrix object is a deep copy of the original matrix.</p>
+<p class="rubric">Examples</p>
+<p>Convert from condensed form to redundant form:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">SymmetricMatrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm_condensed</span> <span class="o">=</span> <span class="n">SymmetricMatrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>                               <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                               <span class="n">condensed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm_condensed</span><span class="o">.</span><span class="n">data</span>
+<span class="go">array([ 1., 2., 3.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm_square</span> <span class="o">=</span> <span class="n">sm_condensed</span><span class="o">.</span><span class="n">as_redundant</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sm_square</span><span class="o">.</span><span class="n">data</span>
+<span class="go">array([[ 0., 1., 2.],</span>
+<span class="go">       [ 1., 0., 3.],</span>
+<span class="go">       [ 2., 3., 0.]])</span>
+</pre></div>
 </div>
 </dd></dl>
 
@@ -739,20 +754,20 @@ relatively quick to perform.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.distance.DistanceMatrix.html"
+       href="skbio.stats.distance.SymmetricMatrix.as_condensed.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.distance.DistanceMatrix</p>
+        <p class="prev-next-title">skbio.stats.distance.SymmetricMatrix.as_condensed</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.distance.DistanceMatrix.to_series.html"
+       href="skbio.stats.distance.SymmetricMatrix.condensed_form.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.distance.DistanceMatrix.to_series</p>
+        <p class="prev-next-title">skbio.stats.distance.SymmetricMatrix.condensed_form</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -775,7 +790,7 @@ relatively quick to perform.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.distance.DistanceMatrix.condensed_form"><code class="docutils literal notranslate"><span class="pre">DistanceMatrix.condensed_form</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.distance.SymmetricMatrix.as_redundant"><code class="docutils literal notranslate"><span class="pre">SymmetricMatrix.as_redundant</span></code></a></li>
 </ul>
   </nav></div>
 
