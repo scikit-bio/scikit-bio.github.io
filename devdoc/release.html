@@ -514,7 +514,7 @@
 <p>Once the release is created on GitHub, it’s a good idea to test out the release tarball before publishing to PyPI:</p>
 <ol class="arabic">
 <li><p>Create a new <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment for testing (fill in a name for <code class="docutils literal notranslate"><span class="pre">&lt;environment&gt;</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">environment</span><span class="o">&gt;</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span> <span class="n">numpy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">environment</span><span class="o">&gt;</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span> <span class="n">numpy</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="o">&lt;</span><span class="n">environment</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -573,7 +573,7 @@
 </div>
 <p>Due to its C extensions, releasing scikit-bio packages for different platforms will require you to perform the following steps on each of those platforms. For example, an <code class="docutils literal notranslate"><span class="pre">osx-64</span></code> package will need to be built on OS X, and a <code class="docutils literal notranslate"><span class="pre">linux-64</span></code> package will need to be built on 64-bit Linux. These steps will be the same on all platforms, so you should repeat them for every platform you want to release for:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">skeleton</span> <span class="n">pypi</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
-<span class="n">conda</span> <span class="n">build</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span> <span class="o">--</span><span class="n">python</span> <span class="mf">3.9</span>
+<span class="n">conda</span> <span class="n">build</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span> <span class="o">--</span><span class="n">python</span> <span class="mf">3.10</span>
 </pre></div>
 </div>
 <p>When building 64-bit Linux packages, it is recommended that you use conda-forge’s <code class="docutils literal notranslate"><span class="pre">linux-anvil`</span></code> Docker image. This ensures a consistent Linux build environment that has an old enough version of <cite>libc</cite> to be compatible on most Linux systems. To start up a <code class="docutils literal notranslate"><span class="pre">linux-anvil</span></code> Docker container:</p>
@@ -583,7 +583,7 @@
 <span class="c1"># Run the build commands from above</span>
 </pre></div>
 </div>
-<p>At this stage you have built Python 3.9 packages. The absolute path to the packages will be provided as output from each <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">build</span></code> commands. You should now create conda environments for each, and run the tests as described above. You can install these local package as follows:</p>
+<p>At this stage you have built Python 3.10 packages. The absolute path to the packages will be provided as output from each <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">build</span></code> commands. You should now create conda environments for each, and run the tests as described above. You can install these local package as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">use</span><span class="o">-</span><span class="n">local</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
 </pre></div>
 </div>
@@ -591,7 +591,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">anaconda</span> <span class="n">upload</span> <span class="o">-</span><span class="n">u</span> <span class="n">biocore</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">-</span><span class="n">filepath</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;package-filepath&gt;</span></code> should be replaced with the path to the package that was was created above. Repeat this for each package you created (here, the Python 3.9 package).</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;package-filepath&gt;</span></code> should be replaced with the path to the package that was was created above. Repeat this for each package you created (here, the Python 3.10 package).</p>
 <p>After uploading, you should create new environments for every package you uploaded, install scikit-bio from each package, and re-run the tests. You can install the packages you uploaded as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">conda</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">biocore</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
 </pre></div>
