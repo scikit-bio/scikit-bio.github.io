@@ -711,7 +711,7 @@
 <h1>skbio.stats.composition.ancombc<a class="headerlink" href="#skbio-stats-composition-ancombc" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.ancombc">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancombc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancombc" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancombc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancombc" title="Link to this definition">#</a></dt>
 <dd><p>Perform differential abundance test using ANCOM-BC.</p>
 <p>Analysis of compositions of microbiomes with bias correction (ANCOM-BC) <a class="reference internal" href="#r1bf23095540c-1" id="id1">[1]</a> is a
 differential abundance testing method featuring the estimation and correction for
@@ -732,6 +732,11 @@ pandas DataFrame.</p>
 <dt><strong>formula</strong><span class="classifier">str or generic Formula object</span></dt><dd><p>The formula defining the model. Refer to <a class="reference external" href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy’s documentation</a> on how to specify
 a formula.</p>
 </dd>
+<dt><strong>grouping</strong><span class="classifier">str, optional</span></dt><dd><p>A metadata column name of interests for global test, which is used to identify
+the features that are differentially abundant between at least two groups across
+three or more groups in that attribute. The group must be one of the factors in
+the formula. Default is None to skip global test.</p>
+</dd>
 <dt><strong>max_iter</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of iterations for the bias estimation process. Default is 100.</p>
 </dd>
 <dt><strong>tol</strong><span class="classifier">float, optional</span></dt><dd><p>Absolute convergence tolerance for the bias estimation process. Default is
@@ -750,8 +755,8 @@ Case-insensitive. If None, no correction will be performed.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>pd.DataFrame</dt><dd><p>A table of features and covariates, their log-fold changes and other relevant
-statistics.</p>
+<dt><strong>res</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A table of features and covariates, their log-fold changes and other relevant
+statistics of the primary ANCOM-BC analysis.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Covariate</span></code>: Covariate name, i.e., independent variable.</p></li>
@@ -774,6 +779,18 @@ significance level (0.05). 2) The confidence interval (CI(2.5)..CI(97.5))
 must not overlap with zero.</p></li>
 </ul>
 </dd>
+<dt><strong>res_global</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A table of features and statistics of ANCOM-BC global test.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code>: <em>W</em>-statistic of Chi-squared statistic that quantifies the overall
+evidence against null hypothesis (the mean abundance of the feature is the
+same across all groups).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of the <em>W</em>-statistic in global test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value in global test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Signif</span></code>: Whether at least one group mean is different from other
+in grouping variable.</p></li>
+</ul>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -781,12 +798,15 @@ must not overlap with zero.</p></li>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">struc_zero</span></code></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
 <p>The input data table for ANCOM-BC must contain only positive numbers. One needs to
-remove zero values by, e.g., adding a pseudocount of 1.0.</p>
+remove zero values by, e.g., adding a pseudocount of 1.0.
+The categorical data in metadata is sorted alphabetically by default. The reference
+level for each attribute need to be changed manually.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r1bf23095540c-1" role="doc-biblioentry">
@@ -824,38 +844,83 @@ and a placebo group.</p>
 <p>Now run <code class="docutils literal notranslate"><span class="pre">ancombc</span></code> to determine if there are any features that are significantly
 different in abundance between the treatment and the placebo groups.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="s1">&#39;grouping&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="go">   FeatureID              Covariate  Log2(FC)       SE         W   pvalue  \</span>
-<span class="go">0         b1              Intercept   0.71929  0.03350  21.47231  0.00000</span>
-<span class="go">1         b1  grouping[T.treatment]  -1.18171  0.38489  -3.07024  0.00214</span>
-<span class="go">2         b2              Intercept   0.70579  0.01785  39.54846  0.00000</span>
-<span class="go">3         b2  grouping[T.treatment]  -0.53687  0.09653  -5.56153  0.00000</span>
-<span class="go">4         b3              Intercept   0.06944  0.08654   0.80242  0.42231</span>
-<span class="go">5         b3  grouping[T.treatment]   0.06816  0.12041   0.56604  0.57136</span>
-<span class="go">6         b4              Intercept  -0.00218  0.01530  -0.14216  0.88695</span>
-<span class="go">7         b4  grouping[T.treatment]   0.11309  0.11952   0.94618  0.34406</span>
-<span class="go">8         b5              Intercept   0.07821  0.06485   1.20602  0.22781</span>
-<span class="go">9         b5  grouping[T.treatment]   0.00370  0.11492   0.03218  0.97433</span>
-<span class="go">10        b6              Intercept  -0.00218  0.01530  -0.14216  0.88695</span>
-<span class="go">11        b6  grouping[T.treatment]  -0.11796  0.07188  -1.64114  0.10077</span>
-<span class="go">12        b7              Intercept  -0.00218  0.01530  -0.14216  0.88695</span>
-<span class="go">13        b7  grouping[T.treatment]   0.05232  0.07063   0.74074  0.45885</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">   FeatureID              Covariate  Log2(FC)     SE       W  pvalue  qvalue  \</span>
+<span class="go">0         b1              Intercept     0.719  0.033  21.472   0.000   0.000</span>
+<span class="go">1         b1  grouping[T.treatment]    -1.182  0.385  -3.070   0.002   0.013</span>
+<span class="go">2         b2              Intercept     0.706  0.018  39.548   0.000   0.000</span>
+<span class="go">3         b2  grouping[T.treatment]    -0.537  0.097  -5.562   0.000   0.000</span>
+<span class="go">4         b3              Intercept     0.069  0.087   0.802   0.422   1.000</span>
+<span class="go">5         b3  grouping[T.treatment]     0.068  0.120   0.566   0.571   1.000</span>
+<span class="go">6         b4              Intercept    -0.002  0.015  -0.142   0.887   1.000</span>
+<span class="go">7         b4  grouping[T.treatment]     0.113  0.120   0.946   0.344   1.000</span>
+<span class="go">8         b5              Intercept     0.078  0.065   1.206   0.228   1.000</span>
+<span class="go">9         b5  grouping[T.treatment]     0.004  0.115   0.032   0.974   1.000</span>
+<span class="go">10        b6              Intercept    -0.002  0.015  -0.142   0.887   1.000</span>
+<span class="go">11        b6  grouping[T.treatment]    -0.118  0.072  -1.641   0.101   0.504</span>
+<span class="go">12        b7              Intercept    -0.002  0.015  -0.142   0.887   1.000</span>
+<span class="go">13        b7  grouping[T.treatment]     0.052  0.071   0.741   0.459   1.000</span>
 
-<span class="go">     qvalue  Signif</span>
-<span class="go">0   0.00000    True</span>
-<span class="go">1   0.01283    True</span>
-<span class="go">2   0.00000    True</span>
-<span class="go">3   0.00000    True</span>
-<span class="go">4   1.00000   False</span>
-<span class="go">5   1.00000   False</span>
-<span class="go">6   1.00000   False</span>
-<span class="go">7   1.00000   False</span>
-<span class="go">8   1.00000   False</span>
-<span class="go">9   1.00000   False</span>
-<span class="go">10  1.00000   False</span>
-<span class="go">11  0.50384   False</span>
-<span class="go">12  1.00000   False</span>
-<span class="go">13  1.00000   False</span>
+<span class="go">    Signif</span>
+<span class="go">0     True</span>
+<span class="go">1     True</span>
+<span class="go">2     True</span>
+<span class="go">3     True</span>
+<span class="go">4    False</span>
+<span class="go">5    False</span>
+<span class="go">6    False</span>
+<span class="go">7    False</span>
+<span class="go">8    False</span>
+<span class="go">9    False</span>
+<span class="go">10   False</span>
+<span class="go">11   False</span>
+<span class="go">12   False</span>
+<span class="go">13   False</span>
+</pre></div>
+</div>
+<p>The following example shows how to perform global test using ANCOM-BC to identify
+features that are differentially abundant in more than one time point.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[[</span><span class="mf">1.00000053</span><span class="p">,</span> <span class="mf">6.09924644</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999843</span><span class="p">,</span> <span class="mf">7.0000045</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999884</span><span class="p">,</span> <span class="mf">8.08474053</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999758</span><span class="p">,</span> <span class="mf">1.10000349</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999902</span><span class="p">,</span> <span class="mf">2.00000027</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999862</span><span class="p">,</span> <span class="mf">2.99998318</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.00000084</span><span class="p">,</span> <span class="mf">2.10001257</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.9999991</span><span class="p">,</span> <span class="mf">3.09998418</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999899</span><span class="p">,</span> <span class="mf">3.9999742</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.10000124</span><span class="p">,</span> <span class="mf">5.0001796</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.00000053</span><span class="p">,</span> <span class="mf">6.09924644</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.10000173</span><span class="p">,</span> <span class="mf">6.99693644</span><span class="p">]],</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">,</span> <span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;z1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s1">&#39;z2&#39;</span><span class="p">,</span> <span class="s1">&#39;z3&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Y1&#39;</span><span class="p">,</span> <span class="s1">&#39;Y2&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;patient&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="s1">&#39;treatment&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],},</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;z1&#39;</span><span class="p">,</span> <span class="s1">&#39;z2&#39;</span><span class="p">,</span> <span class="s1">&#39;z3&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>           <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The first DataFrame contains the ANCOM-BC test results that identifies
+differentially abundant feature in treatment as well as in time. The second
+DataFrame contains the ANCOM-BC global test results that indicates whether the
+features are differentially abundant across multiple time points.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s2">&quot;time+treatment&quot;</span><span class="p">,</span> <span class="n">grouping</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][[</span><span class="s1">&#39;FeatureID&#39;</span><span class="p">,</span> <span class="s1">&#39;Covariate&#39;</span><span class="p">,</span> <span class="s1">&#39;Signif&#39;</span><span class="p">]]</span>
+<span class="go">      FeatureID  Covariate  Signif</span>
+<span class="go">    0        Y1  Intercept    True</span>
+<span class="go">    1        Y1       time    True</span>
+<span class="go">    2        Y1  treatment    True</span>
+<span class="go">    3        Y2  Intercept    True</span>
+<span class="go">    4        Y2       time    True</span>
+<span class="go">    5        Y2  treatment    True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">      FeatureID       W  pvalue  qvalue  Signif</span>
+<span class="go">    0        Y1  11.625   0.001   0.002    True</span>
+<span class="go">    1        Y2  12.069   0.001   0.002    True</span>
 </pre></div>
 </div>
 </dd></dl>
