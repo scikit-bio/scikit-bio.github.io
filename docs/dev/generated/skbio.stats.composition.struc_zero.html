@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Center data around its geometric average." />
+    <meta name="description" content="Identify features with structural zeros." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.centralize &#8212; scikit-bio 0.7.1-dev documentation</title>
+    <title>skbio.stats.composition.struc_zero &#8212; scikit-bio 0.7.1-dev documentation</title>
   
   
   
@@ -56,7 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.centralize';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.struc_zero';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -64,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.composition.centralize.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.composition.struc_zero.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.closure" href="skbio.stats.composition.closure.html" />
-    <link rel="prev" title="skbio.stats.composition.struc_zero" href="skbio.stats.composition.struc_zero.html" />
+    <link rel="next" title="skbio.stats.composition.centralize" href="skbio.stats.composition.centralize.html" />
+    <link rel="prev" title="skbio.stats.composition.dirmult_lme" href="skbio.stats.composition.dirmult_lme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.1-dev" />
@@ -616,8 +616,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc.html">skbio.stats.composition.ancombc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.struc_zero.html">skbio.stats.composition.struc_zero</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.centralize</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.struc_zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.perturb.html">skbio.stats.composition.perturb</a></li>
@@ -691,7 +691,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.stats.composition.html" class="nav-link">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.centralize</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.struc_zero</span></li>
   </ul>
 </nav>
 </div>
@@ -708,33 +708,116 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-composition-centralize">
-<h1>skbio.stats.composition.centralize<a class="headerlink" href="#skbio-stats-composition-centralize" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-composition-struc-zero">
+<h1>skbio.stats.composition.struc_zero<a class="headerlink" href="#skbio-stats-composition-struc-zero" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.composition.centralize">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">centralize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L983"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.centralize" title="Link to this definition">#</a></dt>
-<dd><p>Center data around its geometric average.</p>
+<dt class="sig sig-object py" id="skbio.stats.composition.struc_zero">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">struc_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L913"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.struc_zero" title="Link to this definition">#</a></dt>
+<dd><p>Identify features with structural zeros.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.1.</span></p>
+</div>
+<p>Structural zeros refer to features that are systematically absent from certain
+sample groups. Consequently, the observed feature frequencies are all zeros, or
+mostly zeros, due to variability in technical factors. This function tests
+whether the proportion of observed zeros is close to zero, which suggests the
+absence of a feature in a given sample group.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
+<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>A matrix containing count or proportional abundance data of the samples. See
+<a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+</dd>
+<dt><strong>metadata</strong><span class="classifier">pd.DataFrame or 2-D array_like</span></dt><dd><p>Metadata of the samples. Rows correspond to samples and columns correspond
+to covariates (attributes). Must be a pandas DataFrame or convertible to a
+pandas DataFrame.</p>
+</dd>
+<dt><strong>grouping</strong><span class="classifier">str</span></dt><dd><p>A metadata column name indicating the assignment of samples to groups.</p>
+</dd>
+<dt><strong>neg_lb</strong><span class="classifier">bool, optional</span></dt><dd><p>Determine whether to use negative lower bound when calculating sample
+proportions. Default is False. Generally, it is recommended to set it as True
+when the sample size per group is relatively large.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ndarray of shape (n_compositions, n_components)</dt><dd><p>Centered composition matrix.</p>
+<dt>pd.DataFrame of bool of shape (n_features, n_groups)</dt><dd><p>A table indicating whether each feature (row) is a structural zero in each
+group (column) (True: structural zero, False: not structural zero).</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The structural zero test was initially proposed and implemented in the ANCOM-II
+method <a class="reference internal" href="#r4e0ae32879c2-1" id="id1">[1]</a>. It was adopted to the ANCOM-BC method <a class="reference internal" href="#r4e0ae32879c2-2" id="id2">[2]</a> as a recommended method to
+complement test results. See <a class="reference internal" href="skbio.stats.composition.ancombc.html#skbio.stats.composition.ancombc" title="skbio.stats.composition.ancombc"><code class="xref py py-func docutils literal notranslate"><span class="pre">ancombc</span></code></a> for how to use this function along
+with the ANCOM-BC test. Nevertheless, this function is generally useful with or
+without explicit statistical tests of feature abundances.</p>
+<p>A feature found to be a structural zero in a group should be automatically
+considered as differentially (less) abundant compared with other groups in which
+this feature is not a structural zero. Meanwhile, this feature should be excluded
+from subsequent analyses that involves this group. If a feature is identified as a
+structural zero in all groups, this feature should be removed entirely from
+downstream analyses.</p>
+<p>Note that the structural zero test should be applied to the original table before
+adding a pseudocount (see <a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_replace</span></code></a>), which will otherwise mask all
+zeros and invalidate this test.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r4e0ae32879c2-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Kaul, A., Mandal, S., Davidov, O., &amp; Peddada, S. D. (2017). Analysis of
+microbiome data in the presence of excess zeros. Frontiers in Microbiology, 8,
+2114.</p>
+</div>
+<div class="citation" id="r4e0ae32879c2-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Lin, H. and Peddada, S.D., 2020. Analysis of compositions of microbiomes
+with bias correction. Nature Communications, 11(1), p.3514.</p>
+</div>
+</div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">centralize</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.3</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="mf">.4</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">centralize</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="go">array([[ 0.17445763,  0.30216948,  0.34891526,  0.17445763],</span>
-<span class="go">       [ 0.32495488,  0.18761279,  0.16247744,  0.32495488]])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">struc_zero</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+<p>Generate a DataFrame with 10 samples and 6 features with 0’s in specific groups:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">11</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mi">14</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">26</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">9</span><span class="p">]],</span>
+<span class="gp">... </span>                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;s</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)],</span>
+<span class="gp">... </span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;f</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>Then create a grouping vector. In this example, there is a treatment group
+and a placebo group.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;grouping&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;treatment&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;placebo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;s</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">struc_zero</span></code> function will identify features with structural zeros. Features
+that are identified as structural zeros in given groups should not be used in
+further analyses such as <code class="docutils literal notranslate"><span class="pre">ancombc</span></code> and  <code class="docutils literal notranslate"><span class="pre">dirmult_ttest</span></code>.</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">neg_lb=True</span></code> declares that the true prevalence of a feature in a group
+is not significantly different from zero.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">struc_zero</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">grouping</span><span class="o">=</span><span class="s1">&#39;grouping&#39;</span><span class="p">,</span> <span class="n">neg_lb</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">    placebo  treatment</span>
+<span class="go">f0    False      False</span>
+<span class="go">f1    False      False</span>
+<span class="go">f2    False       True</span>
+<span class="go">f3    False      False</span>
+<span class="go">f4     True      False</span>
+<span class="go">f5    False       True</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -752,20 +835,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.struc_zero.html"
+       href="skbio.stats.composition.dirmult_lme.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.struc_zero</p>
+        <p class="prev-next-title">skbio.stats.composition.dirmult_lme</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.closure.html"
+       href="skbio.stats.composition.centralize.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.closure</p>
+        <p class="prev-next-title">skbio.stats.composition.centralize</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -788,7 +871,7 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.centralize"><code class="docutils literal notranslate"><span class="pre">centralize</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.struc_zero"><code class="docutils literal notranslate"><span class="pre">struc_zero</span></code></a></li>
 </ul>
   </nav></div>
 

@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="&lt;em&gt;T&lt;/em&gt;-test using Dirichlet-multinomial distribution." />
+    <meta name="description" content="Perform &lt;em&gt;t&lt;/em&gt;-test using Dirichlet-multinomial distribution." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.stats.composition.dirmult_ttest &#8212; scikit-bio 0.7.1-dev documentation</title>
@@ -616,6 +616,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc.html">skbio.stats.composition.ancombc</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.struc_zero.html">skbio.stats.composition.struc_zero</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -712,7 +713,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.dirmult_ttest">
 <span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_ttest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treatment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_dirmult.py#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_ttest" title="Link to this definition">#</a></dt>
-<dd><p><em>T</em>-test using Dirichlet-multinomial distribution.</p>
+<dd><p>Perform <em>t</em>-test using Dirichlet-multinomial distribution.</p>
 <p>The Dirichlet-multinomial distribution is a compound distribution that
 combines a Dirichlet distribution over the probabilities of a multinomial
 distribution. This distribution is used to model the distribution of
@@ -754,17 +755,17 @@ treatment group will be combined as the reference group.</p>
 <p><span class="versionmodified changed">Changed in version 0.7.0: </span><code class="docutils literal notranslate"><span class="pre">treatment</span></code> and <code class="docutils literal notranslate"><span class="pre">reference</span></code> are now optional.</p>
 </div>
 </dd>
-<dt><strong>pseudocount</strong><span class="classifier">float, optional</span></dt><dd><p>A non-zero value added to the input counts to ensure that all of the
-estimated abundances are strictly greater than zero.</p>
+<dt><strong>pseudocount</strong><span class="classifier">float, optional</span></dt><dd><p>A non-zero value added to the input counts to ensure that all of the estimated
+abundances are strictly greater than zero. Default is 0.5.</p>
 </dd>
 <dt><strong>draws</strong><span class="classifier">int, optional</span></dt><dd><p>The number of draws from the Dirichilet-multinomial posterior distribution
 More draws provide higher uncertainty surrounding the estimated
 log-fold changes and <em>p</em>-values.</p>
 </dd>
-<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
-Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-
-Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported
-by statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
+<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are
+Holm-Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-Hochberg
+(“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported by
+statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
 Case-insensitive. If None, no correction will be performed.</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance for drawing from the

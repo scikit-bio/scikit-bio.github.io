@@ -616,6 +616,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.ancombc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.struc_zero.html">skbio.stats.composition.struc_zero</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -719,23 +720,29 @@ the bias of differential sampling fractions.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.1.</span></p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>A matrix containing count or proportional abundance data of the samples. See
-<a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+<dd class="field-odd"><dl>
+<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>A matrix containing strictly positive count or proportional abundance data of
+the samples. See <a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the table contains zero values, one should add a pseudocount or apply
+<a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_replace</span></code></a> to convert all values into positive numbers.</p>
+</div>
 </dd>
-<dt><strong>metadata</strong><span class="classifier">pd.DataFrame or 2-D array_like</span></dt><dd><p>The metadata for the model. Rows correspond to samples and columns correspond
-to covariates in the model. Must be a pandas DataFrame or convertible to a
+<dt><strong>metadata</strong><span class="classifier">pd.DataFrame or 2-D array_like</span></dt><dd><p>Metadata of the samples. Rows correspond to samples and columns correspond
+to covariates (attributes). Must be a pandas DataFrame or convertible to a
 pandas DataFrame.</p>
 </dd>
-<dt><strong>formula</strong><span class="classifier">str or generic Formula object</span></dt><dd><p>The formula defining the model. Refer to <a class="reference external" href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy’s documentation</a> on how to specify
+<dt><strong>formula</strong><span class="classifier">str or generic Formula object</span></dt><dd><p>A formula defining the model using factors included in the metadata columns.
+Refer to <a class="reference external" href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy’s documentation</a> on how to specify
 a formula.</p>
 </dd>
-<dt><strong>grouping</strong><span class="classifier">str, optional</span></dt><dd><p>A metadata column name of interests for global test, which is used to identify
-the features that are differentially abundant between at least two groups across
-three or more groups in that attribute. The group must be one of the factors in
-the formula. Default is None to skip global test.</p>
+<dt><strong>grouping</strong><span class="classifier">str, optional</span></dt><dd><p>A metadata column name of interest for <em>global test</em>, which identifies features
+that are differentially abundant between at least two groups across three or
+more groups in that column. Must be one of the factors in <code class="docutils literal notranslate"><span class="pre">formula</span></code>. Default
+is None, which skips global test.</p>
 </dd>
 <dt><strong>max_iter</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of iterations for the bias estimation process. Default is 100.</p>
 </dd>
@@ -745,17 +752,17 @@ the formula. Default is None to skip global test.</p>
 <dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Significance level for the statistical tests. Must be in the range of (0, 1).
 Default is 0.05.</p>
 </dd>
-<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are Holm-
-Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-
-Hochberg (“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported
-by statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
+<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are
+Holm-Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-Hochberg
+(“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported by
+statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.14.4 v0.14.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
 Case-insensitive. If None, no correction will be performed.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>res</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A table of features and covariates, their log-fold changes and other relevant
+<dt><strong>res_main</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A table of features and covariates, their log-fold changes and other relevant
 statistics of the primary ANCOM-BC analysis.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
@@ -766,20 +773,17 @@ expressed in the center log ratio (see <a class="reference internal" href="skbio
 <li><p><code class="docutils literal notranslate"><span class="pre">SE</span></code>: Standard error of the estimated Log2(FC).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">W</span></code>: <em>W</em>-statistic, or the number of features that the current feature is
 tested to be significantly different against.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of the linear mixed effects model. The reported value
-is the average of all of the <em>p</em>-values computed from each of the posterior
-draws.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value of the linear mixed effects model for multiple
-comparisons. The reported value is the average of all of the <em>q</em>-values
-computed from each of the posterior draws.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of the ANCOM-BC test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value of the ANCOM-BC test for multiple
+comparisons.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Signif</span></code>: Whether the covariate category is significantly differentially
-abundant from the reference category. A feature-covariate pair marked as
-“True” suffice: 1) The <em>q</em>-value must be less than or equal to the
-significance level (0.05). 2) The confidence interval (CI(2.5)..CI(97.5))
-must not overlap with zero.</p></li>
+abundant from the reference category. A feature-covariate pair is marked as
+“True” if the <em>q</em>-value is less than or equal to the significance level
+(<code class="docutils literal notranslate"><span class="pre">alpha</span></code>).</p></li>
 </ul>
 </dd>
-<dt><strong>res_global</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A table of features and statistics of ANCOM-BC global test.</p>
+<dt><strong>res_global</strong><span class="classifier">pd.DataFrame, optional</span></dt><dd><p>A table of features and statistics from the global test (when <code class="docutils literal notranslate"><span class="pre">grouping</span></code> is
+set).</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">W</span></code>: <em>W</em>-statistic of Chi-squared statistic that quantifies the overall
@@ -798,21 +802,52 @@ in grouping variable.</p></li>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">struc_zero</span></code></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.composition.struc_zero.html#skbio.stats.composition.struc_zero" title="skbio.stats.composition.struc_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">struc_zero</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The input data table for ANCOM-BC must contain only positive numbers. One needs to
-remove zero values by, e.g., adding a pseudocount of 1.0.
-The categorical data in metadata is sorted alphabetically by default. The reference
-level for each attribute need to be changed manually.</p>
+<p>This function is a Python re-implementation of the ANCOM-BC method <a class="reference internal" href="#r1bf23095540c-1" id="id2">[1]</a>, which was
+originally implemented in the R package <code class="docutils literal notranslate"><span class="pre">ANCOMBC</span></code>. This function provides an
+efficient and scalable algorithm, with a simple interface consistent with other
+scikit-bio components. The output of this function should match that of the R
+package.</p>
+<p>Comparing with the R command <code class="docutils literal notranslate"><span class="pre">ancombc</span></code>, this function defers the flexibility of
+data preprocessing to the user. Most importantly, if the input table contains zero
+values (which is common), one needs to remove them by, e.g., adding a pseudocount
+of 1 (<code class="docutils literal notranslate"><span class="pre">pseudo=1</span></code> in the R command’s parameters) (assuming <code class="docutils literal notranslate"><span class="pre">table</span></code> is a pandas
+DataFrame):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span> <span class="o">+</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>See also <a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_replace</span></code></a> for additional information on zero handling.</p>
+<p>Some other pre-processing options provided by the R command can be performed with:</p>
+<p>To aggregate data at a given taxonomic level (<code class="docutils literal notranslate"><span class="pre">tax_level=&quot;Family&quot;</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">feature_to_family_dict</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>To discard features with prevalence &lt; 10% among samples (<code class="docutils literal notranslate"><span class="pre">prv_cut=0.1</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">(</span><span class="n">table</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">0.1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To discard samples with a total abundance &lt; 1 million (<code class="docutils literal notranslate"><span class="pre">lib_cut=1e6</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">table</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1e6</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Categorical columns in metadata are sorted alphabetically, and the reference level
+for each column is automatically set to be the first category. If this behavior is
+not intended, you will need to change the order manually, like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;bmi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span>
+    <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;bmi&#39;</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lean&#39;</span><span class="p">,</span> <span class="s1">&#39;overweight&#39;</span><span class="p">,</span> <span class="s1">&#39;obese&#39;</span><span class="p">],</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r1bf23095540c-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>Lin, H. and Peddada, S.D., 2020. Analysis of compositions of microbiomes
-with bias correction. Nature communications, 11(1), p.3514.</p>
+with bias correction. Nature Communications, 11(1), p.3514.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
@@ -820,107 +855,221 @@ with bias correction. Nature communications, 11(1), p.3514.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </pre></div>
 </div>
-<p>Let’s load in a DataFrame with six samples and seven features (e.g., these
-may be bacterial taxa):</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-<span class="gp">... </span>                      <span class="p">[</span><span class="mi">9</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-<span class="gp">... </span>                      <span class="p">[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
-<span class="gp">... </span>                      <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-<span class="gp">... </span>                      <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-<span class="gp">... </span>                      <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span>
-<span class="gp">... </span>                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">],</span>
-<span class="gp">... </span>                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b1&#39;</span><span class="p">,</span> <span class="s1">&#39;b2&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span> <span class="s1">&#39;b4&#39;</span><span class="p">,</span> <span class="s1">&#39;b5&#39;</span><span class="p">,</span> <span class="s1">&#39;b6&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                              <span class="s1">&#39;b7&#39;</span><span class="p">])</span>
+<p><strong>A basic example</strong></p>
+<p>Let’s create a data table with six samples and seven features (e.g., these may be
+microbial taxa):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">,</span> <span class="s1">&#39;S4&#39;</span><span class="p">,</span> <span class="s1">&#39;S5&#39;</span><span class="p">,</span> <span class="s1">&#39;S6&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;F1&#39;</span><span class="p">,</span> <span class="s1">&#39;F2&#39;</span><span class="p">,</span> <span class="s1">&#39;F3&#39;</span><span class="p">,</span> <span class="s1">&#39;F4&#39;</span><span class="p">,</span> <span class="s1">&#39;F5&#39;</span><span class="p">,</span> <span class="s1">&#39;F6&#39;</span><span class="p">,</span> <span class="s1">&#39;F7&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">3</span><span class="p">]],</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="n">samples</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then create a grouping vector. In this example, there is a treatment group
-and a placebo group.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;grouping&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;treatment&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                  <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">,</span> <span class="s1">&#39;placebo&#39;</span><span class="p">]},</span>
-<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;s5&#39;</span><span class="p">,</span> <span class="s1">&#39;s6&#39;</span><span class="p">])</span>
+<p>Then create a sampling grouping vector. In this example, there is a “healthy” group
+and a “sick” group.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;healthy&#39;</span><span class="p">,</span> <span class="s1">&#39;healthy&#39;</span><span class="p">,</span> <span class="s1">&#39;healthy&#39;</span><span class="p">,</span> <span class="s1">&#39;sick&#39;</span><span class="p">,</span> <span class="s1">&#39;sick&#39;</span><span class="p">,</span> <span class="s1">&#39;sick&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">grouping</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">samples</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Now run <code class="docutils literal notranslate"><span class="pre">ancombc</span></code> to determine if there are any features that are significantly
-different in abundance between the treatment and the placebo groups.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="s1">&#39;grouping&#39;</span><span class="p">)</span>
+different in abundance between the healthy and the sick groups. Note that a
+pseudocount of 1 is manually added to the table to remove zero values.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">   FeatureID              Covariate  Log2(FC)     SE       W  pvalue  qvalue  \</span>
-<span class="go">0         b1              Intercept     0.719  0.033  21.472   0.000   0.000</span>
-<span class="go">1         b1  grouping[T.treatment]    -1.182  0.385  -3.070   0.002   0.013</span>
-<span class="go">2         b2              Intercept     0.706  0.018  39.548   0.000   0.000</span>
-<span class="go">3         b2  grouping[T.treatment]    -0.537  0.097  -5.562   0.000   0.000</span>
-<span class="go">4         b3              Intercept     0.069  0.087   0.802   0.422   1.000</span>
-<span class="go">5         b3  grouping[T.treatment]     0.068  0.120   0.566   0.571   1.000</span>
-<span class="go">6         b4              Intercept    -0.002  0.015  -0.142   0.887   1.000</span>
-<span class="go">7         b4  grouping[T.treatment]     0.113  0.120   0.946   0.344   1.000</span>
-<span class="go">8         b5              Intercept     0.078  0.065   1.206   0.228   1.000</span>
-<span class="go">9         b5  grouping[T.treatment]     0.004  0.115   0.032   0.974   1.000</span>
-<span class="go">10        b6              Intercept    -0.002  0.015  -0.142   0.887   1.000</span>
-<span class="go">11        b6  grouping[T.treatment]    -0.118  0.072  -1.641   0.101   0.504</span>
-<span class="go">12        b7              Intercept    -0.002  0.015  -0.142   0.887   1.000</span>
-<span class="go">13        b7  grouping[T.treatment]     0.052  0.071   0.741   0.459   1.000</span>
-
-<span class="go">    Signif</span>
-<span class="go">0     True</span>
-<span class="go">1     True</span>
-<span class="go">2     True</span>
-<span class="go">3     True</span>
-<span class="go">4    False</span>
-<span class="go">5    False</span>
-<span class="go">6    False</span>
-<span class="go">7    False</span>
-<span class="go">8    False</span>
-<span class="go">9    False</span>
-<span class="go">10   False</span>
-<span class="go">11   False</span>
-<span class="go">12   False</span>
-<span class="go">13   False</span>
+<span class="go">                          Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">FeatureID Covariate</span>
+<span class="go">F1        Intercept         -0.045  0.218 -0.207   0.836   1.000   False</span>
+<span class="go">          status[T.sick]     0.126  0.589  0.214   0.831   1.000   False</span>
+<span class="go">F2        Intercept         -0.873  0.137 -6.381   0.000   0.000    True</span>
+<span class="go">          status[T.sick]     1.241  0.538  2.307   0.021   0.105   False</span>
+<span class="go">F3        Intercept         -0.202  0.475 -0.425   0.671   1.000   False</span>
+<span class="go">          status[T.sick]     0.561  0.964  0.582   0.561   1.000   False</span>
+<span class="go">F4        Intercept          1.005  0.136  7.399   0.000   0.000    True</span>
+<span class="go">          status[T.sick]    -1.723  0.392 -4.399   0.000   0.000    True</span>
+<span class="go">F5        Intercept          0.141  0.422  0.335   0.738   1.000   False</span>
+<span class="go">          status[T.sick]    -0.690  0.625 -1.104   0.270   1.000   False</span>
+<span class="go">F6        Intercept         -0.873  0.137 -6.381   0.000   0.000    True</span>
+<span class="go">          status[T.sick]     1.480  0.160  9.255   0.000   0.000    True</span>
+<span class="go">F7        Intercept          0.157  0.401  0.391   0.695   1.000   False</span>
+<span class="go">          status[T.sick]     0.049  0.405  0.121   0.904   1.000   False</span>
 </pre></div>
 </div>
-<p>The following example shows how to perform global test using ANCOM-BC to identify
-features that are differentially abundant in more than one time point.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[[</span><span class="mf">1.00000053</span><span class="p">,</span> <span class="mf">6.09924644</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999843</span><span class="p">,</span> <span class="mf">7.0000045</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999884</span><span class="p">,</span> <span class="mf">8.08474053</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999758</span><span class="p">,</span> <span class="mf">1.10000349</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999902</span><span class="p">,</span> <span class="mf">2.00000027</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.09999862</span><span class="p">,</span> <span class="mf">2.99998318</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.00000084</span><span class="p">,</span> <span class="mf">2.10001257</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.9999991</span><span class="p">,</span> <span class="mf">3.09998418</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">0.99999899</span><span class="p">,</span> <span class="mf">3.9999742</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.10000124</span><span class="p">,</span> <span class="mf">5.0001796</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.00000053</span><span class="p">,</span> <span class="mf">6.09924644</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="p">[</span><span class="mf">1.10000173</span><span class="p">,</span> <span class="mf">6.99693644</span><span class="p">]],</span>
-<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">,</span> <span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;z1&#39;</span><span class="p">,</span>
-<span class="gp">... </span>           <span class="s1">&#39;z2&#39;</span><span class="p">,</span> <span class="s1">&#39;z3&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Y1&#39;</span><span class="p">,</span> <span class="s1">&#39;Y2&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;patient&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="s1">&#39;treatment&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],},</span>
-<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="s1">&#39;z1&#39;</span><span class="p">,</span> <span class="s1">&#39;z2&#39;</span><span class="p">,</span> <span class="s1">&#39;z3&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
-<span class="gp">... </span>           <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">])</span>
+<p>The covariate “status[T.sick]” stands for the effect of the “sick” group relative
+to the reference group, “healthy” (the first group in alphabetical order is
+automatically selected as the reference group). “Log2(FC)” represents the
+<a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a>-transformed fold change of abundance (positive/negative: more/less
+abundant in “sick” than in “healthy”, respectively). A “True” in the “Signif”
+column indicates a significantly differentially abundant feature-covariate pair.
+This example shows that two features differ by healthy/sick status.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Covariate != &quot;Intercept&quot; &amp; Signif == True&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">                          Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">FeatureID Covariate</span>
+<span class="go">F4        status[T.sick]    -1.723  0.392 -4.399     0.0     0.0    True</span>
+<span class="go">F6        status[T.sick]     1.480  0.160  9.255     0.0     0.0    True</span>
 </pre></div>
 </div>
-<p>The first DataFrame contains the ANCOM-BC test results that identifies
-differentially abundant feature in treatment as well as in time. The second
-DataFrame contains the ANCOM-BC global test results that indicates whether the
-features are differentially abundant across multiple time points.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s2">&quot;time+treatment&quot;</span><span class="p">,</span> <span class="n">grouping</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][[</span><span class="s1">&#39;FeatureID&#39;</span><span class="p">,</span> <span class="s1">&#39;Covariate&#39;</span><span class="p">,</span> <span class="s1">&#39;Signif&#39;</span><span class="p">]]</span>
-<span class="go">      FeatureID  Covariate  Signif</span>
-<span class="go">    0        Y1  Intercept    True</span>
-<span class="go">    1        Y1       time    True</span>
-<span class="go">    2        Y1  treatment    True</span>
-<span class="go">    3        Y2  Intercept    True</span>
-<span class="go">    4        Y2       time    True</span>
-<span class="go">    5        Y2  treatment    True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">      FeatureID       W  pvalue  qvalue  Signif</span>
-<span class="go">    0        Y1  11.625   0.001   0.002    True</span>
-<span class="go">    1        Y2  12.069   0.001   0.002    True</span>
+<p><strong>An advanced example</strong></p>
+<p>Now we will create a complex dataset with 15 samples grouped into three disease
+status: “mild”, “moderate” and “severe”, plus age as a confounder. Our goal is
+to identify features that are differentially abundant between disease status.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;S</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;F</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">46</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">samples</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">status</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mild&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;moderate&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;severe&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">age</span> <span class="o">=</span> <span class="p">[</span><span class="mi">39</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="n">age</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">samples</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal notranslate"><span class="pre">ancombc</span></code>. This time, we specify two factors: “status” and “age” in the
+formula, such that the function will test the individual effects of each factor
+while controlling for the other. Additionally, we instruct the function to perform
+a <em>global test</em> on “status”, which identifies features that are differentially
+abundant between at least two status.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res_main</span><span class="p">,</span> <span class="n">res_global</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s1">&#39;status + age&#39;</span><span class="p">,</span> <span class="n">grouping</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res_main</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">                              Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">FeatureID Covariate</span>
+<span class="go">F1        Intercept             -0.006  0.346 -0.016   0.987   1.000   False</span>
+<span class="go">          status[T.moderate]    -0.337  0.245 -1.376   0.169   1.000   False</span>
+<span class="go">          status[T.severe]       0.278  0.350  0.792   0.428   1.000   False</span>
+<span class="go">          age                    0.002  0.011  0.141   0.888   1.000   False</span>
+<span class="go">F2        Intercept              0.072  0.446  0.160   0.873   1.000   False</span>
+<span class="go">          status[T.moderate]     1.906  0.259  7.371   0.000   0.000    True</span>
+<span class="go">          status[T.severe]       2.935  0.304  9.649   0.000   0.000    True</span>
+<span class="go">          age                   -0.022  0.013 -1.676   0.094   0.562   False</span>
+<span class="go">F3        Intercept             -1.690  0.570 -2.967   0.003   0.021    True</span>
+<span class="go">          status[T.moderate]     1.010  0.578  1.747   0.081   0.565   False</span>
+<span class="go">          status[T.severe]       0.717  0.517  1.388   0.165   1.000   False</span>
+<span class="go">          age                    0.063  0.022  2.883   0.004   0.031    True</span>
+<span class="go">F4        Intercept              0.439  0.483  0.910   0.363   1.000   False</span>
+<span class="go">          status[T.moderate]    -0.046  0.405 -0.113   0.910   1.000   False</span>
+<span class="go">          status[T.severe]      -0.244  0.536 -0.455   0.649   1.000   False</span>
+<span class="go">          age                   -0.003  0.019 -0.185   0.854   1.000   False</span>
+<span class="go">F5        Intercept             -1.227  0.393 -3.125   0.002   0.014    True</span>
+<span class="go">          status[T.moderate]     0.274  0.293  0.934   0.350   1.000   False</span>
+<span class="go">          status[T.severe]      -0.323  0.320 -1.011   0.312   1.000   False</span>
+<span class="go">          age                    0.027  0.014  2.021   0.043   0.303   False</span>
+<span class="go">F6        Intercept             -0.439  0.440 -0.999   0.318   1.000   False</span>
+<span class="go">          status[T.moderate]     0.114  0.432  0.264   0.792   1.000   False</span>
+<span class="go">          status[T.severe]       0.375  0.544  0.691   0.490   1.000   False</span>
+<span class="go">          age                    0.008  0.016  0.480   0.631   1.000   False</span>
+<span class="go">F7        Intercept              0.201  0.472  0.426   0.670   1.000   False</span>
+<span class="go">          status[T.moderate]     0.082  0.302  0.270   0.787   1.000   False</span>
+<span class="go">          status[T.severe]      -0.264  0.401 -0.658   0.510   1.000   False</span>
+<span class="go">          age                    0.004  0.016  0.272   0.785   1.000   False</span>
+<span class="go">F8        Intercept             -0.168  0.526 -0.319   0.750   1.000   False</span>
+<span class="go">          status[T.moderate]    -0.402  0.584 -0.688   0.491   1.000   False</span>
+<span class="go">          status[T.severe]      -0.299  0.728 -0.411   0.681   1.000   False</span>
+<span class="go">          age                    0.022  0.018  1.237   0.216   1.000   False</span>
+</pre></div>
+</div>
+<p>We found that feature “F2” is significantly differentially (more) abundant in
+“moderate” and “severe” groups compared with “mild”, which serves as the reference
+group. Additionally, feature “F3” is separately correlated with age.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res_main</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Covariate != &quot;Intercept&quot; &amp; Signif == True&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">                              Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">FeatureID Covariate</span>
+<span class="go">F2        status[T.moderate]     1.906  0.259  7.371   0.000   0.000    True</span>
+<span class="go">          status[T.severe]       2.935  0.304  9.649   0.000   0.000    True</span>
+<span class="go">F3        age                    0.063  0.022  2.883   0.004   0.031    True</span>
+</pre></div>
+</div>
+<p>The global test result suggests that “F2” and “F4” are differentially abundant
+between two of the three groups (though it doesn’t tell which groups).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res_global</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">                W  pvalue  qvalue  Signif</span>
+<span class="go">FeatureID</span>
+<span class="go">F1          1.855   0.791   1.000   False</span>
+<span class="go">F2         80.771   0.000   0.000    True</span>
+<span class="go">F3          2.925   0.463   1.000   False</span>
+<span class="go">F4         -0.093   0.000   0.000    True</span>
+<span class="go">F5          1.068   0.827   1.000   False</span>
+<span class="go">F6          0.121   0.117   0.704   False</span>
+<span class="go">F7          0.220   0.208   1.000   False</span>
+<span class="go">F8          0.485   0.430   1.000   False</span>
+</pre></div>
+</div>
+<p><strong>Structural zero test</strong></p>
+<p>The structural zero test identifies features that are systematically absent from
+certain sample groups. This test is an option of the R command <code class="docutils literal notranslate"><span class="pre">ancombc</span></code>. In
+scikit-bio, <a class="reference internal" href="skbio.stats.composition.struc_zero.html#skbio.stats.composition.struc_zero" title="skbio.stats.composition.struc_zero"><code class="xref py py-func docutils literal notranslate"><span class="pre">struc_zero</span></code></a> is a standalone function, as it is generally useful
+with or without ANCOM-BC.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">struc_zero</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res_zero</span> <span class="o">=</span> <span class="n">struc_zero</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res_zero</span>
+<span class="go">     mild  moderate  severe</span>
+<span class="go">F1  False     False   False</span>
+<span class="go">F2  False     False   False</span>
+<span class="go">F3  False     False   False</span>
+<span class="go">F4  False     False   False</span>
+<span class="go">F5  False     False    True</span>
+<span class="go">F6  False     False   False</span>
+<span class="go">F7  False     False   False</span>
+<span class="go">F8  False     False   False</span>
+</pre></div>
+</div>
+<p>The result reveals that feature “F5” is a structural zero in the “severe” groups,
+as all or most of its values are zero. Although the ANCOM-BC test itself didn’t
+identify “F5”, we should consider it as differentially (less) abundant than in the
+other two groups.</p>
+<p>We can use this additional information to update the global test result. The rule
+is that a feature should be considered as globally differentially abundant if it is
+a structural zero in at least one but not all groups.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">signif_global</span> <span class="o">=</span> <span class="n">res_global</span><span class="p">[</span><span class="s1">&#39;Signif&#39;</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="o">~</span><span class="n">res_zero</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">res_zero</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">signif_global</span>
+<span class="go">FeatureID</span>
+<span class="go">F1    False</span>
+<span class="go">F2     True</span>
+<span class="go">F3    False</span>
+<span class="go">F4     True</span>
+<span class="go">F5     True</span>
+<span class="go">F6    False</span>
+<span class="go">F7    False</span>
+<span class="go">F8    False</span>
+<span class="go">dtype: bool</span>
+</pre></div>
+</div>
+<p>The main ANCOM-BC result can also be updated with structural zeros.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">signif_main</span> <span class="o">=</span> <span class="n">res_main</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;Covariate.str.startswith(&quot;status[T.&quot;)&#39;</span><span class="p">)[</span><span class="s1">&#39;Signif&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">signif_main</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">signif_main</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;status[T.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">signif_zero</span> <span class="o">=</span> <span class="n">res_zero</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">signif_main</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">signif_main</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">signif_main</span> <span class="o">|=</span> <span class="n">signif_zero</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">signif_main</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">signif_main</span>
+<span class="go">           moderate  severe</span>
+<span class="go">FeatureID</span>
+<span class="go">F1            False   False</span>
+<span class="go">F2             True    True</span>
+<span class="go">F3            False   False</span>
+<span class="go">F4            False   False</span>
+<span class="go">F5            False    True</span>
+<span class="go">F6            False   False</span>
+<span class="go">F7            False   False</span>
+<span class="go">F8            False   False</span>
 </pre></div>
 </div>
 </dd></dl>

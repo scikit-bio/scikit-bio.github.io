@@ -616,6 +616,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc.html">skbio.stats.composition.ancombc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.struc_zero.html">skbio.stats.composition.struc_zero</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -742,13 +743,21 @@ compositions.</p>
 <td><p>Perform differential abundance test using ANCOM-BC.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a>(table, grouping[, treatment, ...])</p></td>
-<td><p><em>T</em>-test using Dirichlet-multinomial distribution.</p></td>
+<td><p>Perform <em>t</em>-test using Dirichlet-multinomial distribution.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html#skbio.stats.composition.dirmult_lme" title="skbio.stats.composition.dirmult_lme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_lme</span></code></a>(table, metadata, formula, grouping)</p></td>
 <td><p>Fit a Dirichlet-multinomial linear mixed effects model.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.struc_zero.html#skbio.stats.composition.struc_zero" title="skbio.stats.composition.struc_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">struc_zero</span></code></a>(table, metadata, grouping[, neg_lb])</p></td>
+<td><p>Identify features with structural zeros.</p></td>
+</tr>
 </tbody>
 </table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Differential abundance tests will be moved to a separate module <code class="docutils literal notranslate"><span class="pre">differential</span></code> in
+the next release of scikit-bio. The current location will be kept as an alias.</p>
 </div>
 </section>
 <section id="arithmetic-operations">
