@@ -817,7 +817,7 @@ data preprocessing to the user. Most importantly, if the input table contains ze
 values (which is common), one needs to remove them by, e.g., adding a pseudocount
 of 1 (<code class="docutils literal notranslate"><span class="pre">pseudo=1</span></code> in the R command’s parameters) (assuming <code class="docutils literal notranslate"><span class="pre">table</span></code> is a pandas
 DataFrame):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span> <span class="o">+</span> <span class="mf">1.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>See also <a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_replace</span></code></a> for additional information on zero handling.</p>

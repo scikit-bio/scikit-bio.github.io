@@ -765,7 +765,7 @@
 <h1>skbio.tree.TreeNode.cache_attr<a class="headerlink" href="#skbio-tree-treenode-cache-attr" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.cache_attr">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cache_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5062"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cache_attr" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">cache_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5061"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.cache_attr" title="Link to this definition">#</a></dt>
 <dd><p>Cache attributes on nodes of the tree through a postorder traversal.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -812,7 +812,7 @@ or the <code class="docutils literal notranslate"><span class="pre">clear_caches
 </div>
 <p class="rubric">Notes</p>
 <p>This method provides an efficient interface to assign a custom attribute to
-every node of a tree through one postorder travesal. It is particularly useful
+every node of a tree through one postorder traversal. It is particularly useful
 if one needs to frequently look up attributes that would normally require one
 traversal of the tree per lookup. The assigned attributes may be automatically
 deleted when the tree is manipulated.</p>
@@ -831,7 +831,7 @@ representative examples are provided below.</p>
 <span class="go">                    \-e</span>
 </pre></div>
 </div>
-<p>Cache a list of all descending tip names on each node. This faciliates the
+<p>Cache a list of all descending tip names on each node. This facilitates the
 assignment of taxon set under each clade in the tree. It resembles but is more
 efficient than calling <a class="reference internal" href="skbio.tree.TreeNode.subset.html#skbio.tree.TreeNode.subset" title="skbio.tree.TreeNode.subset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subset</span></code></a> multiple times.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">is_tip</span><span class="p">()</span> <span class="k">else</span> <span class="p">[]</span>

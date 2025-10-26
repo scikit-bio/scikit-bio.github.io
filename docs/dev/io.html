@@ -940,7 +940,7 @@ or the
 </div>
 <p>As an example, let’s read a <a class="reference internal" href="generated/skbio.io.format.newick.html#module-skbio.io.format.newick" title="skbio.io.format.newick"><code class="xref py py-mod docutils literal notranslate"><span class="pre">newick</span></code></a> file into a
 <a class="reference internal" href="generated/skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code></a> object using both interfaces. Here we will use Python’s
-built-in <a class="reference external" href="https://docs.python.org/3/library/io.html#io.StringIO" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringIO</span></code></a> class to mimick an open file:</p>
+built-in <a class="reference external" href="https://docs.python.org/3/library/io.html#io.StringIO" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringIO</span></code></a> class to mimic an open file:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span> <span class="k">as</span> <span class="n">sk_read</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
@@ -1004,7 +1004,7 @@ documentation page.</p>
 <p>If you are working with particularly large files, streaming them might be preferable.
 For instance, if your file is larger than your available memory, you won’t be able
 to read the entire file into memory at once. One way to get around this is to use
-streaming. Scikit-bio’s <code class="docutils literal notranslate"><span class="pre">io</span></code> module offers the ability to contruct a streaming
+streaming. Scikit-bio’s <code class="docutils literal notranslate"><span class="pre">io</span></code> module offers the ability to construct a streaming
 interface from the <code class="docutils literal notranslate"><span class="pre">read</span></code> and <code class="docutils literal notranslate"><span class="pre">write</span></code> functions.</p>
 <p><code class="docutils literal notranslate"><span class="pre">skbio.io.read</span></code> returns a generator, which can then be passed to <code class="docutils literal notranslate"><span class="pre">skbio.io.write</span></code>
 to write only one chunk from the generator at a time.</p>

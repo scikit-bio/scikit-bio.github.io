@@ -838,7 +838,7 @@ objects:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Run PERMDISP using 99 permutations to caluculate the p-value. The seed is to
+<p>Run PERMDISP using 99 permutations to calculate the p-value. The seed is to
 make the output deterministic. You may skip it if that’s not necessary.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">permdisp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -873,7 +873,7 @@ median. The spatial median is thought to yield a more robust test
 statistic, and this test is used by default. Spatial medians are computed
 using an iterative algorithm to find the optimally minimum point from all
 other points in a group while centroids are computed using a deterministic
-formula. As such the two different tests yeild slightly different F
+formula. As such the two different tests yield slightly different F
 statistics.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;centroid&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="go">method name               PERMDISP</span>
