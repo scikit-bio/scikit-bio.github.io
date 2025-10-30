@@ -447,14 +447,23 @@
 <h1>Releasing a new version<a class="headerlink" href="#releasing-a-new-version" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>This guide explains how to release a new version of scikit-bio. To illustrate examples of commands you might run, let’s assume that the current version is <strong>x.y.y-dev</strong> and we want to release version <strong>x.y.z</strong>.</p>
+<p>This guide explains how to release a new version of scikit-bio. To illustrate examples of commands you might run, let’s assume that the current version is <strong>x.y.z-dev</strong> and we want to release version <strong>x.y.z</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following commands assume you are in the top-level directory of the scikit-bio repository unless otherwise noted. They also assume that you have [Conda](<a class="reference external" href="https://conda.io">https://conda.io</a>) installed.</p>
 </div>
+<p>Large portions of the workflow are now automated through GitHub workflows. In order to check that things will work correctly before running the release workflow in <code class="docutils literal notranslate"><span class="pre">release.yml</span></code>, please follow these steps.</p>
+<p>The general workflow is:</p>
+<ol class="arabic simple">
+<li><p>Update the version number in the repository from <strong>x.y.z-dev</strong> to <strong>x.y.z</strong>.</p></li>
+<li><p>Ensure documentation, wheels, and source distribution build correctly before publishing release.</p></li>
+<li><p>Publish release.</p></li>
+<li><p>Update version number in the repository from <strong>x.y.z</strong> to <strong>a.b.c-dev</strong>.</p></li>
+</ol>
 </section>
 <section id="prep-the-release">
 <h2>Prep the release<a class="headerlink" href="#prep-the-release" title="Link to this heading">#</a></h2>
+<p>The purpose of these steps is to update the version within the package. At this point we are only updating the version number in the repository, and doing some basic checks.</p>
 <ol class="arabic">
 <li><p>Ensure the GitHub Actions CI build is passing against main.</p></li>
 <li><p>Update the version strings (x.y.y-dev) to the new version (x.y.z). This will include <code class="docutils literal notranslate"><span class="pre">__version__</span></code> defined in <code class="docutils literal notranslate"><span class="pre">skbio/__init__.py</span></code>. <code class="docutils literal notranslate"><span class="pre">grep</span></code> for the current version string to find all occurrences:</p>
@@ -477,130 +486,51 @@
 <li><p>Submit a pull request and merge when CI tests are passing.</p></li>
 </ol>
 </section>
-<section id="build-website-docs">
-<h2>Build website docs<a class="headerlink" href="#build-website-docs" title="Link to this heading">#</a></h2>
-<p>You will need to <strong>fully install</strong> the latest main branch of scikit-bio (including built extensions) and build the docs from this version. <strong>Make sure the version of scikit-bio that is imported by ``import skbio`` is the correct one before building the docs.</strong></p>
-<ol class="arabic">
-<li><p>Build the documentation locally:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="o">-</span><span class="n">C</span> <span class="n">doc</span> <span class="n">clean</span> <span class="n">html</span>
-</pre></div>
-</div>
-</li>
-<li><p>Switch to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of the repository.</p></li>
-<li><p>Remove <code class="docutils literal notranslate"><span class="pre">docs/latest</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">docs</span><span class="o">/</span><span class="n">latest</span>
-</pre></div>
-</div>
-</li>
-<li><p>Copy over the built documentation to <code class="docutils literal notranslate"><span class="pre">docs/x.y.z</span></code> and <code class="docutils literal notranslate"><span class="pre">docs/latest</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">doc</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">html</span> <span class="n">docs</span><span class="o">/</span><span class="n">latest</span>
-<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">doc</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">html</span> <span class="n">docs</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span>
-</pre></div>
-</div>
-</li>
-<li><p>Add a new list item to <code class="docutils literal notranslate"><span class="pre">index.html</span></code> to link to <code class="docutils literal notranslate"><span class="pre">docs/x.y.z/index.html</span></code>.</p></li>
-<li><p>Port content from <code class="docutils literal notranslate"><span class="pre">README.md</span></code> to <code class="docutils literal notranslate"><span class="pre">index.html</span></code> if there are any changes that need to be included on the front page.</p></li>
-<li><p>Test out your changes by opening the site locally in a browser. Be sure to check the error console for any errors.</p></li>
-<li><p>Submit a pull request with the website updates and merge.</p></li>
-</ol>
-<p>..note:: Once merged, the live website is updated, so be sure to poke through the live site to make sure things are rendered correctly with the right version strings.</p>
+<section id="build-documentation-locally">
+<h2>Build documentation locally<a class="headerlink" href="#build-documentation-locally" title="Link to this heading">#</a></h2>
+<p>This is a <strong>pre-release check</strong> to be performed by the developer to ensure that things run smoothly once we get to the actual release publication steps. It is a <strong>critical step</strong> to avoid failures once the automated workflows run.</p>
+<p>In an environment with <strong>the same version of Python</strong> specified in the <code class="docutils literal notranslate"><span class="pre">Publish</span> <span class="pre">documentation</span></code> job within the <code class="docutils literal notranslate"><span class="pre">release.yml</span></code> workflow, build the documentation locally using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">doc</span></code> and ensure that it runs without error and that everything renders correctly.</p>
+<p>We now use Sphinx and automated workflows to handle the documentation building and publishing process. Check Sphinx’s most recent Python version support, and pin to this version in <code class="docutils literal notranslate"><span class="pre">release.yml</span></code> if it isn’t the latest.</p>
 </section>
-<section id="tag-the-release">
-<h2>Tag the release<a class="headerlink" href="#tag-the-release" title="Link to this heading">#</a></h2>
+<section id="test-wheels-and-sdist-fully">
+<h2>Test wheels and sdist fully<a class="headerlink" href="#test-wheels-and-sdist-fully" title="Link to this heading">#</a></h2>
+<p>This is a <strong>pre-release check</strong> to be performed by the developer to ensure that things run smoothly once we get to the actual release publication steps. It is a <strong>critical step</strong> to avoid failures once the automated workflows run.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code> file may be triggered manually through GitHub Actions <code class="docutils literal notranslate"><span class="pre">workflow_dispatch</span></code> (<a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/actions/workflows/wheels.yml">scikit-bio/scikit-bio</a>). Click the <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">workflow</span></code> button and run it against the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
+<p>When this workflow is manually triggered, it will build wheels for all supported Python versions and all supported platforms, and run the full suite of unit tests on every wheel that it builds.
+This process typically takes some time, but it is well worth the time to ensure that the wheel building process will be successful when it’s time to actually publish the release.</p>
+<p>Manually check that the correct wheels are built by downloading the artifacts from the workflow run or visually checking the output from <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> on the GitHub Actions workflow page.
+If downloading, inspect the zip file containing the wheels provided by workflow for each platform. The zip file should contain all the wheels you are trying to build.</p>
+<p>If you find that the desired wheels are not present in the zip files, or you are coming accross unexpected errors in the wheel building process, there are a few places to check:</p>
+<ol class="arabic simple">
+<li><p>Check that you have updated the <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> portion of the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> configuration file to include all supported Python versions and any other information you want.</p></li>
+</ol>
+<p>2. Ensure that the version of <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> used in <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code> is up to date. It may be the case that the latest version of Python is not supported by whichever version is currently in use in <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code>.
+In this case, <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> will not throw an error or warning, it just won’t build wheels for that version of Python.</p>
+<ol class="arabic simple" start="3">
+<li><p>Check that the version of <code class="docutils literal notranslate"><span class="pre">manylinux</span></code> in the <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> is up to date. This is particularly relevant if any of the errors you encounter are related to specific versions of <code class="docutils literal notranslate"><span class="pre">glibc</span></code>.</p></li>
+</ol>
+<p>This workflow also builds the source distribution for the package. It is <strong>highly recommended</strong> to download the built sdist from this workflow and test that you can build it against <strong>every</strong> Python version supported by scikit-bio.
+Again, this is tedious, but well worth the benefit of being certain things will work before publishing the release.</p>
+</section>
+<section id="tag-the-release-and-publish">
+<h2>Tag the release and publish<a class="headerlink" href="#tag-the-release-and-publish" title="Link to this heading">#</a></h2>
+<p>Assuming that all of the above checks and tests have been performed and are passing, it is time to publish the release.</p>
+<p><strong>Once you hit the ``Publish`` button, all of the automated workflows will run, and they will actually upload the artifacts (documentation, sdist, wheels) to their respective locations (website, PyPI), so ensure that everything is in order before hitting ``Publish``!</strong></p>
 <p>From <a class="extlink-repo github reference external" href="https://github.com/scikit-bio/scikit-bio/scikit-bio GitHub repo">scikit-bio/scikit-bio</a>, click on the releases tab and draft a new release. Use the version number for the tag name (x.y.z) and create the tag against main. Fill in a release title that is consistent with previous release titles and add a summary of the release (linking to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> is a good idea). This release summary will be the primary information that we point users to when we announce the release.</p>
-<p>Once the release is created on GitHub, it’s a good idea to test out the release tarball before publishing to PyPI:</p>
-<ol class="arabic">
-<li><p>Create a new <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment for testing (fill in a name for <code class="docutils literal notranslate"><span class="pre">&lt;environment&gt;</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">environment</span><span class="o">&gt;</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span> <span class="n">numpy</span>
-<span class="n">conda</span> <span class="n">activate</span> <span class="o">&lt;</span><span class="n">environment</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Install the release tarball from GitHub and run the tests:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">skbio</span><span class="o">.</span><span class="n">test</span>
-</pre></div>
-</div>
-</li>
-</ol>
+<p>Hit <code class="docutils literal notranslate"><span class="pre">Publish</span></code> when you are ready and keep an eye on the processes to see if any errors arise.</p>
 </section>
-<section id="publish-the-release">
-<h2>Publish the release<a class="headerlink" href="#publish-the-release" title="Link to this heading">#</a></h2>
-<p>Assuming the GitHub release tarball correctly installs and passes its tests, you’re ready to create the source distribution (<code class="docutils literal notranslate"><span class="pre">sdist</span></code>) that will be published to PyPI. It is important to test the source distribution because it is created in an entirely different way than the release tarball on GitHub. Thus, there is the danger of having two different release tarballs: the one created on GitHub and the one uploaded to PyPI.</p>
-<ol class="arabic">
-<li><p>Download the release tarball from GitHub, extract it, and <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the top-level directory.</p></li>
-<li><p>Build a source distribution:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
-</pre></div>
-</div>
-</li>
-<li><p>Create and activate a new <cite>conda</cite> environment, and test the <cite>sdist</cite>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">dist</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">cd</span>  <span class="c1"># cd somewhere outside the extracted scikit-bio directory</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">skbio</span><span class="o">.</span><span class="n">test</span>
-</pre></div>
-</div>
-</li>
-<li><p>If everything goes well, it is finally time to push the release to PyPI:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span> <span class="n">upload</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You must have the proper login credentials to add a release to PyPI. Currently <a class="reference external" href="https://github.com/gregcaporaso">&#64;gregcaporaso</a> has these, but they can be shared with other release managers.</p>
-</div>
-<ol class="arabic" start="5">
-<li><p>Once the release is available on PyPI, do a final round of testing. Create a new <cite>conda</cite> environment and run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
-<span class="n">cd</span>  <span class="c1"># cd somewhere outside the extracted scikit-bio directory</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">skbio</span><span class="o">.</span><span class="n">test</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>If this succeeds, the PyPI release appears to be a success. Make sure the installed version is the correct one.</p>
-<ol class="arabic simple" start="6">
-<li><p>Next, we’ll prepare and post the release to <a class="reference external" href="https://www.anaconda.com/">anaconda.org</a>.</p></li>
-</ol>
-<p>You’ll need to have <code class="docutils literal notranslate"><span class="pre">conda-build</span></code> and <code class="docutils literal notranslate"><span class="pre">anaconda-client</span></code> installed to perform these steps. Both can be conda-installed. First, log into anaconda with your anaconda username using the following command. You should have access to push to the <code class="docutils literal notranslate"><span class="pre">biocore</span></code> anaconda account through your account (if you don’t, get in touch with [&#64;gregcaporaso](<a class="github reference external" href="https://github.com/gregcaporaso">gregcaporaso</a>) who is the owner of that account):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">anaconda</span> <span class="n">login</span>
-</pre></div>
-</div>
-<p>Due to its C extensions, releasing scikit-bio packages for different platforms will require you to perform the following steps on each of those platforms. For example, an <code class="docutils literal notranslate"><span class="pre">osx-64</span></code> package will need to be built on OS X, and a <code class="docutils literal notranslate"><span class="pre">linux-64</span></code> package will need to be built on 64-bit Linux. These steps will be the same on all platforms, so you should repeat them for every platform you want to release for:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">skeleton</span> <span class="n">pypi</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
-<span class="n">conda</span> <span class="n">build</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span> <span class="o">--</span><span class="n">python</span> <span class="mf">3.10</span>
-</pre></div>
-</div>
-<p>When building 64-bit Linux packages, it is recommended that you use conda-forge’s <code class="docutils literal notranslate"><span class="pre">linux-anvil`</span></code> Docker image. This ensures a consistent Linux build environment that has an old enough version of <cite>libc</cite> to be compatible on most Linux systems. To start up a <code class="docutils literal notranslate"><span class="pre">linux-anvil</span></code> Docker container:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">t</span> <span class="n">condaforge</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">anvil</span>
-<span class="c1"># Now you should be in the linux-anvil environment</span>
-<span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;/conda-forge/d&#39;</span> <span class="o">~/.</span><span class="n">condarc</span>
-<span class="c1"># Run the build commands from above</span>
-</pre></div>
-</div>
-<p>At this stage you have built Python 3.10 packages. The absolute path to the packages will be provided as output from each <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">build</span></code> commands. You should now create conda environments for each, and run the tests as described above. You can install these local package as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">use</span><span class="o">-</span><span class="n">local</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
-</pre></div>
-</div>
-<p>If the tests pass, you’re ready to upload:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">anaconda</span> <span class="n">upload</span> <span class="o">-</span><span class="n">u</span> <span class="n">biocore</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">-</span><span class="n">filepath</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;package-filepath&gt;</span></code> should be replaced with the path to the package that was was created above. Repeat this for each package you created (here, the Python 3.10 package).</p>
-<p>After uploading, you should create new environments for every package you uploaded, install scikit-bio from each package, and re-run the tests. You can install the packages you uploaded as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">conda</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">biocore</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
-</pre></div>
-</div>
+<section id="add-wheels-to-github-release-page">
+<h2>Add wheels to GitHub release page<a class="headerlink" href="#add-wheels-to-github-release-page" title="Link to this heading">#</a></h2>
+<p>Once the automated workflows have run, and our wheels are successfully uploaded to PyPI, you can manually download the wheels from PyPI and add them to the GitHub release page for the release we just published. Click the <code class="docutils literal notranslate"><span class="pre">edit</span> <span class="pre">release</span></code> button, and then simply add the binaries to the release page.</p>
+<p>This isn’t an elegant solution, and it may be automated in the future, but for now this is what we’re doing.</p>
 </section>
 <section id="post-release-cleanup">
 <h2>Post-release cleanup<a class="headerlink" href="#post-release-cleanup" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Submit and merge a pull request to update the version strings from x.y.z to x.y.z-dev (<code class="docutils literal notranslate"><span class="pre">skbio.__version__</span></code> should be the only thing needing an update). Update <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> to include a new section for x.y.z-dev (there won’t be any changes to note here yet).</p></li>
+<li><p>Submit and merge a pull request to update the version strings from x.y.z to a.b.c-dev (<code class="docutils literal notranslate"><span class="pre">skbio.__version__</span></code> should be the only thing needing an update). Update <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> to include a new section for a.b.c-dev (there won’t be any changes to note here yet).</p></li>
 <li><p>Close the release milestone on the GitHub issue tracker if there was one.</p></li>
 <li><p>Send an email to the skbio developers list and anyone else who might be interested (e.g., lab mailing lists). You might include links to the GitHub release page.</p></li>
-<li><p>Tweet about the release from <code class="docutils literal notranslate"><span class="pre">&#64;scikit-bio</span></code>, including a link to the GitHub release page (for example, <a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/releases/tag/x.y.z">scikit-bio/scikit-bio</a>). Post a similar message to <a class="reference external" href="https://gitter.im/biocore/scikit-bio">scikit-bio’s Gitter</a>.</p></li>
+<li><p>Tweet about the release from <code class="docutils literal notranslate"><span class="pre">&#64;scikit-bio</span></code>, including a link to the GitHub release page (for example, <a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/releases/tag/x.y.z">scikit-bio/scikit-bio</a>).</p></li>
 <li><p>Beers! <span class="fa fa-beer-mug-empty fa-2x sd-text-success"></span></p></li>
 </ol>
 </section>
@@ -631,9 +561,10 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prep-the-release">Prep the release</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-website-docs">Build website docs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tag-the-release">Tag the release</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-the-release">Publish the release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-documentation-locally">Build documentation locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-wheels-and-sdist-fully">Test wheels and sdist fully</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tag-the-release-and-publish">Tag the release and publish</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wheels-to-github-release-page">Add wheels to GitHub release page</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-release-cleanup">Post-release cleanup</a></li>
 </ul>
   </nav></div>
