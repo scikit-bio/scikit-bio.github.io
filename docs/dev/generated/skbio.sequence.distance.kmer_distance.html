@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Compute the kmer distance between a pair of sequences." />
+    <meta name="description" content="Compute the &lt;em&gt;k&lt;/em&gt;-mer distance between a pair of sequences." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.sequence.distance.kmer_distance &#8212; scikit-bio 0.7.2-dev documentation</title>
@@ -68,8 +68,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.sequence.NucleotideMixin" href="skbio.sequence.NucleotideMixin.html" />
-    <link rel="prev" title="skbio.sequence.distance.hamming" href="skbio.sequence.distance.hamming.html" />
+    <link rel="next" title="skbio.sequence.distance.jc69" href="skbio.sequence.distance.jc69.html" />
+    <link rel="prev" title="skbio.sequence.distance.paralin" href="skbio.sequence.distance.paralin.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.2-dev" />
@@ -618,7 +618,15 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.hamming.html">skbio.sequence.distance.hamming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.pdist.html">skbio.sequence.distance.pdist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.logdet.html">skbio.sequence.distance.logdet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.paralin.html">skbio.sequence.distance.paralin</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.distance.kmer_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.jc69.html">skbio.sequence.distance.jc69</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.f81.html">skbio.sequence.distance.f81</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.k2p.html">skbio.sequence.distance.k2p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.f84.html">skbio.sequence.distance.f84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.tn93.html">skbio.sequence.distance.tn93</a></li>
 </ul>
 </details></li>
 </ul>
@@ -691,44 +699,44 @@
 <h1>skbio.sequence.distance.kmer_distance<a class="headerlink" href="#skbio-sequence-distance-kmer-distance" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.distance.kmer_distance">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">kmer_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L106"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.kmer_distance" title="Link to this definition">#</a></dt>
-<dd><p>Compute the kmer distance between a pair of sequences.</p>
-<p>The kmer distance between two sequences is the fraction of kmers that are
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">kmer_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L1641"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.kmer_distance" title="Link to this definition">#</a></dt>
+<dd><p>Compute the <em>k</em>-mer distance between a pair of sequences.</p>
+<p>The <em>k</em>-mer distance between two sequences is the fraction of <em>k</em>-mer that are
 unique to either sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>seq1, seq2</strong><span class="classifier">Sequence</span></dt><dd><p>Sequences to compute kmer distance between.</p>
+<dt><strong>seq1, seq2</strong><span class="classifier">Sequence</span></dt><dd><p>Sequences to compute <em>k</em>-mer distance between.</p>
 </dd>
-<dt><strong>k</strong><span class="classifier">int</span></dt><dd><p>The kmer length.</p>
+<dt><strong>k</strong><span class="classifier">int</span></dt><dd><p>The <em>k</em>-mer length.</p>
 </dd>
-<dt><strong>overlap</strong><span class="classifier">bool, optional</span></dt><dd><p>Defines whether the kmers should be overlapping or not.</p>
+<dt><strong>overlap</strong><span class="classifier">bool, optional</span></dt><dd><p>Defines whether the <em>k</em>-mers should be overlapping or not.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>kmer distance between <cite>seq1</cite> and <cite>seq2</cite>.</p>
+<dt>float</dt><dd><p><em>k</em>-mer distance between the two sequences.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If <cite>k</cite> is less than 1.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">k</span></code> is less than 1.</p>
 </dd>
-<dt>TypeError</dt><dd><p>If <cite>seq1</cite> and <cite>seq2</cite> are not <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> instances.</p>
+<dt>TypeError</dt><dd><p>If the sequences are not <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> instances.</p>
 </dd>
-<dt>TypeError</dt><dd><p>If <cite>seq1</cite> and <cite>seq2</cite> are not the same type.</p>
+<dt>TypeError</dt><dd><p>If the sequences are not the same type.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>kmer counts are not incorporated in this distance metric.</p>
+<p><em>k</em>-mers counts are not incorporated in this distance metric.</p>
 <p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code> will be returned if there are no kmers defined for the
 sequences.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ATCGGCGAT&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GCAGATGTG&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kmer_distance</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -750,20 +758,20 @@ sequences.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.sequence.distance.hamming.html"
+       href="skbio.sequence.distance.paralin.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.sequence.distance.hamming</p>
+        <p class="prev-next-title">skbio.sequence.distance.paralin</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.sequence.NucleotideMixin.html"
+       href="skbio.sequence.distance.jc69.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.sequence.NucleotideMixin</p>
+        <p class="prev-next-title">skbio.sequence.distance.jc69</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

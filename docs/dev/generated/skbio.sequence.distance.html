@@ -617,7 +617,15 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.hamming.html">skbio.sequence.distance.hamming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.pdist.html">skbio.sequence.distance.pdist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.logdet.html">skbio.sequence.distance.logdet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.paralin.html">skbio.sequence.distance.paralin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.kmer_distance.html">skbio.sequence.distance.kmer_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.jc69.html">skbio.sequence.distance.jc69</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.f81.html">skbio.sequence.distance.f81</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.k2p.html">skbio.sequence.distance.k2p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.f84.html">skbio.sequence.distance.f84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.tn93.html">skbio.sequence.distance.tn93</a></li>
 </ul>
 </details></li>
 </ul>
@@ -685,20 +693,51 @@
                   
   <section id="sequence-distance-metrics-skbio-sequence-distance">
 <span id="module-skbio.sequence.distance"></span><h1>Sequence distance metrics (<a class="reference internal" href="#module-skbio.sequence.distance" title="skbio.sequence.distance"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code></a>)<a class="headerlink" href="#sequence-distance-metrics-skbio-sequence-distance" title="Link to this heading">#</a></h1>
-<p>This module contains functions for computing distances between scikit-bio
-<code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects. These functions can be used directly or supplied to other
-parts of the scikit-bio API that accept a sequence distance metric as input,
-such as <a class="reference internal" href="skbio.sequence.Sequence.distance.html#skbio.sequence.Sequence.distance" title="skbio.sequence.Sequence.distance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skbio.sequence.Sequence.distance</span></code></a> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">skbio.stats.distance.DistanceMatrix.from_iterable</span></code>.</p>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<p>This module provides functions for computing distances between biological sequences.
+These functions can be used directly on two <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> objects,
+or supplied to other parts of the scikit-bio API that accept a sequence distance metric
+as input, such as <a class="reference internal" href="skbio.alignment.align_dists.html#skbio.alignment.align_dists" title="skbio.alignment.align_dists"><code class="xref py py-func docutils literal notranslate"><span class="pre">align_dists</span></code></a>, <a class="reference internal" href="skbio.sequence.Sequence.distance.html#skbio.sequence.Sequence.distance" title="skbio.sequence.Sequence.distance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Sequence.distance</span></code></a>, and <a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.from_iterable.html#skbio.stats.distance.PairwiseMatrix.from_iterable" title="skbio.stats.distance.PairwiseMatrix.from_iterable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PairwiseMatrix.from_iterable</span></code></a>.</p>
+<section id="generic-distance-metrics">
+<h2>Generic distance metrics<a class="headerlink" href="#generic-distance-metrics" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.distance.hamming.html#skbio.sequence.distance.hamming" title="skbio.sequence.distance.hamming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hamming</span></code></a>(seq1, seq2)</p></td>
-<td><p>Compute Hamming distance between two sequences.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.distance.hamming.html#skbio.sequence.distance.hamming" title="skbio.sequence.distance.hamming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hamming</span></code></a>(seq1, seq2[, proportion])</p></td>
+<td><p>Compute the Hamming distance between two sequences.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.distance.kmer_distance.html#skbio.sequence.distance.kmer_distance" title="skbio.sequence.distance.kmer_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kmer_distance</span></code></a>(seq1, seq2, k[, overlap])</p></td>
-<td><p>Compute the kmer distance between a pair of sequences.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.distance.pdist.html#skbio.sequence.distance.pdist" title="skbio.sequence.distance.pdist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdist</span></code></a>(seq1, seq2)</p></td>
+<td><p>Calculate the <em>p</em>-distance between two aligned sequences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.distance.logdet.html#skbio.sequence.distance.logdet" title="skbio.sequence.distance.logdet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logdet</span></code></a>(seq1, seq2[, pseudocount])</p></td>
+<td><p>Calculate the LogDet distance between two aligned sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.distance.paralin.html#skbio.sequence.distance.paralin" title="skbio.sequence.distance.paralin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paralin</span></code></a>(seq1, seq2[, pseudocount])</p></td>
+<td><p>Calculate paralinear distance between two aligned sequences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.distance.kmer_distance.html#skbio.sequence.distance.kmer_distance" title="skbio.sequence.distance.kmer_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kmer_distance</span></code></a>(seq1, seq2, k[, overlap])</p></td>
+<td><p>Compute the <em>k</em>-mer distance between a pair of sequences.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="nucleotide-distance-metrics">
+<h2>Nucleotide distance metrics<a class="headerlink" href="#nucleotide-distance-metrics" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.distance.jc69.html#skbio.sequence.distance.jc69" title="skbio.sequence.distance.jc69"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jc69</span></code></a>(seq1, seq2)</p></td>
+<td><p>Calculate the JC69 distance between two aligned nucleotide sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.distance.f81.html#skbio.sequence.distance.f81" title="skbio.sequence.distance.f81"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f81</span></code></a>(seq1, seq2[, freqs])</p></td>
+<td><p>Calculate the F81 distance between two aligned nucleotide sequences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.distance.k2p.html#skbio.sequence.distance.k2p" title="skbio.sequence.distance.k2p"><code class="xref py py-obj docutils literal notranslate"><span class="pre">k2p</span></code></a>(seq1, seq2)</p></td>
+<td><p>Calculate the K2P distance between two aligned nucleotide sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.distance.f84.html#skbio.sequence.distance.f84" title="skbio.sequence.distance.f84"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f84</span></code></a>(seq1, seq2[, freqs])</p></td>
+<td><p>Calculate the F84 distance between two aligned nucleotide sequences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.distance.tn93.html#skbio.sequence.distance.tn93" title="skbio.sequence.distance.tn93"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tn93</span></code></a>(seq1, seq2[, freqs])</p></td>
+<td><p>Calculate the TN93 distance between two aligned nucleotide sequences.</p></td>
 </tr>
 </tbody>
 </table>
@@ -753,7 +792,8 @@ such as <a class="reference internal" href="skbio.sequence.Sequence.distance.htm
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-distance-metrics">Generic distance metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nucleotide-distance-metrics">Nucleotide distance metrics</a></li>
 </ul>
   </nav></div>
 

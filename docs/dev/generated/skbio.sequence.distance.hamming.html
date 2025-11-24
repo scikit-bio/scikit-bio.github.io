@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Compute Hamming distance between two sequences." />
+    <meta name="description" content="Compute the Hamming distance between two sequences." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.sequence.distance.hamming &#8212; scikit-bio 0.7.2-dev documentation</title>
@@ -68,7 +68,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.sequence.distance.kmer_distance" href="skbio.sequence.distance.kmer_distance.html" />
+    <link rel="next" title="skbio.sequence.distance.pdist" href="skbio.sequence.distance.pdist.html" />
     <link rel="prev" title="Sequence distance metrics (skbio.sequence.distance)" href="skbio.sequence.distance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -618,7 +618,15 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.distance.hamming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.pdist.html">skbio.sequence.distance.pdist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.logdet.html">skbio.sequence.distance.logdet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.paralin.html">skbio.sequence.distance.paralin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.kmer_distance.html">skbio.sequence.distance.kmer_distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.jc69.html">skbio.sequence.distance.jc69</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.f81.html">skbio.sequence.distance.f81</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.k2p.html">skbio.sequence.distance.k2p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.f84.html">skbio.sequence.distance.f84</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.sequence.distance.tn93.html">skbio.sequence.distance.tn93</a></li>
 </ul>
 </details></li>
 </ul>
@@ -691,30 +699,36 @@
 <h1>skbio.sequence.distance.hamming<a class="headerlink" href="#skbio-sequence-distance-hamming" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.distance.hamming">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">hamming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L37"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.hamming" title="Link to this definition">#</a></dt>
-<dd><p>Compute Hamming distance between two sequences.</p>
-<p>The Hamming distance between two equal-length sequences is the proportion
-of differing characters.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">hamming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.hamming" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Hamming distance between two sequences.</p>
+<p>The Hamming distance <a class="reference internal" href="#r874eb7afcd86-1" id="id1">[1]</a> between two equal-length sequences is the number of
+differing characters. It is often normalized to a proportion of the sequence
+length.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>seq1, seq2</strong><span class="classifier">Sequence</span></dt><dd><p>Sequences to compute Hamming distance between.</p>
+<dd class="field-odd"><dl>
+<dt><strong>seq1, seq2</strong><span class="classifier">Sequence</span></dt><dd><p>Sequences to compute the Hamming distance between.</p>
+</dd>
+<dt><strong>proportion</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), normalize to a proportion of the sequence length.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.2.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>float</dt><dd><p>Hamming distance between <cite>seq1</cite> and <cite>seq2</cite>.</p>
+<dt>float</dt><dd><p>Hamming distance between the two sequences.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>TypeError</dt><dd><p>If <cite>seq1</cite> and <cite>seq2</cite> are not <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> instances.</p>
+<dt>TypeError</dt><dd><p>If the sequences are not <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> instances.</p>
 </dd>
-<dt>TypeError</dt><dd><p>If <cite>seq1</cite> and <cite>seq2</cite> are not the same type.</p>
+<dt>TypeError</dt><dd><p>If the sequences are not the same type.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <cite>seq1</cite> and <cite>seq2</cite> are not the same length.</p>
+<dt>ValueError</dt><dd><p>If the sequences are not the same length.</p>
 </dd>
 </dl>
 </dd>
@@ -722,18 +736,28 @@ of differing characters.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="skbio.sequence.distance.pdist.html#skbio.sequence.distance.pdist" title="skbio.sequence.distance.pdist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdist</span></code></a></dt><dd></dd>
 <dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.hamming.html#scipy.spatial.distance.hamming" title="(in SciPy v1.16.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.spatial.distance.hamming</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code> will be returned if the sequences do not contain any characters.</p>
-<p>This function does not make assumptions about the sequence alphabet in use.
-Each sequence object’s underlying sequence of characters are used to
-compute Hamming distance. Characters that may be considered equivalent in
-certain contexts (e.g., <cite>-</cite> and <cite>.</cite> as gap characters) are treated as
-distinct characters when computing Hamming distance.</p>
+<p>This function does not make assumptions about the sequence alphabet in use. All
+characters of each sequence, including gaps and ambiguous codes, are used to
+compute Hamming distance. Characters that may be considered equivalent in certain
+contexts (e.g., “-” and “.” as gap characters) are treated as distinct characters
+when computing Hamming distance. If this behavior is not desired, consider using
+<a class="reference internal" href="skbio.sequence.distance.pdist.html#skbio.sequence.distance.pdist" title="skbio.sequence.distance.pdist"><code class="xref py py-func docutils literal notranslate"><span class="pre">pdist</span></code></a> instead.</p>
+<p>NaN will be returned if the sequences do not contain any characters.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r874eb7afcd86-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Hamming, R. W. (1950). Error detecting and error correcting codes. The Bell
+system technical journal, 29(2), 147-160.</p>
+</div>
+</div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">hamming</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;AGGGTA&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;CGTTTA&#39;</span><span class="p">)</span>
@@ -765,11 +789,11 @@ distinct characters when computing Hamming distance.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.sequence.distance.kmer_distance.html"
+       href="skbio.sequence.distance.pdist.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.sequence.distance.kmer_distance</p>
+        <p class="prev-next-title">skbio.sequence.distance.pdist</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
