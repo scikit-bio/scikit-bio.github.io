@@ -521,15 +521,34 @@
 </section>
 <section id="parallelization">
 <h2>Parallelization<a class="headerlink" href="#parallelization" title="Link to this heading">#</a></h2>
-<p>Many scikit-bio functions automatically take advantage of parallel processing to improve performance. By default, they utilize all available CPU cores when possible. There is currently no per-function parameter to control the number of threads used. You can set the environment variable <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> to control the global parallelization behavior, or use <a class="reference external" href="https://github.com/joblib/threadpoolctl">threadpoolctl</a> to achieve more granular control within Python code.</p>
 <p>Multiple compute-intensive algorithms in scikit-bio are implemented in Cython and use OpenMP for parallel execution. If your system does not support OpenMP, or if you prefer to disable it, you can build from the scikit-bio source code with OpenMP disabled:</p>
-<blockquote>
-<div><p>DISABLE_OPENMP=1 pip install scikit-bio –no-binary scikit-bio</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DISABLE_OPENMP</span><span class="o">=</span><span class="mi">1</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">binary</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span>
+</pre></div>
+</div>
 <p>Or, if you have downloaded the repository:</p>
-<blockquote>
-<div><p>DISABLE_OPENMP=1 pip install .</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DISABLE_OPENMP</span><span class="o">=</span><span class="mi">1</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>Many scikit-bio functions automatically take advantage of parallel processing to improve performance. By default, they utilize all available CPU cores when possible. There is currently no per-function parameter to control the number of threads used. You can set the environment variable <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> to control the global parallelization behavior:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setting OMP_NUM_THREADS inside a script.</span>
+<span class="c1"># Note that the environmental variable must be set before the import statement of</span>
+<span class="c1"># whichever functionality you are using from scikit-bio.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OMP_NUM_THREADS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;4&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">some_function</span>
+
+<span class="c1"># Alternatively, set it before launching your script.</span>
+<span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span> <span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If more granular control over thread use is desired, we recommend using <a class="reference external" href="https://github.com/joblib/threadpoolctl">threadpoolctl</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">some_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">threadpoolctl</span><span class="w"> </span><span class="kn">import</span> <span class="n">thread_limits</span>
+
+<span class="k">with</span> <span class="n">thread_limits</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">some_function</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 <section id="acceleration">
 <h2>Acceleration<a class="headerlink" href="#acceleration" title="Link to this heading">#</a></h2>
