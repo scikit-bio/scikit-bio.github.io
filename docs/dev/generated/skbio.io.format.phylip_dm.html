@@ -6,9 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
+    <meta name="description" content="Sequence IDs can have arbitrary length" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>BIOM-Format (skbio.io.format.biom) &#8212; scikit-bio 0.7.2-dev documentation</title>
+    <title>PHYLIP distance matrix format (skbio.io.format.phylip_dm) &#8212; scikit-bio 0.7.2-dev documentation</title>
   
   
   
@@ -55,7 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.biom';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.io.format.phylip_dm';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -63,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.io.format.biom.html" />
+    <link rel="canonical" href="../../../generated/skbio.io.format.phylip_dm.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="BLAST+6 format (skbio.io.format.blast6)" href="skbio.io.format.blast6.html" />
-    <link rel="prev" title="Simple binary dissimilarity matrix format (skbio.io.format.binary_dm)" href="skbio.io.format.binary_dm.html" />
+    <link rel="next" title="QSeq format (skbio.io.format.qseq)" href="skbio.io.format.qseq.html" />
+    <link rel="prev" title="PHYLIP multiple sequence alignment format (skbio.io.format.phylip)" href="skbio.io.format.phylip.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.2-dev" />
@@ -605,7 +606,7 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.binary_dm.html">Simple binary dissimilarity matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.binary_dm</span></code>)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">BIOM-Format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.biom</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.biom.html">BIOM-Format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.biom</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.blast6.html">BLAST+6 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast6</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.blast7.html">BLAST+7 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast7</span></code>)</a></li>
 
@@ -621,7 +622,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.newick.html">Newick format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.newick</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.ordination.html">Ordination results format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.ordination</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.phylip.html">PHYLIP multiple sequence alignment format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.phylip_dm.html">PHYLIP distance matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip_dm</span></code>)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PHYLIP distance matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip_dm</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.qseq.html">QSeq format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.qseq</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.stockholm.html">Stockholm format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.stockholm</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.taxdump.html">Taxdump format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.taxdump</span></code>)</a></li>
@@ -681,7 +682,7 @@
     
     <li class="breadcrumb-item"><a href="../io.html" class="nav-link">Input and Output (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">BIOM-Format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.biom</span></code>)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">PHYLIP distance matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip_dm</span></code>)</span></li>
   </ul>
 </nav>
 </div>
@@ -698,20 +699,17 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="biom-format-skbio-io-format-biom">
-<span id="module-skbio.io.format.biom"></span><h1>BIOM-Format (<a class="reference internal" href="#module-skbio.io.format.biom" title="skbio.io.format.biom"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.biom</span></code></a>)<a class="headerlink" href="#biom-format-skbio-io-format-biom" title="Link to this heading">#</a></h1>
-<p>The BIOM-Format (format v2.1.0) is an HDF5-based format to represent sample/feature
-counts or relative abundances. It is designed specifically for sparse data.
-Internally, it stores the data in both compressed sparse row, and compressed
-sparse column representation. It additionally has support for representing sample
-and feature metadata.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Internally, BIOM describes features as “observations,” which differs from
-scikit-bio’s standard terminology. Throughout scikit-bio documentation and APIs,
-these are consistently referred to as “features.” For more details about terminology
-differences across formats, see the <a class="reference internal" href="../table.html#samples-and-features"><span class="std std-ref">Samples and features</span></a> section of the
-“Table-like formats” document.</p>
+  <section id="phylip-distance-matrix-format-skbio-io-format-phylip-dm">
+<span id="module-skbio.io.format.phylip_dm"></span><h1>PHYLIP distance matrix format (<a class="reference internal" href="#module-skbio.io.format.phylip_dm" title="skbio.io.format.phylip_dm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip_dm</span></code></a>)<a class="headerlink" href="#phylip-distance-matrix-format-skbio-io-format-phylip-dm" title="Link to this heading">#</a></h1>
+<p>The PHYLIP file format stores pairwise distance matrices. This format is commonly
+used in phylogenetic analysis and is compatible with tools in the PHYLIP package.</p>
+<p>An example PHYLIP-formatted distance matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span>
+<span class="n">Seq1</span>      <span class="mf">0.0000</span> <span class="mf">1.6866</span> <span class="mf">1.7198</span> <span class="mf">1.6606</span>
+<span class="n">Seq2</span>      <span class="mf">1.6866</span> <span class="mf">0.0000</span> <span class="mf">1.5232</span> <span class="mf">1.4841</span>
+<span class="n">Seq3</span>      <span class="mf">1.7198</span> <span class="mf">1.5232</span> <span class="mf">0.0000</span> <span class="mf">0.7115</span>
+<span class="n">Seq4</span>      <span class="mf">1.6606</span> <span class="mf">1.4841</span> <span class="mf">0.7115</span> <span class="mf">0.0000</span>
+</pre></div>
 </div>
 <section id="format-support">
 <h2>Format Support<a class="headerlink" href="#format-support" title="Link to this heading">#</a></h2>
@@ -726,7 +724,7 @@ differences across formats, see the <a class="reference internal" href="../table
 <tbody>
 <tr class="row-even"><td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p><a class="reference internal" href="skbio.table.Table.html#skbio.table.Table" title="skbio.table.Table"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.table.Table</span></code></a></p></td>
+<td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance.DistanceMatrix</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -734,29 +732,207 @@ differences across formats, see the <a class="reference internal" href="../table
 </section>
 <section id="format-specification">
 <h2>Format Specification<a class="headerlink" href="#format-specification" title="Link to this heading">#</a></h2>
-<p>The official format specification for BIOM-Format can be found at <a class="reference internal" href="#redf92f8d116d-1" id="id1">[1]</a>.</p>
+<p>PHYLIP format is a plain text format containing exactly two sections: a header
+describing the number of sequences in the matrix, followed by the matrix itself <a class="reference internal" href="#r85fff1a867f5-1" id="id1">[1]</a>.</p>
+<section id="relaxed-vs-strict-phylip">
+<h3>Relaxed vs. Strict PHYLIP<a class="headerlink" href="#relaxed-vs-strict-phylip" title="Link to this heading">#</a></h3>
+<p>scikit-bio supports both <strong>relaxed</strong> and <strong>strict</strong> PHYLIP formats:</p>
+<dl class="simple">
+<dt><strong>Relaxed PHYLIP</strong> (default):</dt><dd><ul class="simple">
+<li><p>Sequence IDs can have arbitrary length</p></li>
+<li><p>IDs and distance values are separated by whitespace (spaces or tabs)</p></li>
+<li><p>IDs <strong>must not</strong> contain whitespace</p></li>
+<li><p>This is the default format for both reading and writing</p></li>
+</ul>
+</dd>
+<dt><strong>Strict PHYLIP</strong> (optional):</dt><dd><ul class="simple">
+<li><p>Sequence IDs must be exactly 10 characters (padded or truncated)</p></li>
+<li><p>Characters 1-10 are the ID, remaining characters are distance values</p></li>
+<li><p>IDs <strong>may</strong> contain whitespace (e.g., “Sample 01 “)</p></li>
+<li><p>Enable by setting <code class="docutils literal notranslate"><span class="pre">strict=True</span></code> when reading</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>scikit-bio writes in relaxed format by default. For strict format
+compatibility with legacy PHYLIP tools, ensure your IDs are 10 characters or
+fewer and do not contain whitespace.</p>
+</div>
 </section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<p>Here we will write an existing BIOM table, and re-read it. Note that the Table
-from <code class="docutils literal notranslate"><span class="pre">biom</span></code> implicitly gets the <code class="docutils literal notranslate"><span class="pre">.write</span></code> method from the IO registry. This
-<code class="docutils literal notranslate"><span class="pre">ByteIO</span></code> object can be a file path in a regular use case.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">skbio</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skbio</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">example_table</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="go">&lt;_io.BytesIO object at ...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">roundtrip</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">skbio</span><span class="o">.</span><span class="n">Table</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">roundtrip</span>
-<span class="go">2 x 3 &lt;class &#39;biom.table.Table&#39;&gt; with 5 nonzero entries (83% dense)</span>
+<section id="sequential-vs-interleaved">
+<h3>Sequential vs. Interleaved<a class="headerlink" href="#sequential-vs-interleaved" title="Link to this heading">#</a></h3>
+<p>The original PHYLIP specification describes both sequential and interleaved formats.
+scikit-bio supports <strong>sequential</strong> format only, where each row of the matrix appears
+on a single line.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Interleaved PHYLIP formats are not currently supported.</p>
+</div>
+</section>
+<section id="header-section">
+<h3>Header Section<a class="headerlink" href="#header-section" title="Link to this heading">#</a></h3>
+<p>The header consists of a single line with a single positive integer (<code class="docutils literal notranslate"><span class="pre">n</span></code>) that
+specifies the number of sequences in the matrix. This <strong>must</strong> be the first line
+in the file. The integer may be preceded by optional whitespace.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>scikit-bio writes the PHYLIP format header without preceding spaces.
+Empty lines are not allowed between the header and the matrix.</p>
+</div>
+</section>
+<section id="matrix-section">
+<h3>Matrix Section<a class="headerlink" href="#matrix-section" title="Link to this heading">#</a></h3>
+<p>The matrix section immediately follows the header. It consists of <code class="docutils literal notranslate"><span class="pre">n</span></code> lines (rows),
+one for each sequence. Each row consists of a sequence identifier (ID) followed by
+the distance values for that sequence, separated by whitespace.</p>
+<p><strong>Square matrices</strong>: Each row contains <code class="docutils literal notranslate"><span class="pre">n</span></code> distance values (the full row of the
+distance matrix, including the diagonal).</p>
+<p><strong>Lower triangular matrices</strong>: Row <code class="docutils literal notranslate"><span class="pre">i</span></code> contains <code class="docutils literal notranslate"><span class="pre">i</span></code> distance values (only the
+values below the diagonal). The first row contains no distance values, just the ID.</p>
+</section>
+<section id="sequence-ids">
+<h3>Sequence IDs<a class="headerlink" href="#sequence-ids" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt><strong>Relaxed format</strong> (default):</dt><dd><ul class="simple">
+<li><p>IDs can have arbitrary length</p></li>
+<li><p>IDs <strong>must not</strong> contain whitespace characters (spaces, tabs, newlines)</p></li>
+<li><p>IDs <strong>must not</strong> be empty</p></li>
+<li><p>All characters except whitespace and newlines are valid</p></li>
+</ul>
+</dd>
+<dt><strong>Strict format</strong> (<code class="docutils literal notranslate"><span class="pre">strict=True</span></code>):</dt><dd><ul class="simple">
+<li><p>IDs occupy exactly the first 10 characters of each line</p></li>
+<li><p>IDs <strong>may</strong> contain whitespace</p></li>
+<li><p>IDs are automatically padded or truncated to 10 characters</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When writing, any whitespace in IDs is automatically replaced with
+underscores to ensure compatibility with relaxed format.</p>
+</div>
+</section>
+</section>
+<section id="reading-phylip-files">
+<h2>Reading PHYLIP Files<a class="headerlink" href="#reading-phylip-files" title="Link to this heading">#</a></h2>
+<p>Use the standard scikit-bio I/O interface to read PHYLIP distance matrices:</p>
+<p>Reading a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;distance_matrix.phylip&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Reading with strict format parsing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;strict_matrix.phylip&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Reading from a file handle:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;distance_matrix.phylip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="writing-phylip-files">
+<h2>Writing PHYLIP Files<a class="headerlink" href="#writing-phylip-files" title="Link to this heading">#</a></h2>
+<p>Use the standard scikit-bio I/O interface to write PHYLIP distance matrices. You can
+choose between lower triangular (more compact) or square format.</p>
+<p>Writing to lower triangular format (default):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.phylip&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># or explicitly:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;output.phylip&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">,</span> <span class="n">lower_tri</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Writing to square format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;output_square.phylip&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">,</span> <span class="n">lower_tri</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Writing to a file handle:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.phylip&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">,</span> <span class="n">lower_tri</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The choice of output format (lower triangular vs. square) is independent
+of how the DistanceMatrix was created. You can write any DistanceMatrix to either
+format.</p>
+</div>
+</section>
+<section id="format-examples">
+<h2>Format Examples<a class="headerlink" href="#format-examples" title="Link to this heading">#</a></h2>
+<p>Lower triangular matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span>
+<span class="n">Seq1</span>
+<span class="n">Seq2</span>        <span class="mf">1.5</span>
+<span class="n">Seq3</span>        <span class="mf">2.0</span>     <span class="mf">1.0</span>
+<span class="n">Seq4</span>        <span class="mf">3.0</span>     <span class="mf">2.5</span>     <span class="mf">1.8</span>
+</pre></div>
+</div>
+<p>Square matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span>
+<span class="n">Seq1</span>        <span class="mf">0.0</span>     <span class="mf">1.5</span>     <span class="mf">2.0</span>     <span class="mf">3.0</span>
+<span class="n">Seq2</span>        <span class="mf">1.5</span>     <span class="mf">0.0</span>     <span class="mf">1.0</span>     <span class="mf">2.5</span>
+<span class="n">Seq3</span>        <span class="mf">2.0</span>     <span class="mf">1.0</span>     <span class="mf">0.0</span>     <span class="mf">1.8</span>
+<span class="n">Seq4</span>        <span class="mf">3.0</span>     <span class="mf">2.5</span>     <span class="mf">1.8</span>     <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>Strict format with 10-character IDs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span>
+<span class="n">Sample_001</span>  <span class="mf">0.0</span> <span class="mf">1.5</span> <span class="mf">2.0</span> <span class="mf">3.0</span>
+<span class="n">Sample_002</span>  <span class="mf">1.5</span> <span class="mf">0.0</span> <span class="mf">1.0</span> <span class="mf">2.5</span>
+<span class="n">Sample_003</span>  <span class="mf">2.0</span> <span class="mf">1.0</span> <span class="mf">0.0</span> <span class="mf">1.8</span>
+<span class="n">Sample_004</span>  <span class="mf">3.0</span> <span class="mf">2.5</span> <span class="mf">1.8</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-whitespace-in-ids">
+<h2>Working with Whitespace in IDs<a class="headerlink" href="#working-with-whitespace-in-ids" title="Link to this heading">#</a></h2>
+<p><strong>Relaxed format</strong> does not support whitespace in IDs. If your IDs contain
+whitespace and you’re using relaxed format, the parser will treat the first
+whitespace-delimited token as the ID and subsequent tokens as distance values,
+which will cause parsing errors.</p>
+<p><strong>Strict format</strong> supports whitespace in IDs because IDs are positional (first 10
+characters). To read files with whitespace in IDs, use <code class="docutils literal notranslate"><span class="pre">strict=True</span></code>.</p>
+<p>When <strong>writing</strong> files, scikit-bio automatically replaces any whitespace in IDs
+with underscores to ensure compatibility:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sample 01&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample 02&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample 03&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.phylip&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># IDs in output will be: &#39;Sample_01&#39;, &#39;Sample_02&#39;, &#39;Sample_03&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="common-errors">
+<h2>Common Errors<a class="headerlink" href="#common-errors" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt><strong>“Inconsistent distance counts detected”</strong>: This error typically occurs when:</dt><dd><ul class="simple">
+<li><p>IDs contain whitespace in relaxed format (use <code class="docutils literal notranslate"><span class="pre">strict=True</span></code> if needed)</p></li>
+<li><p>The file has irregular formatting or wrong number of values per row</p></li>
+</ul>
+</dd>
+<dt><strong>“The number of distances is not N as specified in the header”</strong>: This occurs when:</dt><dd><ul class="simple">
+<li><p>A row has too many or too few distance values</p></li>
+<li><p>IDs contain whitespace and are being parsed as distance values</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>“Empty lines are not allowed”</strong>: PHYLIP format does not allow blank lines between
+the header and matrix or within the matrix itself.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div role="list" class="citation-list">
-<div class="citation" id="redf92f8d116d-1" role="doc-biblioentry">
+<div class="citation" id="r85fff1a867f5-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://biom-format.org/documentation/format_versions/biom-2.1.html">http://biom-format.org/documentation/format_versions/biom-2.1.html</a></p>
+<p>Felsenstein, J. PHYLIP (Phylogeny Inference Package) version 3.6.
+Distributed by the author. Department of Genome Sciences, University of
+Washington, Seattle. 2005.
+<a class="reference external" href="https://phylipweb.github.io/phylip/doc/distance.html">https://phylipweb.github.io/phylip/doc/distance.html</a></p>
 </div>
 </div>
 </section>
@@ -773,20 +949,20 @@ from <code class="docutils literal notranslate"><span class="pre">biom</span></c
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.io.format.binary_dm.html"
+       href="skbio.io.format.phylip.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Simple binary dissimilarity matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.binary_dm</span></code>)</p>
+        <p class="prev-next-title">PHYLIP multiple sequence alignment format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip</span></code>)</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.io.format.blast6.html"
+       href="skbio.io.format.qseq.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">BLAST+6 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.blast6</span></code>)</p>
+        <p class="prev-next-title">QSeq format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.qseq</span></code>)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -810,8 +986,19 @@ from <code class="docutils literal notranslate"><span class="pre">biom</span></c
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-support">Format Support</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-specification">Format Specification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-specification">Format Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxed-vs-strict-phylip">Relaxed vs. Strict PHYLIP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-vs-interleaved">Sequential vs. Interleaved</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#header-section">Header Section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-section">Matrix Section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-ids">Sequence IDs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-phylip-files">Reading PHYLIP Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-phylip-files">Writing PHYLIP Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-examples">Format Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-whitespace-in-ids">Working with Whitespace in IDs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-errors">Common Errors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
