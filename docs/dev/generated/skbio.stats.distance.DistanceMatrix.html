@@ -68,7 +68,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.distance.DistanceMatrix.to_series" href="skbio.stats.distance.DistanceMatrix.to_series.html" />
+    <link rel="next" title="skbio.stats.distance.DistanceMatrix.read" href="skbio.stats.distance.DistanceMatrix.read.html" />
     <link rel="prev" title="skbio.stats.distance.SymmetricMatrix.transpose" href="skbio.stats.distance.SymmetricMatrix.transpose.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -793,8 +793,14 @@ metric.</p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.to_series.html#skbio.stats.distance.DistanceMatrix.to_series" title="skbio.stats.distance.DistanceMatrix.to_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_series</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.read.html#skbio.stats.distance.DistanceMatrix.read" title="skbio.stats.distance.DistanceMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instance from a file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.to_series.html#skbio.stats.distance.DistanceMatrix.to_series" title="skbio.stats.distance.DistanceMatrix.to_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_series</span></code></a>()</p></td>
 <td><p>Create a pandas Series from this <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.write.html#skbio.stats.distance.DistanceMatrix.write" title="skbio.stats.distance.DistanceMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
+<td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> to a file.</p></td>
 </tr>
 </tbody>
 </table>
@@ -832,26 +838,20 @@ metric.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.plot.html#skbio.stats.distance.PairwiseMatrix.plot" title="skbio.stats.distance.PairwiseMatrix.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([cmap, title])</p></td>
 <td><p>Create a heatmap of the matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.read.html#skbio.stats.distance.PairwiseMatrix.read" title="skbio.stats.distance.PairwiseMatrix.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([format])</p></td>
-<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instance from a file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.redundant_form.html#skbio.stats.distance.SymmetricMatrix.redundant_form" title="skbio.stats.distance.SymmetricMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.redundant_form.html#skbio.stats.distance.SymmetricMatrix.redundant_form" title="skbio.stats.distance.SymmetricMatrix.redundant_form"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redundant_form</span></code></a>()</p></td>
 <td><p>Return an array of values in redundant format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.rename.html#skbio.stats.distance.PairwiseMatrix.rename" title="skbio.stats.distance.PairwiseMatrix.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(mapper[, strict])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.rename.html#skbio.stats.distance.PairwiseMatrix.rename" title="skbio.stats.distance.PairwiseMatrix.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(mapper[, strict])</p></td>
 <td><p>Rename IDs in the matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.to_data_frame.html#skbio.stats.distance.PairwiseMatrix.to_data_frame" title="skbio.stats.distance.PairwiseMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.to_data_frame.html#skbio.stats.distance.PairwiseMatrix.to_data_frame" title="skbio.stats.distance.PairwiseMatrix.to_data_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data_frame</span></code></a>()</p></td>
 <td><p>Create a pandas DataFrame from this matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.transpose.html#skbio.stats.distance.SymmetricMatrix.transpose" title="skbio.stats.distance.SymmetricMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.transpose.html#skbio.stats.distance.SymmetricMatrix.transpose" title="skbio.stats.distance.SymmetricMatrix.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>()</p></td>
 <td><p>Return the transpose of the matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.within.html#skbio.stats.distance.PairwiseMatrix.within" title="skbio.stats.distance.PairwiseMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.within.html#skbio.stats.distance.PairwiseMatrix.within" title="skbio.stats.distance.PairwiseMatrix.within"><code class="xref py py-obj docutils literal notranslate"><span class="pre">within</span></code></a>(ids)</p></td>
 <td><p>Obtain all the pairwise values among the set of IDs.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.write.html#skbio.stats.distance.PairwiseMatrix.write" title="skbio.stats.distance.PairwiseMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(file[, format])</p></td>
-<td><p>Write an instance of <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> to a file.</p></td>
 </tr>
 </tbody>
 </table>
@@ -917,11 +917,11 @@ metric.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.distance.DistanceMatrix.to_series.html"
+       href="skbio.stats.distance.DistanceMatrix.read.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.distance.DistanceMatrix.to_series</p>
+        <p class="prev-next-title">skbio.stats.distance.DistanceMatrix.read</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

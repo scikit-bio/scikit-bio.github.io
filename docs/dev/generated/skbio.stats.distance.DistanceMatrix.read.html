@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Generate a distance matrix populated with random distances." />
+    <meta name="description" content="Create a new &lt;code class=&quot;docutils literal notranslate&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DistanceMatrix&lt;/span&gt;&lt;/code&gt; instance from a file." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.distance.randdm &#8212; scikit-bio 0.7.2-dev documentation</title>
+    <title>skbio.stats.distance.DistanceMatrix.read &#8212; scikit-bio 0.7.2-dev documentation</title>
   
   
   
@@ -56,7 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.randdm';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.distance.DistanceMatrix.read';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -64,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.distance.randdm.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.distance.DistanceMatrix.read.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.distance.anosim" href="skbio.stats.distance.anosim.html" />
-    <link rel="prev" title="skbio.stats.distance.DistanceMatrix.write" href="skbio.stats.distance.DistanceMatrix.write.html" />
+    <link rel="next" title="skbio.stats.distance.DistanceMatrix.to_series" href="skbio.stats.distance.DistanceMatrix.to_series.html" />
+    <link rel="prev" title="skbio.stats.distance.DistanceMatrix" href="skbio.stats.distance.DistanceMatrix.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.2-dev" />
@@ -608,8 +608,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.distance.html">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html">skbio.stats.distance.PairwiseMatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.SymmetricMatrix.html">skbio.stats.distance.SymmetricMatrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html">skbio.stats.distance.DistanceMatrix</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.distance.randdm</a></li>
+<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html">skbio.stats.distance.DistanceMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.randdm.html">skbio.stats.distance.randdm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.anosim.html">skbio.stats.distance.anosim</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.permanova.html">skbio.stats.distance.permanova</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.distance.permdisp.html">skbio.stats.distance.permdisp</a></li>
@@ -679,7 +679,10 @@
     
     <li class="breadcrumb-item"><a href="skbio.stats.distance.html" class="nav-link">Distance matrix-based statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.distance</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.distance.randdm</span></li>
+    
+    <li class="breadcrumb-item"><a href="skbio.stats.distance.DistanceMatrix.html" class="nav-link">skbio.stats.distance.DistanceMatrix</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.distance.DistanceMatrix.read</span></li>
   </ul>
 </nav>
 </div>
@@ -696,47 +699,38 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-distance-randdm">
-<h1>skbio.stats.distance.randdm<a class="headerlink" href="#skbio-stats-distance-randdm" title="Link to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.distance.randdm">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">randdm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L2156"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.randdm" title="Link to this definition">#</a></dt>
-<dd><p>Generate a distance matrix populated with random distances.</p>
-<p>Using the default <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, distances are randomly drawn from a uniform
-distribution over <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1)</span></code>. Regardless of <code class="docutils literal notranslate"><span class="pre">random_fn</span></code>, the resulting distance
-matrix is guaranteed to be symmetric and hollow.</p>
-<dl class="field-list">
+  <section id="skbio-stats-distance-distancematrix-read">
+<h1>skbio.stats.distance.DistanceMatrix.read<a class="headerlink" href="#skbio-stats-distance-distancematrix-read" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.stats.distance.DistanceMatrix.read">
+<span class="sig-prename descclassname"><span class="pre">DistanceMatrix.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/io/descriptors.py#L20"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.DistanceMatrix.read" title="Link to this definition">#</a></dt>
+<dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instance from a file.</p>
+<p>This is a convenience method for <a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read</span></code></a>. For more information
+about the I/O system in scikit-bio, please see <a class="reference internal" href="../io.html#module-skbio.io" title="skbio.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io</span></code></a>.</p>
+<p>Supported file formats include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'binary_dm'</span></code> (<a class="reference internal" href="skbio.io.format.binary_dm.html#module-skbio.io.format.binary_dm" title="skbio.io.format.binary_dm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.binary_dm</span></code></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'lsmat'</span></code> (<a class="reference internal" href="skbio.io.format.lsmat.html#module-skbio.io.format.lsmat" title="skbio.io.format.lsmat"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.lsmat</span></code></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'phylip_dm'</span></code> (<a class="reference internal" href="skbio.io.format.phylip_dm.html#module-skbio.io.format.phylip_dm" title="skbio.io.format.phylip_dm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.phylip_dm</span></code></a>)</p></li>
+</ul>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>num_objects</strong><span class="classifier">int</span></dt><dd><p>The number of objects in the resulting distance matrix. For example, if
-<code class="docutils literal notranslate"><span class="pre">num_objects</span></code> is 3, a 3x3 distance matrix will be returned.</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file</strong><span class="classifier">openable (filepath, URL, filehandle, etc.)</span></dt><dd><p>The location to read the given <cite>format</cite> into. Something that is understood by
+<a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.util.open</span></code></a>. Filehandles are not automatically closed, it is the
+responsibility of the caller.</p>
 </dd>
-<dt><strong>ids</strong><span class="classifier">sequence of str or None, optional</span></dt><dd><p>A sequence of strings to be used as IDs. <code class="docutils literal notranslate"><span class="pre">len(ids)</span></code> must be equal to
-<code class="docutils literal notranslate"><span class="pre">num_objects</span></code>. If not provided, IDs will be monotonically-increasing
-integers cast as strings (numbering starts at 1). For example,
-<code class="docutils literal notranslate"><span class="pre">('1',</span> <span class="pre">'2',</span> <span class="pre">'3')</span></code>.</p>
+<dt><strong>format</strong><span class="classifier">str, optional</span></dt><dd><p>The format of the file. The format must be a format name with a reader for
+<code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code>. If None, the format will be inferred.</p>
 </dd>
-<dt><strong>constructor</strong><span class="classifier">type, optional</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> or its subclass to use when creating the random distance
-matrix. The returned matrix will be of this type. By default, a
-<code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> instance will be returned.</p>
-</dd>
-<dt><strong>random_fn</strong><span class="classifier">int, np.random.Generator or callable, optional</span></dt><dd><p>Function for generating random values. It must accept (n_rows, n_columns) and
-return a 2D array of float-like. Default is the
-<a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.random.html#numpy.random.Generator.random" title="(in NumPy v2.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">random</span></code></a> method of a NumPy random
-generator. If an integer is provided, a random generator will be constructed
-using this number as the seed.</p>
-<div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.6.3: </span>Switched to NumPy’s new random generator. Can accept a random seed or
-random generator instance. The function takes one tuple parameter instead
-of two separate parameters.</p>
-</div>
+<dt><strong>kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional arguments passed to <a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read</span></code></a> and the reader for
+<code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>PairwiseMatrix</dt><dd><p><code class="docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code> (or subclass) instance of random distances. Type
-depends on <code class="docutils literal notranslate"><span class="pre">constructor</span></code>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></dt><dd><p>A new instance.</p>
 </dd>
 </dl>
 </dd>
@@ -744,7 +738,12 @@ depends on <code class="docutils literal notranslate"><span class="pre">construc
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.random.html#numpy.random.Generator.random" title="(in NumPy v2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.Generator.random</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.write.html#skbio.stats.distance.DistanceMatrix.write" title="skbio.stats.distance.DistanceMatrix.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.registry.read</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.io.util.open.html#skbio.io.util.open" title="skbio.io.util.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.util.open</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.io.format.binary_dm.html#module-skbio.io.format.binary_dm" title="skbio.io.format.binary_dm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.format.binary_dm</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.io.format.lsmat.html#module-skbio.io.format.lsmat" title="skbio.io.format.lsmat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.format.lsmat</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.io.format.phylip_dm.html#module-skbio.io.format.phylip_dm" title="skbio.io.format.phylip_dm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.io.format.phylip_dm</span></code></a></dt><dd></dd>
 </dl>
 </div>
 </dd></dl>
@@ -762,20 +761,20 @@ depends on <code class="docutils literal notranslate"><span class="pre">construc
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.distance.DistanceMatrix.write.html"
+       href="skbio.stats.distance.DistanceMatrix.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.distance.DistanceMatrix.write</p>
+        <p class="prev-next-title">skbio.stats.distance.DistanceMatrix</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.distance.anosim.html"
+       href="skbio.stats.distance.DistanceMatrix.to_series.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.distance.anosim</p>
+        <p class="prev-next-title">skbio.stats.distance.DistanceMatrix.to_series</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -798,7 +797,7 @@ depends on <code class="docutils literal notranslate"><span class="pre">construc
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.distance.randdm"><code class="docutils literal notranslate"><span class="pre">randdm</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.distance.DistanceMatrix.read"><code class="docutils literal notranslate"><span class="pre">DistanceMatrix.read</span></code></a></li>
 </ul>
   </nav></div>
 
