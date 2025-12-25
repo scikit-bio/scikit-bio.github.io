@@ -702,16 +702,15 @@
 <dt class="sig sig-object py" id="skbio.stats.distance.permdisp">
 <span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_neg_eigval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permdisp.py#L34"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
 <dd><p>Test for Homogeneity of Multivariate Groups Disperisons.</p>
-<p>PERMDISP is a multivariate analogue of Levene’s test for homogeneity of
-multivariate variances. Distances are handled by reducing the
-original distances to principal coordinates. PERMDISP calculates an
-F-statistic to assess whether the dispersions between groups is significant</p>
+<p>PERMDISP is a multivariate analog of Levene’s test for homogeneity of multivariate
+variances. Distances are handled by reducing the original distances to principal
+coordinates. PERMDISP calculates an F-statistic to assess whether the dispersions
+between groups is significant.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>distmat</strong><span class="classifier">DistanceMatrix or OrdinationResults</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
-between samples of microbial communities) or
-result of pcoa on such a matrix.</p>
+between samples of microbial communities) or result of pcoa on such a matrix.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">distance_matrix</span></code>. The old name is kept as an alias.</p>
 </div>
@@ -732,17 +731,17 @@ allowed (they are ignored in the calculations).</p>
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Must be provided if <cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.
 Cannot be provided if <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>.</p>
 </dd>
-<dt><strong>test</strong><span class="classifier">{‘centroid’, ‘median’}</span></dt><dd><p>Determines whether the analysis is done using centroid or spatial
-median.</p>
+<dt><strong>test</strong><span class="classifier">{‘centroid’, ‘median’}, optional</span></dt><dd><p>Determines whether the analysis is done using centroid or spatial
+median (default).</p>
 </dd>
 <dt><strong>permutations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of permutations to use when assessing statistical
 significance. Must be greater than or equal to zero. If zero,
 statistical significance calculations will be skipped and the p-value
 will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
 </dd>
-<dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>Matrix decomposition method to use. Options are “eigh” (eigendecomposition,
+<dt><strong>method</strong><span class="classifier">{‘eigh’, ‘fsvd’}, optional</span></dt><dd><p>Matrix decomposition method to use. Options are “eigh” (eigendecomposition,
 default) and “fsvd” (fast singular value decomposition). See
-<code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.stats.ordination.pcoa</span></code> for details. Not used if
+<code class="xref py py-func docutils literal notranslate"><span class="pre">~skbio.stats.ordination.pcoa</span></code> for details. Not used if
 distmat is a OrdinationResults object.</p>
 </dd>
 <dt><strong>dimensions</strong><span class="classifier">int, optional</span></dt><dd><p>Dimensions to reduce the distance matrix to if using the <cite>fsvd</cite> method.
@@ -767,8 +766,7 @@ during PCoA. See <code class="xref py py-func docutils literal notranslate"><spa
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>pandas.Series</dt><dd><p>Results of the statistical test, including <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">statistic</span></code> and
-<code class="docutils literal notranslate"><span class="pre">p-value</span></code>.</p>
+<dt>pandas.Series</dt><dd><p>Results of the statistical test, including <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">statistic</span></code> and <code class="docutils literal notranslate"><span class="pre">p-value</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -778,22 +776,20 @@ during PCoA. See <code class="xref py py-func docutils literal notranslate"><spa
 type np.float32 or np.float64, the spatial median function will fail
 and the centroid test should be used instead</p>
 </dd>
-<dt>ValueError</dt><dd><p>If the test is not centroid or median,
-or if method is not eigh or fsvd</p>
+<dt>ValueError</dt><dd><p>If the test is not centroid or median, or if method is not eigh or fsvd.</p>
 </dd>
-<dt>TypeError</dt><dd><p>If the distance matrix is not an instance of a
-<code class="docutils literal notranslate"><span class="pre">skbio.DistanceMatrix</span></code>.</p>
+<dt>TypeError</dt><dd><p>If the distance matrix is not an instance of <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code>.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If there is only one group</p>
+<dt>ValueError</dt><dd><p>If there is only one group.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If a list and a column name are both provided</p>
+<dt>ValueError</dt><dd><p>If a list and a column name are both provided.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If a list is provided for <cite>grouping</cite> and it’s length does not match
-the number of ids in distmat</p>
+<dt>ValueError</dt><dd><p>If a list is provided for <cite>grouping</cite> and it’s length does not match.
+the number of ids in distmat.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If all of the values in the grouping vector are unique</p>
+<dt>ValueError</dt><dd><p>If all of the values in the grouping vector are unique.</p>
 </dd>
-<dt>KeyError</dt><dd><p>If there are ids in grouping that are not in distmat</p>
+<dt>KeyError</dt><dd><p>If there are ids in grouping that are not in distmat.</p>
 </dd>
 </dl>
 </dd>
@@ -828,8 +824,7 @@ dispersions. Biometrics, 62(1), 245-253.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<p>Load a 6x6 distance matrix and grouping vector denoting 2 groups of
-objects:</p>
+<p>Load a 6x6 distance matrix and grouping vector denoting 2 groups of objects:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span>    <span class="mf">0.5</span><span class="p">,</span>  <span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">],</span>
 <span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>    <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">],</span>
@@ -841,8 +836,8 @@ objects:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grouping</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Run PERMDISP using 99 permutations to calculate the p-value. The seed is to
-make the output deterministic. You may skip it if that’s not necessary.</p>
+<p>Run PERMDISP using 99 permutations to calculate the p-value. The seed is to make
+the output deterministic. You may skip it if that’s not necessary.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">permdisp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="go">method name               PERMDISP</span>
@@ -855,10 +850,10 @@ make the output deterministic. You may skip it if that’s not necessary.</p>
 <span class="go">Name: PERMDISP results, dtype: object</span>
 </pre></div>
 </div>
-<p>The return value is a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> object containing the results of
-the statistical test.</p>
-<p>To suppress calculation of the p-value and only obtain the F statistic,
-specify zero permutations:</p>
+<p>The return value is a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> object containing the results of the
+statistical test.</p>
+<p>To suppress calculation of the p-value and only obtain the F statistic, specify
+zero permutations:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">permdisp</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">method name               PERMDISP</span>
 <span class="go">test statistic name        F-value</span>

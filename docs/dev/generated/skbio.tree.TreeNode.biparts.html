@@ -764,12 +764,12 @@
 <h1>skbio.tree.TreeNode.biparts<a class="headerlink" href="#skbio-tree-treenode-biparts" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.biparts">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">biparts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">within</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_tips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_to_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.biparts" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">biparts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">within</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_tips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_to_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3406"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.biparts" title="Link to this definition">#</a></dt>
 <dd><p>Return all bipartitions within the tree under self.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>within</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>A custom set of taxa to refine the result. Only taxa within it will be
@@ -788,12 +788,15 @@ can save one tree traversal from computing.</p>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
+<dd class="field-even"><dl>
 <dt>frozenset of frozenset of str, or</dt><dd><p>All sets of names at the tips on the smaller side of each branch. Returned
 if <cite>map_to_length</cite> is False.</p>
 </dd>
 <dt>dict of {frozenset of str: float}</dt><dd><p>Mapping of All sets of smaller-side tip names to branch lengths. Returned
 if <cite>map_to_length</cite> is True.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.2: </span>Nameless tips are excluded from the results.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -817,6 +820,8 @@ their root positions.</p>
 tree implies the direction of descendance, which may violate the purpose of
 bipartitioning a tree on arbitrary branches. If this is a concern, one should
 consider using <a class="reference internal" href="skbio.tree.TreeNode.subsets.html#skbio.tree.TreeNode.subsets" title="skbio.tree.TreeNode.subsets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">subsets</span></code></a> instead.</p>
+<p>Duplicate tip names, if separated by the target branch, can cause unexpected
+results. This function does not validate the uniqueness of tip names though.</p>
 <p>This method operates on the subtree below the current node.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>

@@ -764,7 +764,7 @@
 <h1>skbio.tree.TreeNode.subsets<a class="headerlink" href="#skbio-tree-treenode-subsets" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.subsets">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">within</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_full</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_tips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_to_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3120"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.subsets" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">within</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_full</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_tips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_to_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L3128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.subsets" title="Link to this definition">#</a></dt>
 <dd><p>Return all subsets of taxa defined by nodes descending from self.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -798,10 +798,10 @@ branch lengths will be replaced with 0. Default is False.</p>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>frozenset of frozenset of str, or</dt><dd><p>All subsets of taxa defined by nodes descending from self. Returned if
-<cite>map_to_length</cite> is False.</p>
+<code class="docutils literal notranslate"><span class="pre">map_to_length</span></code> is False.</p>
 </dd>
 <dt>dict of {frozenset of str: float}</dt><dd><p>Mapping of all subsets of taxa to their branch lengths. Returned if
-<cite>map_to_length</cite> is True.</p>
+<code class="docutils literal notranslate"><span class="pre">map_to_length</span></code> is True.</p>
 </dd>
 </dl>
 </dd>
@@ -828,6 +828,7 @@ node to the tips below. That is, the root of the tree, even if not explicitly
 defined, should be at or above the current node. This should be considered when
 applying this method to an unrooted tree. If such an assumption is not present,
 one should consider using <a class="reference internal" href="skbio.tree.TreeNode.biparts.html#skbio.tree.TreeNode.biparts" title="skbio.tree.TreeNode.biparts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">biparts</span></code></a> instead.</p>
+<p>Duplicate tip names are tolerated and merged.</p>
 <p>This method operates on the subtree below the current node.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
