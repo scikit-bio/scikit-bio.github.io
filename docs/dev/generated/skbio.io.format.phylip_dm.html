@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Object IDs can have arbitrary length" />
+    <meta name="description" content="IDs can have arbitrary length" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>PHYLIP distance matrix format (skbio.io.format.phylip_dm) &#8212; scikit-bio 0.7.2-dev documentation</title>
@@ -748,32 +748,6 @@ See <a class="reference internal" href="#r85fff1a867f5-1" id="id1">[1]</a> for t
 <h2>Format Specification<a class="headerlink" href="#format-specification" title="Link to this heading">#</a></h2>
 <p>PHYLIP format is a plain text format containing exactly two sections: a header
 describing the number of objects in the matrix, followed by the matrix itself.</p>
-<section id="relaxed-vs-strict-phylip">
-<h3>Relaxed vs. Strict PHYLIP<a class="headerlink" href="#relaxed-vs-strict-phylip" title="Link to this heading">#</a></h3>
-<p>scikit-bio supports both <strong>relaxed</strong> and <strong>strict</strong> PHYLIP formats:</p>
-<dl class="simple">
-<dt><strong>Relaxed PHYLIP</strong> (default):</dt><dd><ul class="simple">
-<li><p>Object IDs can have arbitrary length</p></li>
-<li><p>IDs and distance values are separated by whitespace (spaces or tabs)</p></li>
-<li><p>IDs <strong>must not</strong> contain whitespace</p></li>
-<li><p>This is the default format for both reading and writing</p></li>
-</ul>
-</dd>
-<dt><strong>Strict PHYLIP</strong> (optional):</dt><dd><ul class="simple">
-<li><p>Object IDs must be exactly 10 characters (padded or truncated)</p></li>
-<li><p>Characters 1-10 are the ID, remaining characters are distance values</p></li>
-<li><p>IDs <strong>may</strong> contain whitespace (e.g., “Sample 01 “)</p></li>
-<li><p>Enable by setting <code class="docutils literal notranslate"><span class="pre">strict=True</span></code> when reading</p></li>
-</ul>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>scikit-bio writes in relaxed format by default. For strict format
-compatibility with legacy PHYLIP tools, ensure your IDs are 10 characters or
-fewer and do not contain whitespace.</p>
-</div>
-</section>
 <section id="header-section">
 <h3>Header Section<a class="headerlink" href="#header-section" title="Link to this heading">#</a></h3>
 <p>The header consists of a single line with a single positive integer (<code class="docutils literal notranslate"><span class="pre">n</span></code>) that
@@ -781,8 +755,7 @@ specifies the number of objects in the matrix. This <strong>must</strong> be the
 in the file. The integer may be preceded by optional whitespace.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>scikit-bio writes the PHYLIP format header without preceding spaces.
-Empty lines are not allowed between the header and the matrix.</p>
+<p>scikit-bio writes the PHYLIP format header without preceding spaces.</p>
 </div>
 </section>
 <section id="matrix-section">
@@ -797,18 +770,22 @@ distance matrix, including the diagonal).</p>
 values below the diagonal). The first row contains no distance values, just the ID.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Empty lines are not allowed between the header and the matrix.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>The original PHYLIP format also defines upper triangular matrices, although
 they are less common and currently not supported by scikit-bio.</p>
 </div>
 </section>
 <section id="object-ids">
 <h3>Object IDs<a class="headerlink" href="#object-ids" title="Link to this heading">#</a></h3>
+<p>scikit-bio supports both <strong>relaxed</strong> and <strong>strict</strong> object ID formats:</p>
 <dl class="simple">
 <dt><strong>Relaxed format</strong> (default):</dt><dd><ul class="simple">
 <li><p>IDs can have arbitrary length</p></li>
-<li><p>IDs <strong>must not</strong> contain whitespace characters (spaces, tabs, newlines)</p></li>
-<li><p>IDs <strong>must not</strong> be empty</p></li>
-<li><p>All characters except whitespace and newlines are valid</p></li>
+<li><p>IDs <strong>must not</strong> contain whitespace characters (spaces, tabs, etc.)</p></li>
+<li><p>All characters except whitespace are valid</p></li>
 </ul>
 </dd>
 <dt><strong>Strict format</strong> (<code class="docutils literal notranslate"><span class="pre">strict=True</span></code>):</dt><dd><ul class="simple">
@@ -818,6 +795,9 @@ they are less common and currently not supported by scikit-bio.</p>
 </ul>
 </dd>
 </dl>
+<p>scikit-bio writes in relaxed format by default. For strict format compatibility with
+legacy PHYLIP tools, ensure your IDs are 10 characters or fewer and do not contain
+whitespace.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When writing, any whitespace in IDs is automatically replaced with
@@ -827,20 +807,22 @@ underscores to ensure compatibility with relaxed format.</p>
 </section>
 <section id="format-parameters">
 <h2>Format Parameters<a class="headerlink" href="#format-parameters" title="Link to this heading">#</a></h2>
-<section id="reader-specific-parameters">
-<h3>Reader-specific Parameters<a class="headerlink" href="#reader-specific-parameters" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">strict</span></code> : A Boolean indicating whether the object IDs are in strict (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or
-relaxed (<code class="docutils literal notranslate"><span class="pre">False</span></code>, default) format.</p></li>
-</ul>
-</section>
-<section id="writer-specific-parameters">
-<h3>Writer-specific Parameters<a class="headerlink" href="#writer-specific-parameters" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">layout</span></code> : A string indicating the layout of the matrix body. Options are “lower”
-(lower triangle, default) and “square” (square).</p></li>
-</ul>
-</section>
+<dl class="simple">
+<dt>layout<span class="classifier">{‘lower’, ‘square’}, optional</span></dt><dd><p>Layout of the matrix body. Options are “lower” (lower triangle) and “square”
+(square). Applicable to both reading and writing. The layout of the input file
+is automatically inferred during reading, although one can explicitly set this
+parameter to override. Writing defaults to lower triangle.</p>
+</dd>
+<dt>strict<span class="classifier">bool, optional</span></dt><dd><p>Whether the object IDs are in strict (True) or relaxed (False, default) format.
+Only applicable to reading. The ID format of the input file is automatically
+inferred during reading, although one can explicitly set this parameter to
+override. Writing always uses the relaxed format.</p>
+</dd>
+<dt>dtype<span class="classifier">str or dtype, optional</span></dt><dd><p>The data type of the underlying matrix data. Default is “float64”, which maps to
+<code class="docutils literal notranslate"><span class="pre">np.float64</span></code>. The only other available option is “float32” (or <code class="docutils literal notranslate"><span class="pre">np.float32</span></code>).
+Only relevant when reading from a file.</p>
+</dd>
+</dl>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
@@ -988,17 +970,12 @@ the author. Department of Genome Sciences, University of Washington, Seattle. 20
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-support">Format Support</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-specification">Format Specification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxed-vs-strict-phylip">Relaxed vs. Strict PHYLIP</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#header-section">Header Section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-section">Matrix Section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-ids">Object IDs</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-parameters">Format Parameters</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reader-specific-parameters">Reader-specific Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writer-specific-parameters">Writer-specific Parameters</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-parameters">Format Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-phylip-files">Reading PHYLIP Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-phylip-files">Writing PHYLIP Files</a></li>
