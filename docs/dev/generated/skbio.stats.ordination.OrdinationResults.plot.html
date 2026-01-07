@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Create a 3-D scatterplot of ordination results colored by metadata." />
+    <meta name="description" content="Create a scatterplot of ordination results colored by metadata." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.stats.ordination.OrdinationResults.plot &#8212; scikit-bio 0.7.2-dev documentation</title>
@@ -705,9 +705,9 @@
 <h1>skbio.stats.ordination.OrdinationResults.plot<a class="headerlink" href="#skbio-stats-ordination-ordinationresults-plot" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.ordination.OrdinationResults.plot">
-<span class="sig-prename descclassname"><span class="pre">OrdinationResults.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults.plot" title="Link to this definition">#</a></dt>
-<dd><p>Create a 3-D scatterplot of ordination results colored by metadata.</p>
-<p>Creates a 3-D scatterplot of the ordination results, where each point
+<span class="sig-prename descclassname"><span class="pre">OrdinationResults.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_ellipses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults.plot" title="Link to this definition">#</a></dt>
+<dd><p>Create a scatterplot of ordination results colored by metadata.</p>
+<p>Creates a scatterplot of the ordination results, where each point
 represents a sample. Optionally, these points can be colored by
 metadata (see <cite>df</cite> and <cite>column</cite> below).</p>
 <dl class="field-list simple">
@@ -728,10 +728,12 @@ chosen for each category using evenly-spaced points along <cite>cmap</cite>. A
 legend will be included. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, samples (i.e., points) will
 not be colored by metadata.</p>
 </dd>
-<dt><strong>axes</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Indices of sample coordinates to plot on the x-, y-, and z-axes.
-For example, if plotting PCoA results, <code class="docutils literal notranslate"><span class="pre">axes=(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code> will plot
-PC 1 on the x-axis, PC 2 on the y-axis, and PC 3 on the z-axis.
-Must contain exactly three elements.</p>
+<dt><strong>axes</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Indices of sample coordinates to plot. Must contain exactly two or three
+elements, for 2D or 3D plots, respectively. For example, <code class="docutils literal notranslate"><span class="pre">axes=(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>
+(default if there are three or more dimensions) will create a 3D plot with
+PC1 on the x-axis, PC2 on the y-axis, and PC3 on the z-axis.
+<code class="docutils literal notranslate"><span class="pre">axes=(0,</span> <span class="pre">1)</span></code> (default if there are only two dimensions) will create a
+2D plot with PC1 on the x-axis and PC2 on the y-axis.</p>
 </dd>
 <dt><strong>axis_labels</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Labels for the x-, y-, and z-axes. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, labels will be the
 values of <cite>axes</cite> cast as strings.</p>
@@ -748,6 +750,12 @@ these colormap classifications.</p>
 <dt><strong>s</strong><span class="classifier">scalar or iterable of scalars, optional</span></dt><dd><p>Size of points. See matplotlib’s <code class="docutils literal notranslate"><span class="pre">Axes3D.scatter</span></code> documentation
 for more details.</p>
 </dd>
+<dt><strong>centroids</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, plot the centroids of each category in <cite>column</cite>.</p>
+</dd>
+<dt><strong>confidence_ellipses</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, plot confidence ellipses for each category in <cite>column</cite>.
+Ellipses are calculated using to fit an interval of 2 standard deviations
+using the covariance of the points. Only supported for 2D plots.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -761,14 +769,15 @@ were provided.</p>
 <dd class="field-odd"><dl class="simple">
 <dt>ValueError</dt><dd><p>Raised on invalid input, including the following situations:</p>
 <ul class="simple">
-<li><p>there are not at least three dimensions to plot</p></li>
-<li><p>there are not exactly three values in <cite>axes</cite>, they are not
-unique, or are out of range</p></li>
-<li><p>there are not exactly three values in <cite>axis_labels</cite></p></li>
+<li><p>there are not at least two dimensions to plot</p></li>
+<li><p>there are not exactly two or three values in <cite>axes</cite>, they are not unique,
+or are out of range</p></li>
+<li><p>there are not exactly two or three values in <cite>axis_labels</cite></p></li>
 <li><p>either <cite>df</cite> or <cite>column</cite> is provided without the other</p></li>
 <li><p><cite>column</cite> is not in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
-<li><p>sample IDs in the ordination results are not in <cite>df</cite> or have
-missing data in <cite>column</cite></p></li>
+<li><p>sample IDs in the ordination results are not in <cite>df</cite> or have missing data
+in <cite>column</cite></p></li>
+<li><p>confidence ellipses are requested for 3D plots</p></li>
 </ul>
 </dd>
 </dl>
@@ -826,9 +835,6 @@ site (a categorical variable):</p>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
-<figure class="align-default">
-<img alt="../_images/skbio-stats-ordination-OrdinationResults-plot-1.png" class="plot-directive" src="../_images/skbio-stats-ordination-OrdinationResults-plot-1.png" />
-</figure>
 </dd></dl>
 
 </section>
