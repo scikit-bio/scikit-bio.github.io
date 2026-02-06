@@ -798,7 +798,7 @@ xyz   -----------CAUGCAUCGUACGUACGCAUGAC
 <span class="go">----------------------------------------------CGUGCAUGCAU-CGAU</span>
 <span class="go">------------------------------------------CAUUCGUACGUACGCAUGAC</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
-<span class="go">Index([&#39;abc&#39;, &#39;def&#39;, &#39;xyz&#39;], dtype=&#39;object&#39;)</span>
+<span class="go">Index([&#39;abc&#39;, &#39;def&#39;, &#39;xyz&#39;], dtype=&#39;...&#39;)</span>
 </pre></div>
 </div>
 <p>We can use the following code to write a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> to a clustal-formatted
@@ -820,7 +820,7 @@ file:</p>
 <span class="go">A--GTCGAA-GTACCT</span>
 <span class="go">AGAGTTGAAGGTATCT</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
-<span class="go">Index([&#39;seq1&#39;, &#39;sequence-2&#39;, &#39;3&#39;], dtype=&#39;object&#39;)</span>
+<span class="go">Index([&#39;seq1&#39;, &#39;sequence-2&#39;, &#39;3&#39;], dtype=&#39;...&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">msa</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;clustal&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fh</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
