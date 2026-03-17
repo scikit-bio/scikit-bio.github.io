@@ -764,13 +764,18 @@
 <h1>skbio.tree.TreeNode.from_taxonomy<a class="headerlink" href="#skbio-tree-treenode-from-taxonomy" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.from_taxonomy">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">from_taxonomy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lineage_map</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5903"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.from_taxonomy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">from_taxonomy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lineage_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L5903"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.from_taxonomy" title="Link to this definition">#</a></dt>
 <dd><p>Construct a tree from a taxonomy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lineage_map</strong><span class="classifier">dict, iterable of tuples, or pd.DataFrame</span></dt><dd><p>Mapping of taxon IDs to lineages (iterables of taxonomic units
 from high to low in ranking).</p>
+</dd>
+<dt><strong>extract_rank</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to extract rank information from taxon names (default: False).
+If True, taxon names are expected to have rank prefixes (e.g.,
+“d__Bacteria”). The prefixes will be removed from the names and
+stored in the <code class="docutils literal notranslate"><span class="pre">rank</span></code> attribute of the created nodes.</p>
 </dd>
 </dl>
 </dd>
