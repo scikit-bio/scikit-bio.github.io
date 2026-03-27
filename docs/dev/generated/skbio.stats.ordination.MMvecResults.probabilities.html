@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Create a scatterplot of ordination results colored by metadata." />
+    <meta name="description" content="Convert ranks to probability matrix via softmax." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.ordination.OrdinationResults.plot &#8212; scikit-bio 0.7.3-dev documentation</title>
+    <title>skbio.stats.ordination.MMvecResults.probabilities &#8212; scikit-bio 0.7.3-dev documentation</title>
   
   
   
@@ -56,7 +56,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.OrdinationResults.plot';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.MMvecResults.probabilities';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -64,12 +64,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="../../../generated/skbio.stats.ordination.OrdinationResults.plot.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.ordination.MMvecResults.probabilities.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.ordination.OrdinationResults.read" href="skbio.stats.ordination.OrdinationResults.read.html" />
-    <link rel="prev" title="skbio.stats.ordination.OrdinationResults" href="skbio.stats.ordination.OrdinationResults.html" />
+    <link rel="next" title="skbio.stats.ordination.MMvecResults.score" href="skbio.stats.ordination.MMvecResults.score.html" />
+    <link rel="prev" title="skbio.stats.ordination.MMvecResults.predict" href="skbio.stats.ordination.MMvecResults.predict.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.3-dev" />
@@ -615,8 +615,8 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.cca.html">skbio.stats.ordination.cca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.rda.html">skbio.stats.ordination.rda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mmvec.html">skbio.stats.ordination.mmvec</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.MMvecResults.html">skbio.stats.ordination.MMvecResults</a></li>
-<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html">skbio.stats.ordination.OrdinationResults</a></li>
+<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.ordination.MMvecResults.html">skbio.stats.ordination.MMvecResults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html">skbio.stats.ordination.OrdinationResults</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mean_and_std.html">skbio.stats.ordination.mean_and_std</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.corr.html">skbio.stats.ordination.corr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.scale.html">skbio.stats.ordination.scale</a></li>
@@ -684,9 +684,9 @@
     <li class="breadcrumb-item"><a href="skbio.stats.ordination.html" class="nav-link">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.stats.ordination.OrdinationResults.html" class="nav-link">skbio.stats.ordination.OrdinationResults</a></li>
+    <li class="breadcrumb-item"><a href="skbio.stats.ordination.MMvecResults.html" class="nav-link">skbio.stats.ordination.MMvecResults</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.OrdinationResults.plot</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.MMvecResults.probabilities</span></li>
   </ul>
 </nav>
 </div>
@@ -703,140 +703,21 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-ordination-ordinationresults-plot">
-<h1>skbio.stats.ordination.OrdinationResults.plot<a class="headerlink" href="#skbio-stats-ordination-ordinationresults-plot" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-ordination-mmvecresults-probabilities">
+<h1>skbio.stats.ordination.MMvecResults.probabilities<a class="headerlink" href="#skbio-stats-ordination-mmvecresults-probabilities" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.stats.ordination.OrdinationResults.plot">
-<span class="sig-prename descclassname"><span class="pre">OrdinationResults.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_ellipses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_ordination_results.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.OrdinationResults.plot" title="Link to this definition">#</a></dt>
-<dd><p>Create a scatterplot of ordination results colored by metadata.</p>
-<p>Creates a scatterplot of the ordination results, where each point
-represents a sample. Optionally, these points can be colored by
-metadata (see <cite>df</cite> and <cite>column</cite> below).</p>
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResults.probabilities">
+<span class="sig-prename descclassname"><span class="pre">MMvecResults.</span></span><span class="sig-name descname"><span class="pre">probabilities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L561"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResults.probabilities" title="Link to this definition">#</a></dt>
+<dd><p>Convert ranks to probability matrix via softmax.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pd.DataFrame, optional</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> containing sample metadata. Must be indexed by sample
-ID, and all sample IDs in the ordination results must exist in the
-<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, samples (i.e., points) will not be
-colored by metadata.</p>
-</dd>
-<dt><strong>column</strong><span class="classifier">str, optional</span></dt><dd><p>Column name in <cite>df</cite> to color samples (i.e., points in the plot) by.
-Cannot have missing data (i.e., <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>). <cite>column</cite> can be
-numeric or categorical. If numeric, all values in the column will
-be cast to <code class="docutils literal notranslate"><span class="pre">float</span></code> and mapped to colors using <cite>cmap</cite>. A colorbar
-will be included to serve as a legend. If categorical (i.e., not
-all values in <cite>column</cite> could be cast to <code class="docutils literal notranslate"><span class="pre">float</span></code>), colors will be
-chosen for each category using evenly-spaced points along <cite>cmap</cite>. A
-legend will be included. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, samples (i.e., points) will
-not be colored by metadata.</p>
-</dd>
-<dt><strong>axes</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Indices of sample coordinates to plot. Must contain exactly two or three
-elements, for 2D or 3D plots, respectively. For example, <code class="docutils literal notranslate"><span class="pre">axes=(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code>
-(default if there are three or more dimensions) will create a 3D plot with
-PC1 on the x-axis, PC2 on the y-axis, and PC3 on the z-axis.
-<code class="docutils literal notranslate"><span class="pre">axes=(0,</span> <span class="pre">1)</span></code> (default if there are only two dimensions) will create a
-2D plot with PC1 on the x-axis and PC2 on the y-axis.</p>
-</dd>
-<dt><strong>axis_labels</strong><span class="classifier">iterable of str, optional</span></dt><dd><p>Labels for the x-, y-, and z-axes. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, labels will be the
-values of <cite>axes</cite> cast as strings.</p>
-</dd>
-<dt><strong>title</strong><span class="classifier">str, optional</span></dt><dd><p>Plot title.</p>
-</dd>
-<dt><strong>cmap</strong><span class="classifier">str or matplotlib.colors.Colormap, optional</span></dt><dd><p>Name or instance of matplotlib colormap to use for mapping <cite>column</cite>
-values to colors. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to the colormap specified
-in the matplotlib rc file. Qualitative colormaps (e.g., <code class="docutils literal notranslate"><span class="pre">Set1</span></code>)
-are recommended for categorical data, while sequential colormaps
-(e.g., <code class="docutils literal notranslate"><span class="pre">Greys</span></code>) are recommended for numeric data. See <a class="reference internal" href="#r24d56df09f0f-1" id="id1">[1]</a> for
-these colormap classifications.</p>
-</dd>
-<dt><strong>s</strong><span class="classifier">scalar or iterable of scalars, optional</span></dt><dd><p>Size of points. See matplotlib’s <code class="docutils literal notranslate"><span class="pre">Axes3D.scatter</span></code> documentation
-for more details.</p>
-</dd>
-<dt><strong>centroids</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, plot the centroids of each category in <cite>column</cite>.</p>
-</dd>
-<dt><strong>confidence_ellipses</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, plot confidence ellipses for each category in <cite>column</cite>.
-Ellipses are calculated using to fit an interval of 2 standard deviations
-using the covariance of the points. Only supported for 2D plots.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>matplotlib.figure.Figure</dt><dd><p>Figure containing the scatterplot and legend/colorbar if metadata
-were provided.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>Raised on invalid input, including the following situations:</p>
-<ul class="simple">
-<li><p>there are not at least two dimensions to plot</p></li>
-<li><p>there are not exactly two or three values in <cite>axes</cite>, they are not unique,
-or are out of range</p></li>
-<li><p>there are not exactly two or three values in <cite>axis_labels</cite></p></li>
-<li><p>either <cite>df</cite> or <cite>column</cite> is provided without the other</p></li>
-<li><p><cite>column</cite> is not in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
-<li><p>sample IDs in the ordination results are not in <cite>df</cite> or have missing data
-in <cite>column</cite></p></li>
-<li><p>confidence ellipses are requested for 3D plots</p></li>
-</ul>
+<dt><strong>probs</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Conditional probabilities P(metabolite | microbe).
+Each row sums to 1.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>This method creates basic plots of ordination results, and is intended
-to provide a quick look at the results in the context of metadata
-(e.g., from within the Jupyter Lab). For more customization and to
-generate publication-quality figures, we recommend EMPeror <a class="reference internal" href="#r24d56df09f0f-2" id="id2">[2]</a>.</p>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="r24d56df09f0f-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://matplotlib.org/examples/color/colormaps_reference.html">http://matplotlib.org/examples/color/colormaps_reference.html</a></p>
-</div>
-<div class="citation" id="r24d56df09f0f-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>EMPeror: a tool for visualizing high-throughput microbial
-community data. Vazquez-Baeza Y, Pirrung M, Gonzalez A, Knight R.
-Gigascience. 2013 Nov 26;2(1):16. <a class="reference external" href="http://biocore.github.io/emperor/">http://biocore.github.io/emperor/</a></p>
-</div>
-</div>
-<p class="rubric">Examples</p>
-<p>Define a distance matrix with four samples labelled A-D:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.21712454</span><span class="p">,</span> <span class="mf">0.5007512</span><span class="p">,</span> <span class="mf">0.91769271</span><span class="p">],</span>
-<span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.21712454</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.45995501</span><span class="p">,</span> <span class="mf">0.80332382</span><span class="p">],</span>
-<span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.5007512</span><span class="p">,</span> <span class="mf">0.45995501</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.65463348</span><span class="p">],</span>
-<span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.91769271</span><span class="p">,</span> <span class="mf">0.80332382</span><span class="p">,</span> <span class="mf">0.65463348</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]],</span>
-<span class="gp">... </span>                    <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>Define metadata for each sample in a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
-<span class="gp">... </span>    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;gut&#39;</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;gut&#39;</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;skin&#39;</span><span class="p">}}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Run principal coordinate analysis (PCoA) on the distance matrix:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">pcoa</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pcoa_results</span> <span class="o">=</span> <span class="n">pcoa</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Plot the ordination results, where each sample is colored by body
-site (a categorical variable):</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">pcoa_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;body_site&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by body site&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
-<span class="gp">... </span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </section>
@@ -852,20 +733,20 @@ site (a categorical variable):</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.ordination.OrdinationResults.html"
+       href="skbio.stats.ordination.MMvecResults.predict.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.ordination.OrdinationResults</p>
+        <p class="prev-next-title">skbio.stats.ordination.MMvecResults.predict</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.ordination.OrdinationResults.read.html"
+       href="skbio.stats.ordination.MMvecResults.score.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.ordination.OrdinationResults.read</p>
+        <p class="prev-next-title">skbio.stats.ordination.MMvecResults.score</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -888,7 +769,7 @@ site (a categorical variable):</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.OrdinationResults.plot"><code class="docutils literal notranslate"><span class="pre">OrdinationResults.plot</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResults.probabilities"><code class="docutils literal notranslate"><span class="pre">MMvecResults.probabilities</span></code></a></li>
 </ul>
   </nav></div>
 
