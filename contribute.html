@@ -578,6 +578,19 @@
 <p class="admonition-title">Note</p>
 <p>This may be slightly different depending on the operating system. Refer to the <a class="reference external" href="https://docs.conda.io/">Conda documentation</a> to find instructions for your OS.</p>
 </div>
+<p class="rubric">Alternative: using pip</p>
+<p>If you prefer to use <code class="docutils literal notranslate"><span class="pre">pip</span></code> instead of Conda, you can create a virtual environment and install the dependencies manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">skbio</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">source</span> <span class="o">~/</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">skbio</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>Then install the dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">conda_requirements</span><span class="o">.</span><span class="n">txt</span> \
+            <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span> \
+            <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span> \
+            <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
 <ol class="arabic" start="4">
 <li><p>Install scikit-bio from source code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
