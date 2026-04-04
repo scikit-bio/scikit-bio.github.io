@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -36,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=3e6c503c" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -51,10 +51,17 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'devdoc/release';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="https://scikit.bio/devdoc/release.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -65,14 +72,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
@@ -107,7 +118,7 @@
 </aside>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -499,7 +510,7 @@
 <section id="test-wheels-and-sdist-fully">
 <h2>Test wheels and sdist fully<a class="headerlink" href="#test-wheels-and-sdist-fully" title="Link to this heading">#</a></h2>
 <p>This is a <strong>pre-release check</strong> to be performed by the developer to ensure that things run smoothly once we get to the actual release publication steps. It is a <strong>critical step</strong> to avoid failures once the automated workflows run.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code> file may be triggered manually through GitHub Actions <code class="docutils literal notranslate"><span class="pre">workflow_dispatch</span></code> (<a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/actions/workflows/wheels.yml">scikit-bio/scikit-bio</a>). Click the <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">workflow</span></code> button and run it against the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code> file may be triggered manually through GitHub Actions <code class="docutils literal notranslate"><span class="pre">workflow_dispatch</span></code> (<a class="reference external" href="https://github.com/scikit-bio/scikit-bio/actions/workflows/wheels.yml">https://github.com/scikit-bio/scikit-bio/actions/workflows/wheels.yml</a>). Click the <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">workflow</span></code> button and run it against the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
 <p>When this workflow is manually triggered, it will build wheels for all supported Python versions and all supported platforms, and run the full suite of unit tests on every wheel that it builds.
 This process typically takes some time, but it is well worth the time to ensure that the wheel building process will be successful when it’s time to actually publish the release.</p>
 <p>Manually check that the correct wheels are built by downloading the artifacts from the workflow run or visually checking the output from <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> on the GitHub Actions workflow page.
@@ -520,7 +531,7 @@ Again, this is tedious, but well worth the benefit of being certain things will 
 <h2>Tag the release and publish<a class="headerlink" href="#tag-the-release-and-publish" title="Link to this heading">#</a></h2>
 <p>Assuming that all of the above checks and tests have been performed and are passing, it is time to publish the release.</p>
 <p><strong>Once you hit the ``Publish`` button, all of the automated workflows will run, and they will actually upload the artifacts (documentation, sdist, wheels) to their respective locations (website, PyPI), so ensure that everything is in order before hitting ``Publish``!</strong></p>
-<p>From <a class="extlink-repo github reference external" href="https://github.com/scikit-bio/scikit-bio/scikit-bio GitHub repo">scikit-bio/scikit-bio</a>, click on the releases tab and draft a new release. Use the version number for the tag name (x.y.z) and create the tag against main. Fill in a release title that is consistent with previous release titles and add a summary of the release (linking to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> is a good idea). This release summary will be the primary information that we point users to when we announce the release.</p>
+<p>From <a class="extlink-repo reference external" href="https://github.com/scikit-bio/scikit-bio/scikit-bio GitHub repo">https://github.com/scikit-bio/scikit-bio/scikit-bio GitHub repo</a>, click on the releases tab and draft a new release. Use the version number for the tag name (x.y.z) and create the tag against main. Fill in a release title that is consistent with previous release titles and add a summary of the release (linking to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> is a good idea). This release summary will be the primary information that we point users to when we announce the release.</p>
 <p>Hit <code class="docutils literal notranslate"><span class="pre">Publish</span></code> when you are ready and keep an eye on the processes to see if any errors arise.</p>
 </section>
 <section id="add-wheels-to-github-release-page">
@@ -534,7 +545,7 @@ Again, this is tedious, but well worth the benefit of being certain things will 
 <li><p>Submit and merge a pull request to update the version strings from x.y.z to a.b.c-dev (<code class="docutils literal notranslate"><span class="pre">skbio.__version__</span></code> should be the only thing needing an update). Update <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> to include a new section for a.b.c-dev (there won’t be any changes to note here yet).</p></li>
 <li><p>Close the release milestone on the GitHub issue tracker if there was one.</p></li>
 <li><p>Send an email to the skbio developers list and anyone else who might be interested (e.g., lab mailing lists). You might include links to the GitHub release page.</p></li>
-<li><p>Tweet about the release from <code class="docutils literal notranslate"><span class="pre">&#64;scikit-bio</span></code>, including a link to the GitHub release page (for example, <a class="github reference external" href="https://github.com/scikit-bio/scikit-bio/releases/tag/x.y.z">scikit-bio/scikit-bio</a>).</p></li>
+<li><p>Tweet about the release from <code class="docutils literal notranslate"><span class="pre">&#64;scikit-bio</span></code>, including a link to the GitHub release page (for example, <a class="reference external" href="https://github.com/scikit-bio/scikit-bio/releases/tag/x.y.z">https://github.com/scikit-bio/scikit-bio/releases/tag/x.y.z</a>).</p></li>
 <li><p>Beers! <span class="fa fa-beer-mug-empty fa-2x sd-text-success"></span></p></li>
 </ol>
 </section>
@@ -561,8 +572,8 @@ Again, this is tedious, but well worth the benefit of being certain things will 
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prep-the-release">Prep the release</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-documentation-locally">Build documentation locally</a></li>
@@ -586,8 +597,8 @@ Again, this is tedious, but well worth the benefit of being certain things will 
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -625,7 +636,7 @@ Again, this is tedious, but well worth the benefit of being certain things will 
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
 </p></div>
       
     </div>

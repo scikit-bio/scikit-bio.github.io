@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -36,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=3e6c503c" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
 
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
@@ -51,10 +51,17 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="https://scikit.bio/contribute.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
@@ -65,14 +72,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
@@ -107,7 +118,7 @@
 </aside>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -564,10 +575,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you do not have Conda (or Mamba) in your computer, you may install one of the distributions such as <a class="reference external" href="https://conda.io/miniconda.html">Miniconda</a>, <a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a> or <a class="reference external" href="https://www.anaconda.com/download/">Anaconda</a>.</p>
-<p>We recommend Conda over other approaches such as <code class="docutils literal notranslate"><span class="pre">pip</span></code>, <code class="docutils literal notranslate"><span class="pre">pyenv</span></code>, and <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>. However, you are not blocked from using them in necessary situations.</p>
 </div>
 <p>Execute the following command (<code class="docutils literal notranslate"><span class="pre">skbio-dev</span></code> can be any name you like):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skbio</span><span class="o">-</span><span class="n">dev</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">conda_requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skbio</span><span class="o">-</span><span class="n">dev</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">file</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>When done, activate the environment:</p>
@@ -578,18 +588,18 @@
 <p class="admonition-title">Note</p>
 <p>This may be slightly different depending on the operating system. Refer to the <a class="reference external" href="https://docs.conda.io/">Conda documentation</a> to find instructions for your OS.</p>
 </div>
-<p class="rubric">Alternative: using pip</p>
-<p>If you prefer to use <code class="docutils literal notranslate"><span class="pre">pip</span></code> instead of Conda, you can create a virtual environment and install the dependencies manually:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">~/</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">skbio</span><span class="o">-</span><span class="n">dev</span>
-<span class="n">source</span> <span class="o">~/</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">skbio</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you prefer to use <code class="docutils literal notranslate"><span class="pre">pip</span></code> instead of Conda, you can create a Python virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span>
+<span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
-<p>Then install the dependencies:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">conda_requirements</span><span class="o">.</span><span class="n">txt</span> \
-            <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span> \
-            <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span> \
-            <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
+<p><code class="docutils literal notranslate"><span class="pre">.venv</span></code> will become a hidden directory in the project directory, and it will be ignored by Git. Alternatively, you may replace <code class="docutils literal notranslate"><span class="pre">.venv</span></code> with a location outside the project directory, such as <code class="docutils literal notranslate"><span class="pre">~/.virtualenvs/skbio-dev</span></code>.</p>
+<p>Then install dependencies in the environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">lint</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">r</span> <span class="n">ci</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
+</div>
 </div>
 <ol class="arabic" start="4">
 <li><p>Install scikit-bio from source code:</p>
@@ -900,8 +910,8 @@
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-a-question">Ask a question</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#report-an-error">Report an error</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-a-new-feature">Suggest a new feature</a></li>
@@ -947,8 +957,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -986,7 +996,7 @@
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
 </p></div>
       
     </div>
