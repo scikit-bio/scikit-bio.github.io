@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Calculate the sparse representation of an ilr basis from a tree." />
+    <meta name="description" content="Perform robust centre log ratio (rclr) transformation." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.tree_basis &#8212; scikit-bio 0.7.3-dev documentation</title>
+    <title>skbio.stats.composition.rclr &#8212; scikit-bio 0.7.3-dev documentation</title>
   
   
   
@@ -62,7 +62,8 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.tree_basis';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.composition.rclr';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -71,12 +72,12 @@
             false;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="canonical" href="../../../generated/skbio.stats.composition.tree_basis.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.composition.rclr.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.subsample_counts" href="skbio.stats.subsample_counts.html" />
-    <link rel="prev" title="skbio.stats.composition.sbp_basis" href="skbio.stats.composition.sbp_basis.html" />
+    <link rel="next" title="skbio.stats.composition.ilr" href="skbio.stats.composition.ilr.html" />
+    <link rel="prev" title="skbio.stats.composition.clr_inv" href="skbio.stats.composition.clr_inv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.3-dev" />
@@ -645,14 +646,14 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.alr_inv.html">skbio.stats.composition.alr_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr.html">skbio.stats.composition.clr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr_inv.html">skbio.stats.composition.clr_inv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.rclr.html">skbio.stats.composition.rclr</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.rclr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr.html">skbio.stats.composition.ilr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr_inv.html">skbio.stats.composition.ilr_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.vlr.html">skbio.stats.composition.vlr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.pairwise_vlr.html">skbio.stats.composition.pairwise_vlr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.multi_replace.html">skbio.stats.composition.multi_replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.sbp_basis.html">skbio.stats.composition.sbp_basis</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.tree_basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.tree_basis.html">skbio.stats.composition.tree_basis</a></li>
 </ul>
 </details></li>
 </ul>
@@ -710,7 +711,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.stats.composition.html" class="nav-link">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.tree_basis</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.composition.rclr</span></li>
   </ul>
 </nav>
 </div>
@@ -727,47 +728,79 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-composition-tree-basis">
-<h1>skbio.stats.composition.tree_basis<a class="headerlink" href="#skbio-stats-composition-tree-basis" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-composition-rclr">
+<h1>skbio.stats.composition.rclr<a class="headerlink" href="#skbio-stats-composition-rclr" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.stats.composition.tree_basis">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">tree_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L1369"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.tree_basis" title="Link to this definition">#</a></dt>
-<dd><p>Calculate the sparse representation of an ilr basis from a tree.</p>
-<p>This computes an orthonormal basis specified from a bifurcating tree.</p>
+<dt class="sig sig-object py" id="skbio.stats.composition.rclr">
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">rclr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L579"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.rclr" title="Link to this definition">#</a></dt>
+<dd><p>Perform robust centre log ratio (rclr) transformation.</p>
+<p>The robust CLR transformation is similar to the standard CLR transformation,
+but it only operates on observed (non-zero) values <a class="reference internal" href="#rba1ec87751d6-1" id="id1">[1]</a>. This makes it suitable
+for sparse compositional data.</p>
+<p>For each composition, the transformation computes:</p>
+<div class="math notranslate nohighlight">
+\[rclr(x_i) = \ln(x_i) - \frac{1}{|S|} \sum_{j \in S} \ln(x_j)\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the set of indices with non-zero values, and <span class="math notranslate nohighlight">\(|S|\)</span>
+is the number of non-zero values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>tree</strong><span class="classifier">skbio.TreeNode</span></dt><dd><p>Input bifurcating tree. Must be strictly bifurcating (i.e. every
-internal node needs to have exactly two children). This is used to
-specify the ilr basis.</p>
+<dt><strong>mat</strong><span class="classifier">array_like of shape (…, n_components, …)</span></dt><dd><p>A matrix of non-negative values. Zeros are allowed and will become
+NaN in the output. NaN values in the input are preserved (representing
+missing entries).</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which rclr transformation will be performed. Each vector
+on this axis is considered as a composition. Default is the last
+axis (-1).</p>
+</dd>
+<dt><strong>validate</strong><span class="classifier">bool, default True</span></dt><dd><p>Check if the matrix consists of non-negative, finite values.
+NaN values are allowed as missing entries.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>scipy.sparse.coo_array</dt><dd><p>The ilr basis required to perform the ilr_inv transform. This is also
-known as the sequential binary partition. Note that this matrix is
-represented in clr coordinates.</p>
-</dd>
-<dt>list of str</dt><dd><p>List of tree node names indicating the ordering in the basis.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If the tree doesn’t contain two branches.</p>
+<dt>ndarray of shape (…, n_components, …)</dt><dd><p>rclr-transformed matrix. Zero values in the input become NaN.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The rclr transformation has several advantages for sparse compositional
+data:</p>
+<ol class="arabic simple">
+<li><p>It does not require pseudocount addition, which can bias results</p></li>
+<li><p>It preserves the zero/non-zero structure of the data</p></li>
+<li><p>It allows for matrix completion methods to be applied</p></li>
+</ol>
+<p>The geometric mean is computed only over non-zero values in each
+composition, making it “robust” to the presence of zeros.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rba1ec87751d6-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Martino, C., Morton, J. T., Marotz, C. A., Thompson, L. R., Tripathi, A.,
+Knight, R., &amp; Zengler, K. (2019). A novel sparse compositional technique reveals
+microbial perturbations. MSystems, 4(1), 10-1128.</p>
+</div>
+</div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;((b,c)a, d)root;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">tree</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span><span class="p">,</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">tree_basis</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-<span class="go">array([[-0.40824829, -0.40824829,  0.81649658],</span>
-<span class="go">       [-0.70710678,  0.70710678,  0.        ]])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">rclr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">rclr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">array([[-0.693,  0.   ,    nan,  0.693],</span>
+<span class="go">       [   nan,  0.   ,  0.   ,    nan],</span>
+<span class="go">       [ 0.   ,  0.   ,  0.   ,  0.   ]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -785,20 +818,20 @@ represented in clr coordinates.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.composition.sbp_basis.html"
+       href="skbio.stats.composition.clr_inv.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.composition.sbp_basis</p>
+        <p class="prev-next-title">skbio.stats.composition.clr_inv</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.subsample_counts.html"
+       href="skbio.stats.composition.ilr.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.subsample_counts</p>
+        <p class="prev-next-title">skbio.stats.composition.ilr</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -821,7 +854,7 @@ represented in clr coordinates.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.tree_basis"><code class="docutils literal notranslate"><span class="pre">tree_basis</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.composition.rclr"><code class="docutils literal notranslate"><span class="pre">rclr</span></code></a></li>
 </ul>
   </nav></div>
 
