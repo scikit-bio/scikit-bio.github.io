@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Mark a function as compatible with the Python array API standard." />
+    <meta name="description" content="Add an array API compatibility table to a function’s documentation." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.util.array_api_compatible &#8212; scikit-bio 0.7.3-dev documentation</title>
+    <title>skbio.util.array_api_doc &#8212; scikit-bio 0.7.3-dev documentation</title>
   
   
   
@@ -62,7 +62,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.util.array_api_compatible';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.util.array_api_doc';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -71,7 +71,7 @@
             false;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="canonical" href="../../../generated/skbio.util.array_api_compatible.html" />
+    <link rel="canonical" href="../../../generated/skbio.util.array_api_doc.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -644,7 +644,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.aliased.html">skbio.util.aliased</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.register_aliases.html">skbio.util.register_aliases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.params_aliased.html">skbio.util.params_aliased</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.util.array_api_compatible</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.util.array_api_doc</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.util.cardinal_to_ordinal.html">skbio.util.cardinal_to_ordinal</a></li>
@@ -693,7 +693,7 @@
     
     <li class="breadcrumb-item"><a href="../util.html" class="nav-link">Utilities for Developers (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.util</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.util.array_api_compatible</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.util.array_api_doc</span></li>
   </ul>
 </nav>
 </div>
@@ -710,12 +710,15 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-util-array-api-compatible">
-<h1>skbio.util.array_api_compatible<a class="headerlink" href="#skbio-util-array-api-compatible" title="Link to this heading">#</a></h1>
+  <section id="skbio-util-array-api-doc">
+<h1>skbio.util.array_api_doc<a class="headerlink" href="#skbio-util-array-api-doc" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="skbio.util.array_api_compatible">
-<span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">array_api_compatible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backends</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py#L28"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.array_api_compatible" title="Link to this definition">#</a></dt>
-<dd><p>Mark a function as compatible with the Python array API standard.</p>
+<dt class="sig sig-object py" id="skbio.util.array_api_doc">
+<span class="sig-prename descclassname"><span class="pre">skbio.util.</span></span><span class="sig-name descname"><span class="pre">array_api_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backends</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py#L27"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.util.array_api_doc" title="Link to this definition">#</a></dt>
+<dd><p>Add an array API compatibility table to a function’s documentation.</p>
+<p>An array API compatibility table is inserted into the Notes section of the
+function’s docstring. If the docstring has no Notes section, the table is
+inserted at the end of the docstring.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -728,16 +731,6 @@ defaults.</p>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>This decorator has two effects:</p>
-<ol class="arabic simple">
-<li><p>An array API compatibility table is inserted into the Notes section of
-the function’s docstring.</p></li>
-<li><p>At runtime, if the caller passes an array API object from an unsupported
-backend, a <cite>TypeError</cite> is raised.</p></li>
-</ol>
-<p>The decorated function gains two attributes:
-<cite>_array_api_backends</cite> and <cite>_array_api_devices</cite>.</p>
 </dd></dl>
 
 </section>
@@ -789,7 +782,7 @@ backend, a <cite>TypeError</cite> is raised.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.util.array_api_compatible"><code class="docutils literal notranslate"><span class="pre">array_api_compatible</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.util.array_api_doc"><code class="docutils literal notranslate"><span class="pre">array_api_doc</span></code></a></li>
 </ul>
   </nav></div>
 

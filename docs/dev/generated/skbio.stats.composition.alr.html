@@ -732,7 +732,7 @@
 <h1>skbio.stats.composition.alr<a class="headerlink" href="#skbio-stats-composition-alr" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.alr">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">alr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L906"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.alr" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">alr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L926"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.alr" title="Link to this definition">#</a></dt>
 <dd><p>Perform additive log ratio (ALR) transformation.</p>
 <p>This function transforms compositions from a D-part Aitchison simplex to
 a non-isometric real space of D-1 dimensions. The argument
@@ -786,6 +786,39 @@ axis is considered as a composition. Default is the last axis (-1).</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.stats.composition.alr_inv.html#skbio.stats.composition.alr_inv" title="skbio.stats.composition.alr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alr_inv</span></code></a></dt><dd></dd>
 </dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This function supports the <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a>. Compatible array backends:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>CPU</p></th>
+<th class="head"><p>GPU</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NumPy</p></td>
+<td><p>✓</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p>CuPy</p></td>
+<td><p>n/a</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>PyTorch</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>JAX</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>Dask</p></td>
+<td><p>✓</p></td>
+<td><p>n/a</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>

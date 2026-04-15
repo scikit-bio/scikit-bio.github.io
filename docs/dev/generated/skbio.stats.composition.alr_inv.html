@@ -732,7 +732,7 @@
 <h1>skbio.stats.composition.alr_inv<a class="headerlink" href="#skbio-stats-composition-alr-inv" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.alr_inv">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">alr_inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L1015"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.alr_inv" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">alr_inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L1039"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.alr_inv" title="Link to this definition">#</a></dt>
 <dd><p>Perform inverse additive log ratio (ALR) transform.</p>
 <p>This function transforms compositions from the non-isometric real space of
 ALRs to Aitchison geometry.</p>
@@ -784,6 +784,38 @@ axis (-1).</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
+<p>This function supports the <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a>. Compatible array backends:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>CPU</p></th>
+<th class="head"><p>GPU</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NumPy</p></td>
+<td><p>✓</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p>CuPy</p></td>
+<td><p>n/a</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>PyTorch</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>JAX</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>Dask</p></td>
+<td><p>✓</p></td>
+<td><p>n/a</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The output of <code class="docutils literal notranslate"><span class="pre">alr_inv</span></code> is guaranteed to have each composition sum to 1. But this
 property isn’t required for the input for <code class="docutils literal notranslate"><span class="pre">alr</span></code>. Therefore, <code class="docutils literal notranslate"><span class="pre">alr_inv</span></code> does not
 completely invert <code class="docutils literal notranslate"><span class="pre">alr</span></code>. Instead, <code class="docutils literal notranslate"><span class="pre">alr_inv(clr(mat))</span></code> and <code class="docutils literal notranslate"><span class="pre">closure(mat)</span></code> are
