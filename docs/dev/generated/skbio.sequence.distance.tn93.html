@@ -720,7 +720,7 @@
 <h1>skbio.sequence.distance.tn93<a class="headerlink" href="#skbio-sequence-distance-tn93" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.distance.tn93">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">tn93</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L1176"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.tn93" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">tn93</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L1292"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.tn93" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the TN93 distance between two aligned nucleotide sequences.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.2.</span></p>
@@ -731,24 +731,45 @@ of transitions: between purines (R) (i.e., A &lt;-&gt; G) and between pyrimidine
 It also allows varying base frequencies (<span class="math notranslate nohighlight">\(\pi\)</span>). The distance is calculated
 as:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-D = &amp;-2\frac{\pi_A\pi_G}{\pi_R}
-    ln(1-\frac{\pi_R}{2\pi_A\pi_G}P_1-\frac{1}{2\pi_R}Q) \\
-    &amp;-2\frac{\pi_C\pi_T}{\pi_Y}
-    ln(1-\frac{\pi_Y}{2\pi_C\pi_T}P_2-\frac{1}{2\pi_Y}Q) \\
-    &amp;-2(\pi_R\pi_Y-\frac{\pi_A\pi_G\pi_Y}{\pi_R}-\frac{\pi_C\pi_T\pi_R}{\pi_Y})
-    ln(1-\frac{1}{2\pi_R\pi_Y}Q)
-\end{align}\end{split}\]</div>
+\[D = -2A\, ln\left(1-\frac{P_1}{2A}-\frac{Q}{2\pi_R}\right)
+-2B\, ln\left(1-\frac{P_2}{2B}-\frac{Q}{2\pi_Y}\right)
+-2C\, ln\left(1-\frac{Q}{2\pi_R\pi_Y}\right)\]</div>
 <p>Where <span class="math notranslate nohighlight">\(P_1\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> are the proportions of purine and pyrimidine
-transitions, respectively. <span class="math notranslate nohighlight">\(Q\)</span> is the proportion of transversions.</p>
-<dl class="field-list simple">
+transitions, respectively. <span class="math notranslate nohighlight">\(Q\)</span> is the proportion of transversions. And:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+&amp;A = \frac{\pi_A\pi_G}{\pi_R} \\
+&amp;B = \frac{\pi_C\pi_T}{\pi_Y} \\
+&amp;C = \pi_R\pi_Y - A\pi_Y - B\pi_R
+\end{aligned}\end{split}\]</div>
+<p>The TN93 model can be corrected for site-rate heterogeneity by assuming that
+evolutionary rates follow a gamma distribution:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+D = 2\alpha\Bigg[
+    &amp;A\left(1-\frac{P_1}{2A}-\frac{Q}{2\pi_R}\right)^{-\frac{1}{\alpha}}
+    +B\left(1-\frac{P_2}{2B}-\frac{Q}{2\pi_Y}\right)^{-\frac{1}{\alpha}} \\
+    &amp;\quad +\; C\left(1-\frac{Q}{2\pi_R\pi_Y}\right)^{-\frac{1}{\alpha}}
+    - E\Bigg]
+\end{aligned}\end{split}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span> is the shape parameter of the gamma distribution. And:</p>
+<div class="math notranslate nohighlight">
+\[E = \pi_A\pi_G + \pi_T\pi_C + \pi_R\pi_Y\]</div>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>seq1, seq2</strong><span class="classifier">{DNA, RNA}</span></dt><dd><p>Sequences to compute the TN93 distance between.</p>
 </dd>
 <dt><strong>freqs</strong><span class="classifier">array_like of float of shape (4,), optional</span></dt><dd><p>Relative frequencies of nucleobases A, C, G, and T/U, respectively. Should sum
 to 1. If not provided, the observed frequencies from the two input sequences
 combined will be used.</p>
+</dd>
+<dt><strong>gamma</strong><span class="classifier">float, optional</span></dt><dd><p>Shape parameter (<span class="math notranslate nohighlight">\(\alpha\)</span>) of the gamma distribution for among-site rate
+heterogeneity. Must be a positive number. If not provided, no gamma correction
+will be applied.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -767,7 +788,8 @@ combined will be used.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The Tamura and Nei 1993 (TN93) model was originally described in <a class="reference internal" href="#r992749157351-1" id="id1">[1]</a>.</p>
+<p>The Tamura and Nei 1993 (TN93) model was originally described in <a class="reference internal" href="#r992749157351-1" id="id1">[1]</a>
+alongside with its gamma correction formula.</p>
 <p>This function returns NaN if any of the three logarithm arguments is zero or
 negative, which implicates over-saturation of substitutions.</p>
 <p class="rubric">References</p>

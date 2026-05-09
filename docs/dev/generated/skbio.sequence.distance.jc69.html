@@ -720,7 +720,7 @@
 <h1>skbio.sequence.distance.jc69<a class="headerlink" href="#skbio-sequence-distance-jc69" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.distance.jc69">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">jc69</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L613"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.jc69" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">jc69</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L633"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.jc69" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the JC69 distance between two aligned nucleotide sequences.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.2.</span></p>
@@ -731,10 +731,23 @@ proportion of differing sites (i.e., <em>p</em>-distance) to account for multipl
 substitutions at the same site (i.e., saturation). It is calculated as:</p>
 <div class="math notranslate nohighlight">
 \[D = -\frac{3}{4} ln(1 - \frac{4}{3} p)\]</div>
-<dl class="field-list simple">
+<p>The JC69 model can be corrected for site-rate heterogeneity by assuming that
+evolutionary rates follow a gamma distribution:</p>
+<div class="math notranslate nohighlight">
+\[D = \frac{3}{4}\alpha
+\left[\left(1 - \frac{4}{3} p\right)^{-\frac{1}{\alpha}} - 1\right]\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span> is the shape parameter of the gamma distribution.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>seq1, seq2</strong><span class="classifier">{DNA, RNA}</span></dt><dd><p>Sequences to compute the JC69 distance between.</p>
+</dd>
+<dt><strong>gamma</strong><span class="classifier">float, optional</span></dt><dd><p>Shape parameter (<span class="math notranslate nohighlight">\(\alpha\)</span>) of the gamma distribution for among-site rate
+heterogeneity. Must be a positive number. If not provided, no gamma correction
+will be applied.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -753,7 +766,8 @@ substitutions at the same site (i.e., saturation). It is calculated as:</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The Jukes-Cantor 1969 (JC69) model was originally described in <a class="reference internal" href="#r96084aa5a657-1" id="id1">[1]</a>.</p>
+<p>The Jukes-Cantor 1969 (JC69) model was originally described in <a class="reference internal" href="#r96084aa5a657-1" id="id1">[1]</a> and its gamma
+correction in <a class="reference internal" href="#r96084aa5a657-2" id="id2">[2]</a>.</p>
 <p>JC69 is a basic evolutionary model for nucleotide sequences. It assumes equal base
 frequencies and equal substitution rates between bases. It models sequence
 evolution as a continuous-time Markov chain, and corrects the observed distance
@@ -767,6 +781,12 @@ estimation of the evolutionary distance.</p>
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Jukes, T. H., &amp; Cantor, C. R. (1969). Evolution of protein molecules.
 Mammalian Protein Metabolism, 3(21), 132.</p>
+</div>
+<div class="citation" id="r96084aa5a657-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Golding, G. B. (1983). Estimates of DNA and protein sequence divergence:
+an examination of some assumptions. Molecular Biology and Evolution, 1(1),
+125-142.</p>
 </div>
 </div>
 </dd></dl>

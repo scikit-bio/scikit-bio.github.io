@@ -720,7 +720,7 @@
 <h1>skbio.sequence.distance.k2p<a class="headerlink" href="#skbio-sequence-distance-k2p" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.distance.k2p">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">k2p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L903"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.k2p" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.distance.</span></span><span class="sig-name descname"><span class="pre">k2p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/distance.py#L992"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.distance.k2p" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the K2P distance between two aligned nucleotide sequences.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.2.</span></p>
@@ -730,13 +730,26 @@ transitions (substitutions between two purines or between two pyrimidines) versu
 transversions (substitutions between a purine and a pyrimidine), while assuming
 equal base frequencies. The distance is calculated as:</p>
 <div class="math notranslate nohighlight">
-\[D = -\frac{1}{2} ln((1 - 2P - Q) \sqrt{1 - 2Q})\]</div>
+\[D = -\frac{1}{2} ln\left((1 - 2P - Q) \sqrt{1 - 2Q}\right)\]</div>
 <p>Where <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are the proportions of transitions and transversions,
 respectively.</p>
-<dl class="field-list simple">
+<p>The K2P model can be corrected for site-rate heterogeneity by assuming that
+evolutionary rates follow a gamma distribution:</p>
+<div class="math notranslate nohighlight">
+\[D = \frac{\alpha}{2} \left[\left(1 - 2P - Q\right)^{-\frac{1}{\alpha}}
++ \frac{1}{2}\left(1 - 2Q\right)^{-\frac{1}{\alpha}} - \frac{3}{2}\right]\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span> is the shape parameter of the gamma distribution.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>seq1, seq2</strong><span class="classifier">{DNA, RNA}</span></dt><dd><p>Sequences to compute the K2P distance between.</p>
+</dd>
+<dt><strong>gamma</strong><span class="classifier">float, optional</span></dt><dd><p>Shape parameter (<span class="math notranslate nohighlight">\(\alpha\)</span>) of the gamma distribution for among-site rate
+heterogeneity. Must be a positive number. If not provided, no gamma correction
+will be applied.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.3.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -755,7 +768,8 @@ respectively.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The Kimura 2-parameter model (K2P or K80) was originally described in <a class="reference internal" href="#r44314ccaa599-1" id="id1">[1]</a>.</p>
+<p>The Kimura 2-parameter model (K2P or K80) was originally described in <a class="reference internal" href="#r44314ccaa599-1" id="id1">[1]</a> and
+its gamma correction in <a class="reference internal" href="#r44314ccaa599-2" id="id2">[2]</a>.</p>
 <p>K2P is an extension of the JC69 model by modeling differential transition and
 transversion rates. Meanwhile, K2P can be considered as a special case of the F84
 model by assuming equal base frequencies.</p>
@@ -768,6 +782,11 @@ negative, which implicates over-saturation of substitutions.</p>
 <p>Kimura, M. (1980). A simple method for estimating evolutionary rates of base
 substitutions through comparative studies of nucleotide sequences. Journal of
 Molecular Evolution, 16(2), 111-120.</p>
+</div>
+<div class="citation" id="r44314ccaa599-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Jin, L., &amp; Nei, M. (1990). Limitations of the evolutionary parsimony method
+of phylogenetic analysis. Molecular biology and evolution, 7(1), 82-102.</p>
 </div>
 </div>
 </dd></dl>
