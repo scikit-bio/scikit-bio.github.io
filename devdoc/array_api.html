@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Array API and GPU support &#8212; scikit-bio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=3e6c503c" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devdoc/array_api';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://scikit.bio/devdoc/array_api.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="About scikit-bio" href="../about.html" />
+    <link rel="prev" title="Releasing a new version" href="release.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">scikit-bio is participating in Google Summer of Code 2026. <a href='https://github.com/scikit-bio/scikit-bio/discussions/2401'>Join us</a>!</div>
+</aside>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio"/>
+    <img src="../_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../learn.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../docs/latest/index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../learn.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../docs/latest/index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../contribute.html" class="nav-link">Contribute to scikit-bio</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Array API and GPU support</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="array-api-and-gpu-support">
+<h1>Array API and GPU support<a class="headerlink" href="#array-api-and-gpu-support" title="Link to this heading">#</a></h1>
+<p>Scikit-bio is gradually adopting the <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a> to allow functions to work
+across multiple array libraries (NumPy, PyTorch, JAX, CuPy, Dask) and run on
+GPUs where supported. This page covers what contributors need to know
+to write, test, and run array-API-compatible code.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The array API standard defines a common interface that several array
+libraries implement. Functions written against this standard accept
+arrays from any compliant library and dispatch to that library’s
+implementation — meaning the same function can run on CPU via NumPy,
+on GPU via PyTorch or CuPy, or on TPU via JAX.</p>
+<p>Currently supported backends:</p>
+<ul class="simple">
+<li><p><strong>NumPy</strong> (CPU only) — the default, always available</p></li>
+<li><p><strong>Torch</strong> — CPU or CUDA</p></li>
+<li><p><strong>Jax</strong> — CPU or GPU</p></li>
+<li><p><strong>CuPy</strong> — CUDA only</p></li>
+</ul>
+<p>Only a small fraction of scikit-bio currently has array-API support.
+Most functions still operate on NumPy arrays exclusively. This is being
+expanded over time.</p>
+</section>
+<section id="writing-array-api-compatible-code">
+<h2>Writing array API compatible code<a class="headerlink" href="#writing-array-api-compatible-code" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">ingest_array</span></code> at function entry points to obtain the array
+namespace (<code class="docutils literal notranslate"><span class="pre">xp</span></code>) and a converted array:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.util._array</span><span class="w"> </span><span class="kn">import</span> <span class="n">ingest_array</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">xp</span><span class="p">,</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">ingest_array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>The returned <code class="docutils literal notranslate"><span class="pre">xp</span></code> is the namespace corresponding to the input array’s
+backend. Use <code class="docutils literal notranslate"><span class="pre">xp.func()</span></code> for all array operations rather than
+<code class="docutils literal notranslate"><span class="pre">np.func()</span></code> — this is what makes the function backend-agnostic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">xp</span><span class="p">,</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">ingest_array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>Things to avoid:</strong></p>
+<ul class="simple">
+<li><p>Hardcoded <code class="docutils literal notranslate"><span class="pre">np.func()</span></code> calls (use <code class="docutils literal notranslate"><span class="pre">xp.func()</span></code> instead).</p></li>
+<li><p>Backend-specific methods like <code class="docutils literal notranslate"><span class="pre">torch.numpy()</span></code> or <code class="docutils literal notranslate"><span class="pre">cupy.get()</span></code> (both return a NumPy array).</p></li>
+<li><p>In-place modification when supporting JAX arrays. They are immutable.</p></li>
+<li><p>Assuming <code class="docutils literal notranslate"><span class="pre">float64</span></code> is the default dtype (PyTorch defaults to
+<code class="docutils literal notranslate"><span class="pre">float32</span></code>).</p></li>
+</ul>
+</section>
+<section id="writing-tests-for-array-api-code">
+<h2>Writing tests for array API code<a class="headerlink" href="#writing-tests-for-array-api-code" title="Link to this heading">#</a></h2>
+<p>Tests that exercise array-API code paths use the
+<code class="docutils literal notranslate"><span class="pre">ArrayAPITestMixin</span></code> and the <code class="docutils literal notranslate"><span class="pre">&#64;array_backends</span></code> decorator. Write the
+test once; the decorator runs it across every supported backend:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">unittest</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio.util._testing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayAPITestMixin</span><span class="p">,</span> <span class="n">array_backends</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestMyFunction</span><span class="p">(</span><span class="n">TestCase</span><span class="p">,</span> <span class="n">ArrayAPITestMixin</span><span class="p">):</span>
+
+    <span class="nd">@array_backends</span><span class="p">(</span><span class="s2">&quot;numpy&quot;</span><span class="p">,</span> <span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="s2">&quot;jax&quot;</span><span class="p">,</span> <span class="s2">&quot;cupy&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]]</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_array</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">my_function</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_array</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="p">[[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_close</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_type_preserved</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The decorator injects <code class="docutils literal notranslate"><span class="pre">xp</span></code> (the array namespace) and <code class="docutils literal notranslate"><span class="pre">device</span></code> (the
+target device) into the test method. <code class="docutils literal notranslate"><span class="pre">ArrayAPITestMixin</span></code> provides:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">make_array(xp,</span> <span class="pre">device,</span> <span class="pre">data)</span></code> — create a test array on the right
+backend and device</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assert_close(actual,</span> <span class="pre">expected)</span></code> — numerical comparison that works
+across backends</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assert_type_preserved(result,</span> <span class="pre">xp,</span> <span class="pre">device)</span></code> — verify the result
+came back on the expected backend and device</p></li>
+</ul>
+<p><strong>When to use ``&#64;array_backends``:</strong> decorate tests that exercise the
+array computation itself. Tests for input validation, error handling,
+or pure-Python logic don’t need it — those should remain standard
+<code class="docutils literal notranslate"><span class="pre">TestCase</span></code> methods.</p>
+</section>
+<section id="running-tests-locally">
+<h2>Running tests locally<a class="headerlink" href="#running-tests-locally" title="Link to this heading">#</a></h2>
+<p>Two environment variables control which backend and device tests use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SKBIO_ARRAY_BACKEND</span></code>: <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (default), <code class="docutils literal notranslate"><span class="pre">torch</span></code>, <code class="docutils literal notranslate"><span class="pre">jax</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cupy</span></code>, or <code class="docutils literal notranslate"><span class="pre">all</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SKBIO_DEVICE</span></code>: <code class="docutils literal notranslate"><span class="pre">cpu</span></code> (default), <code class="docutils literal notranslate"><span class="pre">cuda</span></code>, or <code class="docutils literal notranslate"><span class="pre">gpu</span></code></p></li>
+</ul>
+<p>Common invocations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Default: numpy on CPU</span>
+pytest<span class="w"> </span>skbio/stats/composition/tests/test_base.py
+
+<span class="c1"># Single backend on CPU (no GPU needed)</span>
+<span class="nv">SKBIO_ARRAY_BACKEND</span><span class="o">=</span>torch<span class="w"> </span>pytest<span class="w"> </span>skbio/stats/composition/tests/test_base.py
+
+<span class="c1"># All available backends on CPU and GPU (if available)</span>
+<span class="nv">SKBIO_ARRAY_BACKEND</span><span class="o">=</span>all<span class="w"> </span>pytest<span class="w"> </span>skbio/stats/composition/tests/test_base.py
+
+<span class="c1"># Run only array-API tests across the package</span>
+pytest<span class="w"> </span>-m<span class="w"> </span>array_api<span class="w"> </span>skbio/
+
+<span class="c1"># GPU run (requires CUDA-capable hardware)</span>
+<span class="nv">SKBIO_ARRAY_BACKEND</span><span class="o">=</span>torch<span class="w"> </span><span class="nv">SKBIO_DEVICE</span><span class="o">=</span>cuda<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>array_api<span class="w"> </span>skbio/
+</pre></div>
+</div>
+<p>Tests for unavailable backends skip cleanly — you don’t need every
+backend installed. CuPy is GPU-only and will skip on machines without
+CUDA.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">array_api</span></code> marker filters to tests decorated with
+<code class="docutils literal notranslate"><span class="pre">&#64;array_backends</span></code>. Without it, pytest runs the full suite.</p>
+</section>
+<section id="continuous-integration">
+<h2>Continuous integration<a class="headerlink" href="#continuous-integration" title="Link to this heading">#</a></h2>
+<p>GPU testing happens in the <code class="docutils literal notranslate"><span class="pre">Array</span> <span class="pre">API</span> <span class="pre">Compatibility</span></code> workflow
+(<code class="docutils literal notranslate"><span class="pre">.github/workflows/array-api.yml</span></code>), which runs on a T4 GPU runner
+against the <code class="docutils literal notranslate"><span class="pre">torch</span></code>, <code class="docutils literal notranslate"><span class="pre">jax</span></code>, and <code class="docutils literal notranslate"><span class="pre">cupy</span></code> backends with CUDA.</p>
+<p><strong>Triggers:</strong></p>
+<ul class="simple">
+<li><p><strong>Weekly cron</strong>: every Monday at 06:00 UTC, catching regressions
+from upstream changes in array libraries</p></li>
+<li><p><strong>Manual dispatch</strong>: via the Actions tab on GitHub</p></li>
+<li><p><strong>`gpu-ci` label on a PR</strong>: applies the label to a PR to trigger
+the workflow; pushes to the labeled PR will re-trigger it</p></li>
+</ul>
+<p>Reviewers should apply the <code class="docutils literal notranslate"><span class="pre">gpu-ci</span></code> label to any PR that modifies
+array-API code paths. Most PRs do not need GPU validation and the
+workflow has a non-trivial cost, so it is not run on every PR
+automatically.</p>
+<p><strong>What the workflow verifies:</strong></p>
+<ul class="simple">
+<li><p>Each backend installs successfully with CUDA support</p></li>
+<li><p>The GPU is visible to each backend at import time</p></li>
+<li><p>Decorated tests pass with arrays placed on CUDA, and results remain
+on CUDA after computation</p></li>
+</ul>
+<p><strong>What it does not verify:</strong></p>
+<ul class="simple">
+<li><p>Code paths not covered by <code class="docutils literal notranslate"><span class="pre">&#64;array_backends</span></code>-decorated tests</p></li>
+<li><p>Subtle silent CPU fallback within individual operations</p></li>
+<li><p>Correctness on GPU architectures other than T4</p></li>
+</ul>
+</section>
+<section id="backend-specific-gotchas">
+<h2>Backend-specific gotchas<a class="headerlink" href="#backend-specific-gotchas" title="Link to this heading">#</a></h2>
+<p>A few cross-backend differences come up often enough to call out:</p>
+<p><strong>PyTorch</strong></p>
+<ul class="simple">
+<li><p>Defaults to <code class="docutils literal notranslate"><span class="pre">float32</span></code>, not <code class="docutils literal notranslate"><span class="pre">float64</span></code>. Specify dtypes explicitly
+if precision matters.</p></li>
+<li><p>Tensors with <code class="docutils literal notranslate"><span class="pre">requires_grad=True</span></code> cannot be converted directly to
+NumPy; <code class="docutils literal notranslate"><span class="pre">_to_numpy</span></code> handles this by calling <code class="docutils literal notranslate"><span class="pre">.detach()</span></code>.</p></li>
+</ul>
+<p><strong>JAX</strong></p>
+<ul class="simple">
+<li><p>Arrays are immutable. In-place updates (<code class="docutils literal notranslate"><span class="pre">arr[i]</span> <span class="pre">=</span> <span class="pre">x</span></code>) raise an
+error; use <code class="docutils literal notranslate"><span class="pre">arr.at[i].set(x)</span></code> instead.</p></li>
+<li><p>Silently falls back to CPU if no GPU is detected at import time.
+Always check <code class="docutils literal notranslate"><span class="pre">jax.devices(&quot;gpu&quot;)</span></code> before assuming GPU execution.</p></li>
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">&quot;gpu&quot;</span></code> as its device string where Torch and CuPy use
+<code class="docutils literal notranslate"><span class="pre">&quot;cuda&quot;</span></code>. These are treated as equivalent by
+<code class="docutils literal notranslate"><span class="pre">_device_specs_match</span></code>.</p></li>
+</ul>
+<p><strong>CuPy</strong></p>
+<ul class="simple">
+<li><p>GPU-only — there is no CPU mode. <code class="docutils literal notranslate"><span class="pre">cupy.ndarray</span></code> is always on a
+CUDA device.</p></li>
+<li><p>Requires a CUDA driver matching the installed CuPy build (e.g.
+<code class="docutils literal notranslate"><span class="pre">cupy-cuda12x</span></code> requires a CUDA 12-capable driver).</p></li>
+</ul>
+<p><strong>General</strong></p>
+<ul class="simple">
+<li><p>Integer division and dtype promotion rules differ subtly across
+backends. When in doubt, cast explicitly.</p></li>
+<li><p>Some array API standard functions are unimplemented in certain
+backends. Check the library’s documentation if you hit
+<code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> on <code class="docutils literal notranslate"><span class="pre">xp</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-array-api-compatible-code">Writing array API compatible code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-tests-for-array-api-code">Writing tests for array API code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-tests-locally">Running tests locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration">Continuous integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-specific-gotchas">Backend-specific gotchas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2026, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
