@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Compute Q² (coefficient of prediction) on held-out data." />
+    <meta name="description" content="Result of an MMvec analysis." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.ordination.MMvecResults.score &#8212; scikit-bio 0.7.3-dev documentation</title>
+    <title>skbio.stats.ordination.MMvecResult &#8212; scikit-bio 0.7.3-dev documentation</title>
   
   
   
@@ -63,7 +63,7 @@
                 gtag('config', 'UA-6636235-9');
             </script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.MMvecResults.score';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.MMvecResult';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -72,12 +72,12 @@
             false;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="canonical" href="../../../generated/skbio.stats.ordination.MMvecResults.score.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.ordination.MMvecResult.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.ordination.OrdinationResults" href="skbio.stats.ordination.OrdinationResults.html" />
-    <link rel="prev" title="skbio.stats.ordination.MMvecResults.probabilities" href="skbio.stats.ordination.MMvecResults.probabilities.html" />
+    <link rel="next" title="skbio.stats.ordination.MMvecResult.predict" href="skbio.stats.ordination.MMvecResult.predict.html" />
+    <link rel="prev" title="skbio.stats.ordination.mmvec" href="skbio.stats.ordination.mmvec.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.3-dev" />
@@ -646,7 +646,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.cca.html">skbio.stats.ordination.cca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.rda.html">skbio.stats.ordination.rda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mmvec.html">skbio.stats.ordination.mmvec</a></li>
-<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.ordination.MMvecResults.html">skbio.stats.ordination.MMvecResults</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.ordination.MMvecResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html">skbio.stats.ordination.OrdinationResults</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mean_and_std.html">skbio.stats.ordination.mean_and_std</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.corr.html">skbio.stats.ordination.corr</a></li>
@@ -714,10 +714,7 @@
     
     <li class="breadcrumb-item"><a href="skbio.stats.ordination.html" class="nav-link">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
     
-    
-    <li class="breadcrumb-item"><a href="skbio.stats.ordination.MMvecResults.html" class="nav-link">skbio.stats.ordination.MMvecResults</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.MMvecResults.score</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.MMvecResult</span></li>
   </ul>
 </nav>
 </div>
@@ -734,32 +731,28 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-ordination-mmvecresults-score">
-<h1>skbio.stats.ordination.MMvecResults.score<a class="headerlink" href="#skbio-stats-ordination-mmvecresults-score" title="Link to this heading">#</a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResults.score">
-<span class="sig-prename descclassname"><span class="pre">MMvecResults.</span></span><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">microbes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metabolites</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L647"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResults.score" title="Link to this definition">#</a></dt>
-<dd><p>Compute Q² (coefficient of prediction) on held-out data.</p>
-<p>Q² measures predictive performance on test data, analogous to R²
-but for cross-validation. Values range from -inf to 1, where 1
-indicates perfect prediction and 0 indicates prediction no better
-than the mean.</p>
-<div class="math notranslate nohighlight">
-\[Q^2 = 1 - \frac{SS_{res}}{SS_{tot}}
-    = 1 - \frac{\sum(y - \hat{y})^2}{\sum(y - \bar{y}_j)^2}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{y}_j\)</span> is the per-metabolite mean across samples.</p>
+  <section id="skbio-stats-ordination-mmvecresult">
+<h1>skbio.stats.ordination.MMvecResult<a class="headerlink" href="#skbio-stats-ordination-mmvecresult" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">MMvecResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L321"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult" title="Link to this definition">#</a></dt>
+<dd><p>Result of an MMvec analysis.</p>
+<p>This class contains the learned embeddings and co-occurrence patterns from fitting
+an MMvec model. It enables both interpretation (which conditioning (X) and
+conditioned (Y) features co-occur with each other) and prediction (expected Y
+composition given X composition).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>microbes</strong><span class="classifier">pd.DataFrame or array-like of shape (n_samples, n_microbes)</span></dt><dd><p>Test microbe abundance counts.</p>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.x_embeddings" title="skbio.stats.ordination.MMvecResult.x_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x_embeddings</span></code></a><span class="classifier">table_like of shape (n_features_x, n_dimensions + 1)</span></dt><dd><p>Learned coordinates of conditioning features (X) in latent space.</p>
 </dd>
-<dt><strong>metabolites</strong><span class="classifier">pd.DataFrame or array-like of shape (n_samples, n_metabolites)</span></dt><dd><p>Test metabolite abundance counts.</p>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.y_embeddings" title="skbio.stats.ordination.MMvecResult.y_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_embeddings</span></code></a><span class="classifier">table_like of shape (n_features_y, n_dimensions + 1)</span></dt><dd><p>Learned coordinates of conditioned features (Y) in latent space.</p>
 </dd>
-</dl>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.ranks" title="skbio.stats.ordination.MMvecResult.ranks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ranks</span></code></a><span class="classifier">table_like of shape (n_features_x, n_features_y)</span></dt><dd><p>Row-centered log conditional probability matrix.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>q2</strong><span class="classifier">float</span></dt><dd><p>Q² score. Higher is better, with 1.0 being perfect prediction.</p>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.probs" title="skbio.stats.ordination.MMvecResult.probs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probs</span></code></a><span class="classifier">table_like of shape (n_features_x, n_features_y)</span></dt><dd><p>Conditional probability matrix of co-occurrence of X and Y features.</p>
+</dd>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.convergence" title="skbio.stats.ordination.MMvecResult.convergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convergence</span></code></a><span class="classifier">table_like of shape (n_iterations,)</span></dt><dd><p>Loss (negative log-posterior) over iterations during training.</p>
 </dd>
 </dl>
 </dd>
@@ -767,41 +760,173 @@ than the mean.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.stats.ordination.MMvecResults.predict.html#skbio.stats.ordination.MMvecResults.predict" title="skbio.stats.ordination.MMvecResults.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a></dt><dd><p>Predict metabolite distributions.</p>
-</dd>
-<dt><a class="reference internal" href="skbio.stats.ordination.MMvecResults.probabilities.html#skbio.stats.ordination.MMvecResults.probabilities" title="skbio.stats.ordination.MMvecResults.probabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probabilities</span></code></a></dt><dd><p>Get conditional probability matrix.</p>
-</dd>
+<dt><a class="reference internal" href="skbio.stats.ordination.mmvec.html#skbio.stats.ordination.mmvec" title="skbio.stats.ordination.mmvec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmvec</span></code></a></dt><dd></dd>
 </dl>
 </div>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">mmvec</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Training data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">microbes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;OTU_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metabolites</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">8</span><span class="p">)),</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;met_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">mmvec</span><span class="p">(</span><span class="n">microbes</span><span class="p">,</span> <span class="n">metabolites</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Evaluate on test data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">test_microbes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;OTU_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">test_metabolites</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)),</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;met_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">q2</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">test_microbes</span><span class="p">,</span> <span class="n">test_metabolites</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">q2</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-<span class="go">True</span>
-</pre></div>
+<p class="rubric">Notes</p>
+<p><strong>Detecting overfitting with Q-squared</strong></p>
+<p>Overfitting occurs when the model memorizes training data rather than learning
+generalizable patterns. To detect overfitting:</p>
+<ol class="arabic simple">
+<li><p>Split your data into training and test sets before fitting.</p></li>
+<li><p>Fit the model on training data only.</p></li>
+<li><p>Use <a class="reference internal" href="skbio.stats.ordination.MMvecResult.score.html#skbio.stats.ordination.MMvecResult.score" title="skbio.stats.ordination.MMvecResult.score"><code class="xref py py-meth docutils literal notranslate"><span class="pre">score</span></code></a> to compute <span class="math notranslate nohighlight">\(Q^2\)</span> on held-out test data.</p></li>
+</ol>
+<p>Interpretation of <span class="math notranslate nohighlight">\(Q^2\)</span> values:</p>
+<ul class="simple">
+<li><p><strong>Close to 1</strong>: Excellent predictive performance.</p></li>
+<li><p><strong>Close to 0</strong>: Model predicts no better than the mean.</p></li>
+<li><p><strong>Negative</strong>: Model performs worse than predicting the mean,
+indicating overfitting or model misspecification.</p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(Q^2\)</span> is much lower than expected, try:</p>
+<ul class="simple">
+<li><p>Reducing <code class="docutils literal notranslate"><span class="pre">dimensions</span></code> (fewer latent dimensions).</p></li>
+<li><p>Increasing regularization via smaller <code class="docutils literal notranslate"><span class="pre">x_prior_scale</span></code> and <code class="docutils literal notranslate"><span class="pre">y_prior_scale</span></code>
+values.</p></li>
+<li><p>Collecting more training samples.</p></li>
+</ul>
+<p><strong>Embedding Interpretation</strong></p>
+<p>The embeddings place X and Y features in the same latent space. The inner product
+between an X embedding vector and a Y embedding vector (plus their bias terms)
+gives the log-odds of their co-occurrence:</p>
+<div class="math notranslate nohighlight">
+\[\log \frac{P(m_j | \mu_i)}{P(m_{\text{ref}} | \mu_i)} =
+X_i \cdot Y_j + b_{X_i} + b_{Y_j}\]</div>
+<p>This means that X and Y features pointing in similar directions associate with each
+other, and the angle between a pair of X and Y vectors indicates their association
+strength.</p>
+<p class="rubric">Attributes</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.convergence" title="skbio.stats.ordination.MMvecResult.convergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convergence</span></code></a></p></td>
+<td><p>Loss (negative log-posterior) over iterations during training.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.probs" title="skbio.stats.ordination.MMvecResult.probs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probs</span></code></a></p></td>
+<td><p>Conditional probability matrix of co-occurrence of X and Y features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.ranks" title="skbio.stats.ordination.MMvecResult.ranks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ranks</span></code></a></p></td>
+<td><p>Row-centered log conditional probability matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.x_embeddings" title="skbio.stats.ordination.MMvecResult.x_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x_embeddings</span></code></a></p></td>
+<td><p>Learned coordinates of conditioning features (X) in latent space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.y_embeddings" title="skbio.stats.ordination.MMvecResult.y_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_embeddings</span></code></a></p></td>
+<td><p>Learned coordinates of conditioned features (Y) in latent space.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.MMvecResult.predict.html#skbio.stats.ordination.MMvecResult.predict" title="skbio.stats.ordination.MMvecResult.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a></p></td>
+<td><p>Predict conditioned feature compositions given conditioning features.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.ordination.MMvecResult.score.html#skbio.stats.ordination.MMvecResult.score" title="skbio.stats.ordination.MMvecResult.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a></p></td>
+<td><p>Compute Q-squared (coefficient of prediction) on held-out data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.__str__" title="skbio.stats.ordination.MMvecResult.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
+<td><p>Return str(self).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Special methods (inherited)</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></p></td>
+<td><p>Return self==value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></p></td>
+<td><p>Return self&gt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></p></td>
+<td><p>Helper for pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></p></td>
+<td><p>Return self&gt;value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></p></td>
+<td><p>Return hash(self).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></p></td>
+<td><p>Return self&lt;=value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></p></td>
+<td><p>Return self&lt;value.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></p></td>
+<td><p>Return self!=value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Details</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.convergence">
+<span class="sig-name descname"><span class="pre">convergence</span></span><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.convergence" title="Link to this definition">#</a></dt>
+<dd><p>Loss (negative log-posterior) over iterations during training.</p>
+<p>Use this to diagnose training issues. The loss should generally decrease and
+stabilize. If the loss is still decreasing at the final iteration, consider
+increasing <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>. If the loss oscillates (Adam optimizer), try reducing
+<code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.probs">
+<span class="sig-name descname"><span class="pre">probs</span></span><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.probs" title="Link to this definition">#</a></dt>
+<dd><p>Conditional probability matrix of co-occurrence of X and Y features.</p>
+<p>Entry (i, j) represents the probability of observing <span class="math notranslate nohighlight">\(Y_j\)</span> given
+<span class="math notranslate nohighlight">\(X_i\)</span>. Each row sums to 1. This matrix is derived from the softmax
+transformation of the <code class="docutils literal notranslate"><span class="pre">ranks</span></code> matrix and is cached lazily.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.ranks">
+<span class="sig-name descname"><span class="pre">ranks</span></span><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.ranks" title="Link to this definition">#</a></dt>
+<dd><p>Row-centered log conditional probability matrix.</p>
+<p>Entry (i, j) represents the log-odds of observing <span class="math notranslate nohighlight">\(Y_j\)</span> given
+<span class="math notranslate nohighlight">\(X_i\)</span>, relative to the row mean. Higher values indicate stronger
+positive associations. This matrix is row-centered (each row sums to 0)
+for identifiability.</p>
+<p>The actual conditional probabilities (see <a class="reference internal" href="#skbio.stats.ordination.MMvecResult.probs" title="skbio.stats.ordination.MMvecResult.probs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">probs</span></code></a>) can be obtained by
+transforming this matrix with <a class="reference internal" href="skbio.stats.composition.clr_inv.html#skbio.stats.composition.clr_inv" title="skbio.stats.composition.clr_inv"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr_inv</span></code></a>
+(a.k.a. softmax).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.x_embeddings">
+<span class="sig-name descname"><span class="pre">x_embeddings</span></span><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.x_embeddings" title="Link to this definition">#</a></dt>
+<dd><p>Learned coordinates of conditioning features (X) in latent space.</p>
+<p>Each row is a vector representation of an X feature. Features with similar
+embeddings tend to co-occur with similar sets of Y features. The Euclidean
+distance or cosine similarity between embeddings can be used to identify
+feature relatedness. The last column (+1; “bias”) captures the baseline
+tendency of each X feature to associate with Y features overall.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.y_embeddings">
+<span class="sig-name descname"><span class="pre">y_embeddings</span></span><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.y_embeddings" title="Link to this definition">#</a></dt>
+<dd><p>Learned coordinates of conditioned features (Y) in latent space.</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">x_embeddings</span></code>. The first row is all zeros and represents the reference
+Y feature used for identifiability. The last column (+1; “bias”) captures the
+baseline abundance of each Y feature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L386"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -817,20 +942,20 @@ than the mean.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.ordination.MMvecResults.probabilities.html"
+       href="skbio.stats.ordination.mmvec.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.ordination.MMvecResults.probabilities</p>
+        <p class="prev-next-title">skbio.stats.ordination.mmvec</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.ordination.OrdinationResults.html"
+       href="skbio.stats.ordination.MMvecResult.predict.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.ordination.OrdinationResults</p>
+        <p class="prev-next-title">skbio.stats.ordination.MMvecResult.predict</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -853,7 +978,15 @@ than the mean.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResults.score"><code class="docutils literal notranslate"><span class="pre">MMvecResults.score</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult"><code class="docutils literal notranslate"><span class="pre">MMvecResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.convergence"><code class="docutils literal notranslate"><span class="pre">MMvecResult.convergence</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.probs"><code class="docutils literal notranslate"><span class="pre">MMvecResult.probs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.ranks"><code class="docutils literal notranslate"><span class="pre">MMvecResult.ranks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.x_embeddings"><code class="docutils literal notranslate"><span class="pre">MMvecResult.x_embeddings</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.y_embeddings"><code class="docutils literal notranslate"><span class="pre">MMvecResult.y_embeddings</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.__str__"><code class="docutils literal notranslate"><span class="pre">MMvecResult.__str__</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

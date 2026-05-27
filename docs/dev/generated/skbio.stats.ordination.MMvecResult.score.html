@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Results from MMvec analysis." />
+    <meta name="description" content="Compute Q-squared (coefficient of prediction) on held-out data." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.ordination.MMvecResults &#8212; scikit-bio 0.7.3-dev documentation</title>
+    <title>skbio.stats.ordination.MMvecResult.score &#8212; scikit-bio 0.7.3-dev documentation</title>
   
   
   
@@ -63,7 +63,7 @@
                 gtag('config', 'UA-6636235-9');
             </script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.MMvecResults';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.MMvecResult.score';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -72,12 +72,12 @@
             false;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="canonical" href="../../../generated/skbio.stats.ordination.MMvecResults.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.ordination.MMvecResult.score.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.ordination.MMvecResults.predict" href="skbio.stats.ordination.MMvecResults.predict.html" />
-    <link rel="prev" title="skbio.stats.ordination.mmvec" href="skbio.stats.ordination.mmvec.html" />
+    <link rel="next" title="skbio.stats.ordination.OrdinationResults" href="skbio.stats.ordination.OrdinationResults.html" />
+    <link rel="prev" title="skbio.stats.ordination.MMvecResult.predict" href="skbio.stats.ordination.MMvecResult.predict.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.3-dev" />
@@ -646,7 +646,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.cca.html">skbio.stats.ordination.cca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.rda.html">skbio.stats.ordination.rda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mmvec.html">skbio.stats.ordination.mmvec</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.ordination.MMvecResults</a></li>
+<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.ordination.MMvecResult.html">skbio.stats.ordination.MMvecResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html">skbio.stats.ordination.OrdinationResults</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mean_and_std.html">skbio.stats.ordination.mean_and_std</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.corr.html">skbio.stats.ordination.corr</a></li>
@@ -714,7 +714,10 @@
     
     <li class="breadcrumb-item"><a href="skbio.stats.ordination.html" class="nav-link">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.MMvecResults</span></li>
+    
+    <li class="breadcrumb-item"><a href="skbio.stats.ordination.MMvecResult.html" class="nav-link">skbio.stats.ordination.MMvecResult</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.MMvecResult.score</span></li>
   </ul>
 </nav>
 </div>
@@ -731,178 +734,37 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-ordination-mmvecresults">
-<h1>skbio.stats.ordination.MMvecResults<a class="headerlink" href="#skbio-stats-ordination-mmvecresults" title="Link to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResults">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">MMvecResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">microbe_embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metabolite_embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convergence</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L420"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResults" title="Link to this definition">#</a></dt>
-<dd><p>Results from MMvec analysis.</p>
-<p>This class contains the learned embeddings and co-occurrence patterns
-from fitting an MMvec model. The key outputs enable both interpretation
-(which microbes co-occur with which metabolites) and prediction
-(expected metabolites given a microbial community).</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.7.2.</span></p>
-</div>
-<dl class="field-list">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>microbe_embeddings</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Microbe coordinates in latent space.
-Shape: (n_microbes, n_components + 1) where +1 is the bias term.</p>
-<p>Each row is a vector representation of a microbe. Microbes with
-similar embedding vectors tend to co-occur with similar sets of
-metabolites. The Euclidean distance or cosine similarity between
-microbe embeddings can be used to identify functionally related
-microbes. The final column (“bias”) captures the baseline tendency
-of each microbe to associate with metabolites overall.</p>
-</dd>
-<dt><strong>metabolite_embeddings</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Metabolite coordinates in latent space.
-Shape: (n_metabolites, n_components + 1) where +1 is the bias term.</p>
-<p>Each row is a vector representation of a metabolite. Metabolites
-with similar embedding vectors tend to co-occur with similar sets
-of microbes. The first row corresponds to the reference metabolite
-(all zeros) used for identifiability. The distance between
-metabolite embeddings indicates similarity in their microbial
-associations. The final column (“bias”) captures the baseline
-abundance of each metabolite.</p>
-</dd>
-<dt><strong>ranks</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Log conditional probability matrix (co-occurrence scores).
-Shape: (n_microbes, n_metabolites). Row-centered.</p>
-<p>Entry (i, j) represents the log-odds of observing metabolite j
-given microbe i, relative to the row mean. Higher values indicate
-stronger positive associations. This matrix is row-centered (each
-row sums to zero) for identifiability. To obtain actual conditional
-probabilities, use the <a class="reference internal" href="skbio.stats.ordination.MMvecResults.probabilities.html#skbio.stats.ordination.MMvecResults.probabilities" title="skbio.stats.ordination.MMvecResults.probabilities"><code class="xref py py-meth docutils literal notranslate"><span class="pre">probabilities</span></code></a> method.</p>
-<p>The ranks matrix is the primary output for identifying
-microbe-metabolite associations. Sorting each row reveals which
-metabolites are most strongly associated with each microbe.</p>
-</dd>
-<dt><strong>convergence</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Training diagnostics with columns:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">iteration</span></code>: Iteration number (1-indexed).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">loss</span></code>: Negative log-posterior (lower is better).</p></li>
-</ul>
-<p>Use this to diagnose training issues. The loss should generally
-decrease and stabilize. If the loss is still decreasing at the
-final iteration, consider increasing <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>. If the loss
-oscillates (Adam optimizer), try reducing <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="skbio.stats.ordination.mmvec.html#skbio.stats.ordination.mmvec" title="skbio.stats.ordination.mmvec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmvec</span></code></a></dt><dd><p>Fit an MMvec model.</p>
-</dd>
-<dt><a class="reference internal" href="skbio.stats.ordination.MMvecResults.probabilities.html#skbio.stats.ordination.MMvecResults.probabilities" title="skbio.stats.ordination.MMvecResults.probabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probabilities</span></code></a></dt><dd><p>Convert ranks to conditional probabilities.</p>
-</dd>
-<dt><a class="reference internal" href="skbio.stats.ordination.MMvecResults.predict.html#skbio.stats.ordination.MMvecResults.predict" title="skbio.stats.ordination.MMvecResults.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a></dt><dd><p>Predict metabolite distributions for new samples.</p>
-</dd>
-<dt><a class="reference internal" href="skbio.stats.ordination.MMvecResults.score.html#skbio.stats.ordination.MMvecResults.score" title="skbio.stats.ordination.MMvecResults.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a></dt><dd><p>Evaluate predictive performance with Q².</p>
-</dd>
-</dl>
-</div>
-<p class="rubric">Notes</p>
-<p><strong>Detecting Overfitting with Q²</strong></p>
-<p>Overfitting occurs when the model memorizes training data rather than
-learning generalizable patterns. To detect overfitting:</p>
-<ol class="arabic simple">
-<li><p>Split your data into training and test sets before fitting.</p></li>
-<li><p>Fit the model on training data only.</p></li>
-<li><p>Use <a class="reference internal" href="skbio.stats.ordination.MMvecResults.score.html#skbio.stats.ordination.MMvecResults.score" title="skbio.stats.ordination.MMvecResults.score"><code class="xref py py-meth docutils literal notranslate"><span class="pre">score</span></code></a> to compute Q² on held-out test data.</p></li>
-</ol>
-<p>Interpretation of Q² values:</p>
-<ul class="simple">
-<li><p><strong>Q² close to 1</strong>: Excellent predictive performance.</p></li>
-<li><p><strong>Q² close to 0</strong>: Model predicts no better than the mean.</p></li>
-<li><p><strong>Q² negative</strong>: Model performs worse than predicting the mean,
-indicating overfitting or model misspecification.</p></li>
-</ul>
-<p>If Q² is much lower than expected, try:</p>
-<ul class="simple">
-<li><p>Reducing <code class="docutils literal notranslate"><span class="pre">n_components</span></code> (fewer latent dimensions).</p></li>
-<li><p>Increasing regularization via smaller <code class="docutils literal notranslate"><span class="pre">u_prior_scale</span></code> and
-<code class="docutils literal notranslate"><span class="pre">v_prior_scale</span></code> values.</p></li>
-<li><p>Collecting more training samples.</p></li>
-</ul>
-<p><strong>Embedding Interpretation</strong></p>
-<p>The embeddings place microbes and metabolites in the same latent space.
-The inner product between a microbe embedding and metabolite embedding
-(plus bias terms) gives the log-odds of their co-occurrence:</p>
-<div class="math notranslate nohighlight">
-\[\log \frac{P(m_j | \mu_i)}{P(m_{\text{ref}} | \mu_i)} =
-U_i \cdot V_j + b_{U_i} + b_{V_j}\]</div>
-<p>This means:</p>
-<ul class="simple">
-<li><p>Microbes pointing in similar directions associate with similar
-metabolites.</p></li>
-<li><p>Metabolites pointing in similar directions are produced/consumed
-by similar microbes.</p></li>
-<li><p>The angle between a microbe and metabolite vector indicates their
-association strength.</p></li>
-</ul>
-<p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.MMvecResults.predict.html#skbio.stats.ordination.MMvecResults.predict" title="skbio.stats.ordination.MMvecResults.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a></p></td>
-<td><p>Predict metabolite distributions given microbe abundances.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.ordination.MMvecResults.probabilities.html#skbio.stats.ordination.MMvecResults.probabilities" title="skbio.stats.ordination.MMvecResults.probabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probabilities</span></code></a></p></td>
-<td><p>Convert ranks to probability matrix via softmax.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.ordination.MMvecResults.score.html#skbio.stats.ordination.MMvecResults.score" title="skbio.stats.ordination.MMvecResults.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a></p></td>
-<td><p>Compute Q² (coefficient of prediction) on held-out data.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Special methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.stats.ordination.MMvecResults.__str__" title="skbio.stats.ordination.MMvecResults.__str__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__str__</span></code></a></p></td>
-<td><p>Return string representation of MMvecResults.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Special methods (inherited)</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__eq__</span></code></p></td>
-<td><p>Return self==value.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ge__</span></code></p></td>
-<td><p>Return self&gt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getstate__</span></code></p></td>
-<td><p>Helper for pickle.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__gt__</span></code></p></td>
-<td><p>Return self&gt;value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__hash__</span></code></p></td>
-<td><p>Return hash(self).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__le__</span></code></p></td>
-<td><p>Return self&lt;=value.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__lt__</span></code></p></td>
-<td><p>Return self&lt;value.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ne__</span></code></p></td>
-<td><p>Return self!=value.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Details</p>
+  <section id="skbio-stats-ordination-mmvecresult-score">
+<h1>skbio.stats.ordination.MMvecResult.score<a class="headerlink" href="#skbio-stats-ordination-mmvecresult-score" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResults.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L546"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResults.__str__" title="Link to this definition">#</a></dt>
-<dd><p>Return string representation of MMvecResults.</p>
-</dd></dl>
-
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.score">
+<span class="sig-prename descclassname"><span class="pre">MMvecResult.</span></span><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.score" title="Link to this definition">#</a></dt>
+<dd><p>Compute Q-squared (coefficient of prediction) on held-out data.</p>
+<p><span class="math notranslate nohighlight">\(Q^2\)</span> measures predictive performance on test data, analogous to
+<span class="math notranslate nohighlight">\(R^2\)</span> but for cross-validation. Values range from -inf to 1, where 1
+indicates perfect prediction and 0 indicates prediction no better than the
+mean.</p>
+<div class="math notranslate nohighlight">
+\[Q^2 = 1 - \frac{SS_{res}}{SS_{tot}}
+    = 1 - \frac{\sum(y - \hat{y})^2}{\sum(y - \bar{y}_j)^2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{y}_j\)</span> is the per-target mean across samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">table_like of shape (n_samples, n_features_x)</span></dt><dd><p>Feature abundance table of the conditioning (X) modality. Columns must
+match the features used during training.</p>
+</dd>
+<dt><strong>Y</strong><span class="classifier">table_like of shape (n_samples, n_features_y)</span></dt><dd><p>Feature abundance table of the conditioned (Y) modality.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>q2</strong><span class="classifier">float</span></dt><dd><p>Q-squared score. Higher is better, with 1.0 being perfect prediction.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -918,20 +780,20 @@ association strength.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.ordination.mmvec.html"
+       href="skbio.stats.ordination.MMvecResult.predict.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.ordination.mmvec</p>
+        <p class="prev-next-title">skbio.stats.ordination.MMvecResult.predict</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.ordination.MMvecResults.predict.html"
+       href="skbio.stats.ordination.OrdinationResults.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.ordination.MMvecResults.predict</p>
+        <p class="prev-next-title">skbio.stats.ordination.OrdinationResults</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -954,10 +816,7 @@ association strength.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResults"><code class="docutils literal notranslate"><span class="pre">MMvecResults</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResults.__str__"><code class="docutils literal notranslate"><span class="pre">MMvecResults.__str__</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.score"><code class="docutils literal notranslate"><span class="pre">MMvecResult.score</span></code></a></li>
 </ul>
   </nav></div>
 

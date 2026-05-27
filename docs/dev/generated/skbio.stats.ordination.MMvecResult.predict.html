@@ -6,10 +6,10 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Predict metabolite distributions given microbe abundances." />
+    <meta name="description" content="Predict conditioned feature compositions given conditioning features." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.ordination.MMvecResults.predict &#8212; scikit-bio 0.7.3-dev documentation</title>
+    <title>skbio.stats.ordination.MMvecResult.predict &#8212; scikit-bio 0.7.3-dev documentation</title>
   
   
   
@@ -62,7 +62,8 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-6636235-9');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.MMvecResults.predict';</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.stats.ordination.MMvecResult.predict';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
@@ -71,12 +72,12 @@
             false;
         </script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="canonical" href="../../../generated/skbio.stats.ordination.MMvecResults.predict.html" />
+    <link rel="canonical" href="../../../generated/skbio.stats.ordination.MMvecResult.predict.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.ordination.MMvecResults.probabilities" href="skbio.stats.ordination.MMvecResults.probabilities.html" />
-    <link rel="prev" title="skbio.stats.ordination.MMvecResults" href="skbio.stats.ordination.MMvecResults.html" />
+    <link rel="next" title="skbio.stats.ordination.MMvecResult.score" href="skbio.stats.ordination.MMvecResult.score.html" />
+    <link rel="prev" title="skbio.stats.ordination.MMvecResult" href="skbio.stats.ordination.MMvecResult.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.3-dev" />
@@ -645,7 +646,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.cca.html">skbio.stats.ordination.cca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.rda.html">skbio.stats.ordination.rda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mmvec.html">skbio.stats.ordination.mmvec</a></li>
-<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.ordination.MMvecResults.html">skbio.stats.ordination.MMvecResults</a></li>
+<li class="toctree-l2 current active"><a class="reference internal" href="skbio.stats.ordination.MMvecResult.html">skbio.stats.ordination.MMvecResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html">skbio.stats.ordination.OrdinationResults</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.mean_and_std.html">skbio.stats.ordination.mean_and_std</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.ordination.corr.html">skbio.stats.ordination.corr</a></li>
@@ -714,9 +715,9 @@
     <li class="breadcrumb-item"><a href="skbio.stats.ordination.html" class="nav-link">Ordination methods (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.ordination</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.stats.ordination.MMvecResults.html" class="nav-link">skbio.stats.ordination.MMvecResults</a></li>
+    <li class="breadcrumb-item"><a href="skbio.stats.ordination.MMvecResult.html" class="nav-link">skbio.stats.ordination.MMvecResult</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.MMvecResults.predict</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.stats.ordination.MMvecResult.predict</span></li>
   </ul>
 </nav>
 </div>
@@ -733,57 +734,33 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="skbio-stats-ordination-mmvecresults-predict">
-<h1>skbio.stats.ordination.MMvecResults.predict<a class="headerlink" href="#skbio-stats-ordination-mmvecresults-predict" title="Link to this heading">#</a></h1>
+  <section id="skbio-stats-ordination-mmvecresult-predict">
+<h1>skbio.stats.ordination.MMvecResult.predict<a class="headerlink" href="#skbio-stats-ordination-mmvecresult-predict" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResults.predict">
-<span class="sig-prename descclassname"><span class="pre">MMvecResults.</span></span><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">microbes</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L571"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResults.predict" title="Link to this definition">#</a></dt>
-<dd><p>Predict metabolite distributions given microbe abundances.</p>
-<p>Computes the expected metabolite distribution for each sample by
-marginalizing over microbe compositions:</p>
-<p>P(metabolite) = sum_i P(microbe_i) * P(metabolite | microbe_i)</p>
+<dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.predict">
+<span class="sig-prename descclassname"><span class="pre">MMvecResult.</span></span><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L461"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.predict" title="Link to this definition">#</a></dt>
+<dd><p>Predict conditioned feature compositions given conditioning features.</p>
+<p>The expected conditioned (Y) feature distribution for each sample is computed
+by marginalizing over the given conditioning (X) feature composition and the
+learned conditional probabilities:</p>
+<div class="math notranslate nohighlight">
+\[P(Y) = \sum_i P(X_i)\,P(Y \mid X_i)\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>microbes</strong><span class="classifier">pd.DataFrame or array-like of shape (n_samples, n_microbes)</span></dt><dd><p>Microbe abundance counts. Columns must match the microbes used
-during training.</p>
+<dt><strong>X</strong><span class="classifier">table_like of shape (n_samples, n_features_x)</span></dt><dd><p>Feature abundance table of the conditioning (X) modality. Columns must
+match the features used during training.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>predictions</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>Predicted metabolite proportions for each sample.
-Shape: (n_samples, n_metabolites). Each row sums to 1.</p>
+<dt>table_like of shape (n_samples, n_features_y)</dt><dd><p>Predicted feature proportions of the conditioned (Y) modality for each
+sample. Each row sums to 1.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">mmvec</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">microbes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;OTU_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metabolites</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">)),</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;met_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">mmvec</span><span class="p">(</span><span class="n">microbes</span><span class="p">,</span> <span class="n">metabolites</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Predict on new samples</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_microbes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
-<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;OTU_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">predictions</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_microbes</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">predictions</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(5, 8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">predictions</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="go">True</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </section>
@@ -799,20 +776,20 @@ Shape: (n_samples, n_metabolites). Each row sums to 1.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="skbio.stats.ordination.MMvecResults.html"
+       href="skbio.stats.ordination.MMvecResult.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.stats.ordination.MMvecResults</p>
+        <p class="prev-next-title">skbio.stats.ordination.MMvecResult</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.ordination.MMvecResults.probabilities.html"
+       href="skbio.stats.ordination.MMvecResult.score.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.ordination.MMvecResults.probabilities</p>
+        <p class="prev-next-title">skbio.stats.ordination.MMvecResult.score</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -835,7 +812,7 @@ Shape: (n_samples, n_metabolites). Each row sums to 1.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResults.predict"><code class="docutils literal notranslate"><span class="pre">MMvecResults.predict</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.stats.ordination.MMvecResult.predict"><code class="docutils literal notranslate"><span class="pre">MMvecResult.predict</span></code></a></li>
 </ul>
   </nav></div>
 
