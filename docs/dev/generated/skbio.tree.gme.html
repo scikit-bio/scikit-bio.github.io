@@ -717,7 +717,7 @@
 <h1>skbio.tree.gme<a class="headerlink" href="#skbio-tree-gme" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.tree.gme">
-<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">gme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.gme" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.tree.</span></span><span class="sig-name descname"><span class="pre">gme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_as_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_me.py#L152"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.gme" title="Link to this definition">#</a></dt>
 <dd><p>Perform greedy minimum evolution (GME) for phylogenetic reconstruction.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.2.</span></p>
@@ -752,7 +752,7 @@
 <p class="rubric">Notes</p>
 <p>Greedy Minimum Evolution (GME) <a class="reference internal" href="#rc2fa589661a9-1" id="id1">[1]</a> is a distance-based algorithm for phylogenetic
 reconstruction. It utilizes the minimum evolution (ME) principle <a class="reference internal" href="#rc2fa589661a9-2" id="id2">[2]</a> for selecting
-a tree topology with the lowest sum of branch lengths, as calculated using an
+a tree topology with the smallest sum of branch lengths, as calculated using an
 ordinary least squares (OLS) framework <a class="reference internal" href="#rc2fa589661a9-3" id="id3">[3]</a>.</p>
 <p>GME is <em>O</em>(<em>n</em><sup>2</sup>) in time and <em>O</em>(<em>n</em>) in space, making it a more scalable
 method than multiple alternatives (e.g., <a class="reference internal" href="skbio.tree.nj.html#skbio.tree.nj" title="skbio.tree.nj"><code class="xref py py-func docutils literal notranslate"><span class="pre">nj</span></code></a> and <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme</span></code></a>). Therefore it
@@ -763,17 +763,17 @@ a child of the root node. See the notes of <a class="reference internal" href="s
 trees and negative branch lengths.</p>
 <p>A GME-generated tree may be further improved by executing the FastNNI algorithm
 implemented in <a class="reference internal" href="skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-func docutils literal notranslate"><span class="pre">nni</span></code></a> (with <code class="docutils literal notranslate"><span class="pre">balanced=False</span></code>).</p>
-<p>A similar but less scalable algorithm using the balanced instead of OLS framework
-is provided in <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme</span></code></a>.</p>
-<p>The same methods underlying <a class="reference internal" href="#skbio.tree.gme" title="skbio.tree.gme"><code class="xref py py-func docutils literal notranslate"><span class="pre">gme</span></code></a>, <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme</span></code></a> and <a class="reference internal" href="skbio.tree.nni.html#skbio.tree.nni" title="skbio.tree.nni"><code class="xref py py-func docutils literal notranslate"><span class="pre">nni</span></code></a> were also
-provided by the software package FastME <a class="reference internal" href="#rc2fa589661a9-4" id="id4">[4]</a>.</p>
+<p>This algorithm is mathematically equivalent to the “TaxAdd_OLSME” method provided
+by the FastME program <a class="reference internal" href="#rc2fa589661a9-4" id="id4">[4]</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>These scikit-bio functions were implemented following the original paper <a class="reference internal" href="#rc2fa589661a9-1" id="id5">[1]</a>.
-It is not guaranteed that they will precisely mirror FastME’s output. Although
-in practices they usually generate identical or equally optimal phylogenetic
-trees as FastME does.</p>
+<p>This function was implemented following the original paper <a class="reference internal" href="#rc2fa589661a9-1" id="id5">[1]</a>. It is not
+guaranteed that it will precisely mirror FastME’s output. Although in practices
+it usually generates identical or equally optimal phylogenetic trees as FastME
+does.</p>
 </div>
+<p>A similar but less scalable algorithm using the balanced instead of OLS framework
+is provided in <a class="reference internal" href="skbio.tree.bme.html#skbio.tree.bme" title="skbio.tree.bme"><code class="xref py py-func docutils literal notranslate"><span class="pre">bme</span></code></a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="rc2fa589661a9-1" role="doc-biblioentry">
