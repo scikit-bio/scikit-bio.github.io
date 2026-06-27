@@ -719,9 +719,12 @@ scikit-bio functionalities.</p>
 </section>
 <section id="id1">
 <h2>Configuration options<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>At present, only one configuration option is available:</p>
 <dl>
 <dt><strong>table_output</strong><span class="classifier"><em>{“pandas”, “numpy”, “polars”}, default=”pandas”</em></span></dt><dd><p>The preferred output format of tables. See <a class="reference internal" href="table.html#table-output"><span class="std std-ref">details</span></a>.</p>
+</dd>
+<dt><strong>engine</strong><span class="classifier"><em>{“cython”, “numba”}, default=”cython”</em></span></dt><dd><p>The default compute engine for functions that support multiple engines.
+Functions accept an <code class="docutils literal notranslate"><span class="pre">engine</span></code> argument to override this per call. The
+<code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> engine requires the optional Numba dependency.</p>
 </dd>
 </dl>
 </section>
