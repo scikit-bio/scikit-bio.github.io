@@ -798,7 +798,7 @@
 <h1>skbio.tree.TreeNode.prune<a class="headerlink" href="#skbio-tree-treenode-prune" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.prune">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1606"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.prune" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1606"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.prune" title="Link to this definition">#</a></dt>
 <dd><p>Collapse single-child nodes in the tree.</p>
 <p>Internal nodes with only one child will be removed, and direct connections will
 be made from the parent to the child. The branch length of the node will be
@@ -807,10 +807,25 @@ the parent following the operation.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
+<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to modify the tree in place (True, default) or to create a modified
+copy of the tree (False).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.4.</span></p>
+</div>
+</dd>
 <dt><strong>uncache</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clear caches of the tree if present (default: True). See
-<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>. Only applicable when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is True.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt>TreeNode</dt><dd><p>The resulting tree.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Now returns the tree. Previously the method returned nothing.</p>
 </div>
 </dd>
 </dl>
@@ -845,7 +860,7 @@ be pruned.</p>
 <span class="go">                              \-i</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">prune</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">prune</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                              /-a</span>
 <span class="go">                    /c-------|</span>

@@ -798,7 +798,7 @@
 <h1>skbio.tree.TreeNode.bifurcate<a class="headerlink" href="#skbio-tree-treenode-bifurcate" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.bifurcate">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">bifurcate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insert_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1941"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.bifurcate" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">bifurcate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insert_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1958"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.bifurcate" title="Link to this definition">#</a></dt>
 <dd><p>Convert the tree into a bifurcating tree.</p>
 <p>All nodes that have more than two children will have additional intermediate
 nodes inserted to ensure that every node has only two children.</p>
@@ -813,10 +813,25 @@ unrooted tree unrooted. Default is True.</p>
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
 </dd>
+<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to modify the tree in place (True, default) or to create a modified
+copy of the tree (False).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.4.</span></p>
+</div>
+</dd>
 <dt><strong>uncache</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clear caches of the tree if present (default: True). See
-<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<a class="reference internal" href="skbio.tree.TreeNode.has_caches.html#skbio.tree.TreeNode.has_caches" title="skbio.tree.TreeNode.has_caches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">details</span></code></a>. Only applicable when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is True.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt>TreeNode</dt><dd><p>The resulting tree.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Now returns the tree. Previously the method returned nothing.</p>
 </div>
 </dd>
 </dl>
@@ -850,7 +865,7 @@ using <a class="reference internal" href="skbio.tree.TreeNode.prune.html#skbio.t
 <span class="go">                    \-e</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">bifurcate</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">bifurcate</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                    /-h</span>
 <span class="go">          /c-------|</span>
