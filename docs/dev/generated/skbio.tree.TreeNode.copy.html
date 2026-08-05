@@ -799,7 +799,7 @@
 <h1>skbio.tree.TreeNode.copy<a class="headerlink" href="#skbio-tree-treenode-copy" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.copy">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.copy" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L317"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.copy" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy of self using an iterative approach.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -823,6 +823,9 @@ attributes.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.6.3: </span>Node attribute caches will not be copied.</p>
 </div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Can redirect node references to the copied tree.</p>
+</div>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -838,14 +841,64 @@ node, instead of the entire tree, will be copied.</p>
 <p>All nodes and their attributes except for caches will be copied. The copies are
 new objects rather than references to the original objects. The distinction
 between deep and shallow copies only applies to each node attribute.</p>
+<p>If node attributes are references to other nodes in the tree, they will be
+redirected to the new nodes in the copied tree, rather than the old nodes in
+the original tree. However, node references nested inside compound attributes
+will not be redirected in the shallow copy mode (they will when <cite>deep=True</cite> is
+added to the function call).</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a,b)c,(d,e)f)root;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree_copy</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">id</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">traverse</span><span class="p">()])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree_copy_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="nb">id</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tree_copy</span><span class="o">.</span><span class="n">traverse</span><span class="p">()])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tree_nodes</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">tree_copy_nodes</span><span class="p">)))</span>
-<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(a,b)c;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function’s behavior will be demonstrated using these node attributes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># built-in attribute</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;marker&quot;</span>   <span class="c1"># custom simple attribute</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>  <span class="c1"># custom compound attribute</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">partner</span> <span class="o">=</span> <span class="n">b</span>        <span class="c1"># direct node reference</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span>        <span class="c1"># nested node reference</span>
+</pre></div>
+</div>
+<p>By default, the function makes a shallow copy of the tree, in which only the
+outer-most level of each node attribute is copied, whereas nested attributes
+are shared as references.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shallow</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span> <span class="o">=</span> <span class="n">shallow</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span> <span class="ow">is</span> <span class="n">a</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">length</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">label</span>
+<span class="go">&#39;marker&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">values</span>
+<span class="go">[[1, 2]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">values</span> <span class="ow">is</span> <span class="n">a</span><span class="o">.</span><span class="n">values</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">a</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Attributes that are references to other nodes in the tree are redirected to the
+corresponding nodes in the copied tree. However, node references nested inside
+compound attributes still point to the original tree.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">partner</span> <span class="ow">is</span> <span class="n">shallow</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">links</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>A deep copy also copies nested values and redirects nested node references:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deep</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="p">,</span> <span class="n">deep_b</span> <span class="o">=</span> <span class="n">deep</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="n">deep</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="o">.</span><span class="n">values</span> <span class="ow">is</span> <span class="n">a</span><span class="o">.</span><span class="n">values</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">a</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="o">.</span><span class="n">partner</span> <span class="ow">is</span> <span class="n">deep_b</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="o">.</span><span class="n">links</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">deep_b</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </dd></dl>
