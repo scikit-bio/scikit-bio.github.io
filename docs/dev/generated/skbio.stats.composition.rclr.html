@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Perform robust centre log ratio (rclr) transformation." />
+    <meta name="description" content="Perform robust centre log ratio (RCLR) transformation." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.stats.composition.rclr &#8212; scikit-bio 0.7.4-dev documentation</title>
@@ -80,7 +80,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.ilr" href="skbio.stats.composition.ilr.html" />
+    <link rel="next" title="skbio.stats.composition.rclr_inv" href="skbio.stats.composition.rclr_inv.html" />
     <link rel="prev" title="skbio.stats.composition.clr_inv" href="skbio.stats.composition.clr_inv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -664,6 +664,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr.html">skbio.stats.composition.clr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.clr_inv.html">skbio.stats.composition.clr_inv</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.rclr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.rclr_inv.html">skbio.stats.composition.rclr_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr.html">skbio.stats.composition.ilr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ilr_inv.html">skbio.stats.composition.ilr_inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.vlr.html">skbio.stats.composition.vlr</a></li>
@@ -749,8 +750,11 @@
 <h1>skbio.stats.composition.rclr<a class="headerlink" href="#skbio-stats-composition-rclr" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.rclr">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">rclr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L591"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.rclr" title="Link to this definition">#</a></dt>
-<dd><p>Perform robust centre log ratio (rclr) transformation.</p>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">rclr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L584"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.rclr" title="Link to this definition">#</a></dt>
+<dd><p>Perform robust centre log ratio (RCLR) transformation.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.3.</span></p>
+</div>
 <p>The robust CLR transformation is similar to the standard CLR transformation, but it
 only operates on observed (non-zero) values <a class="reference internal" href="#rba1ec87751d6-1" id="id1">[1]</a>. This makes it suitable for sparse
 compositional data.</p>
@@ -784,6 +788,7 @@ allowed as missing entries.</p>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clr</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.composition.rclr_inv.html#skbio.stats.composition.rclr_inv" title="skbio.stats.composition.rclr_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rclr_inv</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -845,8 +850,7 @@ microbial perturbations. MSystems, 4(1), 10-1128.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">rclr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rclr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">array([[-0.693,  0.   ,    nan,  0.693],</span>
 <span class="go">       [   nan,  0.   ,  0.   ,    nan],</span>
 <span class="go">       [ 0.   ,  0.   ,  0.   ,  0.   ]])</span>
@@ -876,11 +880,11 @@ microbial perturbations. MSystems, 4(1), 10-1128.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.ilr.html"
+       href="skbio.stats.composition.rclr_inv.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.ilr</p>
+        <p class="prev-next-title">skbio.stats.composition.rclr_inv</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
