@@ -782,18 +782,18 @@ this format.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.io.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Format</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># If developing a new format for skbio, use the create_format()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># factory instead of this constructor.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;myformat&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">'myformat'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nd">@myformat</span><span class="o">.</span><span class="n">sniffer</span><span class="p">()</span>
 <span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">myformat_sniffer</span><span class="p">(</span><span class="n">fh</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">check</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;myformat&quot;</span>
+<span class="gp">... </span>    <span class="n">check</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"myformat"</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">check</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="n">version</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">version</span><span class="p">}</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="p">{</span><span class="s1">'version'</span><span class="p">:</span> <span class="n">version</span><span class="p">}</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="p">{}</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat_sniffer</span><span class="p">([</span><span class="s2">&quot;myformat2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;some content</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">])</span>
-<span class="go">(True, {&#39;version&#39;: 2})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat_sniffer</span><span class="p">([</span><span class="s2">&quot;something else</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat_sniffer</span><span class="p">([</span><span class="s2">"myformat2</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"some content</span><span class="se">\n</span><span class="s2">"</span><span class="p">])</span>
+<span class="go">(True, {'version': 2})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat_sniffer</span><span class="p">([</span><span class="s2">"something else</span><span class="se">\n</span><span class="s2">"</span><span class="p">])</span>
 <span class="go">(False, {})</span>
 </pre></div>
 </div>

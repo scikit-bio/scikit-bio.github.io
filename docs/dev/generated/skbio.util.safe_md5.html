@@ -756,10 +756,10 @@ must be open as a binary file</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">safe_md5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;foo bar baz&quot;</span><span class="p">)</span> <span class="c1"># open file like object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s2">"foo bar baz"</span><span class="p">)</span> <span class="c1"># open file like object</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">safe_md5</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-<span class="go">&#39;ab07acbb1e496801937adfa772424bf7&#39;</span>
+<span class="go">'ab07acbb1e496801937adfa772424bf7'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>

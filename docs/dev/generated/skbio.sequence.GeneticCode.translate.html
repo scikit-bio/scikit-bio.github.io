@@ -791,7 +791,7 @@ sequence. Positional metadata are not included.</p>
 <p>Translate RNA into protein using NCBI’s standard genetic code (table ID
 1, the default genetic code in scikit-bio):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">RNA</span><span class="p">,</span> <span class="n">GeneticCode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rna</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">&#39;AGUAUUCUGCCACUGUAAGAA&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rna</span> <span class="o">=</span> <span class="n">RNA</span><span class="p">(</span><span class="s1">'AGUAUUCUGCCACUGUAAGAA'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span> <span class="o">=</span> <span class="n">GeneticCode</span><span class="o">.</span><span class="n">from_ncbi</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rna</span><span class="p">)</span>
 <span class="go">Protein</span>
@@ -811,7 +811,7 @@ translation at the beginning of the reading frame, regardless of the
 presence of a start codon. If we specify “require”, translation will
 start at the first start codon in the reading frame (in this example,
 CUG), ignoring all prior positions:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rna</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;require&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rna</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">'require'</span><span class="p">)</span>
 <span class="go">Protein</span>
 <span class="go">--------------------------</span>
 <span class="go">Stats:</span>
@@ -831,7 +831,7 @@ most closely matches the underlying biology since fMet doesn’t have a
 corresponding IUPAC character.</p>
 <p>Translate the same RNA sequence, also specifying that translation
 terminate at the first stop codon in the reading frame:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rna</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;require&#39;</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="s1">&#39;require&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rna</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">'require'</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="s1">'require'</span><span class="p">)</span>
 <span class="go">Protein</span>
 <span class="go">--------------------------</span>
 <span class="go">Stats:</span>
@@ -848,7 +848,7 @@ terminate at the first stop codon in the reading frame:</p>
 to the CDS (and in fact requires that one is present in the reading
 frame). Changing the reading frame to 2 causes an exception to be
 raised because a start codon doesn’t exist in the reading frame:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rna</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;require&#39;</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="s1">&#39;require&#39;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sgc</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rna</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">'require'</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="s1">'require'</span><span class="p">,</span>
 <span class="gp">... </span>              <span class="n">reading_frame</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
 <span class="w">    </span><span class="o">...</span>

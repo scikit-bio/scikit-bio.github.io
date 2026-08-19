@@ -845,7 +845,7 @@ between groups.</p>
 </pre></div>
 </div>
 <p>Let’s make sure that our two distributions are different.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.5f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test</span><span class="p">([</span><span class="n">pre_rate</span><span class="p">,</span> <span class="n">pos_rate</span><span class="p">])))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="si">{:.5f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test</span><span class="p">([</span><span class="n">pre_rate</span><span class="p">,</span> <span class="n">pos_rate</span><span class="p">])))</span>
 <span class="go">0.00064</span>
 </pre></div>
 </div>
@@ -893,7 +893,7 @@ bound at 0. This means that we can no longer assume our distribution is
 normal.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kruskal</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">kruskal</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">pvalue</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.3e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test2</span><span class="p">([</span><span class="n">met_pos</span><span class="p">,</span> <span class="n">met_neg</span><span class="p">])))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="si">{:.3e}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test2</span><span class="p">([</span><span class="n">met_pos</span><span class="p">,</span> <span class="n">met_neg</span><span class="p">])))</span>
 <span class="go">9.783e-06</span>
 </pre></div>
 </div>

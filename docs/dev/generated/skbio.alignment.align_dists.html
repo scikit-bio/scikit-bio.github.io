@@ -799,15 +799,15 @@ sites or considering global character frequencies, use
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span><span class="p">,</span> <span class="n">align_dists</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ATC-GTATCGG&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ATGCG--CCGC&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GTGCGTACGC-&#39;</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">align_dists</span><span class="p">(</span><span class="n">msa</span><span class="p">,</span> <span class="s1">&#39;jc69&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">'ATC-GTATCGG'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">'ATGCG--CCGC'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s1">'GTGCGTACGC-'</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">align_dists</span><span class="p">(</span><span class="n">msa</span><span class="p">,</span> <span class="s1">'jc69'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
 <span class="go">3x3 distance matrix</span>
 <span class="go">IDs:</span>
-<span class="go">&#39;a&#39;, &#39;b&#39;, &#39;c&#39;</span>
+<span class="go">'a', 'b', 'c'</span>
 <span class="go">Data:</span>
 <span class="go">[[ 0.          0.35967981  2.28339183]</span>
 <span class="go"> [ 0.35967981  0.          0.6354734 ]</span>

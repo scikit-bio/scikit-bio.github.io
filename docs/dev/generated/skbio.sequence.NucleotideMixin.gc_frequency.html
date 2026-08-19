@@ -764,23 +764,23 @@ depending on <cite>relative</cite>.</p>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">()</span>
 <span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACGT--..&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">'ACGT--..'</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;--..&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">'--..'</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">0</span>
 </pre></div>
 </div>
 <p><cite>S</cite> means <cite>G</cite> or <cite>C</cite>, so it counts:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ASST&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">'ASST'</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">()</span>
 <span class="go">2</span>
 </pre></div>
 </div>
 <p>Other degenerates don’t count:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;RYKMBDHVN&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="p">(</span><span class="s1">'RYKMBDHVN'</span><span class="p">)</span><span class="o">.</span><span class="n">gc_frequency</span><span class="p">()</span>
 <span class="go">0</span>
 </pre></div>
 </div>

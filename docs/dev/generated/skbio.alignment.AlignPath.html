@@ -805,9 +805,9 @@ sequences and 20 positions.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span>
-<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGGTCGTAACGCGTA---CA&#39;</span><span class="p">),</span>
-<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CAG--GTAAG-CATACCTCA&#39;</span><span class="p">),</span>
-<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;CGGTCGTCAC-TGTACACTA&#39;</span><span class="p">),</span>
+<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">'CGGTCGTAACGCGTA---CA'</span><span class="p">),</span>
+<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">'CAG--GTAAG-CATACCTCA'</span><span class="p">),</span>
+<span class="gp">... </span>   <span class="n">DNA</span><span class="p">(</span><span class="s1">'CGGTCGTCAC-TGTACACTA'</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_tabular</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
@@ -850,9 +850,9 @@ sequence. The program will automatically calculate the stop positions.</p>
 </div>
 <p>With the ranges, one can extract aligned subsequences from the original sequences.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;NNNNNCGGTCGTAACGCGTACANNNNNNN&quot;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;NCAGGTAAGCATACCTCA&quot;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;CGGTCGTCACTGTACACTANN&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">"NNNNNCGGTCGTAACGCGTACANNNNNNN"</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">"NCAGGTAAGCATACCTCA"</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">DNA</span><span class="p">(</span><span class="s2">"CGGTCGTCACTGTACACTANN"</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span><span class="p">,</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">ranges</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">])</span>
@@ -862,7 +862,7 @@ sequence. The program will automatically calculate the stop positions.</p>
 </pre></div>
 </div>
 <p>Alternatively, one can extract the aligned sequences with gap characters:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">path</span><span class="o">.</span><span class="n">to_aligned</span><span class="p">(</span><span class="n">seqs</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">path</span><span class="o">.</span><span class="n">to_aligned</span><span class="p">(</span><span class="n">seqs</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="go">CGGTCGTAACGCGTA---CA</span>
 <span class="go">CAG--GTAAG-CATACCTCA</span>
 <span class="go">CGGTCGTCAC-TGTACACTA</span>

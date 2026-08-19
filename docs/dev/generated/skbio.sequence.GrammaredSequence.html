@@ -774,23 +774,23 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">CustomSequence</span><span class="p">(</span><span class="n">GrammaredSequence</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nd">@classproperty</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">degenerate_map</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;AB&quot;</span><span class="p">)}</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"AB"</span><span class="p">)}</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@classproperty</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">definite_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;ABC&quot;</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"ABC"</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@classproperty</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">default_gap_char</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s1">&#39;-&#39;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s1">'-'</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@classproperty</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">gap_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s1">'-.'</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">CustomSequence</span><span class="p">(</span><span class="s1">&#39;ABABACAC&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">CustomSequence</span><span class="p">(</span><span class="s1">'ABABACAC'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">CustomSequence</span>
 <span class="go">--------------------------</span>
@@ -803,7 +803,7 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 <span class="go">0 ABABACAC</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">CustomSequence</span><span class="p">(</span><span class="s1">&#39;XXXXXX&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">CustomSequence</span><span class="p">(</span><span class="s1">'XXXXXX'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">CustomSequence</span>
 <span class="go">-------------------------</span>

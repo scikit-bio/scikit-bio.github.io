@@ -1065,20 +1065,20 @@ while others are split across multiple lines.</p>
 <p>Let’s define this file in-memory as a <code class="docutils literal notranslate"><span class="pre">StringIO</span></code>, though this could be a real
 file path, file handle, or anything that’s supported by scikit-bio’s I/O
 registry in practice:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&gt;seq1 Turkey</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;AAGCTNGGGCATTTCAGGGTGAGCCCGGGCAATACAGGGTAT</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;&gt;seq2 Salmo gair</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;AAGCCTTGGCAGTGCAGGGTGAGCCGTGG</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;CCGGGCACGGTAT</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;&gt;seq3 H. Sapiens</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;ACCGGTTGGCCGTTCAGGGTACAGGTTGGCCGTTCAGGGTAA</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;&gt;seq4 Chimp</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;AAACCCTTGCCG</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;TTACGCTTAAAC</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;CGAGGCCGGGAC</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;ACTCAT</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;&gt;seq5 Gorilla</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>      <span class="s2">&quot;AAACCCTTGCCGGTACGCTTAAACCATTGCCGGTACGCTTAA</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"&gt;seq1 Turkey</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"AAGCTNGGGCATTTCAGGGTGAGCCCGGGCAATACAGGGTAT</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"&gt;seq2 Salmo gair</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"AAGCCTTGGCAGTGCAGGGTGAGCCGTGG</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"CCGGGCACGGTAT</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"&gt;seq3 H. Sapiens</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"ACCGGTTGGCCGTTCAGGGTACAGGTTGGCCGTTCAGGGTAA</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"&gt;seq4 Chimp</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"AAACCCTTGCCG</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"TTACGCTTAAAC</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"CGAGGCCGGGAC</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"ACTCAT</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"&gt;seq5 Gorilla</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>      <span class="s2">"AAACCCTTGCCGGTACGCTTAAACCATTGCCGGTACGCTTAA</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Since these sequences are of equal length (presumably because they’ve been
@@ -1126,14 +1126,14 @@ if <code class="docutils literal notranslate"><span class="pre">constructor</spa
 into memory. For example, let’s use the generator-based reader to process a
 single sequence at a time in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">skbio.io</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'fasta'</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">seq</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 <span class="go">Sequence</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Turkey&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq1&#39;</span>
+<span class="go">    'description': 'Turkey'</span>
+<span class="go">    'id': 'seq1'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">------------------------------------------------</span>
@@ -1142,8 +1142,8 @@ single sequence at a time in a <code class="docutils literal notranslate"><span 
 <span class="go">Sequence</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Salmo gair&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq2&#39;</span>
+<span class="go">    'description': 'Salmo gair'</span>
+<span class="go">    'id': 'seq2'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">------------------------------------------------</span>
@@ -1152,8 +1152,8 @@ single sequence at a time in a <code class="docutils literal notranslate"><span 
 <span class="go">Sequence</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;H. Sapiens&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq3&#39;</span>
+<span class="go">    'description': 'H. Sapiens'</span>
+<span class="go">    'id': 'seq3'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">------------------------------------------------</span>
@@ -1162,8 +1162,8 @@ single sequence at a time in a <code class="docutils literal notranslate"><span 
 <span class="go">Sequence</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Chimp&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq4&#39;</span>
+<span class="go">    'description': 'Chimp'</span>
+<span class="go">    'id': 'seq4'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">------------------------------------------------</span>
@@ -1172,8 +1172,8 @@ single sequence at a time in a <code class="docutils literal notranslate"><span 
 <span class="go">Sequence</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Gorilla&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq5&#39;</span>
+<span class="go">    'description': 'Gorilla'</span>
+<span class="go">    'id': 'seq5'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">------------------------------------------------</span>
@@ -1187,8 +1187,8 @@ single sequence at a time in a <code class="docutils literal notranslate"><span 
 <span class="go">Sequence</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Turkey&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq1&#39;</span>
+<span class="go">    'description': 'Turkey'</span>
+<span class="go">    'id': 'seq1'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">------------------------------------------------</span>
@@ -1202,8 +1202,8 @@ controlled with <code class="docutils literal notranslate"><span class="pre">seq
 <span class="go">Sequence</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Gorilla&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq5&#39;</span>
+<span class="go">    'description': 'Gorilla'</span>
+<span class="go">    'id': 'seq5'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">------------------------------------------------</span>
@@ -1216,8 +1216,8 @@ controlled with <code class="docutils literal notranslate"><span class="pre">seq
 <span class="go">DNA</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Gorilla&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq5&#39;</span>
+<span class="go">    'description': 'Gorilla'</span>
+<span class="go">    'id': 'seq5'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">    has gaps: False</span>
@@ -1256,30 +1256,30 @@ following FASTA file:</p>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fasta_fl</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="s2">&quot;&gt;seq1 db-accession-149855</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;CGATGTC</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;&gt;seq2 db-accession-34989</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;CATCGTC</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="s2">"&gt;seq1 db-accession-149855</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"CGATGTC</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"&gt;seq2 db-accession-34989</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"CATCGTC</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">qual_fl</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="s2">&quot;&gt;seq1 db-accession-149855</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;40 39 39 4</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;50 1 100</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;&gt;seq2 db-accession-34989</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;3 3 10 42 80 80 79</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="s2">"&gt;seq1 db-accession-149855</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"40 39 39 4</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"50 1 100</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"&gt;seq2 db-accession-34989</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"3 3 10 42 80 80 79</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>To read in a single <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> at a time, we can use the
 generator-based reader as we did above, providing both FASTA and QUAL files:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fasta_fl</span><span class="p">,</span> <span class="n">qual</span><span class="o">=</span><span class="n">qual_fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fasta_fl</span><span class="p">,</span> <span class="n">qual</span><span class="o">=</span><span class="n">qual_fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'fasta'</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">seq</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 <span class="go">Sequence</span>
 <span class="go">----------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;db-accession-149855&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq1&#39;</span>
+<span class="go">    'description': 'db-accession-149855'</span>
+<span class="go">    'id': 'seq1'</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;quality&#39;: &lt;dtype: uint8&gt;</span>
+<span class="go">    'quality': &lt;dtype: uint8&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 7</span>
 <span class="go">----------------------------------------</span>
@@ -1288,10 +1288,10 @@ generator-based reader as we did above, providing both FASTA and QUAL files:</p>
 <span class="go">Sequence</span>
 <span class="go">---------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;db-accession-34989&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq2&#39;</span>
+<span class="go">    'description': 'db-accession-34989'</span>
+<span class="go">    'id': 'seq2'</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;quality&#39;: &lt;dtype: uint8&gt;</span>
+<span class="go">    'quality': &lt;dtype: uint8&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 7</span>
 <span class="go">---------------------------------------</span>
@@ -1344,32 +1344,32 @@ memory.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">skbio</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span> <span class="o">=</span> <span class="s2">&quot;&gt;seq1 Turkey</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;AAGCTNGGGCATTTCAGGGTGAGCCCGGGCAATACAGGGTAT</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;&gt;seq2 Salmo gair</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;AAGCCTTGGCAGTGCAGGGTGAGCCGTGG</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;CCGGGCACGGTAT</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;&gt;seq3 H. Sapiens</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;ACCGGTTGGCCGTTCAGGGTACAGGTTGGCCGTTCAGGGTAA</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;&gt;seq4 Chimp</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;AAACCCTTGCCG</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;TTACGCTTAAAC</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;CGAGGCCGGGAC</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;ACTCAT</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;&gt;seq5 Gorilla</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>\
-<span class="gp">... </span>     <span class="s2">&quot;AAACCCTTGCCGGTACGCTTAAACCATTGCCGGTACGCTTAA</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span> <span class="o">=</span> <span class="s2">"&gt;seq1 Turkey</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"AAGCTNGGGCATTTCAGGGTGAGCCCGGGCAATACAGGGTAT</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"&gt;seq2 Salmo gair</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"AAGCCTTGGCAGTGCAGGGTGAGCCGTGG</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"CCGGGCACGGTAT</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"&gt;seq3 H. Sapiens</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"ACCGGTTGGCCGTTCAGGGTACAGGTTGGCCGTTCAGGGTAA</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"&gt;seq4 Chimp</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"AAACCCTTGCCG</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"TTACGCTTAAAC</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"CGAGGCCGGGAC</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"ACTCAT</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"&gt;seq5 Gorilla</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>\
+<span class="gp">... </span>     <span class="s2">"AAACCCTTGCCGGTACGCTTAAACCATTGCCGGTACGCTTAA</span><span class="se">\n</span><span class="s2">"</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mock_fl</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The following code will read the sequences into scikit-bio. In practice, <code class="docutils literal notranslate"><span class="pre">mock_fl</span></code>
 may be replaced with an opened file handle, or the path to the file.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mock_fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;fasta&quot;</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mock_fl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"fasta"</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">DNA</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Turkey&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq1&#39;</span>
+<span class="go">    'description': 'Turkey'</span>
+<span class="go">    'id': 'seq1'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">    has gaps: False</span>
@@ -1382,8 +1382,8 @@ may be replaced with an opened file handle, or the path to the file.</p>
 <span class="go">DNA</span>
 <span class="go">------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;Salmo gair&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq2&#39;</span>
+<span class="go">    'description': 'Salmo gair'</span>
+<span class="go">    'id': 'seq2'</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 42</span>
 <span class="go">    has gaps: False</span>

@@ -801,22 +801,22 @@ passing <code class="docutils literal notranslate"><span class="pre">chars=seq.o
 <p class="rubric">Examples</p>
 <p>Compute character frequencies of a sequence:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;AGAAGACC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'AGAAGACC'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">freqs</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">frequencies</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">freqs</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span> <span class="c1"># display dict in sorted order</span>
-<span class="go">{&#39;A&#39;: 4, &#39;C&#39;: 2, &#39;G&#39;: 2}</span>
+<span class="go">{'A': 4, 'C': 2, 'G': 2}</span>
 </pre></div>
 </div>
 <p>Compute relative character frequencies:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">freqs</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">frequencies</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">freqs</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
-<span class="go">{&#39;A&#39;: 0.5, &#39;C&#39;: 0.25, &#39;G&#39;: 0.25}</span>
+<span class="go">{'A': 0.5, 'C': 0.25, 'G': 0.25}</span>
 </pre></div>
 </div>
 <p>Compute relative frequencies of characters A, C, and T:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">freqs</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">frequencies</span><span class="p">(</span><span class="n">chars</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">},</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">freqs</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">frequencies</span><span class="p">(</span><span class="n">chars</span><span class="o">=</span><span class="p">{</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'T'</span><span class="p">},</span> <span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">freqs</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
-<span class="go">{&#39;A&#39;: 0.5, &#39;C&#39;: 0.25, &#39;T&#39;: 0.0}</span>
+<span class="go">{'A': 0.5, 'C': 0.25, 'T': 0.0}</span>
 </pre></div>
 </div>
 <p>Note that since character T is not in the sequence we receive a

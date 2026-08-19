@@ -780,23 +780,23 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 </div>
 <p>Let’s add annotations of 3 genes:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">)],</span>
-<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagB&#39;</span><span class="p">})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})</span>
+<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'sagB'</span><span class="p">})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={'gene': 'sagB'})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span>
-<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagC&#39;</span><span class="p">})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagC&#39;})</span>
+<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'sagC'</span><span class="p">})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={'gene': 'sagC'})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span>
-<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagA&#39;</span><span class="p">})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})</span>
+<span class="gp">... </span>       <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'sagA'</span><span class="p">})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={'gene': 'sagA'})</span>
 </pre></div>
 </div>
 <p>Show the object representation:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">3 interval features</span>
 <span class="go">-------------------</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagC&#39;})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={'gene': 'sagB'})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={'gene': 'sagC'})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={'gene': 'sagA'})</span>
 </pre></div>
 </div>
 <p>We can sort the genes by their bounds:</p>
@@ -804,22 +804,22 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">3 interval features</span>
 <span class="go">-------------------</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagC&#39;})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={'gene': 'sagA'})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={'gene': 'sagC'})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={'gene': 'sagB'})</span>
 </pre></div>
 </div>
 <p>Query the genes by bound and/or metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">query</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">})</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">query</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'foo'</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>
 <span class="go">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">query</span><span class="p">([(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>
-<span class="go">[Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagA&#39;</span><span class="p">})</span>
+<span class="go">[Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={'gene': 'sagB'})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'sagA'</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">intvls</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intvls</span>
-<span class="go">[Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})]</span>
+<span class="go">[Interval(interval_metadata=..., bounds=[(1, 2), (4, 7)], fuzzy=[(False, False), (False, False)], metadata={'gene': 'sagA'})]</span>
 </pre></div>
 </div>
 <p>Drop the gene(s) we get from query:</p>
@@ -828,8 +828,8 @@ to it. Create an <code class="docutils literal notranslate"><span class="pre">In
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">2 interval features</span>
 <span class="go">-------------------</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagC&#39;})</span>
-<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagB&#39;})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 7)], fuzzy=[(False, False)], metadata={'gene': 'sagC'})</span>
+<span class="go">Interval(interval_metadata=..., bounds=[(3, 9)], fuzzy=[(False, False)], metadata={'gene': 'sagB'})</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>

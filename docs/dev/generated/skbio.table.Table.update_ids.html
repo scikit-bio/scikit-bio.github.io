@@ -812,23 +812,23 @@ are updated in a new table is returned.</p>
 <p class="rubric">Examples</p>
 <p>Create a 2x3 BIOM table:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">'O1'</span><span class="p">,</span> <span class="s1">'O2'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'S1'</span><span class="p">,</span> <span class="s1">'S2'</span><span class="p">,</span> <span class="s1">'S3'</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Define a mapping of old to new sample ids:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">id_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;S1&#39;</span><span class="p">:</span><span class="s1">&#39;s1.1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">:</span><span class="s1">&#39;s2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">:</span><span class="s1">&#39;s3.3&#39;</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">id_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'S1'</span><span class="p">:</span><span class="s1">'s1.1'</span><span class="p">,</span> <span class="s1">'S2'</span><span class="p">:</span><span class="s1">'s2.2'</span><span class="p">,</span> <span class="s1">'S3'</span><span class="p">:</span><span class="s1">'s3.3'</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Get the ids along the sample axis in the table:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span>
-<span class="go">[&#39;S1&#39; &#39;S2&#39; &#39;S3&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'sample'</span><span class="p">))</span>
+<span class="go">['S1' 'S2' 'S3']</span>
 </pre></div>
 </div>
 <p>Update the sample ids and get the ids along the sample axis in the
 updated table:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">updated_table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">update_ids</span><span class="p">(</span><span class="n">id_map</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">updated_table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span>
-<span class="go">[&#39;s1.1&#39; &#39;s2.2&#39; &#39;s3.3&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">updated_table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">update_ids</span><span class="p">(</span><span class="n">id_map</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">'sample'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">updated_table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'sample'</span><span class="p">))</span>
+<span class="go">['s1.1' 's2.2' 's3.3']</span>
 </pre></div>
 </div>
 </dd></dl>

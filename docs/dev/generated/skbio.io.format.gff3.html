@@ -815,7 +815,7 @@ the annotation belong to.</p>
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <p>Let’s create a file stream with following data in GFF3 format:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">DNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gff_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gff_str</span> <span class="o">=</span> <span class="s1">'''</span>
 <span class="gp">... </span><span class="s1">##gff-version 3</span>
 <span class="gp">... </span><span class="s1">seq_1</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">gene</span><span class="se">\t</span><span class="s1">10</span><span class="se">\t</span><span class="s1">90</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">+</span><span class="se">\t</span><span class="s1">0</span><span class="se">\t</span><span class="s1">ID=gen1</span>
 <span class="gp">... </span><span class="s1">seq_1</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">exon</span><span class="se">\t</span><span class="s1">10</span><span class="se">\t</span><span class="s1">30</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">+</span><span class="se">\t</span><span class="s1">.</span><span class="se">\t</span><span class="s1">Parent=gen1</span>
@@ -828,7 +828,7 @@ the annotation belong to.</p>
 <span class="gp">... </span><span class="s1">&gt;seq_2</span>
 <span class="gp">... </span><span class="s1">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
 <span class="gp">... </span><span class="s1">ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC</span>
-<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">'''</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntervalMetadata</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span>
@@ -837,19 +837,19 @@ the annotation belong to.</p>
 </div>
 <p>We can read it into <code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code>. Each line will be read into
 an interval feature in <code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">IntervalMetadata</span><span class="p">,</span>
-<span class="gp">... </span>          <span class="n">seq_id</span><span class="o">=</span><span class="s1">&#39;seq_1&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'gff3'</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">IntervalMetadata</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">seq_id</span><span class="o">=</span><span class="s1">'seq_1'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">3 interval features</span>
 <span class="go">-------------------</span>
-<span class="go">Interval(interval_metadata=&lt;4604421736&gt;, bounds=[(9, 90)], fuzzy=[(False, False)], metadata={&#39;type&#39;: &#39;gene&#39;, &#39;phase&#39;: 0, &#39;strand&#39;: &#39;+&#39;, &#39;source&#39;: &#39;.&#39;, &#39;score&#39;: &#39;.&#39;, &#39;ID&#39;: &#39;gen1&#39;})</span>
-<span class="go">Interval(interval_metadata=&lt;4604421736&gt;, bounds=[(9, 30)], fuzzy=[(False, False)], metadata={&#39;strand&#39;: &#39;+&#39;, &#39;source&#39;: &#39;.&#39;, &#39;type&#39;: &#39;exon&#39;, &#39;Parent&#39;: &#39;gen1&#39;, &#39;score&#39;: &#39;.&#39;})</span>
-<span class="go">Interval(interval_metadata=&lt;4604421736&gt;, bounds=[(49, 90)], fuzzy=[(False, False)], metadata={&#39;strand&#39;: &#39;+&#39;, &#39;source&#39;: &#39;.&#39;, &#39;type&#39;: &#39;exon&#39;, &#39;Parent&#39;: &#39;gen1&#39;, &#39;score&#39;: &#39;.&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;4604421736&gt;, bounds=[(9, 90)], fuzzy=[(False, False)], metadata={'type': 'gene', 'phase': 0, 'strand': '+', 'source': '.', 'score': '.', 'ID': 'gen1'})</span>
+<span class="go">Interval(interval_metadata=&lt;4604421736&gt;, bounds=[(9, 30)], fuzzy=[(False, False)], metadata={'strand': '+', 'source': '.', 'type': 'exon', 'Parent': 'gen1', 'score': '.'})</span>
+<span class="go">Interval(interval_metadata=&lt;4604421736&gt;, bounds=[(49, 90)], fuzzy=[(False, False)], metadata={'strand': '+', 'source': '.', 'type': 'exon', 'Parent': 'gen1', 'score': '.'})</span>
 </pre></div>
 </div>
 <p>We can write the <code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object back to GFF3 file:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">seq_id</span><span class="o">=</span><span class="s1">&#39;seq_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'gff3'</span><span class="p">,</span> <span class="n">seq_id</span><span class="o">=</span><span class="s1">'seq_1'</span><span class="p">)</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 <span class="go">##gff-version 3</span>
 <span class="go">seq_1   .       gene    10      90      .       +       0       ID=gen1</span>
 <span class="go">seq_1   .       exon    10      30      .       +       .       Parent=gen1</span>
@@ -858,8 +858,8 @@ an interval feature in <code class="docutils literal notranslate"><span class="p
 </div>
 <p>If the GFF3 file does not have the sequence ID, it will return an empty object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">gff_str</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">IntervalMetadata</span><span class="p">,</span>
-<span class="gp">... </span>          <span class="n">seq_id</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'gff3'</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">IntervalMetadata</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">seq_id</span><span class="o">=</span><span class="s1">'foo'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">0 interval features</span>
 <span class="go">-------------------</span>
@@ -867,31 +867,31 @@ an interval feature in <code class="docutils literal notranslate"><span class="p
 </div>
 <p>We can also read the GFF3 file into a generator:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">gff_str</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'gff3'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">im</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># the seq id</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>   <span class="c1"># the interval metadata on this seq</span>
 <span class="go">seq_1</span>
 <span class="go">3 interval features</span>
 <span class="go">-------------------</span>
-<span class="go">Interval(interval_metadata=&lt;4603377592&gt;, bounds=[(9, 90)], fuzzy=[(False, False)], metadata={&#39;type&#39;: &#39;gene&#39;, &#39;ID&#39;: &#39;gen1&#39;, &#39;source&#39;: &#39;.&#39;, &#39;score&#39;: &#39;.&#39;, &#39;strand&#39;: &#39;+&#39;, &#39;phase&#39;: 0})</span>
-<span class="go">Interval(interval_metadata=&lt;4603377592&gt;, bounds=[(9, 30)], fuzzy=[(False, False)], metadata={&#39;strand&#39;: &#39;+&#39;, &#39;type&#39;: &#39;exon&#39;, &#39;Parent&#39;: &#39;gen1&#39;, &#39;source&#39;: &#39;.&#39;, &#39;score&#39;: &#39;.&#39;})</span>
-<span class="go">Interval(interval_metadata=&lt;4603377592&gt;, bounds=[(49, 90)], fuzzy=[(False, False)], metadata={&#39;strand&#39;: &#39;+&#39;, &#39;type&#39;: &#39;exon&#39;, &#39;Parent&#39;: &#39;gen1&#39;, &#39;source&#39;: &#39;.&#39;, &#39;score&#39;: &#39;.&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;4603377592&gt;, bounds=[(9, 90)], fuzzy=[(False, False)], metadata={'type': 'gene', 'ID': 'gen1', 'source': '.', 'score': '.', 'strand': '+', 'phase': 0})</span>
+<span class="go">Interval(interval_metadata=&lt;4603377592&gt;, bounds=[(9, 30)], fuzzy=[(False, False)], metadata={'strand': '+', 'type': 'exon', 'Parent': 'gen1', 'source': '.', 'score': '.'})</span>
+<span class="go">Interval(interval_metadata=&lt;4603377592&gt;, bounds=[(49, 90)], fuzzy=[(False, False)], metadata={'strand': '+', 'type': 'exon', 'Parent': 'gen1', 'source': '.', 'score': '.'})</span>
 <span class="go">seq_2</span>
 <span class="go">1 interval feature</span>
 <span class="go">------------------</span>
-<span class="go">Interval(interval_metadata=&lt;4603378712&gt;, bounds=[(79, 96)], fuzzy=[(False, False)], metadata={&#39;strand&#39;: &#39;-&#39;, &#39;type&#39;: &#39;gene&#39;, &#39;ID&#39;: &#39;gen2&#39;, &#39;source&#39;: &#39;.&#39;, &#39;score&#39;: &#39;.&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;4603378712&gt;, bounds=[(79, 96)], fuzzy=[(False, False)], metadata={'strand': '-', 'type': 'gene', 'ID': 'gen2', 'source': '.', 'score': '.'})</span>
 </pre></div>
 </div>
 <p>For the GFF3 file with sequences, we can read it into <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> or <code class="docutils literal notranslate"><span class="pre">DNA</span></code>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">gff_str</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">Sequence</span><span class="p">,</span> <span class="n">seq_num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'gff3'</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">Sequence</span><span class="p">,</span> <span class="n">seq_num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">Sequence</span>
 <span class="go">--------------------------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq_1&#39;</span>
+<span class="go">    'description': ''</span>
+<span class="go">    'id': 'seq_1'</span>
 <span class="go">Interval metadata:</span>
 <span class="go">    3 interval features</span>
 <span class="go">Stats:</span>
@@ -902,13 +902,13 @@ an interval feature in <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gff</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">gff_str</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gff3&#39;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">DNA</span><span class="p">,</span> <span class="n">seq_num</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">gff</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'gff3'</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">DNA</span><span class="p">,</span> <span class="n">seq_num</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">DNA</span>
 <span class="go">--------------------------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;description&#39;: &#39;&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq_2&#39;</span>
+<span class="go">    'description': ''</span>
+<span class="go">    'id': 'seq_2'</span>
 <span class="go">Interval metadata:</span>
 <span class="go">    1 interval feature</span>
 <span class="go">Stats:</span>

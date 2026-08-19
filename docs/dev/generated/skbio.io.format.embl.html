@@ -819,7 +819,7 @@ EMBL writers follow these conventions while writing EMBL files.</p>
 <section id="reading-embl-files">
 <h2>Reading EMBL Files<a class="headerlink" href="#reading-embl-files" title="Link to this heading">#</a></h2>
 <p>Suppose we have the following EMBL file example:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">embl_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">embl_str</span> <span class="o">=</span> <span class="s1">'''</span>
 <span class="gp">... </span><span class="s1">ID   X56734; SV 1; linear; mRNA; STD; PLN; 1859 BP.</span>
 <span class="gp">... </span><span class="s1">XX</span>
 <span class="gp">... </span><span class="s1">AC   X56734; S46826;</span>
@@ -842,9 +842,9 @@ EMBL writers follow these conventions while writing EMBL files.</p>
 <span class="gp">... </span><span class="s1">RX   DOI; 10.1007/BF00039495.</span>
 <span class="gp">... </span><span class="s1">RX   PUBMED; 1907511.</span>
 <span class="gp">... </span><span class="s1">RA   Oxtoby E., Dunn M.A., Pancoro A., Hughes M.A.;</span>
-<span class="gp">... </span><span class="s1">RT   &quot;Nucleotide and derived amino acid sequence of the cyanogenic</span>
+<span class="gp">... </span><span class="s1">RT   "Nucleotide and derived amino acid sequence of the cyanogenic</span>
 <span class="gp">... </span><span class="s1">RT   beta-glucosidase (linamarase) from white clover</span>
-<span class="gp">... </span><span class="s1">RT   (Trifolium repens L.)&quot;;</span>
+<span class="gp">... </span><span class="s1">RT   (Trifolium repens L.)";</span>
 <span class="gp">... </span><span class="s1">RL   Plant Mol. Biol. 17(2):209-219(1991).</span>
 <span class="gp">... </span><span class="s1">XX</span>
 <span class="gp">... </span><span class="s1">RN   [6]</span>
@@ -861,27 +861,27 @@ EMBL writers follow these conventions while writing EMBL files.</p>
 <span class="gp">... </span><span class="s1">FH   Key             Location/Qualifiers</span>
 <span class="gp">... </span><span class="s1">FH</span>
 <span class="gp">... </span><span class="s1">FT   source          1..1859</span>
-<span class="gp">... </span><span class="s1">FT                   /organism=&quot;Trifolium repens&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /mol_type=&quot;mRNA&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /clone_lib=&quot;lambda gt10&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /clone=&quot;TRE361&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /tissue_type=&quot;leaves&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /db_xref=&quot;taxon:3899&quot;</span>
+<span class="gp">... </span><span class="s1">FT                   /organism="Trifolium repens"</span>
+<span class="gp">... </span><span class="s1">FT                   /mol_type="mRNA"</span>
+<span class="gp">... </span><span class="s1">FT                   /clone_lib="lambda gt10"</span>
+<span class="gp">... </span><span class="s1">FT                   /clone="TRE361"</span>
+<span class="gp">... </span><span class="s1">FT                   /tissue_type="leaves"</span>
+<span class="gp">... </span><span class="s1">FT                   /db_xref="taxon:3899"</span>
 <span class="gp">... </span><span class="s1">FT   mRNA            1..1859</span>
-<span class="gp">... </span><span class="s1">FT                   /experiment=&quot;experimental evidence, no additional</span>
-<span class="gp">... </span><span class="s1">FT                   details recorded&quot;</span>
+<span class="gp">... </span><span class="s1">FT                   /experiment="experimental evidence, no additional</span>
+<span class="gp">... </span><span class="s1">FT                   details recorded"</span>
 <span class="gp">... </span><span class="s1">FT   CDS             14..1495</span>
-<span class="gp">... </span><span class="s1">FT                   /product=&quot;beta-glucosidase&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /EC_number=&quot;3.2.1.21&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /note=&quot;non-cyanogenic&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /db_xref=&quot;GOA:P26204&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /db_xref=&quot;InterPro:IPR001360&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /db_xref=&quot;InterPro:IPR013781&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /db_xref=&quot;InterPro:IPR017853&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /db_xref=&quot;InterPro:IPR033132&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /db_xref=&quot;UniProtKB/Swiss-Prot:P26204&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /protein_id=&quot;CAA40058.1&quot;</span>
-<span class="gp">... </span><span class="s1">FT                   /translation=&quot;MDFIVAIFALFVISSFTITSTNAVEASTLLDIGNLSRS</span>
+<span class="gp">... </span><span class="s1">FT                   /product="beta-glucosidase"</span>
+<span class="gp">... </span><span class="s1">FT                   /EC_number="3.2.1.21"</span>
+<span class="gp">... </span><span class="s1">FT                   /note="non-cyanogenic"</span>
+<span class="gp">... </span><span class="s1">FT                   /db_xref="GOA:P26204"</span>
+<span class="gp">... </span><span class="s1">FT                   /db_xref="InterPro:IPR001360"</span>
+<span class="gp">... </span><span class="s1">FT                   /db_xref="InterPro:IPR013781"</span>
+<span class="gp">... </span><span class="s1">FT                   /db_xref="InterPro:IPR017853"</span>
+<span class="gp">... </span><span class="s1">FT                   /db_xref="InterPro:IPR033132"</span>
+<span class="gp">... </span><span class="s1">FT                   /db_xref="UniProtKB/Swiss-Prot:P26204"</span>
+<span class="gp">... </span><span class="s1">FT                   /protein_id="CAA40058.1"</span>
+<span class="gp">... </span><span class="s1">FT                   /translation="MDFIVAIFALFVISSFTITSTNAVEASTLLDIGNLSRS</span>
 <span class="gp">... </span><span class="s1">FT                   SFPRGFIFGAGSSAYQFEGAVNEGGRGPSIWDTFTHKYPEKIRDGSNADITV</span>
 <span class="gp">... </span><span class="s1">FT                   DQYHRYKEDVGIMKDQNMDSYRFSISWPRILPKGKLSGGINHEGIKYYNNLI</span>
 <span class="gp">... </span><span class="s1">FT                   NELLANGIQPFVTLFHWDLPQVLEDEYGGFLNSGVINDFRDYTDLCFKEFGD</span>
@@ -890,7 +890,7 @@ EMBL writers follow these conventions while writing EMBL files.</p>
 <span class="gp">... </span><span class="s1">FT                   FGLFMEQLTTGDYSKSMRRIVKNRLPKFSKFESSLVNGSFDFIGINYYSSSY</span>
 <span class="gp">... </span><span class="s1">FT                   ISNAPSHGNAKPSYSTNPMTNISFEKHGIPLGPRAASIWIYVYPYMFIQEDF</span>
 <span class="gp">... </span><span class="s1">FT                   EIFCYILKINITILQFSITENGMNEFNDATLPVEEALLNTYRIDYYYRHLYY</span>
-<span class="gp">... </span><span class="s1">FT                   IRSAIRAGSNVKGFYAWSFLDCNEWFAGFTVRFGLNFVD&quot;</span>
+<span class="gp">... </span><span class="s1">FT                   IRSAIRAGSNVKGFYAWSFLDCNEWFAGFTVRFGLNFVD"</span>
 <span class="gp">... </span><span class="s1">XX</span>
 <span class="gp">... </span><span class="s1">SQ   Sequence 1859 BP; 609 A; 314 C; 355 G; 581 T; 0 other;</span>
 <span class="gp">... </span><span class="s1">     aaacaaacca aatatggatt ttattgtagc catatttgct ctgtttgtta ttagctcatt</span>
@@ -925,7 +925,7 @@ EMBL writers follow these conventions while writing EMBL files.</p>
 <span class="gp">... </span><span class="s1">     agaagctatg atcataacta taggttgatc cttcatgtat cagtttgatg ttgagaatac</span>
 <span class="gp">... </span><span class="s1">     tttgaattaa aagtcttttt ttattttttt aaaaaaaaaa aaaaaaaaaa aaaaaaaaa</span>
 <span class="gp">... </span><span class="s1">//</span>
-<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">'''</span>
 </pre></div>
 </div>
 <p>Now we can read it as <code class="docutils literal notranslate"><span class="pre">DNA</span></code> object:</p>
@@ -937,17 +937,17 @@ EMBL writers follow these conventions while writing EMBL files.</p>
 <span class="go">DNA</span>
 <span class="go">----------------------------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;ACCESSION&#39;: &#39;X56734; S46826;&#39;</span>
-<span class="go">    &#39;CROSS_REFERENCE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;DATE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;DBSOURCE&#39;: &#39;MD5; 1e51ca3a5450c43524b9185c236cc5cc.&#39;</span>
-<span class="go">    &#39;DEFINITION&#39;: &#39;Trifolium repens mRNA for non-cyanogenic beta-</span>
-<span class="go">                   glucosidase&#39;</span>
-<span class="go">    &#39;KEYWORDS&#39;: &#39;beta-glucosidase.&#39;</span>
-<span class="go">    &#39;LOCUS&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;REFERENCE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;SOURCE&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;VERSION&#39;: &#39;X56734.1&#39;</span>
+<span class="go">    'ACCESSION': 'X56734; S46826;'</span>
+<span class="go">    'CROSS_REFERENCE': &lt;class 'list'&gt;</span>
+<span class="go">    'DATE': &lt;class 'list'&gt;</span>
+<span class="go">    'DBSOURCE': 'MD5; 1e51ca3a5450c43524b9185c236cc5cc.'</span>
+<span class="go">    'DEFINITION': 'Trifolium repens mRNA for non-cyanogenic beta-</span>
+<span class="go">                   glucosidase'</span>
+<span class="go">    'KEYWORDS': 'beta-glucosidase.'</span>
+<span class="go">    'LOCUS': &lt;class 'dict'&gt;</span>
+<span class="go">    'REFERENCE': &lt;class 'list'&gt;</span>
+<span class="go">    'SOURCE': &lt;class 'dict'&gt;</span>
+<span class="go">    'VERSION': 'X56734.1'</span>
 <span class="go">Interval metadata:</span>
 <span class="go">    3 interval features</span>
 <span class="go">Stats:</span>
@@ -973,17 +973,17 @@ the sequence, we can read it as <code class="docutils literal notranslate"><span
 <span class="go">RNA</span>
 <span class="go">----------------------------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;ACCESSION&#39;: &#39;X56734; S46826;&#39;</span>
-<span class="go">    &#39;CROSS_REFERENCE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;DATE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;DBSOURCE&#39;: &#39;MD5; 1e51ca3a5450c43524b9185c236cc5cc.&#39;</span>
-<span class="go">    &#39;DEFINITION&#39;: &#39;Trifolium repens mRNA for non-cyanogenic beta-</span>
-<span class="go">                   glucosidase&#39;</span>
-<span class="go">    &#39;KEYWORDS&#39;: &#39;beta-glucosidase.&#39;</span>
-<span class="go">    &#39;LOCUS&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;REFERENCE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;SOURCE&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;VERSION&#39;: &#39;X56734.1&#39;</span>
+<span class="go">    'ACCESSION': 'X56734; S46826;'</span>
+<span class="go">    'CROSS_REFERENCE': &lt;class 'list'&gt;</span>
+<span class="go">    'DATE': &lt;class 'list'&gt;</span>
+<span class="go">    'DBSOURCE': 'MD5; 1e51ca3a5450c43524b9185c236cc5cc.'</span>
+<span class="go">    'DEFINITION': 'Trifolium repens mRNA for non-cyanogenic beta-</span>
+<span class="go">                   glucosidase'</span>
+<span class="go">    'KEYWORDS': 'beta-glucosidase.'</span>
+<span class="go">    'LOCUS': &lt;class 'dict'&gt;</span>
+<span class="go">    'REFERENCE': &lt;class 'list'&gt;</span>
+<span class="go">    'SOURCE': &lt;class 'dict'&gt;</span>
+<span class="go">    'VERSION': 'X56734.1'</span>
 <span class="go">Interval metadata:</span>
 <span class="go">    3 interval features</span>
 <span class="go">Stats:</span>
@@ -1013,7 +1013,7 @@ sequence</p>
 generator object to deal with multiple records</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">skbio</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">embl</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">embl_str</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embl_gen</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">embl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;embl&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embl_gen</span> <span class="o">=</span> <span class="n">skbio</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">embl</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"embl"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dna_seq</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">embl_gen</span><span class="p">)</span>
 </pre></div>
 </div>

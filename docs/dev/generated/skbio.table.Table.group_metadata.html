@@ -803,14 +803,14 @@
 <p>Create a 2x3 BIOM table, with group observation metadata and no group
 sample metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group_observation_md</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tree&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;newick&#39;</span><span class="p">,</span> <span class="s1">&#39;(O1:0.3,O2:0.4);&#39;</span><span class="p">)}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group_observation_md</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'tree'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'newick'</span><span class="p">,</span> <span class="s1">'(O1:0.3,O2:0.4);'</span><span class="p">)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">'O1'</span><span class="p">,</span> <span class="s1">'O2'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'S1'</span><span class="p">,</span> <span class="s1">'S2'</span><span class="p">,</span> <span class="s1">'S3'</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="n">observation_group_metadata</span><span class="o">=</span><span class="n">group_observation_md</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Get the observation group metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">group_metadata</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;observation&#39;</span><span class="p">)</span>
-<span class="go">{&#39;tree&#39;: (&#39;newick&#39;, &#39;(O1:0.3,O2:0.4);&#39;)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">group_metadata</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'observation'</span><span class="p">)</span>
+<span class="go">{'tree': ('newick', '(O1:0.3,O2:0.4);')}</span>
 </pre></div>
 </div>
 <p>Get the sample group metadata:</p>

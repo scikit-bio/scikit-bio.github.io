@@ -840,10 +840,10 @@ not necessary.</p>
 </div>
 <p>Join MSAs by sequence:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa1</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;A-&#39;</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa2</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;G-T&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;T--&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa1</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'AC'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'A-'</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa2</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'G-T'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'T--'</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span> <span class="o">=</span> <span class="n">msa1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msa2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># unnecessary in practice, see note above</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span>
@@ -858,10 +858,10 @@ not necessary.</p>
 </pre></div>
 </div>
 <p>Sequences are joined based on MSA index labels:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa1</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;A-&#39;</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa2</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;G-T&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;T--&#39;</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa1</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'AC'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'A-'</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa2</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'G-T'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'T--'</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'b'</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span> <span class="o">=</span> <span class="n">msa1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msa2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># unnecessary in practice, see note above</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span>
@@ -874,28 +874,28 @@ not necessary.</p>
 <span class="go">ACT--</span>
 <span class="go">A-G-T</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">index</span>
-<span class="go">Index([&#39;a&#39;, &#39;b&#39;], dtype=&#39;...&#39;)</span>
+<span class="go">Index(['a', 'b'], dtype='...')</span>
 </pre></div>
 </div>
 <p>By default both MSA indexes must match. Use <code class="docutils literal notranslate"><span class="pre">how</span></code> to specify an inner
 join:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa1</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;A-&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;-C&#39;</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span>
-<span class="gp">... </span>                  <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">],</span>
-<span class="gp">... </span>                                       <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa2</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;G-T&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;T--&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">],</span>
-<span class="gp">... </span>                  <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-<span class="gp">... </span>                                       <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">]})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span> <span class="o">=</span> <span class="n">msa1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msa2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa1</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'AC'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'A-'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'-C'</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'col1'</span><span class="p">:</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">],</span>
+<span class="gp">... </span>                                       <span class="s1">'col2'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa2</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'G-T'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'T--'</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">DNA</span><span class="p">(</span><span class="s1">'ACG'</span><span class="p">)],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'b'</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'col2'</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>                                       <span class="s1">'col3'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'f'</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span> <span class="o">=</span> <span class="n">msa1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msa2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># unnecessary in practice, see note above</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span>
 <span class="go">TabularMSA[DNA]</span>
 <span class="go">--------------------------</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;col2&#39;: &lt;dtype: int64&gt;</span>
+<span class="go">    'col2': &lt;dtype: int64&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    sequence count: 2</span>
 <span class="go">    position count: 5</span>
@@ -903,7 +903,7 @@ join:</p>
 <span class="go">ACT--</span>
 <span class="go">A-G-T</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">index</span>
-<span class="go">Index([&#39;a&#39;, &#39;b&#39;], dtype=&#39;...&#39;)</span>
+<span class="go">Index(['a', 'b'], dtype='...')</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">positional_metadata</span>
 <span class="go">   col2</span>
 <span class="go">0     1</span>
@@ -916,15 +916,15 @@ join:</p>
 <p>When performing an outer join (<code class="docutils literal notranslate"><span class="pre">'outer'</span></code>, <code class="docutils literal notranslate"><span class="pre">'left'</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">'right'</span></code>), unshared sequences are padded with gaps and unshared
 <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code> columns are padded with NaN:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span> <span class="o">=</span> <span class="n">msa1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msa2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span> <span class="o">=</span> <span class="n">msa1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msa2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'outer'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># unnecessary in practice, see note above</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span>
 <span class="go">TabularMSA[DNA]</span>
 <span class="go">----------------------------</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;col1&#39;: &lt;dtype: float64&gt;</span>
-<span class="go">    &#39;col2&#39;: &lt;dtype: int64&gt;</span>
-<span class="go">    &#39;col3&#39;: &lt;dtype: ...&gt;</span>
+<span class="go">    'col1': &lt;dtype: float64&gt;</span>
+<span class="go">    'col2': &lt;dtype: int64&gt;</span>
+<span class="go">    'col3': &lt;dtype: ...&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    sequence count: 4</span>
 <span class="go">    position count: 5</span>
@@ -934,7 +934,7 @@ join:</p>
 <span class="go">-C---</span>
 <span class="go">--ACG</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">index</span>
-<span class="go">Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;z&#39;], dtype=&#39;...&#39;)</span>
+<span class="go">Index(['a', 'b', 'c', 'z'], dtype='...')</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">joined</span><span class="o">.</span><span class="n">positional_metadata</span>
 <span class="go">   col1  col2 col3</span>
 <span class="go">0  42.0     1  NaN</span>

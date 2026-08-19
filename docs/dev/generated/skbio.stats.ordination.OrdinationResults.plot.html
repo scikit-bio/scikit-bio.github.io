@@ -845,17 +845,17 @@ Gigascience. 2013 Nov 26;2(1):16. <a class="reference external" href="http://bio
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.21712454</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.45995501</span><span class="p">,</span> <span class="mf">0.80332382</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.5007512</span><span class="p">,</span> <span class="mf">0.45995501</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.65463348</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="mf">0.91769271</span><span class="p">,</span> <span class="mf">0.80332382</span><span class="p">,</span> <span class="mf">0.65463348</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]],</span>
-<span class="gp">... </span>                    <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
+<span class="gp">... </span>                    <span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Define metadata for each sample in a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
-<span class="gp">... </span>    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;gut&#39;</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;gut&#39;</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;body_site&#39;</span><span class="p">:</span> <span class="s1">&#39;skin&#39;</span><span class="p">}}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="s1">'A'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'body_site'</span><span class="p">:</span> <span class="s1">'skin'</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="s1">'B'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'body_site'</span><span class="p">:</span> <span class="s1">'gut'</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="s1">'C'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'body_site'</span><span class="p">:</span> <span class="s1">'gut'</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="s1">'D'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'body_site'</span><span class="p">:</span> <span class="s1">'skin'</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Run principal coordinate analysis (PCoA) on the distance matrix:</p>
@@ -866,9 +866,9 @@ Gigascience. 2013 Nov 26;2(1):16. <a class="reference external" href="http://bio
 <p>Plot the ordination results, where each sample is colored by body
 site (a categorical variable):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">pcoa_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;body_site&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by body site&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
+<span class="gp">... </span>    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">'body_site'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">'Samples colored by body site'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">'Set1'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>

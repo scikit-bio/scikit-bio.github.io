@@ -841,16 +841,16 @@ observed in each of the samples.</p>
 </div>
 <p>Because UniFrac is a phylogenetic diversity metric, we need to know which
 taxon each count corresponds to, which we’ll provide as <code class="docutils literal notranslate"><span class="pre">taxa</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;U2&#39;</span><span class="p">,</span> <span class="s1">&#39;U3&#39;</span><span class="p">,</span> <span class="s1">&#39;U4&#39;</span><span class="p">,</span> <span class="s1">&#39;U5&#39;</span><span class="p">,</span> <span class="s1">&#39;U6&#39;</span><span class="p">,</span> <span class="s1">&#39;U7&#39;</span><span class="p">,</span> <span class="s1">&#39;U8&#39;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'U1'</span><span class="p">,</span> <span class="s1">'U2'</span><span class="p">,</span> <span class="s1">'U3'</span><span class="p">,</span> <span class="s1">'U4'</span><span class="p">,</span> <span class="s1">'U5'</span><span class="p">,</span> <span class="s1">'U6'</span><span class="p">,</span> <span class="s1">'U7'</span><span class="p">,</span> <span class="s1">'U8'</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We also need a phylogenetic tree that relates the taxa to one another.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(U4:0.75,(U5:0.5,((U6:0.33,U7:0.62):0.5&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;,U8:0.5):0.5):0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
+<span class="gp">... </span>                     <span class="s1">'(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,'</span>
+<span class="gp">... </span>                     <span class="s1">'(U4:0.75,(U5:0.5,((U6:0.33,U7:0.62):0.5'</span>
+<span class="gp">... </span>                     <span class="s1">',U8:0.5):0.5):0.5):1.25):0.0)root;'</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>We can then compute the unweighted UniFrac distance between the samples.</p>

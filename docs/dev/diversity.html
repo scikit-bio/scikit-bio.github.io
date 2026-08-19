@@ -936,13 +936,13 @@ SciPy’s <a class="reference external" href="https://docs.scipy.org/doc/scipy/r
 <span class="gp">... </span>        <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCDEF&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">'ABCDEF'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>First, we’ll compute <span class="math notranslate nohighlight">\(S_{obs}\)</span>, an alpha diversity metric, for each
 sample using the <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code> driver function:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity</span><span class="w"> </span><span class="kn">import</span> <span class="n">alpha_diversity</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_sobs</span> <span class="o">=</span> <span class="n">alpha_diversity</span><span class="p">(</span><span class="s1">&#39;sobs&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_sobs</span> <span class="o">=</span> <span class="n">alpha_diversity</span><span class="p">(</span><span class="s1">'sobs'</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_sobs</span>
 <span class="go">A    5</span>
 <span class="go">B    5</span>
@@ -959,11 +959,11 @@ list of taxa.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;(U4:0.75,(U5:0.5,(U6:0.5,U7:0.5):0.5):&#39;</span>
-<span class="gp">... </span>                     <span class="s1">&#39;0.5):1.25):0.0)root;&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;U2&#39;</span><span class="p">,</span> <span class="s1">&#39;U3&#39;</span><span class="p">,</span> <span class="s1">&#39;U4&#39;</span><span class="p">,</span> <span class="s1">&#39;U5&#39;</span><span class="p">,</span> <span class="s1">&#39;U6&#39;</span><span class="p">,</span> <span class="s1">&#39;U7&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_faith_pd</span> <span class="o">=</span> <span class="n">alpha_diversity</span><span class="p">(</span><span class="s1">&#39;faith_pd&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="s1">'(((((U1:0.5,U2:0.5):0.5,U3:1.0):1.0):0.0,'</span>
+<span class="gp">... </span>                     <span class="s1">'(U4:0.75,(U5:0.5,(U6:0.5,U7:0.5):0.5):'</span>
+<span class="gp">... </span>                     <span class="s1">'0.5):1.25):0.0)root;'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">taxa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'U1'</span><span class="p">,</span> <span class="s1">'U2'</span><span class="p">,</span> <span class="s1">'U3'</span><span class="p">,</span> <span class="s1">'U4'</span><span class="p">,</span> <span class="s1">'U5'</span><span class="p">,</span> <span class="s1">'U6'</span><span class="p">,</span> <span class="s1">'U7'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_faith_pd</span> <span class="o">=</span> <span class="n">alpha_diversity</span><span class="p">(</span><span class="s1">'faith_pd'</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
 <span class="gp">... </span>                                <span class="n">taxa</span><span class="o">=</span><span class="n">taxa</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adiv_faith_pd</span>
 <span class="go">A    6.75</span>
@@ -980,11 +980,11 @@ all pairs of samples. Notice that the <code class="docutils literal notranslate"
 provided to <code class="docutils literal notranslate"><span class="pre">beta_diversity</span></code> are the same as those provided to
 <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity</span><span class="w"> </span><span class="kn">import</span> <span class="n">beta_diversity</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bc_dm</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s2">&quot;braycurtis&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bc_dm</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s2">"braycurtis"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bc_dm</span><span class="p">)</span>
 <span class="go">6x6 distance matrix</span>
 <span class="go">IDs:</span>
-<span class="go">&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;</span>
+<span class="go">'A', 'B', 'C', 'D', 'E', 'F'</span>
 <span class="go">Data:</span>
 <span class="go">[[ 0.          0.78787879  0.86666667  0.30927835  0.85714286  0.81521739]</span>
 <span class="go"> [ 0.78787879  0.          0.78142077  0.86813187  0.75        0.1627907 ]</span>
@@ -998,12 +998,12 @@ provided to <code class="docutils literal notranslate"><span class="pre">beta_di
 Because weighted UniFrac is a phylogenetic beta diversity metric, we’ll need
 to pass the <code class="docutils literal notranslate"><span class="pre">skbio.TreeNode</span></code> and list of taxa that we created above.
 Again, these are the same values that were provided to <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wu_dm</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s2">&quot;weighted_unifrac&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wu_dm</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s2">"weighted_unifrac"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">,</span>
 <span class="gp">... </span>                       <span class="n">taxa</span><span class="o">=</span><span class="n">taxa</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">)</span>
 <span class="go">6x6 distance matrix</span>
 <span class="go">IDs:</span>
-<span class="go">&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;</span>
+<span class="go">'A', 'B', 'C', 'D', 'E', 'F'</span>
 <span class="go">Data:</span>
 <span class="go">[[ 0.          2.77549923  3.82857143  0.42512039  3.8547619   3.10937312]</span>
 <span class="go"> [ 2.77549923  0.          2.26433692  2.98435423  2.24270353  0.46774194]</span>
@@ -1037,14 +1037,14 @@ UniFrac distance matrix.</p>
 let’s define some before we visualize these results.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-<span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;gut&#39;</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">],</span>
-<span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;skin&#39;</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">],</span>
-<span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;tongue&#39;</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">],</span>
-<span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;gut&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">],</span>
-<span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;tongue&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">],</span>
-<span class="gp">... </span>   <span class="p">[</span><span class="s1">&#39;skin&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">]],</span>
-<span class="gp">... </span>   <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">],</span>
-<span class="gp">... </span>   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;body_site&#39;</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">])</span>
+<span class="gp">... </span>   <span class="p">[</span><span class="s1">'gut'</span><span class="p">,</span> <span class="s1">'s1'</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">[</span><span class="s1">'skin'</span><span class="p">,</span> <span class="s1">'s1'</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">[</span><span class="s1">'tongue'</span><span class="p">,</span> <span class="s1">'s1'</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">[</span><span class="s1">'gut'</span><span class="p">,</span> <span class="s1">'s2'</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">[</span><span class="s1">'tongue'</span><span class="p">,</span> <span class="s1">'s2'</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">[</span><span class="s1">'skin'</span><span class="p">,</span> <span class="s1">'s2'</span><span class="p">]],</span>
+<span class="gp">... </span>   <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">,</span> <span class="s1">'F'</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'body_site'</span><span class="p">,</span> <span class="s1">'subject'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span>
 <span class="go">  body_site subject</span>
 <span class="go">A       gut      s1</span>
@@ -1058,10 +1058,10 @@ let’s define some before we visualize these results.</p>
 <p>Now let’s plot our PCoA results, coloring each sample by the subject it
 was taken from:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">wu_pc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">sample_md</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 3&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by subject&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
+<span class="gp">... </span>    <span class="n">sample_md</span><span class="p">,</span> <span class="s1">'subject'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">'PC 1'</span><span class="p">,</span> <span class="s1">'PC 2'</span><span class="p">,</span> <span class="s1">'PC 3'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">'Samples colored by subject'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">'jet'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1074,10 +1074,10 @@ from the same body site (those that are colored the same) appear to be
 closer to one another in the 3-D space then they are to samples from
 other body sites.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">wu_pc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">sample_md</span><span class="p">,</span> <span class="s1">&#39;body_site&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC 3&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Samples colored by body site&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
+<span class="gp">... </span>    <span class="n">sample_md</span><span class="p">,</span> <span class="s1">'body_site'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">axis_labels</span><span class="o">=</span><span class="p">(</span><span class="s1">'PC 1'</span><span class="p">,</span> <span class="s1">'PC 2'</span><span class="p">,</span> <span class="s1">'PC 3'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s1">'Samples colored by body site'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cmap</span><span class="o">=</span><span class="s1">'jet'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1095,20 +1095,20 @@ quantify the strength of the clustering we see in the ordination plots
 above, using our weighted UniFrac distance matrix and sample metadata.</p>
 <p>First test the grouping of samples by subject:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">anosim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">anosim</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">,</span> <span class="n">sample_md</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;subject&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">999</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;test statistic&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">anosim</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">,</span> <span class="n">sample_md</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">'subject'</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">999</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">'test statistic'</span><span class="p">]</span>
 <span class="go">-0.33333333333333331</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;p-value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">'p-value'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span>
 <span class="go">False</span>
 </pre></div>
 </div>
 <p>The negative value of ANOSIM’s R statistic indicates anti-clustering and the
 p-value is insignificant at an alpha of 0.1.</p>
 <p>Now let’s test the grouping of samples by body site:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">anosim</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">,</span> <span class="n">sample_md</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;body_site&#39;</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">999</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;test statistic&#39;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">anosim</span><span class="p">(</span><span class="n">wu_dm</span><span class="p">,</span> <span class="n">sample_md</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">'body_site'</span><span class="p">,</span> <span class="n">permutations</span><span class="o">=</span><span class="mi">999</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">'test statistic'</span><span class="p">]</span>
 <span class="go">1.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;p-value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="p">[</span><span class="s1">'p-value'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1119,8 +1119,8 @@ To do this, let’s add the observed richness and Faith’s PD metrics to our
 sample metadata. This is straight-forward because <code class="docutils literal notranslate"><span class="pre">alpha_diversity</span></code>
 returns a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> object, and we’re representing our sample
 metadata in a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span><span class="p">[</span><span class="s1">&#39;Obs. richness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adiv_sobs</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span><span class="p">[</span><span class="s1">&#39;Faith PD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adiv_faith_pd</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span><span class="p">[</span><span class="s1">'Obs. richness'</span><span class="p">]</span> <span class="o">=</span> <span class="n">adiv_sobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span><span class="p">[</span><span class="s1">'Faith PD'</span><span class="p">]</span> <span class="o">=</span> <span class="n">adiv_faith_pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span>
 <span class="go">  body_site subject  Obs. richness  Faith PD</span>
 <span class="go">A       gut      s1              5      6.75</span>
@@ -1134,7 +1134,7 @@ metadata in a Pandas <code class="docutils literal notranslate"><span class="pre
 <p>We can investigate these alpha diversity data in the context of our metadata
 categories. For example, we can generate boxplots showing Faith PD by body
 site.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">sample_md</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;Faith PD&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;body_site&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">sample_md</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">'Faith PD'</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">'body_site'</span><span class="p">)</span>
 </pre></div>
 </div>
 <figure class="align-default">
@@ -1150,7 +1150,7 @@ site.</p>
 this <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Since our alpha diversity metrics are the only two
 numeric columns (and thus the only columns for which Spearman correlation
 is relevant), this will give us a symmetric 2x2 correlation matrix.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sample_md</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"spearman"</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">               Obs. richness  Faith PD</span>
 <span class="go">Obs. richness       1.000000  0.939336</span>
 <span class="go">Faith PD            0.939336  1.000000</span>

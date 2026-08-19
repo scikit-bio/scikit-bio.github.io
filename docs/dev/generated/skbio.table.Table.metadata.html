@@ -808,18 +808,18 @@ does not have metadata.</p>
 <p>Create a 2x3 BIOM table, with observation metadata and no sample
 metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">],</span>
-<span class="gp">... </span>              <span class="p">[{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;y&#39;</span><span class="p">}],</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">'O1'</span><span class="p">,</span> <span class="s1">'O2'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'S1'</span><span class="p">,</span> <span class="s1">'S2'</span><span class="p">,</span> <span class="s1">'S3'</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">},</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="s1">'y'</span><span class="p">}],</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Get the metadata of the observation with ID “O2”:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># casting to `dict` as the return is `defaultdict`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="s1">&#39;O2&#39;</span><span class="p">,</span> <span class="s1">&#39;observation&#39;</span><span class="p">))</span>
-<span class="go">{&#39;x&#39;: &#39;y&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="s1">'O2'</span><span class="p">,</span> <span class="s1">'observation'</span><span class="p">))</span>
+<span class="go">{'x': 'y'}</span>
 </pre></div>
 </div>
 <p>Get the metadata of the sample with ID “S1”:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="s1">'S1'</span><span class="p">,</span> <span class="s1">'sample'</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
 <span class="go">True</span>
 </pre></div>
 </div>

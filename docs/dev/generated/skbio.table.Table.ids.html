@@ -802,17 +802,17 @@
 </div>
 <p>Create a 2x3 BIOM table:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">'O1'</span><span class="p">,</span> <span class="s1">'O2'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'S1'</span><span class="p">,</span> <span class="s1">'S2'</span><span class="p">,</span> <span class="s1">'S3'</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Get the ids along the observation axis:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;observation&#39;</span><span class="p">))</span>
-<span class="go">[&#39;O1&#39; &#39;O2&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'observation'</span><span class="p">))</span>
+<span class="go">['O1' 'O2']</span>
 </pre></div>
 </div>
 <p>Get the ids along the sample axis:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">())</span>
-<span class="go">[&#39;S1&#39; &#39;S2&#39; &#39;S3&#39;]</span>
+<span class="go">['S1' 'S2' 'S3']</span>
 </pre></div>
 </div>
 </dd></dl>

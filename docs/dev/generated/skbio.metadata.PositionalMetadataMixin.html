@@ -804,15 +804,15 @@ scikit-bio objects storing positional metadata.</p>
 <p>Create a DNA sequence with positional metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;ACGT&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;exons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-<span class="gp">... </span>                         <span class="s1">&#39;quality&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">11</span><span class="p">]})</span>
+<span class="gp">... </span>    <span class="s1">'ACGT'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'exons'</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+<span class="gp">... </span>                         <span class="s1">'quality'</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">11</span><span class="p">]})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">DNA</span>
 <span class="go">-----------------------------</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;exons&#39;: &lt;dtype: bool&gt;</span>
-<span class="go">    &#39;quality&#39;: &lt;dtype: int64&gt;</span>
+<span class="go">    'exons': &lt;dtype: bool&gt;</span>
+<span class="go">    'quality': &lt;dtype: int64&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 4</span>
 <span class="go">    has gaps: False</span>
@@ -833,7 +833,7 @@ scikit-bio objects storing positional metadata.</p>
 </pre></div>
 </div>
 <p>Update positional metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="p">[</span><span class="s1">&#39;gaps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">gaps</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="p">[</span><span class="s1">'gaps'</span><span class="p">]</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">gaps</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span>
 <span class="go">   exons  quality   gaps</span>
 <span class="go">0   True        3  False</span>
@@ -843,7 +843,7 @@ scikit-bio objects storing positional metadata.</p>
 </pre></div>
 </div>
 <p>Set positional metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;degenerates&#39;</span><span class="p">:</span> <span class="n">seq</span><span class="o">.</span><span class="n">degenerates</span><span class="p">()}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'degenerates'</span><span class="p">:</span> <span class="n">seq</span><span class="o">.</span><span class="n">degenerates</span><span class="p">()}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span>
 <span class="go">  degenerates</span>
 <span class="go">0       False</span>

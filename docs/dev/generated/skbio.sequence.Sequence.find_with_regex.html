@@ -767,14 +767,14 @@ compiled regular expression object (e.g., from calling
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;AATATACCGGTTATAA&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_with_regex</span><span class="p">(</span><span class="s1">&#39;(TATA+)&#39;</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'AATATACCGGTTATAA'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_with_regex</span><span class="p">(</span><span class="s1">'(TATA+)'</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">match</span>
 <span class="gp">... </span>    <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">match</span><span class="p">])</span>
 <span class="go">slice(2, 6, None)</span>
-<span class="go">&#39;TATA&#39;</span>
+<span class="go">'TATA'</span>
 <span class="go">slice(11, 16, None)</span>
-<span class="go">&#39;TATAA&#39;</span>
+<span class="go">'TATAA'</span>
 </pre></div>
 </div>
 </dd></dl>

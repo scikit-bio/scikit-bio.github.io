@@ -772,16 +772,16 @@ characters. All gap characters at a position contribute to that
 position’s gap consensus.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC---&#39;</span><span class="p">),</span>
-<span class="gp">... </span>             <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AT-C.&#39;</span><span class="p">),</span>
-<span class="gp">... </span>             <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;TT-CG&#39;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'AC---'</span><span class="p">),</span>
+<span class="gp">... </span>             <span class="n">DNA</span><span class="p">(</span><span class="s1">'AT-C.'</span><span class="p">),</span>
+<span class="gp">... </span>             <span class="n">DNA</span><span class="p">(</span><span class="s1">'TT-CG'</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span>
-<span class="gp">... </span>                 <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;prob&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]})</span>
+<span class="gp">... </span>                 <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'prob'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">consensus</span><span class="p">()</span>
 <span class="go">DNA</span>
 <span class="go">--------------------------</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;prob&#39;: &lt;dtype: int64&gt;</span>
+<span class="go">    'prob': &lt;dtype: int64&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 5</span>
 <span class="go">    has gaps: True</span>

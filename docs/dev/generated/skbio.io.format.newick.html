@@ -770,7 +770,7 @@ explanation of the format in plain English.</p>
     NODE_INFO ==&gt; LABEL | LENGTH | LABEL FORMATTING LENGTH | null
    FORMATTING ==&gt; [ COMMENT_CHARS ] | whitespace | null
      CHILDREN ==&gt; NODE | CHILDREN , NODE
-        LABEL ==&gt; &#39; ALL_CHARS &#39; | SAFE_CHARS
+        LABEL ==&gt; ' ALL_CHARS ' | SAFE_CHARS
        LENGTH ==&gt; : FORMATTING NUMBER
 COMMENT_CHARS ==&gt; any
     ALL_CHARS ==&gt; any
@@ -908,8 +908,8 @@ properly escape underscores.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;((D, E)B, (F, G)C)A;&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;newick&quot;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">TreeNode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"((D, E)B, (F, G)C)A;"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"newick"</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">TreeNode</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                    /-D</span>
@@ -922,13 +922,13 @@ properly escape underscores.</p>
 </pre></div>
 </div>
 <p>This is a complex Newick string.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;[example](a:0.1, &#39;b_b&#39;&#39;&#39;:0.2, (c:0.3, d_d:0.4)e:0.5)f:0.0;&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;newick&quot;</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">TreeNode</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"[example](a:0.1, 'b_b''':0.2, (c:0.3, d_d:0.4)e:0.5)f:0.0;"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"newick"</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">TreeNode</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">          /-a</span>
 <span class="go">         |</span>
-<span class="go">-f-------|--b_b&#39;</span>
+<span class="go">-f-------|--b_b'</span>
 <span class="go">         |</span>
 <span class="go">         |          /-c</span>
 <span class="go">          \e-------|</span>

@@ -774,10 +774,10 @@ nothing otherwise.</p>
 <p>Create a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object with sequence identifiers as index
 labels:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">TabularMSA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACG&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">}),</span>
-<span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">}),</span>
-<span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AC-&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">})]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">minter</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'ACG'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'c'</span><span class="p">}),</span>
+<span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s1">'AC-'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">}),</span>
+<span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s1">'AC-'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">minter</span><span class="o">=</span><span class="s1">'id'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
 <span class="go">TabularMSA[DNA]</span>
 <span class="go">---------------------</span>
@@ -789,7 +789,7 @@ labels:</p>
 <span class="go">AC-</span>
 <span class="go">AC-</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span>
-<span class="go">Index([&#39;c&#39;, &#39;b&#39;, &#39;a&#39;], dtype=&#39;...&#39;)</span>
+<span class="go">Index(['c', 'b', 'a'], dtype='...')</span>
 </pre></div>
 </div>
 <p>Sort the sequences in alphabetical order by index label:</p>
@@ -805,7 +805,7 @@ labels:</p>
 <span class="go">AC-</span>
 <span class="go">ACG</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">index</span> <span class="c1">#</span>
-<span class="go">Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], dtype=&#39;...&#39;)</span>
+<span class="go">Index(['a', 'b', 'c'], dtype='...')</span>
 </pre></div>
 </div>
 <p>Note that since the sort is in-place, the <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> object is

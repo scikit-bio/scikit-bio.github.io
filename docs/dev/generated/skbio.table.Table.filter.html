@@ -816,51 +816,51 @@ itself.</p>
 <p>Create a 2x3 BIOM table, with observation metadata and sample
 metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">42</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;S1&#39;</span><span class="p">,</span> <span class="s1">&#39;S2&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">],</span>
-<span class="gp">... </span>              <span class="p">[{</span><span class="s1">&#39;full_genome_available&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
-<span class="gp">... </span>               <span class="p">{</span><span class="s1">&#39;full_genome_available&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}],</span>
-<span class="gp">... </span>              <span class="p">[{</span><span class="s1">&#39;sample_type&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;sample_type&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">},</span>
-<span class="gp">... </span>               <span class="p">{</span><span class="s1">&#39;sample_type&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">}])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">'O1'</span><span class="p">,</span> <span class="s1">'O2'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'S1'</span><span class="p">,</span> <span class="s1">'S2'</span><span class="p">,</span> <span class="s1">'S3'</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[{</span><span class="s1">'full_genome_available'</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span><span class="s1">'full_genome_available'</span><span class="p">:</span> <span class="kc">False</span><span class="p">}],</span>
+<span class="gp">... </span>              <span class="p">[{</span><span class="s1">'sample_type'</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">},</span> <span class="p">{</span><span class="s1">'sample_type'</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span><span class="s1">'sample_type'</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">}])</span>
 </pre></div>
 </div>
 <p>Define a function to keep only samples with sample_type == ‘a’. This
 will drop sample S3, which has sample_type ‘b’:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">,</span> <span class="n">id_</span><span class="p">,</span> <span class="n">md</span><span class="p">:</span> <span class="n">md</span><span class="p">[</span><span class="s1">&#39;sample_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">,</span> <span class="n">id_</span><span class="p">,</span> <span class="n">md</span><span class="p">:</span> <span class="n">md</span><span class="p">[</span><span class="s1">'sample_type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'a'</span>
 </pre></div>
 </div>
 <p>Get a filtered version of the table, leaving the original table
 untouched:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_fn</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">())</span>
-<span class="go">[&#39;S1&#39; &#39;S2&#39; &#39;S3&#39;]</span>
+<span class="go">['S1' 'S2' 'S3']</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_table</span><span class="o">.</span><span class="n">ids</span><span class="p">())</span>
-<span class="go">[&#39;S1&#39; &#39;S2&#39;]</span>
+<span class="go">['S1' 'S2']</span>
 </pre></div>
 </div>
 <p>Using the same filtering function, discard all samples with sample_type
 ‘a’. This will keep only sample S3, which has sample_type ‘b’:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_fn</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">())</span>
-<span class="go">[&#39;S1&#39; &#39;S2&#39; &#39;S3&#39;]</span>
+<span class="go">['S1' 'S2' 'S3']</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_table</span><span class="o">.</span><span class="n">ids</span><span class="p">())</span>
-<span class="go">[&#39;S3&#39;]</span>
+<span class="go">['S3']</span>
 </pre></div>
 </div>
 <p>Filter the table in-place using the same function (drop all samples
 where sample_type is not ‘a’):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_fn</span><span class="p">)</span>
-<span class="go">2 x 2 &lt;class &#39;biom.table.Table&#39;&gt; with 2 nonzero entries (50% dense)</span>
+<span class="go">2 x 2 &lt;class 'biom.table.Table'&gt; with 2 nonzero entries (50% dense)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">())</span>
-<span class="go">[&#39;S1&#39; &#39;S2&#39;]</span>
+<span class="go">['S1' 'S2']</span>
 </pre></div>
 </div>
 <p>Filter out all observations in the table that do not have
 full_genome_available == True. This will filter out observation O2:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">,</span> <span class="n">id_</span><span class="p">,</span> <span class="n">md</span><span class="p">:</span> <span class="n">md</span><span class="p">[</span><span class="s1">&#39;full_genome_available&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_fn</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;observation&#39;</span><span class="p">)</span>
-<span class="go">1 x 2 &lt;class &#39;biom.table.Table&#39;&gt; with 0 nonzero entries (0% dense)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;observation&#39;</span><span class="p">))</span>
-<span class="go">[&#39;O1&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">,</span> <span class="n">id_</span><span class="p">,</span> <span class="n">md</span><span class="p">:</span> <span class="n">md</span><span class="p">[</span><span class="s1">'full_genome_available'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_fn</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">'observation'</span><span class="p">)</span>
+<span class="go">1 x 2 &lt;class 'biom.table.Table'&gt; with 0 nonzero entries (0% dense)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">ids</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'observation'</span><span class="p">))</span>
+<span class="go">['O1']</span>
 </pre></div>
 </div>
 </dd></dl>

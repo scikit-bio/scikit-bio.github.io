@@ -857,15 +857,15 @@ three objects with IDs <code class="docutils literal notranslate"><span class="p
 <p>Load a distance matrix from the file:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dm_fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">a</span><span class="se">\t</span><span class="s2">b</span><span class="se">\t</span><span class="s2">c</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="gp">... </span>                 <span class="s2">&quot;a</span><span class="se">\t</span><span class="s2">0.0</span><span class="se">\t</span><span class="s2">0.5</span><span class="se">\t</span><span class="s2">1.0</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="gp">... </span>                 <span class="s2">&quot;b</span><span class="se">\t</span><span class="s2">0.5</span><span class="se">\t</span><span class="s2">0.0</span><span class="se">\t</span><span class="s2">0.75</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="gp">... </span>                 <span class="s2">&quot;c</span><span class="se">\t</span><span class="s2">1.0</span><span class="se">\t</span><span class="s2">0.75</span><span class="se">\t</span><span class="s2">0.0</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm_fh</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"</span><span class="se">\t</span><span class="s2">a</span><span class="se">\t</span><span class="s2">b</span><span class="se">\t</span><span class="s2">c</span><span class="se">\n</span><span class="s2">"</span>
+<span class="gp">... </span>                 <span class="s2">"a</span><span class="se">\t</span><span class="s2">0.0</span><span class="se">\t</span><span class="s2">0.5</span><span class="se">\t</span><span class="s2">1.0</span><span class="se">\n</span><span class="s2">"</span>
+<span class="gp">... </span>                 <span class="s2">"b</span><span class="se">\t</span><span class="s2">0.5</span><span class="se">\t</span><span class="s2">0.0</span><span class="se">\t</span><span class="s2">0.75</span><span class="se">\n</span><span class="s2">"</span>
+<span class="gp">... </span>                 <span class="s2">"c</span><span class="se">\t</span><span class="s2">1.0</span><span class="se">\t</span><span class="s2">0.75</span><span class="se">\t</span><span class="s2">0.0</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">dm_fh</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
 <span class="go">3x3 distance matrix</span>
 <span class="go">IDs:</span>
-<span class="go">&#39;a&#39;, &#39;b&#39;, &#39;c&#39;</span>
+<span class="go">'a', 'b', 'c'</span>
 <span class="go">Data:</span>
 <span class="go">[[ 0.    0.5   1.  ]</span>
 <span class="go"> [ 0.5   0.    0.75]</span>
@@ -873,12 +873,12 @@ three objects with IDs <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <p>Access the distance (scalar) between objects <code class="docutils literal notranslate"><span class="pre">'a'</span></code> and <code class="docutils literal notranslate"><span class="pre">'c'</span></code>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
 <span class="go">1.0</span>
 </pre></div>
 </div>
 <p>Get a row vector of distances between object <code class="docutils literal notranslate"><span class="pre">'b'</span></code> and all other objects:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span>
 <span class="go">array([ 0.5 ,  0.  ,  0.75])</span>
 </pre></div>
 </div>
@@ -900,12 +900,12 @@ three objects with IDs <code class="docutils literal notranslate"><span class="p
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
 <span class="gp">... </span>                 <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span>
 <span class="gp">... </span>                 <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dm_from_np</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dm_from_np</span><span class="p">)</span>
 <span class="go">3x3 distance matrix</span>
 <span class="go">IDs:</span>
-<span class="go">&#39;a&#39;, &#39;b&#39;, &#39;c&#39;</span>
+<span class="go">'a', 'b', 'c'</span>
 <span class="go">Data:</span>
 <span class="go">[[ 0.    0.5   1.  ]</span>
 <span class="go"> [ 0.5   0.    0.75]</span>
@@ -918,7 +918,7 @@ three objects with IDs <code class="docutils literal notranslate"><span class="p
 Monotonically-increasing integers (cast as strings) will be automatically used:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">ids</span>
-<span class="go">(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;)</span>
+<span class="go">('0', '1', '2')</span>
 </pre></div>
 </div>
 </section>

@@ -752,23 +752,23 @@
 filehandles that it did not create itself.</p>
 <p class="rubric">Examples</p>
 <p>Here our input isn’t a filehandle and so <cite>f</cite> will get closed.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">open_file</span><span class="p">([</span><span class="s1">&#39;a</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">open_file</span><span class="p">([</span><span class="s1">'a</span><span class="se">\n</span><span class="s1">'</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="gp">...</span>
-<span class="go">&#39;a\n&#39;</span>
+<span class="go">'a\n'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">closed</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p>Here we provide an open file and so <cite>f</cite> will not get closed and neither
 will <cite>file</cite>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;BZh91AY&amp;SY</span><span class="se">\x03\x89\x0c\xa6\x00\x00\x01\xc1\x00\x00</span><span class="s1">&#39;</span>
-<span class="gp">... </span>                  <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x10</span><span class="s1">8</span><span class="se">\x00</span><span class="s1"> </span><span class="se">\x00</span><span class="s1">!</span><span class="se">\x9a</span><span class="s1">h3M</span><span class="se">\x1c\xb7\x8b\xb9</span><span class="s1">&quot;</span><span class="se">\x9c</span><span class="s1">(H</span><span class="se">\x01</span><span class="s1">&#39;</span>
-<span class="gp">... </span>                  <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xc4\x86</span><span class="s1">S</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s1">'BZh91AY&amp;SY</span><span class="se">\x03\x89\x0c\xa6\x00\x00\x01\xc1\x00\x00</span><span class="s1">'</span>
+<span class="gp">... </span>                  <span class="sa">b</span><span class="s1">'</span><span class="se">\x10</span><span class="s1">8</span><span class="se">\x00</span><span class="s1"> </span><span class="se">\x00</span><span class="s1">!</span><span class="se">\x9a</span><span class="s1">h3M</span><span class="se">\x1c\xb7\x8b\xb9</span><span class="s1">"</span><span class="se">\x9c</span><span class="s1">(H</span><span class="se">\x01</span><span class="s1">'</span>
+<span class="gp">... </span>                  <span class="sa">b</span><span class="s1">'</span><span class="se">\xc4\x86</span><span class="s1">S</span><span class="se">\x00</span><span class="s1">'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">open_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="gp">...</span>
-<span class="go">&#39;a\nb\nc\n&#39;</span>
+<span class="go">'a\nb\nc\n'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">closed</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file</span><span class="o">.</span><span class="n">closed</span>

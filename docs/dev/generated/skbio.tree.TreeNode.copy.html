@@ -848,13 +848,13 @@ will not be redirected in the shallow copy mode (they will when <cite>deep=True<
 added to the function call).</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;(a,b)c;&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">"(a,b)c;"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"a"</span><span class="p">),</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"b"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The function’s behavior will be demonstrated using these node attributes:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># built-in attribute</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;marker&quot;</span>   <span class="c1"># custom simple attribute</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">"marker"</span>   <span class="c1"># custom simple attribute</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>  <span class="c1"># custom compound attribute</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">partner</span> <span class="o">=</span> <span class="n">b</span>        <span class="c1"># direct node reference</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span>        <span class="c1"># nested node reference</span>
@@ -864,13 +864,13 @@ added to the function call).</p>
 outer-most level of each node attribute is copied, whereas nested attributes
 are shared as references.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shallow</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span> <span class="o">=</span> <span class="n">shallow</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span> <span class="o">=</span> <span class="n">shallow</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span> <span class="ow">is</span> <span class="n">a</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">length</span>
 <span class="go">1.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">label</span>
-<span class="go">&#39;marker&#39;</span>
+<span class="go">'marker'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">values</span>
 <span class="go">[[1, 2]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">values</span> <span class="ow">is</span> <span class="n">a</span><span class="o">.</span><span class="n">values</span>
@@ -882,7 +882,7 @@ are shared as references.</p>
 <p>Attributes that are references to other nodes in the tree are redirected to the
 corresponding nodes in the copied tree. However, node references nested inside
 compound attributes still point to the original tree.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">partner</span> <span class="ow">is</span> <span class="n">shallow</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">partner</span> <span class="ow">is</span> <span class="n">shallow</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"b"</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shallow_a</span><span class="o">.</span><span class="n">links</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">b</span>
 <span class="go">True</span>
@@ -890,7 +890,7 @@ compound attributes still point to the original tree.</p>
 </div>
 <p>A deep copy also copies nested values and redirects nested node references:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deep</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="p">,</span> <span class="n">deep_b</span> <span class="o">=</span> <span class="n">deep</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="n">deep</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="p">,</span> <span class="n">deep_b</span> <span class="o">=</span> <span class="n">deep</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"a"</span><span class="p">),</span> <span class="n">deep</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"b"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="o">.</span><span class="n">values</span> <span class="ow">is</span> <span class="n">a</span><span class="o">.</span><span class="n">values</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">deep_a</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">a</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>

@@ -769,24 +769,24 @@ lowercase.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">lowercase</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
-<span class="go">&#39;acGT&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span>
+<span class="go">'acGT'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">,</span>
 <span class="gp">... </span>             <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span>
-<span class="gp">... </span>                <span class="s1">&#39;exons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">lowercase</span><span class="p">(</span><span class="s1">&#39;exons&#39;</span><span class="p">)</span>
-<span class="go">&#39;aCGt&#39;</span>
+<span class="gp">... </span>                <span class="s1">'exons'</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">lowercase</span><span class="p">(</span><span class="s1">'exons'</span><span class="p">)</span>
+<span class="go">'aCGt'</span>
 </pre></div>
 </div>
 <p>Constructor automatically populates a column in positional metadata
 when the <code class="docutils literal notranslate"><span class="pre">lowercase</span></code> keyword argument is provided with a column name:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACgt&#39;</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">&#39;introns&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">lowercase</span><span class="p">(</span><span class="s1">&#39;introns&#39;</span><span class="p">)</span>
-<span class="go">&#39;ACgt&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">&#39;introns&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">lowercase</span><span class="p">(</span><span class="s1">&#39;introns&#39;</span><span class="p">)</span>
-<span class="go">&#39;ACGT&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACgt'</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">'introns'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">lowercase</span><span class="p">(</span><span class="s1">'introns'</span><span class="p">)</span>
+<span class="go">'ACgt'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">'introns'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">lowercase</span><span class="p">(</span><span class="s1">'introns'</span><span class="p">)</span>
+<span class="go">'ACGT'</span>
 </pre></div>
 </div>
 </dd></dl>

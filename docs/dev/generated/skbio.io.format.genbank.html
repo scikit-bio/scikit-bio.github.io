@@ -965,7 +965,7 @@ a GenBank file with multiple records in it.</p>
 <section id="reading-and-writing-genbank-files">
 <h3>Reading and Writing GenBank Files<a class="headerlink" href="#reading-and-writing-genbank-files" title="Link to this heading">#</a></h3>
 <p>Suppose we have the following GenBank file example modified from <a class="reference internal" href="#r90c80a4d9e7c-5" id="id5">[5]</a>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gb_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gb_str</span> <span class="o">=</span> <span class="s1">'''</span>
 <span class="gp">... </span><span class="s1">LOCUS       3K1V_A       34 bp    RNA     linear   SYN 10-OCT-2012</span>
 <span class="gp">... </span><span class="s1">DEFINITION  Chain A, Structure Of A Mutant Class-I Preq1.</span>
 <span class="gp">... </span><span class="s1">ACCESSION   3K1V_A</span>
@@ -975,23 +975,23 @@ a GenBank file with multiple records in it.</p>
 <span class="gp">... </span><span class="s1">  ORGANISM  synthetic construct</span>
 <span class="gp">... </span><span class="s1">            other sequences; artificial sequences.</span>
 <span class="gp">... </span><span class="s1">REFERENCE   1  (bases 1 to 34)</span>
-<span class="gp">... </span><span class="s1">  AUTHORS   Klein,D.J., Edwards,T.E. and Ferre-D&#39;Amare,A.R.</span>
+<span class="gp">... </span><span class="s1">  AUTHORS   Klein,D.J., Edwards,T.E. and Ferre-D'Amare,A.R.</span>
 <span class="gp">... </span><span class="s1">  TITLE     Cocrystal structure of a class I preQ1 riboswitch</span>
 <span class="gp">... </span><span class="s1">  JOURNAL   Nat. Struct. Mol. Biol. 16 (3), 343-344 (2009)</span>
 <span class="gp">... </span><span class="s1">   PUBMED   19234468</span>
 <span class="gp">... </span><span class="s1">COMMENT     SEQRES.</span>
 <span class="gp">... </span><span class="s1">FEATURES             Location/Qualifiers</span>
 <span class="gp">... </span><span class="s1">     source          1..34</span>
-<span class="gp">... </span><span class="s1">                     /organism=&quot;synthetic construct&quot;</span>
-<span class="gp">... </span><span class="s1">                     /mol_type=&quot;other RNA&quot;</span>
-<span class="gp">... </span><span class="s1">                     /db_xref=&quot;taxon:32630&quot;</span>
+<span class="gp">... </span><span class="s1">                     /organism="synthetic construct"</span>
+<span class="gp">... </span><span class="s1">                     /mol_type="other RNA"</span>
+<span class="gp">... </span><span class="s1">                     /db_xref="taxon:32630"</span>
 <span class="gp">... </span><span class="s1">     misc_binding    1..30</span>
-<span class="gp">... </span><span class="s1">                     /note=&quot;Preq1 riboswitch&quot;</span>
-<span class="gp">... </span><span class="s1">                     /bound_moiety=&quot;preQ1&quot;</span>
+<span class="gp">... </span><span class="s1">                     /note="Preq1 riboswitch"</span>
+<span class="gp">... </span><span class="s1">                     /bound_moiety="preQ1"</span>
 <span class="gp">... </span><span class="s1">ORIGIN</span>
 <span class="gp">... </span><span class="s1">        1 agaggttcta gcacatccct ctataaaaaa ctaa</span>
 <span class="gp">... </span><span class="s1">//</span>
-<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">'''</span>
 </pre></div>
 </div>
 <p>Now we can read it as <code class="docutils literal notranslate"><span class="pre">DNA</span></code> object:</p>
@@ -1003,14 +1003,14 @@ a GenBank file with multiple records in it.</p>
 <span class="go">DNA</span>
 <span class="go">-----------------------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;ACCESSION&#39;: &#39;3K1V_A&#39;</span>
-<span class="go">    &#39;COMMENT&#39;: &#39;SEQRES.&#39;</span>
-<span class="go">    &#39;DEFINITION&#39;: &#39;Chain A, Structure Of A Mutant Class-I Preq1.&#39;</span>
-<span class="go">    &#39;KEYWORDS&#39;: &#39;.&#39;</span>
-<span class="go">    &#39;LOCUS&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;REFERENCE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;SOURCE&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;VERSION&#39;: &#39;3K1V_A  GI:260656459&#39;</span>
+<span class="go">    'ACCESSION': '3K1V_A'</span>
+<span class="go">    'COMMENT': 'SEQRES.'</span>
+<span class="go">    'DEFINITION': 'Chain A, Structure Of A Mutant Class-I Preq1.'</span>
+<span class="go">    'KEYWORDS': '.'</span>
+<span class="go">    'LOCUS': &lt;class 'dict'&gt;</span>
+<span class="go">    'REFERENCE': &lt;class 'list'&gt;</span>
+<span class="go">    'SOURCE': &lt;class 'dict'&gt;</span>
+<span class="go">    'VERSION': '3K1V_A  GI:260656459'</span>
 <span class="go">Interval metadata:</span>
 <span class="go">    2 interval features</span>
 <span class="go">Stats:</span>
@@ -1032,14 +1032,14 @@ the sequence, we can read it as <code class="docutils literal notranslate"><span
 <span class="go">RNA</span>
 <span class="go">-----------------------------------------------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;ACCESSION&#39;: &#39;3K1V_A&#39;</span>
-<span class="go">    &#39;COMMENT&#39;: &#39;SEQRES.&#39;</span>
-<span class="go">    &#39;DEFINITION&#39;: &#39;Chain A, Structure Of A Mutant Class-I Preq1.&#39;</span>
-<span class="go">    &#39;KEYWORDS&#39;: &#39;.&#39;</span>
-<span class="go">    &#39;LOCUS&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;REFERENCE&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;SOURCE&#39;: &lt;class &#39;dict&#39;&gt;</span>
-<span class="go">    &#39;VERSION&#39;: &#39;3K1V_A  GI:260656459&#39;</span>
+<span class="go">    'ACCESSION': '3K1V_A'</span>
+<span class="go">    'COMMENT': 'SEQRES.'</span>
+<span class="go">    'DEFINITION': 'Chain A, Structure Of A Mutant Class-I Preq1.'</span>
+<span class="go">    'KEYWORDS': '.'</span>
+<span class="go">    'LOCUS': &lt;class 'dict'&gt;</span>
+<span class="go">    'REFERENCE': &lt;class 'list'&gt;</span>
+<span class="go">    'SOURCE': &lt;class 'dict'&gt;</span>
+<span class="go">    'VERSION': '3K1V_A  GI:260656459'</span>
 <span class="go">Interval metadata:</span>
 <span class="go">    2 interval features</span>
 <span class="go">Stats:</span>
@@ -1057,7 +1057,7 @@ the sequence, we can read it as <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">dna_seq</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;genbank&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">dna_seq</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'genbank'</span><span class="p">)</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 <span class="go">LOCUS       3K1V_A   34 bp   RNA   linear   SYN   10-OCT-2012</span>
 <span class="go">DEFINITION  Chain A, Structure Of A Mutant Class-I Preq1.</span>
 <span class="go">ACCESSION   3K1V_A</span>
@@ -1067,19 +1067,19 @@ the sequence, we can read it as <code class="docutils literal notranslate"><span
 <span class="go">  ORGANISM  synthetic construct</span>
 <span class="go">            other sequences; artificial sequences.</span>
 <span class="go">REFERENCE   1  (bases 1 to 34)</span>
-<span class="go">  AUTHORS   Klein,D.J., Edwards,T.E. and Ferre-D&#39;Amare,A.R.</span>
+<span class="go">  AUTHORS   Klein,D.J., Edwards,T.E. and Ferre-D'Amare,A.R.</span>
 <span class="go">  TITLE     Cocrystal structure of a class I preQ1 riboswitch</span>
 <span class="go">  JOURNAL   Nat. Struct. Mol. Biol. 16 (3), 343-344 (2009)</span>
 <span class="go">  PUBMED    19234468</span>
 <span class="go">COMMENT     SEQRES.</span>
 <span class="go">FEATURES             Location/Qualifiers</span>
 <span class="go">     source          1..34</span>
-<span class="go">                     /db_xref=&quot;taxon:32630&quot;</span>
-<span class="go">                     /mol_type=&quot;other RNA&quot;</span>
-<span class="go">                     /organism=&quot;synthetic construct&quot;</span>
+<span class="go">                     /db_xref="taxon:32630"</span>
+<span class="go">                     /mol_type="other RNA"</span>
+<span class="go">                     /organism="synthetic construct"</span>
 <span class="go">     misc_binding    1..30</span>
-<span class="go">                     /bound_moiety=&quot;preQ1&quot;</span>
-<span class="go">                     /note=&quot;Preq1 riboswitch&quot;</span>
+<span class="go">                     /bound_moiety="preQ1"</span>
+<span class="go">                     /note="Preq1 riboswitch"</span>
 <span class="go">ORIGIN</span>
 <span class="go">        1 agaggttcta gcacatccct ctataaaaaa ctaa</span>
 <span class="go">//</span>

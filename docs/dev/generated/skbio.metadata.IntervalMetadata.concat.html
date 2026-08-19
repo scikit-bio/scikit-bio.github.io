@@ -760,9 +760,9 @@ the first <code class="docutils literal notranslate"><span class="pre">IntervalM
 </div>
 <p>Create two <code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> objects:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im1</span> <span class="o">=</span> <span class="n">IntervalMetadata</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">im1</span><span class="o">.</span><span class="n">add</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="p">[(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)],</span> <span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagA&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">im1</span><span class="o">.</span><span class="n">add</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="p">[(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)],</span> <span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'sagA'</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im2</span> <span class="o">=</span> <span class="n">IntervalMetadata</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">im2</span><span class="o">.</span><span class="n">add</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="p">[(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)],</span> <span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagB&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">im2</span><span class="o">.</span><span class="n">add</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="p">[(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)],</span> <span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'sagB'</span><span class="p">})</span>
 </pre></div>
 </div>
 <p>Concatenate them into a single coordinate space. The second
@@ -773,8 +773,8 @@ sum of upper bounds of concatenated objects:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
 <span class="go">2 interval features</span>
 <span class="go">-------------------</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(True, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(4, 7)], fuzzy=[(True, True)], metadata={&#39;gene&#39;: &#39;sagB&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(True, False)], metadata={'gene': 'sagA'})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(4, 7)], fuzzy=[(True, True)], metadata={'gene': 'sagB'})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">upper_bound</span>
 <span class="go">7</span>
 </pre></div>

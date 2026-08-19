@@ -781,12 +781,12 @@ overridden.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.io.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Format</span><span class="p">,</span> <span class="n">io_registry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.io.descriptors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Read</span><span class="p">,</span> <span class="n">Write</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;myformat&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myformat</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">'myformat'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io_registry</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span><span class="n">myformat</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># If developing a new format for skbio, use the create_format()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># factory instead of the above.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyObject</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">default_write_format</span> <span class="o">=</span> <span class="s1">&#39;myformat&#39;</span>
+<span class="gp">... </span>    <span class="n">default_write_format</span> <span class="o">=</span> <span class="s1">'myformat'</span>
 <span class="gp">... </span>    <span class="n">read</span> <span class="o">=</span> <span class="n">Read</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">write</span> <span class="o">=</span> <span class="n">Write</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
@@ -794,15 +794,15 @@ overridden.</p>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nd">@myformat</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">MyObject</span><span class="p">)</span>
 <span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">myformat_reader</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">fh</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;myformat2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"myformat2</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">MyObject</span><span class="p">([</span><span class="s2">&quot;some content here!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">write</span><span class="p">([],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;myformat&#39;</span><span class="p">)</span>
-<span class="go">[&#39;myformat2\n&#39;, &#39;some content here!\n&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">MyObject</span><span class="p">([</span><span class="s2">"some content here!</span><span class="se">\n</span><span class="s2">"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">write</span><span class="p">([],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'myformat'</span><span class="p">)</span>
+<span class="go">['myformat2\n', 'some content here!\n']</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cleanup</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">io_registry</span><span class="o">.</span><span class="n">remove_format</span><span class="p">(</span><span class="s1">&#39;myformat&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io_registry</span><span class="o">.</span><span class="n">remove_format</span><span class="p">(</span><span class="s1">'myformat'</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

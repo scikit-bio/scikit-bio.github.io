@@ -790,8 +790,8 @@ would be.</p>
 <p class="rubric">Examples</p>
 <p>Concatenate two DNA sequences into a new DNA object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;GGAA&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">"ACGT"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">"GGAA"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">DNA</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">])</span>
 <span class="go">DNA</span>
 <span class="go">--------------------------</span>
@@ -816,16 +816,16 @@ would be.</p>
 </pre></div>
 </div>
 <p>Positional metadata is conserved:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;AcgT&#39;</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GGaA&#39;</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">&#39;one&#39;</span><span class="p">,</span>
-<span class="gp">... </span>         <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'AcgT'</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">'one'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'GGaA'</span><span class="p">,</span> <span class="n">lowercase</span><span class="o">=</span><span class="s1">'one'</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'two'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">DNA</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">'outer'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
 <span class="go">DNA</span>
 <span class="go">---------------------------</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;one&#39;: &lt;dtype: bool&gt;</span>
-<span class="go">    &#39;two&#39;: &lt;dtype: float64&gt;</span>
+<span class="go">    'one': &lt;dtype: bool&gt;</span>
+<span class="go">    'two': &lt;dtype: float64&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 8</span>
 <span class="go">    has gaps: False</span>

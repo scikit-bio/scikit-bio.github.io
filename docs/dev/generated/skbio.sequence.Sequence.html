@@ -804,7 +804,7 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 </div>
 <p><strong>Creating sequences:</strong></p>
 <p>Create a sequence without any metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUCGUGAAGGA&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUCGUGAAGGA'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">Sequence</span>
 <span class="go">---------------</span>
@@ -815,24 +815,24 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 </pre></div>
 </div>
 <p>Create a sequence with metadata, positional metadata and interval metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;authors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">],</span> <span class="s1">&#39;desc&#39;</span><span class="p">:</span><span class="s1">&#39;seq desc&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;seq-id&#39;</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;exons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
-<span class="gp">... </span>                       <span class="s1">&#39;quality&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'authors'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Alice'</span><span class="p">],</span> <span class="s1">'desc'</span><span class="p">:</span><span class="s1">'seq desc'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span><span class="s1">'seq-id'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'exons'</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+<span class="gp">... </span>                       <span class="s1">'quality'</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">interval_metadata</span> <span class="o">=</span> <span class="n">IntervalMetadata</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span> <span class="o">=</span> <span class="n">interval_metadata</span><span class="o">.</span><span class="n">add</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;sagA&#39;</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span> <span class="o">=</span> <span class="n">interval_metadata</span><span class="o">.</span><span class="n">add</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'sagA'</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">positional_metadata</span><span class="o">=</span><span class="n">positional_metadata</span><span class="p">,</span>
 <span class="gp">... </span>               <span class="n">interval_metadata</span><span class="o">=</span><span class="n">interval_metadata</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">Sequence</span>
 <span class="go">-----------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;authors&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;desc&#39;: &#39;seq desc&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;seq-id&#39;</span>
+<span class="go">    'authors': &lt;class 'list'&gt;</span>
+<span class="go">    'desc': 'seq desc'</span>
+<span class="go">    'id': 'seq-id'</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;exons&#39;: &lt;dtype: bool&gt;</span>
-<span class="go">    &#39;quality&#39;: &lt;dtype: int64&gt;</span>
+<span class="go">    'exons': &lt;dtype: bool&gt;</span>
+<span class="go">    'quality': &lt;dtype: int64&gt;</span>
 <span class="go">Interval metadata:</span>
 <span class="go">    1 interval feature</span>
 <span class="go">Stats:</span>
@@ -844,19 +844,19 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <p><strong>Retrieving underlying sequence data:</strong></p>
 <p>Retrieve underlying sequence:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span>
-<span class="go">array([b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;, b&#39;T&#39;],</span>
-<span class="go">      dtype=&#39;|S1&#39;)</span>
+<span class="go">array([b'A', b'C', b'G', b'T'],</span>
+<span class="go">      dtype='|S1')</span>
 </pre></div>
 </div>
 <p>Underlying sequence immutable:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">b</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;|S1&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">b</span><span class="s1">'T'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'C'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'G'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'A'</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'|S1'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
 <span class="gt">Traceback (most recent call last):</span>
 <span class="w">    </span><span class="o">...</span>
-<span class="gr">AttributeError</span>: <span class="n">can&#39;t set attribute</span>
+<span class="gr">AttributeError</span>: <span class="n">can't set attribute</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;T&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'T'</span>
 <span class="gt">Traceback (most recent call last):</span>
 <span class="w">    </span><span class="o">...</span>
 <span class="gr">ValueError</span>: <span class="n">assignment destination is read-only</span>
@@ -865,7 +865,7 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <p><strong>Retrieving sequence metadata:</strong></p>
 <p>Retrieve metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span>
-<span class="go">{&#39;authors&#39;: [&#39;Alice&#39;], &#39;desc&#39;: &#39;seq desc&#39;, &#39;id&#39;: &#39;seq-id&#39;}</span>
+<span class="go">{'authors': ['Alice'], 'desc': 'seq desc', 'id': 'seq-id'}</span>
 </pre></div>
 </div>
 <p>Retrieve positional metadata:</p>
@@ -881,7 +881,7 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span>
 <span class="go">1 interval feature</span>
 <span class="go">------------------</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;sagA&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], fuzzy=[(False, False)], metadata={'gene': 'sagA'})</span>
 </pre></div>
 </div>
 <p><strong>Updating sequence metadata:</strong></p>
@@ -895,29 +895,29 @@ shares a reference to the object. The following examples illustrate this
 behavior.</p>
 </div>
 <p>First, let’s create a sequence and update its metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;seq-id&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="s1">&#39;seq desc&#39;</span><span class="p">,</span> <span class="s1">&#39;authors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new-id&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;pubmed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12345</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'seq-id'</span><span class="p">,</span> <span class="s1">'desc'</span><span class="p">:</span> <span class="s1">'seq desc'</span><span class="p">,</span> <span class="s1">'authors'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Alice'</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'new-id'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'pubmed'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12345</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span>
-<span class="go">{&#39;id&#39;: &#39;new-id&#39;, &#39;desc&#39;: &#39;seq desc&#39;, &#39;authors&#39;: [&#39;Alice&#39;], &#39;pubmed&#39;: 12345}</span>
+<span class="go">{'id': 'new-id', 'desc': 'seq desc', 'authors': ['Alice'], 'pubmed': 12345}</span>
 </pre></div>
 </div>
 <p>Note that the original metadata dictionary (stored in variable
 <code class="docutils literal notranslate"><span class="pre">metadata</span></code>) hasn’t changed because a shallow copy was made:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span>
-<span class="go">{&#39;id&#39;: &#39;seq-id&#39;, &#39;desc&#39;: &#39;seq desc&#39;, &#39;authors&#39;: [&#39;Alice&#39;]}</span>
+<span class="go">{'id': 'seq-id', 'desc': 'seq desc', 'authors': ['Alice']}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span> <span class="o">==</span> <span class="n">metadata</span>
 <span class="go">False</span>
 </pre></div>
 </div>
 <p>Note however that since only a <em>shallow</em> copy was made, updates to mutable
 objects will also change the original metadata dictionary:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span>
-<span class="go">[&#39;Alice&#39;, &#39;Bob&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span>
-<span class="go">[&#39;Alice&#39;, &#39;Bob&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'authors'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'authors'</span><span class="p">]</span>
+<span class="go">['Alice', 'Bob']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span><span class="p">[</span><span class="s1">'authors'</span><span class="p">]</span>
+<span class="go">['Alice', 'Bob']</span>
 </pre></div>
 </div>
 <p>This behavior can also occur when manipulating a sequence that has been
@@ -927,42 +927,42 @@ derived from another sequence:</p>
 <span class="go">Sequence</span>
 <span class="go">-----------------------------</span>
 <span class="go">Metadata:</span>
-<span class="go">    &#39;authors&#39;: &lt;class &#39;list&#39;&gt;</span>
-<span class="go">    &#39;desc&#39;: &#39;seq desc&#39;</span>
-<span class="go">    &#39;id&#39;: &#39;new-id&#39;</span>
-<span class="go">    &#39;pubmed&#39;: 12345</span>
+<span class="go">    'authors': &lt;class 'list'&gt;</span>
+<span class="go">    'desc': 'seq desc'</span>
+<span class="go">    'id': 'new-id'</span>
+<span class="go">    'pubmed': 12345</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 2</span>
 <span class="go">-----------------------------</span>
 <span class="go">0 CG</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">metadata</span>
-<span class="go">{&#39;id&#39;: &#39;new-id&#39;, &#39;desc&#39;: &#39;seq desc&#39;, &#39;authors&#39;: [&#39;Alice&#39;, &#39;Bob&#39;], &#39;pubmed&#39;: 12345}</span>
+<span class="go">{'id': 'new-id', 'desc': 'seq desc', 'authors': ['Alice', 'Bob'], 'pubmed': 12345}</span>
 </pre></div>
 </div>
 <p>The subsequence has inherited the metadata of its parent sequence. If we
 update the subsequence’s author list, we see the changes propagated in the
 parent sequence and original metadata dictionary:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Carol&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span>
-<span class="go">[&#39;Alice&#39;, &#39;Bob&#39;, &#39;Carol&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span>
-<span class="go">[&#39;Alice&#39;, &#39;Bob&#39;, &#39;Carol&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span>
-<span class="go">[&#39;Alice&#39;, &#39;Bob&#39;, &#39;Carol&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'authors'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Carol'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'authors'</span><span class="p">]</span>
+<span class="go">['Alice', 'Bob', 'Carol']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'authors'</span><span class="p">]</span>
+<span class="go">['Alice', 'Bob', 'Carol']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span><span class="p">[</span><span class="s1">'authors'</span><span class="p">]</span>
+<span class="go">['Alice', 'Bob', 'Carol']</span>
 </pre></div>
 </div>
 <p>The behavior for updating positional metadata is similar. Let’s create a
 new sequence with positional metadata that is already stored in a
 <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;list&#39;</span><span class="p">:</span> <span class="p">[[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]],</span> <span class="s1">&#39;quality&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">positional_metadata</span><span class="o">=</span><span class="n">positional_metadata</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">'list'</span><span class="p">:</span> <span class="p">[[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]],</span> <span class="s1">'quality'</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">,</span> <span class="n">positional_metadata</span><span class="o">=</span><span class="n">positional_metadata</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">Sequence</span>
 <span class="go">-----------------------------</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;list&#39;: &lt;dtype: object&gt;</span>
-<span class="go">    &#39;quality&#39;: &lt;dtype: int64&gt;</span>
+<span class="go">    'list': &lt;dtype: object&gt;</span>
+<span class="go">    'quality': &lt;dtype: int64&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 4</span>
 <span class="go">-----------------------------</span>
@@ -977,8 +977,8 @@ new sequence with positional metadata that is already stored in a
 </div>
 <p>Now let’s update the sequence’s positional metadata by adding a new column
 and changing a value in another column:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="p">[</span><span class="s1">&#39;gaps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;quality&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">999</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="p">[</span><span class="s1">'gaps'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'quality'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">999</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">positional_metadata</span>
 <span class="go">  list  quality   gaps</span>
 <span class="go">0   []      999  False</span>
@@ -1005,9 +1005,9 @@ and changing a value in another column:</p>
 <span class="go">Sequence</span>
 <span class="go">-----------------------------</span>
 <span class="go">Positional metadata:</span>
-<span class="go">    &#39;list&#39;: &lt;dtype: object&gt;</span>
-<span class="go">    &#39;quality&#39;: &lt;dtype: int64&gt;</span>
-<span class="go">    &#39;gaps&#39;: &lt;dtype: bool&gt;</span>
+<span class="go">    'list': &lt;dtype: object&gt;</span>
+<span class="go">    'quality': &lt;dtype: int64&gt;</span>
+<span class="go">    'gaps': &lt;dtype: bool&gt;</span>
 <span class="go">Stats:</span>
 <span class="go">    length: 2</span>
 <span class="go">-----------------------------</span>
@@ -1022,7 +1022,7 @@ and changing a value in another column:</p>
 the positional metadata, updates to mutable objects will also change the
 parent sequence’s positional metadata and the original positional metadata
 <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">positional_metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'list'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'item'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">subseq</span><span class="o">.</span><span class="n">positional_metadata</span>
 <span class="go">     list  quality   gaps</span>
 <span class="go">0  [item]        3  False</span>
@@ -1043,25 +1043,25 @@ parent sequence’s positional metadata and the original positional metadata
 </div>
 <p>You can also update the interval metadata. Let’s re-create a
 <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object with interval metadata at first:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">})</span>
+<span class="gp">... </span>    <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'foo'</span><span class="p">})</span>
 </pre></div>
 </div>
 <p>You can update directly on the <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;foo&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], fuzzy=[(False, False)], metadata={'gene': 'foo'})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(False, False)], metadata={&#39;gene&#39;: &#39;foo&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(False, False)], metadata={'gene': 'foo'})</span>
 </pre></div>
 </div>
 <p>You can also query and obtain the interval features you are
 interested and then modify them:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">intervals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">}))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">intervals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'foo'</span><span class="p">}))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fuzzy</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(True, False)], metadata={&#39;gene&#39;: &#39;foo&#39;})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(True, False)], metadata={'gene': 'foo'})</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -1244,8 +1244,8 @@ interested and then modify them:</p>
 <p>This property is not writeable.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;AACGAC&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">observed_chars</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'AACGAC'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">observed_chars</span> <span class="o">==</span> <span class="p">{</span><span class="s1">'G'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">}</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1259,10 +1259,10 @@ interested and then modify them:</p>
 <p>This property is not writeable.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;AACGA&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'AACGA'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">values</span>
-<span class="go">array([b&#39;A&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;, b&#39;A&#39;],</span>
-<span class="go">      dtype=&#39;|S1&#39;)</span>
+<span class="go">array([b'A', b'A', b'C', b'G', b'A'],</span>
+<span class="go">      dtype='|S1')</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1281,9 +1281,9 @@ interested and then modify them:</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">Sequence</span><span class="p">(</span><span class="s1">''</span><span class="p">))</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">))</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1316,10 +1316,10 @@ than this sequence.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUCGUGAAGGA&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;GGU&#39;</span> <span class="ow">in</span> <span class="n">s</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUCGUGAAGGA'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'GGU'</span> <span class="ow">in</span> <span class="n">s</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;CCC&#39;</span> <span class="ow">in</span> <span class="n">s</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">'CCC'</span> <span class="ow">in</span> <span class="n">s</span>
 <span class="go">False</span>
 </pre></div>
 </div>
@@ -1377,8 +1377,8 @@ sequence characters, metadata, and positional metadata are the same.</p>
 <p>Define two <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects that have the same underlying sequence
 of characters:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The two sequences are considered equal because they are the same type,
@@ -1393,15 +1393,15 @@ were not provided:</p>
 </div>
 <p>Define another sequence object with a different sequence of characters
 than the previous two sequence objects:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGA&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGA'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">==</span> <span class="n">t</span>
 <span class="go">False</span>
 </pre></div>
 </div>
 <p>Define a sequence with the same sequence of characters as <code class="docutils literal notranslate"><span class="pre">u</span></code> but
 with different metadata, positional metadata, and interval metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGA&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">},</span>
-<span class="gp">... </span>             <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;quality&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGA'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'abc'</span><span class="p">},</span>
+<span class="gp">... </span>             <span class="n">positional_metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'quality'</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">add</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
 </pre></div>
 </div>
@@ -1443,7 +1443,7 @@ included in the returned sequence.</p>
 new <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUCGUGAAGGA&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUCGUGAAGGA'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Obtain a single character from the sequence:</p>
@@ -1477,8 +1477,8 @@ new <code class="docutils literal notranslate"><span class="pre">Sequence</span>
 </pre></div>
 </div>
 <p>Obtain characters at positions evaluating to <cite>True</cite>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUCG&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUCG'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">'a'</span> <span class="o">==</span> <span class="s1">'a'</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 <span class="go">Sequence</span>
 <span class="go">-------------</span>
@@ -1505,13 +1505,13 @@ sequence.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUC'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="go">&#39;G&#39;</span>
-<span class="go">&#39;G&#39;</span>
-<span class="go">&#39;U&#39;</span>
-<span class="go">&#39;C&#39;</span>
+<span class="go">'G'</span>
+<span class="go">'G'</span>
+<span class="go">'U'</span>
+<span class="go">'C'</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1530,7 +1530,7 @@ sequence.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUC'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">4</span>
 </pre></div>
@@ -1559,14 +1559,14 @@ their sequence characters, metadata, or positional metadata differ.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">!=</span> <span class="n">t</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGA&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGA'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">!=</span> <span class="n">t</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGA&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;v&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGA'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'id'</span><span class="p">:</span> <span class="s1">'v'</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">!=</span> <span class="n">v</span>
 <span class="go">True</span>
 </pre></div>
@@ -1588,13 +1588,13 @@ sequence.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUC&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUC'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="go">&#39;C&#39;</span>
-<span class="go">&#39;U&#39;</span>
-<span class="go">&#39;G&#39;</span>
-<span class="go">&#39;G&#39;</span>
+<span class="go">'C'</span>
+<span class="go">'U'</span>
+<span class="go">'G'</span>
+<span class="go">'G'</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1620,9 +1620,9 @@ metadata will be included.</p>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGUCGUAAAGGA&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;hello&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUCGUAAAGGA'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'id'</span><span class="p">:</span><span class="s1">'hello'</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="go">&#39;GGUCGUAAAGGA&#39;</span>
+<span class="go">'GGUCGUAAAGGA'</span>
 </pre></div>
 </div>
 </dd></dl>

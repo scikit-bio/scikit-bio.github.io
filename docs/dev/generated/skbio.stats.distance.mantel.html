@@ -914,9 +914,9 @@ between the two matrices.</p>
 <p>In the previous example, the distance matrices (<code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>) have the
 same IDs, in the same order:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">ids</span>
-<span class="go">(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;)</span>
+<span class="go">('0', '1', '2')</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">ids</span>
-<span class="go">(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;)</span>
+<span class="go">('0', '1', '2')</span>
 </pre></div>
 </div>
 <p>If necessary, <code class="docutils literal notranslate"><span class="pre">mantel</span></code> will reorder the distance matrices prior to
@@ -925,8 +925,8 @@ maps distance matrix IDs to new IDs, providing a way to match IDs between
 distance matrices prior to running the Mantel test.</p>
 <p>For example, let’s reassign the distance matrices’ IDs so that there are no
 matching IDs between them:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'d'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If we rerun <code class="docutils literal notranslate"><span class="pre">mantel</span></code>, we get the following error notifying us that there
@@ -948,8 +948,8 @@ run:</p>
 </div>
 <p>To work around this, we can define a <code class="docutils literal notranslate"><span class="pre">lookup</span></code> dictionary to specify how
 the IDs should be matched between distance matrices:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lookup</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span>
-<span class="gp">... </span>          <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lookup</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="s1">'C'</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">'d'</span><span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">:</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">:</span> <span class="s1">'C'</span><span class="p">}</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">lookup</span></code> maps each ID to <code class="docutils literal notranslate"><span class="pre">'A'</span></code>, <code class="docutils literal notranslate"><span class="pre">'B'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'C'</span></code>. If we rerun

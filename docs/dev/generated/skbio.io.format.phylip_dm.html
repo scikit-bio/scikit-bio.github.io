@@ -865,17 +865,17 @@ Only relevant when reading from a file.</p>
 <h3>Reading PHYLIP Files<a class="headerlink" href="#reading-phylip-files" title="Link to this heading">#</a></h3>
 <p>Read a PHYLIP distance matrix file into a <code class="docutils literal notranslate"><span class="pre">DistanceMatrix</span></code> object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;input.phy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'input.phy'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Read with strict ID format parsing:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;input_strict.phy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="s1">'input_strict.phy'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Read from a file handle:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.phy&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'input.phy'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -884,18 +884,18 @@ Only relevant when reading from a file.</p>
 <p>Use the standard scikit-bio I/O interface to write PHYLIP distance matrices. You can
 choose between lower triangular (more compact) or square layout.</p>
 <p>Write to lower triangular layout (default):</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.phy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.phy'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># or explicitly:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.phy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.phy'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Write to square layout:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output_square.phy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output_square.phy'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s1">'square'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Write to a file handle:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.phy&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'output.phy'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -916,10 +916,10 @@ which will cause parsing errors.</p>
 characters). To read files with whitespace in IDs, use <code class="docutils literal notranslate"><span class="pre">strict=True</span></code>.</p>
 <p>When <strong>writing</strong> files, scikit-bio automatically replaces any whitespace in IDs
 with underscores to ensure compatibility:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sample 01&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample 02&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample 03&#39;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Sample 01'</span><span class="p">,</span> <span class="s1">'Sample 02'</span><span class="p">,</span> <span class="s1">'Sample 03'</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.phy&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;phylip_dm&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># IDs in output will be: &#39;Sample_01&#39;, &#39;Sample_02&#39;, &#39;Sample_03&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.phy'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'phylip_dm'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># IDs in output will be: 'Sample_01', 'Sample_02', 'Sample_03'</span>
 </pre></div>
 </div>
 </section>

@@ -795,8 +795,8 @@ substitution matrix.</p>
 <p>Calculate the score of a pair of aligned DNA sequences, with match score = 2,
 mismatch score = -3, gap opening penalty = 5, and gap extension penalty = 2 (the
 default BLASTN parameters).</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;CGGTCGTAACGCGTA---CA&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">&quot;CAG--GTAAG-CATACCTCA&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">"CGGTCGTAACGCGTA---CA"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">"CAG--GTAAG-CATACCTCA"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">([</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">-14.0</span>
 </pre></div>
@@ -805,10 +805,10 @@ default BLASTN parameters).</p>
 BLOSUM62 substitution matrix, with gap opening and extension penalties being 11
 and 1 (the default BLASTP parameters). Note that terminal gaps are not penalized
 by default unless <code class="docutils literal notranslate"><span class="pre">free_ends</span></code> is set to False.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;MKQ-PSV&quot;</span><span class="p">),</span>
-<span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;MKIDTS-&quot;</span><span class="p">),</span>
-<span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">&quot;MVIDPSS&quot;</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">(</span><span class="n">msa</span><span class="p">,</span> <span class="s2">&quot;BLOSUM62&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">Protein</span><span class="p">(</span><span class="s2">"MKQ-PSV"</span><span class="p">),</span>
+<span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">"MKIDTS-"</span><span class="p">),</span>
+<span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">"MVIDPSS"</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">(</span><span class="n">msa</span><span class="p">,</span> <span class="s2">"BLOSUM62"</span><span class="p">,</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="go">11.0</span>
 </pre></div>
 </div>

@@ -770,38 +770,38 @@ character. All metadata is retained.</p>
 <p class="rubric">Examples</p>
 <p>Let’s create and display a Sequence:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sequence</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;GGTACCAACG&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sequence</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGTACCAACG'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
-<span class="go">&#39;GGTACCAACG&#39;</span>
+<span class="go">'GGTACCAACG'</span>
 </pre></div>
 </div>
 <p>Let’s call <code class="docutils literal notranslate"><span class="pre">replace</span></code> on the Sequence using a boolean vector for
 <code class="docutils literal notranslate"><span class="pre">where</span></code> and assign it to a new variable:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>
-<span class="gp">... </span>                        <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="gp">... </span>                        <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="s1">'-'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let’s take a look at the new Sequence:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
-<span class="go">&#39;GGT-CC--CG&#39;</span>
+<span class="go">'GGT-CC--CG'</span>
 </pre></div>
 </div>
 <p>Other types of input are accepted by the <code class="docutils literal notranslate"><span class="pre">where</span></code> parameter. Let’s
 pass in a list of indices and slices that is equivalent to the boolean
 vector we used previously:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">sequence</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)],</span> <span class="s1">&#39;-&#39;</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">sequence</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)],</span> <span class="s1">'-'</span><span class="p">))</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">where</span></code> also accepts a boolean vector contained in
 <code class="docutils literal notranslate"><span class="pre">Sequence.positional_metadata</span></code>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequence</span><span class="o">.</span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;where&#39;</span><span class="p">:</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequence</span><span class="o">.</span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'where'</span><span class="p">:</span>
 <span class="gp">... </span>                                <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span>                                 <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]}</span>
 </pre></div>
 </div>
 <p>Let’s pass in the key <code class="docutils literal notranslate"><span class="pre">'where'</span></code> and compare to <code class="docutils literal notranslate"><span class="pre">seq</span></code>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">sequence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;where&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">sequence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'where'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">))</span>
 <span class="go">True</span>
 </pre></div>
 </div>

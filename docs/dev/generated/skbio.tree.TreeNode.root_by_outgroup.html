@@ -869,7 +869,7 @@ returned tree. In in-place mode, they will be cleared prior to rerooting. In
 copying mode, they will not be copied to the new tree.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s1">&#39;((((a,b),(c,d)),(e,f)),g);&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s1">'((((a,b),(c,d)),(e,f)),g);'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                                        /-a</span>
 <span class="go">                              /--------|</span>
@@ -886,7 +886,7 @@ copying mode, they will not be copied to the new tree.</p>
 <span class="go">          \-g</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rooted</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_by_outgroup</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rooted</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_by_outgroup</span><span class="p">([</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rooted</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                    /-a</span>
 <span class="go">          /--------|</span>
@@ -903,7 +903,7 @@ copying mode, they will not be copied to the new tree.</p>
 <span class="go">                              \-g</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rooted</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_by_outgroup</span><span class="p">([</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rooted</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_by_outgroup</span><span class="p">([</span><span class="s1">'e'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rooted</span><span class="o">.</span><span class="n">ascii_art</span><span class="p">())</span>
 <span class="go">                              /-e</span>
 <span class="go">                    /--------|</span>

@@ -770,27 +770,27 @@
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;ACGGGGAGGCGGAG&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif_slice</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'ACGGGGAGGCGGAG'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif_slice</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">'purine-run'</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">motif_slice</span>
 <span class="gp">... </span>    <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">motif_slice</span><span class="p">])</span>
 <span class="go">slice(2, 9, None)</span>
-<span class="go">&#39;GGGGAGG&#39;</span>
+<span class="go">'GGGGAGG'</span>
 <span class="go">slice(10, 14, None)</span>
-<span class="go">&#39;GGAG&#39;</span>
+<span class="go">'GGAG'</span>
 </pre></div>
 </div>
 <p>Gap characters can disrupt motifs:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GG-GG&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif_slice</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'GG-GG'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif_slice</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">'purine-run'</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">motif_slice</span>
 <span class="go">slice(0, 2, None)</span>
 <span class="go">slice(3, 5, None)</span>
 </pre></div>
 </div>
 <p>Gaps can be ignored by passing the gap boolean vector to <cite>ignore</cite>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">&#39;GG-GG&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif_slice</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">&#39;purine-run&#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">gaps</span><span class="p">()):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'GG-GG'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">motif_slice</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">find_motifs</span><span class="p">(</span><span class="s1">'purine-run'</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">gaps</span><span class="p">()):</span>
 <span class="gp">... </span>    <span class="n">motif_slice</span>
 <span class="go">slice(0, 5, None)</span>
 </pre></div>

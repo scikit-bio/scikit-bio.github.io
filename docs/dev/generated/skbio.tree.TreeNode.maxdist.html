@@ -843,12 +843,12 @@ returned. The choice is stable. This often happens when <code class="docutils li
 <p>This method operates on the subtree below the current node.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">&quot;((a:1,b:2)c:3,(d:4,e:5)f:6)root;&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">"((a:1,b:2)c:3,(d:4,e:5)f:6)root;"</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="p">,</span> <span class="n">tips</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">maxdist</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span>
 <span class="go">16.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tips</span><span class="p">]</span>
-<span class="go">[&#39;e&#39;, &#39;b&#39;]</span>
+<span class="go">['e', 'b']</span>
 </pre></div>
 </div>
 </dd></dl>

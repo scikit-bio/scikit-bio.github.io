@@ -802,26 +802,26 @@ storing metadata.</p>
 </div>
 <p>Create a sequence with metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">&#39;ACGT&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;seq description&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                                 <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;seq-id&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'description'</span><span class="p">:</span> <span class="s1">'seq description'</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'seq-id'</span><span class="p">})</span>
 </pre></div>
 </div>
 <p>Retrieve metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-<span class="go">{&#39;description&#39;: &#39;seq description&#39;, &#39;id&#39;: &#39;seq-id&#39;}</span>
+<span class="go">{'description': 'seq description', 'id': 'seq-id'}</span>
 </pre></div>
 </div>
 <p>Update metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new-id&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;pubmed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12345</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'new-id'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'pubmed'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12345</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-<span class="go">{&#39;description&#39;: &#39;seq description&#39;, &#39;id&#39;: &#39;new-id&#39;, &#39;pubmed&#39;: 12345}</span>
+<span class="go">{'description': 'seq description', 'id': 'new-id', 'pubmed': 12345}</span>
 </pre></div>
 </div>
 <p>Set metadata:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;abc&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'abc'</span><span class="p">:</span> <span class="mi">123</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span>
-<span class="go">{&#39;abc&#39;: 123}</span>
+<span class="go">{'abc': 123}</span>
 </pre></div>
 </div>
 <p>Delete metadata:</p>
