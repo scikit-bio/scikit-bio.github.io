@@ -668,7 +668,7 @@
 <section id="example-of-module-structure">
 <h3>Example of module structure<a class="headerlink" href="#example-of-module-structure" title="Link to this heading">#</a></h3>
 <p>The structure of your module should be similar to the example below. scikit-bio follows the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc style guide</a> for documentation. Our <a class="reference internal" href="doc_guide.html"><span class="doc">Documentation guidelines</span></a> explains how to write your docstrings using the numpydoc standards for scikit-bio:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">Numbers (:mod:`skbio.numbers`)</span>
 <span class="sd">==============================</span>
 
@@ -688,7 +688,7 @@
 
 <span class="sd">    Numbers</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># Copyright (c) 2013--, scikit-bio development team.</span>
@@ -771,7 +771,7 @@ Right</label><div class="sd-tab-content docutils">
 <li><p><em>Test `all` the methods in your class.</em> You should assume that any method you haven’t tested has bugs. The convention for naming tests is <code class="docutils literal notranslate"><span class="pre">test_method_name</span></code>. Any leading and trailing underscores on the method name can be ignored for the purposes of the test; however, <em>all tests must start with the literal substring</em> <code class="docutils literal notranslate"><span class="pre">test</span></code> <em>for</em> <code class="docutils literal notranslate"><span class="pre">unittest</span></code> <em>to find them.</em> If the method is particularly complex, or has several discretely different cases you need to check, use <code class="docutils literal notranslate"><span class="pre">test_method_name_suffix</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">test_init_empty</span></code>, <code class="docutils literal notranslate"><span class="pre">test_init_single</span></code>, <code class="docutils literal notranslate"><span class="pre">test_init_wrong_type</span></code>, etc. for testing <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p></li>
 <li><p><em>Docstrings for testing methods should be considered optional</em>, instead the description of what the method does should be included in the name itself, therefore the name should be descriptive enough such that when running the tests in verbose mode you can immediately see the file and test method that’s failing.</p></li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -c &quot;import skbio; skbio.test(verbose=True)&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -c "import skbio; skbio.test(verbose=True)"
 skbio.maths.diversity.alpha.tests.test_ace.test_ace ... ok
 test_berger_parker_d (skbio.maths.diversity.alpha.tests.test_base.BaseTests) ... ok
 
@@ -830,7 +830,7 @@ OK
             <span class="n">ace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">43</span><span class="p">])</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>

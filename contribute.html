@@ -688,7 +688,7 @@
 <p>You will want to test your code like a <em>user</em> would do: import the function, execute it on some input data, and examine whether the results are correct. You may install additional software such as <a class="reference external" href="https://jupyter.org/">Jupyter</a> in the same conda environment to make the testing process convenient and pleasant. There is no need to reinstall the modified scikit-bio package in a separate environment in order to test. As soon as you edit the code, the changes will immediately reflect when you use the code.</p>
 <p>For example, you wrote a function <code class="docutils literal notranslate"><span class="pre">gc_content</span></code>, which calculates the fraction of <code class="docutils literal notranslate"><span class="pre">G</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> in a nucleotide sequence:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;GC&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">"GC"</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You added this function to the code file <code class="docutils literal notranslate"><span class="pre">skbio/sequence/nucl.py</span></code>. It will be available for use in any Python code launched in the same conda environment:</p>
@@ -703,8 +703,8 @@
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Unit_testing">Unit testing</a> involves testing the smallest units of your code, such as classes, functions, and methods, to ensure they function correctly in isolation. It is a fundamental best practice in software engineering, but is often overlooked by beginners. Unit testing is made easier by writing test code alongside the algorithm code. Both types of code are integrated into the scikit-bio codebase. This test code is then regularly executed whenever changes are made to ensure that the intended behavior remains consistent over time.</p>
 <p>For example, the test code for the <code class="docutils literal notranslate"><span class="pre">gc_content</span></code> may live in <code class="docutils literal notranslate"><span class="pre">skbio/sequence/tests/test_nucl.py</span></code>, under class <code class="docutils literal notranslate"><span class="pre">TestNucl</span></code>, as a method <code class="docutils literal notranslate"><span class="pre">test_gc_content</span></code>. It may read like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_gc_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">gc_content</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">gc_content</span><span class="p">(</span><span class="s2">&quot;GGATCCGC&quot;</span><span class="p">),</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">gc_content</span><span class="p">(</span><span class="s2">"ACGT"</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">gc_content</span><span class="p">(</span><span class="s2">"GGATCCGC"</span><span class="p">),</span> <span class="mf">0.75</span><span class="p">)</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -765,7 +765,7 @@
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Docstring">Docstrings</a> are structured text blocks associated with each unit of the code that detail the usage of the code. Docstrings will be rendered to the software documentation. That is, <em>users</em> (not just developers) will read them. Therefore, docstrings are critical if you want your code to be used, and in the correct way.</p>
 <p>Below is a very simple example for the <code class="docutils literal notranslate"><span class="pre">gc_content</span></code>. The lines between the triple double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>) are the docstring:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the GC content of a nucleotide sequence.</span>
+<span class="w">    </span><span class="sd">"""Calculate the GC content of a nucleotide sequence.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -777,8 +777,8 @@
 <span class="sd">    float</span>
 <span class="sd">        Fraction of G and C.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;GC&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">"GC"</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>As shown, the docstring explains the purpose, the parameter(s), and the return value(s) of the function. In more complicated cases, the docstring should also include example usage, potential errors, related functions, mathematics behind the algorithm, references to webpages or literature, etc. Every public-facing component should have a docstring.</p>
@@ -788,16 +788,16 @@
 <h3>Doctests<a class="headerlink" href="#doctests" title="Link to this heading">#</a></h3>
 <p>You may consider adding <strong>example usages</strong> of your code to its docstring. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the GC content of a nucleotide sequence.</span>
+<span class="w">    </span><span class="sd">"""Calculate the GC content of a nucleotide sequence.</span>
 <span class="sd">    ...</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; from skbio.sequence.nucl import gc_content</span>
-<span class="sd">    &gt;&gt;&gt; gc_content(&quot;ACGT&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; gc_content("ACGT")</span>
 <span class="sd">    0.5</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -846,7 +846,7 @@
 </div>
 <ol class="arabic" start="2">
 <li><p><a class="reference external" href="https://github.com/git-guides/git-commit">Commit</a> the changes (this is like “saving” your code in the current branch):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;describe what I did&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">"describe what I did"</span>
 </pre></div>
 </div>
 </li>

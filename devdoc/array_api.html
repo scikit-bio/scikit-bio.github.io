@@ -537,7 +537,7 @@ test once; the decorator runs it across every supported backend:</p>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">TestMyFunction</span><span class="p">(</span><span class="n">TestCase</span><span class="p">,</span> <span class="n">ArrayAPITestMixin</span><span class="p">):</span>
 
-    <span class="nd">@array_backends</span><span class="p">(</span><span class="s2">&quot;numpy&quot;</span><span class="p">,</span> <span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="s2">&quot;jax&quot;</span><span class="p">,</span> <span class="s2">&quot;cupy&quot;</span><span class="p">)</span>
+    <span class="nd">@array_backends</span><span class="p">(</span><span class="s2">"numpy"</span><span class="p">,</span> <span class="s2">"torch"</span><span class="p">,</span> <span class="s2">"jax"</span><span class="p">,</span> <span class="s2">"cupy"</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">test_my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]]</span>
         <span class="n">arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_array</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
@@ -660,6 +660,32 @@ backends. Check the library’s documentation if you hit
 <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> on <code class="docutils literal notranslate"><span class="pre">xp</span></code>.</p></li>
 </ul>
 </section>
+<section id="multi-gpu-systems">
+<h2>Multi-GPU systems<a class="headerlink" href="#multi-gpu-systems" title="Link to this heading">#</a></h2>
+<p>The array-API paths honor whichever device the input array is on, because
+every intermediate is allocated with <code class="docutils literal notranslate"><span class="pre">device=</span></code> taken from the input.</p>
+<p>The fused Numba GPU kernels (currently <code class="docutils literal notranslate"><span class="pre">permanova</span></code> and <code class="docutils literal notranslate"><span class="pre">mantel</span></code> with
+<code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>) do not. They allocate and launch on Numba’s <em>current</em>
+device. GPU buffers must therefore belong to the default device. If you use
+multiple devices, change the default to match the buffer ownership before
+invoking these functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuda</span>        <span class="c1"># use hip instead of cuda on ROCm</span>
+
+<span class="n">cuda</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="n">buffer_device_ordinal</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">permanova</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">"numba"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The failure mode is worth knowing, because it is not a clean error. The
+<code class="docutils literal notranslate"><span class="pre">__cuda_array_interface__</span></code> protocol carries no device field, so nothing in
+the handoff identifies which device the buffer belongs to. Launching against a
+buffer from another device reports nothing at launch time; on ROCm the illegal
+access has been observed to surface only at the next synchronizing call, and
+to leave the GPU context unusable for the remainder of the process, so a later
+and entirely valid operation fails instead.</p>
+<p>The array-API path has no such constraint and is device-correct on any GPU.
+Contributors adding new Numba GPU kernels should be aware of the same
+limitation.</p>
+</section>
 </section>
 
 
@@ -691,6 +717,7 @@ backends. Check the library’s documentation if you hit
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-tests-locally">Running tests locally</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration">Continuous integration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-specific-gotchas">Backend-specific gotchas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-gpu-systems">Multi-GPU systems</a></li>
 </ul>
   </nav></div>
 

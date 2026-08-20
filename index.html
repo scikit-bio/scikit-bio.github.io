@@ -497,14 +497,14 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio.diversity</span><span class="w"> </span><span class="kn">import</span> <span class="n">beta_diversity</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.ordination</span><span class="w"> </span><span class="kn">import</span> <span class="n">pcoa</span>
 
-<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data.tsv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;metadata.tsv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;tree.nwk&#39;</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">'data.tsv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">'metadata.tsv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'tree.nwk'</span><span class="p">)</span>
 
-<span class="n">bdiv</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s1">&#39;weighted_unifrac&#39;</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">)</span>
+<span class="n">bdiv</span> <span class="o">=</span> <span class="n">beta_diversity</span><span class="p">(</span><span class="s1">'weighted_unifrac'</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">)</span>
 
 <span class="n">ordi</span> <span class="o">=</span> <span class="n">pcoa</span><span class="p">(</span><span class="n">bdiv</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">ordi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;bodysite&#39;</span><span class="p">)</span>
+<span class="n">ordi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">'bodysite'</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="PCoA plot" src="_images/hmp1_pcoa.png" />
@@ -568,8 +568,8 @@
 </div>
 <div class="sd-card-footer docutils">
 <details>
-<summary>Example</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">centralize</span><span class="p">(</span><span class="n">mat</span><span class="p">:</span> <span class="s2">&quot;ArrayLike&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;StdArray&quot;</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Center data around its geometric average.</span>
+<summary>Example</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">centralize</span><span class="p">(</span><span class="n">mat</span><span class="p">:</span> <span class="s2">"ArrayLike"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"StdArray"</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Center data around its geometric average.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -590,7 +590,7 @@
 <span class="sd">    array([[ 0.17445763,  0.30216948,  0.34891526,  0.17445763],</span>
 <span class="sd">           [ 0.32495488,  0.18761279,  0.16247744,  0.32495488]])</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">gmean</span>
 
     <span class="n">mat</span> <span class="o">=</span> <span class="n">closure</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
