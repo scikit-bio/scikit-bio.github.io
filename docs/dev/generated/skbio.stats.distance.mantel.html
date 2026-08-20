@@ -736,7 +736,7 @@
 <h1>skbio.stats.distance.mantel<a class="headerlink" href="#skbio-stats-distance-mantel" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.mantel">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">mantel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pearson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'two-sided'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_mantel.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.mantel" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">mantel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pearson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'two-sided'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_mantel.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.mantel" title="Link to this definition">#</a></dt>
 <dd><p>Compute correlation between distance matrices using the Mantel test.</p>
 <p>The Mantel test compares two distance matrices by computing the correlation
 between the distances in the lower (or upper) triangular portions of the
@@ -819,7 +819,14 @@ necessary. This parameter is disallowed if <cite>x</cite> and <cite>y</cite> are
 implementation. <code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> uses the optional Numba implementation
 and requires Numba to be installed. If not provided, the global
 default is used (see <a class="reference internal" href="skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a>). Only applies to the
-<code class="docutils literal notranslate"><span class="pre">&quot;pearson&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;spearman&quot;</span></code> methods.</p>
+<code class="docutils literal notranslate"><span class="pre">&quot;pearson&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;spearman&quot;</span></code> methods. When both distance matrices
+are resident on a CuPy- or PyTorch-backed GPU (CUDA or ROCm) and
+<code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, a fused GPU kernel is used; matrices on other
+backends use the array-API path instead (see Notes for the
+ROCm-PyTorch case).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.4.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -859,12 +866,57 @@ of IDs, or an invalid <cite>method</cite>, number of <cite>permutations</cite>, 
 </dl>
 </div>
 <p class="rubric">Notes</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function supports the <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a>. Compatible array backends:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>CPU</p></th>
+<th class="head"><p>GPU</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NumPy</p></td>
+<td><p>✓</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p>JAX</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>PyTorch</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>CuPy</p></td>
+<td><p>n/a</p></td>
+<td><p>✓</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>This function uses parallel computation for improved performance.
 See the <a class="extlink-install reference external" href="../../../install.html#parallelization">parallelization guide</a> for information on
 controlling the number of threads used.</p>
 <p>The Mantel test was first described in <a class="reference internal" href="#rcee8d6e1aac4-2" id="id2">[2]</a>. The general algorithm and
 interface are similar to <code class="docutils literal notranslate"><span class="pre">vegan::mantel</span></code>, available in R’s vegan
 package <a class="reference internal" href="#rcee8d6e1aac4-3" id="id3">[3]</a>.</p>
+<p>On GPU-resident distance matrices with <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, a fused GPU kernel
+runs on CuPy or PyTorch matrices, on both CUDA and ROCm devices. The exception
+is ROCm PyTorch on stacks where a Numba HIP kernel cannot be compiled after
+ROCm PyTorch has been imported in the same process; those matrices fall back
+to the array-API path, which runs on the device regardless. The result is
+identical across all paths.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, GPU buffers must belong to the default device. On a
+system with several devices, the default must be changed to match the buffer
+ownership before this function is invoked, through
+<code class="docutils literal notranslate"><span class="pre">numba.cuda.select_device</span></code> on CUDA or <code class="docutils literal notranslate"><span class="pre">numba.hip.select_device</span></code> on ROCm.
+A mismatch is not reported when the kernel is launched, and on ROCm it has
+been observed to leave the GPU context unusable for the rest of the process.
+The array-API path, taken when <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code> is not requested, honors
+whichever device the input is on.</p>
 <p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code> will be returned for the p-value if <cite>permutations</cite> is zero or if
 the correlation coefficient is <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>. The correlation coefficient will
 be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> if one or both of the inputs does not have any variation
