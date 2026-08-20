@@ -655,7 +655,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.transition.html">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.transition.html">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.jc69.html">skbio.sequence.transition.jc69</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.k2p.html">skbio.sequence.transition.k2p</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.f81.html">skbio.sequence.transition.f81</a></li>
@@ -710,7 +710,7 @@
     <li class="breadcrumb-item"><a href="../sequence.html" class="nav-link">Biological Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.sequence.transition.html" class="nav-link">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="skbio.sequence.transition.html" class="nav-link">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.sequence.transition.tn93</span></li>
   </ul>
@@ -733,56 +733,55 @@
 <h1>skbio.sequence.transition.tn93<a class="headerlink" href="#skbio-sequence-transition-tn93" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.transition.tn93">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.transition.</span></span><span class="sig-name descname"><span class="pre">tn93</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DNA'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/transition.py#L543"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.transition.tn93" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.transition.</span></span><span class="sig-name descname"><span class="pre">tn93</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/transition.py#L589"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.transition.tn93" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the TN93 transition probability matrix for a given distance.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
 </div>
-<p>The Tamura-Nei 1993 (TN93) allows differential base
-frequencies (<span class="math notranslate nohighlight">\(\pi\)</span>) and assumes different ratios <span class="math notranslate nohighlight">\(\kappa\)</span> between
-rates of transitions (substitutions between two purines or between two
-pyrimidines) and transversions (substitutions between a purine and a
-pyrimidine) for each class of nucleotides. Transition probability for a
-nucleotide for sequences with a distance <span class="math notranslate nohighlight">\(d\)</span> between them can be
-calculated like:</p>
+<p>The Tamura-Nei 1993 (TN93) allows differential base frequencies (<span class="math notranslate nohighlight">\(\pi\)</span>) and
+assumes different ratios <span class="math notranslate nohighlight">\(\kappa\)</span> between rates of transitions (substitutions
+between two purines or between two pyrimidines) and transversions (substitutions
+between a purine and a pyrimidine) for each class of nucleotides. Transition
+probability for a nucleotide for sequences with a distance <span class="math notranslate nohighlight">\(d\)</span> between them
+can be calculated as:</p>
 <div class="math notranslate nohighlight">
 \[P_{ij} = e^{-\frac{\kappa_i d}{2b}}\delta_{ij} +
     e^{\frac{-d}{b}}\left (1 - e^{-\frac{(\kappa_i - 1)d}{2b}}\right )
     \frac{\pi_j\epsilon_{ij}}{\sum_k \epsilon_{jk}\pi_k} +
     \left (1 - e^{\frac{-d}{b}}\right )\pi_j\]</div>
 <p>Where <span class="math notranslate nohighlight">\(i,j \in \{A, C, G, T/U\}\)</span>, <span class="math notranslate nohighlight">\(i\)</span> is ancestral nucleotide,
-<span class="math notranslate nohighlight">\(j\)</span> is descendant nucleotide, <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is Kronecker delta
-function and is 1 if <span class="math notranslate nohighlight">\(i=j\)</span> and 0 otherwise, epsilon_{ij} is
-purine/pyrimidine indicator function which is 1 if <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>
-in the same nucloetide class and is 0 otherwise, <span class="math notranslate nohighlight">\(\kappa_i\)</span> is a
-transition/transversion rate ratio for purines or pyrimidines, depending
-on a substitution type. The normalization constant <span class="math notranslate nohighlight">\(b\)</span> is defined as:</p>
+<span class="math notranslate nohighlight">\(j\)</span> is descendant nucleotide, <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is Kronecker delta function
+and is 1 if <span class="math notranslate nohighlight">\(i=j\)</span> and 0 otherwise, epsilon_{ij} is purine/pyrimidine
+indicator function which is 1 if <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are in the same nucloetide
+class and is 0 otherwise, <span class="math notranslate nohighlight">\(\kappa_i\)</span> is a transition/transversion rate ratio
+for purines or pyrimidines, depending on a substitution type. The normalization
+constant <span class="math notranslate nohighlight">\(b\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[b = 1 - \pi_A^2 - \pi_C^2 - \pi_G^2 - \pi_T^2\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">float</span></dt><dd><p>distance or distances between sequences.</p>
+<dt><strong>d</strong><span class="classifier">float</span></dt><dd><p>Evolutionary distance between sequences.</p>
 </dd>
-<dt><strong>freqs</strong><span class="classifier">array_like of float of shape (4,)</span></dt><dd><p>Relative frequencies of nucleobases A, C, G, and T/U, respectively.
-Should sum to 1.</p>
+<dt><strong>freqs</strong><span class="classifier">array_like of float of shape (4,)</span></dt><dd><p>Relative frequencies of nucleobases A, C, G, and T/U, respectively. Should sum
+to 1.</p>
 </dd>
-<dt><strong>kappa_r</strong></dt><dd><p>Transition/transversion rate ratio of purines. Should be
-<span class="math notranslate nohighlight">\(0 &lt; \kappa \leq 1\)</span>.</p>
+<dt><strong>kappa_r</strong><span class="classifier">float</span></dt><dd><p>Transition/transversion rate ratio of purines. Should be between 0 and 1.</p>
 </dd>
-<dt><strong>kappa_y</strong></dt><dd><p>Transition/transversion rate ratio of pyrimidines. Should be
-<span class="math notranslate nohighlight">\(0 &lt; \kappa \leq 1\)</span>.</p>
+<dt><strong>kappa_y</strong><span class="classifier">float</span></dt><dd><p>Transition/transversion rate ratio of pyrimidines. Should be between 0 and 1.</p>
 </dd>
-<dt><strong>seqtype</strong><span class="classifier">str</span></dt><dd><p>String that holds type of the sequence. “DNA” (default) and “RNA”
-are valid options. Needed to assign proper nucleotide letters to
-SubstitutionMatrix dimensions.</p>
+<dt><strong>seqtype</strong><span class="classifier">{‘DNA’, ‘RNA’}, optional</span></dt><dd><p>Sequence type. Used to label matrix states as nucleotides (A, C, G, T/U).
+Default is “DNA”.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">str or dtype, optional</span></dt><dd><p>Floating-point data type of the transition probability matrix. Options are
+“float32” (default) and “float64”.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>SubstitutionMatrix</dt><dd><p>Transition probability matrix. Rows are ancestral nucleotides,
-columns are descendant nucleotides.</p>
+<dt>SubstitutionMatrix</dt><dd><p>Transition probability matrix. Rows are ancestral nucleotides, columns are
+descendant nucleotides.</p>
 </dd>
 </dl>
 </dd>
@@ -790,15 +789,16 @@ columns are descendant nucleotides.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="skbio.sequence.distance.tn93.html#skbio.sequence.distance.tn93" title="skbio.sequence.distance.tn93"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.sequence.distance.tn93</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.sequence.transition.hky85.html#skbio.sequence.transition.hky85" title="skbio.sequence.transition.hky85"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hky85</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The Tamura-Nei 1993 (TN93) model was described in <a class="reference internal" href="#r8f1377a99182-1" id="id1">[1]</a>. The transition
-probability formulas were taken from <a class="reference internal" href="#r8f1377a99182-2" id="id2">[2]</a>.</p>
-<p>It generalizes HKY85 by allowing different transition rates for purine
-and pyrimidine substitutions while maintaining a single transversion rate
-class. HKY85 is recovered when <span class="math notranslate nohighlight">\(\kappa_R = \kappa_Y\)</span>.</p>
+<p>The Tamura-Nei 1993 (TN93) model was described in <a class="reference internal" href="#r8f1377a99182-1" id="id1">[1]</a>. The transition probability
+formulas were taken from <a class="reference internal" href="#r8f1377a99182-2" id="id2">[2]</a>.</p>
+<p>It generalizes HKY85 by allowing different transition rates for purine and
+pyrimidine substitutions while maintaining a single transversion rate class. HKY85
+is recovered when <span class="math notranslate nohighlight">\(\kappa_R = \kappa_Y\)</span>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r8f1377a99182-1" role="doc-biblioentry">

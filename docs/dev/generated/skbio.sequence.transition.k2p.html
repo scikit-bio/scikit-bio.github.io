@@ -655,7 +655,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.transition.html">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.transition.html">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.jc69.html">skbio.sequence.transition.jc69</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.transition.k2p</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.f81.html">skbio.sequence.transition.f81</a></li>
@@ -710,7 +710,7 @@
     <li class="breadcrumb-item"><a href="../sequence.html" class="nav-link">Biological Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.sequence.transition.html" class="nav-link">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="skbio.sequence.transition.html" class="nav-link">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.sequence.transition.k2p</span></li>
   </ul>
@@ -733,7 +733,7 @@
 <h1>skbio.sequence.transition.k2p<a class="headerlink" href="#skbio-sequence-transition-k2p" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.transition.k2p">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.transition.</span></span><span class="sig-name descname"><span class="pre">k2p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DNA'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/transition.py#L226"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.transition.k2p" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.transition.</span></span><span class="sig-name descname"><span class="pre">k2p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/transition.py#L245"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.transition.k2p" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the K2P transition probability matrix for a given distance.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
@@ -756,24 +756,33 @@ separated by evolutionary distance <span class="math notranslate nohighlight">\(
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">float</span></dt><dd><p>distance or distances between sequences.</p>
+<dt><strong>d</strong><span class="classifier">float</span></dt><dd><p>Evolutionary distance between sequences.</p>
 </dd>
-<dt><strong>kappa</strong><span class="classifier">float</span></dt><dd><p>ratio between transition and transversion rates</p>
+<dt><strong>kappa</strong><span class="classifier">float</span></dt><dd><p>Ratio between transition and transversion rates. Should be between 0 and 1.</p>
 </dd>
-<dt><strong>seqtype</strong><span class="classifier">str</span></dt><dd><p>String that holds type of the sequence. “DNA” (default) and “RNA”
-are valid options. Needed to assign proper nucleotide letters to
-SubstitutionMatrix dimensions.</p>
+<dt><strong>seqtype</strong><span class="classifier">{‘DNA’, ‘RNA’}, optional</span></dt><dd><p>Sequence type. Used to label matrix states as nucleotides (A, C, G, T/U).
+Default is “DNA”.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">str or dtype, optional</span></dt><dd><p>Floating-point data type of the transition probability matrix. Options are
+“float32” (default) and “float64”.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>SubstitutionMatrix</dt><dd><p>Transition probability matrix. Rows are ancestral nucleotides,
-columns are descendant nucleotides.</p>
+<dt>SubstitutionMatrix</dt><dd><p>Transition probability matrix. Rows are ancestral nucleotides, columns are
+descendant nucleotides.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.sequence.distance.k2p.html#skbio.sequence.distance.k2p" title="skbio.sequence.distance.k2p"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.sequence.distance.k2p</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.sequence.transition.jc69.html#skbio.sequence.transition.jc69" title="skbio.sequence.transition.jc69"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jc69</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
 <p>The Kimura 2-parameter model (K2P or K80) was originally described in <a class="reference internal" href="#re23ddff1bc43-1" id="id1">[1]</a>.</p>
 <p>K2P is an extension of the JC69 model by modeling differential transition and

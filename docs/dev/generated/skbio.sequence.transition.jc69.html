@@ -81,7 +81,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="skbio.sequence.transition.k2p" href="skbio.sequence.transition.k2p.html" />
-    <link rel="prev" title="Transition probability models (skbio.sequence.tpm)" href="skbio.sequence.transition.html" />
+    <link rel="prev" title="Transition probability models (skbio.sequence.transition)" href="skbio.sequence.transition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.7.4-dev" />
@@ -655,7 +655,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.transition.html">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.sequence.transition.html">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.sequence.transition.jc69</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.k2p.html">skbio.sequence.transition.k2p</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.f81.html">skbio.sequence.transition.f81</a></li>
@@ -710,7 +710,7 @@
     <li class="breadcrumb-item"><a href="../sequence.html" class="nav-link">Biological Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
     
     
-    <li class="breadcrumb-item"><a href="skbio.sequence.transition.html" class="nav-link">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</a></li>
+    <li class="breadcrumb-item"><a href="skbio.sequence.transition.html" class="nav-link">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">skbio.sequence.transition.jc69</span></li>
   </ul>
@@ -733,52 +733,59 @@
 <h1>skbio.sequence.transition.jc69<a class="headerlink" href="#skbio-sequence-transition-jc69" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.sequence.transition.jc69">
-<span class="sig-prename descclassname"><span class="pre">skbio.sequence.transition.</span></span><span class="sig-name descname"><span class="pre">jc69</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DNA'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/transition.py#L136"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.transition.jc69" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.sequence.transition.</span></span><span class="sig-name descname"><span class="pre">jc69</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seqtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DNA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/transition.py#L155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.transition.jc69" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the JC69 transition probability matrix for a given distance.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
 </div>
-<p>The Jukes-Cantor 1969 (JC69) model assumes equal nucleotide frequencies
-and equal substitution rates between all nucleotides.</p>
-<p>The transition probability between nucleotide states for sequences
-separated by evolutionary distance <span class="math notranslate nohighlight">\(d\)</span> (expected substitutions
-per site) is given by:</p>
+<p>The Jukes-Cantor 1969 (JC69) model assumes equal nucleotide frequencies and equal
+substitution rates between all nucleotides.</p>
+<p>The transition probability between nucleotide states for sequences separated by
+evolutionary distance <span class="math notranslate nohighlight">\(d\)</span> (expected substitutions per site) is given by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}P_{ij} = \begin{cases}
     \frac{1}{4} + \frac{3}{4} e^{-\frac{4d}{3}} &amp; i = j \\
     \frac{1}{4} - \frac{1}{4} e^{-\frac{4d}{3}} &amp; i \neq j
 \end{cases}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(i, j \in \{A, C, G, T/U\}\)</span>, and <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>
-denote ancestral and descendant states, respectively.</p>
+<p>where <span class="math notranslate nohighlight">\(i, j \in \{A, C, G, T/U\}\)</span>, and <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> denote
+ancestral and descendant states, respectively.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">float</span></dt><dd><p>Evolutionary distance (expected substitutions per site) between
-sequences.</p>
+<dt><strong>d</strong><span class="classifier">float</span></dt><dd><p>Evolutionary distance between sequences.</p>
 </dd>
-<dt><strong>seqtype</strong><span class="classifier">str</span></dt><dd><p>Sequence type: “DNA” (default) or “RNA”. Used to label matrix states
-as nucleotides (A, C, G, T/U).</p>
+<dt><strong>seqtype</strong><span class="classifier">{‘DNA’, ‘RNA’}, optional</span></dt><dd><p>Sequence type. Used to label matrix states as nucleotides (A, C, G, T/U).
+Default is “DNA”.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">str or dtype, optional</span></dt><dd><p>Floating-point data type of the transition probability matrix. Options are
+“float32” (default) and “float64”.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>SubstitutionMatrix</dt><dd><p>Transition probability matrix. Rows correspond to ancestral states,
-columns correspond to descendant states.</p>
+<dt>SubstitutionMatrix</dt><dd><p>Transition probability matrix. Rows are ancestral nucleotides, columns are
+descendant nucleotides.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.sequence.distance.jc69.html#skbio.sequence.distance.jc69" title="skbio.sequence.distance.jc69"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.sequence.distance.jc69</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
 <p>The Jukes-Cantor 1969 (JC69) model was originally described in <a class="reference internal" href="#r7b8105a82f25-1" id="id1">[1]</a>.</p>
-<p>It is a continuous-time Markov chain model that assumes equal base
-frequencies and equal substitution rates between all nucleotides.</p>
+<p>It is a continuous-time Markov chain model that assumes equal base frequencies and
+equal substitution rates between all nucleotides.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r7b8105a82f25-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Jukes, T. H., &amp; Cantor, C. R. (1969). Evolution of protein
-molecules. Mammalian Protein Metabolism, 3(21), 132.</p>
+<p>Jukes, T. H., &amp; Cantor, C. R. (1969). Evolution of protein molecules.
+Mammalian Protein Metabolism, 3(21), 132.</p>
 </div>
 </div>
 </dd></dl>
@@ -801,7 +808,7 @@ molecules. Mammalian Protein Metabolism, 3(21), 132.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</p>
+        <p class="prev-next-title">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</p>
       </div>
     </a>
     <a class="right-next"

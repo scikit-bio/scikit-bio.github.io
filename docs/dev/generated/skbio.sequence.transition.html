@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Transition probability models (skbio.sequence.tpm) &#8212; scikit-bio 0.7.4-dev documentation</title>
+    <title>Transition probability models (skbio.sequence.transition) &#8212; scikit-bio 0.7.4-dev documentation</title>
   
   
   
@@ -654,7 +654,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.sequence.distance.html">Sequence distance metrics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.distance</span></code>)</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.jc69.html">skbio.sequence.transition.jc69</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.k2p.html">skbio.sequence.transition.k2p</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.sequence.transition.f81.html">skbio.sequence.transition.f81</a></li>
@@ -708,7 +708,7 @@
     
     <li class="breadcrumb-item"><a href="../sequence.html" class="nav-link">Biological Sequences (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence</span></code>)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code>)</span></li>
   </ul>
 </nav>
 </div>
@@ -725,20 +725,18 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="transition-probability-models-skbio-sequence-tpm">
-<span id="module-skbio.sequence.transition"></span><h1>Transition probability models (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.tpm</span></code>)<a class="headerlink" href="#transition-probability-models-skbio-sequence-tpm" title="Link to this heading">#</a></h1>
-<p>This module provides functions for calculating transition probability
-matrices (TPMs) under several substitution models for a specified
-evolutionary distance (branch length).</p>
-<p>A TPM gives the probability that each ancestral
-state (rows) is observed as each descendant state (columns)
-after the specified evolutionary distance. For continuous-time Markov
-models, the TPM is obtained from the instantaneous rate matrix, <span class="math notranslate nohighlight">\(Q\)</span>, as
-<span class="math notranslate nohighlight">\(P(t) = e^{Qt}\)</span>. Each row of the matrix sums to one.</p>
-<p>Different models differ in the assumptions they make about instantaneous
-substitution rates and equilibrium state frequencies, resulting in
-different sets of model parameters. TPMs are
-also known as substitution probability matrices.</p>
+  <section id="transition-probability-models-skbio-sequence-transition">
+<span id="module-skbio.sequence.transition"></span><h1>Transition probability models (<a class="reference internal" href="#module-skbio.sequence.transition" title="skbio.sequence.transition"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.sequence.transition</span></code></a>)<a class="headerlink" href="#transition-probability-models-skbio-sequence-transition" title="Link to this heading">#</a></h1>
+<p>This module provides functions for calculating transition probability matrices (TPMs,
+a.k.a. substitution probability matrices) under different substitution models for a
+specified evolutionary distance (expected number of substitutions per site, which is
+often represented as branch length in a phylogenetic tree).</p>
+<p>A TPM gives the probability that each ancestral state (rows) is observed as each
+descendant state (columns) after the specified evolutionary distance. For
+continuous-time Markov models, the TPM is obtained from the instantaneous rate matrix,
+<span class="math notranslate nohighlight">\(Q\)</span>, as <span class="math notranslate nohighlight">\(P(t) = e^{Qt}\)</span>. Each row of the matrix sums to one.</p>
+<p>Models differ in the assumptions they make about instantaneous substitution rates and
+equilibrium state frequencies, resulting in different sets of model parameters.</p>
 <section id="transition-probability-matrices">
 <h2>Transition probability matrices<a class="headerlink" href="#transition-probability-matrices" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
