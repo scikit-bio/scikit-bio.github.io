@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -36,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=3e6c503c" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
@@ -595,21 +595,15 @@ CUDA.</p>
 </section>
 <section id="continuous-integration">
 <h2>Continuous integration<a class="headerlink" href="#continuous-integration" title="Link to this heading">#</a></h2>
-<p>GPU testing happens in the <code class="docutils literal notranslate"><span class="pre">Array</span> <span class="pre">API</span> <span class="pre">Compatibility</span></code> workflow
-(<code class="docutils literal notranslate"><span class="pre">.github/workflows/array-api.yml</span></code>), which runs on a T4 GPU runner
+<p>GPU testing happens in the <code class="docutils literal notranslate"><span class="pre">GPU</span> <span class="pre">CI</span></code> workflow (<code class="docutils literal notranslate"><span class="pre">.github/workflows/gpu.yml</span></code>), which runs on a T4 GPU runner
 against the <code class="docutils literal notranslate"><span class="pre">torch</span></code>, <code class="docutils literal notranslate"><span class="pre">jax</span></code>, and <code class="docutils literal notranslate"><span class="pre">cupy</span></code> backends with CUDA.</p>
 <p><strong>Triggers:</strong></p>
 <ul class="simple">
-<li><p><strong>Weekly cron</strong>: every Monday at 06:00 UTC, catching regressions
-from upstream changes in array libraries</p></li>
+<li><p><strong>`gpu-ci` label on a PR</strong>: Apply the label to a PR to trigger the workflow. Pushes to the labeled PR will NOT re-trigger it. Instead, remove and re-add the label after reviewing updated commits.</p></li>
+<li><p><strong>Weekly cron</strong>: every Monday at 06:00 UTC, catching regressions from upstream changes in array libraries.</p></li>
 <li><p><strong>Manual dispatch</strong>: via the Actions tab on GitHub</p></li>
-<li><p><strong>`gpu-ci` label on a PR</strong>: applies the label to a PR to trigger
-the workflow; pushes to the labeled PR will re-trigger it</p></li>
 </ul>
-<p>Reviewers should apply the <code class="docutils literal notranslate"><span class="pre">gpu-ci</span></code> label to any PR that modifies
-array-API code paths. Most PRs do not need GPU validation and the
-workflow has a non-trivial cost, so it is not run on every PR
-automatically.</p>
+<p>Reviewers should apply the <code class="docutils literal notranslate"><span class="pre">gpu-ci</span></code> label to any PR that modifies GPU code paths. Most PRs do not need GPU validation and the workflow has a non-trivial cost, so it is not run on every PR automatically.</p>
 <p><strong>What the workflow verifies:</strong></p>
 <ul class="simple">
 <li><p>Each backend installs successfully with CUDA support</p></li>
@@ -734,8 +728,8 @@ limitation.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -773,7 +767,7 @@ limitation.</p>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
 </p></div>
       
     </div>
