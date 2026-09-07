@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.dirmult_ttest" href="skbio.stats.composition.dirmult_ttest.html" />
+    <link rel="next" title="skbio.stats.composition.ancombc2" href="skbio.stats.composition.ancombc2.html" />
     <link rel="prev" title="skbio.stats.composition.ancom" href="skbio.stats.composition.ancom.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -649,9 +649,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.ancombc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc2.html">skbio.stats.composition.ancombc2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.struc_zero.html">skbio.stats.composition.struc_zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ANCOMBCResult.html">skbio.stats.composition.ANCOMBCResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -749,7 +751,7 @@
 <h1>skbio.stats.composition.ancombc<a class="headerlink" href="#skbio-stats-composition-ancombc" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.ancombc">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancombc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L30"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancombc" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">ancombc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.ancombc" title="Link to this definition">#</a></dt>
 <dd><p>Perform differential abundance test using ANCOM-BC.</p>
 <p>Analysis of compositions of microbiomes with bias correction (ANCOM-BC) <a class="reference internal" href="#r1bf23095540c-1" id="id1">[1]</a> is a
 differential abundance testing method featuring the estimation and correction for
@@ -757,29 +759,27 @@ the bias of differential sampling fractions.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.1.</span></p>
 </div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Improved computational efficiency.</p>
+</div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
+<dd class="field-odd"><dl class="simple">
 <dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>A matrix containing strictly positive count or proportional abundance data of
 the samples. See <a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If the table contains zero values, one should add a pseudocount or apply
-<a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_replace</span></code></a> to convert all values into positive numbers.</p>
-</div>
 </dd>
 <dt><strong>metadata</strong><span class="classifier">pd.DataFrame or 2-D array_like</span></dt><dd><p>Metadata of the samples. Rows correspond to samples and columns correspond
 to covariates (attributes). Must be a pandas DataFrame or convertible to a
 pandas DataFrame.</p>
 </dd>
-<dt><strong>formula</strong><span class="classifier">str or generic Formula object</span></dt><dd><p>A formula defining the model using factors included in the metadata columns.
+<dt><strong>formula</strong><span class="classifier">str or generic Formula object</span></dt><dd><p>Formula defining the model using factors included in the metadata columns.
 Refer to <a class="reference external" href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy’s documentation</a> on how to specify
 a formula.</p>
 </dd>
-<dt><strong>grouping</strong><span class="classifier">str, optional</span></dt><dd><p>A metadata column name of interest for <em>global test</em>, which identifies features
-that are differentially abundant between at least two groups across three or
-more groups in that column. Must be one of the factors in <code class="docutils literal notranslate"><span class="pre">formula</span></code>. Default
-is None, which skips global test.</p>
+<dt><strong>grouping</strong><span class="classifier">str, optional</span></dt><dd><p>Metadata column defining sample groups for post-hoc analyses. Must be a term
+in <code class="docutils literal notranslate"><span class="pre">formula</span></code> and contain at least three groups. Other terms are treated as
+adjustment covariates. It has no impact on the main result. If None (default),
+post-hoc analyses will be unavailable.</p>
 </dd>
 <dt><strong>max_iter</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of iterations for the bias estimation process. Default is 100.</p>
 </dd>
@@ -789,58 +789,32 @@ is None, which skips global test.</p>
 <dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Significance level for the statistical tests. Must be in the range of (0, 1).
 Default is 0.05.</p>
 </dd>
-<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are
-Holm-Boniferroni (“holm” or “holm-bonferroni”) (default), Benjamini-Hochberg
-(“bh”, “fdr_bh” or “benjamini-hochberg”), or any method supported by
-statsmodels’ <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.15.0 v0.15.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function.
-Case-insensitive. If None, no correction will be performed.</p>
+<dt><strong>p_adjust</strong><span class="classifier">str, optional</span></dt><dd><p>Method to correct <em>p</em>-values for multiple comparisons. Options are: Bonferroni
+(“bonf”/”bonferroni”), Holm-Bonferroni (“holm”/”holm-bonferroni”, default),
+Benjamini-Hochberg (“bh”/”benjamini-hochberg”), and Benjamini-Yekutieli
+(“by”/”benjamini-yekutieli”), or any method supported by statsmodels’
+<a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html#statsmodels.stats.multitest.multipletests" title="(in statsmodels 0.15.0 v0.15.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multipletests</span></code></a> function. Case-insensitive.
+If None, no correction will be performed.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>res_main</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>A table of features and covariates, their log-fold changes and other relevant
-statistics of the primary ANCOM-BC analysis.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Covariate</span></code>: Covariate name, i.e., independent variable.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Log2(FC)</span></code>: Expected log2-fold change of abundance from the reference
-category to the covariate category defined in the formula. The value is
-expressed in the center log ratio (see <a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a>) transformed coordinates.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SE</span></code>: Standard error of the estimated Log2(FC).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code>: <em>W</em>-statistic, or the number of features that the current feature is
-tested to be significantly different against.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of the ANCOM-BC test.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value of the ANCOM-BC test for multiple
-comparisons.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Signif</span></code>: Whether the covariate category is significantly differentially
-abundant from the reference category. A feature-covariate pair is marked as
-“True” if the <em>q</em>-value is less than or equal to the significance level
-(<code class="docutils literal notranslate"><span class="pre">alpha</span></code>).</p></li>
-</ul>
-</dd>
-<dt><strong>res_global</strong><span class="classifier">pd.DataFrame, optional</span></dt><dd><p>A table of features and statistics from the global test (when <code class="docutils literal notranslate"><span class="pre">grouping</span></code> is
-set).</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">FeatureID</span></code>: Feature identifier, i.e., dependent variable.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code>: <em>W</em>-statistic of Chi-squared statistic that quantifies the overall
-evidence against null hypothesis (the mean abundance of the feature is the
-same across all groups).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: <em>p</em>-value of the <em>W</em>-statistic in global test.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">qvalue</span></code>: Corrected <em>p</em>-value in global test.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Signif</span></code>: Whether at least one group mean is different from other
-in grouping variable.</p></li>
-</ul>
+<dt><a class="reference internal" href="skbio.stats.composition.ANCOMBCResult.html#skbio.stats.composition.ANCOMBCResult" title="skbio.stats.composition.ANCOMBCResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANCOMBCResult</span></code></a></dt><dd><p>Result object with primary results and post-hoc analysis methods.</p>
 </dd>
 </dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Global test is now deferred as a post-hoc analysis. See
+<a class="reference internal" href="skbio.stats.composition.ANCOMBCResult.global_test.html#skbio.stats.composition.ANCOMBCResult.global_test" title="skbio.stats.composition.ANCOMBCResult.global_test"><code class="xref py py-meth docutils literal notranslate"><span class="pre">global_test</span></code></a>. “Log2(FC)” has been renamed as “Log(FC)”
+for accuracy.</p>
+</div>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="skbio.stats.composition.ancom.html#skbio.stats.composition.ancom" title="skbio.stats.composition.ancom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancom</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.stats.composition.ancombc2.html#skbio.stats.composition.ancombc2" title="skbio.stats.composition.ancombc2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancombc2</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="skbio.stats.composition.struc_zero.html#skbio.stats.composition.struc_zero" title="skbio.stats.composition.struc_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">struc_zero</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_replace</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -916,9 +890,9 @@ and a “sick” group.</p>
 <p>Now run <code class="docutils literal notranslate"><span class="pre">ancombc</span></code> to determine if there are any features that are significantly
 different in abundance between the healthy and the sick groups. Note that a
 pseudocount of 1 is manually added to the table to remove zero values.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s1">'status'</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span><span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s1">'status'</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">                          Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">                          Log(FC)     SE      W  pvalue  qvalue  Signif</span>
 <span class="go">FeatureID Covariate</span>
 <span class="go">F1        Intercept         -0.045  0.218 -0.207   0.836   1.000   False</span>
 <span class="go">          status[T.sick]     0.126  0.589  0.214   0.831   1.000   False</span>
@@ -938,13 +912,13 @@ pseudocount of 1 is manually added to the table to remove zero values.</p>
 </div>
 <p>The covariate “status[T.sick]” stands for the effect of the “sick” group relative
 to the reference group, “healthy” (the first group in alphabetical order is
-automatically selected as the reference group). “Log2(FC)” represents the
-<a class="reference internal" href="skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a>-transformed fold change of abundance (positive/negative: more/less
+automatically selected as the reference group). “Log(FC)” represents the
+bias-corrected fold change on the natural-log scale (positive/negative: more/less
 abundant in “sick” than in “healthy”, respectively). A “True” in the “Signif”
 column indicates a significantly differentially abundant feature-covariate pair.
 This example shows that two features differ by healthy/sick status.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'Covariate != "Intercept" &amp; Signif == True'</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">                          Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">                          Log(FC)     SE      W  pvalue  qvalue  Signif</span>
 <span class="go">FeatureID Covariate</span>
 <span class="go">F4        status[T.sick]    -1.723  0.392 -4.399     0.0     0.0    True</span>
 <span class="go">F6        status[T.sick]     1.480  0.160  9.255     0.0     0.0    True</span>
@@ -979,74 +953,77 @@ to identify features that are differentially abundant between disease status.</p
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">ancombc</span></code>. This time, we specify two factors: “status” and “age” in the
 formula, such that the function will test the individual effects of each factor
-while controlling for the other. Additionally, we instruct the function to perform
-a <em>global test</em> on “status”, which identifies features that are differentially
-abundant between at least two status.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res_main</span><span class="p">,</span> <span class="n">res_global</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span>
+while controlling for the other.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">ancombc</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">table</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="s1">'status + age'</span><span class="p">,</span> <span class="n">grouping</span><span class="o">=</span><span class="s1">'status'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res_main</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">result</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res_main</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">                              Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">                              Log(FC)     SE      W  pvalue  qvalue  Signif</span>
 <span class="go">FeatureID Covariate</span>
 <span class="go">F1        Intercept             -0.006  0.346 -0.016   0.987   1.000   False</span>
 <span class="go">          status[T.moderate]    -0.337  0.245 -1.376   0.169   1.000   False</span>
 <span class="go">          status[T.severe]       0.278  0.350  0.792   0.428   1.000   False</span>
-<span class="go">          age                    0.002  0.011  0.141   0.888   1.000   False</span>
+<span class="go">          age                    0.001  0.011  0.117   0.907   1.000   False</span>
 <span class="go">F2        Intercept              0.072  0.446  0.160   0.873   1.000   False</span>
 <span class="go">          status[T.moderate]     1.906  0.259  7.371   0.000   0.000    True</span>
 <span class="go">          status[T.severe]       2.935  0.304  9.649   0.000   0.000    True</span>
-<span class="go">          age                   -0.022  0.013 -1.676   0.094   0.562   False</span>
+<span class="go">          age                   -0.022  0.013 -1.697   0.090   0.538   False</span>
 <span class="go">F3        Intercept             -1.690  0.570 -2.967   0.003   0.021    True</span>
 <span class="go">          status[T.moderate]     1.010  0.578  1.747   0.081   0.565   False</span>
 <span class="go">          status[T.severe]       0.717  0.517  1.388   0.165   1.000   False</span>
-<span class="go">          age                    0.063  0.022  2.883   0.004   0.031    True</span>
+<span class="go">          age                    0.063  0.022  2.871   0.004   0.033    True</span>
 <span class="go">F4        Intercept              0.439  0.483  0.910   0.363   1.000   False</span>
 <span class="go">          status[T.moderate]    -0.046  0.405 -0.113   0.910   1.000   False</span>
 <span class="go">          status[T.severe]      -0.244  0.536 -0.455   0.649   1.000   False</span>
-<span class="go">          age                   -0.003  0.019 -0.185   0.854   1.000   False</span>
+<span class="go">          age                   -0.004  0.019 -0.199   0.842   1.000   False</span>
 <span class="go">F5        Intercept             -1.227  0.393 -3.125   0.002   0.014    True</span>
 <span class="go">          status[T.moderate]     0.274  0.293  0.934   0.350   1.000   False</span>
 <span class="go">          status[T.severe]      -0.323  0.320 -1.011   0.312   1.000   False</span>
-<span class="go">          age                    0.027  0.014  2.021   0.043   0.303   False</span>
+<span class="go">          age                    0.027  0.014  2.001   0.045   0.318   False</span>
 <span class="go">F6        Intercept             -0.439  0.440 -0.999   0.318   1.000   False</span>
 <span class="go">          status[T.moderate]     0.114  0.432  0.264   0.792   1.000   False</span>
 <span class="go">          status[T.severe]       0.375  0.544  0.691   0.490   1.000   False</span>
-<span class="go">          age                    0.008  0.016  0.480   0.631   1.000   False</span>
+<span class="go">          age                    0.008  0.016  0.464   0.643   1.000   False</span>
 <span class="go">F7        Intercept              0.201  0.472  0.426   0.670   1.000   False</span>
 <span class="go">          status[T.moderate]     0.082  0.302  0.270   0.787   1.000   False</span>
 <span class="go">          status[T.severe]      -0.264  0.401 -0.658   0.510   1.000   False</span>
-<span class="go">          age                    0.004  0.016  0.272   0.785   1.000   False</span>
+<span class="go">          age                    0.004  0.016  0.256   0.798   1.000   False</span>
 <span class="go">F8        Intercept             -0.168  0.526 -0.319   0.750   1.000   False</span>
 <span class="go">          status[T.moderate]    -0.402  0.584 -0.688   0.491   1.000   False</span>
 <span class="go">          status[T.severe]      -0.299  0.728 -0.411   0.681   1.000   False</span>
-<span class="go">          age                    0.022  0.018  1.237   0.216   1.000   False</span>
+<span class="go">          age                    0.022  0.018  1.222   0.222   1.000   False</span>
 </pre></div>
 </div>
 <p>We found that feature “F2” is significantly differentially (more) abundant in
 “moderate” and “severe” groups compared with “mild”, which serves as the reference
 group. Additionally, feature “F3” is separately correlated with age.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res_main</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'Covariate != "Intercept" &amp; Signif == True'</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">                              Log2(FC)     SE      W  pvalue  qvalue  Signif</span>
+<span class="go">                              Log(FC)     SE      W  pvalue  qvalue  Signif</span>
 <span class="go">FeatureID Covariate</span>
 <span class="go">F2        status[T.moderate]     1.906  0.259  7.371   0.000   0.000    True</span>
 <span class="go">          status[T.severe]       2.935  0.304  9.649   0.000   0.000    True</span>
-<span class="go">F3        age                    0.063  0.022  2.883   0.004   0.031    True</span>
+<span class="go">F3        age                    0.063  0.022  2.871   0.004   0.033    True</span>
 </pre></div>
 </div>
-<p>The global test result suggests that “F2” and “F4” are differentially abundant
-between two of the three groups (though it doesn’t tell which groups).</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res_global</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<p><strong>Global test</strong></p>
+<p>Next, we will perform a <em>global test</em> to identify features that are differentially
+abundant between at least two status.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res_global</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">global_test</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res_global</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">                W  pvalue  qvalue  Signif</span>
 <span class="go">FeatureID</span>
-<span class="go">F1          1.855   0.791   1.000   False</span>
-<span class="go">F2         80.771   0.000   0.000    True</span>
-<span class="go">F3          2.925   0.463   1.000   False</span>
-<span class="go">F4         -0.093   0.000   0.000    True</span>
-<span class="go">F5          1.068   0.827   1.000   False</span>
-<span class="go">F6          0.121   0.117   0.704   False</span>
-<span class="go">F7          0.220   0.208   1.000   False</span>
-<span class="go">F8          0.485   0.430   1.000   False</span>
+<span class="go">F1          5.934   0.103   0.617   False</span>
+<span class="go">F2         95.473   0.000   0.000    True</span>
+<span class="go">F3          3.210   0.402   1.000   False</span>
+<span class="go">F4          0.503   0.445   1.000   False</span>
+<span class="go">F5          6.839   0.065   0.458   False</span>
+<span class="go">F6          0.631   0.541   1.000   False</span>
+<span class="go">F7          1.044   0.813   1.000   False</span>
+<span class="go">F8          0.548   0.479   1.000   False</span>
 </pre></div>
 </div>
+<p>The global test result suggests that “F2” is differentially abundant between two of
+the three groups (though it doesn’t tell you which groups).</p>
 <p><strong>Structural zero test</strong></p>
 <p>The structural zero test identifies features that are systematically absent from
 certain sample groups. This test is an option of the R command <code class="docutils literal notranslate"><span class="pre">ancombc</span></code>. In
@@ -1055,15 +1032,16 @@ with or without ANCOM-BC.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">struc_zero</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res_zero</span> <span class="o">=</span> <span class="n">struc_zero</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="s1">'status'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res_zero</span>
-<span class="go">     mild  moderate  severe</span>
-<span class="go">F1  False     False   False</span>
-<span class="go">F2  False     False   False</span>
-<span class="go">F3  False     False   False</span>
-<span class="go">F4  False     False   False</span>
-<span class="go">F5  False     False    True</span>
-<span class="go">F6  False     False   False</span>
-<span class="go">F7  False     False   False</span>
-<span class="go">F8  False     False   False</span>
+<span class="go">            mild  moderate  severe</span>
+<span class="go">FeatureID</span>
+<span class="go">F1         False     False   False</span>
+<span class="go">F2         False     False   False</span>
+<span class="go">F3         False     False   False</span>
+<span class="go">F4         False     False   False</span>
+<span class="go">F5         False     False    True</span>
+<span class="go">F6         False     False   False</span>
+<span class="go">F7         False     False   False</span>
+<span class="go">F8         False     False   False</span>
 </pre></div>
 </div>
 <p>The result reveals that feature “F5” is a structural zero in the “severe” groups,
@@ -1080,7 +1058,7 @@ a structural zero in at least one but not all groups.</p>
 <span class="go">F1    False</span>
 <span class="go">F2     True</span>
 <span class="go">F3    False</span>
-<span class="go">F4     True</span>
+<span class="go">F4    False</span>
 <span class="go">F5     True</span>
 <span class="go">F6    False</span>
 <span class="go">F7    False</span>
@@ -1133,11 +1111,11 @@ a structural zero in at least one but not all groups.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.dirmult_ttest.html"
+       href="skbio.stats.composition.ancombc2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.dirmult_ttest</p>
+        <p class="prev-next-title">skbio.stats.composition.ancombc2</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

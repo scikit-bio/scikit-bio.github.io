@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="skbio.stats.composition.centralize" href="skbio.stats.composition.centralize.html" />
+    <link rel="next" title="skbio.stats.composition.ANCOMBCResult" href="skbio.stats.composition.ANCOMBCResult.html" />
     <link rel="prev" title="skbio.stats.composition.dirmult_lme" href="skbio.stats.composition.dirmult_lme.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -649,9 +649,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="skbio.stats.composition.html">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc.html">skbio.stats.composition.ancombc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc2.html">skbio.stats.composition.ancombc2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">skbio.stats.composition.struc_zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ANCOMBCResult.html">skbio.stats.composition.ANCOMBCResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -749,7 +751,7 @@
 <h1>skbio.stats.composition.struc_zero<a class="headerlink" href="#skbio-stats-composition-struc-zero" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.struc_zero">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">struc_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L913"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.struc_zero" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">struc_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg_lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_ancombc.py#L3760"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.struc_zero" title="Link to this definition">#</a></dt>
 <dd><p>Identify features with structural zeros.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.1.</span></p>
@@ -798,8 +800,7 @@ from subsequent analyses that involves this group. If a feature is identified as
 structural zero in all groups, this feature should be removed entirely from
 downstream analyses.</p>
 <p>Note that the structural zero test should be applied to the original table before
-adding a pseudocount (see <a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_replace</span></code></a>), which will otherwise mask all
-zeros and invalidate this test.</p>
+adding a pseudocount, which will otherwise mask all zeros and invalidate this test.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r4e0ae32879c2-1" role="doc-biblioentry">
@@ -881,11 +882,11 @@ is not significantly different from zero.</p>
       </div>
     </a>
     <a class="right-next"
-       href="skbio.stats.composition.centralize.html"
+       href="skbio.stats.composition.ANCOMBCResult.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">skbio.stats.composition.centralize</p>
+        <p class="prev-next-title">skbio.stats.composition.ANCOMBCResult</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

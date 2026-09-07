@@ -649,9 +649,11 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Composition Statistics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.stats.composition</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancom.html">skbio.stats.composition.ancom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc.html">skbio.stats.composition.ancombc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ancombc2.html">skbio.stats.composition.ancombc2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html">skbio.stats.composition.dirmult_ttest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html">skbio.stats.composition.dirmult_lme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.struc_zero.html">skbio.stats.composition.struc_zero</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.ANCOMBCResult.html">skbio.stats.composition.ANCOMBCResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.centralize.html">skbio.stats.composition.centralize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.closure.html">skbio.stats.composition.closure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.stats.composition.inner.html">skbio.stats.composition.inner</a></li>
@@ -779,13 +781,16 @@ compositions.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.ancombc.html#skbio.stats.composition.ancombc" title="skbio.stats.composition.ancombc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancombc</span></code></a></p></td>
 <td><p>Perform differential abundance test using ANCOM-BC.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ancombc2.html#skbio.stats.composition.ancombc2" title="skbio.stats.composition.ancombc2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancombc2</span></code></a></p></td>
+<td><p>Perform differential abundance test using ANCOM-BC2.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_ttest.html#skbio.stats.composition.dirmult_ttest" title="skbio.stats.composition.dirmult_ttest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_ttest</span></code></a></p></td>
 <td><p>Perform <em>t</em>-test using Dirichlet-multinomial distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html#skbio.stats.composition.dirmult_lme" title="skbio.stats.composition.dirmult_lme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_lme</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.dirmult_lme.html#skbio.stats.composition.dirmult_lme" title="skbio.stats.composition.dirmult_lme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dirmult_lme</span></code></a></p></td>
 <td><p>Fit a Dirichlet-multinomial linear mixed effects model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.struc_zero.html#skbio.stats.composition.struc_zero" title="skbio.stats.composition.struc_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">struc_zero</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.composition.struc_zero.html#skbio.stats.composition.struc_zero" title="skbio.stats.composition.struc_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">struc_zero</span></code></a></p></td>
 <td><p>Identify features with structural zeros.</p></td>
 </tr>
 </tbody>
@@ -795,6 +800,17 @@ compositions.</p>
 <p class="admonition-title">Note</p>
 <p>Differential abundance tests will be moved to a separate module <code class="docutils literal notranslate"><span class="pre">differential</span></code> in
 the next release of scikit-bio. The current location will be kept as an alias.</p>
+</div>
+</section>
+<section id="test-results">
+<h2>Test results<a class="headerlink" href="#test-results" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.composition.ANCOMBCResult.html#skbio.stats.composition.ANCOMBCResult" title="skbio.stats.composition.ANCOMBCResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ANCOMBCResult</span></code></a></p></td>
+<td><p>Results for ANCOM-BC and ANCOM-BC2 analyses.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="arithmetic-operations">
@@ -980,6 +996,7 @@ Mathematical Geology, 35.3 (2003)</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-abundance">Differential abundance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-results">Test results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operations">Arithmetic operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-ratio-transformation">Log-ratio transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation analysis</a></li>
