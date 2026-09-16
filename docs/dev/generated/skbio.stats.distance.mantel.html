@@ -815,15 +815,17 @@ necessary. This parameter is disallowed if <cite>x</cite> and <cite>y</cite> are
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
 </dd>
-<dt><strong>engine</strong><span class="classifier">{“cython”, “numba”}, optional</span></dt><dd><p>Compute engine to use. <code class="docutils literal notranslate"><span class="pre">&quot;cython&quot;</span></code> (default) uses the Cython
+<dt><strong>engine</strong><span class="classifier">{“cython”, “numba”, “fast”}, optional</span></dt><dd><p>Compute engine to use. <code class="docutils literal notranslate"><span class="pre">&quot;cython&quot;</span></code> (default) uses the Cython
 implementation. <code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> uses the optional Numba implementation
 and requires Numba to be installed. If not provided, the global
-default is used (see <a class="reference internal" href="skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a>). Only applies to the
-<code class="docutils literal notranslate"><span class="pre">&quot;pearson&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;spearman&quot;</span></code> methods. When both distance matrices
-are resident on a CuPy- or PyTorch-backed GPU (CUDA or ROCm) and
-<code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, a fused GPU kernel is used; matrices on other
-backends use the array-API path instead (see Notes for the
-ROCm-PyTorch case).</p>
+default is used (see <a class="reference internal" href="skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a>). <code class="docutils literal notranslate"><span class="pre">&quot;fast&quot;</span></code> lets
+scikit-bio pick whichever engine it expects to be quicker here, which
+is Numba when it is installed and Cython otherwise; results may differ
+from the default in the last bits. Only applies to the <code class="docutils literal notranslate"><span class="pre">&quot;pearson&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;spearman&quot;</span></code> methods. When both distance matrices are resident on
+a CuPy- or PyTorch-backed GPU (CUDA or ROCm) and <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, a
+fused GPU kernel is used; matrices on other backends use the array-API
+path instead (see Notes for the ROCm-PyTorch case).</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
 </div>

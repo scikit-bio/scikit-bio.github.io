@@ -725,7 +725,10 @@ scikit-bio functionalities.</p>
 </dd>
 <dt><strong>engine</strong><span class="classifier"><em>{“cython”, “numba”}, default=”cython”</em></span></dt><dd><p>The default compute engine for functions that support multiple engines.
 Functions accept an <code class="docutils literal notranslate"><span class="pre">engine</span></code> argument to override this per call. The
-<code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> engine requires the optional Numba dependency.</p>
+<code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> engine requires the optional Numba dependency. A function call
+may also pass <code class="docutils literal notranslate"><span class="pre">engine=&quot;fast&quot;</span></code>, which lets scikit-bio pick whichever
+engine it expects to be fastest for that function, falling back to the
+default when it has no faster option available.</p>
 </dd>
 </dl>
 </section>
