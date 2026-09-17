@@ -655,6 +655,13 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.pair_align_prot.html">skbio.alignment.pair_align_prot</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.multi_align.html">skbio.alignment.multi_align</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.multi_align_nucl.html">skbio.alignment.multi_align_nucl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.alignment.multi_align_prot.html">skbio.alignment.multi_align_prot</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_score.html">skbio.alignment.align_score</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.alignment.align_dists.html">skbio.alignment.align_dists</a></li>
 </ul>
@@ -729,7 +736,7 @@
 <h1>skbio.alignment.pair_align<a class="headerlink" href="#skbio-alignment-pair-align" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.alignment.pair_align">
-<span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">pair_align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'global'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">-1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">free_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_matrices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_pair.py#L35"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.pair_align" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">pair_align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'global'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">-1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">free_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_matrices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_pair.py#L36"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.pair_align" title="Link to this definition">#</a></dt>
 <dd><p>Perform pairwise alignment of two sequences.</p>
 <p>A versatile, efficient and generalizable function for pairwise alignment using
 dynamic programming. It supports:</p>
@@ -834,7 +841,7 @@ increase performance, and is usually safe when there are only integers (e.g.,
 <p>Relative tolerance is not involved in the calculation.</p>
 </div>
 </dd>
-<dt><strong>keep_matrices</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include the alignment matrix(ces) in the returned value. They are
+<dt><strong>keep_matrices</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to include the alignment matrix(ces) in the returned object. They are
 typically for diagnostic or educational purposes. Default is False, which lets
 the memory space free up after the function finishes.</p>
 </dd>
@@ -850,8 +857,8 @@ paths are optimal and share the same alignment score.</p>
 <dt><strong>matrices</strong><span class="classifier">tuple of ndarray of shape (m + 1, n + 1), optional</span></dt><dd><p>Alignment matrices generated during the computation (if <code class="docutils literal notranslate"><span class="pre">keep_matrices</span></code> is
 True). <em>m</em> and <em>n</em> are the lengths of seq1 and seq2, respectively.</p>
 <ul class="simple">
-<li><p>For linear gap penalty, one main matrix will be returned.</p></li>
-<li><p>For affine gap penalty, the main matrix, plus an insertion matrix (gap in
+<li><p>For linear gap penalty, one primary matrix will be returned.</p></li>
+<li><p>For affine gap penalty, the primary matrix, plus an insertion matrix (gap in
 seq1) and a deletion matrix (gap in seq2) will be returned.</p></li>
 </ul>
 </dd>
