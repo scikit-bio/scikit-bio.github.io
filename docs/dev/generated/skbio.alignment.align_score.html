@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -742,18 +742,17 @@ more sequences, the sum-of-pairs (SP) alignment score will be returned.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.0.</span></p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>alignment</strong><span class="classifier">TabularMSA, iterable, or (AlignPath, iterable)</span></dt><dd><p>Aligned sequences. Can be any of the following:</p>
+<dd class="field-odd"><dl>
+<dt><strong>alignment</strong><span class="classifier"><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, iterable, or (<a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignPath</span></code></a>, iterable)</span></dt><dd><p>Aligned sequences. Can be any of the following:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> instance.</p></li>
 <li><p>List of <em>aligned</em> sequences as raw strings or <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects.</p></li>
-<li><p>Tuple of <a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlignPath</span></code></a> and the corresponding list of
-<em>original</em> (unaligned) sequences.</p></li>
+<li><p>Tuple of <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> and the corresponding list of <em>unaligned</em> sequences.</p></li>
 </ul>
 </dd>
-<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), SubstitutionMatrix, or str</span></dt><dd><p>Score of a substitution. May be two numbers (match, mismatch), a substitution
+<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), <a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>, or str</span></dt><dd><p>Score of a substitution. May be two numbers (match, mismatch), a substitution
 matrix, or its name. See <a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a> for details. Default is
 (1.0, -1.0).</p>
 </dd>
@@ -774,15 +773,12 @@ a list of aligned sequences.</p>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt>ValueError</dt><dd><p>If there are less than two sequences in the alignment.</p>
-</dd>
-<dt>ValueError</dt><dd><p>If the alignment has zero length.</p>
-</dd>
-<dt>ValueError</dt><dd><p>If any sequence in the alignment contains only gaps.</p>
-</dd>
-<dt>ValueError</dt><dd><p>If any sequence contains characters not present in the designated
-substitution matrix.</p>
+<p>If the alignment has zero length.</p>
+<p>If any sequence in the alignment contains only gaps.</p>
+<p>If any sequence contains characters not present in the designated substitution
+matrix.</p>
 </dd>
 </dl>
 </dd>
@@ -795,14 +791,14 @@ substitution matrix.</p>
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">Protein</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span><span class="p">,</span> <span class="n">align_score</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">align_score</span>
 </pre></div>
 </div>
 <p>Calculate the score of a pair of aligned DNA sequences, with match score = 2,
 mismatch score = -3, gap opening penalty = 5, and gap extension penalty = 2 (the
 default BLASTN parameters).</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">"CGGTCGTAACGCGTA---CA"</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">"CGGTCGTAACGCGTA---CA"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s2">"CAG--GTAAG-CATACCTCA"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">([</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">-14.0</span>
@@ -812,11 +808,25 @@ default BLASTN parameters).</p>
 BLOSUM62 substitution matrix, with gap opening and extension penalties being 11
 and 1 (the default BLASTP parameters). Note that terminal gaps are not penalized
 by default unless <code class="docutils literal notranslate"><span class="pre">free_ends</span></code> is set to False.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">Protein</span><span class="p">(</span><span class="s2">"MKQ-PSV"</span><span class="p">),</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protein</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="p">([</span><span class="n">Protein</span><span class="p">(</span><span class="s2">"MKQ-PSV"</span><span class="p">),</span>
 <span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">"MKIDTS-"</span><span class="p">),</span>
 <span class="gp">... </span>                  <span class="n">Protein</span><span class="p">(</span><span class="s2">"MVIDPSS"</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">(</span><span class="n">msa</span><span class="p">,</span> <span class="s2">"BLOSUM62"</span><span class="p">,</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="go">11.0</span>
+</pre></div>
+</div>
+<p>Calculate alignment score directly from an alignment path and original sequences
+supplied as raw strings, without constructing aligned sequences as scikit-bio
+objects.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">multi_align</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"CAGCTATATATCGCTACG"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"CTGCTTATATCCCTAGG"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"AAGCTATACATCCAACATG"</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">multi_align</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">((</span><span class="n">path</span><span class="p">,</span> <span class="n">seqs</span><span class="p">))</span>
+<span class="go">16.0</span>
 </pre></div>
 </div>
 </dd></dl>

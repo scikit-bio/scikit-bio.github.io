@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -740,9 +740,9 @@
 <dt class="sig sig-object py" id="skbio.stats.distance.SymmetricMatrix.from_iterable">
 <span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">SymmetricMatrix.</span></span><span class="sig-name descname"><span class="pre">from_iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condensed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_base.py#L1611"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.SymmetricMatrix.from_iterable" title="Link to this definition">#</a></dt>
 <dd><p>Create a symmetric matrix from an iterable given a metric.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>iterable</strong><span class="classifier">iterable</span></dt><dd><p>Objects to compute pairwise relationships on.</p>
 </dd>
 <dt><strong>metric</strong><span class="classifier">callable</span></dt><dd><p>A function that takes two arguments and returns a float representing the
@@ -762,14 +762,14 @@ diagonal) is computed, thereby saving compute.</p>
 <dt><strong>condensed</strong><span class="classifier">bool, optional</span></dt><dd><p>Store the data in a 2-D redundant form (False, default) or a 1-D condensed
 form (True).</p>
 </dd>
-<dt><strong>diagonal</strong><span class="classifier">float or array_like, optional</span></dt><dd><p>Value(s) with which to fill the diagonal of the matrix. Relevant only when
+<dt><strong>diagonal</strong><span class="classifier">float or <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a>, optional</span></dt><dd><p>Value(s) with which to fill the diagonal of the matrix. Relevant only when
 <code class="docutils literal notranslate"><span class="pre">validate</span></code> is False.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>PairwiseMatrix</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">metric</span></code> applied to all pairwise elements in the <code class="docutils literal notranslate"><span class="pre">iterable</span></code>.</p>
+<dt><a class="reference internal" href="skbio.stats.distance.PairwiseMatrix.html#skbio.stats.distance.PairwiseMatrix" title="skbio.stats.distance.PairwiseMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairwiseMatrix</span></code></a></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">metric</span></code> applied to all pairwise elements in the <code class="docutils literal notranslate"><span class="pre">iterable</span></code>.</p>
 </dd>
 </dl>
 </dd>

@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -741,14 +741,16 @@
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
 </div>
-<dl class="field-list simple">
+<p>A versatile workflow for multiple sequence alignment (MSA) by integrating the
+pairwise alignment engine (<a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a>), alignment distance calculation,
+and UPGMA tree construction following the progressive alignment approach.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>sequences</strong><span class="classifier">iterable of sequence-like</span></dt><dd><p>Sequences to be aligned. Supports <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>, strings,
-or sequence of strings or numbers. Sequences must be non-empty and ungapped.
-At least two sequences must be provided.</p>
+<dd class="field-odd"><dl>
+<dt><strong>sequences</strong><span class="classifier">iterable of <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>, str, or sequence of scalar</span></dt><dd><p>Sequences to be aligned. Must be non-empty and ungapped. At least two
+sequences must be provided.</p>
 </dd>
-<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), SubstitutionMatrix, or str, optional</span></dt><dd><p>Score of a substitution. May be two numbers (match, mismatch), a substitution
+<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), <a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>, or str, optional</span></dt><dd><p>Score of a substitution. May be two numbers (match, mismatch), a substitution
 matrix, or its name. See <a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a> for details. Default is
 (1.0, -1.0).</p>
 </dd>
@@ -757,7 +759,7 @@ matrix, or its name. See <a class="reference internal" href="skbio.alignment.pai
 </dd>
 <dt><strong>free_ends</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), gaps at the sequence terminals are free from penalization.</p>
 </dd>
-<dt><strong>guide_tree</strong><span class="classifier">TreeNode, optional</span></dt><dd><p>A guide tree determining the merging order of sequences. Must be strictly
+<dt><strong>guide_tree</strong><span class="classifier"><a class="reference internal" href="skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TreeNode</span></code></a>, optional</span></dt><dd><p>A guide tree determining the merging order of sequences. Must be strictly
 bifurcating. Tip names must match sequence IDs. If not provided, the function
 will align all sequence pairs, calculate score-based distances, and compute a
 guide tree using UPGMA. A provided guide tree will skip these procedures.</p>
@@ -778,14 +780,14 @@ distance matrix in the returned object. Default is False.</p>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>path</strong><span class="classifier">AlignPath</span></dt><dd><p>One alignment path in original input sequence order, starting at position
+<dd class="field-even"><dl>
+<dt><strong>path</strong><span class="classifier"><a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignPath</span></code></a></span></dt><dd><p>One alignment path in original input sequence order, starting at position
 zero and consuming every sequence in full.</p>
 </dd>
-<dt><strong>tree</strong><span class="classifier">TreeNode or None</span></dt><dd><p>Constructed or provided guide tree determining the merging order of sequences
+<dt><strong>tree</strong><span class="classifier"><a class="reference internal" href="skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TreeNode</span></code></a> or None</span></dt><dd><p>Constructed or provided guide tree determining the merging order of sequences
 (if <code class="docutils literal notranslate"><span class="pre">keep_tree</span></code> is True).</p>
 </dd>
-<dt><strong>distmat</strong><span class="classifier">DistanceMatrix or None</span></dt><dd><p>Distance matrix constructed based on pairwise alignment scores and used to
+<dt><strong>distmat</strong><span class="classifier"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a> or None</span></dt><dd><p>Distance matrix constructed based on pairwise alignment scores and used to
 compute the guide tree (if <code class="docutils literal notranslate"><span class="pre">keep_distmat</span></code> is True).</p>
 </dd>
 </dl>
@@ -812,26 +814,27 @@ not match, or a guide tree is not binary with exactly the required tips.</p>
 <p>This function implements the classic progressive alignment method for multiple
 sequence alignment, originally introduced in <a class="reference internal" href="#r9583ab532eb2-1" id="id1">[1]</a>, with later improvements
 described in <a class="reference internal" href="#r9583ab532eb2-2" id="id2">[2]</a> and <a class="reference internal" href="#r9583ab532eb2-3" id="id3">[3]</a>. Compared with the historical method, this
-implementation represents a refined form of progressive alignment commonly
+implementation represents a refined form of progressive alignment that is often
 described in educational materials. Specifically, the algorithm consists of the
-following steps, described in reverse order:</p>
+following steps, detailed in reverse order:</p>
+<p><strong>Procedures</strong></p>
 <p>An alignment of all sequences is constructed by iteratively merging sub-alignments
-containing one or more sequences. This function adopts the <em>profile alignment</em>
+containing one or more sequences. This function adopts the <strong>profile alignment</strong>
 approach <a class="reference internal" href="#r9583ab532eb2-3" id="id4">[3]</a>, which aligns two sub-alignments (“profiles”) using the same dynamic
-programming (DP) algorithm used for pairwise sequence alignment (see
-<a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a>). The score <span class="math notranslate nohighlight">\(S\)</span> for two matching columns is calculated as
-the average substitution score <span class="math notranslate nohighlight">\(s\)</span> across all pairs of characters from the
-two profiles:</p>
+programming (DP) algorithm for pairwise sequence alignment (<a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a>).
+Refer to the latter’s documentation for settings and considerations.</p>
+<p>The substitution score <span class="math notranslate nohighlight">\(S\)</span> for two matching columns between profiles is
+calculated as the average substitution score <span class="math notranslate nohighlight">\(s\)</span> across all pairs of
+characters from the two columns:</p>
 <div class="math notranslate nohighlight">
 \[S = \frac{1}{mn}\sum_{x\in A}\sum_{y\in B}s(x,y)\]</div>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are characters in the two columns of profiles
-<span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, which contain <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> rows (sequences),
-respectively.</p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are characters in the two columns <span class="math notranslate nohighlight">\(A\)</span> and
+<span class="math notranslate nohighlight">\(B\)</span>, which contain <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> rows (sequences), respectively.</p>
 <p>Under the “once a gap, always a gap” rule <a class="reference internal" href="#r9583ab532eb2-1" id="id5">[1]</a>, existing gaps within each profile
 are treated as neutral characters and assigned a substitution score of 0 with any
 character. Gap penalties are calculated only for gaps introduced during the DP
 alignment.</p>
-<p>The order of merging is determined by a <em>guide tree</em>. The program traverses the
+<p>The order of merging is determined by a <strong>guide tree</strong>. The program traverses the
 tree in postorder and merges the two child sub-alignments at each internal node. If
 the guide tree is not explicitly supplied, the program computes one using the UPGMA
 method (see <a class="reference internal" href="skbio.tree.upgma.html#skbio.tree.upgma" title="skbio.tree.upgma"><code class="xref py py-func docutils literal notranslate"><span class="pre">upgma</span></code></a>) from a distance matrix containing all
@@ -855,7 +858,7 @@ Second, to guard against edge cases that would produce undefined, infinite, or
 negative distances (e.g., when aligning two homopolymers), <span class="math notranslate nohighlight">\(S_{\mathrm{eff}}\)</span>
 is clipped to the range [1e-6, 1] in this implementation.</p>
 <p><strong>Solution quality</strong></p>
-<p>The <em>sum-of-pairs</em> (SP) score is the optimality criterion for multiple sequence
+<p>The <strong>sum-of-pairs</strong> (SP) score is the optimality criterion for multiple sequence
 alignment. This metric can be calculated by applying the <a class="reference internal" href="skbio.alignment.align_score.html#skbio.alignment.align_score" title="skbio.alignment.align_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">align_score</span></code></a>
 function to the resulting alignment. It should be noted that progressive alignment
 is a heuristic algorithm and the resulting alignment is not guaranteed to be
@@ -898,10 +901,10 @@ Nucleic Acids Research, 16(22), 10881-10890.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">multi_align</span><span class="p">,</span> <span class="n">align_score</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">multi_align</span>
 </pre></div>
 </div>
-<p>Align three DNA sequences using default parameters.</p>
+<p>Align three DNA sequences using default parameters and obtain an alignment path.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'CATTAACGT'</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="n">DNA</span><span class="p">(</span><span class="s1">'CGTTACGGT'</span><span class="p">),</span>
@@ -919,15 +922,30 @@ Nucleic Acids Research, 16(22), 10881-10890.</p>
 <span class="go">-AGTTAACGG-</span>
 </pre></div>
 </div>
-<p>The quality of the alignment can be evaluated using the <cite>align_score</cite> function,
-which calculates the sum-of-pairs (SP) score. It has the same default parameter
-settings as <cite>multi_align</cite> does.</p>
+<p>Or convert the alignment path and sequences into a <a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a> object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">from_path_seqs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">seqs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
+<span class="go">TabularMSA[DNA]</span>
+<span class="go">----------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 3</span>
+<span class="go">    position count: 11</span>
+<span class="go">----------------------</span>
+<span class="go">CA-TTAACGT-</span>
+<span class="go">-CGTTA-CGGT</span>
+<span class="go">-AGTTAACGG-</span>
+</pre></div>
+</div>
+<p>The quality of the alignment can be evaluated using the <a class="reference internal" href="skbio.alignment.align_score.html#skbio.alignment.align_score" title="skbio.alignment.align_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">align_score</span></code></a>
+function, which calculates the sum-of-pairs (SP) score, and has the same default
+parameter settings as <code class="docutils literal notranslate"><span class="pre">multi_align</span></code> does.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">align_score</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">align_score</span><span class="p">((</span><span class="n">path</span><span class="p">,</span> <span class="n">seqs</span><span class="p">))</span>
 <span class="go">7.0</span>
 </pre></div>
 </div>
-<p>Under the hood, the function performs pairwise alignments, calculates a distance
+<p>Under the hood, this function performs pairwise alignments, calculates a distance
 matrix, then infers a guide tree which determines the merging order. The tree and
 distance matrix can be retained for diagnostic and educational purposes.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">dm</span> <span class="o">=</span> <span class="n">multi_align</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">keep_tree</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep_distmat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -996,9 +1014,9 @@ the parameters.</p>
 multiple sequence alignment, and writing the aligned sequences into a multi-FASTA
 file is:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span> <span class="k">as</span> <span class="n">sk_read</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">sk_read</span><span class="p">(</span><span class="s1">'input.fa'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'fasta'</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sk_read</span><span class="p">(</span><span class="s1">'input.fa'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'fasta'</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">DNA</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">multi_align</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">from_path_seqs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">seqs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.fa'</span><span class="p">)</span>

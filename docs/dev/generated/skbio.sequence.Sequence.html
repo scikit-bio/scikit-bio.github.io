@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -754,10 +754,10 @@ type.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects consist of the underlying sequence data, as well
 as optional metadata and positional metadata. The underlying sequence
 is immutable, while the metdata and positional metadata are mutable.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>sequence</strong><span class="classifier">str, Sequence, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>Characters representing the sequence itself.</p>
+<dd class="field-odd"><dl>
+<dt><strong>sequence</strong><span class="classifier">str, <a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>Characters representing the sequence itself.</p>
 </dd>
 <dt><strong>metadata</strong><span class="classifier">dict, optional</span></dt><dd><p>Arbitrary metadata which applies to the entire sequence. A shallow copy
 of the <code class="docutils literal notranslate"><span class="pre">dict</span></code> will be made (see Examples section below for details).</p>
@@ -1293,10 +1293,10 @@ interested and then modify them:</p>
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__contains__">
 <span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsequence</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L702"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__contains__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if a subsequence is contained in this sequence.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>subsequence</strong><span class="classifier">str, Sequence, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>The putative subsequence.</p>
+<dd class="field-odd"><dl>
+<dt><strong>subsequence</strong><span class="classifier">str, <a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>The putative subsequence.</p>
 </dd>
 </dl>
 </dd>
@@ -1359,10 +1359,10 @@ than this sequence.</p>
 <dd><p>Determine if this sequence is equal to another.</p>
 <p>Sequences are equal if they are <em>exactly</em> the same type and their
 sequence characters, metadata, and positional metadata are the same.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>other</strong><span class="classifier">Sequence</span></dt><dd><p>Sequence to test for equality against.</p>
+<dd class="field-odd"><dl>
+<dt><strong>other</strong><span class="classifier"><a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></span></dt><dd><p>Sequence to test for equality against.</p>
 </dd>
 </dl>
 </dd>
@@ -1417,10 +1417,10 @@ positional metadata, and interval metadata do not match:</p>
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__getitem__">
 <span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indexable</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L840"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__getitem__" title="Link to this definition">#</a></dt>
 <dd><p>Slice this sequence.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>indexable</strong><span class="classifier">int, slice, iterable (int and slice), 1D array_like (bool)</span></dt><dd><p>The position(s) to return from this sequence. If <cite>indexable</cite> is an
+<dd class="field-odd"><dl>
+<dt><strong>indexable</strong><span class="classifier">int, slice, iterable (int and slice), 1D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> (bool)</span></dt><dd><p>The position(s) to return from this sequence. If <cite>indexable</cite> is an
 iterable of integers, these are assumed to be indices in the
 sequence to keep. If <cite>indexable</cite> is a 1D <code class="docutils literal notranslate"><span class="pre">array_like</span></code> of
 booleans, these are assumed to be the positions in the sequence to
@@ -1430,7 +1430,7 @@ keep.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>Sequence</dt><dd><p>New sequence containing the position(s) specified by <cite>indexable</cite> in
+<dt><a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></dt><dd><p>New sequence containing the position(s) specified by <cite>indexable</cite> in
 this sequence. Positional metadata will be sliced in the same
 manner and included in the returned sequence. <cite>metadata</cite> is
 included in the returned sequence.</p>
@@ -1497,7 +1497,7 @@ new <code class="docutils literal notranslate"><span class="pre">Sequence</span>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>Sequence</dt><dd><p>Single character subsequence, one for each position in the
+<dt><a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></dt><dd><p>Single character subsequence, one for each position in the
 sequence.</p>
 </dd>
 </dl>
@@ -1543,10 +1543,10 @@ sequence.</p>
 <dd><p>Determine if this sequence is not equal to another.</p>
 <p>Sequences are not equal if they are not <em>exactly</em> the same type, or
 their sequence characters, metadata, or positional metadata differ.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>other</strong><span class="classifier">Sequence</span></dt><dd><p>Sequence to test for inequality against.</p>
+<dd class="field-odd"><dl>
+<dt><strong>other</strong><span class="classifier"><a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></span></dt><dd><p>Sequence to test for inequality against.</p>
 </dd>
 </dl>
 </dd>
@@ -1580,7 +1580,7 @@ their sequence characters, metadata, or positional metadata differ.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>Sequence</dt><dd><p>Single character subsequence, one for each position in the
+<dt><a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></dt><dd><p>Single character subsequence, one for each position in the
 sequence.</p>
 </dd>
 </dl>

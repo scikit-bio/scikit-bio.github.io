@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -743,7 +743,7 @@
 <h1>skbio.stats.ordination.MMvecResult.score<a class="headerlink" href="#skbio-stats-ordination-mmvecresult-score" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.score">
-<span class="sig-prename descclassname"><span class="pre">MMvecResult.</span></span><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.score" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">MMvecResult.</span></span><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L481"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.score" title="Link to this definition">#</a></dt>
 <dd><p>Compute Q-squared (coefficient of prediction) on held-out data.</p>
 <p><span class="math notranslate nohighlight">\(Q^2\)</span> measures predictive performance on test data, analogous to
 <span class="math notranslate nohighlight">\(R^2\)</span> but for cross-validation. Values range from -inf to 1, where 1
@@ -753,13 +753,13 @@ mean.</p>
 \[Q^2 = 1 - \frac{SS_{res}}{SS_{tot}}
     = 1 - \frac{\sum(y - \hat{y})^2}{\sum(y - \bar{y}_j)^2}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{y}_j\)</span> is the per-target mean across samples.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">table_like of shape (n_samples, n_features_x)</span></dt><dd><p>Feature abundance table of the conditioning (X) modality. Columns must
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_samples, n_features_x)</span></dt><dd><p>Feature abundance table of the conditioning (X) modality. Columns must
 match the features used during training.</p>
 </dd>
-<dt><strong>Y</strong><span class="classifier">table_like of shape (n_samples, n_features_y)</span></dt><dd><p>Feature abundance table of the conditioned (Y) modality.</p>
+<dt><strong>Y</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_samples, n_features_y)</span></dt><dd><p>Feature abundance table of the conditioned (Y) modality.</p>
 </dd>
 </dl>
 </dd>

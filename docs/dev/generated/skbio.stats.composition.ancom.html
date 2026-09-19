@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -771,15 +771,14 @@ first group and <span class="math notranslate nohighlight">\(u_i^{(2)}\)</span> 
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>table</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>Matrix of strictly positive values (i.e. counts or proportions). See
-<a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+<dt><strong>table</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_samples, n_features)</span></dt><dd><p>Matrix of strictly positive values (i.e. counts or proportions).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the table contains zero values, one should add a pseudocount or apply
 <a class="reference internal" href="skbio.stats.composition.multi_replace.html#skbio.stats.composition.multi_replace" title="skbio.stats.composition.multi_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_replace</span></code></a> to convert all values into positive numbers.</p>
 </div>
 </dd>
-<dt><strong>grouping</strong><span class="classifier">pd.Series or 1-D array_like</span></dt><dd><p>Vector indicating the assignment of samples to groups. These could be strings
+<dt><strong>grouping</strong><span class="classifier">pd.Series or 1-D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a></span></dt><dd><p>Vector indicating the assignment of samples to groups. These could be strings
 or integers denoting which group a sample belongs to. If it is a pandas Series
 and the table contains sample IDs, its index will be filtered and reordered to
 match the sample IDs. Otherwise, it must be the same length as the samples in

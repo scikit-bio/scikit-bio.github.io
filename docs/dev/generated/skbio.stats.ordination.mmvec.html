@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -757,16 +757,14 @@ represented as compositional (count-based) data and share the same samples.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.3.</span></p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">table_like of shape (n_samples, n_features_x)</span></dt><dd><p>Abundance counts for the first modality (e.g., microbes). This modality is
-treated as the “conditioning” variable. See
-<a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_samples, n_features_x)</span></dt><dd><p>Abundance counts for the first modality (e.g., microbes). This modality is
+treated as the “conditioning” variable.</p>
 </dd>
-<dt><strong>Y</strong><span class="classifier">table_like of shape (n_samples, n_features_y)</span></dt><dd><p>Abundance counts for the second modality (e.g., metabolites). This modality is
-treated as the “conditioned” variable. See above. Must have the same samples as
-<code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
+<dt><strong>Y</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_samples, n_features_y)</span></dt><dd><p>Abundance counts for the second modality (e.g., metabolites). This modality is
+treated as the “conditioned” variable. Must have the same samples as <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
 </dd>
 <dt><strong>dimensions</strong><span class="classifier">int, optional</span></dt><dd><p>Number of latent dimensions for embeddings. Default is 3.</p>
 </dd>

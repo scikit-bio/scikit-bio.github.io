@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -740,24 +740,24 @@
 <h1>skbio.stats.ordination.MMvecResult<a class="headerlink" href="#skbio-stats-ordination-mmvecresult" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">MMvecResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L321"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.stats.ordination.</span></span><span class="sig-name descname"><span class="pre">MMvecResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L315"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult" title="Link to this definition">#</a></dt>
 <dd><p>Result of an MMvec analysis.</p>
 <p>This class contains the learned embeddings and co-occurrence patterns from fitting
 an MMvec model. It enables both interpretation (which conditioning (X) and
 conditioned (Y) features co-occur with each other) and prediction (expected Y
 composition given X composition).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.x_embeddings" title="skbio.stats.ordination.MMvecResult.x_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x_embeddings</span></code></a><span class="classifier">table_like of shape (n_features_x, n_dimensions + 1)</span></dt><dd><p>Learned coordinates of conditioning features (X) in latent space.</p>
+<dd class="field-odd"><dl>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.x_embeddings" title="skbio.stats.ordination.MMvecResult.x_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x_embeddings</span></code></a><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_features_x, n_dimensions + 1)</span></dt><dd><p>Learned coordinates of conditioning features (X) in latent space.</p>
 </dd>
-<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.y_embeddings" title="skbio.stats.ordination.MMvecResult.y_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_embeddings</span></code></a><span class="classifier">table_like of shape (n_features_y, n_dimensions + 1)</span></dt><dd><p>Learned coordinates of conditioned features (Y) in latent space.</p>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.y_embeddings" title="skbio.stats.ordination.MMvecResult.y_embeddings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_embeddings</span></code></a><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_features_y, n_dimensions + 1)</span></dt><dd><p>Learned coordinates of conditioned features (Y) in latent space.</p>
 </dd>
-<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.ranks" title="skbio.stats.ordination.MMvecResult.ranks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ranks</span></code></a><span class="classifier">table_like of shape (n_features_x, n_features_y)</span></dt><dd><p>Row-centered log conditional probability matrix.</p>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.ranks" title="skbio.stats.ordination.MMvecResult.ranks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ranks</span></code></a><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_features_x, n_features_y)</span></dt><dd><p>Row-centered log conditional probability matrix.</p>
 </dd>
-<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.probs" title="skbio.stats.ordination.MMvecResult.probs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probs</span></code></a><span class="classifier">table_like of shape (n_features_x, n_features_y)</span></dt><dd><p>Conditional probability matrix of co-occurrence of X and Y features.</p>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.probs" title="skbio.stats.ordination.MMvecResult.probs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probs</span></code></a><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_features_x, n_features_y)</span></dt><dd><p>Conditional probability matrix of co-occurrence of X and Y features.</p>
 </dd>
-<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.convergence" title="skbio.stats.ordination.MMvecResult.convergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convergence</span></code></a><span class="classifier">table_like of shape (n_iterations,)</span></dt><dd><p>Loss (negative log-posterior) over iterations during training.</p>
+<dt><a class="reference internal" href="#skbio.stats.ordination.MMvecResult.convergence" title="skbio.stats.ordination.MMvecResult.convergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convergence</span></code></a><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_iterations,)</span></dt><dd><p>Loss (negative log-posterior) over iterations during training.</p>
 </dd>
 </dl>
 </dd>
@@ -928,7 +928,7 @@ baseline abundance of each Y feature.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.stats.ordination.MMvecResult.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L386"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/ordination/_mmvec.py#L380"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.ordination.MMvecResult.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
 

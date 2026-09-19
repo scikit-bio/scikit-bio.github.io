@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -752,7 +752,7 @@
 <h1>skbio.stats.composition.sbp_basis<a class="headerlink" href="#skbio-stats-composition-sbp-basis" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.sbp_basis">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">sbp_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbp</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L1651"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.sbp_basis" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">sbp_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbp</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L1649"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.sbp_basis" title="Link to this definition">#</a></dt>
 <dd><p>Build an orthonormal basis from a sequential binary partition (SBP).</p>
 <p>A SBP is a hierarchical collection of binary divisions of compositional
 parts (<a class="reference internal" href="#r3ab766b8ee56-1" id="id1">[1]</a>). The child groups are divided again until all groups contain a
@@ -766,10 +766,10 @@ excluded parts. The <em>i</em>-th balance is computed as follows:</p>
 the SBP, <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(s_i\)</span> and the number of respectively <code class="docutils literal notranslate"><span class="pre">+1</span></code>
 and <code class="docutils literal notranslate"><span class="pre">-1</span></code> labels in the <em>i</em>-th row of the SBP and where <span class="math notranslate nohighlight">\(g(x) =
 (\prod\limits_{i=1}^{D} x_i)^{1/D}\)</span> is the geometric mean of <span class="math notranslate nohighlight">\(x\)</span>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>sbp</strong><span class="classifier">array_like of shape (n_partitions, n_features)</span></dt><dd><p>A contrast matrix, also known as a sequential binary partition, where
+<dd class="field-odd"><dl>
+<dt><strong>sbp</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of shape (n_partitions, n_features)</span></dt><dd><p>A contrast matrix, also known as a sequential binary partition, where
 every row represents a partition between two groups of features. A part
 labelled <code class="docutils literal notranslate"><span class="pre">+1</span></code> would correspond to that feature being in the numerator
 of the given row partition, a part labelled <code class="docutils literal notranslate"><span class="pre">-1</span></code> would correspond to

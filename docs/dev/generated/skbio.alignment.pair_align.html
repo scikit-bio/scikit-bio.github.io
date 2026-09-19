@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -755,9 +755,9 @@ Unicode), words/tokens, and numbers.</p></li>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>seq1</strong><span class="classifier"><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>, str, or sequence of scalar</span></dt><dd><p>The first sequence to be aligned.</p>
+<dt><strong>seq1</strong><span class="classifier"><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>, str, or sequence of scalar</span></dt><dd><p>The first sequence to be aligned.</p>
 </dd>
-<dt><strong>seq2</strong><span class="classifier"><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>, str, or sequence of scalar</span></dt><dd><p>The second sequence to be aligned.</p>
+<dt><strong>seq2</strong><span class="classifier"><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>, str, or sequence of scalar</span></dt><dd><p>The second sequence to be aligned.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘global’, ‘local’}, optional</span></dt><dd><p>Mode of alignment. Options are:</p>
 <ul class="simple">
@@ -767,12 +767,12 @@ The two sequences are aligned end-to-end. See also <code class="docutils literal
 similar regions between two sequences.</p></li>
 </ul>
 </dd>
-<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), SubstitutionMatrix, or str, optional</span></dt><dd><p>Score of a substitution. May be one of the following:</p>
+<dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), <a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>, or str, optional</span></dt><dd><p>Score of a substitution. May be one of the following:</p>
 <ul class="simple">
 <li><p>Tuple of two numbers: Match score (same symbol) and mismatch score (different
 symbols).</p></li>
-<li><p><a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>: A matrix of substitution scores
-between all symbols in the alphabet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code>: A matrix of substitution scores between all symbols
+in the alphabet.</p></li>
 <li><p>String: Name of the substitution matrix that can be recognized by
 <code class="docutils literal notranslate"><span class="pre">SubstitutionMatrix.by_name</span></code>, such as “NUC.4.4” or “BLOSUM62”.</p></li>
 </ul>
@@ -851,7 +851,7 @@ the memory space free up after the function finishes.</p>
 <dd class="field-even"><dl>
 <dt><strong>score</strong><span class="classifier">float</span></dt><dd><p>Optimal alignment score.</p>
 </dd>
-<dt><strong>paths</strong><span class="classifier">list of <a class="reference internal" href="skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a>, optional</span></dt><dd><p>Alignment paths. Up to <code class="docutils literal notranslate"><span class="pre">max_paths</span></code> paths will be returned. Note that all
+<dt><strong>paths</strong><span class="classifier">list of <a class="reference internal" href="skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a>, optional</span></dt><dd><p>Alignment paths. Up to <code class="docutils literal notranslate"><span class="pre">max_paths</span></code> paths will be returned. Note that all
 paths are optimal and share the same alignment score.</p>
 </dd>
 <dt><strong>matrices</strong><span class="classifier">tuple of ndarray of shape (m + 1, n + 1), optional</span></dt><dd><p>Alignment matrices generated during the computation (if <code class="docutils literal notranslate"><span class="pre">keep_matrices</span></code> is
@@ -869,7 +869,8 @@ seq1) and a deletion matrix (gap in seq2) will be returned.</p></li>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="skbio.alignment.align_score.html#skbio.alignment.align_score" title="skbio.alignment.align_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">align_score</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skbio.alignment.PairAlignPath</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.alignment.multi_align.html#skbio.alignment.multi_align" title="skbio.alignment.multi_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_align</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.alignment.PairAlignPath.html#skbio.alignment.PairAlignPath" title="skbio.alignment.PairAlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairAlignPath</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>

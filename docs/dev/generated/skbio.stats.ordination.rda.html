@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -751,21 +751,20 @@ when it’s large, so that the contingency table is sparse.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>y</strong><span class="classifier">table_like</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times p\)</span> response matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number
+<dt><strong>y</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a></span></dt><dd><p><span class="math notranslate nohighlight">\(n \times p\)</span> response matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number
 of samples and <span class="math notranslate nohighlight">\(p\)</span> is the number of features. Its columns
 need be dimensionally homogeneous (or you can set <cite>scale_Y=True</cite>).
 This matrix is also referred to as the community matrix that
-commonly stores information about species abundances. See
-<a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+commonly stores information about species abundances.</p>
 </dd>
-<dt><strong>x</strong><span class="classifier">table_like</span></dt><dd><p><span class="math notranslate nohighlight">\(n \times m, n \geq m\)</span> matrix of explanatory
+<dt><strong>x</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a></span></dt><dd><p><span class="math notranslate nohighlight">\(n \times m, n \geq m\)</span> matrix of explanatory
 variables, where <span class="math notranslate nohighlight">\(n\)</span> is the number of samples and
 <span class="math notranslate nohighlight">\(m\)</span> is the number of metadata variables. Its columns
 need not be standardized, but doing so turns regression
-coefficients into standard regression coefficients. See above.</p>
+coefficients into standard regression coefficients.</p>
 </dd>
-<dt><strong>scale_Y</strong><span class="classifier">bool, optional</span></dt><dd><p>Controls whether the response matrix columns are scaled to
-have unit standard deviation. Defaults to <cite>False</cite>.</p>
+<dt><strong>scale_Y</strong><span class="classifier">bool, optional</span></dt><dd><p>Controls whether the response matrix columns are scaled to have unit standard
+deviation. Default is False.</p>
 </dd>
 <dt><strong>scaling</strong><span class="classifier">int</span></dt><dd><p>Scaling type 1 produces a distance biplot. It focuses on
 the ordination of rows (samples) because their transformed
@@ -790,7 +789,7 @@ structure or explicitly by the user, defaults to integers starting at zero.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>OrdinationResults</dt><dd><p>Object that stores the computed eigenvalues, the
+<dt><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html#skbio.stats.ordination.OrdinationResults" title="skbio.stats.ordination.OrdinationResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrdinationResults</span></code></a></dt><dd><p>Object that stores the computed eigenvalues, the
 proportion explained by each of them (per unit),
 transformed coordinates for feature and samples, biplot
 scores, sample constraints, etc.</p>

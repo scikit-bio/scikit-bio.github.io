@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -765,10 +765,10 @@ compositional data.</p>
 \[rclr(x_i) = \ln(x_i) - \frac{1}{|S|} \sum_{j \in S} \ln(x_j)\]</div>
 <p>where <span class="math notranslate nohighlight">\(S\)</span> is the set of indices with non-zero values, and <span class="math notranslate nohighlight">\(|S|\)</span> is the
 number of non-zero values.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array_like of shape (…, n_components, …)</span></dt><dd><p>A matrix of non-negative values. Zeros are allowed and will become NaN in the
+<dd class="field-odd"><dl>
+<dt><strong>mat</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of shape (…, n_components, …)</span></dt><dd><p>A matrix of non-negative values. Zeros are allowed and will become NaN in the
 output. NaN values in the input are preserved (representing missing entries).</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which rclr transformation will be performed. Each vector on this
@@ -794,8 +794,6 @@ allowed as missing entries.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p>This function supports the <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a>. Compatible array backends:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -827,7 +825,6 @@ allowed as missing entries.</p>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 <p>The rclr transformation has several advantages for sparse compositional data:</p>
 <ol class="arabic simple">

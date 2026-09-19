@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -753,10 +753,10 @@
 <dt class="sig sig-object py" id="skbio.alignment.TabularMSA">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">TabularMSA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_tabular_msa.py#L37"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.TabularMSA" title="Link to this definition">#</a></dt>
 <dd><p>Store a multiple sequence alignment in tabular (row/column) form.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>sequences</strong><span class="classifier">iterable of GrammaredSequence, TabularMSA</span></dt><dd><p>Aligned sequences in the MSA. Sequences must all be the same type and
+<dd class="field-odd"><dl>
+<dt><strong>sequences</strong><span class="classifier">iterable of <a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a>, <a class="reference internal" href="#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a></span></dt><dd><p>Aligned sequences in the MSA. Sequences must all be the same type and
 length. For example, <cite>sequences</cite> could be an iterable of <code class="docutils literal notranslate"><span class="pre">DNA</span></code>,
 <code class="docutils literal notranslate"><span class="pre">RNA</span></code>, or <code class="docutils literal notranslate"><span class="pre">Protein</span></code> sequences. If <cite>sequences</cite> is a <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code>,
 its <cite>metadata</cite>, <cite>positional_metadata</cite>, and <cite>index</cite> will be used unless
@@ -1055,10 +1055,10 @@ labels:</p>
 <span class="n">msa</span><span class="o">.</span><span class="n">iloc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'position'</span><span class="p">)[</span><span class="n">pos_idx</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>seq_idx</strong><span class="classifier">int, slice, iterable (int and slice), 1D array_like (bool)</span></dt><dd><p>Slice the first axis of the MSA. When this value is a scalar, a
+<dd class="field-odd"><dl>
+<dt><strong>seq_idx</strong><span class="classifier">int, slice, iterable (int and slice), 1D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> (bool)</span></dt><dd><p>Slice the first axis of the MSA. When this value is a scalar, a
 sequence of <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> will be returned. This may be further
 sliced by <cite>pos_idx</cite>.</p>
 </dd>
@@ -1074,7 +1074,7 @@ no longer be split into <cite>seq_idx</cite> and <cite>pos_idx</cite>.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TabularMSA, GrammaredSequence, Sequence</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> is returned when <cite>seq_idx</cite> and <cite>pos_idx</cite> are
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, <a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a>, <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> is returned when <cite>seq_idx</cite> and <cite>pos_idx</cite> are
 non-scalars. A <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code> of type <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> is
 returned when <cite>seq_idx</cite> is a scalar (this object will match the
 dtype of the MSA). A <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> is returned when <cite>seq_idx</cite> is
@@ -1285,10 +1285,10 @@ default:</p>
 <span class="n">msa</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'position'</span><span class="p">)[</span><span class="n">pos_idx</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>seq_idx</strong><span class="classifier">label, slice, 1D array_like (bool or label)</span></dt><dd><p>Slice the first axis of the MSA. When this value is a scalar, a
+<dd class="field-odd"><dl>
+<dt><strong>seq_idx</strong><span class="classifier">label, slice, 1D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> (bool or label)</span></dt><dd><p>Slice the first axis of the MSA. When this value is a scalar, a
 sequence of <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> will be returned. This may be further
 sliced by <cite>pos_idx</cite>.</p>
 </dd>
@@ -1304,7 +1304,7 @@ no longer be split into <cite>seq_idx</cite> and <cite>pos_idx</cite>.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>TabularMSA, GrammaredSequence, Sequence</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> is returned when <cite>seq_idx</cite> and <cite>pos_idx</cite> are
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, <a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a>, <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> is returned when <cite>seq_idx</cite> and <cite>pos_idx</cite> are
 non-scalars. A <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code> of type <code class="docutils literal notranslate"><span class="pre">msa.dtype</span></code> is
 returned when <cite>seq_idx</cite> is a scalar (this object will match the
 dtype of the MSA). A <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> is returned when <cite>seq_idx</cite> is
@@ -1637,7 +1637,7 @@ reasons specifying the <cite>axis</cite> preemptively can be useful.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>TabularMSA</dt><dd><p>Shallow copy of this MSA. Sequence objects will be shallow-copied.</p>
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a></dt><dd><p>Shallow copy of this MSA. Sequence objects will be shallow-copied.</p>
 </dd>
 </dl>
 </dd>
@@ -1668,7 +1668,7 @@ reasons specifying the <cite>axis</cite> preemptively can be useful.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>TabularMSA</dt><dd><p>Deep copy of this MSA. Sequence objects will be deep-copied.</p>
+<dt><a class="reference internal" href="#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a></dt><dd><p>Deep copy of this MSA. Sequence objects will be deep-copied.</p>
 </dd>
 </dl>
 </dd>
@@ -1698,10 +1698,10 @@ reasons specifying the <cite>axis</cite> preemptively can be useful.</p>
 <dd><p>Determine if this MSA is equal to another.</p>
 <p><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> objects are equal if their sequences, index, metadata,
 and positional metadata are equal.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>other</strong><span class="classifier">TabularMSA</span></dt><dd><p>MSA to test for equality against.</p>
+<dd class="field-odd"><dl>
+<dt><strong>other</strong><span class="classifier"><a class="reference internal" href="#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a></span></dt><dd><p>MSA to test for equality against.</p>
 </dd>
 </dl>
 </dd>
@@ -1779,7 +1779,7 @@ Please refer to the associated documentation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>GrammaredSequence</dt><dd><p>Each sequence in the order they are stored in the MSA.</p>
+<dt><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a></dt><dd><p>Each sequence in the order they are stored in the MSA.</p>
 </dd>
 </dl>
 </dd>
@@ -1827,10 +1827,10 @@ Please refer to the associated documentation.</p>
 <dd><p>Determine if this MSA is not equal to another.</p>
 <p><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> objects are not equal if their sequences, index,
 metadata, or positional metadata are not equal.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>other</strong><span class="classifier">TabularMSA</span></dt><dd><p>MSA to test for inequality against.</p>
+<dd class="field-odd"><dl>
+<dt><strong>other</strong><span class="classifier"><a class="reference internal" href="#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a></span></dt><dd><p>MSA to test for inequality against.</p>
 </dd>
 </dl>
 </dd>
@@ -1856,7 +1856,7 @@ metadata, or positional metadata are not equal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>GrammaredSequence</dt><dd><p>Each sequence in reverse order from how they are stored in the MSA.</p>
+<dt><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a></dt><dd><p>Each sequence in reverse order from how they are stored in the MSA.</p>
 </dd>
 </dl>
 </dd>

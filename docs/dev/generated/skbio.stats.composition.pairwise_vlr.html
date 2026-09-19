@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -753,12 +753,12 @@
 <dt class="sig sig-object py" id="skbio.stats.composition.pairwise_vlr">
 <span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">pairwise_vlr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ddof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_base.py#L1431"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.pairwise_vlr" title="Link to this definition">#</a></dt>
 <dd><p>Perform pairwise variance log ratio transformation.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array_like of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
+<dd class="field-odd"><dl>
+<dt><strong>mat</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of shape (n_compositions, n_components)</span></dt><dd><p>A matrix of proportions.</p>
 </dd>
-<dt><strong>ids</strong><span class="classifier">array_like of str of shape (n_components,)</span></dt><dd><p>Component names.</p>
+<dt><strong>ids</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of str of shape (n_components,)</span></dt><dd><p>Component names.</p>
 </dd>
 <dt><strong>ddof</strong><span class="classifier">int</span></dt><dd><p>Degrees of freedom.</p>
 </dd>
@@ -770,9 +770,7 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>skbio.DistanceMatrix if validate=True</dt><dd><p>Distance matrix of variance log ratio values.</p>
-</dd>
-<dt>skbio.DissimilarityMatrix if validate=False</dt><dd><p>Dissimilarity matrix of variance log ratio values.</p>
+<dt><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a></dt><dd><p>Distance matrix of variance log ratio values.</p>
 </dd>
 </dl>
 </dd>

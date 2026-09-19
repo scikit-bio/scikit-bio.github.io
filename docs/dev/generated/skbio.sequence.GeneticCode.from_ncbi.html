@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -730,25 +730,29 @@
 <h1>skbio.sequence.GeneticCode.from_ncbi<a class="headerlink" href="#skbio-sequence-geneticcode-from-ncbi" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.GeneticCode.from_ncbi">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">GeneticCode.</span></span><span class="sig-name descname"><span class="pre">from_ncbi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L148"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.from_ncbi" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">GeneticCode.</span></span><span class="sig-name descname"><span class="pre">from_ncbi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_genetic_code.py#L149"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GeneticCode.from_ncbi" title="Link to this definition">#</a></dt>
 <dd><p>Return NCBI genetic code specified by table ID.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Added definitions of tables 15, 26-33. Updated definition for table 3.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>table_id</strong><span class="classifier">int, optional</span></dt><dd><p>Table ID of the NCBI genetic code to return.</p>
+<dt><strong>table_id</strong><span class="classifier">int, optional</span></dt><dd><p>Table ID of the NCBI genetic code to return. At present, tables 1-33 are
+supported.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>GeneticCode</dt><dd><p>NCBI genetic code specified by <cite>table_id</cite>.</p>
+<dt><a class="reference internal" href="skbio.sequence.GeneticCode.html#skbio.sequence.GeneticCode" title="skbio.sequence.GeneticCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneticCode</span></code></a></dt><dd><p>NCBI genetic code specified by <code class="docutils literal notranslate"><span class="pre">table_id</span></code>.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The table IDs and genetic codes available in this method and used
-throughout the examples are defined in <a class="reference internal" href="#r42624aa4d01d-1" id="id1">[1]</a>.</p>
+<p>The table IDs and genetic codes available in this method and used throughout
+the examples are defined in <a class="reference internal" href="#r42624aa4d01d-1" id="id1">[1]</a>.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r42624aa4d01d-1" role="doc-biblioentry">

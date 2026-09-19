@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -753,11 +753,11 @@ ordination that PCA when the data has lots of zero values.</p>
 <p>It is related to Principal Component Analysis (PCA) but it should
 be preferred in the case of steep or long gradients, that is, when
 there are many zeros in the input data matrix.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>X</strong><span class="classifier">table_like of shape (n_samples, n_features)</span></dt><dd><p>Input data table. See <a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.
-Data must be non-negative and dimensionally homogeneous (numeric or binary).</p>
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_samples, n_features)</span></dt><dd><p>Input data table. Data must be non-negative and dimensionally
+homogeneous (numeric or binary).</p>
 </dd>
 <dt><strong>scaling</strong><span class="classifier">{1, 2}</span></dt><dd><p>Scaling type 1 maintains <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between rows.
 Scaling type 2 preserves <span class="math notranslate nohighlight">\(\chi^2\)</span> distances between columns.
@@ -770,7 +770,7 @@ check notes below and Legendre &amp; Legendre 1998, section 9.4.3.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>OrdinationResults</dt><dd><p>Object that stores the computed eigenvalues, the transformed sample
+<dt><a class="reference internal" href="skbio.stats.ordination.OrdinationResults.html#skbio.stats.ordination.OrdinationResults" title="skbio.stats.ordination.OrdinationResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrdinationResults</span></code></a></dt><dd><p>Object that stores the computed eigenvalues, the transformed sample
 coordinates, the transformed features coordinates and the proportion
 explained.</p>
 </dd>

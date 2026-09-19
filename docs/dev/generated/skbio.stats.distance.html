@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -778,31 +778,11 @@ general measures (e.g., Bray-Curtis dissimilarity).</p>
 </table>
 </div>
 </section>
-<section id="exceptions">
-<h3>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairwiseMatrixError</span></code></p></td>
-<td><p>General error for pairwise matrix validation failures.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SymmetricMatrixError</span></code></p></td>
-<td><p>General error for symmetric matrix validation failures.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceMatrixError</span></code></p></td>
-<td><p>General error for distance matrix validation failures.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MissingIDError</span></code></p></td>
-<td><p>Error for ID lookup that doesn't exist in the pairwise matrix.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 </section>
 <section id="distance-based-statistics">
 <h2>Distance-based statistics<a class="headerlink" href="#distance-based-statistics" title="Link to this heading">#</a></h2>
-<section id="categorical-variable-stats">
-<h3>Categorical Variable Stats<a class="headerlink" href="#categorical-variable-stats" title="Link to this heading">#</a></h3>
+<section id="categorical-variable-tests">
+<h3>Categorical Variable Tests<a class="headerlink" href="#categorical-variable-tests" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.anosim.html#skbio.stats.distance.anosim" title="skbio.stats.distance.anosim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anosim</span></code></a></p></td>
@@ -818,8 +798,8 @@ general measures (e.g., Bray-Curtis dissimilarity).</p>
 </table>
 </div>
 </section>
-<section id="continuous-variable-stats">
-<h3>Continuous Variable Stats<a class="headerlink" href="#continuous-variable-stats" title="Link to this heading">#</a></h3>
+<section id="continuous-variable-tests">
+<h3>Continuous Variable Tests<a class="headerlink" href="#continuous-variable-tests" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.stats.distance.bioenv.html#skbio.stats.distance.bioenv" title="skbio.stats.distance.bioenv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bioenv</span></code></a></p></td>
@@ -838,6 +818,26 @@ general measures (e.g., Bray-Curtis dissimilarity).</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="skbio.stats.distance.pwmantel.html#skbio.stats.distance.pwmantel" title="skbio.stats.distance.pwmantel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pwmantel</span></code></a></p></td>
 <td><p>Run Mantel tests for every pair of given distance matrices.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="exceptions">
+<h3>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PairwiseMatrixError</span></code></p></td>
+<td><p>General error for pairwise matrix validation failures.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SymmetricMatrixError</span></code></p></td>
+<td><p>General error for symmetric matrix validation failures.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceMatrixError</span></code></p></td>
+<td><p>General error for distance matrix validation failures.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MissingIDError</span></code></p></td>
+<td><p>Error for ID lookup that doesn't exist in the pairwise matrix.</p></td>
 </tr>
 </tbody>
 </table>
@@ -974,13 +974,13 @@ Monotonically-increasing integers (cast as strings) will be automatically used:<
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data structures</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-based-statistics">Distance-based statistics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-variable-stats">Categorical Variable Stats</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-variable-stats">Continuous Variable Stats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-variable-tests">Categorical Variable Tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-variable-tests">Continuous Variable Tests</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-matrix-comparisons">Distance Matrix Comparisons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>

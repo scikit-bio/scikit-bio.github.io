@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -769,13 +769,13 @@ than or equal to the observed (unpermuted) one (<span class="math notranslate no
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>distmat</strong><span class="classifier">DistanceMatrix</span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
+<dt><strong>distmat</strong><span class="classifier"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a></span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
 between samples of microbial communities).</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">distance_matrix</span></code>. The old name is kept as an alias.</p>
 </div>
 </dd>
-<dt><strong>grouping</strong><span class="classifier">1-D array_like or pandas.DataFrame</span></dt><dd><p>Vector indicating the assignment of objects to groups. For example,
+<dt><strong>grouping</strong><span class="classifier">1-D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> or pandas.DataFrame</span></dt><dd><p>Vector indicating the assignment of objects to groups. For example,
 these could be strings or integers denoting which group an object
 belongs to. If <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>, it must be the same
 length and in the same order as the objects in <cite>distmat</cite>. If
@@ -837,8 +837,6 @@ ROCm-PyTorch case).</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p>This function supports the <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a>. Compatible array backends:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -866,7 +864,6 @@ ROCm-PyTorch case).</p>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 <p>This function uses parallel computation for improved performance.
 See the <a class="extlink-install reference external" href="../../../install.html#parallelization">parallelization guide</a> for information on

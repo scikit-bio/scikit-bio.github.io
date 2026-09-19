@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -785,7 +785,7 @@ alignments using scikit-bio.</p>
 </section>
 <section id="multiple-alignment">
 <h2>Multiple alignment<a class="headerlink" href="#multiple-alignment" title="Link to this heading">#</a></h2>
-<p>Progressive alignment using averaged residue profiles.</p>
+<p>Progressive alignment of multiple sequences.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.multi_align.html#skbio.alignment.multi_align" title="skbio.alignment.multi_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_align</span></code></a></p></td>
@@ -823,7 +823,7 @@ alignments using scikit-bio.</p>
 </section>
 <section id="deprecated-functionality">
 <h2>Deprecated functionality<a class="headerlink" href="#deprecated-functionality" title="Link to this heading">#</a></h2>
-<p>Slow, pure Python algorithms (scheduled for removal in 0.8.0)</p>
+<p>Slow, pure Python algorithms (deprecated)</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.alignment.global_pairwise_align_nucleotide.html#skbio.alignment.global_pairwise_align_nucleotide" title="skbio.alignment.global_pairwise_align_nucleotide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">global_pairwise_align_nucleotide</span></code></a></p></td>
@@ -905,16 +905,15 @@ sequences and the alignment parameters (discussed below).</p>
 </pre></div>
 </div>
 </section>
-<section id="alignment-algorithm">
-<h3>Alignment algorithm<a class="headerlink" href="#alignment-algorithm" title="Link to this heading">#</a></h3>
-<p>The alignment algorithm aims to find the optimal alignment path(s) that yield the
-highest possible alignment score for two sequences. For decades,
-<a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> (DP) has been the gold standard for
-pairwise sequence alignment, and is widely covered in many bioinformatics textbooks.
-scikit-bio also implements this algorithm. <code class="docutils literal notranslate"><span class="pre">pair_align_nucl</span></code> and <code class="docutils literal notranslate"><span class="pre">pair_align_prot</span></code>
-are but convenience wrappers for the function <a class="reference internal" href="generated/skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a>, which offers multiple
-customizable parameters and comprehensive documentation explaining the algorithm and
-everything you need to know for using it.</p>
+<section id="id1">
+<h3>Pairwise alignment<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>An alignment algorithm aims to find the optimal alignment path(s) that yield the
+highest possible alignment score for sequences. For decades, <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> (DP) has been the gold standard for pairwise sequence alignment,
+and is widely covered in many bioinformatics textbooks. scikit-bio also implements this
+algorithm. <code class="docutils literal notranslate"><span class="pre">pair_align_nucl</span></code> and <code class="docutils literal notranslate"><span class="pre">pair_align_prot</span></code> are but convenience wrappers for
+the function <a class="reference internal" href="generated/skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a>, which offers multiple customizable parameters and
+comprehensive documentation explaining the algorithm and everything you need to know
+for using it.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">pair_align</span>
 </pre></div>
 </div>
@@ -1071,6 +1070,34 @@ interacting with different alignment formats and tools. For example, the
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">biotite.sequence.align</span><span class="w"> </span><span class="kn">import</span> <span class="n">align_optimal</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">align_optimal</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 <span class="n">path</span> <span class="o">=</span> <span class="n">AlignPath</span><span class="o">.</span><span class="n">from_indices</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">trace</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Multiple alignment<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Multiple sequence alignment (MSA) is valuable in identifying conserved and variable
+regions among homologous sequences, inferring evolutionary relationships of genes and
+organisms, and constructing sequence profiles. scikit-bio implements the classic
+progressive alignment method for MSA in the <a class="reference internal" href="generated/skbio.alignment.multi_align.html#skbio.alignment.multi_align" title="skbio.alignment.multi_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">multi_align</span></code></a> function.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">multi_align</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"CAGCTATATATCGCTACG"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"CTGCTTATATCCCTAGG"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"AAGCTATACATCCAACATG"</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">multi_align</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="o">.</span><span class="n">path</span>
+<span class="go">&lt;AlignPath, sequences: 3, positions: 20, segments: 6&gt;</span>
+</pre></div>
+</div>
+<p>The output <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> object contains three sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">to_bits</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">array([[0, 0, 0, 0, 0, 1],</span>
+<span class="go">       [0, 1, 0, 0, 0, 1],</span>
+<span class="go">       [0, 0, 0, 1, 0, 0]], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>Construct the aligned sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">to_aligned</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span>
+<span class="go">['CAGCTATATATCGCTACG--', 'CTGCT-TATATCCCTAGG--', 'AAGCTATACATC-CAACATG']</span>
 </pre></div>
 </div>
 </section>
@@ -1232,8 +1259,9 @@ consensus sequence of the alignment:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-algorithm">Alignment algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pairwise alignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-path">Alignment path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Multiple alignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabular-alignment">Tabular alignment</a></li>
 </ul>
 </li>

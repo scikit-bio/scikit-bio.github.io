@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=a2df2d4b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -723,18 +723,17 @@
 <dt class="sig sig-object py" id="skbio.diversity.alpha_diversity">
 <span class="sig-prename descclassname"><span class="pre">skbio.diversity.</span></span><span class="sig-name descname"><span class="pre">alpha_diversity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/diversity/_driver.py#L138"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.diversity.alpha_diversity" title="Link to this definition">#</a></dt>
 <dd><p>Compute alpha diversity for one or more samples.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>metric</strong><span class="classifier">str or callable</span></dt><dd><p>The alpha diversity metric to apply to the sample(s). See
 <a class="reference internal" href="skbio.diversity.alpha.html#module-skbio.diversity.alpha" title="skbio.diversity.alpha"><code class="xref py py-mod docutils literal notranslate"><span class="pre">alpha</span></code></a> for available metrics. Passing metric as a string
 is preferable as this often results in an optimized version of the metric
 being used.</p>
 </dd>
-<dt><strong>counts</strong><span class="classifier">table_like of shape (n_samples, n_taxa) or (n_taxa,)</span></dt><dd><p>Vector or matrix containing count/abundance data of one or multiple samples.
-See <a class="reference internal" href="../table.html#table-like"><span class="std std-ref">supported formats</span></a>.</p>
+<dt><strong>counts</strong><span class="classifier"><a class="reference internal" href="../table.html#table-like"><span class="std std-ref">table-like</span></a> of shape (n_samples, n_taxa) or (n_taxa,)</span></dt><dd><p>Vector or matrix containing count/abundance data of one or multiple samples.</p>
 </dd>
-<dt><strong>ids</strong><span class="classifier">array_like of shape (n_samples,), optional</span></dt><dd><p>Identifiers for each sample in <code class="docutils literal notranslate"><span class="pre">counts</span></code>. If not provided, will extract sample
+<dt><strong>ids</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of shape (n_samples,), optional</span></dt><dd><p>Identifiers for each sample in <code class="docutils literal notranslate"><span class="pre">counts</span></code>. If not provided, will extract sample
 IDs from <code class="docutils literal notranslate"><span class="pre">counts</span></code>, if available, or assign integer identifiers in the order
 that samples were provided.</p>
 </dd>
