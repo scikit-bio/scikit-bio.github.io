@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Computation and performance &#8212; scikit-bio 0.7.4-dev documentation</title>
+    <title>Computation and Performance &#8212; scikit-bio 0.7.4 documentation</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=9ea8e645" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=9289ee13" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="_static/documentation_options.js?v=cc916a90"></script>
+    <script src="_static/documentation_options.js?v=020ce317"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -69,7 +69,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.7.4';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -78,10 +78,10 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="skbio.reset_config" href="generated/skbio.reset_config.html" />
+    <link rel="prev" title="skbio.set_config" href="generated/skbio.set_config.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.7.4-dev" />
+  <meta name="docsearch:version" content="0.7.4" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -153,8 +153,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.4-dev documentation"/>
-    <img src="_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.4-dev documentation"/>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.4 documentation"/>
+    <img src="_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.4 documentation"/>
   
   
 </a></div>
@@ -331,7 +331,7 @@
 
 <li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="#">
-    Computation and performance
+    Computation and Performance
   </a>
 </li>
 
@@ -579,7 +579,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    Computation and performance
+    Computation and Performance
   </a>
 </li>
 
@@ -690,7 +690,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Computation and performance</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Computation and Performance</span></li>
   </ul>
 </nav>
 </div>
@@ -708,7 +708,7 @@
                 <article class="bd-article">
                   
   <section id="computation-and-performance">
-<h1>Computation and performance<a class="headerlink" href="#computation-and-performance" title="Link to this heading">#</a></h1>
+<h1>Computation and Performance<a class="headerlink" href="#computation-and-performance" title="Link to this heading">#</a></h1>
 <p>Biological datasets continue to grow in size and complexity. scikit-bio prioritizes
 computational efficiency and scalability to very large datasets, alongside
 numerical correctness and reproducibility. Broad support for computer architectures
@@ -860,7 +860,7 @@ GPU-resident arrays (tensors):</p>
 <span class="n">result</span> <span class="o">=</span> <span class="n">clr</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>2. <a class="reference internal" href="#compute-engines"><span class="std std-ref">The Numba engines</span></a> of some functions are capable of GPU
+<p>2. The <a class="reference internal" href="#compute-engines"><span class="std std-ref">Numba engines</span></a> of some functions are capable of GPU
 computing through the extensions <a class="reference external" href="https://nvidia.github.io/numba-cuda/">numba-cuda</a>
 (for CUDA GPUs) and <a class="reference external" href="https://github.com/ROCm/numba-hip">numba-hip</a> (for ROCm GPUs).
 Refer to the <a class="extlink-install reference external" href="../../install.html#numba">installation instructions</a>. With a compatible GPU
@@ -906,11 +906,11 @@ depending on the dataset and computing environment:</p>
 <strong>Parallelization</strong> divides a calculation among the CPU cores. Some scikit-bio
 functions do this directly. Others delegate to upstream libraries that perform parts of
 the work in parallel (e.g., NumPy parallelizes some linear algebra calculations using
-BLAS). These happen automatically, without changing your analysis code.</p>
-<p>You may want to limit how many resources an analysis uses, particularly on a shared
-computer or when running several analyses at once. CPU work is commonly organized into
-<strong>threads</strong>, which are separate streams of work within a program. By default, parallel
-functions in scikit-bio utilize all available CPU cores when possible. Currently there
+BLAS). These happen automatically, without changing any of your code. By default,
+parallel functions in scikit-bio utilize all available CPU cores when possible.</p>
+<p>Sometimes you may want to limit how many resources an analysis uses, particularly on a
+shared computer or when running several analyses at once. CPU work is organized into
+<strong>threads</strong>, which are separate streams of work within a program. Currently there
 is no per-function parameter to control the number of threads used. However, you can
 still control this behavior using the approaches described below.</p>
 <p>Parallel <a class="reference internal" href="#compute-engines"><span class="std std-ref">Cython engines</span></a> use <a class="reference external" href="https://www.openmp.org/">OpenMP</a>
@@ -982,12 +982,12 @@ implementation. Selecting Numba bypasses this package.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/skbio.reset_config.html"
+       href="generated/skbio.set_config.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">skbio.reset_config</p>
+        <p class="prev-next-title">skbio.set_config</p>
       </div>
     </a>
 </div>

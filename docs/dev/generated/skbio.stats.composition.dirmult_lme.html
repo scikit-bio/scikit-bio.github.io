@@ -9,7 +9,7 @@
     <meta name="description" content="Fit a Dirichlet-multinomial linear mixed effects model." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>skbio.stats.composition.dirmult_lme &#8212; scikit-bio 0.7.4-dev documentation</title>
+    <title>skbio.stats.composition.dirmult_lme &#8212; scikit-bio 0.7.4 documentation</title>
   
   
   
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9ea8e645" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9289ee13" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=cc916a90"></script>
+    <script src="../_static/documentation_options.js?v=020ce317"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -70,7 +70,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.7.4';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -83,7 +83,7 @@
     <link rel="prev" title="skbio.stats.composition.dirmult_ttest" href="skbio.stats.composition.dirmult_ttest.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.7.4-dev" />
+  <meta name="docsearch:version" content="0.7.4" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -155,8 +155,8 @@
       
     
     
-    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.4-dev documentation"/>
-    <img src="../_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.4-dev documentation"/>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.4 documentation"/>
+    <img src="../_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.4 documentation"/>
   
   
 </a></div>
@@ -333,7 +333,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../performance.html">
-    Computation and performance
+    Computation and Performance
   </a>
 </li>
 
@@ -581,7 +581,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../performance.html">
-    Computation and performance
+    Computation and Performance
   </a>
 </li>
 
@@ -765,7 +765,7 @@
 <h1>skbio.stats.composition.dirmult_lme<a class="headerlink" href="#skbio-stats-composition-dirmult-lme" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.composition.dirmult_lme">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_lme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vc_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_converge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_warnings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/composition/_dirmult.py#L435"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_lme" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.composition.</span></span><span class="sig-name descname"><span class="pre">dirmult_lme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudocount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_adjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'holm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vc_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_converge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_warnings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/0.7.4/skbio/stats/composition/_dirmult.py#L435"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.composition.dirmult_lme" title="Link to this definition">#</a></dt>
 <dd><p>Fit a Dirichlet-multinomial linear mixed effects model.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.0.</span></p>
@@ -781,13 +781,10 @@ from the resulting model. Statistical tests are then performed on the posterior
 samples, drawn from each Dirichlet-multinomial distribution. The
 log-fold changes as well as their credible intervals, the <em>p</em>-values and
 the multiple comparison corrected <em>p</em>-values are reported.</p>
-<p>This function uses the <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.mixed_linear_model.MixedLM.html#statsmodels.regression.mixed_linear_model.MixedLM" title="(in statsmodels 0.15.0 v0.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixedLM</span></code></a>
-class from statsmodels.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The default model is fitted in closed form for all features at once. See
-Notes. Any other configuration falls back to running one numeric
-optimization per feature per draw, which can take much longer to finish.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Significantly improved computational efficiency under the default configuration
+by introducing an analytical kernel fitting all features at once. See Notes for
+details.</p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -904,9 +901,11 @@ from the same REML profile likelihood and the same observed information matrix.<
 convergence filter that has no closed form, and falls back to fitting each
 feature separately with <code class="docutils literal notranslate"><span class="pre">MixedLM</span></code>.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 0.7.4: </span>The default random-intercept model is fitted for all features at once.
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>The default random intercept model is fitted for all features at once.
 Results may differ slightly from earlier versions on replicates where the
-iterative optimizer of <code class="docutils literal notranslate"><span class="pre">MixedLM</span></code> stopped short of the optimum.</p>
+iterative optimizer of <code class="docutils literal notranslate"><span class="pre">MixedLM</span></code> stopped short of the optimum. Any other
+configuration falls back to running one numeric optimization per feature
+per draw using <code class="docutils literal notranslate"><span class="pre">MixedLM</span></code>, which can take much longer to finish.</p>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>

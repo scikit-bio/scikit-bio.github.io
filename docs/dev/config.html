@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="User configuration utilities." name="description" />
 
-    <title>Configuration Options &#8212; scikit-bio 0.7.4-dev documentation</title>
+    <title>Configuration Options &#8212; scikit-bio 0.7.4 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=9ea8e645" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=9289ee13" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="_static/documentation_options.js?v=cc916a90"></script>
+    <script src="_static/documentation_options.js?v=020ce317"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.7.4';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -84,7 +84,7 @@
     <link rel="prev" title="skbio.util.safe_md5" href="generated/skbio.util.safe_md5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.7.4-dev" />
+  <meta name="docsearch:version" content="0.7.4" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -156,8 +156,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.4-dev documentation"/>
-    <img src="_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.4-dev documentation"/>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.4 documentation"/>
+    <img src="_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.4 documentation"/>
   
   
 </a></div>
@@ -334,7 +334,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="performance.html">
-    Computation and performance
+    Computation and Performance
   </a>
 </li>
 
@@ -582,7 +582,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="performance.html">
-    Computation and performance
+    Computation and Performance
   </a>
 </li>
 
@@ -657,7 +657,6 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.get_config.html">skbio.get_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.set_config.html">skbio.set_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/skbio.reset_config.html">skbio.reset_config</a></li>
 </ul>
 </div>
 </nav></div>
@@ -729,40 +728,46 @@ scikit-bio functionalities.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a></p></td>
 <td><p>Set a scikit-bio configuration option.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.reset_config.html#skbio.reset_config" title="skbio.reset_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_config</span></code></a></p></td>
-<td><p>Restore one or all scikit-bio configuration options to their defaults.</p></td>
-</tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="configuration">
-<span id="id1"></span><h2>Configuration options<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
-<p>Settings apply to the current Python process and are not saved between sessions.
-Explicit function arguments override the corresponding global setting; passing
-None uses that setting. Only functions supporting an option are affected.
-See <a class="reference internal" href="performance.html#compute-engines"><span class="std std-ref">Compute engines</span></a> for compute engine selection and requirements.</p>
-<p>Inspect all current values with <code class="docutils literal notranslate"><span class="pre">get_config()</span></code>, or one with
-<code class="docutils literal notranslate"><span class="pre">get_config('compute_engine')</span></code>. The returned dictionary is a copy.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_config</span><span class="p">,</span> <span class="n">set_config</span><span class="p">,</span> <span class="n">reset_config</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">previous</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">,</span> <span class="s1">'fast'</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">get_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
-<span class="go">'fast'</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reset_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">get_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
-<span class="go">'cython'</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">,</span> <span class="n">previous</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">reset_config()</span></code> to restore all defaults. The available options, their
-accepted values, and their defaults are listed below.</p>
+<section id="available-options">
+<span id="configuration"></span><h2>Available options<a class="headerlink" href="#available-options" title="Link to this heading">#</a></h2>
+<p>The available options, their accepted values, and their defaults are listed below.</p>
 <dl class="simple">
 <dt><strong>table_output</strong><span class="classifier">{‘pandas’, ‘numpy’, ‘polars’}, default=’pandas’</span></dt><dd><p>Preferred table output format. See <a class="reference internal" href="table.html#table-output"><span class="std std-ref">Output formats</span></a>.</p>
 </dd>
 <dt><strong>compute_engine</strong><span class="classifier">{‘cython’, ‘numba’, ‘fast’}, default=’cython’</span></dt><dd><p>Default compute engine. See <a class="reference internal" href="performance.html#compute-engines"><span class="std std-ref">Compute engines</span></a>.</p>
 </dd>
 </dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Added option <code class="docutils literal notranslate"><span class="pre">compute_engine</span></code>.</p>
+</div>
+</section>
+<section id="how-to-configure">
+<h2>How to configure<a class="headerlink" href="#how-to-configure" title="Link to this heading">#</a></h2>
+<p>Settings apply to the current Python session and are not saved between sessions.
+Explicit function parameters override the corresponding global setting. Passing
+None uses that setting. Only functions supporting an option are affected. Inspect
+all current settings with <code class="docutils literal notranslate"><span class="pre">get_config()</span></code>, or one with <code class="docutils literal notranslate"><span class="pre">get_config(option)</span></code>.
+The returned dictionary is a copy.</p>
+<p>The following example gets and sets the <a class="reference internal" href="performance.html#compute-engines"><span class="std std-ref">compute engine</span></a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_config</span><span class="p">,</span> <span class="n">set_config</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">option</span> <span class="o">=</span> <span class="s1">'compute_engine'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">previous</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="s1">'fast'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_config</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+<span class="go">'fast'</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="n">previous</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_config</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+<span class="go">'cython'</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -814,7 +819,8 @@ accepted values, and their defaults are listed below.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-options">Available options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-configure">How to configure</a></li>
 </ul>
   </nav></div>
 

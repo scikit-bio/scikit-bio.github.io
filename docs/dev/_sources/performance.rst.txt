@@ -1,4 +1,4 @@
-Computation and performance
+Computation and Performance
 ===========================
 
 Biological datasets continue to grow in size and complexity. scikit-bio prioritizes
@@ -159,7 +159,7 @@ GPU-resident arrays (tensors)::
     tensor = torch.tensor(arr, device='cuda')
     result = clr(tensor)
 
-2\. :ref:`The Numba engines <compute_engines>` of some functions are capable of GPU
+2\. The :ref:`Numba engines <compute_engines>` of some functions are capable of GPU
 computing through the extensions `numba-cuda <https://nvidia.github.io/numba-cuda/>`_
 (for CUDA GPUs) and `numba-hip <https://github.com/ROCm/numba-hip>`_ (for ROCm GPUs).
 Refer to the :install:`installation instructions <#numba>`. With a compatible GPU
@@ -209,12 +209,12 @@ Most computer systems have multiple CPU cores that can work simultaneously.
 **Parallelization** divides a calculation among the CPU cores. Some scikit-bio
 functions do this directly. Others delegate to upstream libraries that perform parts of
 the work in parallel (e.g., NumPy parallelizes some linear algebra calculations using
-BLAS). These happen automatically, without changing your analysis code.
+BLAS). These happen automatically, without changing any of your code. By default,
+parallel functions in scikit-bio utilize all available CPU cores when possible.
 
-You may want to limit how many resources an analysis uses, particularly on a shared
-computer or when running several analyses at once. CPU work is commonly organized into
-**threads**, which are separate streams of work within a program. By default, parallel
-functions in scikit-bio utilize all available CPU cores when possible. Currently there
+Sometimes you may want to limit how many resources an analysis uses, particularly on a
+shared computer or when running several analyses at once. CPU work is organized into
+**threads**, which are separate streams of work within a program. Currently there
 is no per-function parameter to control the number of threads used. However, you can
 still control this behavior using the approaches described below.
 
