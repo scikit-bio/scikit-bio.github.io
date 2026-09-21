@@ -330,6 +330,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -571,6 +578,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -735,7 +749,7 @@
 <h1>skbio.stats.distance.permdisp<a class="headerlink" href="#skbio-stats-distance-permdisp" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.permdisp">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_neg_eigval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permdisp.py#L286"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permdisp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_neg_eigval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permdisp.py#L287"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permdisp" title="Link to this definition">#</a></dt>
 <dd><p>Test for Homogeneity of Multivariate Groups Disperisons.</p>
 <p>PERMDISP is a multivariate analog of Levene’s test for homogeneity of multivariate
 variances. Distances are handled by reducing the original distances to principal
@@ -774,8 +788,8 @@ significance. Must be greater than or equal to zero. If zero,
 statistical significance calculations will be skipped and the p-value
 will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
 </dd>
-<dt><strong>method</strong><span class="classifier">{‘eigh’, ‘fsvd’}, optional</span></dt><dd><p>Matrix decomposition method to use. Options are “eigh” (eigendecomposition,
-default) and “fsvd” (fast singular value decomposition). See
+<dt><strong>method</strong><span class="classifier">{‘eigh’, ‘fsvd’}, optional</span></dt><dd><p>Matrix decomposition method to use. Options are ‘eigh’ (eigendecomposition,
+default) and ‘fsvd’ (fast singular value decomposition). See
 <code class="xref py py-func docutils literal notranslate"><span class="pre">~skbio.stats.ordination.pcoa</span></code> for details. Not used if
 distmat is a OrdinationResults object.</p>
 </dd>
@@ -797,13 +811,9 @@ during PCoA. See <code class="xref py py-func docutils literal notranslate"><spa
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
 </dd>
-<dt><strong>engine</strong><span class="classifier">{“cython”, “numba”, “fast”}, optional</span></dt><dd><p>Compute engine to use for the permutation test. <code class="docutils literal notranslate"><span class="pre">&quot;cython&quot;</span></code> (default)
-uses the existing implementation. <code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> uses the optional Numba
-implementation and requires Numba to be installed. If not provided, the
-global default is used (see <a class="reference internal" href="skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a>). <code class="docutils literal notranslate"><span class="pre">&quot;fast&quot;</span></code> lets
-scikit-bio pick whichever engine it expects to be quicker here, which
-is Numba when it is installed and Cython otherwise; results may differ
-from the default in the last bits.</p>
+<dt><strong>engine</strong><span class="classifier">{‘cython’, ‘numba’, ‘fast’}, optional</span></dt><dd><p>Compute engine for the permutation test. If None (default), use the global
+<code class="docutils literal notranslate"><span class="pre">compute_engine</span></code> setting. ‘fast’ selects Numba if installed, otherwise
+Cython. See <a class="reference internal" href="../performance.html#compute-engines"><span class="std std-ref">Compute engines</span></a> for details.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
 </div>
@@ -852,7 +862,7 @@ the number of ids in distmat.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>This function uses parallel computation for improved performance.
-See the <a class="extlink-install reference external" href="../../../install.html#parallelization">parallelization guide</a> for information on
+See the <a class="reference internal" href="../performance.html#parallelization"><span class="std std-ref">parallelization guide</span></a> for information on
 controlling the number of threads used.</p>
 <p>This function uses Marti Anderson’s PERMDISP2 procedure.</p>
 <p>The significance of the results from this function will be the same as the
@@ -967,7 +977,7 @@ labels must be distance matrix IDs).</p>
 <p>If IDs (rows) are present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> but not in the distance
 matrix, they are ignored. The previous example’s <code class="docutils literal notranslate"><span class="pre">s7</span></code> ID illustrates this
 behavior: note that even though the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> had 7 objects, only 6
-were used in the test (see the “Sample size” row in the results above to
+were used in the test (see the ‘Sample size’ row in the results above to
 confirm this). Thus, the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> can be a superset of the distance
 matrix IDs. Note that the reverse is not true: IDs in the distance matrix
 <em>must</em> be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> or an error will be raised.</p>

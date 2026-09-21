@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Computation and performance &#8212; scikit-bio 0.7.4-dev documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=9ea8e645" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+
+    <script src="_static/documentation_options.js?v=cc916a90"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
+            </script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'performance';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="../../performance.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="skbio.reset_config" href="generated/skbio.reset_config.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.7.4-dev" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.4-dev documentation"/>
+    <img src="_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.4-dev documentation"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../learn.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../about.html">
+    About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="io.html">
+    Input and Output (skbio.io)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="sequence.html">
+    Biological Sequences (skbio.sequence)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="alignment.html">
+    Sequence Alignments (skbio.alignment)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="tree.html">
+    Trees and Phylogenetics (skbio.tree)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="diversity.html">
+    Community Diversity (skbio.diversity)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="stats.html">
+    Multivariate Statistics (skbio.stats)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="embedding.html">
+    Biological Embeddings (skbio.embedding)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="table.html">
+    Data Table (skbio.table)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="metadata.html">
+    Metadata (skbio.metadata)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="workflow.html">
+    Workflow Construction (skbio.workflow)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="util.html">
+    Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="config.html">
+    Configuration Options
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="#">
+    Computation and performance
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../learn.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="io.html">
+    Input and Output (skbio.io)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="sequence.html">
+    Biological Sequences (skbio.sequence)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="alignment.html">
+    Sequence Alignments (skbio.alignment)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tree.html">
+    Trees and Phylogenetics (skbio.tree)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="diversity.html">
+    Community Diversity (skbio.diversity)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="stats.html">
+    Multivariate Statistics (skbio.stats)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="embedding.html">
+    Biological Embeddings (skbio.embedding)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="table.html">
+    Data Table (skbio.table)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="metadata.html">
+    Metadata (skbio.metadata)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="workflow.html">
+    Workflow Construction (skbio.workflow)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="util.html">
+    Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="config.html">
+    Configuration Options
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Computation and performance
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Computation and performance</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="computation-and-performance">
+<h1>Computation and performance<a class="headerlink" href="#computation-and-performance" title="Link to this heading">#</a></h1>
+<p>Biological datasets continue to grow in size and complexity. scikit-bio prioritizes
+computational efficiency and scalability to very large datasets, alongside
+numerical correctness and reproducibility. Broad support for computer architectures
+and environments is also a central goal. The aim is to help researchers carry out
+reliable analyses on available resources, whether a laptop or a supercomputer cluster.</p>
+<p>Most analyses can start with the default settings, which execute efficient, CPU-based
+numerical computing using the vectorized array operations of <a class="reference external" href="https://numpy.org/">NumPy</a> and, if necessary, <a class="reference external" href="https://cython.org/">Cython</a> for
+loop-intensive calculations. For more demanding work, scikit-bio offers alternative
+implementations of selected analyses, involving parallelization, <a class="reference external" href="https://numba.pydata.org/">Numba</a> engines, support for GPU computation, and support for
+alternative array backends. This guide explains these options and how to choose among
+them.</p>
+<section id="array-backends">
+<span id="id1"></span><h2>Array backends<a class="headerlink" href="#array-backends" title="Link to this heading">#</a></h2>
+<p>Multiple array libraries are available or emerging in the Python scientific computing
+ecosystem to support diverse computational requirements. The <a class="reference external" href="https://data-apis.org/array-api/latest/">Python array API standard</a> defines a common API with which many array
+libraries comply. An increasing number of scikit-bio functions are implemented using
+array-API-compatible code to provide <strong>native support</strong> for multiple array backends.
+This allows supported computations to use the corresponding backend without converting
+the input array to NumPy on the CPU. Support and any limitations depend on the function
+and backend, and are noted in each function’s documentation. The output will also use
+the same format when applicable.</p>
+<p>We will demonstrate this using the <a class="reference internal" href="generated/skbio.stats.composition.clr.html#skbio.stats.composition.clr" title="skbio.stats.composition.clr"><code class="xref py py-func docutils literal notranslate"><span class="pre">clr</span></code></a> function, which
+performs the centered log-ratio (CLR) transformation of compositional data. A NumPy array
+is created and supplied to the function, which returns a new NumPy array containing the
+result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.composition</span><span class="w"> </span><span class="kn">import</span> <span class="n">clr</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clr</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s now use <a class="reference external" href="https://docs.jax.dev/en/latest/">JAX</a> as the array backend. One just
+needs to cast the NumPy array into a JAX array before the function call. This simple
+change can significantly improve performance, depending on the workload and computing
+environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+
+<span class="n">jarr</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clr</span><span class="p">(</span><span class="n">jarr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>While any compliant array backend may work automatically, scikit-bio focuses on
+validated support for five common backends. A table of backend and device support is
+provided on the documentation page of each function that supports array backends.
+For example, the CLR function supports the following combinations:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>CPU</p></th>
+<th class="head"><p>GPU</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NumPy</p></td>
+<td><p>✓</p></td>
+<td><p>n/a</p></td>
+</tr>
+<tr class="row-odd"><td><p>CuPy</p></td>
+<td><p>n/a</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>PyTorch</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>JAX</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>Dask</p></td>
+<td><p>✓</p></td>
+<td><p>n/a</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>scikit-bio is not dependent on any of these array libraries except for NumPy. To
+utilize a particular array backend that best fits your task and computational resources,
+you will need to <em>install that library separately</em>.</p>
+<p>See below for <a class="reference internal" href="#gpu-computing"><span class="std std-ref">GPU computing</span></a> using array backends.</p>
+</section>
+<section id="compute-engines">
+<span id="id2"></span><h2>Compute engines<a class="headerlink" href="#compute-engines" title="Link to this heading">#</a></h2>
+<p>Some scikit-bio functions offer more than one implementation to perform the same task.
+These tasks often involve loop-intensive computations that benefit from compiled code.
+Each implementation is referred to as a <strong>compute engine</strong>. Such functions have an
+<code class="docutils literal notranslate"><span class="pre">engine</span></code> parameter letting you choose between compute engines. Three options are
+currently available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cython</span></code>: The default engine implemented in <a class="reference external" href="https://cython.org/">Cython</a>,
+which is translated into C code and compiled into binaries when scikit-bio is built. It
+often offers C-level performance in heavy computing tasks. Cython is the legacy
+engine of many scikit-bio functions. Pure Python implementations are also referred
+to as <code class="docutils literal notranslate"><span class="pre">cython</span></code> for simplicity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numba</span></code>: An alternative engine implemented in <a class="reference external" href="https://numba.pydata.org/">Numba</a>,
+which stays as source code at deployment and is only compiled before execution
+(just-in-time (JIT) compilation). This process adds overhead to the first call of
+the function. Once compiled, the binaries are cached for reuse in subsequent calls,
+avoiding that overhead. Numba is not a required dependency of scikit-bio. To utilize
+the Numba engine, you will need to <a class="extlink-install reference external" href="../../install.html#numba">install Numba</a> separately.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fast</span></code>: Let the function choose the faster available engine for you. This selection
+is determined based on the development team’s benchmarks on representative datasets,
+though it does not guarantee faster execution for every dataset. Each function’s
+documentation page explains the choice and its impact.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The scikit-bio development team is currently expanding Numba engines for valuable
+functions. They are often more efficient than the legacy Cython engines.</p>
+</div>
+<p>Both Cython and Numba engines of each function perform the same task and the results
+are usually consistent, although numerical identity is not guaranteed due to the
+different numerical and stochastic behaviors between the engines.</p>
+<p>Without explicitly specifying an engine in the function call (i.e., <code class="docutils literal notranslate"><span class="pre">engine=None</span></code>),
+the choice of an engine will be controlled by the <a class="reference internal" href="config.html#configuration"><span class="std std-ref">global configuration</span></a> option <code class="docutils literal notranslate"><span class="pre">compute_engine</span></code>, which defaults to <code class="docutils literal notranslate"><span class="pre">cython</span></code>. If you want
+to apply one choice (e.g., <code class="docutils literal notranslate"><span class="pre">numba</span></code>) throughout a workflow, you just need to set the
+global option once prior to execution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
+
+<span class="n">set_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">,</span> <span class="s1">'numba'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gpu-computing">
+<span id="id5"></span><h2>GPU computing<a class="headerlink" href="#gpu-computing" title="Link to this heading">#</a></h2>
+<p>GPUs are often advantageous over CPUs in large-scale analyses as they enable massively
+parallel calculations. Support for GPU computing in scikit-bio is provided via two
+mechanisms:</p>
+<p>1. <a class="reference internal" href="#array-backends"><span class="std std-ref">Array backends</span></a> provide backend-specific GPU computing
+support out-of-the-box. Let’s continue with the CLR example to demonstrate this. We
+will use <a class="reference external" href="https://cupy.dev/">CuPy</a>, a library featuring CUDA GPU-accelerated array
+computing. By converting a NumPy array into a CuPy array, the data is moved to the GPU,
+and the subsequent CLR transformation will take place on the GPU automatically:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cupy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cp</span>
+
+<span class="n">carr</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clr</span><span class="p">(</span><span class="n">carr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For backends that support both CPU and GPU, one may need to specify which device to
+store the data on using the <code class="docutils literal notranslate"><span class="pre">device</span></code> parameter. The following example uses <a class="reference external" href="https://pytorch.org/">PyTorch</a>, a common deep learning library supporting both CPU- and
+GPU-resident arrays (tensors):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="k">assert</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+<span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clr</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>2. <a class="reference internal" href="#compute-engines"><span class="std std-ref">The Numba engines</span></a> of some functions are capable of GPU
+computing through the extensions <a class="reference external" href="https://nvidia.github.io/numba-cuda/">numba-cuda</a>
+(for CUDA GPUs) and <a class="reference external" href="https://github.com/ROCm/numba-hip">numba-hip</a> (for ROCm GPUs).
+Refer to the <a class="extlink-install reference external" href="../../install.html#numba">installation instructions</a>. With a compatible GPU
+extension installed, these Numba engines can automatically use GPU computation for
+supported CuPy and PyTorch arrays residing on the GPU. The function will fall back to
+the array-API implementation for other array formats or if the GPU kernel is
+unavailable.</p>
+<p>We will demonstrate this using the <a class="reference internal" href="generated/skbio.stats.distance.permanova.html#skbio.stats.distance.permanova" title="skbio.stats.distance.permanova"><code class="xref py py-func docutils literal notranslate"><span class="pre">permanova</span></code></a> function,
+which performs the Permutational Multivariate Analysis of Variance (PERMANOVA) on a
+distance matrix and a grouping vector. By default, the input distance matrix is a
+CPU-resident NumPy array and the compute engine is Cython (see <a class="reference internal" href="#compute-engines">compute_engines</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">permanova</span><span class="p">,</span> <span class="n">randdm</span>
+
+<span class="n">dm</span> <span class="o">=</span> <span class="n">randdm</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">grouping</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5000</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5000</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">permanova</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By specifying <code class="docutils literal notranslate"><span class="pre">engine='numba'</span></code>, the computation will be performed by a Numba engine,
+but still using the CPU:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">permanova</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">'numba'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we will move the distance matrix data to the GPU using CuPy. This is supported by
+scikit-bio’s <a class="reference internal" href="generated/skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cupy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio.stats.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">DistanceMatrix</span>
+
+<span class="n">cdm</span> <span class="o">=</span> <span class="n">DistanceMatrix</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">dm</span><span class="o">.</span><span class="n">ids</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then call the <code class="docutils literal notranslate"><span class="pre">permanova</span></code> function with <code class="docutils literal notranslate"><span class="pre">engine='numba'</span></code>. With a compatible GPU,
+the Numba kernel and some additional array operations run on the GPU, and the distance
+matrix avoids a CPU round-trip. This can provide significant performance gains,
+depending on the dataset and computing environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">permanova</span><span class="p">(</span><span class="n">cdm</span><span class="p">,</span> <span class="n">grouping</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">'numba'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="parallelization">
+<span id="id6"></span><h2>Parallelization<a class="headerlink" href="#parallelization" title="Link to this heading">#</a></h2>
+<p>Most computer systems have multiple CPU cores that can work simultaneously.
+<strong>Parallelization</strong> divides a calculation among the CPU cores. Some scikit-bio
+functions do this directly. Others delegate to upstream libraries that perform parts of
+the work in parallel (e.g., NumPy parallelizes some linear algebra calculations using
+BLAS). These happen automatically, without changing your analysis code.</p>
+<p>You may want to limit how many resources an analysis uses, particularly on a shared
+computer or when running several analyses at once. CPU work is commonly organized into
+<strong>threads</strong>, which are separate streams of work within a program. By default, parallel
+functions in scikit-bio utilize all available CPU cores when possible. Currently there
+is no per-function parameter to control the number of threads used. However, you can
+still control this behavior using the approaches described below.</p>
+<p>Parallel <a class="reference internal" href="#compute-engines"><span class="std std-ref">Cython engines</span></a> use <a class="reference external" href="https://www.openmp.org/">OpenMP</a>
+to manage threads. You can control the number of OpenMP threads used by a Python program
+by setting the <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> environment variable. For example, the following
+command sets the default OpenMP thread count to four for <code class="docutils literal notranslate"><span class="pre">script.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span> <span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Alternatively, this can be configured inside a Python script. Note that this must be
+set before the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement of whichever functionality you will be using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'OMP_NUM_THREADS'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'4'</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">some_function</span>
+</pre></div>
+</div>
+<p>More granular control can be achieved using <a class="reference external" href="https://github.com/joblib/threadpoolctl">threadpoolctl</a>, which needs to be installed separately.
+This lets you limit the number of threads for individual code blocks, including those
+used by upstream libraries such as NumPy and SciPy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">some_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">threadpoolctl</span><span class="w"> </span><span class="kn">import</span> <span class="n">threadpool_limits</span>
+
+<span class="k">with</span> <span class="n">threadpool_limits</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">some_function</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See the <a class="extlink-install reference external" href="../../install.html#parallelization">installation instructions</a> for building scikit-bio
+with or without OpenMP support.</p>
+<p>Parallel <a class="reference internal" href="#compute-engines"><span class="std std-ref">Numba engines</span></a> manage threads through Numba itself.
+One may specify the number of threads by setting the <code class="docutils literal notranslate"><span class="pre">NUMBA_NUM_THREADS</span></code> environment
+variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NUMBA_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span> <span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>This can be combined with <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> if your program combines Cython and Numba
+engines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span> <span class="n">NUMBA_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span> <span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Within Python, <code class="docutils literal notranslate"><span class="pre">numba.set_num_threads</span></code> can configure Numba’s maximum thread count
+before Numba is imported. See the <a class="reference external" href="https://numba.readthedocs.io/en/stable/user/threading-layer.html#setting-the-number-of-threads">Numba thread controls</a>
+for details.</p>
+<p>Note that the approaches discussed above do not provide a universal limit for GPU
+execution.</p>
+</section>
+<section id="optional-binary-acceleration">
+<span id="binary-acceleration"></span><h2>Optional binary acceleration<a class="headerlink" href="#optional-binary-acceleration" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/scikit-bio/scikit-bio-binaries">scikit-bio-binaries</a> is a
+separate package written in C++, providing optimized implementations for selected
+analyses such as PERMANOVA and PCoA. scikit-bio can use these automatically when the
+package is installed and the calculation’s inputs are supported. See the
+<a class="extlink-install reference external" href="../../install.html#binary-acceleration">installation instructions</a> for setup. Each function’s
+Notes describe where it can be used.</p>
+<p>This option is only available when the Cython engine is selected (including when
+<code class="docutils literal notranslate"><span class="pre">fast</span></code> selects Cython), and an eligible calculation may use the external
+implementation. Selecting Numba bypasses this package.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="generated/skbio.reset_config.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">skbio.reset_config</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-backends">Array backends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-engines">Compute engines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-computing">GPU computing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">Parallelization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-binary-acceleration">Optional binary acceleration</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2026, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

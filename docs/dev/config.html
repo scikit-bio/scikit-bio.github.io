@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="The preferred output format of tables. See &lt;a class=&quot;reference internal&quot; href=&quot;table.html#table-output&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;details&lt;/span&gt;&lt;/a&gt;." />
+    <meta name="description" content="Preferred table output format. See &lt;a class=&quot;reference internal&quot; href=&quot;table.html#table-output&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Output formats&lt;/span&gt;&lt;/a&gt;." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="User configuration utilities." name="description" />
 
@@ -331,6 +331,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="performance.html">
+    Computation and performance
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -572,6 +579,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="performance.html">
+    Computation and performance
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -643,6 +657,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.get_config.html">skbio.get_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generated/skbio.set_config.html">skbio.set_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/skbio.reset_config.html">skbio.reset_config</a></li>
 </ul>
 </div>
 </nav></div>
@@ -709,26 +724,43 @@ scikit-bio functionalities.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.get_config.html#skbio.get_config" title="skbio.get_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_config</span></code></a></p></td>
-<td><p>Get the current value of a scikit-bio configuration option.</p></td>
+<td><p>Get one or all current scikit-bio configuration values.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a></p></td>
 <td><p>Set a scikit-bio configuration option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.reset_config.html#skbio.reset_config" title="skbio.reset_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_config</span></code></a></p></td>
+<td><p>Restore one or all scikit-bio configuration options to their defaults.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="id1">
-<h2>Configuration options<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<dl>
-<dt><strong>table_output</strong><span class="classifier"><em>{“pandas”, “numpy”, “polars”}, default=”pandas”</em></span></dt><dd><p>The preferred output format of tables. See <a class="reference internal" href="table.html#table-output"><span class="std std-ref">details</span></a>.</p>
+<section id="configuration">
+<span id="id1"></span><h2>Configuration options<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<p>Settings apply to the current Python process and are not saved between sessions.
+Explicit function arguments override the corresponding global setting; passing
+None uses that setting. Only functions supporting an option are affected.
+See <a class="reference internal" href="performance.html#compute-engines"><span class="std std-ref">Compute engines</span></a> for compute engine selection and requirements.</p>
+<p>Inspect all current values with <code class="docutils literal notranslate"><span class="pre">get_config()</span></code>, or one with
+<code class="docutils literal notranslate"><span class="pre">get_config('compute_engine')</span></code>. The returned dictionary is a copy.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_config</span><span class="p">,</span> <span class="n">set_config</span><span class="p">,</span> <span class="n">reset_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">previous</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">,</span> <span class="s1">'fast'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
+<span class="go">'fast'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reset_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">)</span>
+<span class="go">'cython'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_config</span><span class="p">(</span><span class="s1">'compute_engine'</span><span class="p">,</span> <span class="n">previous</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">reset_config()</span></code> to restore all defaults. The available options, their
+accepted values, and their defaults are listed below.</p>
+<dl class="simple">
+<dt><strong>table_output</strong><span class="classifier">{‘pandas’, ‘numpy’, ‘polars’}, default=’pandas’</span></dt><dd><p>Preferred table output format. See <a class="reference internal" href="table.html#table-output"><span class="std std-ref">Output formats</span></a>.</p>
 </dd>
-<dt><strong>engine</strong><span class="classifier"><em>{“cython”, “numba”}, default=”cython”</em></span></dt><dd><p>The default compute engine for functions that support multiple engines.
-Functions accept an <code class="docutils literal notranslate"><span class="pre">engine</span></code> argument to override this per call. The
-<code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> engine requires the optional Numba dependency. A function call
-may also pass <code class="docutils literal notranslate"><span class="pre">engine=&quot;fast&quot;</span></code>, which lets scikit-bio pick whichever
-engine it expects to be fastest for that function, falling back to the
-default when it has no faster option available.</p>
+<dt><strong>compute_engine</strong><span class="classifier">{‘cython’, ‘numba’, ‘fast’}, default=’cython’</span></dt><dd><p>Default compute engine. See <a class="reference internal" href="performance.html#compute-engines"><span class="std std-ref">Compute engines</span></a>.</p>
 </dd>
 </dl>
 </section>
@@ -782,7 +814,7 @@ default when it has no faster option available.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Configuration options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration options</a></li>
 </ul>
   </nav></div>
 

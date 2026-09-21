@@ -330,6 +330,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -571,6 +578,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -747,16 +761,10 @@ Examples of functions that can be provided are SciPy’s
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html#scipy.spatial.distance.pdist" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pdist</span></code></a> (default) and scikit-learn’s
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances" title="(in scikit-learn v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pairwise_distances</span></code></a>.</p>
 </dd>
-<dt><strong>engine</strong><span class="classifier">{“cython”, “numba”, “fast”}, optional</span></dt><dd><p>Compute engine for metrics that support it. Currently only
-<code class="docutils literal notranslate"><span class="pre">&quot;unweighted_unifrac&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;weighted_unifrac&quot;</span></code> honor this; the
-<code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> engine requires the optional Numba dependency and computes
-the full distance matrix in one parallel pass. If not provided, the
-global default is used (see <a class="reference internal" href="skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_config</span></code></a>). <code class="docutils literal notranslate"><span class="pre">&quot;fast&quot;</span></code> lets
-scikit-bio pick whichever engine it expects to be quicker here, which
-is Numba when it is installed and Cython otherwise; results may differ
-from the default in the last bits, and Numba pays a one-off compilation
-cost on the first call, so a single small run can be slower. Ignored by
-metrics without a Numba implementation.</p>
+<dt><strong>engine</strong><span class="classifier">{‘cython’, ‘numba’, ‘fast’}, optional</span></dt><dd><p>Compute engine for ‘unweighted_unifrac’ and ‘weighted_unifrac’. Ignored for
+other metrics. If None (default), use the global <code class="docutils literal notranslate"><span class="pre">compute_engine</span></code> setting.
+‘fast’ selects Numba if installed, otherwise Cython. See <a class="reference internal" href="../performance.html#compute-engines"><span class="std std-ref">Compute engines</span></a>
+for details.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
 </div>

@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Get the current value of a scikit-bio configuration option." />
+    <meta name="description" content="Get one or all current scikit-bio configuration values." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.get_config &#8212; scikit-bio 0.7.4-dev documentation</title>
@@ -330,6 +330,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -571,6 +578,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -642,6 +656,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">skbio.get_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.set_config.html">skbio.set_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.reset_config.html">skbio.reset_config</a></li>
 </ul>
 </div>
 </nav></div>
@@ -706,22 +721,46 @@
 <h1>skbio.get_config<a class="headerlink" href="#skbio-get-config" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.get_config">
-<span class="sig-prename descclassname"><span class="pre">skbio.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/_config.py#L97"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.get_config" title="Link to this definition">#</a></dt>
-<dd><p>Get the current value of a scikit-bio configuration option.</p>
-<dl class="field-list simple">
+<span class="sig-prename descclassname"><span class="pre">skbio.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/_config.py#L139"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.get_config" title="Link to this definition">#</a></dt>
+<dd><p>Get one or all current scikit-bio configuration values.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>option</strong><span class="classifier">str</span></dt><dd><p>The configuration option to be found.</p>
+<dd class="field-odd"><dl>
+<dt><strong>option</strong><span class="classifier">str or None, optional</span></dt><dd><p>Option to inspect. If None (default), return all options.
+See <a class="reference internal" href="../config.html#configuration"><span class="std std-ref">Configuration options</span></a> for available options.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.4: </span>Can be omitted to return all options.</p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>str</dt><dd><p>The current value of the configuration option supplied.</p>
+<dt>str or dict of str to str</dt><dd><p>Current value, or a copy of all current values keyed by option name.
+Changing the returned dictionary does not change configuration.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>KeyError</dt><dd><p>If the option is unknown.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="skbio.reset_config.html#skbio.reset_config" title="skbio.reset_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_config</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">get_config</span><span class="p">())</span>
+<span class="go">['compute_engine', 'table_output']</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

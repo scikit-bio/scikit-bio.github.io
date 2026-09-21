@@ -331,6 +331,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -572,6 +579,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance.html">
+    Computation and performance
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -736,7 +750,7 @@
 <h1>skbio.stats.distance.permanova<a class="headerlink" href="#skbio-stats-distance-permanova" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="skbio.stats.distance.permanova">
-<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permanova</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permanova.py#L463"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permanova" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">skbio.stats.distance.</span></span><span class="sig-name descname"><span class="pre">permanova</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grouping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permutations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/stats/distance/_permanova.py#L459"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.stats.distance.permanova" title="Link to this definition">#</a></dt>
 <dd><p>Test for significant differences between groups using PERMANOVA.</p>
 <p>Permutational Multivariate Analysis of Variance (PERMANOVA) is a non-parametric
 method that tests whether two or more groups of objects (e.g., samples) are
@@ -769,51 +783,36 @@ than or equal to the observed (unpermuted) one (<span class="math notranslate no
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>distmat</strong><span class="classifier"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a></span></dt><dd><p>Distance matrix containing distances between objects (e.g., distances
-between samples of microbial communities).</p>
+<dt><strong>distmat</strong><span class="classifier"><a class="reference internal" href="skbio.stats.distance.DistanceMatrix.html#skbio.stats.distance.DistanceMatrix" title="skbio.stats.distance.DistanceMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceMatrix</span></code></a></span></dt><dd><p>Distance matrix containing distances between samples.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.7.0: </span>Renamed from <code class="docutils literal notranslate"><span class="pre">distance_matrix</span></code>. The old name is kept as an alias.</p>
 </div>
 </dd>
-<dt><strong>grouping</strong><span class="classifier">1-D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> or pandas.DataFrame</span></dt><dd><p>Vector indicating the assignment of objects to groups. For example,
-these could be strings or integers denoting which group an object
-belongs to. If <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>, it must be the same
-length and in the same order as the objects in <cite>distmat</cite>. If
-<cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, the column specified by <cite>column</cite> will be
-used as the grouping vector. The <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> must be indexed by the
-IDs in <cite>distmat</cite> (i.e., the row labels must be distance matrix
-IDs), but the order of IDs between <cite>distmat</cite> and the
-<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> need not be the same. All IDs in the distance matrix must
-be present in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Extra IDs in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> are
-allowed (they are ignored in the calculations).</p>
+<dt><strong>grouping</strong><span class="classifier">1-D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> or pandas.DataFrame</span></dt><dd><p>Vector indicating the assignment of samples to groups. These could be strings
+or integers denoting which group a sample belongs to. If 1-D array-like, it
+must be the same length and in the same order as the samples in <code class="docutils literal notranslate"><span class="pre">distmat</span></code>. If
+a DataFrame, the column specified by <code class="docutils literal notranslate"><span class="pre">column</span></code> will be used as the grouping
+vector. The DataFrame must be indexed by the IDs in <code class="docutils literal notranslate"><span class="pre">distmat</span></code>, but the order
+of IDs between <code class="docutils literal notranslate"><span class="pre">distmat</span></code> and the DataFrame need not be the same. All IDs in
+the distance matrix must be present in the DataFrame. Extra IDs in the DataFrame
+are allowed and ignored in the calculation.</p>
 </dd>
-<dt><strong>column</strong><span class="classifier">str, optional</span></dt><dd><p>Column name to use as the grouping vector if <cite>grouping</cite> is a
-<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Must be provided if <cite>grouping</cite> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.
-Cannot be provided if <cite>grouping</cite> is 1-D <code class="docutils literal notranslate"><span class="pre">array_like</span></code>.</p>
+<dt><strong>column</strong><span class="classifier">str, optional</span></dt><dd><p>Column name to use as the grouping vector if <code class="docutils literal notranslate"><span class="pre">grouping</span></code> is a DataFrame. Must
+be provided if <code class="docutils literal notranslate"><span class="pre">grouping</span></code> is a DataFrame. Cannot be provided if <code class="docutils literal notranslate"><span class="pre">grouping</span></code>
+is 1-D array-like.</p>
 </dd>
-<dt><strong>permutations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of permutations to use when assessing statistical
-significance. Must be greater than or equal to zero. If zero,
-statistical significance calculations will be skipped and the <cite>p</cite>-value
-will be <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>.</p>
+<dt><strong>permutations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of permutations to use when assessing statistical significance. Must be
+greater than or equal to zero. If zero, statistical significance calculations
+will be skipped and the <em>p</em>-value will be NaN.</p>
 </dd>
-<dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See
-<a class="reference internal" href="skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
+<dt><strong>seed</strong><span class="classifier">int, Generator or RandomState, optional</span></dt><dd><p>A user-provided random seed or random generator instance. See <a class="reference internal" href="skbio.util.get_rng.html#skbio.util.get_rng" title="skbio.util.get_rng"><code class="xref py py-func docutils literal notranslate"><span class="pre">details</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.6.3.</span></p>
 </div>
 </dd>
-<dt><strong>engine</strong><span class="classifier">{“cython”, “numba”, “fast”}, optional</span></dt><dd><p>Compute engine to use. <code class="docutils literal notranslate"><span class="pre">&quot;cython&quot;</span></code> (default) uses the Cython
-implementation. <code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> uses the optional Numba implementation
-and requires Numba to be installed. If not provided, the global
-default is used (see <a class="reference internal" href="skbio.set_config.html#skbio.set_config" title="skbio.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.set_config</span></code></a>). <code class="docutils literal notranslate"><span class="pre">&quot;fast&quot;</span></code> lets
-scikit-bio pick whichever engine it expects to be quicker here, which
-is Numba when it is installed and Cython otherwise; results may differ
-from the default in the last bits. When <code class="docutils literal notranslate"><span class="pre">&quot;numba&quot;</span></code> is selected, the
-optional scikit-bio-binaries acceleration is not used. When the
-distance matrix is resident on a CuPy- or PyTorch-backed GPU (CUDA or
-ROCm) and <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, a fused GPU kernel is used; matrices on
-other backends use the array-API path instead (see Notes for the
-ROCm-PyTorch case).</p>
+<dt><strong>engine</strong><span class="classifier">{‘cython’, ‘numba’, ‘fast’}, optional</span></dt><dd><p>Compute engine for the PERMANOVA statistic and permutation test. If None
+(default), use the global <code class="docutils literal notranslate"><span class="pre">compute_engine</span></code> setting. ‘fast’ selects Numba if
+installed, otherwise Cython. See <a class="reference internal" href="../performance.html#compute-engines"><span class="std std-ref">Compute engines</span></a> for details.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.4.</span></p>
 </div>
@@ -865,25 +864,6 @@ ROCm-PyTorch case).</p>
 </tbody>
 </table>
 </div>
-<p>This function uses parallel computation for improved performance.
-See the <a class="extlink-install reference external" href="../../../install.html#parallelization">parallelization guide</a> for information on
-controlling the number of threads used.</p>
-<p>Low-level acceleration is available for this function. See
-<a class="extlink-install reference external" href="../../../install.html#acceleration">scikit-bio-binaries</a> for more information.</p>
-<p>On a GPU-resident distance matrix with <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, a fused GPU kernel
-runs on CuPy or PyTorch matrices, on both CUDA and ROCm devices. The exception
-is ROCm PyTorch on stacks where a Numba HIP kernel cannot be compiled after
-ROCm PyTorch has been imported in the same process; those matrices fall back
-to the array-API path, which runs on the device regardless. The result is
-identical across all paths.</p>
-<p>With <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code>, GPU buffers must belong to the default device. On a
-system with several devices, the default must be changed to match the buffer
-ownership before this function is invoked, through
-<code class="docutils literal notranslate"><span class="pre">numba.cuda.select_device</span></code> on CUDA or <code class="docutils literal notranslate"><span class="pre">numba.hip.select_device</span></code> on ROCm.
-A mismatch is not reported when the kernel is launched, and on ROCm it has
-been observed to leave the GPU context unusable for the rest of the process.
-The array-API path, taken when <code class="docutils literal notranslate"><span class="pre">engine=&quot;numba&quot;</span></code> is not requested, honors
-whichever device the input is on.</p>
 <p>See <a class="reference internal" href="#rf45214b43870-1" id="id2">[1]</a> for the original method reference, as well as <code class="docutils literal notranslate"><span class="pre">vegan::adonis</span></code>,
 available in R’s vegan package <a class="reference internal" href="#rf45214b43870-2" id="id3">[2]</a>.</p>
 <p>The precision of the <cite>p</cite>-value is dependent on the number of permutations. The
@@ -906,6 +886,25 @@ outputs using the following formula:</p>
 \[R^2 = \frac{1}{1 + \frac{n - g}{(g - 1)F}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F\)</span> is the pseudo-<cite>F</cite> statistic, <span class="math notranslate nohighlight">\(n\)</span> is the number of
 objects, and <span class="math notranslate nohighlight">\(g\)</span> is the number of groups.</p>
+<p><strong>Performance</strong></p>
+<p>This function uses parallel computation for improved performance. See the
+<a class="reference internal" href="../performance.html#parallelization"><span class="std std-ref">parallelization guide</span></a> for information on controlling the
+number of threads used. See also <a class="reference internal" href="../performance.html#binary-acceleration"><span class="std std-ref">Optional binary acceleration</span></a> for another option of
+acceleration.</p>
+<p>On a GPU-resident distance matrix with <code class="docutils literal notranslate"><span class="pre">engine='numba'</span></code>, a fused GPU kernel
+runs on CuPy or PyTorch matrices, on both CUDA and ROCm devices. The exception
+is ROCm PyTorch on stacks where a Numba HIP kernel cannot be compiled after
+ROCm PyTorch has been imported in the same process; those matrices fall back
+to the array-API path, which runs on the device regardless. The result is
+identical across all paths.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">engine='numba'</span></code>, GPU buffers must belong to the default device. On a
+system with several devices, the default must be changed to match the buffer
+ownership before this function is invoked, through
+<code class="docutils literal notranslate"><span class="pre">numba.cuda.select_device</span></code> on CUDA or <code class="docutils literal notranslate"><span class="pre">numba.hip.select_device</span></code> on ROCm.
+A mismatch is not reported when the kernel is launched, and on ROCm it has
+been observed to leave the GPU context unusable for the rest of the process.
+The array-API path, taken when <code class="docutils literal notranslate"><span class="pre">engine='numba'</span></code> is not requested, honors
+whichever device the input is on.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="rf45214b43870-1" role="doc-biblioentry">
