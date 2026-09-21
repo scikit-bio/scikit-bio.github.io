@@ -119,9 +119,6 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-<aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">scikit-bio is participating in Google Summer of Code 2026. <a href='https://github.com/scikit-bio/scikit-bio/discussions/2401'>Join us</a>!</div>
-</aside>
 
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -480,7 +477,7 @@
 <p>This guide explains how to release a new version of scikit-bio. To illustrate examples of commands you might run, let’s assume that the current version is <strong>x.y.z-dev</strong> and we want to release version <strong>x.y.z</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The following commands assume you are in the top-level directory of the scikit-bio repository unless otherwise noted. They also assume that you have [Conda](<a class="reference external" href="https://conda.io">https://conda.io</a>) installed.</p>
+<p>The following commands assume you are in the top-level directory of the scikit-bio repository unless otherwise noted. They also assume that you have <a class="reference external" href="https://conda.io">Conda</a> installed.</p>
 </div>
 <p>Large portions of the workflow are now automated through GitHub workflows. In order to check that things will work correctly before running the release workflow in <code class="docutils literal notranslate"><span class="pre">release.yml</span></code>, please follow these steps.</p>
 <p>The general workflow is:</p>
@@ -501,8 +498,8 @@
 </pre></div>
 </div>
 </li>
-<li><p>Also make sure to update the current version displayed on website. This can be done by searching for the current version number in the code base. Affected files are typically <cite>versions.json</cite>, <cite>index.rst</cite>, and <cite>README.rst</cite>.</p></li>
-<li><p>Remove any deprecated functionality that was scheduled for removal on or before this release. To find all deprecated functionality, search for <cite>&#64;deprecated</cite> decorators:</p>
+<li><p>Also make sure to update the current version displayed on website. This can be done by searching for the current version number in the code base. Affected files are typically <code class="docutils literal notranslate"><span class="pre">versions.json</span></code>, <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>, and <code class="docutils literal notranslate"><span class="pre">README.rst</span></code>.</p></li>
+<li><p>Remove any deprecated functionality that was scheduled for removal on or before this release. To find all deprecated functionality, search for <code class="docutils literal notranslate"><span class="pre">&#64;deprecated</span></code> decorators:</p>
 <blockquote>
 <div><p>grep -r <a class="reference external" href="mailto:'&#37;&#52;&#48;deprecated">‘<span>&#64;</span>deprecated</a>’ .</p>
 </div></blockquote>
@@ -534,10 +531,8 @@ If downloading, inspect the zip file containing the wheels provided by workflow 
 <p>If you find that the desired wheels are not present in the zip files, or you are coming across unexpected errors in the wheel building process, there are a few places to check:</p>
 <ol class="arabic simple">
 <li><p>Check that you have updated the <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> portion of the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> configuration file to include all supported Python versions and any other information you want.</p></li>
-</ol>
-<p>2. Ensure that the version of <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> used in <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code> is up to date. It may be the case that the latest version of Python is not supported by whichever version is currently in use in <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code>.
-In this case, <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> will not throw an error or warning, it just won’t build wheels for that version of Python.</p>
-<ol class="arabic simple" start="3">
+<li><p>Ensure that the version of <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> used in <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code> is up to date. It may be the case that the latest version of Python is not supported by whichever version is currently in use in <code class="docutils literal notranslate"><span class="pre">wheels.yml</span></code>.
+In this case, <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> will not throw an error or warning, it just won’t build wheels for that version of Python.</p></li>
 <li><p>Check that the version of <code class="docutils literal notranslate"><span class="pre">manylinux</span></code> in the <code class="docutils literal notranslate"><span class="pre">cibuildwheel</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> is up to date. This is particularly relevant if any of the errors you encounter are related to specific versions of <code class="docutils literal notranslate"><span class="pre">glibc</span></code>.</p></li>
 </ol>
 <p>This workflow also builds the source distribution for the package. It is <strong>highly recommended</strong> to download the built sdist from this workflow and test that you can build it against <strong>every</strong> Python version supported by scikit-bio.
