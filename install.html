@@ -556,33 +556,29 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DISABLE_OPENMP</span><span class="o">=</span><span class="mi">1</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>Many scikit-bio functions automatically take advantage of parallel processing to improve performance. By default, they utilize all available CPU cores when possible. There is currently no per-function parameter to control the number of threads used. You can set the environment variable <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> to control the global parallelization behavior:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setting OMP_NUM_THREADS inside a script.</span>
-<span class="c1"># Note that the environmental variable must be set before the import statement of</span>
-<span class="c1"># whichever functionality you are using from scikit-bio.</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"OMP_NUM_THREADS"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"4"</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">some_function</span>
-
-<span class="c1"># Alternatively, set it before launching your script.</span>
-<span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">4</span> <span class="n">python</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>If more granular control over thread use is desired, we recommend using <a class="reference external" href="https://github.com/joblib/threadpoolctl">threadpoolctl</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">some_function</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">threadpoolctl</span><span class="w"> </span><span class="kn">import</span> <span class="n">threadpool_limits</span>
-
-<span class="k">with</span> <span class="n">threadpool_limits</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">some_function</span><span class="p">()</span>
-</pre></div>
-</div>
+<p>For runtime thread controls, including OpenMP, Numba, and numerical libraries, see the <a class="reference external" href="docs/latest/performance.html#parallelization">parallelization guide</a>.</p>
 </section>
-<section id="acceleration">
-<h2>Acceleration<a class="headerlink" href="#acceleration" title="Link to this heading">#</a></h2>
-<p>The new <a class="reference external" href="https://github.com/scikit-bio/scikit-bio-binaries">scikit-bio-binaries</a> package is a separate package from scikit-bio, written in C++, which when installed in the same environment as scikit-bio will dramatically increase performance of select functions. Installation of scikit-bio-binaries is currently available with conda:</p>
+<section id="numba">
+<h2>Numba<a class="headerlink" href="#numba" title="Link to this heading">#</a></h2>
+<p>Some scikit-bio functions offer an alternative Numba engine to replace the default Python/Cython engine for efficient computing. To utilize the Numba engine, install Numba with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span>
+</pre></div>
+</div>
+<p>See the <a class="reference external" href="docs/latest/performance.html#compute-engines">compute engine guide</a> for details.</p>
+<p>Some functions’ Numba engines support GPU computing if available. To enable GPU computing via Numba, you need to install an architecture-specific Numba extension that matches your GPU device:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span><span class="o">-</span><span class="n">cuda</span>  <span class="c1"># for NVIDIA CUDA GPUs</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span><span class="o">-</span><span class="n">hip</span>   <span class="c1"># for AMD ROCm GPUs</span>
+</pre></div>
+</div>
+<p>see the <a class="reference external" href="docs/latest/performance.html#gpu-computing">GPU computing guide</a>. for details.</p>
+</section>
+<section id="binary-acceleration">
+<h2>Binary acceleration<a class="headerlink" href="#binary-acceleration" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/scikit-bio/scikit-bio-binaries">scikit-bio-binaries</a> is a separate package from scikit-bio, written in C++, which when installed in the same environment as scikit-bio will dramatically increase performance of select functions. Installation of scikit-bio-binaries is currently available with conda:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">scikit</span><span class="o">-</span><span class="n">bio</span><span class="o">-</span><span class="n">binaries</span>
 </pre></div>
 </div>
+<p>For applicability and interaction with compute engines, see the <a class="reference external" href="docs/latest/performance.html#binary-acceleration">computation and performance guide</a>.</p>
 </section>
 <section id="python-version-support">
 <h2>Python version support<a class="headerlink" href="#python-version-support" title="Link to this heading">#</a></h2>
@@ -628,7 +624,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-version">Development version</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-the-installation">Verifying the installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">Parallelization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acceleration">Acceleration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numba">Numba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-acceleration">Binary acceleration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-version-support">Python version support</a></li>
 </ul>
   </nav></div>
