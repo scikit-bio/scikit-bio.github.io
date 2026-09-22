@@ -538,8 +538,14 @@
 </pre></div>
 </div>
 <p>This should print the installed version of scikit-bio without errors.</p>
-<p>For a more robust verification of the installation you may run the scikit-bio’s unit tests in the environment where scikit-bio is installed. This will require the <a class="reference external" href="https://github.com/pytest-dev/pytest">pytest</a> package to be installed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">skbio</span><span class="o">.</span><span class="n">test</span>
+<p>For a more robust verification, install <a class="reference external" href="https://github.com/pytest-dev/pytest">pytest</a> and run scikit-bio’s unit tests in the same environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pytest</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">skbio</span><span class="o">.</span><span class="n">test</span>
+</pre></div>
+</div>
+<p>Tests requiring optional packages such as Matplotlib are skipped when those packages are absent. To run the full test suite, install the test dependencies instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s2">"scikit-bio[test]"</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">skbio</span><span class="o">.</span><span class="n">test</span>
 </pre></div>
 </div>
 </section>
