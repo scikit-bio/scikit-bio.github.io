@@ -758,18 +758,18 @@
 <h1>skbio.sequence.Sequence.concat<a class="headerlink" href="#skbio-sequence-sequence-concat" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.concat">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Sequence.</span></span><span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'strict'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L449"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.concat" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Sequence.</span></span><span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'strict'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L574"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.concat" title="Link to this definition">#</a></dt>
 <dd><p>Concatenate an iterable of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>sequences</strong><span class="classifier">iterable (<a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>)</span></dt><dd><p>An iterable of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects or appropriate subclasses.</p>
+<dt><strong>sequences</strong><span class="classifier">iterable of <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></span></dt><dd><p>An iterable of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects or appropriate subclasses.</p>
 </dd>
-<dt><strong>how</strong><span class="classifier">{‘strict’, ‘inner’, ‘outer’}, optional</span></dt><dd><p>How to intersect the <cite>positional_metadata</cite> of the sequences.
-If ‘strict’: the <cite>positional_metadata</cite> must have the exact same
-columns; ‘inner’: an inner-join of the columns (only the shared set
-of columns are used); ‘outer’: an outer-join of the columns
-(all columns are used: missing values will be padded with NaN).</p>
+<dt><strong>how</strong><span class="classifier">{‘strict’, ‘inner’, ‘outer’}, optional</span></dt><dd><p>How to intersect the <code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code> of the sequences. If ‘strict’:
+<code class="docutils literal notranslate"><span class="pre">positional_metadata</span></code> must have the exact same columns; ‘inner’: an
+inner-join of the columns (only the shared set of columns are used);
+‘outer’: an outer-join of the columns (all columns are used; missing values
+will be padded with NaN).</p>
 </dd>
 </dl>
 </dd>
@@ -782,10 +782,10 @@ called this class-method.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If <cite>how</cite> is not one of: ‘strict’, ‘inner’, or ‘outer’.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">how</span></code> is not one of: ‘strict’, ‘inner’, or ‘outer’.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <cite>how</cite> is ‘strict’ and the <cite>positional_metadata</cite> of each sequence
-does not have the same columns.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">how</span></code> is ‘strict’ and the <cite>positional_metadata</cite> of each sequence does
+not have the same columns.</p>
 </dd>
 <dt>TypeError</dt><dd><p>If the sequences cannot be cast as the calling class.</p>
 </dd>
@@ -793,13 +793,11 @@ does not have the same columns.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The sequence-wide metadata (<code class="docutils literal notranslate"><span class="pre">Sequence.metadata</span></code>) is not retained
-during concatenation.</p>
-<p>Sequence objects can be cast to a different type only when the new
-type is an ancestor or child of the original type. Casting between
-sibling types is not allowed, e.g. <code class="docutils literal notranslate"><span class="pre">DNA</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">RNA</span></code> is not
-allowed, but <code class="docutils literal notranslate"><span class="pre">DNA</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> or <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">DNA</span></code>
-would be.</p>
+<p>The sequence-wide metadata (<code class="docutils literal notranslate"><span class="pre">metadata</span></code>) is not retained during concatenation.</p>
+<p>Sequence objects can be cast to a different type only when the new type is an
+ancestor or child of the original type. Casting between sibling types is not
+allowed, e.g. <code class="docutils literal notranslate"><span class="pre">DNA</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">RNA</span></code> is not allowed, but <code class="docutils literal notranslate"><span class="pre">DNA</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Sequence</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">DNA</span></code> would be.</p>
 <p class="rubric">Examples</p>
 <p>Concatenate two DNA sequences into a new DNA object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span><span class="p">,</span> <span class="n">Sequence</span>

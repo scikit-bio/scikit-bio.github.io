@@ -743,39 +743,38 @@
 <h1>skbio.sequence.DNA<a class="headerlink" href="#skbio-sequence-dna" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.DNA">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">DNA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_dna.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.DNA" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">DNA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_dna.py#L16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.DNA" title="Link to this definition">#</a></dt>
 <dd><p>Store DNA sequence data and optional associated metadata.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>sequence</strong><span class="classifier">str, <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>Characters representing the DNA sequence itself.</p>
+<dt><strong>sequence</strong><span class="classifier">str, bytes-like, 1D ndarray (uint8 or ‘|S1’), or <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></span></dt><dd><p>Characters representing the DNA sequence.</p>
 </dd>
 <dt><strong>metadata</strong><span class="classifier">dict, optional</span></dt><dd><p>Arbitrary metadata which applies to the entire sequence.</p>
 </dd>
-<dt><strong>positional_metadata</strong><span class="classifier">Pandas DataFrame consumable, optional</span></dt><dd><p>Arbitrary per-character metadata. For example, quality data from
-sequencing reads. Must be able to be passed directly to the Pandas
-DataFrame constructor.</p>
+<dt><strong>positional_metadata</strong><span class="classifier">pd.DataFrame consumable, optional</span></dt><dd><p>Arbitrary per-character metadata. For example, quality scores of sequencing
+reads. Must be able to pass directly to the <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> constructor.</p>
 </dd>
-<dt><strong>interval_metadata</strong><span class="classifier">IntervalMetadata</span></dt><dd><p>Arbitrary interval metadata which applies to intervals within
-a sequence to store interval features (such as genes on the
-DNA sequence).</p>
+<dt><strong>interval_metadata</strong><span class="classifier">IntervalMetadata, optional</span></dt><dd><p>Arbitrary interval metadata which applies to intervals within the a sequence to
+store interval features (such as genes on the DNA sequence).</p>
 </dd>
-<dt><strong>lowercase</strong><span class="classifier">bool or str, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, lowercase sequence characters will be converted to
-uppercase characters in order to be valid IUPAC DNA characters. If
-<code class="docutils literal notranslate"><span class="pre">False</span></code>, no characters will be converted. If a str, it will be
-treated as a key into the positional metadata of the object. All
-lowercase characters will be converted to uppercase, and a <code class="docutils literal notranslate"><span class="pre">True</span></code>
-value will be stored in a boolean array in the positional metadata
-under the key.</p>
+<dt><strong>lowercase</strong><span class="classifier">bool or str, optional</span></dt><dd><p>If True, lowercase sequence characters will be converted to uppercase to ensure
+they are valid IUPAC DNA characters. If False (default), characters will not be
+converted. If a string, in addition to the uppercase conversion, a boolean array
+indicating which positions were originally lowercase will be stored in the
+positional metadata under this key.</p>
 </dd>
-<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, validation will be performed to ensure that all sequence
-characters are in the IUPAC DNA character set. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, validation
-will not be performed. Turning off validation will improve runtime
-performance. If invalid characters are present, however, there is
-<strong>no guarantee that operations performed on the resulting object will
-work or behave as expected.</strong> Only turn off validation if you are
-certain that the sequence characters are valid. To store sequence data
-that is not IUPAC-compliant, use <code class="docutils literal notranslate"><span class="pre">Sequence</span></code>.</p>
+<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), validation will be performed to ensure that all sequence
+characters are in the IUPAC DNA character set. Turning off validation (False)
+will improve performance. If invalid characters are present, however, there is
+<strong>no guarantee that subsequent operations will retain the expected behavior.</strong>
+Only turn off validation if you are certain that the sequence characters are
+valid. To store sequence data that is not IUPAC-compliant, use <code class="docutils literal notranslate"><span class="pre">Sequence</span></code>.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, optional</span></dt><dd><p>Control copying of sequence data. See <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> for details.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.7.5.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -872,10 +871,10 @@ nucleotides:</p>
 <p>Plus two gap characters: <code class="docutils literal notranslate"><span class="pre">-</span></code> and <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p>
 <p>Characters other than the above 17 are not allowed. If you intend to use additional
 characters to represent non-canonical nucleobases, such as <code class="docutils literal notranslate"><span class="pre">I</span></code> (Inosine), you may
-create a custom alphabet using <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code>. Directly modifying the
+create a custom alphabet using <a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a>. Directly modifying the
 alphabet of <code class="docutils literal notranslate"><span class="pre">DNA</span></code> may break methods that rely on the IUPAC alphabet.</p>
 <p>It should be noted that some functions do not support degenerate characters. In
-such cases, they will be replaced with <cite>N</cite> to represent any of the canonical
+such cases, they will be replaced with <code class="docutils literal notranslate"><span class="pre">N</span></code> to represent any of the canonical
 nucleotides.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">

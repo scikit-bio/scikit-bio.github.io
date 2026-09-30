@@ -755,41 +755,72 @@
 <h1>skbio.sequence.Sequence<a class="headerlink" href="#skbio-sequence-sequence" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L41"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">Sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L78"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence" title="Link to this definition">#</a></dt>
 <dd><p>Store generic sequence data and optional associated metadata.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects do not enforce an alphabet or grammar and are thus the
-most generic objects for storing sequence data. <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects do not
-necessarily represent biological sequences. For example, <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> can
-be used to represent a position in a multiple sequence alignment.
-Subclasses <code class="docutils literal notranslate"><span class="pre">DNA</span></code>, <code class="docutils literal notranslate"><span class="pre">RNA</span></code>, and <code class="docutils literal notranslate"><span class="pre">Protein</span></code> enforce the IUPAC character
-set <a class="reference internal" href="#rde5f2cb97c52-1" id="id1">[1]</a> for, and provide operations specific to, each respective molecule
-type.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object stores arbitrary ASCII characters (code points 0-127). It
+does not enforce a biological alphabet or grammar and is thus a generic object for
+storing sequence data. Subclasses <a class="reference internal" href="skbio.sequence.DNA.html#skbio.sequence.DNA" title="skbio.sequence.DNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNA</span></code></a>, <a class="reference internal" href="skbio.sequence.RNA.html#skbio.sequence.RNA" title="skbio.sequence.RNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">RNA</span></code></a>, and <a class="reference internal" href="skbio.sequence.Protein.html#skbio.sequence.Protein" title="skbio.sequence.Protein"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protein</span></code></a>
+additionally enforce the IUPAC character set <a class="reference internal" href="#rde5f2cb97c52-1" id="id1">[1]</a> for, and provide operations
+specific to, each respective molecule type.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects consist of the underlying sequence data, as well
 as optional metadata and positional metadata. The underlying sequence
 is immutable, while the metdata and positional metadata are mutable.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>sequence</strong><span class="classifier">str, <a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a>, or 1D np.ndarray (np.uint8 or ‘|S1’)</span></dt><dd><p>Characters representing the sequence itself.</p>
+<dt><strong>sequence</strong><span class="classifier">str, bytes-like, 1D ndarray (uint8 or ‘|S1’), or <a class="reference internal" href="#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></span></dt><dd><p>Characters representing the sequence itself. Must be ASCII (code points 0-127),
+whether supplied as text, bytes, or an array.</p>
 </dd>
-<dt><strong>metadata</strong><span class="classifier">dict, optional</span></dt><dd><p>Arbitrary metadata which applies to the entire sequence. A shallow copy
-of the <code class="docutils literal notranslate"><span class="pre">dict</span></code> will be made (see Examples section below for details).</p>
+<dt><strong>metadata</strong><span class="classifier">dict, optional</span></dt><dd><p>Arbitrary metadata which applies to the entire sequence. A shallow copy of the
+dictionary will be made (see Examples section below for details).</p>
 </dd>
-<dt><strong>positional_metadata</strong><span class="classifier">pd.DataFrame consumable, optional</span></dt><dd><p>Arbitrary per-character metadata (e.g., sequence read quality
-scores). Must be able to be passed directly to <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>
-constructor. Each column of metadata must be the same length as
-<cite>sequence</cite>. A shallow copy of the positional metadata will be made if
-necessary (see Examples section below for details).</p>
+<dt><strong>positional_metadata</strong><span class="classifier">pd.DataFrame consumable, optional</span></dt><dd><p>Arbitrary per-character metadata (e.g., sequence read quality scores). Must be
+able to be passed directly to <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> constructor. Each column of
+metadata must be the same length as <code class="docutils literal notranslate"><span class="pre">sequence</span></code>. A shallow copy of the
+positional metadata will be made if necessary (see Examples section below for
+details).</p>
 </dd>
-<dt><strong>interval_metadata</strong><span class="classifier">IntervalMetadata</span></dt><dd><p>Arbitrary metadata which applies to intervals within a sequence to
-store interval features (such as genes, ncRNA on the sequence).</p>
+<dt><strong>interval_metadata</strong><span class="classifier">IntervalMetadata, optional</span></dt><dd><p>Arbitrary metadata which applies to intervals within <code class="docutils literal notranslate"><span class="pre">sequence</span></code> to store
+interval features (such as genes and non-coding RNAs on the sequence).</p>
 </dd>
-<dt><strong>lowercase</strong><span class="classifier">bool or str, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, lowercase sequence characters will be converted to
-uppercase characters. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, no characters will be converted.
-If a str, it will be treated as a key into the positional metadata of
-the object. All lowercase characters will be converted to uppercase,
-and a <code class="docutils literal notranslate"><span class="pre">True</span></code> value will be stored in a boolean array in the
-positional metadata under the key.</p>
+<dt><strong>lowercase</strong><span class="classifier">bool or str, optional</span></dt><dd><p>If True, lowercase sequence characters will be converted to uppercase. If False
+(default), characters will not be converted. If a string, in addition to the
+uppercase conversion, a boolean array indicating which positions were originally
+lowercase will be stored in the positional metadata under this key.</p>
+</dd>
+<dt><strong>validate</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), byte or array input is validated to contain only ASCII code
+points (0-127). If False, this validation is skipped, and the caller is
+responsible for ensuring that the sequence satisfies the ASCII requirement.
+Supplying invalid data with validation disabled will result in undefined
+behavior.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.5: </span>Construction now rejects byte values 128-255. Previously, they were taken
+if supplied as bytes or an array, even though text input and subsequent
+operations assume ASCII. Parameter <code class="docutils literal notranslate"><span class="pre">validate</span></code> was added to control data
+validation.</p>
+</div>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to copy sequence data. If None (default), a copy is made when needed
+for an immutable and contiguous internal representation. Typically, copying
+is skipped when the input is <code class="docutils literal notranslate"><span class="pre">bytes</span></code> or another instance of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code>.
+If True, data are always copied. If False, no copy is made or a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>
+is raised if copying is necessary. When <code class="docutils literal notranslate"><span class="pre">copy=False</span></code> and the sequence data
+shares mutable external storage, such as an array, the caller is responsible
+for not mutating that storage. Violation will result in undefined behavior.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.7.5: </span>Mutable external storage is now copied by default so subsequent mutation of
+the input cannot change the sequence content. Parameter <code class="docutils literal notranslate"><span class="pre">copy</span></code> was added
+to control data ownership.</p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>UnicodeEncodeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">sequence</span></code> is text containing a non-ASCII character.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">sequence</span></code> contains a byte value outside 7-bit ASCII (128-255), or
+<code class="docutils literal notranslate"><span class="pre">copy=False</span></code> is requested but a copy is necessary.</p>
 </dd>
 </dl>
 </dd>
@@ -815,7 +846,7 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntervalMetadata</span>
 </pre></div>
 </div>
-<p><strong>Creating sequences:</strong></p>
+<p><strong>Creating sequences</strong></p>
 <p>Create a sequence without any metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'GGUCGUGAAGGA'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
@@ -827,6 +858,93 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <span class="go">0 GGUCGUGAAG GA</span>
 </pre></div>
 </div>
+<p>Retrieve the string representation of the sequence:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">'GGUCGUGAAGGA'</span>
+</pre></div>
+</div>
+<p><strong>Underlying sequence data</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Retrieve underlying sequence (an array of bytes):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span>
+<span class="go">array([b'A', b'C', b'G', b'T'], dtype='|S1')</span>
+</pre></div>
+</div>
+<p>View underlying sequence as an array of ASCII code points:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">'uint8'</span><span class="p">)</span>
+<span class="go">array([65, 67, 71, 84], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>Underlying sequence is immutable:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">b</span><span class="s1">'T'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'C'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'G'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'A'</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'|S1'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="gr">AttributeError</span>: <span class="n">property 'values' of 'Sequence' object has no setter</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'T'</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">assignment destination is read-only</span>
+</pre></div>
+</div>
+<p><strong>Data copying or referencing</strong></p>
+<p>When a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object is constructed from a string, a copy of the sequence
+data is made through encoding the string into ASCII codes.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'ACGT'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the input is provided as bytes, which is immutable, it is not copied under the
+default policy (<code class="docutils literal notranslate"><span class="pre">copy=None</span></code>). Rather, the <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object directly refers to
+the original data. Creating a <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> from another <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> also has this
+zero-copy behavior. This improves performance, particularly for large or many
+sequences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'ACGT'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Confirm that memory space is shared:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">buf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">shares_memory</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>If making a copy is desired, add <code class="docutils literal notranslate"><span class="pre">copy=True</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">shares_memory</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>In contrast, if the input is a NumPy array, which is mutable, a copy is always made
+even though the array already matches the underlying data structure of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code>.
+Making a copy protects against accidental modification of the original data.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">65</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">84</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">shares_memory</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>However, if the goal is to maximize performance and you know you won’t mutate the
+original data, consider overriding this with <code class="docutils literal notranslate"><span class="pre">copy=False</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">shares_memory</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>To ensure efficient operations of sequences, scikit-bio requires that sequence data
+is contiguous in memory. In the input array is not contiguous but <code class="docutils literal notranslate"><span class="pre">copy=False</span></code> is
+specified, an error will be raised.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">data</span><span class="p">[::</span><span class="mi">2</span><span class="p">],</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">... a copy is required to make sequence data contiguous.</span>
+</pre></div>
+</div>
+<p><strong>Sequence metadata</strong></p>
 <p>Create a sequence with metadata, positional metadata and interval metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'authors'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Alice'</span><span class="p">],</span> <span class="s1">'desc'</span><span class="p">:</span><span class="s1">'seq desc'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">:</span><span class="s1">'seq-id'</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">positional_metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'exons'</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
@@ -854,28 +972,6 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <span class="go">0 ACGT</span>
 </pre></div>
 </div>
-<p><strong>Retrieving underlying sequence data:</strong></p>
-<p>Retrieve underlying sequence:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span>
-<span class="go">array([b'A', b'C', b'G', b'T'],</span>
-<span class="go">      dtype='|S1')</span>
-</pre></div>
-</div>
-<p>Underlying sequence immutable:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="sa">b</span><span class="s1">'T'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'C'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'G'</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'A'</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'|S1'</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
-<span class="gt">Traceback (most recent call last):</span>
-<span class="w">    </span><span class="o">...</span>
-<span class="gr">AttributeError</span>: <span class="n">can't set attribute</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'T'</span>
-<span class="gt">Traceback (most recent call last):</span>
-<span class="w">    </span><span class="o">...</span>
-<span class="gr">ValueError</span>: <span class="n">assignment destination is read-only</span>
-</pre></div>
-</div>
-<p><strong>Retrieving sequence metadata:</strong></p>
 <p>Retrieve metadata:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">metadata</span>
 <span class="go">{'authors': ['Alice'], 'desc': 'seq desc', 'id': 'seq-id'}</span>
@@ -894,7 +990,7 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span>
 <span class="go">1 interval feature</span>
 <span class="go">------------------</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], fuzzy=[(False, False)], metadata={'gene': 'sagA'})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], ..., metadata={'gene': 'sagA'})</span>
 </pre></div>
 </div>
 <p><strong>Updating sequence metadata:</strong></p>
@@ -1063,10 +1159,10 @@ parent sequence’s positional metadata and the original positional metadata
 </div>
 <p>You can update directly on the <code class="docutils literal notranslate"><span class="pre">Interval</span></code> object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], fuzzy=[(False, False)], metadata={'gene': 'foo'})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(1, 3)], ..., metadata={'gene': 'foo'})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">interval</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(False, False)], metadata={'gene': 'foo'})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], ..., metadata={'gene': 'foo'})</span>
 </pre></div>
 </div>
 <p>You can also query and obtain the interval features you are
@@ -1074,7 +1170,7 @@ interested and then modify them:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">intervals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">interval_metadata</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'gene'</span><span class="p">:</span> <span class="s1">'foo'</span><span class="p">}))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fuzzy</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], fuzzy=[(True, False)], metadata={'gene': 'foo'})</span>
+<span class="go">Interval(interval_metadata=&lt;...&gt;, bounds=[(0, 2)], ..., metadata={'gene': 'foo'})</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -1274,15 +1370,14 @@ interested and then modify them:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'AACGA'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">values</span>
-<span class="go">array([b'A', b'A', b'C', b'G', b'A'],</span>
-<span class="go">      dtype='|S1')</span>
+<span class="go">array([b'A', b'A', b'C', b'G', b'A'], dtype='|S1')</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__bool__">
-<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1009"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__bool__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__bool__" title="Link to this definition">#</a></dt>
 <dd><p>Return truth value (truthiness) of sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1304,7 +1399,7 @@ interested and then modify them:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__contains__">
-<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsequence</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L702"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__contains__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsequence</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L927"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__contains__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if a subsequence is contained in this sequence.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1340,7 +1435,7 @@ than this sequence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__copy__">
-<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1220"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__copy__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1445"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__copy__" title="Link to this definition">#</a></dt>
 <dd><p>Return a shallow copy of this sequence.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1354,7 +1449,7 @@ than this sequence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__deepcopy__">
-<span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__deepcopy__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1459"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__deepcopy__" title="Link to this definition">#</a></dt>
 <dd><p>Return a deep copy of this sequence.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1368,7 +1463,7 @@ than this sequence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__eq__">
-<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L733"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__eq__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L958"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__eq__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if this sequence is equal to another.</p>
 <p>Sequences are equal if they are <em>exactly</em> the same type and their
 sequence characters, metadata, and positional metadata are the same.</p>
@@ -1428,7 +1523,7 @@ positional metadata, and interval metadata do not match:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indexable</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L840"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__getitem__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indexable</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1065"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__getitem__" title="Link to this definition">#</a></dt>
 <dd><p>Slice this sequence.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1505,7 +1600,7 @@ new <code class="docutils literal notranslate"><span class="pre">Sequence</span>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__iter__">
-<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1028"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__iter__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1253"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__iter__" title="Link to this definition">#</a></dt>
 <dd><p>Iterate over positions in this sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
@@ -1531,7 +1626,7 @@ sequence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__len__">
-<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L991"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__len__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1216"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__len__" title="Link to this definition">#</a></dt>
 <dd><p>Return the number of characters in this sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1552,7 +1647,7 @@ sequence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__ne__">
-<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L807"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__ne__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1032"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__ne__" title="Link to this definition">#</a></dt>
 <dd><p>Determine if this sequence is not equal to another.</p>
 <p>Sequences are not equal if they are not <em>exactly</em> the same type, or
 their sequence characters, metadata, or positional metadata differ.</p>
@@ -1588,7 +1683,7 @@ their sequence characters, metadata, or positional metadata differ.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__reversed__">
-<span class="sig-name descname"><span class="pre">__reversed__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1052"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__reversed__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__reversed__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1277"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__reversed__" title="Link to this definition">#</a></dt>
 <dd><p>Iterate over positions in this sequence in reverse order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
@@ -1614,7 +1709,7 @@ sequence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.sequence.Sequence.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1075"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_sequence.py#L1300"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Sequence.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return sequence characters as a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
