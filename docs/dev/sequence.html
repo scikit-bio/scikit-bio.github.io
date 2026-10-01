@@ -952,8 +952,7 @@ compact storage and efficient, vectorized operations.</p>
 <span class="go">      dtype='|S1')</span>
 </pre></div>
 </div>
-<p>This array can also be viewed as ASCII code points (0-127). Note that the <code class="docutils literal notranslate"><span class="pre">uint8</span></code>
-storage format does not accept byte values 128-255.</p>
+<p>This array can also be viewed as ASCII code points (0-127).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">'uint8'</span><span class="p">)</span>
 <span class="go">array([71, 67, 67, 82, 67, 67, 65, 84, 71, 71], dtype=uint8)</span>
 </pre></div>
@@ -1306,6 +1305,34 @@ once:</p>
 </pre></div>
 </div>
 </section>
+<section id="interoperability">
+<h3>Interoperability<a class="headerlink" href="#interoperability" title="Link to this heading">#</a></h3>
+<p><strong>BioPython</strong></p>
+<p>scikit-bio and BioPython (since 1.79) both store sequence data as bytes, making the
+conversion straightforward. In particular, a defined BioPython <code class="docutils literal notranslate"><span class="pre">Seq</span></code> object can be
+converted into a scikit-bio <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> object <strong>without copying the underlying
+data</strong>, enabling efficient data sharing.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">Bio.Seq</span><span class="w"> </span><span class="kn">import</span> <span class="n">Seq</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bp_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s1">'GAGTCT'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">bp_seq</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Verify that both objects share the same memory. (This check uses private attributes,
+therefore is not recommended for production code.)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">sk_seq</span><span class="o">.</span><span class="n">_bytes</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">bp_seq</span><span class="o">.</span><span class="n">_data</span>
+</pre></div>
+</div>
+<p>If detaching the objects is intended, one can pass <code class="docutils literal notranslate"><span class="pre">copy=True</span></code> to force data copying.
+See <a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> for details. A BioPython <code class="docutils literal notranslate"><span class="pre">MutableSeq</span></code> can be converted into a
+scikit-bio sequence using the same approach, but the data will be copied. Calling
+<code class="docutils literal notranslate"><span class="pre">bytes()</span></code> on undefined or partially defined BioPython sequences will raise an error.</p>
+<p>Vice versa, a scikit-bio <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> can be converted into a BioPython <code class="docutils literal notranslate"><span class="pre">Seq</span></code> as
+follows. This conversion does copy the underlying sequence data.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'GAGTCT'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bp_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="n">sk_seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1369,6 +1396,7 @@ once:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-patterns">Searching for patterns</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-sequences">Comparing sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#annotating-sequences">Annotating sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interoperability">Interoperability</a></li>
 </ul>
 </li>
 </ul>
