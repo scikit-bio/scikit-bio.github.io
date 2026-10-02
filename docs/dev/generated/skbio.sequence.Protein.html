@@ -959,28 +959,31 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.Protein.alphabet" title="skbio.sequence.Protein.alphabet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alphabet</span></code></a></p></td>
-<td><p>Return valid characters.</p></td>
+<td><p>All valid characters in the alphabet.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.Protein.default_gap_char" title="skbio.sequence.Protein.default_gap_char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_gap_char</span></code></a></p></td>
 <td><p>Gap character to use when constructing a new gapped sequence.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.Protein.definite_chars" title="skbio.sequence.Protein.definite_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">definite_chars</span></code></a></p></td>
-<td><p>Return definite characters.</p></td>
+<td><p>Characters representing definite states.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.Protein.degenerate_map" title="skbio.sequence.Protein.degenerate_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_map</span></code></a></p></td>
-<td><p>Return mapping of degenerate to definite characters.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.Protein.degenerate_chars" title="skbio.sequence.Protein.degenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_chars</span></code></a></p></td>
+<td><p>Degenerate characters representing sets of definite characters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.Protein.gap_chars" title="skbio.sequence.Protein.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></p></td>
-<td><p>Return characters defined as gaps.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.Protein.degenerate_map" title="skbio.sequence.Protein.degenerate_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_map</span></code></a></p></td>
+<td><p>Mapping of degenerate to definite characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.Protein.noncanonical_chars" title="skbio.sequence.Protein.noncanonical_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noncanonical_chars</span></code></a></p></td>
-<td><p>Return non-canonical characters.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.Protein.gap_chars" title="skbio.sequence.Protein.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></p></td>
+<td><p>Characters representing gaps in the sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.Protein.stop_chars" title="skbio.sequence.Protein.stop_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop_chars</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.Protein.noncanonical_chars" title="skbio.sequence.Protein.noncanonical_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noncanonical_chars</span></code></a></p></td>
+<td><p>Non-canonical characters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.Protein.stop_chars" title="skbio.sequence.Protein.stop_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop_chars</span></code></a></p></td>
 <td><p>Return characters representing translation stop codons.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.Protein.wildcard_char" title="skbio.sequence.Protein.wildcard_char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></a></p></td>
-<td><p>Return wildcard character.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.Protein.wildcard_char" title="skbio.sequence.Protein.wildcard_char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></a></p></td>
+<td><p>Character representing any other non-gap character in the alphabet.</p></td>
 </tr>
 </tbody>
 </table>
@@ -991,25 +994,22 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence.default_write_format" title="skbio.sequence.Sequence.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p>Default write format for this object: <code class="docutils literal notranslate"><span class="pre">fasta</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.degenerate_chars" title="skbio.sequence.GrammaredSequence.degenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_chars</span></code></a></p></td>
-<td><p>Return degenerate characters.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.IntervalMetadataMixin.html#skbio.metadata.IntervalMetadataMixin.interval_metadata" title="skbio.metadata.IntervalMetadataMixin.interval_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_metadata</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.IntervalMetadataMixin.html#skbio.metadata.IntervalMetadataMixin.interval_metadata" title="skbio.metadata.IntervalMetadataMixin.interval_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_metadata</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object containing info about interval features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.MetadataMixin.html#skbio.metadata.MetadataMixin.metadata" title="skbio.metadata.MetadataMixin.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.MetadataMixin.html#skbio.metadata.MetadataMixin.metadata" title="skbio.metadata.MetadataMixin.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> containing metadata which applies to the entire object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.nondegenerate_chars" title="skbio.sequence.GrammaredSequence.nondegenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></a></p></td>
-<td><p>Return non-degenerate characters.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.nondegenerate_chars" title="skbio.sequence.GrammaredSequence.nondegenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></a></p></td>
+<td><p>Non-degenerate characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence.observed_chars" title="skbio.sequence.Sequence.observed_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_chars</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence.observed_chars" title="skbio.sequence.Sequence.observed_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observed_chars</span></code></a></p></td>
 <td><p>Set of observed characters in the sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.PositionalMetadataMixin.html#skbio.metadata.PositionalMetadataMixin.positional_metadata" title="skbio.metadata.PositionalMetadataMixin.positional_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.metadata.PositionalMetadataMixin.html#skbio.metadata.PositionalMetadataMixin.positional_metadata" title="skbio.metadata.PositionalMetadataMixin.positional_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">positional_metadata</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> containing metadata along an axis.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence.values" title="skbio.sequence.Sequence.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence.values" title="skbio.sequence.Sequence.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
 <td><p>Array containing underlying sequence characters.</p></td>
 </tr>
 </tbody>
@@ -1193,7 +1193,7 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.Protein.alphabet">
 <span class="sig-name descname"><span class="pre">alphabet</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.alphabet" title="Link to this definition">#</a></dt>
-<dd><p>Return valid characters.</p>
+<dd><p>All valid characters in the alphabet.</p>
 <p>This includes gap, definite, and degenerate characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1203,6 +1203,17 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.sequence.Protein.gap_chars" title="skbio.sequence.Protein.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.sequence.Protein.definite_chars" title="skbio.sequence.Protein.definite_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">definite_chars</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.sequence.Protein.degenerate_chars" title="skbio.sequence.Protein.degenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_chars</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This property should not be defined. It is automatically populated during class
+creation.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1215,17 +1226,27 @@ this character to represent gaps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>str</dt><dd><p>Default gap character.</p>
+<dt>str or None</dt><dd><p>Default gap character, or None if gaps are not defined.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.sequence.Protein.gap_chars" title="skbio.sequence.Protein.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>When a subclass defines a non-empty <code class="docutils literal notranslate"><span class="pre">gap_chars</span></code> without defining this
+property, the first gap character in sorted order will be designated as the
+default gap character during class creation.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.Protein.definite_chars">
 <span class="sig-name descname"><span class="pre">definite_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.definite_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return definite characters.</p>
+<dd><p>Characters representing definite states.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1234,31 +1255,42 @@ this character to represent gaps.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This character set is the minimum requirement for creating a subclass of
+<code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code>.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="skbio.sequence.Protein.degenerate_chars">
+<span class="sig-name descname"><span class="pre">degenerate_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.degenerate_chars" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.Protein.degenerate_map">
 <span class="sig-name descname"><span class="pre">degenerate_map</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.degenerate_map" title="Link to this definition">#</a></dt>
-<dd><p>Return mapping of degenerate to definite characters.</p>
+<dd><p>Mapping of degenerate to definite characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>dict (set)</dt><dd><p>Mapping of each degenerate character to the set of
-definite characters it represents.</p>
+<dt>dict of set</dt><dd><p>Mapping of each degenerate character to the set of definite characters it
+represents. Default is an empty dictionary.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Each degenerate character may represent an arbitrary number of definite
+characters.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.Protein.gap_chars">
 <span class="sig-name descname"><span class="pre">gap_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.gap_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return characters defined as gaps.</p>
+<dd><p>Characters representing gaps in the sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>set</dt><dd><p>Characters defined as gaps.</p>
+<dt>set</dt><dd><p>Characters defined as gaps. Default is an empty set.</p>
 </dd>
 </dl>
 </dd>
@@ -1268,15 +1300,18 @@ definite characters it represents.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.Protein.noncanonical_chars">
 <span class="sig-name descname"><span class="pre">noncanonical_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.noncanonical_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return non-canonical characters.</p>
+<dd><p>Non-canonical characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>set</dt><dd><p>Non-canonical characters.</p>
+<dt>set</dt><dd><p>Non-canonical characters. Default is an empty set.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This character set serves as an exclusion from definite characters to obtain
+canonical characters.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1296,11 +1331,12 @@ definite characters it represents.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.Protein.wildcard_char">
 <span class="sig-name descname"><span class="pre">wildcard_char</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.Protein.wildcard_char" title="Link to this definition">#</a></dt>
-<dd><p>Return wildcard character.</p>
+<dd><p>Character representing any other non-gap character in the alphabet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>str of length 1</dt><dd><p>Wildcard character.</p>
+<dt>str of length 1</dt><dd><p>Wildcard character. Default is None. When set, it must be a definite or
+degenerate character in the alphabet.</p>
 </dd>
 </dl>
 </dd>
@@ -1362,6 +1398,7 @@ definite characters it represents.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.Protein.alphabet"><code class="docutils literal notranslate"><span class="pre">Protein.alphabet</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.Protein.default_gap_char"><code class="docutils literal notranslate"><span class="pre">Protein.default_gap_char</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.Protein.definite_chars"><code class="docutils literal notranslate"><span class="pre">Protein.definite_chars</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.Protein.degenerate_chars"><code class="docutils literal notranslate"><span class="pre">Protein.degenerate_chars</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.Protein.degenerate_map"><code class="docutils literal notranslate"><span class="pre">Protein.degenerate_map</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.Protein.gap_chars"><code class="docutils literal notranslate"><span class="pre">Protein.gap_chars</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.Protein.noncanonical_chars"><code class="docutils literal notranslate"><span class="pre">Protein.noncanonical_chars</span></code></a></li>

@@ -750,11 +750,11 @@
 <h1>skbio.sequence.GrammaredSequence<a class="headerlink" href="#skbio-sequence-grammaredsequence" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">GrammaredSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_grammared_sequence.py#L81"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">GrammaredSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positional_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_grammared_sequence.py#L142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence" title="Link to this definition">#</a></dt>
 <dd><p>Store sequence data conforming to a character set.</p>
-<p>This is an abstract base class (ABC) that cannot be instantiated.</p>
 <p>This class is intended to be inherited from to create grammared sequences
-with custom alphabets.</p>
+with custom alphabets. It is an abstract base class (ABC) that cannot be
+directly instantiated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -780,84 +780,201 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 </div>
 </div>
 <p class="rubric">Examples</p>
-<p>Note in the example below that properties either need to be static or
-use skbio’s <cite>classproperty</cite> decorator.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code> can be subclassed to create custom sequence types.</p>
+<p><strong>A minimal alphabet</strong></p>
+<p>This example demonstrates <strong>RY-coding</strong>: Representing a nucleotide sequence with
+just two states: <code class="docutils literal notranslate"><span class="pre">R</span></code> (purines, including <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">G</span></code>) and <code class="docutils literal notranslate"><span class="pre">Y</span></code> (pyrimidines,
+including <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">T/U</span></code>). This technique reduces the alphabet to binary thus
+facilitating computation, and has practical benefits in phylogenetic analysis.</p>
+<p>A minimum RY sequence type only needs to declare its <strong>definite</strong> characters: <code class="docutils literal notranslate"><span class="pre">R</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Y</span></code> (even though they are degenerate characters in the IUPAC DNA alphabet).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">GrammaredSequence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">classproperty</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">CustomSequence</span><span class="p">(</span><span class="n">GrammaredSequence</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="nd">@classproperty</span>
-<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">degenerate_map</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="p">{</span><span class="s2">"X"</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"AB"</span><span class="p">)}</span>
-<span class="gp">...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">RYSequence</span><span class="p">(</span><span class="n">GrammaredSequence</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nd">@classproperty</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">definite_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"ABC"</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="gp">...</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"RY"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The new type validates its alphabet just like other grammared sequences:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">RYSequence</span><span class="p">(</span><span class="s2">"RYYRYR"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">'RYYRYR'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">has_definites</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">RYSequence</span><span class="p">(</span><span class="s2">"ACGT"</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">Invalid characters in sequence: ['A', 'C', 'G', 'T']...</span>
+</pre></div>
+</div>
+<p>Choice of characters spans ASCII code points 0-127. Even unprintable characters
+are valid. The following example uses 0 and 1 as characters.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">Sequence01</span><span class="p">(</span><span class="n">GrammaredSequence</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nd">@classproperty</span>
-<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">default_gap_char</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s1">'-'</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">definite_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">{</span><span class="nb">chr</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">1</span><span class="p">)}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence01</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+<span class="go">b'\x00\x01\x01\x00\x00\x00\x01'</span>
+</pre></div>
+</div>
+<p><strong>Enriching grammar</strong></p>
+<p>More specialized grammars can additionally define gap characters, degenerate
+characters, a wildcard, and other properties when they are useful. The following
+example adds gap character <code class="docutils literal notranslate"><span class="pre">^</span></code> to the sequence type.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">RYSequence</span><span class="p">(</span><span class="n">GrammaredSequence</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nd">@classproperty</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">definite_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"RY"</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@classproperty</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">gap_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s1">'-.'</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"^"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">CustomSequence</span><span class="p">(</span><span class="s1">'ABABACAC'</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
-<span class="go">CustomSequence</span>
+<p>Then one can perform pairwise alignment of two RY sequences and construct a tabular
+alignment. (Note: <code class="docutils literal notranslate"><span class="pre">pair_align</span></code> does not need a defined gap character, but
+<code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> does.)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabularMSA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">pair_align</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">RYSequence</span><span class="p">(</span><span class="s1">'YRYRRRYYRY'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">RYSequence</span><span class="p">(</span><span class="s1">'RYRRRYRYYY'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">pair_align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span><span class="o">.</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span> <span class="o">=</span> <span class="n">TabularMSA</span><span class="o">.</span><span class="n">from_path_seqs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msa</span>
+<span class="go">TabularMSA[RYSequence]</span>
+<span class="go">----------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    sequence count: 2</span>
+<span class="go">    position count: 12</span>
+<span class="go">----------------------</span>
+<span class="go">YRYRRRYYRY^^</span>
+<span class="go">^RYRRRY^RYYY</span>
+</pre></div>
+</div>
+<p><strong>Adding utilities</strong></p>
+<p>You can add custom class properties and methods to perform specific operations. The
+following code lets one construct an RY sequence from a DNA sequence. Only the four
+canonical nucleotides are recognized. Otherwise, an error will be raised.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">RYSequence</span><span class="p">(</span><span class="n">GrammaredSequence</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nd">@classproperty</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">definite_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="s2">"RY"</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="nd">@classproperty</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">code_map</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="sa">b</span><span class="s2">"ACGT"</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"RYRY"</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="nd">@classmethod</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">from_dna</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">code_map</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">DNA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">RYSequence</span><span class="o">.</span><span class="n">from_dna</span><span class="p">(</span><span class="n">DNA</span><span class="p">(</span><span class="s1">'GAATTC'</span><span class="p">))</span>
+<span class="go">RYSequence</span>
 <span class="go">--------------------------</span>
 <span class="go">Stats:</span>
-<span class="go">    length: 8</span>
+<span class="go">    length: 6</span>
 <span class="go">    has gaps: False</span>
 <span class="go">    has degenerates: False</span>
 <span class="go">    has definites: True</span>
 <span class="go">--------------------------</span>
-<span class="go">0 ABABACAC</span>
+<span class="go">0 RRRYYY</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">CustomSequence</span><span class="p">(</span><span class="s1">'XXXXXX'</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
-<span class="go">CustomSequence</span>
-<span class="go">-------------------------</span>
-<span class="go">Stats:</span>
-<span class="go">    length: 6</span>
-<span class="go">    has gaps: False</span>
-<span class="go">    has degenerates: True</span>
-<span class="go">    has definites: False</span>
-<span class="go">-------------------------</span>
-<span class="go">0 XXXXXX</span>
+<p><strong>Extending existing sequence types</strong></p>
+<p>One may subclass an existing sequence type and modify its grammar and operations.
+The following example creates a <strong>methylated DNA</strong> type by introducing a new
+definite character: <code class="docutils literal notranslate"><span class="pre">Z</span></code>, representing 5-methylcytosine (5mC). It also introduces
+methods for demethylation of <code class="docutils literal notranslate"><span class="pre">Z</span></code> to <code class="docutils literal notranslate"><span class="pre">C</span></code>, and for bisulfite treatment to
+preserve the methylation state for DNA sequencing.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MethylatedDNA</span><span class="p">(</span><span class="n">DNA</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nd">@classproperty</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">definite_chars</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">DNA</span><span class="o">.</span><span class="n">definite_chars</span> <span class="o">|</span> <span class="p">{</span><span class="s1">'Z'</span><span class="p">}</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="nd">@classproperty</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">complement_map</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">DNA</span><span class="o">.</span><span class="n">complement_map</span> <span class="o">|</span> <span class="p">{</span><span class="s1">'Z'</span><span class="p">:</span> <span class="s1">'G'</span><span class="p">}</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">demethylate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">chars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">... </span>        <span class="n">chars</span><span class="p">[</span><span class="n">chars</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">'Z'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'C'</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">DNA</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">bisulfite_convert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">chars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">... </span>        <span class="n">chars</span><span class="p">[</span><span class="n">chars</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">'C'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'T'</span>
+<span class="gp">... </span>        <span class="n">chars</span><span class="p">[</span><span class="n">chars</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">'Z'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">'C'</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">DNA</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">transcribe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">demethylate</span><span class="p">()</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>The subclass accepts both ordinary DNA characters and the added 5mC state:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">MethylatedDNA</span><span class="p">(</span><span class="s2">"ACZCG"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="go">'ACZCG'</span>
+</pre></div>
+</div>
+<p>It also provides a conversion specific to this sequence type. In this simplified
+example, unmethylated cytosine is converted to uracil (read as thymine during
+sequencing) while 5mC is retained as cytosine:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">converted</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">bisulfite_convert</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">converted</span><span class="p">)</span>
+<span class="go">'ATCTG'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">converted</span><span class="p">)</span> <span class="ow">is</span> <span class="n">DNA</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">MethylatedDNA</span></code> inherits the rest of the <code class="docutils literal notranslate"><span class="pre">DNA</span></code> interface, but adding a
+character can require revisiting inherited operations. Here, <code class="docutils literal notranslate"><span class="pre">complement_map</span></code> and
+<code class="docutils literal notranslate"><span class="pre">transcribe</span></code> are modified to establish that 5mC should be considered as cytosine
+in these operations.</p>
+<p>Other inherited operations may likewise need to be reviewed or overridden. For
+example, a subclass should decide how a newly introduced nucleotide impacts
+GC-content calculation, degeneracy handling, and any other operation whose meaning
+depends on the alphabet. Therefore, be very careful with extending existing
+sequence types, and consider limiting downstream analysis to what you can oversee.</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.alphabet" title="skbio.sequence.GrammaredSequence.alphabet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alphabet</span></code></a></p></td>
-<td><p>Return valid characters.</p></td>
+<td><p>All valid characters in the alphabet.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.default_gap_char" title="skbio.sequence.GrammaredSequence.default_gap_char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_gap_char</span></code></a></p></td>
 <td><p>Gap character to use when constructing a new gapped sequence.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.definite_chars" title="skbio.sequence.GrammaredSequence.definite_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">definite_chars</span></code></a></p></td>
-<td><p>Return definite characters.</p></td>
+<td><p>Characters representing definite states.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.degenerate_chars" title="skbio.sequence.GrammaredSequence.degenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_chars</span></code></a></p></td>
-<td><p>Return degenerate characters.</p></td>
+<td><p>Degenerate characters representing sets of definite characters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.degenerate_map" title="skbio.sequence.GrammaredSequence.degenerate_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_map</span></code></a></p></td>
-<td><p>Return mapping of degenerate to definite characters.</p></td>
+<td><p>Mapping of degenerate to definite characters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.gap_chars" title="skbio.sequence.GrammaredSequence.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></p></td>
-<td><p>Return characters defined as gaps.</p></td>
+<td><p>Characters representing gaps in the sequence.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.noncanonical_chars" title="skbio.sequence.GrammaredSequence.noncanonical_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noncanonical_chars</span></code></a></p></td>
-<td><p>Return non-canonical characters.</p></td>
+<td><p>Non-canonical characters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.nondegenerate_chars" title="skbio.sequence.GrammaredSequence.nondegenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nondegenerate_chars</span></code></a></p></td>
-<td><p>Return non-degenerate characters.</p></td>
+<td><p>Non-degenerate characters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.GrammaredSequence.wildcard_char" title="skbio.sequence.GrammaredSequence.wildcard_char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></a></p></td>
-<td><p>Return wildcard character.</p></td>
+<td><p>Character representing any other non-gap character in the alphabet.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1058,7 +1175,7 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.alphabet">
 <span class="sig-name descname"><span class="pre">alphabet</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.alphabet" title="Link to this definition">#</a></dt>
-<dd><p>Return valid characters.</p>
+<dd><p>All valid characters in the alphabet.</p>
 <p>This includes gap, definite, and degenerate characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1068,6 +1185,17 @@ use skbio’s <cite>classproperty</cite> decorator.</p>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.sequence.GrammaredSequence.gap_chars" title="skbio.sequence.GrammaredSequence.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.sequence.GrammaredSequence.definite_chars" title="skbio.sequence.GrammaredSequence.definite_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">definite_chars</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skbio.sequence.GrammaredSequence.degenerate_chars" title="skbio.sequence.GrammaredSequence.degenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_chars</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This property should not be defined. It is automatically populated during class
+creation.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1080,17 +1208,27 @@ this character to represent gaps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>str</dt><dd><p>Default gap character.</p>
+<dt>str or None</dt><dd><p>Default gap character, or None if gaps are not defined.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.sequence.GrammaredSequence.gap_chars" title="skbio.sequence.GrammaredSequence.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>When a subclass defines a non-empty <code class="docutils literal notranslate"><span class="pre">gap_chars</span></code> without defining this
+property, the first gap character in sorted order will be designated as the
+default gap character during class creation.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.definite_chars">
 <span class="sig-name descname"><span class="pre">definite_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.definite_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return definite characters.</p>
+<dd><p>Characters representing definite states.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1099,12 +1237,15 @@ this character to represent gaps.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This character set is the minimum requirement for creating a subclass of
+<code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.degenerate_chars">
 <span class="sig-name descname"><span class="pre">degenerate_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.degenerate_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return degenerate characters.</p>
+<dd><p>Degenerate characters representing sets of definite characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1113,31 +1254,43 @@ this character to represent gaps.</p>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skbio.sequence.GrammaredSequence.degenerate_map" title="skbio.sequence.GrammaredSequence.degenerate_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_map</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This property should not be defined. It is automatically populated from
+<code class="docutils literal notranslate"><span class="pre">degenerate_map</span></code> during class creation.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.degenerate_map">
 <span class="sig-name descname"><span class="pre">degenerate_map</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.degenerate_map" title="Link to this definition">#</a></dt>
-<dd><p>Return mapping of degenerate to definite characters.</p>
+<dd><p>Mapping of degenerate to definite characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>dict (set)</dt><dd><p>Mapping of each degenerate character to the set of
-definite characters it represents.</p>
+<dt>dict of set</dt><dd><p>Mapping of each degenerate character to the set of definite characters it
+represents. Default is an empty dictionary.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Each degenerate character may represent an arbitrary number of definite
+characters.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.gap_chars">
 <span class="sig-name descname"><span class="pre">gap_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.gap_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return characters defined as gaps.</p>
+<dd><p>Characters representing gaps in the sequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>set</dt><dd><p>Characters defined as gaps.</p>
+<dt>set</dt><dd><p>Characters defined as gaps. Default is an empty set.</p>
 </dd>
 </dl>
 </dd>
@@ -1147,21 +1300,24 @@ definite characters it represents.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.noncanonical_chars">
 <span class="sig-name descname"><span class="pre">noncanonical_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.noncanonical_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return non-canonical characters.</p>
+<dd><p>Non-canonical characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>set</dt><dd><p>Non-canonical characters.</p>
+<dt>set</dt><dd><p>Non-canonical characters. Default is an empty set.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This character set serves as an exclusion from definite characters to obtain
+canonical characters.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.nondegenerate_chars">
 <span class="sig-name descname"><span class="pre">nondegenerate_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.nondegenerate_chars" title="Link to this definition">#</a></dt>
-<dd><p>Return non-degenerate characters.</p>
+<dd><p>Non-degenerate characters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1186,11 +1342,12 @@ definite characters it represents.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.GrammaredSequence.wildcard_char">
 <span class="sig-name descname"><span class="pre">wildcard_char</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.GrammaredSequence.wildcard_char" title="Link to this definition">#</a></dt>
-<dd><p>Return wildcard character.</p>
+<dd><p>Character representing any other non-gap character in the alphabet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>str of length 1</dt><dd><p>Wildcard character.</p>
+<dt>str of length 1</dt><dd><p>Wildcard character. Default is None. When set, it must be a definite or
+degenerate character in the alphabet.</p>
 </dd>
 </dl>
 </dd>
