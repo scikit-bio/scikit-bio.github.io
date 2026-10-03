@@ -1326,10 +1326,67 @@ therefore is not recommended for production code.)</p>
 See <a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> for details. A BioPython <code class="docutils literal notranslate"><span class="pre">MutableSeq</span></code> can be converted into a
 scikit-bio sequence using the same approach, but the data will be copied. Calling
 <code class="docutils literal notranslate"><span class="pre">bytes()</span></code> on undefined or partially defined BioPython sequences will raise an error.</p>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">validate=False</span></code> can further improve performance, if you know the input only
+contains valid characters. See <a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> for details.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">bp_seq</span><span class="p">),</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Vice versa, a scikit-bio <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> can be converted into a BioPython <code class="docutils literal notranslate"><span class="pre">Seq</span></code> as
 follows. This conversion does copy the underlying sequence data.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'GAGTCT'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bp_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="n">sk_seq</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Biotite</strong></p>
+<p>Biotite stores sequence data as an array of indices in a defined alphabet, which differs
+from scikit-bio and therefore the two packages cannot directly share sequence data in
+the memory. However, conversion can be performed efficiently using the following method
+without round-tripping through Python strings.</p>
+<p>scikit-bio provides <a class="reference internal" href="generated/skbio.sequence.Sequence.to_indices.html#skbio.sequence.Sequence.to_indices" title="skbio.sequence.Sequence.to_indices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Sequence.to_indices</span></code></a>, which converts sequence characters into
+indices in a specified alphabet. This matches Biotite’s sequence representation. For
+example, a scikit-bio sequence can be converted into a Biotite <code class="docutils literal notranslate"><span class="pre">GeneralSequence</span></code>
+object as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">biotite.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneralSequence</span><span class="p">,</span> <span class="n">LetterAlphabet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="s1">'a_good_day'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span><span class="p">,</span> <span class="n">alphabet</span> <span class="o">=</span> <span class="n">sk_seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bt_seq</span> <span class="o">=</span> <span class="n">GeneralSequence</span><span class="p">(</span><span class="n">LetterAlphabet</span><span class="p">(</span><span class="n">alphabet</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bt_seq</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">indices</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bt_seq</span><span class="p">)</span>
+<span class="go">a_good_day</span>
+</pre></div>
+</div>
+<p>This method requires that all characters are printable and non-whitespace. Otherwise,
+you need to replace <code class="docutils literal notranslate"><span class="pre">LetterAlphabet</span></code> with <code class="docutils literal notranslate"><span class="pre">Alphabet</span></code>.</p>
+<p>Pre-defined sequence types can also be matched between the two packages. For example,
+a scikit-bio DNA sequence without gaps can be converted into a Biotite
+<code class="docutils literal notranslate"><span class="pre">NucleotideSequence</span></code> with:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">biotite.sequence</span><span class="w"> </span><span class="kn">import</span> <span class="n">NucleotideSequence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'ACGGTC'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bt_seq</span> <span class="o">=</span> <span class="n">NucleotideSequence</span><span class="p">(</span><span class="n">ambiguous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bt_seq</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">sk_seq</span><span class="o">.</span><span class="n">to_indices</span><span class="p">(</span><span class="n">bt_seq</span><span class="o">.</span><span class="n">alphabet</span><span class="o">.</span><span class="n">get_symbols</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bt_seq</span>
+<span class="go">NucleotideSequence("ACGGTC", ambiguous=True)</span>
+</pre></div>
+</div>
+<p>You may replace <code class="docutils literal notranslate"><span class="pre">ambiguous=True</span></code> with <code class="docutils literal notranslate"><span class="pre">False</span></code> if you know the sequence doesn’t
+contain degenerate characters (can be checked using <code class="docutils literal notranslate"><span class="pre">sk_seq.has_degenerates()</span></code>).</p>
+<p>Converting a Biotite sequence into a scikit-bio one requires decoding alphabet indices
+back into characters. The following method (available since Biotite 1.7) makes this
+process efficient:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt_seq</span> <span class="o">=</span> <span class="n">NucleotideSequence</span><span class="p">(</span><span class="s1">'ACGGTC'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chars</span> <span class="o">=</span> <span class="n">bt_seq</span><span class="o">.</span><span class="n">alphabet</span><span class="o">.</span><span class="n">decode_multiple_into_bytes</span><span class="p">(</span><span class="n">bt_seq</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sk_seq</span>
+<span class="go">DNA</span>
+<span class="go">--------------------------</span>
+<span class="go">Stats:</span>
+<span class="go">    length: 6</span>
+<span class="go">    has gaps: False</span>
+<span class="go">    has degenerates: False</span>
+<span class="go">    has definites: True</span>
+<span class="go">    GC-content: 66.67%</span>
+<span class="go">--------------------------</span>
+<span class="go">0 ACGGTC</span>
 </pre></div>
 </div>
 </section>
