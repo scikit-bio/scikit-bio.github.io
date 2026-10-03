@@ -871,16 +871,13 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.RNA.definite_chars" title="skbio.sequence.RNA.definite_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">definite_chars</span></code></a></p></td>
 <td><p>Characters representing definite states.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.RNA.degenerate_chars" title="skbio.sequence.RNA.degenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_chars</span></code></a></p></td>
-<td><p>Degenerate characters representing sets of definite characters.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.RNA.degenerate_map" title="skbio.sequence.RNA.degenerate_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_map</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.RNA.degenerate_map" title="skbio.sequence.RNA.degenerate_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_map</span></code></a></p></td>
 <td><p>Mapping of degenerate to definite characters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.RNA.gap_chars" title="skbio.sequence.RNA.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.RNA.gap_chars" title="skbio.sequence.RNA.gap_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gap_chars</span></code></a></p></td>
 <td><p>Characters representing gaps in the sequence.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skbio.sequence.RNA.wildcard_char" title="skbio.sequence.RNA.wildcard_char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skbio.sequence.RNA.wildcard_char" title="skbio.sequence.RNA.wildcard_char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wildcard_char</span></code></a></p></td>
 <td><p>Character representing any other non-gap character in the alphabet.</p></td>
 </tr>
 </tbody>
@@ -892,8 +889,14 @@ nucleic acid sequences: recommendations 1984. Nucleic Acids Res, 13(9), 3021.</p
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.alphabet" title="skbio.sequence.GrammaredSequence.alphabet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alphabet</span></code></a></p></td>
 <td><p>All valid characters in the alphabet.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence.default_write_format" title="skbio.sequence.Sequence.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.canonical_chars" title="skbio.sequence.GrammaredSequence.canonical_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canonical_chars</span></code></a></p></td>
+<td><p>Characters in the conventional core alphabet.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence.default_write_format" title="skbio.sequence.Sequence.default_write_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_write_format</span></code></a></p></td>
 <td><p>Default write format for this object: <code class="docutils literal notranslate"><span class="pre">fasta</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.degenerate_chars" title="skbio.sequence.GrammaredSequence.degenerate_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">degenerate_chars</span></code></a></p></td>
+<td><p>Degenerate characters representing sets of definite characters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.metadata.IntervalMetadataMixin.html#skbio.metadata.IntervalMetadataMixin.interval_metadata" title="skbio.metadata.IntervalMetadataMixin.interval_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_metadata</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">IntervalMetadata</span></code> object containing info about interval features.</p></td>
@@ -1174,11 +1177,6 @@ default gap character during class creation.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="skbio.sequence.RNA.degenerate_chars">
-<span class="sig-name descname"><span class="pre">degenerate_chars</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.RNA.degenerate_chars" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="skbio.sequence.RNA.degenerate_map">
 <span class="sig-name descname"><span class="pre">degenerate_map</span></span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/util/_decorator.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.RNA.degenerate_map" title="Link to this definition">#</a></dt>
 <dd><p>Mapping of degenerate to definite characters.</p>
@@ -1280,7 +1278,6 @@ degenerate character in the alphabet.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.RNA.complement_map"><code class="docutils literal notranslate"><span class="pre">RNA.complement_map</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.RNA.default_gap_char"><code class="docutils literal notranslate"><span class="pre">RNA.default_gap_char</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.RNA.definite_chars"><code class="docutils literal notranslate"><span class="pre">RNA.definite_chars</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.RNA.degenerate_chars"><code class="docutils literal notranslate"><span class="pre">RNA.degenerate_chars</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.RNA.degenerate_map"><code class="docutils literal notranslate"><span class="pre">RNA.degenerate_map</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.RNA.gap_chars"><code class="docutils literal notranslate"><span class="pre">RNA.gap_chars</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skbio.sequence.RNA.wildcard_char"><code class="docutils literal notranslate"><span class="pre">RNA.wildcard_char</span></code></a></li>

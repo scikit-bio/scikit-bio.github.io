@@ -875,15 +875,26 @@ need:</p>
 <a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">grammared</span> <span class="pre">sequences</span></code></a>. That is, each of them has a defined
 alphabet (character set), which typically consists of:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.definite_chars" title="skbio.sequence.GrammaredSequence.definite_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">definite</span> <span class="pre">characters</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">ACGT</span></code>,
-which represent the four canonical nucleotides in a DNA sequence,</p></li>
-<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.degenerate_chars" title="skbio.sequence.GrammaredSequence.degenerate_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">degenerate</span> <span class="pre">characters</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">R</span></code>,
-which represents <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">G</span></code>,</p></li>
-<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.gap_chars" title="skbio.sequence.GrammaredSequence.gap_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">gap</span> <span class="pre">character(s)</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">-</span></code>, and</p></li>
-<li><p>a <a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.wildcard_char" title="skbio.sequence.GrammaredSequence.wildcard_char"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wildcard</span> <span class="pre">character</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">N</span></code>, which
-is also a degenerate character.</p></li>
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.definite_chars" title="skbio.sequence.GrammaredSequence.definite_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">definite</span> <span class="pre">characters</span></code></a>, each representing a
+single sequence state. They include:</p>
+<ul>
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.canonical_chars" title="skbio.sequence.GrammaredSequence.canonical_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">canonical</span> <span class="pre">characters</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">A</span></code>,
+<code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code> and <code class="docutils literal notranslate"><span class="pre">T</span></code> in DNA sequences, which represent the conventional core
+alphabet.</p></li>
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.noncanonical_chars" title="skbio.sequence.GrammaredSequence.noncanonical_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">non-canonical</span> <span class="pre">characters</span></code></a>, such as
+<code class="docutils literal notranslate"><span class="pre">O</span></code> and <code class="docutils literal notranslate"><span class="pre">U</span></code> in protein sequences, which are definite but outside the
+conventional core alphabet.</p></li>
 </ul>
-<p>Use of any of these characters in the sequence data is valid. For example:</p>
+</li>
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.degenerate_chars" title="skbio.sequence.GrammaredSequence.degenerate_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">degenerate</span> <span class="pre">characters</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">R</span></code>,
+which represents <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">G</span></code> in nucleotide sequences.</p></li>
+<li><p><a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.gap_chars" title="skbio.sequence.GrammaredSequence.gap_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">gap</span> <span class="pre">character(s)</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">-</span></code>,</p></li>
+<li><p>a single <a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence.wildcard_char" title="skbio.sequence.GrammaredSequence.wildcard_char"><code class="xref py py-attr docutils literal notranslate"><span class="pre">wildcard</span> <span class="pre">character</span></code></a>, such as <code class="docutils literal notranslate"><span class="pre">N</span></code>
+in nucleotide sequences.</p></li>
+<li><p>Type-specific characters, such as the <a class="reference internal" href="generated/skbio.sequence.Protein.html#skbio.sequence.Protein.stop_chars" title="skbio.sequence.Protein.stop_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stop</span> <span class="pre">character</span></code></a>
+<code class="docutils literal notranslate"><span class="pre">*</span></code> in protein sequences.</p></li>
+</ul>
+<p>Use of any of these characters in the sequence is valid. For example:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">DNA</span><span class="p">(</span><span class="s1">'GCCRCCATGG'</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="s1">'Kozak consensus sequence'</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span>
 <span class="go">DNA</span>
