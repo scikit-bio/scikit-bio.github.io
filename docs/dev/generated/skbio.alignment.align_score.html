@@ -758,11 +758,13 @@ more sequences, the sum-of-pairs (SP) alignment score will be returned.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>alignment</strong><span class="classifier"><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, iterable, or (<a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignPath</span></code></a>, iterable)</span></dt><dd><p>Aligned sequences. Can be any of the following:</p>
+<dt><strong>alignment</strong><span class="classifier"><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, iterable of <a class="reference internal" href="../sequence.html#sequence-like"><span class="std std-ref">sequence-like</span></a>, or</span></dt><dd><p>(AlignPath, iterable of sequence_like)
+Aligned sequences. Can be any of the following:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> instance.</p></li>
-<li><p>List of <em>aligned</em> sequences as raw strings or <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects.</p></li>
-<li><p>Tuple of <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> and the corresponding list of <em>unaligned</em> sequences.</p></li>
+<li><p>Iterable of <em>aligned</em> sequence-like objects.</p></li>
+<li><p>Tuple of <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> and the corresponding iterable of <em>unaligned</em>
+sequence-like objects.</p></li>
 </ul>
 </dd>
 <dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), <a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>, or str</span></dt><dd><p>Score of a substitution. May be two numbers (match, mismatch), a substitution
@@ -774,8 +776,8 @@ matrix, or its name. See <a class="reference internal" href="skbio.alignment.pai
 </dd>
 <dt><strong>free_ends</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default), gaps at the sequence terminals are free from penalization.</p>
 </dd>
-<dt><strong>gap_chars</strong><span class="classifier">iterable of 1-length str, optional</span></dt><dd><p>Character(s) that represent gaps. Only relevant when <code class="docutils literal notranslate"><span class="pre">alignment</span></code> is
-a list of aligned sequences.</p>
+<dt><strong>gap_chars</strong><span class="classifier">iterable of hashable, optional</span></dt><dd><p>Symbols that represent gaps. Only relevant when <code class="docutils literal notranslate"><span class="pre">alignment</span></code> is an iterable
+of aligned sequences.</p>
 </dd>
 </dl>
 </dd>

@@ -734,11 +734,6 @@
 molecular sequences based on IUPAC-defined alphabets (<a class="reference internal" href="generated/skbio.sequence.DNA.html#skbio.sequence.DNA" title="skbio.sequence.DNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNA</span></code></a>, <a class="reference internal" href="generated/skbio.sequence.RNA.html#skbio.sequence.RNA" title="skbio.sequence.RNA"><code class="xref py py-class docutils literal notranslate"><span class="pre">RNA</span></code></a>,
 <a class="reference internal" href="generated/skbio.sequence.Protein.html#skbio.sequence.Protein" title="skbio.sequence.Protein"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protein</span></code></a>), sequences based on custom alphabets (<a class="reference internal" href="generated/skbio.sequence.GrammaredSequence.html#skbio.sequence.GrammaredSequence" title="skbio.sequence.GrammaredSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">GrammaredSequence</span></code></a>),
 and generic/non-biological sequences with no alphabet restrictions (<a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>).</p>
-<p>Sequence data are represented by ASCII codes (0-127) and stored as immutable, contiguous
-arrays of bytes for efficient operations. Sequence objects can optionally carry metadata
-about the whole record, individual positions, and intervals describing features such as
-genes, domains, and other annotated regions. Keeping sequence data and annotations
-together facilitates biologically meaningful analyses within scikit-bio.</p>
 <p>Additionally, this module provides the <a class="reference internal" href="generated/skbio.sequence.GeneticCode.html#skbio.sequence.GeneticCode" title="skbio.sequence.GeneticCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneticCode</span></code></a> class, which translates DNA
 or RNA sequences into protein sequences, and the <a class="reference internal" href="generated/skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a> class,
 which stores scores of substitutions between sequence characters. Submodule
@@ -749,6 +744,10 @@ transition probability matrices.</p>
 scikit-bio.</p>
 <section id="sequence-types">
 <h2>Sequence types<a class="headerlink" href="#sequence-types" title="Link to this heading">#</a></h2>
+<p>Sequence data are represented by ASCII codes (0-127) and stored as immutable, contiguous
+arrays of bytes for efficient operations. Sequence objects can optionally carry metadata
+about the whole record, individual positions, and intervals describing features such as
+genes, domains, and other annotated regions.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sequence</span></code></a></p></td>
@@ -778,7 +777,7 @@ scikit-bio.</p>
 <td><p>Genetic code for translating codons to amino acids.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a></p></td>
-<td><p>Scoring matrix between characters in biological sequences.</p></td>
+<td><p>Scoring matrix between symbols in biological sequences.</p></td>
 </tr>
 </tbody>
 </table>
@@ -816,6 +815,15 @@ scikit-bio.</p>
 </tbody>
 </table>
 </div>
+</section>
+<section id="sequence-like-formats">
+<span id="sequence-like"></span><h2>Sequence-like formats<a class="headerlink" href="#sequence-like-formats" title="Link to this heading">#</a></h2>
+<p>A sequence-like object is a finite, ordered sequence of hashable symbols, including
+scikit-bio <a class="reference internal" href="generated/skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> or its subclasses, str, bytes/bytearray, Python sequences
+(such as tuple/list), and 1-D NumPy arrays. Symbols are not limited to biological
+characters, but can be numbers, words, tuples, or other hashable objects. Supporting
+scikit-bio functions such as <a class="reference internal" href="generated/skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a> can consume these
+inputs directly without converting them to <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> objects.</p>
 </section>
 <section id="tutorial">
 <span id="sequence-tutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
@@ -1456,6 +1464,7 @@ process efficient:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-calculation">Distance calculation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-probability-models">Transition probability models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-classes">Abstract classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-like-formats">Sequence-like formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-sequences">Creating sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-grammar">Sequence grammar</a></li>

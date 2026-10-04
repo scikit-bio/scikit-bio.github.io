@@ -5,7 +5,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Scoring matrix between characters in biological sequences." />
+    <meta name="description" content="Scoring matrix between symbols in biological sequences." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.sequence.SubstitutionMatrix &#8212; scikit-bio 0.7.5-dev documentation</title>
@@ -744,11 +744,11 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="skbio.sequence.SubstitutionMatrix">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">skbio.sequence.</span></span><span class="sig-name descname"><span class="pre">SubstitutionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alphabet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/sequence/_substitution.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix" title="Link to this definition">#</a></dt>
-<dd><p>Scoring matrix between characters in biological sequences.</p>
+<dd><p>Scoring matrix between symbols in biological sequences.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>alphabet</strong><span class="classifier">iterable</span></dt><dd><p>Characters that constitute the alphabet.</p>
+<dt><strong>alphabet</strong><span class="classifier">iterable of hashable</span></dt><dd><p>Symbols that constitute the alphabet.</p>
 </dd>
 <dt><strong>scores</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of shape (n_alphabet, n_alphabet)</span></dt><dd><p>Scores of substitutions from one character (row, or axis=0) to another
 character (column, or axis=1).</p>
@@ -775,10 +775,11 @@ can measure the likelihood that a pair of aligned characters are homologous
 rather than by chance.</p>
 <p>This class provides a generalized interface for substitution matrices. The
 alphabet usually consists of individual characters, such as nucleotides or
-amino acids, but it can be generalized to any iterable of scalars (numbers,
-strings, etc.). Therefore, you may use this class to construct substitution
-matrices of complicated biological units (such as codons or non-canonical
-amino acids). The score matrix may be symmetric, as many existing matrices
+amino acids, but it may contain arbitrary hashable Python objects such as
+words, tokens, numbers, tuples, or other discrete symbols. Therefore, you may use
+this class to construct substitution matrices of complicated biological units (such
+as codons or non-canonical amino acids). The score matrix may be symmetric, as many
+existing matrices
 are, or asymmetric, where the score of one character substituted by another
 is unequal to the other way around. Only square matrices (i.e., numbers of
 rows and columns are equal) are supported.</p>
@@ -868,9 +869,9 @@ code point 127 is valid.</p>
 <span class="go">('ä', 'ë', 'ï', 'ö', 'ü')</span>
 </pre></div>
 </div>
-<p>Any iterables of scalars are valid alphabets, granting flexibility in working with
-non-character data types. For example, one can include words or tokens in a
-substitution matrix.</p>
+<p>Any iterable of hashable objects is a valid alphabet, granting flexibility in
+working with non-character data types. For example, one can include words or
+tokens in a substitution matrix.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tokens</span> <span class="o">=</span> <span class="s1">'lorem ipsum dolor sit amet'</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sm</span> <span class="o">=</span> <span class="n">SubstitutionMatrix</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -1033,7 +1034,7 @@ substitution matrix.</p>
 <dt class="sig sig-object py" id="skbio.sequence.SubstitutionMatrix.alphabet">
 <span class="sig-name descname"><span class="pre">alphabet</span></span><a class="headerlink" href="#skbio.sequence.SubstitutionMatrix.alphabet" title="Link to this definition">#</a></dt>
 <dd><p>Alphabet of the substitution matrix.</p>
-<p>Each element (character) corresponds to one row/column in the matrix.</p>
+<p>Each element (symbol) corresponds to one row/column in the matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">

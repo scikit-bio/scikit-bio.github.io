@@ -762,18 +762,17 @@
 <h1>skbio.alignment.AlignPath.from_aligned<a class="headerlink" href="#skbio-alignment-alignpath-from-aligned" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.alignment.AlignPath.from_aligned">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">from_aligned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aln</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L499"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.from_aligned" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">AlignPath.</span></span><span class="sig-name descname"><span class="pre">from_aligned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aln</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_path.py#L501"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.AlignPath.from_aligned" title="Link to this definition">#</a></dt>
 <dd><p>Create an alignment path from aligned sequences.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>aln</strong><span class="classifier">iterable of <a class="reference internal" href="skbio.sequence.Sequence.html#skbio.sequence.Sequence" title="skbio.sequence.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>, str or sequence</span></dt><dd><p>Aligned sequences. Can be skbio sequences, strings or sequences of any
-scalars.</p>
+<dt><strong>aln</strong><span class="classifier">iterable of <a class="reference internal" href="../sequence.html#sequence-like"><span class="std std-ref">sequence-like</span></a></span></dt><dd><p>Aligned sequences.</p>
 </dd>
-<dt><strong>gap_chars</strong><span class="classifier">str or container, optional</span></dt><dd><p>Characters that should be treated as gaps in aligned sequences. Default
-is “-“.</p>
+<dt><strong>gap_chars</strong><span class="classifier">iterable of hashable, optional</span></dt><dd><p>Symbols that should be treated as gaps in aligned sequences. Default is
+“-“.</p>
 </dd>
-<dt><strong>starts</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of int of shape (2,), optional</span></dt><dd><p>Start positions of sequences. If omitted, will be all zeros.</p>
+<dt><strong>starts</strong><span class="classifier"><a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a> of int of shape (n_sequences,), optional</span></dt><dd><p>Start positions of sequences. If omitted, will be all zeros.</p>
 </dd>
 </dl>
 </dd>
