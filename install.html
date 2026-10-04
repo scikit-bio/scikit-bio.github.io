@@ -568,10 +568,12 @@
 </div>
 <p>See the <a class="reference external" href="docs/latest/performance.html#compute-engines">compute engine guide</a> for details.</p>
 <p>Some functions’ Numba engines support GPU computing if available. To enable GPU computing via Numba, you need to install an architecture-specific Numba extension that matches your GPU device:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span><span class="o">-</span><span class="n">cuda</span>  <span class="c1"># for NVIDIA CUDA GPUs</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span><span class="o">-</span><span class="n">hip</span>   <span class="c1"># for AMD ROCm GPUs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># numba-cuda-mlir also needs the CUDA toolkit to be installed</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">mlir</span>  <span class="c1"># for NVIDIA CUDA GPUs</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span><span class="o">-</span><span class="n">hip</span>        <span class="c1"># for AMD ROCm GPUs</span>
 </pre></div>
 </div>
+<p>The older NVIDIA extension, numba-cuda, is still supported but is deprecated and requires NumPy 2.4 or earlier.</p>
 <p>see the <a class="reference external" href="docs/latest/performance.html#gpu-computing">GPU computing guide</a>. for details.</p>
 </section>
 <section id="binary-acceleration">
