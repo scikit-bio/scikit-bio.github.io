@@ -750,22 +750,17 @@
 <dt class="sig sig-object py" id="skbio.alignment.align_score">
 <span class="sig-prename descclassname"><span class="pre">skbio.alignment.</span></span><span class="sig-name descname"><span class="pre">align_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alignment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">-1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">free_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-.'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/alignment/_score.py#L23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.alignment.align_score" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the alignment score of two or more aligned sequences.</p>
-<p>For two sequences, their pairwise alignment score will be calculated. For three or
-more sequences, the sum-of-pairs (SP) alignment score will be returned.</p>
+<p>For two sequences, the pairwise alignment score is calculated. For three or more
+sequences, the sum-of-pairs (SP) alignment score is returned.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.7.0.</span></p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>alignment</strong><span class="classifier"><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, iterable of <a class="reference internal" href="../sequence.html#sequence-like"><span class="std std-ref">sequence-like</span></a>, or</span></dt><dd><p>(AlignPath, iterable of sequence_like)
-Aligned sequences. Can be any of the following:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> instance.</p></li>
-<li><p>Iterable of <em>aligned</em> sequence-like objects.</p></li>
-<li><p>Tuple of <code class="docutils literal notranslate"><span class="pre">AlignPath</span></code> and the corresponding iterable of <em>unaligned</em>
-sequence-like objects.</p></li>
-</ul>
+<dt><strong>alignment</strong><span class="classifier"><a class="reference internal" href="../alignment.html#alignment-like"><span class="std std-ref">alignment-like</span></a></span></dt><dd><p>Alignment to score. Can be a <a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, a sequence of equal-length,
+aligned <a class="reference internal" href="../sequence.html#sequence-like"><span class="std std-ref">sequence-like</span></a> objects, or an <a class="reference internal" href="skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlignPath</span></code></a>
+paired with the corresponding sequence of unaligned sequence-like objects.</p>
 </dd>
 <dt><strong>sub_score</strong><span class="classifier">tuple of (float, float), <a class="reference internal" href="skbio.sequence.SubstitutionMatrix.html#skbio.sequence.SubstitutionMatrix" title="skbio.sequence.SubstitutionMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubstitutionMatrix</span></code></a>, or str</span></dt><dd><p>Score of a substitution. May be two numbers (match, mismatch), a substitution
 matrix, or its name. See <a class="reference internal" href="skbio.alignment.pair_align.html#skbio.alignment.pair_align" title="skbio.alignment.pair_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">pair_align</span></code></a> for details. Default is

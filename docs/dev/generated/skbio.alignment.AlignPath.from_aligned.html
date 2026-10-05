@@ -767,7 +767,7 @@
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>aln</strong><span class="classifier">iterable of <a class="reference internal" href="../sequence.html#sequence-like"><span class="std std-ref">sequence-like</span></a></span></dt><dd><p>Aligned sequences.</p>
+<dt><strong>aln</strong><span class="classifier"><a class="reference internal" href="skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularMSA</span></code></a> or iterable of equal-length <a class="reference internal" href="../sequence.html#sequence-like"><span class="std std-ref">sequence-like</span></a></span></dt><dd><p>Aligned sequences. All sequences must have equal length.</p>
 </dd>
 <dt><strong>gap_chars</strong><span class="classifier">iterable of hashable, optional</span></dt><dd><p>Symbols that should be treated as gaps in aligned sequences. Default is
 “-“.</p>
@@ -791,8 +791,9 @@
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method is more general but less efficient than <code class="docutils literal notranslate"><span class="pre">from_tabular</span></code>. It works
-with various sequence formats.</p>
+<p>This method consumes aligned sequences, i.e., sequences with gaps inserted to
+make them equal in length. It is more general but less efficient than
+<a class="reference internal" href="skbio.alignment.AlignPath.from_tabular.html#skbio.alignment.AlignPath.from_tabular" title="skbio.alignment.AlignPath.from_tabular"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_tabular</span></code></a>.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio.alignment</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlignPath</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aln</span> <span class="o">=</span> <span class="p">[</span>

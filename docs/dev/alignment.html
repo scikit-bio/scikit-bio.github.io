@@ -861,6 +861,20 @@ alignments using scikit-bio.</p>
 </table>
 </div>
 </section>
+<section id="alignment-like-formats">
+<span id="alignment-like"></span><h2>Alignment-like formats<a class="headerlink" href="#alignment-like-formats" title="Link to this heading">#</a></h2>
+<p>Some scikit-bio functions accept <strong>alignment-like</strong> inputs. An alignment-like object
+represents two or more aligned sequences. It may be:</p>
+<ul class="simple">
+<li><p>a <a class="reference internal" href="generated/skbio.alignment.TabularMSA.html#skbio.alignment.TabularMSA" title="skbio.alignment.TabularMSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularMSA</span></code></a>, or</p></li>
+<li><p>an ordered collection (e.g., list or tuple) of equal-length <a class="reference internal" href="sequence.html#sequence-like"><span class="std std-ref">sequence-like</span></a> that are already aligned (i.e., with gaps inserted), or</p></li>
+<li><p>a tuple of an <a class="reference internal" href="generated/skbio.alignment.AlignPath.html#skbio.alignment.AlignPath" title="skbio.alignment.AlignPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlignPath</span></code></a> together with the corresponding ordered collection
+of original, unaligned sequence-like objects.</p></li>
+</ul>
+<p>The latter path-based form separates alignment structure from sequence content and can
+avoid constructing gapped sequence copies. Use <code class="docutils literal notranslate"><span class="pre">TabularMSA</span></code> when labels, metadata, or
+MSA-specific operations are needed.</p>
+</section>
 <section id="tutorial">
 <span id="alignment-tutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
 <p>Sequence alignment is the process of arranging biological sequences such that they
@@ -1270,6 +1284,7 @@ consensus sequence of the alignment:</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-statistics">Alignment statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functionality">Deprecated functionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-like-formats">Alignment-like formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pairwise alignment</a></li>
