@@ -1015,12 +1015,17 @@ be read into a <code class="docutils literal notranslate"><span class="pre">Tabu
 </section>
 <section id="format-parameters">
 <h2>Format Parameters<a class="headerlink" href="#format-parameters" title="Link to this heading">#</a></h2>
-<p>The only supported format parameter is <code class="docutils literal notranslate"><span class="pre">constructor</span></code>, which specifies the
+<p>The main format parameter is <code class="docutils literal notranslate"><span class="pre">constructor</span></code>, which specifies the
 type of in-memory sequence object to read each aligned sequence into. This must
 be a subclass of <code class="docutils literal notranslate"><span class="pre">GrammaredSequence</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">DNA</span></code>, <code class="docutils literal notranslate"><span class="pre">RNA</span></code>, <code class="docutils literal notranslate"><span class="pre">Protein</span></code>)
 and is a required format parameter. For example, if you know that the Stockholm
 file you’re reading contains DNA sequences, you would pass <code class="docutils literal notranslate"><span class="pre">constructor=DNA</span></code>
 to the reader call.</p>
+<p>Any additional keyword arguments, such as <code class="docutils literal notranslate"><span class="pre">lowercase</span></code>, are passed to the
+sequence constructor. For example, <code class="docutils literal notranslate"><span class="pre">lowercase=True</span></code> allows a file containing
+lowercase sequence characters to be read. If <code class="docutils literal notranslate"><span class="pre">lowercase</span></code> is a string, the
+resulting boolean positional metadata column cannot be written back to
+Stockholm format.</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
