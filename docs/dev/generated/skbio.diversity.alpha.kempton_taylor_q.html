@@ -798,9 +798,12 @@ is the number of individuals.</p>
 <dd class="field-odd"><dl>
 <dt><strong>counts</strong><span class="classifier">1-D <a class="reference internal" href="../table.html#array-like"><span class="std std-ref">array-like</span></a>, int</span></dt><dd><p>Vector of counts.</p>
 </dd>
-<dt><strong>lower_quantile</strong><span class="classifier">float, optional</span></dt><dd><p>Lower bound of the interquantile range. Defaults to lower quartile.</p>
+<dt><strong>lower_quantile</strong><span class="classifier">float, optional</span></dt><dd><p>Lower bound of the interquantile range. Must be greater than or equal
+to 0, and smaller than 1. Defaults to lower quartile (0.25).</p>
 </dd>
-<dt><strong>upper_quantile</strong><span class="classifier">float, optional</span></dt><dd><p>Upper bound of the interquantile range. Defaults to upper quartile.</p>
+<dt><strong>upper_quantile</strong><span class="classifier">float, optional</span></dt><dd><p>Upper bound of the interquantile range. Must be greater than
+<code class="docutils literal notranslate"><span class="pre">lower_quantile</span></code>, and smaller than or equal to 1. Defaults to upper
+quartile (0.75).</p>
 </dd>
 </dl>
 </dd>
@@ -810,8 +813,16 @@ is the number of individuals.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If the quantiles do not satisfy
+<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">lower_quantile</span> <span class="pre">&lt;</span> <span class="pre">upper_quantile</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code>.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <p class="rubric">Notes</p>
+<p>This function returns NaN if the interquantile range is empty or constant.</p>
 <p>The index is defined in <a class="reference internal" href="#r6eb5b2f88398-1" id="id1">[1]</a>. The implementation here is based on the
 description given in the SDR-IV online manual <a class="reference internal" href="#r6eb5b2f88398-2" id="id2">[2]</a>.</p>
 <p>The implementation provided here differs slightly from the results given in
