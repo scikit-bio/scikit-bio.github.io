@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Numba kernels over a BPTree (skbio.tree.bp.numba) &#8212; scikit-bio 0.7.5-dev documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=9289ee13" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=31e155d6"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
+            </script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-6636235-9"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-6636235-9');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generated/skbio.tree.bp.numba';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit.bio/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="../../../generated/skbio.tree.bp.numba.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="skbio.tree.bp.numba.cpu" href="skbio.tree.bp.numba.cpu.html" />
+    <link rel="prev" title="skbio.tree.BPTree.to_device" href="skbio.tree.BPTree.to_device.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.7.5-dev" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="scikit-bio 0.7.5-dev documentation"/>
+    <img src="../_static/logo_inv.svg" class="logo__image only-dark pst-js-only" alt="scikit-bio 0.7.5-dev documentation"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../learn.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../about.html">
+    About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../io.html">
+    Input and Output (skbio.io)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../sequence.html">
+    Biological Sequences (skbio.sequence)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../alignment.html">
+    Sequence Alignments (skbio.alignment)
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../tree.html">
+    Trees and Phylogenetics (skbio.tree)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../diversity.html">
+    Community Diversity (skbio.diversity)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../stats.html">
+    Multivariate Statistics (skbio.stats)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../embedding.html">
+    Biological Embeddings (skbio.embedding)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../table.html">
+    Data Table (skbio.table)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../metadata.html">
+    Metadata (skbio.metadata)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../workflow.html">
+    Workflow Construction (skbio.workflow)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../util.html">
+    Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../config.html">
+    Configuration Options
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance.html">
+    Computation and Performance
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../learn.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../contribute.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/discussions">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/scikit-bio/scikit-bio/blob/main/CHANGELOG.md">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="../../../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../io.html">
+    Input and Output (skbio.io)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../sequence.html">
+    Biological Sequences (skbio.sequence)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../alignment.html">
+    Sequence Alignments (skbio.alignment)
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../tree.html">
+    Trees and Phylogenetics (skbio.tree)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../diversity.html">
+    Community Diversity (skbio.diversity)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../stats.html">
+    Multivariate Statistics (skbio.stats)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../embedding.html">
+    Biological Embeddings (skbio.embedding)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../table.html">
+    Data Table (skbio.table)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../metadata.html">
+    Metadata (skbio.metadata)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../workflow.html">
+    Workflow Construction (skbio.workflow)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../util.html">
+    Utilities for Developers (skbio.util)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../config.html">
+    Configuration Options
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance.html">
+    Computation and Performance
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-bio/scikit-bio" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/scikitbio" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.TreeNode.html">skbio.tree.TreeNode</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.upgma.html">skbio.tree.upgma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.nj.html">skbio.tree.nj</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.gme.html">skbio.tree.gme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.bme.html">skbio.tree.bme</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.nni.html">skbio.tree.nni</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.rf_dists.html">skbio.tree.rf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.wrf_dists.html">skbio.tree.wrf_dists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.path_dists.html">skbio.tree.path_dists</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.majority_rule.html">skbio.tree.majority_rule</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.BPTree.html">skbio.tree.BPTree</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Numba kernels over a BPTree (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree.bp.numba</span></code>)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.bp.numba.cpu.html">skbio.tree.bp.numba.cpu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.bp.numba.gpu.html">skbio.tree.bp.numba.gpu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.bp.numba.Navigation.html">skbio.tree.bp.numba.Navigation</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../tree.html" class="nav-link">Trees and Phylogenetics (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree</span></code>)</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Numba kernels over a BPTree (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree.bp.numba</span></code>)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="numba-kernels-over-a-bptree-skbio-tree-bp-numba">
+<span id="module-skbio.tree.bp.numba"></span><h1>Numba kernels over a BPTree (<a class="reference internal" href="#module-skbio.tree.bp.numba" title="skbio.tree.bp.numba"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree.bp.numba</span></code></a>)<a class="headerlink" href="#numba-kernels-over-a-bptree-skbio-tree-bp-numba" title="Link to this heading">#</a></h1>
+<p>The navigation operations of <a class="reference internal" href="skbio.tree.BPTree.html#skbio.tree.BPTree" title="skbio.tree.BPTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">BPTree</span></code></a> as functions that can
+be called from your own compiled code: a Numba <code class="docutils literal notranslate"><span class="pre">&#64;njit</span></code> function on the CPU,
+or a <code class="docutils literal notranslate"><span class="pre">&#64;cuda.jit</span></code> kernel on a GPU (<code class="docutils literal notranslate"><span class="pre">numba_cuda_mlir.cuda</span></code> or <code class="docutils literal notranslate"><span class="pre">numba.cuda</span></code> on
+NVIDIA, <code class="docutils literal notranslate"><span class="pre">numba.hip</span></code> on AMD).</p>
+<p>A method such as <code class="docutils literal notranslate"><span class="pre">bp.parent(i)</span></code>, called from Python, costs far more in
+interpreter overhead than the navigation itself, and a batch method (e.g.
+<a class="reference internal" href="skbio.tree.BPTree.lca_batch.html#skbio.tree.BPTree.lca_batch" title="skbio.tree.BPTree.lca_batch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lca_batch</span></code></a>) spreads that overhead only over
+independent queries, answered in one call. Neither expresses a computation
+whose steps depend on each other, e.g. the lowest common ancestor of a <em>set</em> of
+nodes, or a walk to the root. Inside a compiled loop, a navigation function
+costs only the operation itself, and Python is not involved until the loop
+returns.</p>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.bp.numba.cpu.html#skbio.tree.bp.numba.cpu" title="skbio.tree.bp.numba.cpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpu</span></code></a></p></td>
+<td><p>The navigation functions compiled for the CPU.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.bp.numba.gpu.html#skbio.tree.bp.numba.gpu" title="skbio.tree.bp.numba.gpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu</span></code></a></p></td>
+<td><p>The navigation functions compiled as device functions of a GPU.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.bp.numba.Navigation.html#skbio.tree.bp.numba.Navigation" title="skbio.tree.bp.numba.Navigation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Navigation</span></code></a></p></td>
+<td><p>The navigation functions of a BPTree, for Numba code.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<p>The functions are compiled per target, and a tree’s arrays are exported per
+tree, so a kernel is written once and runs on any tree:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="skbio.tree.bp.numba.cpu.html#skbio.tree.bp.numba.cpu" title="skbio.tree.bp.numba.cpu"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpu</span></code></a> (or <a class="reference internal" href="skbio.tree.bp.numba.gpu.html#skbio.tree.bp.numba.gpu" title="skbio.tree.bp.numba.gpu"><code class="xref py py-func docutils literal notranslate"><span class="pre">gpu</span></code></a>) returns the navigation functions as a named
+tuple, conventionally <code class="docutils literal notranslate"><span class="pre">nav</span></code>. Your kernel calls them as <code class="docutils literal notranslate"><span class="pre">nav.parent(T,</span> <span class="pre">i)</span></code>.</p></li>
+<li><p><a class="reference internal" href="skbio.tree.BPTree.numba_arrays.html#skbio.tree.BPTree.numba_arrays" title="skbio.tree.BPTree.numba_arrays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BPTree.numba_arrays()</span></code></a> exports a
+tree’s arrays as <code class="docutils literal notranslate"><span class="pre">T</span></code>, which is passed to the kernel and on to each
+function. Node attributes are separate arrays:
+<a class="reference internal" href="skbio.tree.BPTree.html#skbio.tree.BPTree.lengths" title="skbio.tree.BPTree.lengths"><code class="xref py py-attr docutils literal notranslate"><span class="pre">lengths</span></code></a> and <a class="reference internal" href="skbio.tree.BPTree.html#skbio.tree.BPTree.edges" title="skbio.tree.BPTree.edges"><code class="xref py py-attr docutils literal notranslate"><span class="pre">edges</span></code></a>.</p></li>
+<li><p>Nodes are positions in the parentheses (their opening parenthesis), as for
+the <code class="docutils literal notranslate"><span class="pre">BPTree</span></code> methods. <a class="reference internal" href="skbio.tree.BPTree.tip_positions.html#skbio.tree.BPTree.tip_positions" title="skbio.tree.BPTree.tip_positions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tip_positions</span></code></a> and
+<a class="reference internal" href="skbio.tree.BPTree.positions.html#skbio.tree.BPTree.positions" title="skbio.tree.BPTree.positions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">positions</span></code></a> give the positions of the tips and of
+named nodes, and <a class="reference internal" href="skbio.tree.BPTree.name.html#skbio.tree.BPTree.name" title="skbio.tree.BPTree.name"><code class="xref py py-meth docutils literal notranslate"><span class="pre">name</span></code></a> maps a position back.</p></li>
+</ol>
+<p>The lowest common ancestor of each sample’s tips, where sample <code class="docutils literal notranslate"><span class="pre">s</span></code> owns
+<code class="docutils literal notranslate"><span class="pre">tips[offsets[s]:offsets[s</span> <span class="pre">+</span> <span class="pre">1]]</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">BPTree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skbio.tree.bp</span><span class="w"> </span><span class="kn">import</span> <span class="n">numba</span> <span class="k">as</span> <span class="n">bpn</span>
+
+<span class="n">nav</span> <span class="o">=</span> <span class="n">bpn</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+
+<span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_lcas</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tips</span><span class="p">,</span> <span class="n">offsets</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">offsets</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="n">offsets</span><span class="p">[</span><span class="n">s</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">offsets</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">offsets</span><span class="p">[</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]):</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">nav</span><span class="o">.</span><span class="n">lca</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">tips</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="n">bp</span> <span class="o">=</span> <span class="n">BPTree</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">"((a:1,b:2)c:3,(d:4,e:5)f:6)root;"</span><span class="p">])</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">positions</span><span class="p">([</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">])</span>
+<span class="n">offsets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>  <span class="c1"># sample 0 owns a and b; sample 1, b, d and e</span>
+<span class="n">lcas</span> <span class="o">=</span> <span class="n">sample_lcas</span><span class="p">(</span><span class="n">bp</span><span class="o">.</span><span class="n">numba_arrays</span><span class="p">(),</span> <span class="n">tips</span><span class="p">,</span> <span class="n">offsets</span><span class="p">)</span>
+<span class="p">[</span><span class="n">bp</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lcas</span><span class="p">]</span>  <span class="c1"># ['c', 'root']</span>
+</pre></div>
+</div>
+<p>The same on a GPU: <code class="docutils literal notranslate"><span class="pre">T</span></code> is uploaded once and cached on the tree, and the
+kernel’s other arrays must be on the device too. <code class="docutils literal notranslate"><span class="pre">cuda.to_device</span></code> copies a
+NumPy array there, and <code class="docutils literal notranslate"><span class="pre">cuda.as_cuda_array</span></code> wraps a CuPy array or a PyTorch
+tensor on the GPU without a copy (but see the warnings below on PyTorch). With
+the deprecated numba-cuda instead of numba-cuda-mlir, import <code class="docutils literal notranslate"><span class="pre">cuda</span></code> from
+<code class="docutils literal notranslate"><span class="pre">numba</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numba_cuda_mlir</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuda</span>
+
+<span class="n">gnav</span> <span class="o">=</span> <span class="n">bpn</span><span class="o">.</span><span class="n">gpu</span><span class="p">(</span><span class="n">cuda</span><span class="p">)</span>
+
+<span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_lcas_gpu</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tips</span><span class="p">,</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="n">offsets</span><span class="p">[</span><span class="n">s</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">offsets</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">offsets</span><span class="p">[</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]):</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">gnav</span><span class="o">.</span><span class="n">lca</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">tips</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">offsets</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">device_array</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">)</span>
+<span class="n">threads</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">blocks</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">threads</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">threads</span>
+<span class="n">sample_lcas_gpu</span><span class="p">[</span><span class="n">blocks</span><span class="p">,</span> <span class="n">threads</span><span class="p">](</span>
+    <span class="n">bp</span><span class="o">.</span><span class="n">numba_arrays</span><span class="p">(</span><span class="n">gpu</span><span class="o">=</span><span class="n">cuda</span><span class="p">),</span> <span class="n">cuda</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">tips</span><span class="p">),</span> <span class="n">cuda</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">offsets</span><span class="p">),</span> <span class="n">out</span>
+<span class="p">)</span>
+<span class="n">lcas</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">copy_to_host</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="conventions">
+<h2>Conventions<a class="headerlink" href="#conventions" title="Link to this heading">#</a></h2>
+<p>Each function takes <code class="docutils literal notranslate"><span class="pre">T</span></code> first, then the arguments of the <code class="docutils literal notranslate"><span class="pre">BPTree</span></code> method
+of the same name, and returns what that method returns, except that:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">is_tip</span></code> and <code class="docutils literal notranslate"><span class="pre">is_ancestor</span></code> return a boolean;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code> takes its <code class="docutils literal notranslate"><span class="pre">tips</span></code> argument positionally: <code class="docutils literal notranslate"><span class="pre">count(T,</span> <span class="pre">i,</span> <span class="pre">tips)</span></code>.</p></li>
+</ul>
+<p>The sentinels are those of the methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parent</span></code> of the root is -1;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first_child</span></code>, <code class="docutils literal notranslate"><span class="pre">last_child</span></code>, <code class="docutils literal notranslate"><span class="pre">next_sibling</span></code> and <code class="docutils literal notranslate"><span class="pre">previous_sibling</span></code>
+return 0 when there is no such node. 0 is the root’s position, which is
+never a child or a sibling, so the value is unambiguous, but it is a
+position;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level_ancestor</span></code> returns -1 for <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code>, and the root for a <code class="docutils literal notranslate"><span class="pre">d</span></code>
+beyond the node’s depth: it stops at the root rather than signal that it
+overshot;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minselect</span></code> returns -1 when there is no <code class="docutils literal notranslate"><span class="pre">q</span></code>-th minimum, including for
+<code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">&lt;</span> <span class="pre">1</span></code> and for an empty range (<code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&gt;</span> <span class="pre">j</span></code>), where <code class="docutils literal notranslate"><span class="pre">mincount</span></code> returns 0;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preorder_select</span></code> and <code class="docutils literal notranslate"><span class="pre">postorder_select</span></code> return -1 for a rank outside
+<code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">T.size</span> <span class="pre">//</span> <span class="pre">2</span></code> (the number of nodes);</p></li>
+<li><p>every function taking positions returns -1 for a position outside
+<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">T.size)</span></code> (<code class="docutils literal notranslate"><span class="pre">is_tip</span></code> and <code class="docutils literal notranslate"><span class="pre">is_ancestor</span></code> return False) rather than
+read outside the tree’s arrays, as the methods do. <code class="docutils literal notranslate"><span class="pre">mincount</span></code> and
+<code class="docutils literal notranslate"><span class="pre">minselect</span></code> return -1 for it too. So -1 passed from one function to
+another, e.g. <code class="docutils literal notranslate"><span class="pre">nav.depth(T,</span> <span class="pre">nav.parent(T,</span> <span class="pre">0))</span></code>, gives -1 again.</p></li>
+</ul>
+</section>
+<section id="warnings">
+<h2>Warnings<a class="headerlink" href="#warnings" title="Link to this heading">#</a></h2>
+<p>Test a result for its sentinel before passing it on where the sentinel is 0:
+0 is the root, so <code class="docutils literal notranslate"><span class="pre">nav.first_child(T,</span> <span class="pre">nav.first_child(T,</span> <span class="pre">tip))</span></code> returns the
+root’s first child rather than “none”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">nav</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>          <span class="c1"># i is not the root</span>
+    <span class="o">...</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">nav</span><span class="o">.</span><span class="n">first_child</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>           <span class="c1"># i is not a tip</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>A kernel runs on a stream of the Numba GPU module, not on one of the library
+that made its arrays. CuPy tells Numba which stream produced an array, so the
+kernel waits for it, but PyTorch does not: a kernel can read a tensor before
+the work queued on PyTorch’s stream has written it. Before launching a kernel
+on PyTorch tensors, wait for that stream, e.g. with
+<code class="docutils literal notranslate"><span class="pre">torch.cuda.current_stream().synchronize()</span></code>. <code class="docutils literal notranslate"><span class="pre">T</span></code> itself needs no wait.</p>
+<p><code class="docutils literal notranslate"><span class="pre">T</span></code> is opaque: pass it through, but do not rely on its fields, which are
+the tree’s index and may change between versions. The exception is
+<code class="docutils literal notranslate"><span class="pre">T.size</span></code>, the number of parentheses.</p>
+<p>The first call of a kernel compiles it, together with the functions it
+calls, which takes far longer than running it, the more so for <code class="docutils literal notranslate"><span class="pre">lca</span></code>,
+<code class="docutils literal notranslate"><span class="pre">rmq</span></code> and the operations built on them. Numba compiles a kernel per
+argument type, not per tree, so later trees reuse it.</p>
+<p>Numba is an optional dependency: this module imports without it, and
+<a class="reference internal" href="skbio.tree.bp.numba.cpu.html#skbio.tree.bp.numba.cpu" title="skbio.tree.bp.numba.cpu"><code class="xref py py-func docutils literal notranslate"><span class="pre">cpu</span></code></a> and <a class="reference internal" href="skbio.tree.bp.numba.gpu.html#skbio.tree.bp.numba.gpu" title="skbio.tree.bp.numba.gpu"><code class="xref py py-func docutils literal notranslate"><span class="pre">gpu</span></code></a> raise <code class="docutils literal notranslate"><span class="pre">ImportError</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="skbio.tree.BPTree.to_device.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">skbio.tree.BPTree.to_device</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skbio.tree.bp.numba.cpu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">skbio.tree.bp.numba.cpu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conventions">Conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warnings">Warnings</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2014-2026, scikit-bio development team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

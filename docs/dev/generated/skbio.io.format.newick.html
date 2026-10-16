@@ -666,6 +666,7 @@
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.fastq.html">FASTQ format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.fastq</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.genbank.html">GenBank format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.genbank</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.gff3.html">GFF3 format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.gff3</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skbio.io.format.jplace.html">jplace format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.jplace</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.lsmat.html">Labeled square matrix format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.lsmat</span></code>)</a></li>
 <li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Newick format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.newick</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skbio.io.format.ordination.html">Ordination results format (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.io.format.ordination</span></code>)</a></li>
@@ -767,6 +768,10 @@ specification on June 26, 1986 <a class="reference internal" href="#re54891b5948
 <tr class="row-even"><td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p><a class="reference internal" href="skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree.TreeNode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p><a class="reference internal" href="skbio.tree.BPTree.html#skbio.tree.BPTree" title="skbio.tree.BPTree"><code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree.BPTree</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -915,6 +920,24 @@ converted to spaces. This is useful when reading the output of an external
 program in which the underscores were not escaped. This parameter only affects
 <cite>read</cite> operations. It does not exist for <cite>write</cite> operations; they will always
 properly escape underscores.</p>
+<section id="balanced-parentheses-trees">
+<h3>Balanced parentheses trees<a class="headerlink" href="#balanced-parentheses-trees" title="Link to this heading">#</a></h3>
+<p>In addition to <a class="reference internal" href="skbio.tree.TreeNode.html#skbio.tree.TreeNode" title="skbio.tree.TreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeNode</span></code></a>, this format reads and writes
+<a class="reference internal" href="skbio.tree.BPTree.html#skbio.tree.BPTree" title="skbio.tree.BPTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">BPTree</span></code></a>, the succinct balanced-parentheses representation
+intended for very large trees. Reading and writing a <code class="docutils literal notranslate"><span class="pre">BPTree</span></code> never
+materializes a <code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> (or any other per-node object): the parenthesis,
+name, and length arrays are built directly, preserving <code class="docutils literal notranslate"><span class="pre">BPTree</span></code>’s memory
+scalability. For throughput on trees with millions to billions of nodes, the
+<code class="docutils literal notranslate"><span class="pre">BPTree</span></code> reader and writer are backed by a compiled (Cython) implementation
+in <code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree.bp</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BPTree</span></code> reader uses its own compiled newick scanner rather
+than the tokenizer described above, but it honors <code class="docutils literal notranslate"><span class="pre">convert_underscores</span></code>
+the same way (default <code class="docutils literal notranslate"><span class="pre">True</span></code>): underscores in unquoted labels are read as
+spaces unless <code class="docutils literal notranslate"><span class="pre">convert_underscores=False</span></code> is passed.</p>
+</div>
+</section>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
@@ -1029,7 +1052,10 @@ properly escape underscores.</p>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-parameters">Format Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-parameters">Format Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balanced-parentheses-trees">Balanced parentheses trees</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>

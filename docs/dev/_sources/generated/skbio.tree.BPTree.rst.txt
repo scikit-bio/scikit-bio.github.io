@@ -1,0 +1,740 @@
+﻿
+
+
+skbio.tree.BPTree
+=================
+
+
+
+
+
+
+
+   
+
+   
+
+   
+      
+   
+
+   
+
+   
+      
+   
+
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+      
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+
+
+
+
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+   
+      
+         
+      
+   
+
+
+
+
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+   
+      
+   
+
+
+
+
+
+.. currentmodule:: skbio.tree
+
+.. autoclass:: BPTree
+
+
+
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BPTree.data
+      ~BPTree.default_write_format
+      ~BPTree.edges
+      ~BPTree.lengths
+   
+
+   
+   
+
+   
+
+   .. rubric:: Tree IO
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.read
+      ~BPTree.write
+      ~BPTree.to_npz
+      ~BPTree.from_npz
+
+   .. rubric:: Tree navigation
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.root
+      ~BPTree.parent
+      ~BPTree.first_child
+      ~BPTree.last_child
+      ~BPTree.next_sibling
+      ~BPTree.previous_sibling
+      ~BPTree.lca
+      ~BPTree.is_ancestor
+      ~BPTree.deepest_node
+
+   .. rubric:: Tree traversal
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.preorder_rank
+      ~BPTree.postorder_rank
+      ~BPTree.preorder_select
+      ~BPTree.postorder_select
+      ~BPTree.level_ancestor
+      ~BPTree.level_next
+
+   .. rubric:: Tree analysis
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.is_tip
+      ~BPTree.depth
+      ~BPTree.height
+      ~BPTree.count
+
+   .. rubric:: Batch operations
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.close_batch
+      ~BPTree.parent_batch
+      ~BPTree.lca_batch
+      ~BPTree.level_ancestor_batch
+      ~BPTree.cophenet
+
+   .. rubric:: Node positions and compiled kernels
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.tip_positions
+      ~BPTree.positions
+      ~BPTree.name
+      ~BPTree.numba_arrays
+
+   .. rubric:: Tree manipulation
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.shear
+      ~BPTree.collapse
+
+   .. rubric:: Tree conversion
+
+   .. autosummary::
+      :toctree:
+
+      ~BPTree.from_treenode
+      ~BPTree.to_array
+      ~BPTree.to_device
+
+   
+
+   
+   
+   .. rubric:: Special methods
+
+   .. autosummary::
+   
+      ~BPTree.__len__
+      ~BPTree.__str__
+   
+
+   
+   .. rubric:: Special methods (inherited)
+
+   .. autoinherit::
+   
+      ~BPTree.__eq__
+      ~BPTree.__ge__
+      ~BPTree.__getstate__
+      ~BPTree.__gt__
+      ~BPTree.__hash__
+      ~BPTree.__le__
+      ~BPTree.__lt__
+      ~BPTree.__ne__
+   
+   
+
+
+
+
+   
+   .. rubric:: Details
+
+   
+   
+   .. autoattribute:: BPTree.data
+   
+   
+   
+   .. autoattribute:: BPTree.default_write_format
+   
+   
+   
+   .. autoattribute:: BPTree.edges
+   
+   
+   
+   .. autoattribute:: BPTree.lengths
+   
+   
+
+   
+   
+   .. automethod:: BPTree.__len__
+   
+   
+   
+   .. automethod:: BPTree.__str__
+   
+   
+   

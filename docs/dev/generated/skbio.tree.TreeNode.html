@@ -722,6 +722,7 @@
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.compare_wrfd.html">skbio.tree.TreeNode.compare_wrfd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.ascii_art.html">skbio.tree.TreeNode.ascii_art</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html">skbio.tree.TreeNode.assign_supports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_bptree.html">skbio.tree.TreeNode.from_bptree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html">skbio.tree.TreeNode.from_linkage_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html">skbio.tree.TreeNode.from_taxdump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html">skbio.tree.TreeNode.from_taxonomy</a></li>
@@ -746,6 +747,12 @@
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="skbio.tree.majority_rule.html">skbio.tree.majority_rule</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.BPTree.html">skbio.tree.BPTree</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="skbio.tree.bp.numba.html">Numba kernels over a BPTree (<code class="xref py py-mod docutils literal notranslate"><span class="pre">skbio.tree.bp.numba</span></code>)</a></li>
 </ul>
 </div>
 </nav></div>
@@ -1126,19 +1133,22 @@ unrooted and unordered trees as well, which are common in phylogenetics.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.assign_supports.html#skbio.tree.TreeNode.assign_supports" title="skbio.tree.TreeNode.assign_supports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_supports</span></code></a></p></td>
 <td><p>Extract support values from internal node labels of a tree.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html#skbio.tree.TreeNode.from_linkage_matrix" title="skbio.tree.TreeNode.from_linkage_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_linkage_matrix</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.from_bptree.html#skbio.tree.TreeNode.from_bptree" title="skbio.tree.TreeNode.from_bptree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_bptree</span></code></a></p></td>
+<td><p>Construct a tree from a balanced-parentheses <code class="docutils literal notranslate"><span class="pre">BPTree</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.from_linkage_matrix.html#skbio.tree.TreeNode.from_linkage_matrix" title="skbio.tree.TreeNode.from_linkage_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_linkage_matrix</span></code></a></p></td>
 <td><p>Construct tree from a SciPy linkage matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html#skbio.tree.TreeNode.from_taxdump" title="skbio.tree.TreeNode.from_taxdump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_taxdump</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.from_taxdump.html#skbio.tree.TreeNode.from_taxdump" title="skbio.tree.TreeNode.from_taxdump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_taxdump</span></code></a></p></td>
 <td><p>Construct a tree from the NCBI taxonomy database.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html#skbio.tree.TreeNode.from_taxonomy" title="skbio.tree.TreeNode.from_taxonomy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_taxonomy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.from_taxonomy.html#skbio.tree.TreeNode.from_taxonomy" title="skbio.tree.TreeNode.from_taxonomy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_taxonomy</span></code></a></p></td>
 <td><p>Construct a tree from a taxonomy.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.to_array.html#skbio.tree.TreeNode.to_array" title="skbio.tree.TreeNode.to_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_array</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.to_array.html#skbio.tree.TreeNode.to_array" title="skbio.tree.TreeNode.to_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_array</span></code></a></p></td>
 <td><p>Return an array representation of self.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="skbio.tree.TreeNode.to_taxonomy.html#skbio.tree.TreeNode.to_taxonomy" title="skbio.tree.TreeNode.to_taxonomy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_taxonomy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="skbio.tree.TreeNode.to_taxonomy.html#skbio.tree.TreeNode.to_taxonomy" title="skbio.tree.TreeNode.to_taxonomy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_taxonomy</span></code></a></p></td>
 <td><p>Return a taxonomy representation of self.</p></td>
 </tr>
 </tbody>
