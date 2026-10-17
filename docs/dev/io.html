@@ -1010,14 +1010,14 @@ built-in <a class="reference external" href="https://docs.python.org/3/library/i
 <span class="gp">&gt;&gt;&gt; </span><span class="n">open_filehandle</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">'(a, b);'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">sk_read</span><span class="p">(</span><span class="n">open_filehandle</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'newick'</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">TreeNode</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span>
-<span class="go">&lt;TreeNode, name: unnamed, internal node count: 0, tips count: 2&gt;</span>
+<span class="go">&lt;TreeNode, name: unnamed, internal node count: 1, tips count: 2&gt;</span>
 </pre></div>
 </div>
 <p>Or, using the object-oriented interface:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">open_filehandle</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">'(a, b);'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">open_filehandle</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'newick'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span>
-<span class="go">&lt;TreeNode, name: unnamed, internal node count: 0, tips count: 2&gt;</span>
+<span class="go">&lt;TreeNode, name: unnamed, internal node count: 1, tips count: 2&gt;</span>
 </pre></div>
 </div>
 <p>In the case of <a class="reference internal" href="generated/skbio.io.registry.read.html#skbio.io.registry.read" title="skbio.io.registry.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">skbio.io.registry.read</span></code></a> if <code class="docutils literal notranslate"><span class="pre">into</span></code> is not provided, then a
@@ -1031,7 +1031,7 @@ interface, meaning that <code class="docutils literal notranslate"><span class="
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">open_filehandle</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">'(a, b);'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">open_filehandle</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span>
-<span class="go">&lt;TreeNode, name: unnamed, internal node count: 0, tips count: 2&gt;</span>
+<span class="go">&lt;TreeNode, name: unnamed, internal node count: 1, tips count: 2&gt;</span>
 </pre></div>
 </div>
 <p>We call format inference <strong>sniffing</strong>, much like the <a class="reference external" href="https://docs.python.org/3/library/csv.html#csv.Sniffer" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csv.Sniffer</span></code></a>

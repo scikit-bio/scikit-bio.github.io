@@ -879,12 +879,13 @@ representation. It is simple, flexible and powerful.</p>
 <h3>Loading a tree<a class="headerlink" href="#loading-a-tree" title="Link to this heading">#</a></h3>
 <p>A tree can be constructed from a Newick string. <a class="extlink-wiki reference external" href="https://en.wikipedia.org/wiki/Newick_format">Newick</a> is a
 common file format used to represent tree structure based on nesting with parentheses.
-For instance, the following string describes a 3-taxon tree, with one internal node:</p>
+For instance, the following string describes a 3-taxon tree:</p>
 <blockquote>
 <div><p>((A,B)C,D)root;</p>
 </div></blockquote>
 <p>Where A, B, and D are tips of the tree, and C is an internal node that unites tips A
-and B. C and D are in turn united by the root of the tree.</p>
+and B. C and D are in turn united by the root of the tree, which is also an internal
+node (defined as nodes with at least one child).</p>
 <p>If this string is stored in a file <code class="docutils literal notranslate"><span class="pre">input.nwk</span></code>, we can read it into scikit-bio with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"input.nwk"</span><span class="p">)</span>
 </pre></div>
@@ -892,7 +893,7 @@ and B. C and D are in turn united by the root of the tree.</p>
 <p>Alternatively, we can directly convert a Newick string into a tree with:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="s2">"((A,B)C,D)root;"</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span>
-<span class="go">&lt;TreeNode, name: root, internal node count: 1, tips count: 3&gt;</span>
+<span class="go">&lt;TreeNode, name: root, internal node count: 2, tips count: 3&gt;</span>
 </pre></div>
 </div>
 <p>Let’s display an ASCII representation of the tree:</p>
@@ -1023,8 +1024,8 @@ simply use <a class="reference internal" href="generated/skbio.tree.TreeNode.tra
 which traversal starts. One can pass the <code class="docutils literal notranslate"><span class="pre">include_self=False</span></code> flag to the method call
 if you wish to exclude it.</p>
 <p><code class="docutils literal notranslate"><span class="pre">TreeNode</span></code> provides multiple methods for iterating over certain nodes. For examples,
-<a class="reference internal" href="generated/skbio.tree.TreeNode.tips.html#skbio.tree.TreeNode.tips" title="skbio.tree.TreeNode.tips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tips</span></code></a> and <a class="reference internal" href="generated/skbio.tree.TreeNode.non_tips.html#skbio.tree.TreeNode.non_tips" title="skbio.tree.TreeNode.non_tips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">non_tips</span></code></a> iterate over tips and internal
-nodes, respectively:</p>
+<a class="reference internal" href="generated/skbio.tree.TreeNode.tips.html#skbio.tree.TreeNode.tips" title="skbio.tree.TreeNode.tips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tips</span></code></a> and <a class="reference internal" href="generated/skbio.tree.TreeNode.non_tips.html#skbio.tree.TreeNode.non_tips" title="skbio.tree.TreeNode.non_tips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">non_tips</span></code></a> iterate over tips and non-tip
+(internal) nodes below the current node, respectively:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">tips</span><span class="p">():</span>
 <span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">A</span>
@@ -1035,6 +1036,14 @@ nodes, respectively:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">non_tips</span><span class="p">():</span>
 <span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">C</span>
+</pre></div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">non_tips</span></code> excludes the current node. Pass <code class="docutils literal notranslate"><span class="pre">include_self=True</span></code> to
+include it:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">non_tips</span><span class="p">(</span><span class="n">include_self</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="go">C</span>
+<span class="go">root</span>
 </pre></div>
 </div>
 <p>If we just want to know the total number of nodes (or just tips) in a tree, we can do:</p>

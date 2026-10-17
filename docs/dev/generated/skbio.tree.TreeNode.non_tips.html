@@ -5,7 +5,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Iterate over non-tip nodes descended from the current node." />
+    <meta name="description" content="Iterate over non-tip (internal) nodes descended from the current node." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>skbio.tree.TreeNode.non_tips &#8212; scikit-bio 0.7.5-dev documentation</title>
@@ -820,8 +820,8 @@
 <h1>skbio.tree.TreeNode.non_tips<a class="headerlink" href="#skbio-tree-treenode-non-tips" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="skbio.tree.TreeNode.non_tips">
-<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">non_tips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.non_tips" title="Link to this definition">#</a></dt>
-<dd><p>Iterate over non-tip nodes descended from the current node.</p>
+<span class="sig-prename descclassname"><span class="pre">TreeNode.</span></span><span class="sig-name descname"><span class="pre">non_tips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-bio/scikit-bio/blob/main/skbio/tree/_tree.py#L1272"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skbio.tree.TreeNode.non_tips" title="Link to this definition">#</a></dt>
+<dd><p>Iterate over non-tip (internal) nodes descended from the current node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -844,7 +844,8 @@
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Nodes are ordered by a postorder traversal of the tree. The order is
+<p>Non-tip nodes are internal nodes, defined as nodes that have at least one
+child. Nodes are ordered by a postorder traversal of the tree. The order is
 consistent between calls.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skbio</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreeNode</span>
