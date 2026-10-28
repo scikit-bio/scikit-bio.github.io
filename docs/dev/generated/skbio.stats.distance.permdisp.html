@@ -875,8 +875,8 @@ Permutations are drawn on the host in the same order as the CPU engines, so
 the p-value matches; the F-statistic can differ in its last digits, because
 the kernel accumulates in a different order.</p>
 <p>The kernel falls back to the CPU Numba engine, with no change in behavior,
-when the backend has no usable Numba GPU module, when the ordination retains
-more than 64 dimensions, or when the grouping has more than 64 groups.</p>
+when the backend has no usable Numba GPU module or when the ordination
+retains more than 1024 dimensions.</p>
 <p>The significance of the results from this function will be the same as the
 results found in vegan’s betadisper, however due to floating point
 variability the F-statistic results may vary slightly.</p>
